@@ -4,7 +4,7 @@
 
 La idea de esta actividad, es que sirva como una introduccion muy liviana a la tarea de programar una computadora enfocandonos en manipular datos biológicos. La primera parte de la guía es una introducción a conceptos básicos del lenguaje R, como escribir un programa, como ejecutarlo, almacenar y manipular datos en variables, etc. Siguiendo el estilo de la guía sobre Unix, no se espera que estén familiarizados con estos conceptos, en lo posible la guía los va a ir llevando ...
 
-## Entrada en calor
+## Rstudio, nuestro pequeño espacio de desarrollo
 
 Como les habrán explicado, todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio-server*, en el cual operarán de forma remota solo a través del explorador de internet como si entraran a cualquier sitio web, de forma tal que podrán trabajar en la misma sesión tanto durante las clases como desde cualquier conmputadora con accesso a internet donde prefieran prácticar, repasar, o profundizar lo realizado en clase. 
 Para acceder, simplemente entren al siguiente enlace:
@@ -21,126 +21,191 @@ Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
 
 1. **Esquina superior izquierda:** Acá tenemos el script que acabamos de abrir (por ahora esta vacio) pero tambien podremos ver cualquier archivo nuevo o tabla que usemos en R, a medida que los vayamos abriendo *Rstudio* simplemente nos pondrá mas pestañas y podrán pasar libremente de una a la otra.
 
-2. **Esquina inferior izquierda:** Acá tenemos la "consola" igual a la que ya vieron en UNIX, solo que esta solo entiende R. Cualquier cosa que escriban aqui, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden. Pueden probar cosas sencillas como:
+2. **Esquina inferior izquierda:** Acá tenemos la "consola" igual a la que ya vieron en UNIX, solo que esta solo entiende R. Cualquier cosa que escriban aqui, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden. 
 
-
-
-```R
-print("hola mundo")
-```
-   
-o
-```R
-2+2
-```
-Ya se imaginarán que podrán esperar de cada orden
-
-3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando. Hay otras pestañas que pueden ser útil pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
+3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar pueden hacerles click y se abriran en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útil pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
 
 4. **Esquina inferior derecha:** Esté panel tiene varias pestañas útiles:
-..1. La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles visualizar los arhivos que encuentren (Rstudio es muy versatil y pueden probar de abir archivos de texto (aparecerán en una nueva pestaña del primer panel), .pdf (se abrirá en una nueva pestaña del explorador), imagenes varias (.jpg, .png, etc). Les será muy útil para ver que tienen en su sesión de Rstudio mientras trabajan.
-..2. La segunda es "Plots", como su nombre indica, acá aparecerán todos los plots que vayan generando, mas adelante veremos mas detalles de esta pestaña.
-..3. Help: Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o pueden ejecutar en la consola el comando `help()`, prueben con:
+    * **Files** La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles y visualizar los arhivos que encuentren (Rstudio es muy versatil y pueden probar de abir archivos de texto (aparecerán en una nueva pestaña del primer panel), .pdf (se abrirá en una nueva pestaña del explorador), imagenes varias (.jpg, .png, etc). Les será muy útil para ver que tienen en su sesión de Rstudio mientras trabajan.
+    * **Plots** Como su nombre indica, acá aparecerán todos los plots que vayan generando, mas adelante veremos mas detalles de esta pestaña.
+    * **Help** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o pueden ejecutar en la consola el comando `help()` (muy similar el comando man que ya usaron en UNIX), prueben con:
 
 ```R
 help(print)
 ```
 
 ¿Entienden algo? :disappointed_relieved: **¿¡NO!?** 
-¿Que informacion nos da cada comando (recordar comando man)? ¿Cuál es el que nos da la información para poner en la primera línea del script?
 
-Antes de comenzar con Perl, vayamos a la consola y establezcamos como directorio de trabajo la carpeta donde guardaremos los scripts. Es una buena práctica crear una carpeta para ello, por ej:
+Tranquilos, este texto de "ayuda" les irá siendo cada vez mas ameno a medida que se vayan familiarizando con el formato que tienen, sientanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
 
+Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos, e incluso descargar/subir archivos desde *Rstudio* a la computadora desde donde acceden. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
+
+
+## Entrando en calor
+
+
+Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. U cualquier otra que se les ocurra necesaria.
+
+¿Sabrian hacer esto desde la consola de UNIX, si fuese necesario? Sería algo así:
+
+```BASH
 mkdir scripts
 cd scripts 
 pwd #ubiquemos el directorio de trabajo
 ls #chequear su contenido
+```
 
-Ahora abrimos un editor y ponemos en la primera línea la ruta absoluta del interprete Perl:
+Ahora vamos a la consola y pueden probar cosas sencillas como:
 
-#!/usr/bin/perl
+```R
+print("hola mundo")
+```
+   
+o
 
-y una instrucción sencilla para ejecutar:
+```R
+2+2
+```
 
-print “Hello world!”;
+Ya se imaginarán que podrán esperar de cada orden
 
-Guardemos el archivo como “hello.pl” en la carpeta “scripts” que hemos creado. Vayamos a la consola nuevamente, y parados en la carpeta scripts chequeamos su contenido, debería aparecer el script. Podemos ejecutarlo de 2 maneras:
+Pero ¿y si quisieramos dejar un registro de lo que acabamos de hacer? En realidad R guarda todas las ordenes en un archivo que se llama .Rhistory, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo esta forma de almacenar instrucciones es un poco sucia, ya que se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal.
+Con lo cual en general se va dejando un registro de las ordenes correctas para llegar al *output* deseado e incluso se suelen comentar las instrucciones mas importantes para que se pueda entender por quien tenga la desgrac..digo la necesidad de reutilizar el código.
+(En R, comentamos el texto anteponiendo un # a la linea deseada). Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*.
 
-Invocando a Perl:
+Prueben de escribir un sencillo comando y documentarlo:
 
-perl hello.pl
+```R
+#Hola, estoy aprendiendo a programar:
+cat("Hello World")
+#No soy un cipayo:
+cat("Hola mundo")
+```
+(¿Que es cat()? ¿se parece a algo que ya vieron? ¿como podrían investigarlo?)
 
-O haciéndolo ejecutable. Recordar que debemos cambiar el modo (chmod u+x hello.pl).
+Muy bien, tenemos las complejas instrucciones, ¿como la ejecutamos?
+En *Rstudio* es tan sencillo como poner el cursor de escribir sobre la linea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha linea "pasa" a la consola y se ejecuta, maravilloso. Tambien podemos seleccionar varias lineas, o parte de ellas y presionar las mismas teclas, *Rstudio* entiende que si seleccionamos las lineas 4,5 y 6, tiene que ejecutarlas en ese orden una después de la otra, sus instructores tambien hacen la misma asunsión, por lo que si durante la cursada terminan ejecutando la linea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* visualizando un orden secuencial distinto, es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, reflejarlo de igual manera en el *script* donde están trabajando.
 
-./hello.pl
+Tambien podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R” en la carpeta “scripts” que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
-Podemos mejorar la impresión simplemente agregando un “salto de carro” (se simboliza con “\n”) al final de la impresión:
+```console
+$ cd ~/scripts/
+$ Rscript hello.R
+Hello WorldHola mundo
+```
 
-print “Hello world!\n”;
 
-¿Notan la diferencia? Podriamos usar tambien otros caracteres como “\t” (tabulacion), “\s” (espacios):
+Podemos mejorar la impresión simplemente agregando un “salto de carro” (se simboliza con “\\n”) al final de la impresión:
 
-print “\t Hello world!\n\n”;
 
-Comenzaremos a explorar el uso de variables. En primer lugar una variable de tipo escalar (string). Por ejemplo, creamos una variable $name, e imprimimos :
+```R
+#Hola, estoy aprendiendo a programar:
+cat("Hello World\n")
+#No soy un cipayo:
+cat("Hola mundo")
+```
 
-my $name= “Azucena”;
-print “\t Hello $name!\n\n”;
+```console
+$ Rscript hello.R
+Hello World
+Hola mundo
+```
+¿Notan la diferencia? Podriamos usar tambien otros caracteres como “\\t” (tabulacion), “\\s” (espacios):
 
-Muchas veces es útil declarar las variables vacías y luego irlas “llenando” a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola (<STDIN>):
+### El mundo de las variables
+#strings
+Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo escalar (string). Por ejemplo, creamos una variable name, e imprimimos :
 
-my $name= ‘’;
-print “What is your name?\t”;
-$name=<STDIN>;
-print “\t Hello $name!\n\n”;
+```R
+name <- "Hermenejildo"
+saludo <- paste("hola",name)
+print(name)
+print(saludo)
+```
+El signo de "<-" representa una flecha que indica donde esta el valor que le corresponde a la variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. (**Ojo con esto**)
+Muchas veces es útil declarar las variables vacías y luego irlas “llenando” a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola:
 
-Otra buena práctica ir comentando las líneas de código para saber qué propósito tiene cada “estamento”. El caracter "#" le indica a Perl que lo que está a continuación deber ser ignorado:
+```R
+name <- ""
+cat("What is your name?")
+name <- readline()
+cat(paste("\t hello", name,"\n\n"))
+```
+fijense que el cursor de la consola desapareció, (esta esperando que ingresen algo). Pueden escribirlo en la consola direcamtente o seleccionar algo del script y presionar [Ctrl]+[ENTER] como siempre. 
 
-my $name= ‘’;
-print “What is your name?\t”; #aca el usuario debe ingresar el nombre por consola:
+#Variables escalares
+En el caso de las variables escalares es muy similar, pero lógicamente hay distintas funciones:
 
-$name=<STDIN>; #removemos el salto de linea antes de imprimir
+```R
+# Quiero guardar un número y calcularle el logaritmo
+val <- 42
+log(val)
+```
 
-chomp $name ; #ahora si podemos imprimir de manera prolija
+Con respecto a las comparaciones entre números y palabras podemos hacer las operaciones tradicionales: 
 
-print “\t Hello $name!\n\n”;
-
-En el caso de las variables escalares que vimos en clase:
-
-$var =”GGATCCGGACCAAA”; 
-$val= 42;
-($a,$b,$c)= (“me”,”my”,”mine”);
-
-Con respecto a las comparaciones entre números y palabras podemos hacer las operaciones tradicionales: (ver diapo 17).
-
-Para probar un poco: 1.- Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla 2.- Usar diferentes operadores matematicos entre ellas, incluir una variable que sea 0 y probar la división. 3.- Ingresar una o ambas variables por consola 4.- Ingresar una o ambas variables por consola y preguntar al usuario que operación realizar entre ellas 5.- Ingresar 2 palabras, imprimir la longitud (length) de ambas y concatenarlas (usar operador .)
+Para probar un poco: 
+1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla 
+2. Usar diferentes operadores matematicos entre ellas, incluir una variable que sea 0 y probar la división. 
+3. Ingresar una o ambas variables por consola 
+4. Ingresar una o ambas variables por consola y preguntar al usuario que operación realizar entre ellas *(opcional)*
+5. Ingresar 2 palabras, imprimir la longitud (nchar) de ambas y concatenarlas (usar funcion paste())
 
 Ejemplo:
 
-print "Ingrese una cadena de DNA corta: ";
-$dna1 = <STDIN>;
-print "Ingrese otra cadena de DNA: ";
-$dna2 = <STDIN>;
-# Remover la nueva linea al final de $dna1 antes de concatenar
-chomp $dna1; 
-# Concatenar los 2 strings usando . 
-#Podriamos tambien generar una tercer variable $dna3 para concaternar las 2 anteriores:
-$dna3= $dna1.$dna2;
+```R
+print("Ingrese una cadena de DNA corta:")
+dna1 <- readline()
+print("Ingrese una cadena de DNA corta:")
+dna2 <- readline()
+print(paste("Las longitudes ingresadas son:",nchar(dna1),"y",nchar(dna2)))
+#Podriamos tambien generar una tercer variable dna3 para concaternar las 2 anteriores:
+dna3 <- paste(dna1,dna2)
 # Imprimir las cadenas concatenadas
-print $dna3;
-
-#O podemos agregar al final de $dna1 el contenido de $dna2
-$dna1 .= $dna2;
+print(dna3)
+#si no queremos el espacio entre las cadenas:
+dna3 <- paste(dna1,dna2,sep="")
 # Imprimir las cadenas concatenadas
-print $dna1;
+print(dna3)
+#si queremos separarlas con otro valor:
+dna3 <- paste(dna1,dna2,sep="\t")
+```
 
-Repasemos el segundo tipo de elementos en Perl: arrays
+#Vectores
 
-La declaración se hace con el signo "@"
+Es muy útil poder alacenar conjuntos ordenados de números, los cuales en R se llaman vectores.
+Podemos generarlos de distintas formas, por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que querramos:
+
+```R
+vector678 <- c(6,7,8)
+```
+Tambien podemos indicarle a R el primer y el último número de una serie consecutiva y automaticamente genera todo el resto:
+R interpreta los dos puntos (:) entre números como una serie que tiene que complementar, si quieren cosas mas complejas, como que vaya de 10 en 10, pueden revisar la documentación de la funcion seq, con `help(seq)`
+Por ejemplo quiero hacer un sencillo gráfico de una serie de números elevados al cuadrado
+
+```R
+serieDeNumeros <- 1:100 
+x <- serieDeNumeros 
+y <- serieDeNumeros ^ 2 
+plot(x, y)
+```
+Quiero hacer muchos números aleatorios pero con una media en 15, una desviación estandar de 2,5 y una distibución normal.
+```R
+Snorm <- rnorm(mean=15,sd=2.5,n=1000)
+hist(Snorm)
+```
+
+¿Obtuvieron los gráficos que hubieran esperado?
+
+
+
+Repasemos otro tipo de variables que vamos a usar mucho: **dataframes**
+
+Para crearlas, hay varias formas, la mas sencilla es con la función *data.frame()*
 
 Por ejemplo:
 
-@list= (“juan”,”jose”,”fred”); # es un array con 3 elementos. El primero está en la posición 0. 
+dt_names = c(“juan”,”jose”,”fred”); # es un array con 3 elementos. El primero está en la posición 0. 
 print $list[0]; # ¿por qué uso $ y no @ para acceder al primer elemento?
 
 @nucleotidos = ( ’a’ , ’c’ , ’g’ , ’t’ ) ;
