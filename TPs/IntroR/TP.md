@@ -275,12 +275,27 @@ Esto es así puesto que R transforma los números a cadenas de texto para poder 
 (si les interesa pueden probarlo, indexen el vector para sumar dos valores numericos trasnformados a cadena de texto y fijense que pasa)
 La otra diferencia con los vectores es que las listas se indexan con doble corchete, es decir, para acceder al primer item de una lista hay que hacer ```nombre_de_mi_lista[[1]]```, para el segundo ```nombre_de_mi_lista[[2]]```, etc.
 
+## Cargando datos a R:
+
+Algo muy interesante que siempre necesitamos es pasar datos de distintos formatos y cargarlos en nuestro *Rstudio* para trabajarlo, claramente no podemos ingresar un gen de forma manual, ni miles de registros de una base de datos...o podemos pero no nos conviene.
+Por un lado los datos mas fáciles de cargar son los del estilo de tablas separadas por valores especificos, como "comas" (,) o "tabs" (\\t). En esos casos tenemos la función `read.table()` que se encarga de hacerlo de forma muy sencilla, eso si, hay que saber bien que formato tiene el archivo que queremos cargar.
+
+Supongamos que tenemos un archivo con valores de expresión, donde las columnas están separadas por tabs y se llama "resultados_ensayo1.tsv". La funcion para cargarlo y guardarlo en una *dataframe* sería:
+
+```r
+dt_exp <- read.table(file="resultados_ensayo1.tsv",sep="\t")
+```
+
+Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estandar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato 
+
+
 :skull: **¿Cansados?** :skull:
 
-Tomen un poco de aire para oxigenar el cerebro antes de la siguiente sección, en el cual, trataremos algunos ejemplos mas biológicos y aplicados usando R para asistirnos en la resolución de problemas. 
+Tomen un poco de aire para oxigenar el cerebro antes de la siguiente sección, en la cual, trataremos algunos ejemplos mas biológicos y aplicados usando R para asistirnos en la resolución de problemas. 
+Utilizando los conceptos aprendidos van a escribir programas simples para manipular archivos conteniendo predicciones para genomas completos.
 
 
-## Trabajando con DNA:
+## Segunda sección del TP
 
 Una de las funciones para generar vectores es la función split sobre una cadena de caracteres (string). El comando split tiene la sintaxis:
 
@@ -303,104 +318,55 @@ base1 = DNAvector[[1]][1]
 
 Veamos el ejemplo de la clase:
 
-$string= "Cell980.1 ATG Hypothetical 2.54 High";
-@values =split(//, $string);
+```r
+string <- "Cell980.1 ATG Hypothetical 2.54 High"
+values <- strsplit(string," ")
+id <- paste(values[[1]][1],collapse=" ")
+values <- paste(values[[1]][-1],collapse=" ")
+```
 
-print $values[3],"\n";
-($id, @values)=split(/\s/, $string);
+¿Qué contienen ahora `id` y `values`? ¿Qué *pattern* estaría usando en este split? ¿Qué otros *pattern* se les ocurren que podemos usar? Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoria de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando *patterns*. Recordar que vimos por ejemplo en los archivos FASTA el marcador “>" para indicar el comienzo del encabezado de una secuencias. Hay caracteres muy usados como por ejemplo “#","!","*" etc… Tambien palabras claves como veremos más adelante.
 
-print "$id\n";
 
-Que contienen ahora $id y @values? Que pattern estaría usando en este split? Qué otros pattern se les ocurren que podemos usar? Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoria de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando patterns. Recordar que vimos por ejemplo en los archivos FASTA el marcador “>" para indicar el comienzo del encabezado de una secuencias. Hay caracteres muy usados como por ejemplo “#","!","*" etc… Tambien palabras claves como veremos más adelante.
 
-Otra función muy usada es la opuesta al "split", o sea “join". La misma permite a partir de un array generar un string. Recordemos la sintaxis:
+### Transformar el output de InterProScan 
 
-$string= join(“character(s)",@list)
+InterProScan es un programa que analiza secuencias de proteínas utilizando distintos programas/algoritmos (hmmpfam, hmmsmart, fprintscan, hmmpir, coil, seg, blastprodom, profilescan, ...) y distintas bases de datos (Pfam, PROSITE, ProDom, ...) para caracterizarlas. El output de InterProScan es un archivo de texto, tabulado (los campos están separados por TABs ("\\t"), conteniendo las siguientes columnas:
 
-@list=("Cell980.1","ATG","Hypothetical","2.54","High");
+1. Gene ID, la proteína query, ej: Rv1876
+2. Checksum, calculado sobre la secuencia, ej: 098B6D7392A9CD60
+3. Length, el número de residuos de aa, ej: 159
+4. Algorithm, a qué programa corresponde este resultado, ej: HMMPfam
+5. Hit, objeto encontrado en la base de datos correspondiente, ej: PF00210
+6. Description, descripción de este objeto ej: Ferritin
+7. Start, inicio del hit, ej: 8
+8. End, fin del hit, ej: 144
+9. E-value, hace falta explicarlo?, ej: 8.2e-47
+10.T/F?, si es un falso positivo (F) o no, ej: T
+11. Date, fecha en la que se corrió InterProScan, ej: 30-Aug-2009
+12. !Interpro Acc, a qué objeto en la base de datos InterPro corresponde este hit, ej: IPR008331
+13. InterPro Desc, descripción de IPR008331 en InterPro
+14. interpro2GO, asignación automática de términos de la ontología GO 
 
-$string=join("",@list);
-$string2=join("||",@list);
-$string3=join("*",@list);
+El objetivo es escribir un programa que lea el output de InterProScan (análisis del proteoma de M. tuberculosis H37Rv), identifique las columnas y produzca como resultado un nuevo archivo tabulado conteniendo:
 
-print $string,"\n\n";
-print $string2,"\n\n";
-print $string3,"\n\n";
+* Solo los resultados de búsquedas sobre Pfam
+* Solo los verdaderos positivos
+* Para proteínas de menos de 200 aa y que contenga los siguientes datos, en este orden:
+    * Gene ID
+    * Pfam accession 
 
-Revisemos cómo se ingresa información al script leyendo archivos. Primero debemos declarar un “filehandle", un nombre donde alojaré el archivo que voy a leer:
+#### Ejercicios propuestos:
 
-open(MYHANDLE, “ejercicio.txt")
+* Plantear un algoritmo
+* Interpretar el código parseInterpro_incomp.R
+* Completar las secciones faltanes
+* Ejecutar el script con los datos que corresponda e interpretar los resultados 
+* Leer miles de archivos en sólo unos segundos (una vez que se tiene el programa andando, claro) 
 
-Luego puedo ir leyendo las líneas. Recordar que en este caso, MYHANDLE será un array:
+Input: mtu-interpro-Aug-2009 
 
-$line1=<MYHANDLE>;
-$line2=<MYHANDLE>;
-
-Esto se puede automatizar usando un bucle WHILE que irá leyendo línea a línea el archivo mientras exista la variable $line:
-
-while ($line = <MYHANDLE>) {
-print $line;
-}
-close MYHANDLE;
-
-Una de las mayores fortalezas de Perl es su capacidad para parsear archivos (leer en un formato e imprimir en otro). Uno podría imprimir hacia el STOUT (Standard Output) como vimos en Linux, que es la pantalla o guardar en un archivo nuevo, ya sea desde dentro del script de Perl o guardando la salida por pantalla con el caracter “>". Esto es más sencillo pero traerá inconvenientes al momento que querramos producir más de un output del mismo script.
-
-Para generar el archivo de salida desde el mismo Perl, hay que tomar la precaución de abrirlo y especificar si el archivo será creado de nuevo “>" o si agregaré la información generaada al final de un archivo (si existiera) “>>"
-
-open(MYOUTPUTHANDLE,">somefile.txt")
-print  MYOUTPUTHANDLE “Hello there";
-
-open(MYOUTPUTHANDLE,">>somefile.txt")
-print  MYOUTPUTHANDLE “Hello there";
-
-Se entiende la diferencia?
-
-Estos ejercicios paso a paso se encuentran en los slides.
-fin entrada en calor ¶
-
-En una segunda parte, utilizando los conceptos aprendidos van a escribir programas simples para manipular archivos conteniendo predicciones para genomas completos.
-Ejercicios (segunda parte) ¶
-
-    Transformar el output de InterProScan 
-
-    InterProScan es un programa que analiza secuencias de proteínas utilizando distintos programas/algoritmos (hmmpfam, hmmsmart, fprintscan, hmmpir, coil, seg, blastprodom, profilescan, ...) y distintas bases de datos (Pfam, PROSITE, ProDom, ...) para caracterizarlas (tutorial). El output de InterProScan es un archivo de texto, tabulado (los campos están separados por TABs (\t en Perl), conteniendo las siguientes columnas:
-
-    1. Gene ID, la proteína query, ej: Rv1876
-    2. Checksum, calculado sobre la secuencia, ej: 098B6D7392A9CD60
-    3. Length, el número de residuos de aa, ej: 159
-    4. Algorithm, a qué programa corresponde este resultado, ej: HMMPfam
-    5. Hit, objeto encontrado en la base de datos correspondiente, ej: PF00210
-    6. Description, descripción de este objeto ej: Ferritin
-    7. Start, inicio del hit, ej: 8
-    8. End, fin del hit, ej: 144
-    9. E-value, hace falta explicarlo?, ej: 8.2e-47
-    10.T/F?, si es un falso positivo (F) o no, ej: T
-    11. Date, fecha en la que se corrió InterProScan, ej: 30-Aug-2009
-    12. !Interpro Acc, a qué objeto en la base de datos InterPro corresponde este hit, ej: IPR008331
-    13. InterPro Desc, descripción de IPR008331 en InterPro
-    14. interpro2GO, asignación automática de términos de la ontología GO 
-
-    El objetivo es escribir un programa que lea el output de InterProScan (análisis del proteoma de M. tuberculosis H37Rv), identifique las columnas y produzca como resultado un nuevo archivo tabulado conteniendo:
-
-    sólo los resultados de búsquedas sobre Pfam
-    sólo los verdaderos positivos
-    para proteínas de menos de 200 aa
-    y que contenga los siguientes datos, en este orden:
-        Gene ID
-        Pfam accession 
-
-    Ejercicios propuestos:
-
-    Plantear un algoritmo
-    Interpretar el código parseInterpro_incomp.pl
-    Completar las secciones faltanes
-    Ejecutar el script con los datos que corresponda e interpretar los resultados 
-
-    Input: mtu-interpro-Aug-2009.csv.gz (para descomprimir: gzip -d filename)
-
-    Leer miles de archivos en sólo unos segundos (una vez que se tiene el programa andando, claro) 
-
-    TMHMM es un predictor de dominios trans-membrana. El programa recibe la secuencia de una proteína, y devuelve un archivo de texto con sus predicciones, incluyendo número y posición de las hélices trans-membrana. Ej. de la salida de TMHMM para una proteína integral de membrana de M. tuberculosis :
+TMHMM es un predictor de dominios trans-membrana. El programa recibe la secuencia de una proteína, y devuelve un archivo de texto con sus predicciones, incluyendo número y posición de las hélices trans-membrana. Ej. de la salida de TMHMM para una proteína integral de membrana de M. tuberculosis :
 
     # Rv0507 Length: 968
     # Rv0507 Number of predicted TMHs:  11
@@ -432,37 +398,37 @@ Ejercicios (segunda parte) ¶
     Rv0507  TMHMM2.0        TMhelix    891   913
     Rv0507  TMHMM2.0        inside     914   968
 
-    NOTA: En el caso de proteínas con péptido señal, el predictor frecuentemente lo identifica como un dominio trans-membrana.
+NOTA: En el caso de proteínas con péptido señal, el predictor frecuentemente lo identifica como un dominio trans-membrana.
 
-    El objetivo es escribir un programa que lea los 4012 archivos con las predicciones de TMHMM para cada proteína de la bacteria, y genere una lista de las que tienen al menos 1 dominio trans-membrana. Eso sí, hay que descartar los "dominios" localizados dentro de los primeros 60 resíduos, ya que se tratan de potenciales péptidos-señal. Ayuda: TMHMM genera un "warning" en esos casos.
+El objetivo es escribir un programa que lea los 4012 archivos con las predicciones de TMHMM para cada proteína de la bacteria, y genere una lista de las que tienen al menos 1 dominio trans-membrana. Eso sí, hay que descartar los "dominios" localizados dentro de los primeros 60 resíduos, ya que se tratan de potenciales péptidos-señal. Ayuda: TMHMM genera un "warning" en esos casos.
 
-    Ejercicios propuestos:
+#### Ejercicios propuestos:
 
-    Plantear un algoritmo
-    Interpretar el código parse_tmhmm_incomp.pl
-    Completar las secciones faltanes
-    Ejecutar el script con los datos que corresponda e interpretar los resultados 
+* Plantear un algoritmo
+* Interpretar el código parse_tmhmm_incomp.pl
+* Completar las secciones faltanes
+* Ejecutar el script con los datos que corresponda e interpretar los resultados 
 
-    Outputs TMHMM: Mtu_tmhmm.tar.gz
+Outputs TMHMM: Mtu_tmhmm
 
-    Procesar un FASTA múltiple usando BioPerl (requiere instalación). El objetivo es escribir un programa que lea un archivo con las secuencias codificantes del genoma de Saccharomyces cerevisiae y filtre aquellas que contengan caracteres inválidos o sean redundantes/repetidas (en caso que hubiera). Además se pide traducir las secuencias nucleotídicas en el primer marco de lectura, e incluir en la descripción de la proteína de salida, su longitud (número de aminoácidos). 
+Procesar un FASTA múltiple usando R. El objetivo es escribir un programa que lea un archivo con las secuencias codificantes del genoma de *Saccharomyces cerevisiae* y filtre aquellas que contengan caracteres inválidos o sean redundantes/repetidas (en caso que hubiera). Además se pide traducir las secuencias nucleotídicas en el primer marco de lectura, e incluir en la descripción de la proteína de salida, su longitud (número de aminoácidos). 
 
-    Ejercicios propuestos:
+#### Ejercicios propuestos:
 
-    Plantear un algoritmo
-    Interpretar el código parseFasta_incomp.pl
-    Completar las secciones faltanes
-    Ejecutar el script con los datos que corresponda e interpretar los resultados 
+* Plantear un algoritmo
+* Interpretar el código parseFasta_incomp
+* Completar las secciones faltanes
+* Ejecutar el script con los datos que corresponda e interpretar los resultados 
 
-    Secuencias codificantes de 'S. cerevisiae' con errores 
+Secuencias codificantes de *S. cerevisiae* con errores
 
-    Transformar el output de Glimmer y visualizarlo en Artemis 
+Transformar el output de Glimmer y visualizarlo en Artemis 
 
-    Glimmer es un predictor de genes procarióticos (un gene finder). Se utiliza, por ejemplo, para identificar genes en un genoma recién secuenciado (no anotado todavía). Glimmer debe ser entrenado sobre un set de genes conocidos y validados experimentalmente. Una vez hecho esto y generado un modelo de los genes que conoce, Glimmer busca genes nuevos en el genoma de interés.
+Glimmer es un predictor de genes procarióticos (un gene finder). Se utiliza, por ejemplo, para identificar genes en un genoma recién secuenciado (no anotado todavía). Glimmer debe ser entrenado sobre un set de genes conocidos y validados experimentalmente. Una vez hecho esto y generado un modelo de los genes que conoce, Glimmer busca genes nuevos en el genoma de interés.
 
-    En este ejercicio vamos a analizar el output generado por Glimmer y vamos a transformarlo de manera de poder visualizarlo con Artemis.
+En este ejercicio vamos a analizar el output generado por Glimmer y vamos a transformarlo de manera de poder visualizarlo con Artemis.
 
-    Recordar que Artemis muestra o grafica features y que generalmente estas features están incluídas en cualquier secuencia de DNA en formato EMBL o GenBank. El formato de estas tablas de features es el siguiente:
+Recordar que Artemis muestra o grafica features y que generalmente estas features están incluídas en cualquier secuencia de DNA en formato EMBL o GenBank. El formato de estas tablas de features es el siguiente:
 
     GenBank feature table:
 
@@ -497,9 +463,8 @@ Ejercicios (segunda parte) ¶
     FT   gene            2539..4857
     FT                   /gene="gyrB"
 
-    El formato es estricto y requiere que el feature Key empiece en la posición 6 de la línea, y que el siguiente bloque de texto (location/qualifiers) comience en la posición 23 de la línea. En el formato EMBL cada linea debe empezar con dos caracteres en mayúsculas, que identifican que tipo de información contiene cada línea.
-
-    Otro formato que puede usarse para describir features y que Artemis también lee y entiende, es el llamado formato GFF (Generic Feature Format), ideado en el Sanger Centre. Detalles sobre el formato pueden leerse aquí.
+El formato es estricto y requiere que el feature Key empiece en la posición 6 de la línea, y que el siguiente bloque de texto (location/qualifiers) comience en la posición 23 de la línea. En el formato EMBL cada linea debe empezar con dos caracteres en mayúsculas, que identifican que tipo de información contiene cada línea.
+Otro formato que puede usarse para describir features y que Artemis también lee y entiende, es el llamado formato GFF (Generic Feature Format), ideado en el Sanger Centre.
 
     Features in GFF format:
 
@@ -507,32 +472,18 @@ Ejercicios (segunda parte) ¶
     campylobacter-lari    source    gene    1462    2529    .    +    .    ID=dnaN
     campylobacter-lari    source    gene    2539    4857    .    +    .    ID=gyrB
 
-    El ejercicio consiste en:
+El ejercicio consiste en:
 
-    Visualizar en Artemis las predicciones generadas por Glimmer sobre el de M. tuberculosis H37Rv. El output que genera Glimmer es tabulado, pero no se ajusta a ninguno de los formatos que entiende Artemis. Por lo tanto deberán escribir un programa (esta vez sin modelo), que transforme el output de Glimmer en alguno de los mencionados arriba. 
+Visualizar en Artemis las predicciones generadas por Glimmer sobre el de M. tuberculosis H37Rv. El output que genera Glimmer es tabulado, pero no se ajusta a ninguno de los formatos que entiende Artemis. Por lo tanto deberán escribir un programa (esta vez sin modelo), que transforme el output de Glimmer en alguno de los mencionados arriba. 
 
-    Una vez resuelto el punto anterior y para ganar bonus points en nota de concepto, modificar el programa de manera que las distintas predicciones de Glimmer se vean en Artemis en distintos colores de acuerdo al score de la predicción. De acuerdo al manual de Artemis, es posible especificar el color de un feature, usando como qualifier la palabra mágica colour seguida del número correspondiente al color que uno quiera (el Sanger Centre queda en Inglaterra, por eso los colores son colours y no colors, cosas de ingleses). La tabla de colores y números que tienen asignados está en esta sección del manual. 
+Una vez resuelto el punto anterior y para ganar bonus points en nota de concepto, modificar el programa de manera que las distintas predicciones de Glimmer se vean en Artemis en distintos colores de acuerdo al score de la predicción. De acuerdo al manual de Artemis, es posible especificar el color de un feature, usando como qualifier la palabra mágica colour seguida del número correspondiente al color que uno quiera (el Sanger Centre queda en Inglaterra, por eso los colores son colours y no colors, cosas de ingleses). La tabla de colores y números que tienen asignados está en esta sección del manual. 
 
-    Ayudita: hay que poner colour=## donde y como corresponda.
+Ayudita: hay que poner colour=## donde y como corresponda.
 
-    Discutir las soluciones (los programas) escritos por cada uno. Analizar puntos fuertes, débiles, etc. 
+Discutir las soluciones (los programas) escritos por cada uno. Analizar puntos fuertes, débiles, etc. 
 
-    Archivos:
+Archivos:
 
-    El genoma de ''M. tuberculosis'' H37Rv
-    Las predicciones de Glimmer 
-
-Attachments
-
-    mtu-interpro-Aug-2009.csv.gz (789.3 KB) - added by fernan 8 years ago. "InterProScan? raw output for M. tuberculosis H37Rv"
-    mtuberculosis-h37rv.fasta (4.3 MB) - added by fernan 8 years ago. "El genoma de M. tuberculosis H37Rv"
-    mtu.glimmer.predict (79.4 KB) - added by fernan 8 years ago. "Predicciones de Glimmer sobre el genoma de M. tuberculosis"
-    Mtu_tmhmm.tar.gz (291.4 KB) - added by santiago 7 years ago. "Outputs de TMHMM para el proteoma de M. tuberculosis"
-    parseFasta_incomp.pl (1.6 KB) - added by santiago 5 years ago.
-    Sce_nuc_bad.fasta.zip (2.9 MB) - added by santiago 5 years ago.
-    parseInterpro_incomp.pl (365 bytes) - added by santiago 5 years ago.
-    parse_tmhmm_incomp.pl (1.0 KB) - added by santiago 5 years ago.
-    glimmer2embl_incomp.pl (2.7 KB) - added by santiago 5 years ago.
-    perlProgramming-2012.pdf (580.0 KB) - added by fernan 5 years ago. "Perl Programming 2012"
-
+* El genoma de *M. tuberculosis* H37Rv
+* Las predicciones de Glimmer
 
