@@ -33,5 +33,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
-# preview files for html
+# Preview files for html
 
+TPs/IntroR/*.html
