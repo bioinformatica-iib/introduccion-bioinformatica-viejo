@@ -6,21 +6,47 @@ La idea de esta actividad, es que sirva como una introduccion muy liviana a la t
 
 ## Entrada en calor
 
-Como les habrán explicado, todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo Rstudio-server, en el cual operarán de forma remota solo a través del explorador de internet como si entraran a cualquier sitio web, de forma tal que podrán trabajar en la misma sesión tanto durante las clases como desde cualquier conmputadora con accesso a internet donde prefieran prácticar, repasar, o profundizar lo realizado en clase. 
+Como les habrán explicado, todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio-server*, en el cual operarán de forma remota solo a través del explorador de internet como si entraran a cualquier sitio web, de forma tal que podrán trabajar en la misma sesión tanto durante las clases como desde cualquier conmputadora con accesso a internet donde prefieran prácticar, repasar, o profundizar lo realizado en clase. 
 Para acceder, simplemente entren al siguiente enlace:
 
 [rserver](http://10.1.103.82:8787)
 
-Rstudio les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado... Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
+*Rstudio* les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado... Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
 
 ![](Rserver_1.png)
 
+*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar, creemos uno nuevo, basicamente lo que conocemos como "Script" que no es mas que un arhivo de texto "plano" con instrucciones para un lenguaje de programación especifico (en este caso R). Para ello, hagan click en "File", de la lista que desplega elijan "New file" y luego "R script". (Como verán hay muchas mas cosas que se pueden hacer en Rstudio, nosotros solo vamos a ver las mas básicas, pero sientanse libres de explorarlas si les genera interes. [Rstudio](https://www.rstudio.com/))
+
+Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
+
+1. **Esquina superior izquierda:** Acá tenemos el script que acabamos de abrir (por ahora esta vacio) pero tambien podremos ver cualquier archivo nuevo o tabla que usemos en R, a medida que los vayamos abriendo *Rstudio* simplemente nos pondrá mas pestañas y podrán pasar libremente de una a la otra.
+
+2. **Esquina inferior izquierda:** Acá tenemos la "consola" igual a la que ya vieron en UNIX, solo que esta solo entiende R. Cualquier cosa que escriban aqui, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden. Pueden probar cosas sencillas como:
 
 
-perl -v
-whereis perl
-which perl
 
+```R
+print("hola mundo")
+```
+   
+o
+```R
+2+2
+```
+Ya se imaginarán que podrán esperar de cada orden
+
+3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando. Hay otras pestañas que pueden ser útil pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
+
+4. **Esquina inferior derecha:** Esté panel tiene varias pestañas útiles:
+..1. La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles visualizar los arhivos que encuentren (Rstudio es muy versatil y pueden probar de abir archivos de texto (aparecerán en una nueva pestaña del primer panel), .pdf (se abrirá en una nueva pestaña del explorador), imagenes varias (.jpg, .png, etc). Les será muy útil para ver que tienen en su sesión de Rstudio mientras trabajan.
+..2. La segunda es "Plots", como su nombre indica, acá aparecerán todos los plots que vayan generando, mas adelante veremos mas detalles de esta pestaña.
+..3. Help: Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o pueden ejecutar en la consola el comando `help()`, prueben con:
+
+```R
+help(print)
+```
+
+¿Entienden algo? :disappointed_relieved: **¿¡NO!?** 
 ¿Que informacion nos da cada comando (recordar comando man)? ¿Cuál es el que nos da la información para poner en la primera línea del script?
 
 Antes de comenzar con Perl, vayamos a la consola y establezcamos como directorio de trabajo la carpeta donde guardaremos los scripts. Es una buena práctica crear una carpeta para ello, por ej:
