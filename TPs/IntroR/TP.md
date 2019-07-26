@@ -86,7 +86,7 @@ cat("Hola mundo")
 Muy bien, tenemos las complejas instrucciones, ¿como la ejecutamos?
 En *Rstudio* es tan sencillo como poner el cursor de escribir sobre la linea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha linea "pasa" a la consola y se ejecuta, maravilloso. Tambien podemos seleccionar varias lineas, o parte de ellas y presionar las mismas teclas, *Rstudio* entiende que si seleccionamos las lineas 4,5 y 6, tiene que ejecutarlas en ese orden una después de la otra, sus instructores tambien hacen la misma asunsión, por lo que si durante la cursada terminan ejecutando la linea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* visualizando un orden secuencial distinto, es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, reflejarlo de igual manera en el *script* donde están trabajando.
 
-Tambien podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R” en la carpeta “scripts” que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
+Tambien podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
 ```console
 $ cd ~/scripts/
@@ -95,7 +95,7 @@ Hello WorldHola mundo
 ```
 
 
-Podemos mejorar la impresión simplemente agregando un “salto de carro” (se simboliza con “\\n”) al final de la impresión:
+Podemos mejorar la impresión simplemente agregando un “salto de carro" (se simboliza con “\\n") al final de la impresión:
 
 
 ```R
@@ -110,7 +110,7 @@ $ Rscript hello.R
 Hello World
 Hola mundo
 ```
-¿Notan la diferencia? Podriamos usar tambien otros caracteres como “\\t” (tabulacion), “\\s” (espacios):
+¿Notan la diferencia? Podriamos usar tambien otros caracteres como “\\t" (tabulacion), “\\s" (espacios):
 
 ### El mundo de las variables
 #strings
@@ -122,8 +122,8 @@ saludo <- paste("hola",name)
 print(name)
 print(saludo)
 ```
-El signo de "<-" representa una flecha que indica donde esta el valor que le corresponde a la variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. (**Ojo con esto**)
-Muchas veces es útil declarar las variables vacías y luego irlas “llenando” a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola:
+El signo de "<-" representa una flecha que indica donde esta el valor que le corresponde a la variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. :eyes: (**Ojo con esto**)
+Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola:
 
 ```R
 name <- ""
@@ -180,7 +180,8 @@ Podemos generarlos de distintas formas, por ejemplo si usamos la función c(), p
 vector678 <- c(6,7,8)
 ```
 Tambien podemos indicarle a R el primer y el último número de una serie consecutiva y automaticamente genera todo el resto:
-R interpreta los dos puntos (:) entre números como una serie que tiene que complementar, si quieren cosas mas complejas, como que vaya de 10 en 10, pueden revisar la documentación de la funcion seq, con `help(seq)`
+R interpreta los dos puntos (:) entre números como una serie que tiene que complementar. Si quieren cosas mas complejas, como que vaya de 10 en 10, pueden revisar la documentación de la funcion seq, con `help(seq)`.
+
 Por ejemplo quiero hacer un sencillo gráfico de una serie de números elevados al cuadrado
 
 ```R
@@ -195,56 +196,110 @@ Snorm <- rnorm(mean=15,sd=2.5,n=1000)
 hist(Snorm)
 ```
 
-¿Obtuvieron los gráficos que hubieran esperado?
+¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
 
 
+## Dataframes, las tablas en R.
 
 Repasemos otro tipo de variables que vamos a usar mucho: **dataframes**
 
-Para crearlas, hay varias formas, la mas sencilla es con la función *data.frame()*
+Hay varias formas para crearlas, la mas sencilla es con la función *data.frame()*
 
 Por ejemplo:
 
-dt_names = c(“juan”,”jose”,”fred”); # es un array con 3 elementos. El primero está en la posición 0. 
-print $list[0]; # ¿por qué uso $ y no @ para acceder al primer elemento?
+```r
+genes <- c("ERT2","TTR4","REC1")
+escencialidad <- c(F,F,T)
+expresiones <- c(100,1000,10000)
+dt <- data.frame(gen=genes,escencial=escencialidad,expresion=expresiones) 
+print(dt)
+summary(dt) #Es especialmente útil para dataframes muy grandes, ya van a ver.
+```
+(¿Ven la *data frame* en el 3er panel? Pueden visualizarla si le hacen click. O escribiendo `View(dt)` en la consola)
 
-@nucleotidos = ( ’a’ , ’c’ , ’g’ , ’t’ ) ;
-print " Nucleotidos: @nucleotidos \n" ;
 
-Hay funciones propias para arrays, por ejemplo, agregar un elemento al final:
+Si quisieramos seleccionar una columna en particular de dicha dt, lo podemos hacer de las siguientes formas:
 
-push @list, “roberto”;
-print $list[3];
-print “@list \n”;
+Usando el signo "$" despues del nombre de la dt:
+```r
+dt$gen
 
-Quitar el primer elemento de la lista:
+```
+Indexando por el número de columna:
 
-shift @list;
-print “@list \n”;
+(En R, las tablas se indexan con corchetes, donde dentro se ingresan dos números separados por una coma, el primero es para las filas y el segundo para las columnas. Si uno de los dos no se escribe, se entiende que son todas las filas/columnas)
 
-Podemos ir guardando el elemento que remuevo en una nueva variable escalar:
+```r
+dt[,1]
+dt[,c(1,3)]
+dt[,c(1:3)]
+```
 
-$first = shift @list;
+Tambien pueden seleccionar por el nombre de la columna:
 
-Lo mismo para el último, la función pop:
+```r
+dt[,"gen"]
+```
 
-$last = pop @list;
-print “@list \n”;
+El indexado de filas por número es identico, pero en general se usa para hacer operaciones de filtrado lógicas o matematicas:
 
-Una de las funciones más usadas para generar arrays es la función split sobre una cadena de caracteres. Recordar que el comando split tiene la sintaxis:
+```r
+# Todos los genes escenciales:
+dt[dt$escencial ,]
+# Todos los genes de mas de 100 de exp:
+dt$expresion > 100 
+# Nos devuelve un vector lógico con un "TRUE" en aquellos que cumplen dicha condición, con lo cual podemos filtrar la dt original:
+dt[dt$expresion > 100 ,]
+```
 
-@values= split(/pattern/, $string)
+
+Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma mas sencilla pero, quizá, no tan intuitiva. Mas adelante en otra clase las trabajaremos.
+
+# Listas
+
+Las listas son otro tipo de variables, muy similares a los vectores pero que pueden contener distintos tipos de variables en contrario a los vectores que todos sus valores tienen que ser del mismo tipo. Es mas, si guardamos un vector con distintos tipos de variables, R automaticamente transforma todo al tipo de variable que pueda contener ambos.
+Para que puedan verlo, prueben este ejemplo contrastante:
+
+```r
+vector_numeros <- c(3,4,7,13,45.3)
+vector_strings <- c("hola","chau","perro")
+vector <- c(vector_strings,vector_numeros)
+print(vector)
+list_numeros <- list(3,4,7,13,45.3)
+list_strings <- list("hola","chau","perro")
+list <- c(list_numeros,list_strings)
+print(list)
+```
+¿Ven que aparecen comillas ("") en los números del vector que contiene tanto cadenas de texto como números? 
+Esto es así puesto que R transforma los números a cadenas de texto para poder alacenarlos en el vector. ¿Que pasaría si ahora quisiera sumar dos números que se transformaron en texto? 
+(si les interesa pueden probarlo, indexen el vector para sumar dos valores numericos trasnformados a cadena de texto y fijense que pasa)
+La otra diferencia con los vectores es que las listas se indexan con doble corchete, es decir, para acceder al primer item de una lista hay que hacer ```nombre_de_mi_lista[[1]]```, para el segundo ```nombre_de_mi_lista[[2]]```, etc.
+
+¿Cansados? :skull:
+
+Tomen un poco de aire para oxigenar el cerebro antes de la siguiente sección, en el cual trataremos algunos ejemplos mas biológicos y aplicados usando R para asistirnos en la resolución de problemas que sería muy laborioso de trabajar exclusivamente manual.
+
+
+#Trabajando con DNA:
+
+Una de las funciones para generar vectores es la función split sobre una cadena de caracteres (string). El comando split tiene la sintaxis:
+
+
+`strsplit(split= /pattern/, x = string)`
+
+El *pattern* puede ser desde algo muy sencillo como una cadena de texto exacta (algo tan sencillo como "ATG", por ejemplo), hasta una expresión compleja que encuentra solo una forma particular de escribir genes de un determinado bicho. Pero esto se escribe con "expresiones regulares" que son un poco (bastante) complejas de entender y se excede de los alcances de este curso, sin embargo, saber de su existencia les puede ser muy útil si algún día necesitan "parsear" un archivo muy grande con datos y no hay otra alternativa. 
 
 Ejemplos:
 
-#  DNA
-$DNA = ’AAAAAAAAAAAATTTTTTTTTTTTTTT’;
-@DNAarray = split(//, $DNA);
-#que estaria haciendo este comando?
-$base1 = $DNAarray[$position1];
-print @DNAarray, "\n";
+```R
+DNA <- 'AAAAAAAAAAAATTTTTTTTTTTTTTT'
+DNAvector <- strsplit(split="", DNA)
+base1 = DNAvector[[1]][1] 
 
-¿Que pattern estaría usando en este split?
+```
+¿Que pattern estaría usando en este split?  (ayuda: busquen la ayuda, suele ser de ayuda)
+
+
 
 Veamos el ejemplo de la clase:
 
@@ -256,11 +311,11 @@ print $values[3],"\n";
 
 print "$id\n";
 
-Que contienen ahora $id y @values? Que pattern estaría usando en este split? Qué otros pattern se les ocurren que podemos usar? Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoria de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando patterns. Recordar que vimos por ejemplo en los archivos FASTA el marcador “>” para indicar el comienzo del encabezado de una secuencias. Hay caracteres muy usados como por ejemplo “#”,”!”,”*” etc… Tambien palabras claves como veremos más adelante.
+Que contienen ahora $id y @values? Que pattern estaría usando en este split? Qué otros pattern se les ocurren que podemos usar? Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoria de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando patterns. Recordar que vimos por ejemplo en los archivos FASTA el marcador “>" para indicar el comienzo del encabezado de una secuencias. Hay caracteres muy usados como por ejemplo “#","!","*" etc… Tambien palabras claves como veremos más adelante.
 
-Otra función muy usada es la opuesta al "split", o sea “join”. La misma permite a partir de un array generar un string. Recordemos la sintaxis:
+Otra función muy usada es la opuesta al "split", o sea “join". La misma permite a partir de un array generar un string. Recordemos la sintaxis:
 
-$string= join(“character(s)”,@list)
+$string= join(“character(s)",@list)
 
 @list=("Cell980.1","ATG","Hypothetical","2.54","High");
 
@@ -272,9 +327,9 @@ print $string,"\n\n";
 print $string2,"\n\n";
 print $string3,"\n\n";
 
-Revisemos cómo se ingresa información al script leyendo archivos. Primero debemos declarar un “filehandle”, un nombre donde alojaré el archivo que voy a leer:
+Revisemos cómo se ingresa información al script leyendo archivos. Primero debemos declarar un “filehandle", un nombre donde alojaré el archivo que voy a leer:
 
-open(MYHANDLE, “ejercicio.txt”)
+open(MYHANDLE, “ejercicio.txt")
 
 Luego puedo ir leyendo las líneas. Recordar que en este caso, MYHANDLE será un array:
 
@@ -288,15 +343,15 @@ print $line;
 }
 close MYHANDLE;
 
-Una de las mayores fortalezas de Perl es su capacidad para parsear archivos (leer en un formato e imprimir en otro). Uno podría imprimir hacia el STOUT (Standard Output) como vimos en Linux, que es la pantalla o guardar en un archivo nuevo, ya sea desde dentro del script de Perl o guardando la salida por pantalla con el caracter “>”. Esto es más sencillo pero traerá inconvenientes al momento que querramos producir más de un output del mismo script.
+Una de las mayores fortalezas de Perl es su capacidad para parsear archivos (leer en un formato e imprimir en otro). Uno podría imprimir hacia el STOUT (Standard Output) como vimos en Linux, que es la pantalla o guardar en un archivo nuevo, ya sea desde dentro del script de Perl o guardando la salida por pantalla con el caracter “>". Esto es más sencillo pero traerá inconvenientes al momento que querramos producir más de un output del mismo script.
 
-Para generar el archivo de salida desde el mismo Perl, hay que tomar la precaución de abrirlo y especificar si el archivo será creado de nuevo “>” o si agregaré la información generaada al final de un archivo (si existiera) “>>”
+Para generar el archivo de salida desde el mismo Perl, hay que tomar la precaución de abrirlo y especificar si el archivo será creado de nuevo “>" o si agregaré la información generaada al final de un archivo (si existiera) “>>"
 
-open(MYOUTPUTHANDLE,”>somefile.txt”)
-print  MYOUTPUTHANDLE “Hello there”;
+open(MYOUTPUTHANDLE,">somefile.txt")
+print  MYOUTPUTHANDLE “Hello there";
 
-open(MYOUTPUTHANDLE,”>>somefile.txt”)
-print  MYOUTPUTHANDLE “Hello there”;
+open(MYOUTPUTHANDLE,">>somefile.txt")
+print  MYOUTPUTHANDLE “Hello there";
 
 Se entiende la diferencia?
 
@@ -480,14 +535,4 @@ Attachments
     glimmer2embl_incomp.pl (2.7 KB) - added by santiago 5 years ago.
     perlProgramming-2012.pdf (580.0 KB) - added by fernan 5 years ago. "Perl Programming 2012"
 
-Download in other formats:
 
-    Plain Text
-
-Trac Powered
-
-Powered by Trac 0.12.3
-By Edgewall Software.
-
-Visit the Trac open source project at
-http://trac.edgewall.org/
