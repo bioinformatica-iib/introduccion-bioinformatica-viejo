@@ -112,8 +112,8 @@ Hola mundo
 ```
 ¿Notan la diferencia? Podriamos usar tambien otros caracteres como “\\t" (tabulacion), “\\s" (espacios):
 
-### El mundo de las variables
-#strings
+## El mundo de las variables
+###strings
 Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo escalar (string). Por ejemplo, creamos una variable name, e imprimimos :
 
 ```R
@@ -133,7 +133,7 @@ cat(paste("\t hello", name,"\n\n"))
 ```
 fijense que el cursor de la consola desapareció, (esta esperando que ingresen algo). Pueden escribirlo en la consola direcamtente o seleccionar algo del script y presionar [Ctrl]+[ENTER] como siempre. 
 
-#Variables escalares
+### Variables escalares
 En el caso de las variables escalares es muy similar, pero lógicamente hay distintas funciones:
 
 ```R
@@ -171,7 +171,7 @@ print(dna3)
 dna3 <- paste(dna1,dna2,sep="\t")
 ```
 
-#Vectores
+### Vectores
 
 Es muy útil poder alacenar conjuntos ordenados de números, los cuales en R se llaman vectores.
 Podemos generarlos de distintas formas, por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que querramos:
@@ -199,7 +199,7 @@ hist(Snorm)
 ¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
 
 
-## Dataframes, las tablas en R.
+### Dataframes, las tablas en R.
 
 Repasemos otro tipo de variables que vamos a usar mucho: **dataframes**
 
@@ -220,12 +220,12 @@ summary(dt) #Es especialmente útil para dataframes muy grandes, ya van a ver.
 
 Si quisieramos seleccionar una columna en particular de dicha dt, lo podemos hacer de las siguientes formas:
 
-Usando el signo "$" despues del nombre de la dt:
+* Usando el signo "$" despues del nombre de la dt:
 ```r
 dt$gen
 
 ```
-Indexando por el número de columna:
+* Indexando por el número de columna:
 
 (En R, las tablas se indexan con corchetes, donde dentro se ingresan dos números separados por una coma, el primero es para las filas y el segundo para las columnas. Si uno de los dos no se escribe, se entiende que son todas las filas/columnas)
 
@@ -235,7 +235,7 @@ dt[,c(1,3)]
 dt[,c(1:3)]
 ```
 
-Tambien pueden seleccionar por el nombre de la columna:
+* Tambien pueden seleccionar por el nombre de la columna:
 
 ```r
 dt[,"gen"]
@@ -255,7 +255,7 @@ dt[dt$expresion > 100 ,]
 
 Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma mas sencilla pero, quizá, no tan intuitiva. Mas adelante en otra clase las trabajaremos.
 
-# Listas
+### Listas
 
 Las listas son otro tipo de variables, muy similares a los vectores pero que pueden contener distintos tipos de variables en contrario a los vectores que todos sus valores tienen que ser del mismo tipo. Es mas, si guardamos un vector con distintos tipos de variables, R automaticamente transforma todo al tipo de variable que pueda contener ambos.
 Para que puedan verlo, prueben este ejemplo contrastante:
@@ -275,12 +275,12 @@ Esto es así puesto que R transforma los números a cadenas de texto para poder 
 (si les interesa pueden probarlo, indexen el vector para sumar dos valores numericos trasnformados a cadena de texto y fijense que pasa)
 La otra diferencia con los vectores es que las listas se indexan con doble corchete, es decir, para acceder al primer item de una lista hay que hacer ```nombre_de_mi_lista[[1]]```, para el segundo ```nombre_de_mi_lista[[2]]```, etc.
 
-¿Cansados? :skull:
+:skull: **¿Cansados?** :skull:
 
-Tomen un poco de aire para oxigenar el cerebro antes de la siguiente sección, en el cual trataremos algunos ejemplos mas biológicos y aplicados usando R para asistirnos en la resolución de problemas que sería muy laborioso de trabajar exclusivamente manual.
+Tomen un poco de aire para oxigenar el cerebro antes de la siguiente sección, en el cual, trataremos algunos ejemplos mas biológicos y aplicados usando R para asistirnos en la resolución de problemas. 
 
 
-#Trabajando con DNA:
+## Trabajando con DNA:
 
 Una de las funciones para generar vectores es la función split sobre una cadena de caracteres (string). El comando split tiene la sintaxis:
 
@@ -297,8 +297,8 @@ DNAvector <- strsplit(split="", DNA)
 base1 = DNAvector[[1]][1] 
 
 ```
-¿Que pattern estaría usando en este split?  (ayuda: busquen la ayuda, suele ser de ayuda)
-
+¿Qué pattern estaría usando en este split?  (ayuda: busquen la ayuda, suele ser de ayuda)
+¿Qué tipo de variable devolvió la funcion *strsplit()*?
 
 
 Veamos el ejemplo de la clase:
