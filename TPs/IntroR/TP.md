@@ -88,7 +88,7 @@ En *Rstudio* es tan sencillo como poner el cursor de escribir sobre la linea des
 
 Tambien podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
-```console
+```shell
 $ cd ~/scripts/
 $ Rscript hello.R
 Hello WorldHola mundo
