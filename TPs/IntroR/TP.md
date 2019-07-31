@@ -548,34 +548,34 @@ Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo
 
 ¿Cómo plantearían el análisis?
 
-Intentemos resolver el problema en un nuevo script de R, para esto, abrán un nuevo script, y ponganle el nombre que quieran.
+Intentemos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
 
 Primero empezamos mirando el archivo que hay que mirar en cualquier editor de texto plano, pueden hacerlo directamente en Rstudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
-Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los valores separados por "tabs". 
-Intentamos cargar los datos con la funcion `read.csv()` como vimos en anteriormente.
+Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los valores separados por "tabs".
+Intentamos cargar los datos con la función `read.csv()` como vimos en anteriormente.
 
 ```r
 dt <- read.csv("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
-¿Les dió un error? 
+¿Les dió un error?
 
 `*more columns than column names*`
 
-Aparentemente el formato que quiere leer esta funcion no funciona porque las primeras filas tienen menos columnas que el resto de las filas (en el formato estandard siempre son las mismas) ¿Qué podemos hacer?
-Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuantas columnas necesitan, por ejemplo yo encontré que `read.table()` podría funcionar:
+Aparentemente el formato que quiere leer esta función no funciona porque las primeras filas tienen menos columnas que el resto de las filas (en el formato estandard siempre son las mismas) ¿Qué podemos hacer?
+Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuántas columnas necesitan, por ejemplo yo encontré que `read.table()` podría funcionar:
 
 ```r
-dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F) 
+dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
 Ahora me dice que hay un nuevo error, puesto que `*line 1 did not have 387 elements*`. Si leemos el help de esta función:
-Resulta que en caso de que las filas tengan distinta cantidad de columnas hay que explicitarselo para que las llene, agregando el argumento, `fill = TRUE`
+Resulta que en caso de que las filas tengan distinta cantidad de columnas hay que explicárselo para que las llene, agregando el argumento, `fill = TRUE`
 
 ```r
-dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F) 
+dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 ```
 
 Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en Rstudio?
-Se dan cuenta que uno de los problemas principales es que la primera y las últimas dos filas, son innecesarias para lo que nosotros necesitamos hacer? ¿Se imaginan como borrar esas filas? Basicamente hay que indexar la *data frame*. Se puede pedir las filas que queremos c(2:15), o restar las que no queremos -c(1,16:17).
+Se dan cuenta que uno de los problemas principales es que la primera y las últimas dos filas, son innecesarias para lo que nosotros necesitamos hacer? ¿Se imaginan cómo borrar esas filas? Básicamente hay que indexar la *data frame*. Se puede pedir las filas que queremos c(2:15), o restar las que no queremos -c(1,16:17).
 
 
 ```r
@@ -604,7 +604,7 @@ for (i in 3:length(dt[1,])){
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
-  
+ 
 }
 ```
 Muy bien, tengo las filas y las columnas, ¿Para que me podría servir?. Una idea que se me ocurre es tomar de la dt original, todos los "tiempos" y su señal pero solo para este pocillo que estamos iterando...sería simplemente filtrar la dt, ¿se les ocurre como?
@@ -618,6 +618,7 @@ for (i in 3:length(dt[1,])){
 }
 ```
 Y a esta dt filtrada que acabo de crear, podría guardarle el valor de fila y columna del Well, ¡que ya tengo guardados!
+
 ```r
 for (i in 3:length(dt[1,])){
   nombre_pocillo <- colnames(dt)[i]
@@ -635,7 +636,7 @@ Genial, ya tengo una DT de cada pocillo. Ahora querría guardarlas todas juntas,
 .
 .
 
-Si se quieren adelantar, eso se hace simplemente con la función `rbind()` . Pero hay un problema, esta función me va a exigir que los nombres de las columnas de las dt que voy a unir, sean identicos, y por ahora tenemos todas estas dt de cada pocillo con el nombre de la columna que tiene la señal con distinto nombre, tendríamos que ponerle a todos el mismo nombre. Esto se puede hacer de varias formas, yo voy a optar por la siguiente:
+Si se quieren adelantar, eso se hace simplemente con la función `rbind()` . Pero hay un problema, esta función me va a exigir que los nombres de las columnas de las dt que voy a unir, sean idénticos, y por ahora tenemos todas estas dt de cada pocillo con el nombre de la columna que tiene la señal con distinto nombre, tendríamos que ponerle a todos el mismo nombre. Esto se puede hacer de varias formas, yo voy a optar por la siguiente:
 
 ```r
 for (i in 3:length(dt[1,])){
@@ -644,13 +645,13 @@ for (i in 3:length(dt[1,])){
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
-  dt_pocillo$signal <- dt_pocillo[,2]
-  dt_pocillo[,nombre_pocillo] <- NULL
+  dt_pocillo$signal <- dt_pocillo[,2] # creo esta nueva columna con nombre “signal” y le doy los valores de la columna con el nombre del pocillo
+  dt_pocillo[,2] <- NULL # borro la anterior
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
 }
 ```
-Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma rbind nos va a dar un error)
+Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma `rbind()` nos va a dar un error)
 
 ```r
 nueva_dt <- data.frame(filaW="",columnaW=0,signal=0,Time="",stringsAsFactors = F)
@@ -668,28 +669,24 @@ for (i in 3:length(dt[1,])){
 }
 
 ```
-Si miran `nueva_dt` van a ver que, por como la creamos, tiene una primer fila de valores nulos, podríaos borrarlos. Pero ademas, ¿notan que hay muchas filas sin señal? Eso sucede porque originalmente no se midieron todos los Wells, es mas, si miran el diseño original van a ver que de la columna 19 en adelante esta todo vacío. ¿Les sale filtrar todas las columnas de la placa de 19 en adelante?
+Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila de valores nulos, podríamos borrarlos. Pero además, ¿notan que hay muchas filas sin señal? Eso sucede porque originalmente no se midieron todos los Wells, es más, si miran el diseño original van a ver que de la columna 19 en adelante está todo vacío. ¿Les sale filtrar todas las columnas de la placa de 19 en adelante?
 
 ```r
 nueva_dt <- nueva_dt[-1,]
 nueva_dt <- nueva_dt[nueva_dt$columnaW<19,]
 ```
 
-Genial gente, ya logramos cargar todos los datos como el investigador hubiera querido, nos tomó bastante tiempo y es lógico que algunas cosas hayan sido un poco confusas para la primera vez que hacen algo así, pero entiendan que se hace mas simple con la costumbre, y el ejemplo es un caso de uso real, no es un ejemplo de libro.
+Genial gente, ya logramos cargar todos los datos como el investigador hubiera querido, nos tomó bastante tiempo y es lógico que algunas cosas hayan sido un poco confusas para la primera vez que hacen algo así, pero entiendan que se hace más simple con la costumbre, y el ejemplo es un caso de uso real, no es un ejemplo de libro.
 
-Hay algo mas que podemos hacer muy fácil y es asignar el valor de dilución y compuesto que corresponde a cada fila y columna de la placa. Para esto tienen dos archivos que se llaman "diseño_compuestos" y "diseño_diluciones". Que no son otra cosa mas que lo mismo que podían ver en la planilla de cálculo pero exportado a un archivo con formato .tsv (separado por tabs "\\t"). Cargar ambos archivos es bastante sencillo y a esta altura creo que pueden hacerlo solos, pero luego, ¿Como buscamos cada valor de fila y le asignamos la concentración correspondiente? (idem columnas).
-Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar como funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
+Hay algo más que podemos hacer muy fácil y es asignar el valor de dilución y compuesto que corresponde a cada fila y columna de la placa. Para esto tienen dos archivos que se llaman "diseño_compuestos" y "diseño_diluciones". Que no son otra cosa más que lo mismo que podían ver en la planilla de cálculo pero exportado a un archivo con formato .tsv (separado por tabs "\\t"). Cargar ambos archivos es bastante sencillo y a esta altura creo que pueden hacerlo solos, pero luego, ¿Como buscamos cada valor de fila y le asignamos la concentración correspondiente? (idem columnas).
+Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar cómo funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
 
 ```r
 dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F)
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
 ```
-La función solo nos pide que le indiquemos cuales son las dt a unir, y que columnas las relaciona. 
-Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador.
+La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
+Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador. Si tienen tiempo, o quieren practicar en sus casas, pueden probar de hacer las RL, calcular los R2, la velocidad de la reacciones, los IC50 y el coeficiente de Hill.
 
 
 Pueden encontrar el ejemplo resuelto en el archivo "Analisis_filerMax_resuelto.R".
-
-
-
-
