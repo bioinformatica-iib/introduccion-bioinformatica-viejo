@@ -3,18 +3,16 @@ Técnicas para analizar grandes conjuntos de datos y encontrar patrones o compor
 
 
 
-la utilidad de las técnicas de Clustering (y Data Mining en general) para analizar e interpretar grandes conjuntos de datos, como es el caso de los generados por análisis transcriptómicos.
+En este Tp nos vamos a enfocar en la utilidad de las técnicas de Clustering (y Data Mining en general) para analizar e interpretar grandes conjuntos de datos, como es el caso de los generados por análisis transcriptómicos.
 Comprender el "funcionamiento" de una de las técnicas mas simples de clustering no supervisado: la clasificación jerárquica ascendente (clustering jerárquico). Para esto utilizaremos un conjunto de datos mínimo para agrupar (clusterizar) a mano (o utilizando una planilla de cálculo) los datos utilizando diferentes métricas de distancia y criterios de agregación para finalmente confeccionar un dendograma.
-Vamos a utilizar además otro método muy simple de clustering, en este caso particional, el K-means. Veremos algunas medidas de calidad de los clusters, como la suma de cuadrados intra-cluster y la silueta (Silhouette).
-Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de datos real de expresión génica con microarrays. 
-
-Material de lectura recomendado:
+Vamos a utilizar además otro método muy simple de clustering, en este caso particional, el *K-means*. Veremos algunas medidas de calidad de los clusters, como la suma de cuadrados intra-cluster y la silueta (*Silhouette*).
+Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de datos real de expresión génica con *microarrays*. 
 
 ## Introducción
 
-En este TP vamos a utilizar técnicas básicas para encontrar conglomerados o "clusters" en un conjunto de datos biológicos. La idea es identificar agrupamientos naturales en los datos, que presenten un comportamiento similar entre si, con alguna relevancia biológica. En particular utilizaremos conjuntos de datos provenientes de medidas de expresión génica generadas mediante experimentos con microarrays con muestras tomadas a diferentes tiempos, para identificar grupos o clusters de genes que tengan un perfil de expresión común.
+En este TP vamos a utilizar técnicas básicas para encontrar conglomerados o *clusters* en un conjunto de datos biológicos. La idea es identificar agrupamientos naturales en los datos, que presenten un comportamiento similar entre si, con alguna relevancia biológica. En particular utilizaremos conjuntos de datos provenientes de medidas de expresión génica generadas mediante experimentos con *microarrays* con muestras tomadas a diferentes tiempos, para identificar grupos o *clusters* de genes que tengan un perfil de expresión común.
 
-1. En 1997 DeRisi et. al. estudiaron los cambios transcripcionales de prácticamente todos los genes de Saccharomyces cerevisiae a lo largo del salto metabólico de fermentación a respiración. En el archivo diauxic.txt se encuentra una tabla donde cada fila representa un gen y cada columna el tiempo al cual se tomó la muestra. Así, cada celda contiene una medida de la expresión de un gen particular a un momento determinado.
+1. En 1997 DeRisi *et. al*. estudiaron los cambios transcripcionales de prácticamente todos los genes de *Saccharomyces cerevisiae* a lo largo del salto metabólico de fermentación a respiración. En el archivo diauxic.txt se encuentra una tabla donde cada fila representa un gen y cada columna el tiempo al cual se tomó la muestra. Así, cada celda contiene una medida de la expresión de un gen particular a un momento determinado.
 
 NAMES   col1    col2    col3    col4    col5    col6    col7
 YGR138C -1.23   -0.81   1.79    0.78    -0.42   -0.69   0.58
@@ -24,7 +22,7 @@ YOR230W -2.19   0.13    0.65    -0.51   0.52    1.04    0.36
 
 ¿Qué genes presentan un perfil de expresión similar? ¿Cuales son los genes que se sobreexpresan al final (en ausencia de glucosa) y cuales son reprimidos? ¿Cuantos tipos de comportamientos diferentes hay? bueno ... con suerte esto lo podremos contestar hacia el final del TP ...
 
-2. En el archivo TablaEjemplo.txt hay una tabla mínima con datos inventados. La tabla contiene para cuatro genes (A, B, C y D) su nivel de expresión a las 0hs, 1hs y 2 hs luego de algún tratamiento.
+2. En el archivo TablaEjemplo.txt hay una tabla mínima con datos inventados. La tabla contiene para cuatro genes (A, B, C y D) su nivel de expresión a las 0hs, 1hs y 2 hs luego de algún tratamiento.
 
 gen	0	1	2
 genA	2	4	8
