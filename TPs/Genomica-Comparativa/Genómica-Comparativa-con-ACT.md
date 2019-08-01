@@ -28,7 +28,7 @@ Ahora que tenemos todo lo necesario, copien los dos archivos de las secuencias y
 
 Una vez que está el proyecto abierto es posible buscar ORFs en cada una de las secuencias de la misma forma que se hace en Artemis. Busquen regiones compartidas en ambos serogrupos, regiones que estén presentes en el primer subgrupo y no en el segundo y viceversa.
 
-![Sintenia](images/ACT/genome-arrangements.png)
+![Sintenia](../images/ACT/genome-arrangements.png)
 
 ## 	Short Read Mapping
 

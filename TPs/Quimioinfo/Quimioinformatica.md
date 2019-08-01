@@ -33,7 +33,7 @@ Supongamos que deciden seguir adelante con la propuesta del Dr. Dolittle y busca
 
 Para hallar estos inhibidores, una alternativa que ha acompañado a los investigadores desde antaño, es la búsqueda bibliográfica. Es evidente que esto podría llevarnos un tiempo…
 
-![Buscando papers sobre V1](images/quimioinformatica/image_0.png)
+![Buscando papers sobre V1](../images/quimioinformatica/image_0.png)
 
 ### Repositorios quimioinformáticos
 
@@ -187,7 +187,7 @@ plotLibrary(nodup.sdfset.data)
 
 Ejecutando este código deberíamos ver algo así:
 
-![Visualizando características fisicoquímicas](images/quimioinformatica/image_1.png)
+![Visualizando características fisicoquímicas](../images/quimioinformatica/image_1.png)
 
 Nótese con cuánta facilidad podemos obtener las características fisicoquímicas de grandes volúmenes de datos usando ChemmineR. En el fondo, lo que está haciendo este paquete, en realidad, es usar [OpenBabel](http://openbabel.org/wiki/Main_Page) [(7)](https://www.zotero.org/google-docs/?I4LGMj), un programa quimioinformático con amplia variedad de herramientas de cálculo y análisis de compuestos químicos. Este programa puede utilizarse en windows con una conveniente interfaz gráfica y, en linux, usando la línea de comando. No exploraremos en este práctico el uso de OpenBabel directamente, pero recomendamos tenerlo en cuenta para experimentos quimioinformáticos más pequeños que el que se propone en este TP. 
 
@@ -248,7 +248,7 @@ Usaremos las librería *clusters* y *factoextra*, que permiten hacer análisis d
 k.plot <- fviz_nbclust(ddf, kmeans, method = "silhouette", k.max=100)
 which.max(k.plot$data$y) # 70
 ```
-![Siluetas de k-means](images/quimioinformatica/image_2.png)
+![Siluetas de k-means](../images/quimioinformatica/image_2.png)
 
 Según este análisis, nuestra mejor opción es 70 aunque, como ven, la variación es prácticamente muy pequeña por encima de 20. Intentemos clusterizar en 20, 50 y 70, para comparar los candidatos que integran cada grupo. 
 
@@ -278,7 +278,7 @@ grid.arrange(p20,p50,p70,nrow=3)
 
 Independientemente de qué cluster es más grande o más pequeño dentro de cada estrategia, ¿qué podría decirse del tamaño de clusters a medida que aumentamos el k? ¿Les parece razonable? Intenten visualizar los compuestos que integran clusters pequeños y clusters grandes en cada una de las estrategias de clustering. Pueden partir de la segmentación más grande (k=70), elegir algunos compuestos y ver cómo se agrupan éstos en las demás segmentaciones. 
 
-![Tamaños de los clusters](images/quimioinformatica/image_3.png)
+![Tamaños de los clusters](../images/quimioinformatica/image_3.png)
 
 Finalmente su director, que ya está ansioso por gastar su dinero bien habido, les dice que elijan 50 compuestos (y que lo quiere para ayer). Sin mucho tiempo para seguir analizando, deciden utilizar la segmentación de k = 50, y tomar un compuesto de cada grupo para armar la librería final.
 
@@ -300,5 +300,5 @@ singlet.druglike.sdfset.final.min<-singlet.druglike.sdfset[libreria.min]SDFDataT
 
 Aunque solo algunos de estos nuevos compuestos tiene capacidad inhibitoria: CMP448, CMP439, CMP326 y CMP209, este enriquecimiento sugiere que hay algo inherente a este grupo de moléculas que les confiere actividad. ¿Qué puede ser?
 
-![And the winner is... (are?)](images/quimioinformatica/image_4.png)
+![And the winner is... (are?)](../images/quimioinformatica/image_4.png)
 
