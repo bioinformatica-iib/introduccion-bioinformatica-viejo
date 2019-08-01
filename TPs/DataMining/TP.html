@@ -202,13 +202,97 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li>En 1997 DeRisi <em>et. al</em>. estudiaron los cambios transcripcionales de prácticamente todos los genes de <em>Saccharomyces cerevisiae</em> a lo largo del salto metabólico de fermentación a respiración. En el archivo diauxic.txt se encuentra una tabla donde cada fila representa un gen y cada columna el tiempo al cual se tomó la muestra. Así, cada celda contiene una medida de la expresión de un gen particular a un momento determinado.</li>
 </ol>
-<p>NAMES col1 col2 col3 col4 col5 col6 col7 YGR138C -1.23 -0.81 1.79 0.78 -0.42 -0.69 0.58 YPR156C -1.76 -0.94 1.16 0.36 0.41 -0.35 1.12 YOR230W -2.19 0.13 0.65 -0.51 0.52 1.04 0.36 …</p>
+<table>
+<thead>
+<tr class="header">
+<th>NAMES</th>
+<th>col1</th>
+<th>col2</th>
+<th>col3</th>
+<th>col4</th>
+<th>col5</th>
+<th>col6</th>
+<th>col7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>YGR138C</td>
+<td>-1.23</td>
+<td>-0.81</td>
+<td>1.79</td>
+<td>0.78</td>
+<td>-0.42</td>
+<td>-0.69</td>
+<td>0.58</td>
+</tr>
+<tr class="even">
+<td>YPR156C</td>
+<td>-1.76</td>
+<td>-0.94</td>
+<td>1.16</td>
+<td>0.36</td>
+<td>0.41</td>
+<td>-0.35</td>
+<td>1.12</td>
+</tr>
+<tr class="odd">
+<td>YOR230W</td>
+<td>-2.19</td>
+<td>0.13</td>
+<td>0.65</td>
+<td>-0.51</td>
+<td>0.52</td>
+<td>1.04</td>
+<td>0.36</td>
+</tr>
+</tbody>
+</table>
 <p>¿Qué genes presentan un perfil de expresión similar? ¿Cuales son los genes que se sobreexpresan al final (en ausencia de glucosa) y cuales son reprimidos? ¿Cuantos tipos de comportamientos diferentes hay? bueno … con suerte esto lo podremos contestar hacia el final del TP …</p>
 <ol start="2" style="list-style-type: decimal">
 <li>En el archivo TablaEjemplo.txt hay una tabla mínima con datos inventados. La tabla contiene para cuatro genes (A, B, C y D) su nivel de expresión a las 0hs, 1hs y 2 hs luego de algún tratamiento.</li>
 </ol>
-<p>gen 0 1 2 genA 2 4 8 genB -1 -1 -2 genC -2 0 1 genD 0 -1 -6</p>
-<p>Grupo Norte: graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo; realizar a mano o en Excel un clustering jerárquico utilizando la distancia Euclidea, y el criterio de agregación de “Vecino mas lejano” (o “complete linkage”); grupo Sur, lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresion del gen y dividirlo por su desviación estándar). Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.</p>
+<table>
+<thead>
+<tr class="header">
+<th>gen</th>
+<th>0h</th>
+<th>1h</th>
+<th>2h</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>genA</td>
+<td>2</td>
+<td>4</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>genB</td>
+<td>-1</td>
+<td>-1</td>
+<td>-2</td>
+</tr>
+<tr class="odd">
+<td>genC</td>
+<td>-2</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>genD</td>
+<td>0</td>
+<td>-1</td>
+<td>-6</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Grupo Norte: graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo Realizar a mano o en Excel un clustering jerárquico utilizando la distancia Euclidea, y el criterio de agregación de “Vecino mas lejano” (o “complete linkage”);</li>
+<li>Grupo Sur, lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresion del gen y dividirlo por su desviación estándar).</li>
+</ul>
+<p>Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.</p>
 <ol start="3" style="list-style-type: decimal">
 <li>R es un lenguaje y un entorno orientado al análisis estadístico de datos y la generación de gráficos. En R se puede hacer prácticamente de todo y está disponible en forma gratuita tanto para sistemas operativos Linux/Unix?, MacOS y Windows. Es un paquete de software de código abierto (open source) y por lo tanto se beneficia del aporte de miles de expertos en todo el mundo. Se lo puede descargar de <a href="http://www.r-project.org" class="uri">http://www.r-project.org</a>. Si tienen R instalado en forma local, abrirlo y salteae este paso:</li>
 </ol>

@@ -14,73 +14,31 @@ En este TP vamos a utilizar técnicas básicas para encontrar conglomerados o *c
 
 1. En 1997 DeRisi *et. al*. estudiaron los cambios transcripcionales de prácticamente todos los genes de *Saccharomyces cerevisiae* a lo largo del salto metabólico de fermentación a respiración. En el archivo diauxic.txt se encuentra una tabla donde cada fila representa un gen y cada columna el tiempo al cual se tomó la muestra. Así, cada celda contiene una medida de la expresión de un gen particular a un momento determinado.
 
-NAMES   col1    col2    col3    col4    col5    col6    col7
-YGR138C -1.23   -0.81   1.79    0.78    -0.42   -0.69   0.58
-YPR156C -1.76   -0.94   1.16    0.36    0.41    -0.35   1.12
-YOR230W -2.19   0.13    0.65    -0.51   0.52    1.04    0.36
-...
+NAMES | col1 |  col2 |  col3 |  col4 |  col5 |  col6 |  col7
+----- | ---- |  ---- | ----- | ----- | ----- | ----- | -----
+YGR138C | -1.23 | -0.81 | 1.79 |  0.78 |  -0.42 | -0.69 | 0.58
+YPR156C | -1.76 | -0.94 | 1.16 |  0.36 |  0.41 |  -0.35 | 1.12
+YOR230W | -2.19 | 0.13 |  0.65 |  -0.51 | 0.52 |  1.04 |  0.36
+
 
 ¿Qué genes presentan un perfil de expresión similar? ¿Cuales son los genes que se sobreexpresan al final (en ausencia de glucosa) y cuales son reprimidos? ¿Cuantos tipos de comportamientos diferentes hay? bueno ... con suerte esto lo podremos contestar hacia el final del TP ...
 
 2. En el archivo TablaEjemplo.txt hay una tabla mínima con datos inventados. La tabla contiene para cuatro genes (A, B, C y D) su nivel de expresión a las 0hs, 1hs y 2 hs luego de algún tratamiento.
 
-gen	0	1	2
-genA	2	4	8
-genB	-1	-1	-2
-genC	-2	0	1
-genD	0	-1	-6
 
-Grupo Norte: graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo; realizar a mano o en Excel un clustering jerárquico utilizando la distancia Euclidea, y el criterio de agregación de "Vecino mas lejano" (o "complete linkage"); grupo Sur, lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresion del gen y dividirlo por su desviación estándar). Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
+ 
+gen | 0h | 1h | 2h
+--- | - | - | -
+genA | 2 | 4 | 8
+genB | -1 | -1 | -2
+genC | -2 | 0 | 1
+genD | 0 | -1 | -6
 
-3. R es un lenguaje y un entorno orientado al análisis estadístico de datos y la generación de gráficos. En R se puede hacer prácticamente de todo y está disponible en forma gratuita tanto para sistemas operativos Linux/Unix?, MacOS y Windows. Es un paquete de software de código abierto (open source) y por lo tanto se beneficia del aporte de miles de expertos en todo el mundo. Se lo puede descargar de http://www.r-project.org. Si tienen R instalado en forma local, abrirlo y salteae este paso:
+* **Grupo Norte** graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo
+  Realizar a mano o en Excel un clustering jerárquico utilizando la distancia Euclidea, y el criterio de agregación de "Vecino mas lejano" (o "complete linkage"). 
+* **Grupo Sur** lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresion del gen y dividirlo por su desviación estándar). 
 
-En omega.iib.unsam.edu.ar ya está instalado, y podemos utilizar el entorno de R en una terminal simplemenhte tipeando R (era obvio, no?). Sin embargo, si nos estamos conectando a omega usando una terminal remota, para poder ver los gráficos que vamos a generar tenemos que "exportar" la salida gráfica (X11) de omega. Para esto, al establecer la conexion SSH con omega hay que recordar utilizar el switch -Y.
-
-Desde unix: ssh -Y omega.iib.unsam.edu.ar
-
-En Windows utilizando PuTTY-Xming: Asegurarse de tener abierto el X-server (Xming), abrir PuTTY y en el panel izquierdo expandir el nodo SSH, abrir "X11" y en esa ventana, marcar la opcion "Enable X11 forwarding". Luego conectarse en forma normal.
-
-Para comenzar a trabajar con R veremos algunos conceptos básicos intro_R_UNSAM.pdf.
-
-Vamos a crear una carpeta donde R va a guardar todos los datos y resultados del proyecto:
-
-# crear el directorio
-mkdir MiProyectoEnR
-# entrar en el directorio
-cd MiProyectoEnR
-# ejecutar R
-R
-
-Si aparece el prompt ">" ya estamos donde queremos. En los ejemplos que siguen > es el prompt de R.
-
-Mi primera sesión en R
-
-z <- 10 # se define la variable ''z'' y se le asigna el valor 10
-z = 10 #idem
-z # se muestra el contenido
-z <- c(10,45,33)  # creamos un vector y lo asignamos a la variable ''z'' 
-z[2] # usamos [] para acceder a un elemento del vector
-length(z) # muestra la longitud del vector. () se usa para llamar funciones.
-
-x <- rnorm(100,mean=10,sd=2)  # genero aleatoriamente 100 números con una distribución normal de media 10 y desvío estandar 2.
-x 
-mean(x) # su media
-range(x) # valores mínimo y máximo
-sd(x) # el desvío estandar
-?hist # ayuda sobre la función hist
-hist(x, main=”Mi primer histograma”) # crea histograma y lo muestra en pantalla
-q() # chau!
-
-Interactuando con R
-
-    Ejecutar R, escribir comandos y obtener resultados en forma interactiva
-    O escribir varios comandos en un archivo de texto, y ejecutarlo en R asi: source(“ruta/MiArchivo.R”)
-    Usar flechas arriba y abajo para moverse en el historial de comandos
-    El historial se puede guardar en cada sesión (?history)
-    Pueden ejecutarse múltiples comandos en una línea, separándolos con “;”. Ej.: x<-5; y<-15;
-    Con TAB, se completan nombres de objetos de R y archivos 
-
-Volviendo al TP...
+Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
 
 Lo primero que vamos a hacer en R es cargar los datos de la tabla de ejemplo TablaEjemplo.txt. Para esto tipear:
 
