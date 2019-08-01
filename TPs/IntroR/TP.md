@@ -1,5 +1,19 @@
 # Introducción
 
+Es un hecho que la producción de información es cada día mayor, es más, si uno observa los volúmenes de datos que se manejan en los últimos años y las predicciones mas serias, el crecimiento parece exponencial:
+
+![](data_growth.png)
+
+¿Entienden lo que esto implica?   
+
+Si les parece que cada vez hay mas datos; mas grandes; mas complejos, eso no es nada en comparación a lo que tendremos en unos años. Aunque por otro lado tambien aumenta el poder de procesamiento de datos de nuestras comnputadoras. Sin embargo, este crecimiento es lineal:
+
+![](cpu-power.png)
+
+Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus limites de volumenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. 
+Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben como evolucionaron las tecnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. Es por todo esto que limitarse con estos programas parece un tanto suicida....en este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informaticos disponibles. 
+Acá es donde entra la programación, la posibilidad de darle ordenes "directas" a la computadora, cuanto mas directas sean esas ordenes, mas eficientes, y por ende, mas "jugo". Cada día es mas imprecindible tener una idea, aunque sea básica, de programación, por eso planteamos algunos conceptos básicos de progrmación a lo largo de la materia, y en este TP lo vamos a profundizar.
+
 La idea de esta actividad, es que sirva como una introducción muy liviana a la tarea de programar resoluciones de problemas sencillos, enfocándonos en manipular datos biológicos o que suelen surgir en un laboratorio de biotecnología. La primera parte de la guía es una introducción a conceptos básicos del lenguaje R, cómo escribir un programa, como ejecutarlo, almacenar y manipular datos en variables, etc. Siguiendo el estilo de la guía sobre Unix, no se espera que estén familiarizados con estos conceptos, en lo posible la guía los va a ir llevando.
 Verán que algunos ejemplos son muy sencillos, pero en desarrollo de la guía alcanzaremos un nivel de resolución de problemas reales, con un ejemplo que surge del trabajo de un investigador del IIB en su labor cotidiano.
 
