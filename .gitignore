@@ -36,3 +36,4 @@ vignettes/*.pdf
 # Preview files for html
 
 TPs/IntroR/*.html
+TPs/BigData/*.html
