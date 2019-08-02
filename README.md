@@ -28,7 +28,7 @@
 13. Metodos de predicción basados en datos, machine learning
 14. Quimioinformática
 
-## Programa Prático
+## Programa Práctico
 
 - [Introducción a UNIX](blob/master/UNIX/TP.md)
 - [EMBOSS Suite](blob/master/EMBOSS/EMBOSS-Suite.md)
