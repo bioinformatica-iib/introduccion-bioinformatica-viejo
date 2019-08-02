@@ -531,7 +531,11 @@ ggplot(data=dt,aes(x=log(con),y=abs,col=sol))+
 ![](./images/plot_ejemplo_5.png)
 
 Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero creanme decirles que para los que solemos usarlas se vuelven fáciles de usar.
-Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`.
+
+Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`. 
+
+La idea no es que aprendan la estructura tan particular de `ggplot()`, es solo para que vean un ejemplo de lo que se puede hacer.
+
 Todo esto realizado en tres lineas de código resulta un poco complejo ahora mismo, pero sepan que es un ejemplo que facilmente podrían haber tomado de algun tutorial de internet, por ejemplo podrían haber arribado al código de arriba siguiendo lo que explican [acá](https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/)
 
 

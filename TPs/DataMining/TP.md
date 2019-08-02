@@ -39,10 +39,10 @@ genD | 0 | -1 | -6
 
 Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
 
-Lo primero que vamos a hacer en R es cargar los datos de la tabla de ejemplo TablaEjemplo.txt. Para esto tipear:
+Lo primero que vamos a hacer en R es cargar los datos de la tabla de ejemplo TablaEjemplo.txt. Para esto tendrán que setear el directorio de trabajo correcto (pista: usar la función `setwd()`) y luego usar alguna función de las que ya conocemos para cargar tablas.
 
 ```r
-MiTabla <- read.csv("/curso/clustering/TablaEjemplo.txt", sep="\t", row.names="gen")
+MiTabla <- read.csv("./data/TablaEjemplo.txt", sep="\t", row.names="gen")
 ```
 
 Lo que hicimos acá, fue leer el archivo de texto TablaEjemplo.txt utilizando la función `read.csv()` de R (csv -- comma separated values -- es la extensión que suele usarse para nombrar archivos de texto conteniendo valores separados por algún delimitador, que comúnmente es una coma, o un carácter de tabulación). Además del nombre del archivo, la función `read.csv()` nos permite declarar cuál es el separador de campos (en este caso son tabulaciones, que se indican como \\t), y cual es la columna que contiene los identificadores para las filas ("gen" es el nombre de esta columna en nuestro ejemplo). Finalmente, notar que el resultado de ejecutar la función `read.csv()` se está almacenando en la variable `MiTabla`.
@@ -57,13 +57,17 @@ A continuación vamos a utilizar la función `dist()` para calcular una matriz d
 ```r
 MisDistancias <- dist(MiTabla,method="euclidean")
 ```
+          genA      genB      genC
+genB 11.575837                    
+genC  9.000000  3.316625          
+genD 15.000000  4.123106  7.348469
 
 La función `dist()` calcula la matriz de distancias usando la medida (el método) especificada/o, entre todas las filas de la matriz. En este ejemplo, calcula la distancia euclídea entre todos los genes tomados de a dos. El resultado se almacena en la variable llamada `MisDistancias`. ¿Como podemos ver el resultado?
 
 Seguidamente vamos a agrupar en forma jerárquica a los genes, de acuerdo a esta matriz de distancias, utilizando la función `hclust()` (hierarchical clustering).
 
 ```r
-MiClusteringJerarquico=hclust(MisDistancias, method="complete")
+MiClusteringJerarquico <- hclust(MisDistancias, method="complete")
 ```
 
 La función `hclust()` realiza el clustering jerárquico utilizando el criterio de agregación especificado (*complete linkage* o "vecino más lejano" en este caso). En R si quieren obtener ayuda sobre algún comando, por ejemplo para ver qué otras opciones existen para una función, pueden usar la función `help()`. Haciendo:
@@ -88,6 +92,8 @@ Para graficar el resultado de este agrupamiento utilizamos la función `plot()`
 ```r
 plot(MiClusteringJerarquico) #Grafica el dendograma que resulta del clustering jerárquico
 ```
+![](./images/plot_ejemplo_1)
+
 Los gráficos en R se pueden exportar a PDF y a JPEG fácilmente:
 
 ```r
@@ -134,6 +140,12 @@ Podemos probar con otras medidas de distancia entre datos de expresión, por eje
 ```r
 DistanciaCorr <- as.dist(1-cor(t(MiTabla)))
 ```
+
+ | genA | genB | genC
+ --- | --- | --- | --- | --- 
+genB | 1.94491118 |  | 
+genC | 0.07142857 | 1.75592895 | 
+genD | 1.98432414 | 0.01217084 | 1.84855529
 
 La función `cor()` calcula la matriz de correlaciones sobre las columnas, por defecto, utiliza la correlación de Pearson. Este coeficiente de correlación varía entre 1 (genes perfectamente correlacionados) y -1 (correlación negativa perfecta: cuando uno sube, el otro baja), pasando por el 0 (no hay correlación lineal entre ellos).
 
