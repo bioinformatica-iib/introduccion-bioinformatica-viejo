@@ -92,7 +92,7 @@ Para graficar el resultado de este agrupamiento utilizamos la función `plot()`
 ```r
 plot(MiClusteringJerarquico) #Grafica el dendograma que resulta del clustering jerárquico
 ```
-![](./images/plot_ejemplo_1)
+![](./images/plot_ejemplo_1.png)
 
 Los gráficos en R se pueden exportar a PDF y a JPEG fácilmente:
 
@@ -141,8 +141,9 @@ Podemos probar con otras medidas de distancia entre datos de expresión, por eje
 DistanciaCorr <- as.dist(1-cor(t(MiTabla)))
 ```
 
- | genA | genB | genC
+GEN | genA | genB | genC
  --- | --- | --- | --- | --- 
+genA | 1 | | | 
 genB | 1.94491118 |  | 
 genC | 0.07142857 | 1.75592895 | 
 genD | 1.98432414 | 0.01217084 | 1.84855529
