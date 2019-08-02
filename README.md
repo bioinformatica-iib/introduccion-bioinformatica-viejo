@@ -24,7 +24,9 @@
 9. Data clustering
 10. Reconstrucción de filogenias
 11. Información contenida en alineamientos múltiples
-12. *Sequence profiles, Hidden Markov Models*
+12. *Sequence profiles, Hidden Markov Models* (I y II)
+13. Metodos de predicción basados en datos, machine learning
+14. Quimioinformática
 
 ## Programa Prático
 
