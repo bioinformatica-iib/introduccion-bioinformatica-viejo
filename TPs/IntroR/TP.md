@@ -3,20 +3,21 @@
 Es un hecho que la producción de información es cada día mayor, es más, si uno observa los volúmenes de datos que se manejan en los últimos años y las predicciones más serias, el crecimiento parece exponencial:
 
 
-![](data_growth.png)
+![](./images/data_growth.png)
 
 ¿Entienden lo que esto implica?
 
 Si les parece que cada vez hay más datos; más grandes; más complejos, eso no es nada en comparación a lo que tendremos en unos años. Aunque por otro lado también aumenta el poder de procesamiento de datos de nuestras computadoras. Sin embargo, este crecimiento es lineal:
 
 
-![](cpu-power.png)
+![](./images/cpu-power.png)
 
 Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus límites de volúmenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. Es por todo esto que limitarse con estos programas parece un tanto suicida....
 
 En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora, cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". Cada día es más imprescindible tener una idea (aunque sea básica) de programación, por eso planteamos algunos conceptos básicos de programación a lo largo de la materia, y en este TP lo vamos a profundizar.
 
 La idea de esta actividad, es que sirva como una introducción muy liviana a la tarea de programar resoluciones de problemas sencillos, enfocándonos en manipular datos biológicos o que suelen surgir en un laboratorio de biotecnología. La primera parte de la guía es una introducción a conceptos básicos del lenguaje R, cómo escribir un programa, como ejecutarlo, almacenar y manipular datos en variables, etc. Siguiendo el estilo de la guía sobre Unix, no se espera que estén familiarizados con estos conceptos, en lo posible la guía los va a ir llevando.
+
 Verán que algunos ejemplos son muy sencillos, pero en desarrollo de la guía alcanzaremos un nivel de resolución de problemas reales, con un ejemplo que surge del trabajo de un investigador del IIB en su labor cotidiano.
 
 ## Rstudio, nuestro pequeño espacio de desarrollo
@@ -28,7 +29,7 @@ Para acceder, simplemente entren al siguiente enlace:
 
 *Rstudio* les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado. Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
 
-![](Rserver_1.png)
+![](./images/Rserver_1.png)
 
 *Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. 
 Para empezar, creemos uno nuevo, básicamente lo que conocemos como "Script" que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
@@ -47,7 +48,7 @@ Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
     * **Plots** Como su nombre indica, acá aparecerán todos los plots que vayan generando, más adelante veremos más detalles de esta pestaña.
     * **Help** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la consola el comando `help()` (muy similar el comando man que ya usaron en UNIX), prueben con:
 
-```R
+```r
 help(print)
 ```
 
@@ -80,13 +81,13 @@ ls #chequear su contenido
 
 Ahora vamos a la consola y pueden probar cosas sencillas como:
 
-```R
+```r
 print("hola mundo")
 ```
    
 o
 
-```R
+```r
 2+2
 ```
 
@@ -143,21 +144,30 @@ Hola mundo
 
 Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo escalar (string). Por ejemplo, creamos una variable name, e imprimimos :
 
-```R
+```r
 name <- "Hermenegildo"
 saludo <- paste("hola",name)
 print(name)
 print(saludo)
 ```
+
+```r
+> print(name)
+[1] "Hermenegildo"
+> print(saludo)
+[1] "hola Hermenegildo"
+```
+
 El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. :eyes: (**Ojo con esto**) :eyes:
 Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola:
 
-```R
+```r
 name <- ""
 cat("What is your name?")
 name <- readline()
 cat(paste("\t hello", name,"\n\n"))
 ```
+
 fijense que el cursor de la consola desapareció, (esta esperando que ingresen algo). Pueden escribirlo en la consola directamente o seleccionar algo del script y presionar [Ctrl]+[ENTER] como siempre.
 
 ### Variables escalares
@@ -181,7 +191,7 @@ Para probar un poco:
 
 Ejemplo:
 
-```R
+```r
 print("Ingrese una cadena de DNA corta:")
 dna1 <- readline()
 print("Ingrese una cadena de DNA corta:")
@@ -197,7 +207,9 @@ dna3 <- paste(dna1,dna2,sep="")
 print(dna3)
 #si queremos separarlas con otro valor:
 dna3 <- paste(dna1,dna2,sep="\t")
+print(dna3)
 ```
+
 
 ### Variables lógicas
 
@@ -235,11 +247,15 @@ x <- serieDeNumeros
 y <- serieDeNumeros ^ 2
 plot(x, y)
 ```
+![](./images/plot_ejemplo_1.png)
+
 Quiero hacer muchos números aleatorios pero con una media en 15, una desviación estándar de 2,5 y una distribución normal.
+
 ```R
 Snorm <- rnorm(mean=15,sd=2.5,n=1000)
 hist(Snorm)
 ```
+![](./images/plot_ejemplo_2.png)
 
 ¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
 
@@ -257,9 +273,24 @@ genes <- c("ERT2","TTR4","REC1")
 esencialidad <- c(F,F,T)
 expresiones <- c(100,1000,10000)
 dt <- data.frame(gen=genes,esencial=esencialidad,expresion=expresiones)
-print(dt)
-summary(dt) #Es especialmente útil para dataframes muy grandes, ya van a ver.
 ```
+
+```r
+> print(dt)
+   gen esencial expresion
+1 ERT2    FALSE       100
+2 TTR4    FALSE      1000
+3 REC1     TRUE     10000
+> summary(dt) #Es especialmente útil para dataframes muy grandes, ya van a ver.
+   gen     esencial         expresion    
+ ERT2:1   Mode :logical   Min.   :  100  
+ REC1:1   FALSE:2         1st Qu.:  550  
+ TTR4:1   TRUE :1         Median : 1000  
+                          Mean   : 3700  
+                          3rd Qu.: 5500  
+                          Max.   :10000 
+```
+
 (¿Ven la *data frame* en el 3er panel? Pueden visualizarla si le hacen click. O escribiendo `View(dt)` en la consola)
 
 
@@ -268,8 +299,8 @@ Si quisiéramos seleccionar una columna en particular de dicha dt, lo podemos ha
 * Usando el signo "$" después del nombre de la dt:
 ```r
 dt$gen
-
 ```
+
 * Indexando por el número de columna:
 
 (En R, las tablas se indexan con corchetes, donde dentro se ingresan dos números separados por una coma, el primero es para las filas y el segundo para las columnas. Si uno de los dos no se escribe, se entiende que son todas las filas/columnas)
@@ -313,8 +344,36 @@ print(vector)
 list_numeros <- list(3,4,7,13,45.3)
 list_strings <- list("hola","chau","perro")
 list <- c(list_numeros,list_strings)
-print(list)
+
 ```
+
+```r
+> print(list)
+[[1]]
+[1] 3
+
+[[2]]
+[1] 4
+
+[[3]]
+[1] 7
+
+[[4]]
+[1] 13
+
+[[5]]
+[1] 45.3
+
+[[6]]
+[1] "hola"
+
+[[7]]
+[1] "chau"
+
+[[8]]
+[1] "perro"
+```
+
 ¿Ven que aparecen comillas ("") en los números del vector que contiene tanto cadenas de texto como números?
 Esto es así puesto que R transforma los números a cadenas de texto para poder almacenarlos en el vector. ¿Qué pasaría si ahora quisiera sumar dos números que se transformaron en texto?
 (si les interesa pueden probarlo, indexen el vector para sumar dos valores numéricos transformados a cadena de texto y fijense que pasa)
@@ -403,13 +462,12 @@ Por un lado los datos más fáciles de cargar son los del estilo de tablas separ
 Supongamos que tenemos un archivo con valores de expresión, donde las columnas están separadas por tabs y se llama "resultados_ensayo1.tsv". La función para cargarlo y guardarlo en una *dataframe* sería:
 
 ```r
-dt_exp <- read.table(file="resultados_ensayo1.tsv",sep="\t")
+dt_exp <- read.csv(file="./data/dt_TP1_cal.tsv",sep="\t")
 ```
+¿Les funcionó? ¿Les dió algún error? ¿Hay algo que este mal?
+Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista. (`help(read.csv)`)
 
 Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estandar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
-
-Para empezar, les adelantamos que lo fundamental es que R nos permite leer cualquier archivo de texto, linea por linea, usando el siguiente comando:
-
 
 ## Funciones y paquetes en R
 
@@ -430,6 +488,9 @@ x_vector_1 <- 1:100
 y_vector_1 <- my_function(x_vector_1)  
 plot(x_vector_1,y_vector_1)
 ```
+
+![](./images/plot_ejemplo_3.png)
+
 Esto nos ahorra tener que escribir muchas veces el mismo código cuando vamos a operar más o menos de la misma forma reiteradas veces. Digo más o menos porque el uso de funciones es muy versátil, en el ejemplo anterior nosotros declaramos que la función solo recibía una variable "x", pero tranquilamente yo podría haber sido más complejo:
 
 ```r
@@ -446,22 +507,29 @@ y_vector_1 <- my_function(x_vector_1,20)
 plot(x_vector_1,y_vector_1)
 
 ```
+![](./images/plot_ejemplo_3.png)
+![](./images/plot_ejemplo_4.png)
+
 Y las funciones no solo se limitan a operaciones matemáticas, pueden escribir cualquier tipo de operación con cadenas de texto, manejar archivos, realizar test estadísticos, etc. Sólo están limitados por su creatividad.
 
 Seguramente estarán pensando que esto es mucho trabajo para realizar algo que tranquilamente podrían encontrar resuelto on-line...y la verdad es que tienen razón, estos ejemplos tan sencillos son solo ilustrativos. Cuando queremos resolver un problema que no es particular y exclusivo de nuestro trabajo, sabemos que es más que probable que alguien lo haya resuelto antes (por ejemplo realizar test estadísticos) y R está desarrollado bajo esa premisa. Como es *open source* casi todo lo que se desarrolla en R se dispone libremente en internet. De forma tal que nosotros podemos aprovecharlo y usarlo en nuestro trabajo sin tener que ponernos a codear funciones complejas. (e incluso muchas veces quienes las desarrollan son más idóneos para hacerlo y nos acercan un trabajo más eficiente y/o de mejor calidad que lo que nosotros podríamos hacer).
+
 Por esto es que en R tenemos la posibilidad de cargar "paquetes" que dentro tienen un conjunto de funciones, siempre referidas a algún tipo de problema en particular. Muchas de estas funciones como `print()` o `paste()` son básicas de R y ya las tenemos instaladas y cargadas en R por defecto, sin embargo, esto no ocurre así para cosas más particulares de nuestro trabajo como por ejemplo trabajar con secuencias de ADN, RNA o proteínas donde ya hay gran cantidad de funciones que resuelven nuestras necesidades y se encuentran en paquetes que podemos cargar libremente.
-Oro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado "ggplot", en nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
+
+Oro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado *ggplot*, en nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
 
 Supongamos que mido dos solutos a 5 concentraciones distintas y obtengo dos curvas de calibración y quiero presentarle a mi director los resultados en un formato agradable e intuitivo de comprender:
 
 ```r
-dt <- read.csv(file="./data/TP_introR/dt_TP1_cal.tsv",sep="\t")  #Cargamos los datos
+dt <- read.csv(file="./data/dt_TP1_cal.tsv",sep="\t")  #Cargamos los datos
 library(ggplot2) # Cargamos el paquete que necesitamos
 ggplot(data=dt,aes(x=log(con),y=abs,col=sol))+
   geom_point()+
   geom_smooth(method="lm")+
   theme_minimal()
 ```
+![](./images/plot_ejemplo_5.png)
+
 Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero creanme decirles que para los que solemos usarlas se vuelven fáciles de usar.
 Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`.
 Todo esto realizado en tres lineas de código resulta un poco complejo ahora mismo, pero sepan que es un ejemplo que facilmente podrían haber tomado de algun tutorial de internet, por ejemplo podrían haber arribado al código de arriba siguiendo lo que explican [acá](https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/)
@@ -526,6 +594,11 @@ vector_of_ids <- c(id_1,id_2,id_3)
 print(vector_of_ids)
 ```
 
+```r
+> print(vector_of_ids)
+[1] "AAC82598.2" "AAD20388.1" "AAC82597.1"
+```
+
 Como ven, strsplit nos devuelve una lista donde cada uno de los elementos de la lista tiene un vector con todas las partes del string que partió en pedazos. Ahora pudimos tomar la parte que nos interesa de cada elemento y guardarlo en nuevas variables. Esto, sin embargo se puede hacer todavía más sencillo si aprovechamos una función que trabaja las listas y de forma automática podemos tomar todos los primeros elementos de una lista:
 
 ```r
@@ -551,18 +624,23 @@ Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos e
 El investigador realiza un ensayo donde evalúa cada 5 minutos durante 1 hora (12 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 12 compuestos con dos repeticiones de cada compuesto. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
 
 La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular la regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores. 
+
 Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración.
+
 Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL, obtener el R2 de cada una (como control), y luego ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas (esto es, obtener el IC50 y el coeficiente de Hill)
 
 Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar, sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
+
 Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas series de concentraciones de cada compuesto para cada tiempo.
 Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
-¿Puede terminar antes de las 10 de la noche? 
+
+* ¿Puede terminar antes de las 10 de la noche? 
+
 Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo) y además de la que ustedes tienen, hay 12 placas más. Analizadas con el mismo diseño experimental y formato de salida.
 
-¿Podemos agilizar el análisis usando R?
+* ¿Podemos agilizar el análisis usando R?
 
-¿Cómo plantearían el análisis?
+* ¿Cómo plantearían el análisis?
 
 Intentemos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
 
@@ -583,6 +661,7 @@ Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cu�
 ```r
 dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
+
 Ahora me dice que hay un nuevo error, puesto que `*line 1 did not have 387 elements*`. Si leemos el help de esta función:
 Resulta que en caso de que las filas tengan distinta cantidad de columnas hay que explicárselo para que las llene, agregando el argumento, `fill = TRUE`
 
@@ -596,12 +675,14 @@ Se dan cuenta que uno de los problemas principales es que la primera y las últi
 
 ```r
 dt <- dt[c(2:15),]
+head(dt)
 ```
 Además, la fila 1 contiene los nombres de las columnas, esto se puede asignar bastante fácil:
 
 ```r
 colnames(dt) <- dt[1,]
 dt <- dt[-1,]
+head(dt)
 ```
 Muy bien, ahora que tenemos los datos cargados, deberíamos buscar los valores de cada compuesto para cada concentración, ¿Se les ocurre como?
 
@@ -620,7 +701,9 @@ for (i in 3:length(dt[1,])){
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
- 
+  print(nombre_pocillo)
+  print(fila_pocillo)
+  print(numero_pocillo)
 }
 ```
 Muy bien, tengo las filas y las columnas, ¿Para que me podría servir?. Una idea que se me ocurre es tomar de la dt original, todos los "tiempos" y su señal pero solo para este pocillo que estamos iterando...sería simplemente filtrar la dt, ¿se les ocurre como?
@@ -631,6 +714,7 @@ for (i in 3:length(dt[1,])){
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
+  print(head(dt_pocillo))
 }
 ```
 Y a esta dt filtrada que acabo de crear, podría guardarle el valor de fila y columna del Well, ¡que ya tengo guardados!
@@ -644,6 +728,7 @@ for (i in 3:length(dt[1,])){
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
+  print(head(dt_pocillo))
 }
 ```
 Genial, ya tengo una DT de cada pocillo. Ahora querría guardarlas todas juntas, ¿que les parece, será muy difícil juntar DTs en R? ¿Pueden googlearlo y ver si encuentran alguna función que lo haga?
@@ -665,6 +750,7 @@ for (i in 3:length(dt[1,])){
   dt_pocillo[,2] <- NULL # borro la anterior
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
+  print(head(dt_pocillo))
 }
 ```
 Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma `rbind()` nos va a dar un error)
@@ -678,28 +764,31 @@ for (i in 3:length(dt[1,])){
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
   dt_pocillo$signal <- dt_pocillo[,2]
-  dt_pocillo[,nombre_pocillo] <- NULL
+  dt_pocillo[,2] <- NULL
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
   nueva_dt <- rbind(nueva_dt,dt_pocillo)
 }
-
+print(nueva_dt)
 ```
 Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila de valores nulos, podríamos borrarlos. Pero además, ¿notan que hay muchas filas sin señal? Eso sucede porque originalmente no se midieron todos los Wells, es más, si miran el diseño original van a ver que de la columna 19 en adelante está todo vacío. ¿Les sale filtrar todas las columnas de la placa de 19 en adelante?
 
 ```r
 nueva_dt <- nueva_dt[-1,]
 nueva_dt <- nueva_dt[nueva_dt$columnaW<19,]
+print(nueva_dt)
 ```
 
 Genial gente, ya logramos cargar todos los datos como el investigador hubiera querido, nos tomó bastante tiempo y es lógico que algunas cosas hayan sido un poco confusas para la primera vez que hacen algo así, pero entiendan que se hace más simple con la costumbre, y el ejemplo es un caso de uso real, no es un ejemplo de libro.
 
 Hay algo más que podemos hacer muy fácil y es asignar el valor de dilución y compuesto que corresponde a cada fila y columna de la placa. Para esto tienen dos archivos que se llaman "diseño_compuestos" y "diseño_diluciones". Que no son otra cosa más que lo mismo que podían ver en la planilla de cálculo pero exportado a un archivo con formato .tsv (separado por tabs "\\t"). Cargar ambos archivos es bastante sencillo y a esta altura creo que pueden hacerlo solos, pero luego, ¿Como buscamos cada valor de fila y le asignamos la concentración correspondiente? (idem columnas).
+
 Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar cómo funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
 
 ```r
 dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F)
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
+print(nueva_dt_completa)
 ```
 La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
 Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador. Si tienen tiempo, o quieren practicar en sus casas, pueden probar de hacer las RL, calcular los R2, la velocidad de la reacciones, los IC50 y el coeficiente de Hill.
