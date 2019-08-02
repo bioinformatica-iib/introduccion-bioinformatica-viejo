@@ -14,11 +14,12 @@
 ## Programa Teórico
 
 ## Programa Prático
-- [Introducción a UNIX](UNIX/TP.md)
-- [EMBOSS Suite](EMBOSS/EMBOSS-Suite.md)
-- [Visualizando genomas con Artemis](Artemis/Visualizando-genomas-con-Artemis)
-- [Genómica comparativa con ACT](Genomica-Comparativa/Genómica-Comparativa-con-ACT)
-- [Programando en biología](IntroR/TP.md)
-- [Data Mining](DataMining/TP.md)
-- [Quimioinformática](Quimioinfo/Quimioinformatica.md)
+
+- [Introducción a UNIX](blob/master/UNIX/TP.md)
+- [EMBOSS Suite](blob/master/EMBOSS/EMBOSS-Suite.md)
+- [Visualizando genomas con Artemis](blob/master/Artemis/TP.md)
+- [Genómica comparativa con ACT](blob/master/Genomica-Comparativa/TP.md)
+- [Programando en biología](blob/master/IntroR/TP.md)
+- [Data Mining](blob/master/DataMining/TP.md)
+- [Quimioinformática](blob/master/Quimioinfo/TP.md)
 
