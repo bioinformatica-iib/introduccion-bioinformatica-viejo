@@ -42,168 +42,216 @@ Comparar gráficos y dendogramas y discutir qué resultado (Norte o Sur) tiene m
 
 Lo primero que vamos a hacer en R es cargar los datos de la tabla de ejemplo TablaEjemplo.txt. Para esto tipear:
 
->MiTabla=read.csv("/curso/clustering/TablaEjemplo.txt", sep="\t", row.names="gen")
+```r
+MiTabla <- read.csv("/curso/clustering/TablaEjemplo.txt", sep="\t", row.names="gen")
+```
 
-estando en omega o sino descargar el archivo TablaEjemplo.txt y reemplazar /curso/clustering/TablaEjemplo.txt por el path que corresponda. Lo que hicimos acá, fue leer el archivo de texto TablaEjemplo.txt utilizando la función read.csv() de R (csv -- comma separated values -- es la extensión que suele usarse para nombrar archivos de texto conteniendo valores separados por algún delimitador, que comunmente es una coma, o un caracter de tabulación). Además del nombre del archivo, la función read.csv nos permite declarar cual es el separador de campos (en este caso son tabulaciones, que se indican como \t), y cual es la columna que contiene los identificadores para las filas ("gen" es el nombre de esta columna en nuestro ejemplo). Finalmente, notar que el resultado de ejecutar la función read.csv se está almacenando en la variable MiTabla.
+Lo que hicimos acá, fue leer el archivo de texto TablaEjemplo.txt utilizando la función `read.csv()` de R (csv -- comma separated values -- es la extensión que suele usarse para nombrar archivos de texto conteniendo valores separados por algún delimitador, que comunmente es una coma, o un caracter de tabulación). Además del nombre del archivo, la función `read.csv()` nos permite declarar cual es el separador de campos (en este caso son tabulaciones, que se indican como \\t), y cual es la columna que contiene los identificadores para las filas ("gen" es el nombre de esta columna en nuestro ejemplo). Finalmente, notar que el resultado de ejecutar la función `read.csv()` se está almacenando en la variable `MiTabla`.
 
 Ahora si tipeamos el nombre de esta variable, seguido de Enter, R nos muestra el contenido de la variable (nuestra tabla).
 
->MiTabla # seguido de Enter, nos muestra la tabla cargada.
+```r
+MiTabla # seguido de Enter, nos muestra la tabla cargada.
+```
+A continuación vamos a utilizar la función `dist()` para calcular una matriz de distancias a partir de los datos de la tabla. Recordar que estos datos ya están cargados en una variable que se llama `MiTabla`. Como convención a lo largo de esta guía, cualquier cosa que empiece con Mi o Mis es un nombre de variable. Podríamos haber usado cualquier nombre (por ejemplo, pepe), y ustedes pueden cambiarlos cuando usen R por su cuenta.
 
-A continuación vamos a utilizar la función dist para calcular una matriz de distancias a partir de los datos de la tabla. Recordar que estos datos ya están cargados en una variable que se llama MiTabla. Como convención a lo largo de esta guía, cualquier cosa que empiece con Mi o Mis es un nombre de variable. Podríamos haber usado cualquier nombre (por ejemplo, pepe), y ustedes pueden cambiarlos cuando usen R por su cuenta.
+```r
+MisDistancias <- dist(MiTabla,method="euclidean")
+```
 
->MisDistancias=dist(MiTabla,method="euclidean")
+La funcion `dist()` calcula la matriz de distancias usando la medida (el método) especificada/o, entre todas las filas de la matriz. En este ejemplo, calcula la distancia euclídea entre todos los genes tomados de a dos. El resultado se almacena en la variable llamada `MisDistancias`. ¿Como podemos ver el resultado?
 
-La funcion dist() calcula la matriz de distancias usando la medida (el método) especificada/o, entre todas las filas de la matriz. En este ejemplo, calcula la distancia euclídea entre todos los genes tomados de a dos. El resultado se almacena en la variable llamada MisDistancias.
+Seguidamente vamos a agrupar en forma jerárquica a los genes, de acuerdo a esta matriz de distancias, utilizando la función `hclust()` (hierarchical clustering).
 
-Para ver el resultado, simplemente pedimos el contenido de la variable:
+```r
+MiClusteringJerarquico=hclust(MisDistancias, method="complete")
+```
 
->MisDistancias # nos muestra la matriz de distancias
+La función `hclust()` realiza el clustering jerárquico utilizando el criterio de agregación especificado (*complete linkage* o "vecino mas lejano" en este caso). En R si quieren obtener ayuda sobre algún comando, por ejemplo para ver qué otras opciones existen para una función, pueden usar la función `help()`. Haciendo:
 
-Seguidamente vamos a agrupar en forma jerárquica a los genes, de acuerdo a esta matriz de distancias, utilizando la función hclust() (hierarchical clustering).
-
->MiClusteringJerarquico=hclust(MisDistancias, method="complete")
-
-La función hclust() realiza el clustering jerárquico utilizando el criterio de agregación especificado ("complete linkage" o "vecino mas lejano" en este caso). En R si quieren obtener ayuda sobre algún comando, por ejemplo para ver qué otras opciones existen para una función, pueden usar la función help(). Haciendo:
-
->help(hclust) 
-
+```r
+help(hclust) 
+```
 podemos ver, qué otros criterios de agreación permite la función
 
-# output recortado 
-...
+
+`
   method: the agglomeration method to be used. This should be (an
           unambiguous abbreviation of) one of '"ward"', '"single"',
           '"complete"', '"average"', '"mcquitty"', '"median"' or
           '"centroid"'.
-...
+`
 
-En este caso complete = complete linkage, single = "single linkage" (o vecino mas cercano), average = promedio.
+En este caso complete = *complete linkage*, single = *single linkage* (o vecino mas cercano), average = promedio.
 
-Para graficar el resultado de este agrupamiento utilizamos la función plot()
+Para graficar el resultado de este agrupamiento utilizamos la función `plot()`
 
->plot(MiClusteringJerarquico) #Grafica el dendograma que resulta del clustering jerarquico
-
+```r
+plot(MiClusteringJerarquico) #Grafica el dendograma que resulta del clustering jerarquico
+```
 Los gráficos en R se pueden exportar a PDF y a JPEG facilmente:
 
->pdf("MiImagen.pdf") #alternativamente >jpeg("MiImagen.jpeg")
->plot(MiClusteringJerarquico) # el plot se escribe en el PDF (no se muestra en pantalla!)
->dev.off() # cierra el archivo, los próximos plots volverán a ser mostrados en pantalla
+```r
+pdf("MiImagen.pdf") #alternativamente jpeg("MiImagen.jpeg")
+plot(MiClusteringJerarquico) # el plot se escribe en el PDF (no se muestra en pantalla!)
+dev.off() # cierra el archivo, los próximos plots volverán a ser mostrados en pantalla
+```
 
-Ahora vamos a repetir el análisis, estandarizando los datos de expresión disponibles para cada gen, de manera de que todos valores de expresión se encuentren en la misma escala y centrados en cero, tal como lo hicimos manualmente en el ejercicio anterior. R cuenta con la función scale() para estandarizar datos. El problema es que esta función estandariza por columnas, y nosotros necesitamos hacerlo por filas (las columnas contienen datos de expresión para todos los genes). Por lo tanto necesitamos transponer la matriz de datos, de manera de que las columnas pasen a ser filas y viceversa. Para transponer tablas, R nos ofrece la función t().
+Ahora vamos a repetir el análisis, estandarizando los datos de expresión disponibles para cada gen, de manera de que todos valores de expresión se encuentren en la misma escala y centrados en cero, tal como lo hicimos manualmente en el ejercicio anterior. R cuenta con la función `scale()` para estandarizar datos. El problema es que esta función estandariza por columnas, y nosotros necesitamos hacerlo por filas (las columnas contienen datos de expresión para todos los genes). Por lo tanto necesitamos transponer la matriz de datos, de manera de que las columnas pasen a ser filas y viceversa. Para transponer tablas, R nos ofrece la función `t()`.
 
-MiTablaTranspuesta=t(MiTabla)
+```r
+MiTablaTranspuesta <- t(MiTabla)
+```
 
-Analizar el contenido de la nueva variable MiTablaTranspuesta para ver como se modificaron los datos. A continuación, podemos utilizar scale() sobre esta nueva tabla.
+Analizar el contenido de la nueva variable `MiTablaTranspuesta` para ver como se modificaron los datos. A continuación, podemos utilizar `scale()` sobre esta nueva tabla.
 
-MiTablaEstandarizadaTranspuesta=scale(MiTablaTranspuesta)
+```r
+MiTablaEstandarizadaTranspuesta <- scale(MiTablaTranspuesta)
+```
+Analizar el contenido de la nueva variable `MiTablaEstandarizadaTranspuesta` para verificar que los datos hayan sido normalizados. Finalmente, necesitamos volver a transponer la tabla estandarizada, para tener nuevamente los datos por gen en filas, y los datos de los distintos tiempos en columnas.
 
-Analizar el contenido de la nueva variable MiTablaEstandarizadaTranspuesta para verificar que los datos hayan sido normalizados. Finalmente, necesitamos volver a transponer la tabla estandarizada, para tener nuevamente los datos por gen en filas, y los datos de los distintos tiempos en columnas.
-
-MiTablaEstandarizada=t(MiTablaEstandarizadaTranspuesta)
+```r
+MiTablaEstandarizada <- t(MiTablaEstandarizadaTranspuesta)
+```
 
 Esto mismo que hemos hecho en tres pasos (transponer la tabla, normalizarla y volverla a transponer), puede hacerse en un solo paso, así:
 
->MiTablaSTD=t(scale(t(MiTabla)))
+```r
+MiTablaSTD <- t(scale(t(MiTabla)))
 
 #comparar las medias y las dispersiones....
 summary(t(MiTabla))
 summary(t(MiTablaSTD))
 sd(t(MiTablaSTD))
 sd(t(MiTabla))
+```
 
-Ahora vamos a repetir todos los comandos desde >MisDistancias=dist(MiTabla,method="euclidean") inclusive, en adelante, pero utilizando la tabla con los datos estandarizados !MiTablaSTD.
+Ahora vamos a repetir todos los comandos desde `MisDistancias <- dist(MiTabla,method="euclidean")` inclusive, en adelante, pero utilizando la tabla con los datos estandarizados `MiTablaSTD`
 
 OPCIONAL
 Podemos probar con otras medidas de distancia entre datos de expresión, por ejemplo basadas en correlación. Las distancias basadas en correlación permiten comparar "tendencias" en los datos no estandarizados, en forma similar a la distancia euclídea con datos previamente estandarizados. Este tipo de distancias, como la correlación de Pearson, son las mas utilizadas en analisis de expresiòn génica con microarrays.
 
-DistanciaCorr=as.dist(1-cor(t(MiTabla))) 
+```r
+DistanciaCorr <- as.dist(1-cor(t(MiTabla))) 
+```
 
-La funcion cor() calcula la matriz de correlaciones sobre las columnas, por defecto, utiliza la correlación de Pearson. Este coeficiente de correlacion varia entre 1 (genes perfectamente correlacionados) y -1 (correlación negativa perfecta: cuando uno sube, el otro baja), pasando por el 0 (no hay correlación lineal entre ellos). La distancia es 1-cor() de forma tal que si la correlación alta, la distancia sea mínima y viceversa. La función as.dist() convierte la matriz al formato correcto para ser utilizado por las funciones de clustering, como hclust().
+La funcion `cor()` calcula la matriz de correlaciones sobre las columnas, por defecto, utiliza la correlación de Pearson. Este coeficiente de correlacion varia entre 1 (genes perfectamente correlacionados) y -1 (correlación negativa perfecta: cuando uno sube, el otro baja), pasando por el 0 (no hay correlación lineal entre ellos). La distancia es `1-cor()` de forma tal que si la correlación alta, la distancia sea mínima y viceversa. La función `as.dist()` convierte la matriz al formato correcto para ser utilizado por las funciones de clustering, como `hclust()`.
 
 Luego de visualizar el nuevo dendograma....
 
->heatmap(MiTablaSTD, Colv=NA)
+```r
+heatmap(MiTablaSTD, Colv=NA)
+```
 
-Inspeccionamos el heatmap que es una imagen que muestra niveles de expresion mas altos como mas calientes o blancos/amarillos y los de menos expresion como mas frios o rojos. Colv indica si las columnas (tiempos en este caso) deben ser agrupadas o reordenadas y cómo. Colv= NA(not available), indica que no las reagrupe (respetando el orden natural de la variable tiempo). Las filas (genes) van a ser agrupadas utilizando la funcion hclust() con sus opciones por default y la distancia euclidea, a menos que se indique otra cosa.
+Inspeccionamos el heatmap que es una imagen que muestra niveles de expresion mas altos como mas calientes o blancos/amarillos y los de menos expresion como mas frios o rojos. Colv indica si las columnas (tiempos en este caso) deben ser agrupadas o reordenadas y cómo. `Colv= NA` (NA = Not Available), indica que no las reagrupe (respetando el orden natural de la variable tiempo). Las filas (genes) van a ser agrupadas utilizando la funcion `hclust()` con sus opciones por default y la distancia euclidea, a menos que se indique otra cosa.
 
-Observando el dendograma de los datos estandarizados y el heatmap, podemos ver que hay dos grupos bien distinguibles de genes. Uno que aumenta su expresión a lo largo del tiempo y el otro que disminuye. Podemos cortar el arbol para quedarnos con estos dos grupos a cualquier altura entre ~1 y ~2.5, con la funcion "cutree"...
+Observando el dendograma de los datos estandarizados y el heatmap, podemos ver que hay dos grupos bien distinguibles de genes. Uno que aumenta su expresión a lo largo del tiempo y el otro que disminuye. Podemos cortar el arbol para quedarnos con estos dos grupos a cualquier altura entre ~1 y ~2.5, con la funcion `cutree()`...
 
->MiCorte=cutree(MiClusteringJerarquicoSTD,h=1.5)  # cortamos el arbol a la altura de 1.5.
+```r
+MiCorte <- cutree(MiClusteringJerarquicoSTD,h=1.5)  # cortamos el arbol a la altura de 1.5.
 #o lo que es lo mismo...
->MiCorte=cutree(MiClusteringJerarquicoSTD,k=2) # cortamos el arbol a una altura tal que el número de clusters obtenido sea de 2.
->MiCorte #visualizamos a que cluster fue asignado cada gen
+MiCorte <- cutree(MiClusteringJerarquicoSTD,k=2) # cortamos el arbol a una altura tal que el número de clusters obtenido sea de 2.
+MiCorte #visualizamos a que cluster fue asignado cada gen
+```
 
 Ahora vamos a agrupar los genes del mismo ejemplo por el método de K-medias, al que se le debe pedir a priori un número K de clusters. En este caso, vamos a pedir K=2.
 
+```r
 >MiClusteringKMedias=kmeans(MiTablaSTD,2) 
 >MiClusteringKMedias # vemos el resultado, que como es de esperar para un caso tan simple, coincide con el método jerárquico.
+```
 
 Si el número de clusters a encontrar fuera mayor, es recomendable aumentar el número de inicios al azar; por ejemplo, para inicializar 100 veces en forma aleatoria:
 
->kmeans(MiTablaGrande,5,nstart=100)
+```r
+kmeans(MiTablaGrande,5,nstart=100)
+```r
 
-4. Análisis de Clustering de expresión génica durante salto diáuxico en levaduras Ahora con lo aprendido, importar y analizar el conjunto de datos diauxic.txt (omega:/curso/clustering/diauxic.txt). Identificar grupos de genes que se comporten de manera similar...
+## Ejemplos de datos biológicos
 
-4.2 Análisis de enriquecimiento funcional Despues de haber identificado clusters, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes clusters encontrados (ver instrucciones abajo). En esta instancia tenemos clusters de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, estan involucrados en procesos biológicos diferentes a los genes de otro de los clusters. Ya que el genoma de Saccharomyces cerevisiae esta anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO ) podemos averiguar si los genes de un cluster estan enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro cluster o bien, respecto a todo el genoma. Para esto utilizar algun servidor online, como FatiGO, GOrilla o DAVID. El servidor requiere seleccionar el organismo (S. cerevisiae), subir una lista de identificadores de genes de interés (uno de los clusters, en el que queremos detectar enriquecimiento funcional), e indicar contra qué los queremos contrastar (genoma u otra lista de interés, e.g. otro cluster). Dependiendo de la herramienta utilizada, también hay que seleccionar una o más bases de datos de anotación funcional (en este caso, GO - biological process; pero bien podríamos seleccionar otra, como Interpro motifs y detectar motivos que estén significativamente mas representados en uno de los clusters que en el otro). En este sentido, DAVID es una de las herramientas más completas ya que permite detectar enriquecimiento en diversos niveles de anotación: interacciones proteína-proteína, dominios funcionales, asociación con enfermedades, vías metabólicas, homología, patrones de expresión tejido-específicos, publicaciones en literatura, etc.
+### Análisis de Clustering de expresión génica durante salto diáuxico en levaduras
+
+Ahora con lo aprendido, importar y analizar el conjunto de datos diauxic.txt. 
+1. Identificar grupos de genes que se comporten de manera similar.
+
+2. Análisis de enriquecimiento funcional Despues de haber identificado clusters, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes clusters encontrados (ver instrucciones abajo). En esta instancia tenemos clusters de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, estan involucrados en procesos biológicos diferentes a los genes de otro de los clusters. Ya que el genoma de *Saccharomyces cerevisiae* esta anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO) podemos averiguar si los genes de un cluster estan enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro cluster o bien, respecto a todo el genoma. Para esto utilizar algun servidor online, como FatiGO, GOrilla o DAVID.
+  
+El servidor requiere seleccionar el organismo (*S. cerevisiae*), subir una lista de identificadores de genes de interés (uno de los clusters, en el que queremos detectar enriquecimiento funcional), e indicar contra qué los queremos contrastar (genoma u otra lista de interés, e.g. otro cluster). Dependiendo de la herramienta utilizada, también hay que seleccionar una o más bases de datos de anotación funcional (en este caso, "GO - biological process"; pero bien podríamos seleccionar otra, como Interpro motifs y detectar motivos que estén significativamente mas representados en uno de los clusters que en el otro). En este sentido, DAVID es una de las herramientas más completas ya que permite detectar enriquecimiento en diversos niveles de anotación: interacciones proteína-proteína, dominios funcionales, asociación con enfermedades, vías metabólicas, homología, patrones de expresión tejido-específicos, publicaciones en literatura, etc.
 
 Para exportar una lista de identificadores a un archivo....
 
-Cluster1=MiTablaSTD[which(MiCorte==1),]  #Guardo en la variable Cluster1 los genes que tienen asignado un "1" en el clustering jerárquico.
-Cluster2=MiTablaSTD[which(MiCorte==2),]  #Guardo en la variable Cluster2 los genes que tienen asignado un "2" en el clustering jerárquico.
+```r
+Cluster1 <- MiTablaSTD[which(MiCorte==1),]  #Guardo en la variable Cluster1 los genes que tienen asignado un "1" en el clustering jerárquico.
+Cluster2 <- MiTablaSTD[which(MiCorte==2),]  #Guardo en la variable Cluster2 los genes que tienen asignado un "2" en el clustering jerárquico.
 write(row.names(Cluster1),"Cluster1.ids") # escribo al un archivo externo "Cluster1.ids" los identificadores de los genes del cluster 1.
 write(row.names(Cluster2),"Cluster2.ids") 
+```
 
-5. Análisis de Clustering de RNA-Seq de hoja de Maíz Hacer un análisis de clustering, ahora con el conjunto de datos maizeTranscDataMappedAt.csv. Este proviene de un estudio de transcriptómica por RNA-Seq de la hoja del maíz, durante su desarrollo desde la base hacia el ápice (Pinghua Li, et al 2010). La última columna de la tabla contiene el identificador del gen homólogo en Arabidopsis thaliana (si lo hubiera), para aprovechar el alto grado de anotación de este genoma en el análisis de enriquecimiento funcional de los clusters que se obtengan.
+### Análisis de Clustering de RNA-Seq de hoja de Maíz.
 
-SUGERENCIA: Antes de calcular matrices de distancias entre genes, probar diferentes transformaciones sobre las medidas de expresión (RPKM) evaluando las distribuciones obtenidas (e.g. scale(x), log(x+1), (x-median(x))/IQR(x), t(scale(t(scale(x)))) )
+Hacer un análisis de clustering, ahora con el conjunto de datos maizeTranscDataMappedAt.csv. Este proviene de un estudio de transcriptómica por RNA-Seq de la hoja del maíz, durante su desarrollo desde la base hacia el ápice (Pinghua Li, et al 2010). La última columna de la tabla contiene el identificador del gen homólogo en Arabidopsis thaliana (si lo hubiera), para aprovechar el alto grado de anotación de este genoma en el análisis de enriquecimiento funcional de los clusters que se obtengan.
 
-MEDIDAS DE CALIDAD DE LOS CLUSTERS
+SUGERENCIA: Antes de calcular matrices de distancias entre genes, probar diferentes transformaciones sobre las medidas de expresión (RPKM) evaluando las distribuciones obtenidas (e.g. `scale(x)`, `log(x+1)`, `(x-median(x))/IQR(x)`, `t(scale(t(scale(x))))` )
 
-Cuando queremos decidir qué método de clustering o qué función de distancia es mejor que otra, necesitamos de herramientas que nos permitan medir la calidad de los clusters y qué tan bien representan éstos la estructura natural de los datos. El coeficiente silueta (silhouette) mide cuan buena es la asignación de un elemento o dato a su cluster. Para esto compara las distancias de este elemento respecto a todos los demas elementos del cluster al que pertenece, contra las distancias respecto a los clusters vecinos. El coeficiente silueta del elemento i se denota s(i).
+## MEDIDAS DE CALIDAD DE LOS CLUSTERS
 
-si s(i) ≈ −1, el dato i esta mal agrupado
-si s(i) ≈ 0, el dato i está entre dos clusters
-si s(i) ≈ 1, el dato i esta bien agrupado
+Cuando queremos decidir qué método de clustering o qué función de distancia es mejor que otra, necesitamos de herramientas que nos permitan medir la calidad de los clusters y qué tan bien representan éstos la estructura natural de los datos. El coeficiente silueta (*silhouette*) mide cuan buena es la asignación de un elemento o dato a su cluster. Para esto compara las distancias de este elemento respecto a todos los demas elementos del cluster al que pertenece, contra las distancias respecto a los clusters vecinos. El coeficiente silueta del elemento i se denota **s(i)**.
 
-El promedio de los s de los elementos dentro un cluster, da una idea de la calidad de ese cluster. El promedio de los s de todos los elementos dan una idea de que tan bien están agrupados todos los datos; si el clustering realizado es bueno o no.
+si **s(i) ≈ −1**, el dato i esta mal agrupado
+si **s(i) ≈ 0**, el dato i está entre dos clusters
+si **s(i) ≈ 1**, el dato i esta bien agrupado
 
-En R se pueden computar facilmente los coeficientes silueta mediante la función silhouette() incorporada en la librería cluster:
+El promedio de los **s** de los elementos dentro un cluster, da una idea de la calidad de ese cluster. El promedio de los **s** de todos los elementos dan una idea de que tan bien están agrupados todos los datos; si el clustering realizado es bueno o no.
 
+**Nota**: la silueta de un grupo con una sola observación es 0, sin embargo, dependiendo el trabajo que estemos realizando puede ser correcto que dicha observación tenga que estar sola y sin agrupar con nadie mas. Si tengo varios grupos, correctos, de una sola observación, el promedio de todos los clusters será baja erroneamente y pueden llegar a tomar una mala elección de K o del método. (Para solucionarlo, por ejemplo, podrían sacar del clustering aquellas observaciones que no se agrupan)   
+
+
+En R se pueden computar facilmente los coeficientes silueta mediante la función `silhouette()` incorporada en la librería cluster:
+
+```r
 library(cluster) # llamamos a la librería "cluster"
 MiSiluetaKMeans = silhouette(MiClusteringKMeans$cluster,MiMatrizDeDistancias) # para un clustering por K-means o bien...
 MiSiluetaJerarquico = silhouette(MiCorteDelArbol,MiMatrizDeDistancias) # para un clustering con hclust() - cutree()
+```
 
 Se pueden ver los coeficientes Silueta para todos los datos:
 
+```r
 MiSiluetaKMeans
+```
 
 O un resumen con los promedios de Silueta de cada cluster:
 
+```r
 summary(MiSiluetaKMeans)
+```
 
 También se puede hacer una representación gráfica de los coeficientes Silueta:
 
+```r
 plot(MiSiluetaKMeans)
+```
 
 Este tipo de gráfico es una herramienta muy útil para determinar cuál es el número "natural" de clusters en un conjunto de datos. En este caso, probamos con K=5 y vemos que el cluster 1 (que contiene 203 genes) no es muy bueno ya que además de tener un coeficiente de silueta promedio bajo (0.13), muchos de los genes que contiene, tienen coeficientes de silueta negativos. Habría que probar con otro número K de clusters y/o con otro método de clustering.
 
-EJERCICIO: Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters.
 
-BONUS TRACK
+**EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters.
 
-El set de datos fibro.data proviene de un experimento donde se analizan los cambios de expresión génica de fibroblastos humanos en respuesta al suero http://genome-www.stanford.edu/serum/.
+**BONUS TRACK**
+
+El set de datos fibro.data proviene de un experimento donde se analizan los cambios de expresión génica de fibroblastos humanos en respuesta al suero http://genome-www.stanford.edu/serum/.
 
 El siguiente heatmap muestra los 7 clusters en los que los datos fueron agrupados mediante un clustering jerárquico utilizando el criterio de agregación de vecino mas lejano y una medida de distancias basada en correlación.
 
-A contiunación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o "parallel plots":
+A contiunación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots*:
 
-Esta de acuerdo con los grupos formados? partiría o fusionaría algunos clusters? Reproducir estos gráficos y probar con diferente número de clusters, utilizando además del método del Vecino mas lejano (complete linkage) el promedio (average) y evaluando las siluetas.
+¿Esta de acuerdo con los grupos formados? ¿Partiría o fusionaría algunos clusters? 
+* Reproducir estos gráficos y probar con diferente número de clusters, utilizando además del método del Vecino mas lejano (complete linkage) el promedio (average) y evaluando las siluetas.
 
-Y otra forma de representar los datos agrupados, mediante un diagrama de dispersión sobre las 2 primeras Componentes Principales:
+Otra forma de representar los datos agrupados, mediante un diagrama de dispersión sobre las 2 primeras Componentes Principales:
 
-código de R:
 
+```r
 fibro=read.csv("fibro.data",sep="\t")
 fibroClust=hclust(as.dist(1-cor(t(fibro))),method="complete") 
 fibroCorte=cutree(fibroClust,7)
@@ -217,25 +265,38 @@ fibro.std=t(scale(t(fibro)))
 clusplot(fibro.std,fibroCorte)
 plot(silhouette(fibroCorte,as.dist(1 - cor(t(fibro)))))
 dev.off()
+```
 
-NOTA INSTALACIÓN DE PAQUETES EN R: Los paquetes utilizados en este TP son los que trae la instalación base de R (excepto el paquete gplots). Para ver los paquetes instalados:
+##NOTA INSTALACIÓN DE PAQUETES EN R: 
 
->library()
+En el TP desarrollado estuvimos usando un servidor que previamente ya fue testeado y configurado para que tenga todos los paquetes que fuesen necesarios. Si quieren realizar estas tareas en otra plataforma (computadora personal, trabajo, etc) es mas que seguro que tengan la necesidad de instalar paquetes, pueden googlear como se hace pero acá les damos algunas de las formas mas habituales de trabajar con e instalar paquetes:
+
+Para ver los paquetes instalados:
+
+```r
+library()
+```
 
 Para cargar un paquete de la lista anterior (por ejemplo, el paquete cluster que utilizamos para calcular los coeficientes silueta ):
 
->library(cluster)
+```r
+library(cluster)
+```
 
-Para instalar un paquete no incluido en R base, por ejemplo gplots que trae herramientas adicionales para graficar datos :
+Para instalar un paquete no incluido en R base, por ejemplo ggplots que trae herramientas adicionales para graficar datos :
 
->install.packages("gplots")
+```r
+install.packages("ggplots")
+```
 
 y luego lo cargamos normalmente:
 
->library(gplots)
+```r
+library(ggplots)
+```
 
-Bioconductor? Hay un gran número de paquetes orientados específicamente al análisis de datos genómicos (en su mayoría aquellos derivados de microarrays de ADN, pero también de SAGE, SNPs, etc.) provenientes del proyecto Bioconductor. Por el momento, exceden los objetivos de este TP introductorio.
-Attachments
+Hay un gran número de paquetes orientados específicamente al análisis de datos genómicos (en su mayoría aquellos derivados de microarrays de ADN, pero también de SAGE, SNPs, etc.) provenientes del proyecto Bioconductor. Por el momento, exceden los objetivos de este TP introductorio, pero puede serles útil.
+
 
     UnderConstruction.jpg (7.1 KB) - added by santiago 8 years ago.
     dendogramaEjemplo.jpg (12.7 KB) - added by santiago 8 years ago.
@@ -253,15 +314,3 @@ Attachments
     fibro.cluplot.jpg (39.6 KB) - added by santiago 4 years ago.
     RNASeqFiles.tar.gz (2.4 MB) - added by laura 2 years ago.
     intro_R_UNSAM.pdf (726.3 KB) - added by emancini 13 months ago.
-
-Download in other formats:
-
-    Plain Text
-
-Trac Powered
-
-Powered by Trac 0.12.3
-By Edgewall Software.
-
-Visit the Trac open source project at
-http://trac.edgewall.org/
