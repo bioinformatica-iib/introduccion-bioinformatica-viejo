@@ -13,6 +13,19 @@
 
 ## Programa Teórico
 
+1. Experimentos Bioinformáticos
+2. Bases de datos
+3. Conceptos básicos de computación, algoritmos
+4. Ontologías
+5. Alineamientos de a pares, similitud
+6. Alineamientos múltiples
+7. Secuenciación y ensamblado de genomas
+8. Preddicción de genes
+9. Data clustering
+10. Reconstrucción de filogenias
+11. Información contenida en alineamientos múltiples
+12. *Sequence profiles, Hidden Markov Models*
+
 ## Programa Prático
 
 - [Introducción a UNIX](blob/master/UNIX/TP.md)
