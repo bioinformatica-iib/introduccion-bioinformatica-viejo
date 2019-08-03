@@ -1,7 +1,6 @@
-<link rel="stylesheet" href="style.css">
-## Genómica comparativa: ACT
+# Genómica comparativa: ACT
 
-### Introducción:
+## Introducción:
 
 ACT (Artemis Comparision Tool) fue también creada por Kim Rutherford, fue diseñada para extraer información adicional que solo puede ser obtenida comparando el creciente número de secuencias de organismos cercanos (Carver et al. 2005). ACT está basado en Artemis, por lo que ya estarán familiarizados con muchas de sus funciones generales, y está compuesto esencialmente de tres capas o ventanas. La ventana superior e inferior son iguales a la de Artemis ( con sus funcionalidades heredadas), mostrando la representación lineal de la secuencia de ADN con sus "features" asociados. La ventana del medio, muestra bloques rojos y azules, que se extienden y conectan regiones conservadas entre las dos secuencias, en el sentido directo e inverso respectivamente. Por lo cual, si estuviéramos comparando dos secuencias idénticas en la misma orientación veríamos,en la capa central, un bloque rojo que se extiende a lo largo de la longitud de las dos secuencias. Si una de las secuencias estuviera invertida se observaría un bloque azul entre las dos secuencias. Regiones únicas en cualquiera de las secuencias, como deleciones o inserciones, se visualizarán como espacios blancos entre los bloques rojos o azules.
 
@@ -30,11 +29,11 @@ Una vez que está el proyecto abierto es posible buscar ORFs en cada una de las 
 
 ![Sintenia](images/genome-arrangements.png)
 
-## 	Short Read Mapping
+### 	Short Read Mapping
 
 Artemis le permite al usuario cargar, ver y editar archivos de EMBL/Genbank (NCBI) en un formato gráfico altamente interactivo. Artemis también permite ver datos de secuenciación de tecnologías de nueva generación de Illumina, 454 o Solid [NGS](https://www.sanger.ac.uk/science/tools/categories/Sequence%2520data%2520processing/all&sa=D&ust=1548712235814000) para más información y ejemplos. La re-secuenciación tiene como objetivo capturar información de polimorfismos de una base (SNPs), inserciones y deleciones (indels) y variaciones en el número de copias (CNVs) entre variantes del mismo organismo, dentro de una población. Para cumplir esto, en vez de ensamblar las lecturas de secuencia de novo para producir un nuevo genoma, se suelen mapear los nuevos datos de secuencia al genoma de referencia. De esta forma podemos luego identificar SNPs e INDELS que pueden distinguir dos organismos altamente relacionados. Hay que tener en cuenta que se asumen muchas cosas al realizar esto, incluyendo que el organismo de referencia y el analizado tienen la misma arquitectura genómica.
 
-### Objetivos:
+## Objetivos:
 
 <div class="alert alert-dark">
 <ol>

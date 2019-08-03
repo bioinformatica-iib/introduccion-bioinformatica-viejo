@@ -33,12 +33,12 @@
 
 ## Programa Práctico
 
-- [Introducción a UNIX](TPs/UNIX/TP.md)
-- [EMBOSS Suite](TPs/EMBOSS/EMBOSS-Suite.md)
+- [Introducción a UNIX](TPs/Unix/TP.md)
+- [EMBOSS Suite](TPs/EMBOSS/TP.md)
 - [Alineamientos de a Pares](#)
 - [Búsquedas de secuencias por similitud](#)
 - [Visualizando genomas con Artemis](TPs/Artemis/TP.md)
-- [Genómica comparativa con ACT](TPs/master/Genomica-Comparativa/TP.md)
+- [Genómica comparativa con ACT](TPs/Genomica-Comparativa/TP.md)
 - [Programando en biología](TPs/IntroR/TP.md)
 - [Data Mining](TPs/DataMining/TP.md)
 - [Filogenias, árboles filogenéticos y filogenómica](#)
