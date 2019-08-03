@@ -11,6 +11,9 @@
 - **Dra. Lucia Chemes**
 - **Dr. Nicolás Palopoli**
 
+## Cronograma
+- [2do cuatrimestre (2019)](blob/master/Cronograma%202-2019.pdf)
+
 ## Programa Teórico
 
 1. Experimentos Bioinformáticos
@@ -32,9 +35,13 @@
 
 - [Introducción a UNIX](blob/master/UNIX/TP.md)
 - [EMBOSS Suite](blob/master/EMBOSS/EMBOSS-Suite.md)
+- [Alineamientos de a Pares](#)
+- [Búsquedas de secuencias por similitud](#)
 - [Visualizando genomas con Artemis](blob/master/Artemis/TP.md)
 - [Genómica comparativa con ACT](blob/master/Genomica-Comparativa/TP.md)
 - [Programando en biología](blob/master/IntroR/TP.md)
 - [Data Mining](blob/master/DataMining/TP.md)
+- [Filogenias, árboles filogenéticos y filogenómica](#)
+- [PSI Blast](#)
 - [Quimioinformática](blob/master/Quimioinfo/TP.md)
 
