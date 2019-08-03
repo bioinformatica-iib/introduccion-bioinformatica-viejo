@@ -12,7 +12,7 @@
 - **Dr. Nicolás Palopoli**
 
 ## Cronograma
-- [2do cuatrimestre (2019)](blob/master/Cronograma%202-2019.pdf)
+- [2do cuatrimestre (2019)](Cronograma%202-2019.pdf)
 
 ## Programa Teórico
 
@@ -33,15 +33,15 @@
 
 ## Programa Práctico
 
-- [Introducción a UNIX](blob/master/UNIX/TP.md)
-- [EMBOSS Suite](blob/master/EMBOSS/EMBOSS-Suite.md)
+- [Introducción a UNIX](UNIX/TP.md)
+- [EMBOSS Suite](EMBOSS/EMBOSS-Suite.md)
 - [Alineamientos de a Pares](#)
 - [Búsquedas de secuencias por similitud](#)
-- [Visualizando genomas con Artemis](blob/master/Artemis/TP.md)
-- [Genómica comparativa con ACT](blob/master/Genomica-Comparativa/TP.md)
-- [Programando en biología](blob/master/IntroR/TP.md)
-- [Data Mining](blob/master/DataMining/TP.md)
+- [Visualizando genomas con Artemis](Artemis/TP.md)
+- [Genómica comparativa con ACT](master/Genomica-Comparativa/TP.md)
+- [Programando en biología](master/IntroR/TP.md)
+- [Data Mining](DataMining/TP.md)
 - [Filogenias, árboles filogenéticos y filogenómica](#)
 - [PSI Blast](#)
-- [Quimioinformática](blob/master/Quimioinfo/TP.md)
+- [Quimioinformática](Quimioinfo/TP.md)
 
