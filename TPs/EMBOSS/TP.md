@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css">
+
 ## EMBOSS Toolbox
 
 ### Introducción:
@@ -10,7 +10,7 @@
 <summary>Ver lista completa</summary>
 <table>
    <tr>
-      <th>Program name</th>
+      <th style="color:red">Program name</th>
       <th>Description</th>
    </tr>
    <tr>

@@ -146,7 +146,7 @@ library(gridExtra)
 library(fmcsR)
 
 # Seteamos directorio de trabajo y cargamos dataset
-setwd("/home/lioneluranl/Downloads")
+setwd("mi/directorio/de/trabajo")
 sdfset <- read.SDFset("all-V1inhibs.sdf")
 ```
 

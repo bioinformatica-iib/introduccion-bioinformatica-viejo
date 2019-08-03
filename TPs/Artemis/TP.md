@@ -1,24 +1,24 @@
-## 	Visualización de genomas usando Artemis
+# Visualización de genomas usando Artemis
 
-### Introducción:
+## Introducción:
 
 Artemis es una herramienta de visualización y anotación de DNA gratuita desarrollada por Kim Rutherford ( Rutherford et al.,2000). Es utilizado rutinariamente para la anotación y el análisis de tanto genomas procariotas como eucariotas, y puede ser utilizado para visualizar datos mapeados de secuenciación de segunda generación. Este programa permite al usuario visualizar archivos de secuencias simples, archivos de EMBL/Genbank y los resultados de análisis de secuencias en un formato gráfico altamente interactivo e intuitivo. Multiples conjuntos/tipos de información pueden ser visualizados dentro de diferentes contextos, por ejemplo, en Artemis se puede inspeccionar motivos de secuencia de DNA, arquitecturas genicas locales (e.g. operones), varias kilobases de un genoma o hasta cromosomas enteros en una única pantalla. Se puede incluso realizar análisis dentro de Artemis guardando la salida para acceder luego.
 
-### 	Objetivos:
+## 	Objetivos:
 
 El objetivo de este módulo es familiarizarse con las funciones básicas de Artemis empleando una serie de ejercicios. Estos ejemplos fueron desarrollados para atravesar las funciones más utilizadas. Sin embargo, les recomendamos que exploren otras funciones de Artemis que no estan desarrolladas en los ejercicios de este manual. Como siempre, "si no entienden, por favor pregunten!".
 
-#### 	1. Inicializando Artemis
+### 	1. Inicializando Artemis
 
 Para abrir el programa hagan doble click sobre el ícono de Artemis en el escritorio (también pueden arrancar Artemis desde la terminal tipeando 'art').
 
 Aparecerá una pequeña ventana de inicio. Cargaremos la secuencia del cromosoma de Salmonella typhi, para esto clickeen en 'File' y luego 'Open'. Vayan a la carpeta "Module_1_Artemis" y abran el archivo "S_typhi.dna" seleccionandolo y luego clickeando en 'Open'. Si todo salió bien se les abrirá una ventana de Artemis. Si no fue así, pidan asistencia.
 
-#### 	2. Cargando archivos de anotación (entries) en Artemis
+### 	2. Cargando archivos de anotación (entries) en Artemis
 
 Ahora cargaremos un archivo de anotación para el cromosoma de Salmonella typhi. Esto lo haremos clickeando en 'File' , 'Read An Entry' y seleccionando el archivo 'S_typhi.tab' y luego clickeando en 'Open'.
 
-#### 	3. Vista básica de Artemis
+### 	3. Vista básica de Artemis
 
 Una vez realizado esto, démosle una mirada a que hay en la ventana ( de arriba hacia abajo):
 
@@ -30,11 +30,11 @@ Una vez realizado esto, démosle una mirada a que hay en la ventana ( de arriba 
 1. Este panel lista los "features" presentes, en el orden en que ocurren en el DNA, con el gen seleccionado resaltado.
 
 
-#### 	4. Desplazandose a través de Artemis
+### 	4. Desplazandose a través de Artemis
 
 Las 3 maneras principales de ir a región o posición que uno quiere en Artemis son: el menu desplegable Goto, el Navigator y el Feature Selector. El mejor método depende de lo que cada uno este tratando de realizar, conocer cual conviene utilizar en cada caso viene con la práctica.
 
-##### 	4.1 El menu 'Goto'
+#### 	4.1 El menu 'Goto'
 
 Las funciones en este menu (ignoren el Navigator por ahora) son atajos para dirigirse a sitios dentro de "features" seleccionados o para saltar al final o principio de la secuencia de DNA. Son muy intuitivos, asi que pruebenlos!
 
@@ -48,7 +48,7 @@ Tareas sugeridas:
 1. Marquen una región, luego desde el menu del click izquierdo, seleccionen 'Zoom to selection'.
 
 
-##### 	4.2 Navigator
+#### 	4.2 Navigator
 
 El panel del navigator es muy intuitivo, así que ábranlo (Clic en 'Goto', luego en 'Navigator') y pruébenlo!.
 
@@ -66,7 +66,7 @@ Sugerencias a donde ir:
 
 Claramente hay muchos más funciones de Artemis, las cuales no tendremos tiempo de explicar en detalle. Sin embargo ustedes mismos pueden recorrer los menús. Seguramente encuentren que la mayoría de ellos son intuitivos y simples de entender.
 
-##### 	4.3 Feature Selector
+#### 	4.3 Feature Selector
 
 Para acceder a este menú hay que ir a "Select" y luego a "Feature Selector ...". Al igual que con el Navigator, esto nos abre una nueva ventana donde podemos elegir los criterios de selección. Cada una de las opciones tiene una cajita asociada a su izquierda que nos permite usar o ignorar cada criterio, pudiéndose realizar cualquier combinación de los mismos.
 
@@ -81,7 +81,7 @@ Para acceder a este menú hay que ir a "Select" y luego a "Feature Selector ..."
 
 Al finalizar la elección de criterios pueden apretar "Select" para seleccionar las regiones que cumplan con la búsqueda, o "View" para que nos dé una lista de los hits, con el mismo formato que la que encontramos bajo el panel principal.
 
-#### 	Analizando información particular:
+### 	Analizando información particular:
 
 Por el método de su elección diríjanse a la región localizada entre las bases 2188349 y 2199512 en la secuencia de ADN. Esta región esta bordeada por el gen fbaB, el cual codifica la fructosa bisfosfonato aldolasa. Pueden utilizar el 'Navigator', el 'Feature Selector' o las funciones de 'Goto' discutidas previamente para ir a esta localización. Una vez que estén ahí visualizaremos la información específica disponible:
 
@@ -93,13 +93,13 @@ Gráficos: Se pueden desplegar gráficos de características seleccionando un "C
 
 Visualizando los resultados de búsquedas en bases de datos: Hagan click en el menú 'View', luego seleccionen 'Search Results' y luego 'Fasta results'. Los resultados de la búsqueda aparecerán en una nueva ventana. Si clickean en el botón que se encuentra en el piso de esta ventana denominado 'send to browser', los resultados serán posteados en una ventana del buscador de internet. Dentro de esta ventana hay muchos links activos a fuentes externas de información como las entradas originales de bases de datos para todos aquellas que alinean con tu secuencia, como así también información disponible en PubMed, PFAM y muchos otros.
 
-#### 	Analizando información global:
+### 	Analizando información global:
 
 Además de visualizar al detalle los "features" anotados también se puede observar las características del ADN en toda la región presentada. Esto puede realizarse adicionando diferentes gráficos mostrando distintas características del ADN. Algunos de estos son utilizados para observar el potencial codificante o marcos de lectura dentro del ADN, como el 'GC frame plot', y otros pueden ser utilizados para buscar regiones de ADN adquirido horizontalmente. En el directorio de este módulo encontrarán una tabla de uso de codones, S_typhi.cod, la cual puede ser utilizada para generar un gráfico de uso de codones cargándola mediante la opción 'Add usage plots' dentro del menú 'Graph'.
 
 Clickeen en el menú 'Graph' para ver todos los gráficos disponibles. Tal vez los gráficos más útiles sean 'GC content (%)' , 'GC Deviation' y 'Karlin Signature Difference' (es un gráfico de frecuencia de dinucleótidos). Despliéguenlos!. Para ajustar la suavidad de los gráficos pueden cambiar el tamaño de la ventana sobre la cual los puntos del gráfico son calculados, utilizando el deslizador vertical a la derecha de los mismos.
 
-#### 	Nota:
+### 	Nota:
 
 La información de los gráficos es generada dinámicamente por Artemis y aunque este es un ejercicio relativamente rápido para una pequeña región de ADN, en una vista de genoma completo esto puede demorar un rato, así que, en tal caso,tengan paciencia.
 
