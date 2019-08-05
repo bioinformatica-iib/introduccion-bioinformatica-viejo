@@ -10,7 +10,7 @@
 <summary>Ver lista completa</summary>
 <table>
    <tr>
-      <th style="color:red">Program name</th>
+      <th>Program name</th>
       <th>Description</th>
    </tr>
    <tr>
