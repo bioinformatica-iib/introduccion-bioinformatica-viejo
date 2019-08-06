@@ -142,11 +142,12 @@ DistanciaCorr <- as.dist(1-cor(t(MiTabla)))
 ```
 
 GEN | genA | genB | genC
- --- | --- | --- | --- | --- 
+---- | ---- | ---- | ---- | ---- 
 genA | 1 | | | 
 genB | 1.94491118 |  | 
 genC | 0.07142857 | 1.75592895 | 
 genD | 1.98432414 | 0.01217084 | 1.84855529
+
 
 La función `cor()` calcula la matriz de correlaciones sobre las columnas, por defecto, utiliza la correlación de Pearson. Este coeficiente de correlación varía entre 1 (genes perfectamente correlacionados) y -1 (correlación negativa perfecta: cuando uno sube, el otro baja), pasando por el 0 (no hay correlación lineal entre ellos).
 
@@ -157,6 +158,8 @@ Luego de visualizar el nuevo dendograma....
 ```r
 heatmap(MiTablaSTD, Colv=NA)
 ```
+![](./images/plot_ejemplo_2.png)
+
 
 Inspeccionamos el heatmap que es una imagen que muestra niveles de expresión más altos como más calientes o blancos/amarillos y los de menos expresion como mas frios o rojos. Colv indica si las columnas (tiempos en este caso) deben ser agrupadas o reordenadas y cómo. `Colv= NA` (NA = Not Available), indica que no las reagrupe (respetando el orden natural de la variable tiempo). Las filas (genes) van a ser agrupadas utilizando la función `hclust()` con sus opciones por default y la distancia euclídea, a menos que se indique otra cosa.
 
@@ -189,7 +192,11 @@ kmeans(MiTablaGrande,5,nstart=100)
 Ahora con lo aprendido, importar y analizar el conjunto de datos diauxic.txt.
 1. Identificar grupos de genes que se comporten de manera similar.
 
+Deberían llegar a algo así:
+![](./images/plot_ejemplo_3.png)
+
 2. Análisis de enriquecimiento funcional Después de haber identificado clusters, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes clusters encontrados (ver instrucciones abajo). En esta instancia tenemos clusters de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, están involucrados en procesos biológicos diferentes a los genes de otro de los clusters. Ya que el genoma de *Saccharomyces cerevisiae* está anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO) podemos averiguar si los genes de un cluster están enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro cluster o bien, respecto a todo el genoma. Para esto utilizar algún servidor online, como FatiGO, GOrilla o DAVID.
+
  
 El servidor requiere seleccionar el organismo (*S. cerevisiae*), subir una lista de identificadores de genes de interés (uno de los clusters, en el que queremos detectar enriquecimiento funcional), e indicar contra qué los queremos contrastar (genoma u otra lista de interés, e.g. otro cluster). Dependiendo de la herramienta utilizada, también hay que seleccionar una o más bases de datos de anotación funcional (en este caso, "GO - biological process"; pero bien podríamos seleccionar otra, como Interpro motifs y detectar motivos que estén significativamente mas representados en uno de los clusters que en el otro). En este sentido, DAVID es una de las herramientas más completas ya que permite detectar enriquecimiento en diversos niveles de anotación: interacciones proteína-proteína, dominios funcionales, asociación con enfermedades, vías metabólicas, homología, patrones de expresión tejido-específicos, publicaciones en literatura, etc.
 
@@ -201,6 +208,7 @@ Cluster2 <- MiTablaSTD[which(MiCorte==2),]  #Guardo en la variable Cluster2 los 
 write(row.names(Cluster1),"Cluster1.ids") # escribo al un archivo externo "Cluster1.ids" los identificadores de los genes del cluster 1.
 write(row.names(Cluster2),"Cluster2.ids")
 ```
+En el caso de usar Gorilla, deberían llegar a algo así para [función](./data/GOrilla_results_diaux/GOResultsFUNCTION.html) y para [procesos](./data/GOrilla_results_diaux/GOResultsPROCESS.html)
 
 ### Análisis de Clustering de RNA-Seq de hoja de Maíz.
 
@@ -227,8 +235,8 @@ En R se pueden computar fácilmente los coeficientes silueta mediante la funció
 
 ```r
 library(cluster) # llamamos a la librería "cluster"
-MiSiluetaKMeans = silhouette(MiClusteringKMeans$cluster,MiMatrizDeDistancias) # para un clustering por K-means o bien...
-MiSiluetaJerarquico = silhouette(MiCorteDelArbol,MiMatrizDeDistancias) # para un clustering con hclust() - cutree()
+MiSiluetaKMeans <- silhouette(MiClusteringKMeans$cluster,MiMatrizDeDistancias) # para un clustering por K-means o bien...
+MiSiluetaJerarquico <- silhouette(MiCorteDelArbol,MiMatrizDeDistancias) # para un clustering con hclust() - cutree()
 ```
 
 Se pueden ver los coeficientes Silueta para todos los datos:

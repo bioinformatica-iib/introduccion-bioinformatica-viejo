@@ -1,4 +1,4 @@
-dt <- read.table("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
+dt <- read.table("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 dt <- dt[c(2:15),]
 colnames(dt) <- dt[1,]
 dt <- dt[-1,]
@@ -20,6 +20,6 @@ for (i in 3:length(dt[1,])){
 nueva_dt <- nueva_dt[-1,]
 nueva_dt <- nueva_dt[nueva_dt$columnaW<19,]
 
-dt_compuestos <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/diseño_compuestos",sep="\t",stringsAsFactors = F)
-dt_diluciones <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/diseño_diluciones",sep="\t",stringsAsFactors = F)
+dt_compuestos <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/diseño_compuestos",sep="\t",stringsAsFactors = F)
+dt_diluciones <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/diseño_diluciones",sep="\t",stringsAsFactors = F)
 nueva_dt_completa <- merge(nueva_dt,dt_diluciones,by.x="filaW",by.y="Fila")
