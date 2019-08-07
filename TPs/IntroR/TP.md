@@ -617,25 +617,27 @@ Es importante recalcar que todo este trabajo de "parsear" archivos lo pueden des
 
 
 
-### Parseando archivos de salida del FilterMax
+### Parseando archivos de salida del FilterMax y generar curvas dosis/respuesta
 
 Como ejemplo real de algo que podría serles de ayuda en su trabajo como biotecnólogos. 
 
 
 Tomemos el ejemplo de usar datos del equipo *Filter Max* que se dispone para uso de los que trabajan en el IIB. Este equipo es muy usado puesto que permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso te permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada cierto intervalos de tiempo).
-Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos en un solo ensayo si por ejemplo hacemos mediciones cada 5 minutos durante una hora en una placa de 384 wells. Como es el ejemplo real que vamos a trabajar donde se intenta dilucidar la cinética de una enzima.
+Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos en un solo ensayo si por ejemplo hacemos mediciones cada 5 minutos durante una hora en una placa de 384 wells.
 
-El investigador realiza un ensayo donde evalúa cada 5 minutos durante 1 hora (12 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 12 compuestos con dos repeticiones de cada compuesto. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
+En nuestro ejemplo (datos reales) El investigador realiza un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 22 compuestos. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing). 
+**NOTA** Los nombres de las drogas son ficticios
 
-La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular la regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores. 
+La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores. 
 
-Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración.
+Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración. 
 
-Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL, obtener el R2 de cada una (como control), y luego ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas (esto es, obtener el IC50 y el coeficiente de Hill)
+Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% mas lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
 
-Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar, sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
+Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar. Sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
 
 Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas series de concentraciones de cada compuesto para cada tiempo.
+
 Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
 
 * ¿Puede terminar antes de las 10 de la noche? 
@@ -646,7 +648,53 @@ Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo
 
 * ¿Cómo plantearían el análisis?
 
-Intentemos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
+Luego de consultar con un bioinformatico amigo, llegaron a la resolución rápida y pudieron informar los resultados al director con los archivos que tienen en la carpeta "results". 
+
+En esta carpeta tienen tres archivos:
+
+* Un .pdf donde se realizaron todas las RL para cada compuesto, como el siguiente:
+
+![](./images/plot_ejemplo_7.png)
+
+* Un .pdf con un análisis de la curva dosis/respuesta donde estimaron el IC50, como el siguiente:
+
+![](./images/plot_ejemplo_6.png)
+
+Además, pudieron exportar la siguiente tabla:
+
+| compuesto           | IC50   | min    | max     | 
+|---------------------|--------|--------|---------| 
+| DMSO                | 0      | 0      | 0       | 
+| Diclofenac sodium   | 0.06   | 0.05   | 0.06    | 
+| Lisinopril-2        | 0.48   | 0.44   | 0.52    | 
+| Rasagiline mesylate | 0.69   | 0.47   | 1.04    | 
+| Amlodipine besylate | 0.69   | 0.08   | 4.87    | 
+| Carbinoxamine       | 0.69   | 0.43   | 1.03    | 
+| Alendronate sodium  | 2.35   | 0.94   | 58.44   | 
+| Aripiprazole        | 2.83   | 1.04   | 9.08    | 
+| Acetaminophen       | 5.25   | 1.4    | 12.68   | 
+| Diltiazem HCl       | 5.32   | 2.8    | 9.67    | 
+| Dihydrochloride     | 9.8    | 4.36   | 22.78   | 
+| Quetiapine fumarate | 38.25  | 4.3    | 70.45   | 
+| Flunarizine         | 150.16 | 110.39 | 189.78  | 
+| Oxcarbazepine       | 155.37 | 17.1   | 504.75  | 
+| Isatin              | 164.53 | 123.37 | 262.81  | 
+| Dutasteride         | 200.93 | 76.15  | 200.93  | 
+| Irbesartan          | 201.93 | 142.02 | 269.2   | 
+| Duloxetine          | 218.64 | 136.79 | 329.02  | 
+| Nicorandil          | 294.12 | 223.16 | 351.76  | 
+| Nicorandil-2        | 828.37 | 612.85 | 1054.84 | 
+| Lisinopril          | NA     | NA     | NA      | 
+| Milrinone           | NA     | NA     | NA      | 
+| Pregabalin          | NA     | NA     | NA      | 
+
+Pueden ver los archivos .pdf si les interesa ver como dieron el resto de los compuestos, por ejemplo podrían discutir porque puede ser que el investigador haya descartado el IC50 de los primeros 6 compuestos de la tabla. 
+
+¿Creen que es muy dificl/laborioso hacer todos estos gráficos y análisis en R?
+
+Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
+
+#### Parsear los datos
 
 Primero empezamos mirando el archivo que hay que mirar en cualquier editor de texto plano, pueden hacerlo directamente en Rstudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
 Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los valores separados por "tabs".
@@ -674,11 +722,11 @@ dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors
 ```
 
 Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en Rstudio?
-Se dan cuenta que uno de los problemas principales es que la primera y las últimas dos filas, son innecesarias para lo que nosotros necesitamos hacer? ¿Se imaginan cómo borrar esas filas? Básicamente hay que indexar la *data frame*. Se puede pedir las filas que queremos c(2:15), o restar las que no queremos -c(1,16:17).
+Se dan cuenta que uno de los problemas principales es que la primera y las últimas dos filas, son innecesarias para lo que nosotros necesitamos hacer? ¿Se imaginan cómo borrar esas filas? Básicamente hay que indexar la *data frame*. Se puede pedir las filas que queremos c(2:6), o restar las que no queremos -c(1,7:8).
 
 
 ```r
-dt <- dt[c(2:15),]
+dt <- dt[c(2:6),]
 head(dt)
 ```
 Además, la fila 1 contiene los nombres de las columnas, esto se puede asignar bastante fácil:
@@ -779,8 +827,7 @@ Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila d
 
 ```r
 nueva_dt <- nueva_dt[-1,]
-nueva_dt <- nueva_dt[nueva_dt$columnaW<19,]
-print(nueva_dt)
+head(nueva_dt)
 ```
 
 Genial gente, ya logramos cargar todos los datos como el investigador hubiera querido, nos tomó bastante tiempo y es lógico que algunas cosas hayan sido un poco confusas para la primera vez que hacen algo así, pero entiendan que se hace más simple con la costumbre, y el ejemplo es un caso de uso real, no es un ejemplo de libro.
@@ -790,12 +837,19 @@ Hay algo más que podemos hacer muy fácil y es asignar el valor de dilución y 
 Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar cómo funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
 
 ```r
-dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F)
+dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
 print(nueva_dt_completa)
 ```
+¿Alguien no entiende a que se debe el "dec = ","? Pueden sacarse la duda leyendo el `help(read.csv)`
+
 La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
-Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador. Si tienen tiempo, o quieren practicar en sus casas, pueden probar de hacer las RL, calcular los R2, la velocidad de la reacciones, los IC50 y el coeficiente de Hill.
+¿Pueden hacer esto mismo pero para los compuestos?
+
+Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador. 
+
+#### Análisis de dosis/respuesta para inhibición de la reacción enzimatica
+
 
 
 Pueden encontrar el ejemplo resuelto en el archivo "Analisis_filerMax_resuelto.R".

@@ -1,11 +1,14 @@
-dt <- read.table("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
-dt <- dt[c(2:15),]
+library(nplr)
+library(ggplot2)
+setwd("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR")
+dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
+dt <- dt[c(2:6),]
 colnames(dt) <- dt[1,]
 dt <- dt[-1,]
 
 nueva_dt <- data.frame(filaW="",columnaW=0,signal=0,Time="",stringsAsFactors = F)
 for (i in 3:length(dt[1,])){
-  # i <- 3
+  # i <- 5
   nombre_pocillo <- colnames(dt)[i]
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
   fila_pocillo <- nombre_split[1]
@@ -18,8 +21,72 @@ for (i in 3:length(dt[1,])){
   nueva_dt <- rbind(nueva_dt,dt_pocillo)
 }
 nueva_dt <- nueva_dt[-1,]
-nueva_dt <- nueva_dt[nueva_dt$columnaW<19,]
 
-dt_compuestos <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/diseño_compuestos",sep="\t",stringsAsFactors = F)
-dt_diluciones <- read.csv("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR/data/diseño_diluciones",sep="\t",stringsAsFactors = F)
+dt_compuestos <- read.csv("./data/diseño_compuestos",sep="\t",stringsAsFactors = F)
+dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
 nueva_dt_completa <- merge(nueva_dt,dt_diluciones,by.x="filaW",by.y="Fila")
+nueva_dt_completa <- merge(nueva_dt_completa,dt_compuestos,by.x="columnaW",by.y="Columna")
+nueva_dt_completa[nueva_dt_completa$Inhibidor.uM==0,]$Compuesto <- "DMSO"
+nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
+times_temp <- strsplit(nueva_dt_completa$Time,split=":")
+nueva_dt_completa$Time <- as.numeric(unlist(lapply(times_temp, `[[`, 1)))*60+as.numeric(unlist(lapply(times_temp, `[[`, 2)))+as.numeric(unlist(lapply(times_temp, `[[`, 3)))/60
+
+pdf("./results/TPintroRFilterMax.pdf")
+lista_compuestos <- unique(nueva_dt_completa$Compuesto)
+for(i in 1:length(lista_compuestos)){
+  # i<-1
+  plot_1 <- ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y=signal,color=Compuesto))+
+    geom_point()+
+    geom_smooth(method="lm")+
+    theme_minimal()
+  compuesto <- lista_compuestos[i]
+  dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto==compuesto,]
+  concentraciones <- unique(dt_compuesto$Inhibidor.uM)
+  for(concentracion in concentraciones){
+    dt_plot <- dt_compuesto[dt_compuesto$Inhibidor.uM==concentracion,]
+    plot_1 <- plot_1+ geom_point(data=dt_plot)+geom_smooth(data=dt_plot,method="lm")
+  }
+  print(plot_1)
+}
+dev.off()
+
+dt_inhibicion <- data.frame(compuesto="",concentracion=0,vel.reaccion=0,stringsAsFactors = F)
+for(i in 1:length(lista_compuestos)){
+  # i<-1
+  compuesto <- lista_compuestos[i]
+  dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto==compuesto,]
+  concentraciones <- unique(dt_compuesto$Inhibidor.uM)
+  for(concentracion in concentraciones){
+    dt_regresion <- dt_compuesto[dt_compuesto$Inhibidor.uM==concentracion,]
+    lm_temp <- lm(data = dt_regresion,formula = signal~Time)
+    dt_inhibicion_temp <- dt_inhibicion[1,]
+    dt_inhibicion_temp$compuesto[1] <- compuesto
+    dt_inhibicion_temp$concentracion[1] <- concentracion
+    dt_inhibicion_temp$vel.reaccion[1] <- lm_temp$coefficients[2]
+    dt_inhibicion <- rbind(dt_inhibicion,dt_inhibicion_temp)
+  }
+}
+dt_inhibicion <- dt_inhibicion[-1,]
+vel.sin.inhibicion <- dt_inhibicion[dt_inhibicion$compuesto=="DMSO",]$vel.reaccion
+dt_inhibicion$act.residual <- 100*(dt_inhibicion$vel.reaccion/vel.sin.inhibicion)
+
+dt_resultado <- data.frame(compuesto=lista_compuestos,IC50=0,min=0,max=0)
+pdf("./results/Curvas_dosisRespuesta.pdf")
+for(i in 1:length(lista_compuestos)){
+  # i<-13
+  compuesto <- lista_compuestos[i]
+  if(compuesto=="DMSO"){
+    next()
+  }
+  dt_plot <- dt_inhibicion[dt_inhibicion$compuesto==compuesto,]
+  sigm_temp <- nplr(x = dt_plot$concentracion,y=dt_plot$act.residual/100)
+  temp_IC50 <- round(getEstimates(sigm_temp, .5, conf.level=.99),2)
+  titulo <- paste0(compuesto,"\n IC50 : ",temp_IC50$x , " uM [", temp_IC50$x.005, "," ,temp_IC50$x.995,"]") 
+  print(plot(sigm_temp,main=titulo))
+  dt_resultado[dt_resultado$compuesto==compuesto,]$IC50 <- temp_IC50$x
+  dt_resultado[dt_resultado$compuesto==compuesto,]$min <- temp_IC50$x.005
+  dt_resultado[dt_resultado$compuesto==compuesto,]$max <- temp_IC50$x.995
+}
+dev.off()
+dt_resultado <- dt_resultado[order(dt_resultado$IC50,decreasing = F),]
+write.table(dt_resultado,file = "./results/tablaIC50.tsv",sep="\t",row.names = F,quote = F)

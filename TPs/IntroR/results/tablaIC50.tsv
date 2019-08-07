@@ -1,0 +1,24 @@
+compuesto	IC50	min	max
+DMSO	0	0	0
+Diclofenac sodium	0.06	0.05	0.06
+Lisinopril-2	0.48	0.44	0.52
+Rasagiline mesylate	0.69	0.47	1.04
+Amlodipine besylate	0.69	0.08	4.87
+Carbinoxamine	0.69	0.43	1.03
+Alendronate sodium	2.35	0.94	58.44
+Aripiprazole	2.83	1.04	9.08
+Acetaminophen	5.25	1.4	12.68
+Diltiazem HCl	5.32	2.8	9.67
+Dihydrochloride	9.8	4.36	22.78
+Quetiapine fumarate	38.25	4.3	70.45
+Flunarizine	150.16	110.39	189.78
+Oxcarbazepine	155.37	17.1	504.75
+Isatin	164.53	123.37	262.81
+Dutasteride	200.93	76.15	200.93
+Irbesartan	201.93	142.02	269.2
+Duloxetine	218.64	136.79	329.02
+Nicorandil	294.12	223.16	351.76
+Nicorandil-2	828.37	612.85	1054.84
+Lisinopril	NA	NA	NA
+Milrinone	NA	NA	NA
+Pregabalin	NA	NA	NA
