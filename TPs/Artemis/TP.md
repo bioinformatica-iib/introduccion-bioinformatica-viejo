@@ -204,4 +204,6 @@ Esto implica que cuando descarguen una secuencia en formato EMBL para poner en a
 
 ### Ejercicio 4: Búsquedas en bases de datos
 
-LOREM IPSUM
+Este ejercicio los introducirá a las búsquedas en bases de datos a través de la interfaz de Artemis y cómo podemos usar esta función para anotar genes. 
+
+Volviendo a la ventana de *S. typhi*. 

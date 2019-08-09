@@ -1683,16 +1683,77 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 Una vez descargado el resumen, podemos buscar entre todas las secuencias cuáles podrían interesarnos. Prueben usando distintos comandos de unix, como ``grep``, ``awk`` y ``cat`` para obtener el link ftp de todas las secuencias de *E. coli* de la cepa BL21 (comunmente utilizada para expresión heteróloga).
 
 <details>
-<summary>Ver links</summary>
-<div class="alert alert-light">
-ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1
-ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1
-ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1
-</div>
+<summary>Ver links a los genomas</summary>
+<ul>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1">GCF_000009565.1_ASM956v1</a></li>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1">GCF_000022665.1_ASM2266v1</a></li>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1">GCF_000023665.1_ASM2366v1</a></li>
+</ul>
 </details>
 
-También pueden buscar en el apartado ["Genome"](https://www.ncbi.nlm.nih.gov/genome/) del NCBI a su organismo de interés hasta dar con la secuencia de referencia. 
+---
 
+> También pueden buscar en el apartado ["Genome"](https://www.ncbi.nlm.nih.gov/genome/) del NCBI a su organismo de interés hasta dar con la secuencia de referencia, aunque seimpre recomendamos el acceso programático, dado que puede automatizarse (si fuera necesario).
 
+Una vez identificada la manera de filtrar el `summary` hasta obtener el/los genomas de interés, bajar el/los archivos `<genoma>_cds_from_genomic.fna.gz`, donde `<genoma>` sería el link al genoma de interés. 
 
+Podemos agregar manualmente (buh! :poop:) o podemos hacer todo en un solo paso (eeh! :tada: ):
 
+```Bash
+# Obtengo los links <- Esto puede ser muy distinto a lo que hicieron ustedes para obtener sus links, revisen las diferencias :)
+cat assembly_summary.txt | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest" && $8 ~ "BL21") {print $20}}'  > ftpdirpaths
+# Agrego el sufijo _cds_from_genomic_fna.gz
+awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
+# Descargo de todas las URLs adentro de ftpfilepaths
+wget -i ftpfilepaths
+```
+
+<details>
+<summary>Ver links a los genomas</summary>
+<ul>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz ">GCF_000009565.1_ASM956v1</a></li>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz ">GCF_000022665.1_ASM2266v1</a></li>
+<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz ">GCF_000023665.1_ASM2366v1</a></li>
+</ul>
+</details>
+
+---
+
+Ahora que tenemos nuestra lista de secuencias codificantes, vamos a calcular el uso de codones usando `cusp`.
+
+```Bash
+# Podemos hacerlo así:
+zcat GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz | cusp -sequence stdin -outfile ecoli.cusp
+
+# O así:
+gzip -d GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz
+cusp -sequence GCF_000009565.1_ASM956v1_cds_from_genomic.fna -outfile GCF_000009565.1_ASM956v1_cds_from_genomic.cusp
+
+# O así: 
+files=`ls GCF*.gz`
+for file in ${files}; do zcat ${file} | cusp -auto -sequence stdin -outfile ${file}.cusp; done
+
+# Todas las alternatias son correctas (incluso podría haber más... )
+```
+
+Revisen la tabla de codones. Qué representa? 
+
+### 4. Optimizar la secuencia en función de la tabla de uso de codones
+
+Recuerden que todo esto devino de la necesidad de expresar en forma heteróloga una proteína de interés, de modo que el siguiente paso es adaptar nuestra secuencia original al uso de codones del organismo en el que expresaremos nuestra proteína recombinante. 
+
+Para ello, podemos usar `backtranseq`: Dada una secuencia de aminoácidos correspondiente a una proteína de interés, este programa nos permite (des?)-traducirla a la secuencia de DNA que, con mayor probabilidad, le dio origen. Es decir, backtranseq utilizará una tabla de uso de codones provista para escribir una secuencia de DNA a partir de una secuencia de aminoácidos. Revisen el manual de EMBOSS en búsqueda de información sobre cómo usar la herramienta. 
+
+```Bash
+# A Leer?
+tfm backgranseq
+# Igual acá está el que anda, vagxs. 
+backtranseq -auto -sequence myprotein.fasta -cfile ecoli.cusp -outfile myprotein.ecoli.codons.dna.fasta
+```
+### 5. Analizar los patrones de restriccion de mi nueva secuencia (optimizada)
+
+LOREM IPSUM
+
+### 6. Agregar sitios de restriccion (silent) o quitar sitios (recoder) sin afectar la secuencia final de proteinas
+
+LOREM IPSUM
