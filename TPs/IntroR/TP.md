@@ -1001,10 +1001,13 @@ Deberían llegar a algo así:
 
 ```
 
-5- Guardamos el valor de velocidad para el compuesto “DMSO” (es decir, sin inhibidor) como la velocidad original de la reacción.
-6- Calculamos el valor de inhibición, para el que no lo recuerda, este es: 100 * (velocidad / vel.original)
-7- Creamos una tabla nueva donde podremos guardar el IC50 de cada compuesto (también podríamos guardar las estimaciones de límite de la inferencia).
-8- Iteramos la tabla de velocidades para cada compuesto y la filtramos, con esto usamos la función `nplr()` para ajustar la sigmoidea y la función `getEstimates()` del mismo paquete para obtener los valores estimados de IC50. 
+5. Guardamos el valor de velocidad para el compuesto “DMSO” (es decir, sin inhibidor) como la velocidad original de la reacción
+
+6. Calculamos el valor de inhibición, para el que no lo recuerda, este es: 100 * (velocidad / vel.original)
+
+7. Creamos una tabla nueva donde podremos guardar el IC50 de cada compuesto (también podríamos guardar las estimaciones de límite de la inferencia)
+
+8. Iteramos la tabla de velocidades para cada compuesto y la filtramos, con esto usamos la función `nplr()` para ajustar la sigmoidea y la función `getEstimates()` del mismo paquete para obtener los valores estimados de IC50
 
 Deberían llegar a algo así:
 
@@ -1019,4 +1022,5 @@ Deberían llegar a algo así:
 19       Carbinoxamine 0.69 0.44 1.03
 ```
 
+Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimos y resolviendo algunos de los que no se mostraba resuelto, pero recuerden que todo el script está resuelto en: "scripts/Analisis_filerMax_resuelto.R"
 
