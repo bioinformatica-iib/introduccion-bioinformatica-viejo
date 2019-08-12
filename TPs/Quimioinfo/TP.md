@@ -220,8 +220,6 @@ convertFormatFile("SMI","SDF","druglike.list","drugllibrary(data.table)ike.sdf")
 
 > ¿Cuántas moléculas quedaron en el dataset luego de utilizar los filtros medchem?¿Cómo cambiaron las características fisicoquímicas de los compuestos en la librería?
 
-
-
 Habiendo aplicado el filtro de *drug-likeness* podemos continuar con los filtros de redundancia que son, conceptual y computacionalmente más complejos. Hemos logrado, hasta ahora, una colección de compuestos con características deseables y no muy similares entre sí, pero … ¿cómo sabemos si nuestra librería no tiene uno o más grupos funcionales super-representados? Esto es ¿Cómo identificamos moléculas suficientemente distintas pero con motivos estructurales repetidos?
 
 Revisen, por ejemplo, los compuestos CMP12 y CMP16. ¿Notan alguna similitud?¿Qué tiene en común? 
