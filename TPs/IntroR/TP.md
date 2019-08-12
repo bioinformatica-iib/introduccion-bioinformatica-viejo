@@ -905,6 +905,8 @@ Luego de las transformaciones planteadas, deberían llegar a algo así:
                                        Max.   :4809139   Max.   :15.000   Max.   :200.000   
 ```
 
+##### Velocidad de las reacciones
+
 Ahora podríamos hacer un gráfico, muy similar al que vieron en esta guía con `ggplot()` para una regresión lineal de las reacciones. Comencemos con la reacción sin inhibidores (*DMSO*).
 según la estructura de ggplot, primero tenemos que decirle:
 * Los datos que graficar: ¿Toda la tabla? ¿Una parte? 
