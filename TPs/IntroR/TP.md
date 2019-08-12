@@ -692,7 +692,8 @@ Pueden ver los archivos .pdf si les interesa ver como dieron el resto de los com
 
 ¿Creen que es muy dificl/laborioso hacer todos estos gráficos y análisis en R?
 
-Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
+Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran. 
+En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta. 
 
 #### Parsear los datos
 
@@ -850,6 +851,110 @@ Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisi
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimatica
 
+Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
+
+```r
+> head(nueva_dt_completa)
+  columnaW filaW signal     Time Inhibidor.uM     Compuesto
+1        1     D 609960 00:04:59     59.25926 Acetaminophen
+2        1     E 679028 00:04:59     39.50617 Acetaminophen
+3        1     E 896665 00:10:00     39.50617 Acetaminophen
+4        1     F 724846 00:04:59     26.33745 Acetaminophen
+5        1     B 426093 00:00:00    133.33333 Acetaminophen
+6        1     B 618868 00:04:59    133.33333 Acetaminophen
+> summary(nueva_dt_completa)
+   columnaW            filaW              signal              Time            Inhibidor.uM      Compuesto        
+ Length:1408        Length:1408        Length:1408        Length:1408        Min.   :  0.000   Length:1408       
+ Class :character   Class :character   Class :character   Class :character   1st Qu.:  2.120   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :  9.755   Mode  :character  
+                                                                             Mean   : 37.414                     
+                                                                             3rd Qu.: 44.444                     
+                                                                             Max.   :200.000 
+```
+Como pueden ver, las columnas de señal y tiempo estan cargadas como "character", lo cual no es correcto, porque en realidad son variables numericas, y en todo el análisis posterior vamos a necesitar considerarlos así.
+
+¿Como podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
 
 
-Pueden encontrar el ejemplo resuelto en el archivo "Analisis_filerMax_resuelto.R".
+```r
+nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
+```
+
+Aparentemente la columna de señal se transforma bastante fácil puesto que son números interpretados como caracteres, algo que ya vimos. ¿Pero que pasa con la columna de tiempo? La solución es un poco mas compleja puesto que el programa usa un formato donde los segundos, minutos y horas están separados por ":" ¿Se les ocurre alguna forma de aprovechar ese formato para darle formato de números? Ya vimos una función con la que se puede resolver el problema. No es solución tan lineal, si no pueden hacerlo no se preocupen, en el script resuelto pueden ver una forma de hacerlo.
+
+Además, tengo otro problema, todas las concetraciones de 0 para cualquier compuesto inhibidor son en realidad el control de la reacción sin inhibidor. Por lo que el investigador prefiere que en la columna "compuesto" donde la concentración es 0, este el valor "DMSO" 
+
+Luego de las transformaciones planteadas, deberían llegar a algo así:
+
+```r
+> head(nueva_dt_completa)
+  columnaW filaW signal      Time Inhibidor.uM     Compuesto
+1        1     D 609960  4.983333     59.25926 Acetaminophen
+2        1     E 679028  4.983333     39.50617 Acetaminophen
+3        1     E 896665 10.000000     39.50617 Acetaminophen
+4        1     F 724846  4.983333     26.33745 Acetaminophen
+5        1     B 426093  0.000000    133.33333 Acetaminophen
+6        1     B 618868  4.983333    133.33333 Acetaminophen
+> summary(nueva_dt_completa)
+   columnaW            filaW               signal             Time         Inhibidor.uM      Compuesto        
+ Length:1408        Length:1408        Min.   : 131934   Min.   : 0.000   Min.   :  0.000   Length:1408       
+ Class :character   Class :character   1st Qu.: 450696   1st Qu.: 3.737   1st Qu.:  2.120   Class :character  
+ Mode  :character   Mode  :character   Median : 777522   Median : 7.492   Median :  9.755   Mode  :character  
+                                       Mean   : 850579   Mean   : 7.496   Mean   : 37.414                     
+                                       3rd Qu.:1217152   3rd Qu.:11.250   3rd Qu.: 44.444                     
+                                       Max.   :4809139   Max.   :15.000   Max.   :200.000   
+```
+
+Ahora podríamos hacer un gráfico, muy similar al que vieron en esta guía con `ggplot()` para una regresión lineal de las reacciones. Comencemos con la reacción sin inhibidores (*DMSO*).
+según la estructura de ggplot, primero tenemos que decirle:
+* Los datos que graficar: ¿Toda la tabla? ¿Una parte? 
+* Las columnas con los ejes (x, y)
+* La columna que identifica como colorear los datos (esto es, cuando hay mas de una serie y las queremos diferenciar)
+
+Y luego, agregar cada uno de los diferentes componentes que queremos graficar. Para seguir con el ejemplo que habíamos visto anteriormente, queremos agregar un scatterplot (`geom_point()`) y una regresión lineal (`geom_smooth()`).
+Por lo cual, deberían haber llegado a algo así:
+
+```r
+ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y=signal,color=Compuesto))+
+    geom_point()+
+    geom_smooth(method="lm")+
+    theme_minimal()
+```
+Luego, para cada uno de los compuestos queremos agregarles una nueva serie para cada concentración, y que tenga tanto los puntos como la regresión lineal. ¿Se imaginan como lo podemos hacer? 
+
+Como ejemplo, si queremos agregar la concentracion "59.25926" del compuesto "Acetaminophen" deberíamos hacer algo así:
+
+```r
+plot_1 <- ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y=signal,color=Compuesto))+
+    geom_point()+
+    geom_smooth(method="lm")+
+    theme_minimal()
+dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto=="Acetaminophen",]   
+dt_plot <- dt_compuesto[dt_compuesto$Inhibidor.uM=="59.25926",]
+plot_1 <- plot_1+ geom_point(data=dt_plot)+geom_smooth(data=dt_plot,method="lm")
+
+```
+
+Claramente escribir el código para cada una de las concentraciones y cada uno de los compuestos es muchisimo trabajo y bastante desprolijo.
+
+¿Se les ocurre alguna forma de hacerlo mas fácil?
+
+No es tan sencillo, pero basicamente tenemos que iterar cada uno de los compuestos, y cada una de las concentraciones. Si no pueden hacerlo ustedes, recuerden que lo tienen resuelto en el archivo "scripts/Analisis_filerMax_resuelto.R".
+
+Por último cuando hayan hecho todos los plots, quieren exportarlo a un .pdf. Una opción es una hoja del pdf por cada plot de cada compuesto, con lo cual simplemente tenemos que hacer:
+
+```r
+pdf("./results/TPintroRFilterMax.pdf")
+
+```
+
+Todo los plots que hagamos ahora, en vez de verlos en rstudio, se van a guardar en ese archivo, hasta que ejecutemos la orden de cerrar el pdf:
+
+```r
+dev.off()
+```
+
+Recuerden que es muy importante esta última orden, de lo contrario el pdf queda corrupto, no se puede abrir. Y tampoco puedo ver en Rstudio los plots que haga, suele ser un recurrente dolor de cabeza.
+
+
+

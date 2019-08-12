@@ -26,10 +26,18 @@ dt_compuestos <- read.csv("./data/diseño_compuestos",sep="\t",stringsAsFactors 
 dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
 nueva_dt_completa <- merge(nueva_dt,dt_diluciones,by.x="filaW",by.y="Fila")
 nueva_dt_completa <- merge(nueva_dt_completa,dt_compuestos,by.x="columnaW",by.y="Columna")
-nueva_dt_completa[nueva_dt_completa$Inhibidor.uM==0,]$Compuesto <- "DMSO"
+
+head(nueva_dt_completa)
+summary(nueva_dt_completa)
+
 nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
+nueva_dt_completa[nueva_dt_completa$Inhibidor.uM==0,]$Compuesto <- "DMSO"
+
 times_temp <- strsplit(nueva_dt_completa$Time,split=":")
 nueva_dt_completa$Time <- as.numeric(unlist(lapply(times_temp, `[[`, 1)))*60+as.numeric(unlist(lapply(times_temp, `[[`, 2)))+as.numeric(unlist(lapply(times_temp, `[[`, 3)))/60
+
+head(nueva_dt_completa)
+summary(nueva_dt_completa)
 
 pdf("./results/TPintroRFilterMax.pdf")
 lista_compuestos <- unique(nueva_dt_completa$Compuesto)
