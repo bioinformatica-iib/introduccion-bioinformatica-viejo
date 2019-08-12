@@ -977,10 +977,14 @@ Para calcular la velocidad de las reacciones podemos usar la función `lm()` bá
 ¿Se pueden hacer una idea de cómo podría plantear resolver todo esto paso a paso?
 
 Yo me planteo lo siguiente:
-1- Crear una data frame para guardar cada una de las velocidades de la reacción para cada concentración de cada compuesto. ¿Que columnas debería tener la tabla?
-2- Iteramos cada compuesto, filtrando la tabla de datos parseados que ya tenemos (de igual forma a como hacíamos antes para hacer cada gráfico de cada compuesto).
-3- A la tabla de cada compuesto la iteramos para cada concentración ensayada y lo guardamos en una nueva tabla.
-4- Calculamos la regresión lineal de la reacción en estas condiciones y guardamos el coeficiente correspondiente a la velocidad de la reacción, que sería la pendiente de la recta. 
+
+1. Crear una data frame para guardar cada una de las velocidades de la reacción para cada concentración de cada compuesto. ¿Que columnas debería tener la tabla?
+
+2. Iteramos cada compuesto, filtrando la tabla de datos parseados que ya tenemos (de igual forma a como hacíamos antes para hacer cada gráfico de cada compuesto).
+
+3. A la tabla de cada compuesto la iteramos para cada concentración ensayada y lo guardamos en una nueva tabla.
+
+4. Calculamos la regresión lineal de la reacción en estas condiciones y guardamos el coeficiente correspondiente a la velocidad de la reacción, que sería la pendiente de la recta. 
 
 Deberían llegar a algo así:
 
