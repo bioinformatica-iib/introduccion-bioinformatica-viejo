@@ -697,7 +697,8 @@ En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas 
 
 #### Parsear los datos
 
-Primero empezamos mirando el archivo que hay que mirar en cualquier editor de texto plano, pueden hacerlo directamente en Rstudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
+Primero empezamos mirando el archivo generado por el Filter Max (`/data/datos_filtermax.txt`), pueden hacerlo directamente en Rstudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
+
 Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los valores separados por "tabs".
 Intentamos cargar los datos con la función `read.csv()` como vimos en anteriormente.
 
@@ -824,7 +825,7 @@ for (i in 3:length(dt[1,])){
 }
 print(nueva_dt)
 ```
-Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila de valores nulos, podríamos borrarlos. Pero además, ¿notan que hay muchas filas sin señal? Eso sucede porque originalmente no se midieron todos los Wells, es más, si miran el diseño original van a ver que de la columna 19 en adelante está todo vacío. ¿Les sale filtrar todas las columnas de la placa de 19 en adelante?
+Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila de valores nulos, podríamos borrarlos. 
 
 ```r
 nueva_dt <- nueva_dt[-1,]
@@ -850,6 +851,10 @@ La función solo nos pide que le indiquemos cuáles son las dt a unir, y que col
 Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador.
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimática
+
+Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual ustedes deberían poder resolverlos. La idea es que aquellos que ya tienen alguna experiencia con R u otros lenguaje de programación puedan explorar esta resolución en detalle, mientras que los que están empezando a entender *de qué va la cosa* adquieran las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. Y vean como todo eso se puede usar en un script que resuelve un problema particular. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos.
+
+Retomemos el parseado de datos donde lo habíamos dejado:
 
 Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
 
@@ -958,7 +963,56 @@ dev.off()
 
 Recuerden que es muy importante esta última orden, de lo contrario el pdf queda corrupto, no se puede abrir. Y tampoco puedo ver en Rstudio los plots que haga, suele ser un recurrente dolor de cabeza.
 
+##### Efecto de los inhibidores
+
+Para evaluar el efecto de los compuestos como inhibidores de la reacción estudiada, se plantea hacer un análisis de cómo cambia la velocidad de la reacción a lo largo de las distintas concentraciones evaluadas. Si el inhibidor funciona de libro, lo que esperaríamos obtener es una curva sigmoidea, donde podríamos hacer un ajuste sigmoidal e interpolar la concentración esperada para obtener una inhibición del 50% en esa curva. Lo que para nosotros se conoce como **IC50**. 
+
+Hay muchas formas de hacer esto, pero como puede ser un poco complejo hacer este tipo de análisis, se me ocurre que ya puede existir algún paquete disponible para su utilización que resuelva todo esto. Busqué un poco en google y llegué al paquete `nplr` que pueden ver una descripción de todo lo que hace en (este link) [https://cran.r-project.org/web/packages/nplr/vignettes/nplr.pdf] .
 
 
+Después de leer detenidamente la documentación, llegué a la conclusión que tengo que pasarle una tabla con la velocidad de reacción de cada concentración medida, para que la función `nplr()` haga el ajuste sigmoidal e incluso me va a permitir hacer un análisis de inferencia de que cual es el rango en el que se puede estimar el **IC50**. 
+
+Para calcular la velocidad de las reacciones podemos usar la función `lm()` básica de R, que hace un ajuste lineal y nos devuelve los coeficientes del ajuste. 
+
+¿Se pueden hacer una idea de cómo podría plantear resolver todo esto paso a paso?
+
+Yo me planteo lo siguiente:
+1- Crear una data frame para guardar cada una de las velocidades de la reacción para cada concentración de cada compuesto. ¿Que columnas debería tener la tabla?
+2- Iteramos cada compuesto, filtrando la tabla de datos parseados que ya tenemos (de igual forma a como hacíamos antes para hacer cada gráfico de cada compuesto).
+3- A la tabla de cada compuesto la iteramos para cada concentración ensayada y lo guardamos en una nueva tabla.
+4- Calculamos la regresión lineal de la reacción en estas condiciones y guardamos el coeficiente correspondiente a la velocidad de la reacción, que sería la pendiente de la recta. 
+
+Deberían llegar a algo así:
+
+```r
+> head(dt_inhibicion)
+      compuesto concentracion vel.reaccion
+2 Acetaminophen     59.259259     37805.37
+3 Acetaminophen     39.506173     43217.32
+4 Acetaminophen     26.337449     46771.97
+5 Acetaminophen    133.333333     40353.69
+6 Acetaminophen      7.803688     35481.71
+7 Acetaminophen      2.312204     52110.30
+
+
+```
+
+5- Guardamos el valor de velocidad para el compuesto “DMSO” (es decir, sin inhibidor) como la velocidad original de la reacción.
+6- Calculamos el valor de inhibición, para el que no lo recuerda, este es: 100 * (velocidad / vel.original)
+7- Creamos una tabla nueva donde podremos guardar el IC50 de cada compuesto (también podríamos guardar las estimaciones de límite de la inferencia).
+8- Iteramos la tabla de velocidades para cada compuesto y la filtramos, con esto usamos la función `nplr()` para ajustar la sigmoidea y la función `getEstimates()` del mismo paquete para obtener los valores estimados de IC50. 
+
+Deberían llegar a algo así:
+
+```
+> head(dt_resultado)
+             compuesto IC50  min  max
+2                 DMSO 0.00 0.00 0.00
+20   Diclofenac sodium 0.06 0.05 0.06
+8         Lisinopril-2 0.48 0.44 0.52
+16 Rasagiline mesylate 0.69 0.48 1.02
+17 Amlodipine besylate 0.69 0.07 4.97
+19       Carbinoxamine 0.69 0.44 1.03
+```
 
 

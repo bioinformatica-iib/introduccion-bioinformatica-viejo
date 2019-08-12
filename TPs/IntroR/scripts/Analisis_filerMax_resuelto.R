@@ -75,8 +75,10 @@ for(i in 1:length(lista_compuestos)){
   }
 }
 dt_inhibicion <- dt_inhibicion[-1,]
+head(dt_inhibicion)
 vel.sin.inhibicion <- dt_inhibicion[dt_inhibicion$compuesto=="DMSO",]$vel.reaccion
-dt_inhibicion$act.residual <- 100*(dt_inhibicion$vel.reaccion/vel.sin.inhibicion)
+dt_inhibicion$inhibicion <- 100*(dt_inhibicion$vel.reaccion/vel.sin.inhibicion)
+head(dt_inhibicion)
 
 dt_resultado <- data.frame(compuesto=lista_compuestos,IC50=0,min=0,max=0)
 pdf("./results/Curvas_dosisRespuesta.pdf")
@@ -87,7 +89,7 @@ for(i in 1:length(lista_compuestos)){
     next()
   }
   dt_plot <- dt_inhibicion[dt_inhibicion$compuesto==compuesto,]
-  sigm_temp <- nplr(x = dt_plot$concentracion,y=dt_plot$act.residual/100)
+  sigm_temp <- nplr(x = dt_plot$concentracion,y=dt_plot$inhibicion/100)
   temp_IC50 <- round(getEstimates(sigm_temp, .5, conf.level=.99),2)
   titulo <- paste0(compuesto,"\n IC50 : ",temp_IC50$x , " uM [", temp_IC50$x.005, "," ,temp_IC50$x.995,"]") 
   print(plot(sigm_temp,main=titulo))
@@ -97,4 +99,5 @@ for(i in 1:length(lista_compuestos)){
 }
 dev.off()
 dt_resultado <- dt_resultado[order(dt_resultado$IC50,decreasing = F),]
+head(dt_resultado)
 write.table(dt_resultado,file = "./results/tablaIC50.tsv",sep="\t",row.names = F,quote = F)
