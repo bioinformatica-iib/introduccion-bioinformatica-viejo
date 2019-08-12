@@ -31,7 +31,7 @@ Para acceder, simplemente entren al siguiente enlace:
 
 ![](./images/Rserver_1.png)
 
-*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. 
+*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo.
 Para empezar, creemos uno nuevo, básicamente lo que conocemos como "Script" que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
 Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". (Como verán hay muchas más cosas que se pueden hacer en Rstudio, nosotros solo vamos a ver las más básicas, pero sientanse libres de explorarlas en su tiempo libre si les genera interés. [Rstudio](https://www.rstudio.com/))
 
@@ -96,7 +96,7 @@ Ya se imaginaran que cabría esperar de cada orden
 Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? En realidad R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo esta forma de almacenar instrucciones es un poco sucia, ya que se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (:laughing: lo cual es muy frecuente :laughing:)
 La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac..digo la necesidad de reutilizar el código.
 Es algo así como el cuaderno de laboratorio bioinformático.
-(En R, comentamos el texto anteponiendo un # a la línea deseada). 
+(En R, comentamos el texto anteponiendo un # a la línea deseada).
 Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*.
 
 Prueben de escribir un sencillo comando y documentarlo:
@@ -110,7 +110,7 @@ cat("Hola mundo")
 (¿Que es cat()? ¿se parece a algo que ya vieron? ¿como podrían investigarlo?)
 
 Muy bien, tenemos las complejas instrucciones, ¿como la ejecutamos?
-En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. Tambien podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma asunción, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, reflejarlo de igual manera en el *script* donde están trabajando.
+En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma asunción, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
 También podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
@@ -288,7 +288,7 @@ dt <- data.frame(gen=genes,esencial=esencialidad,expresion=expresiones)
  TTR4:1   TRUE :1         Median : 1000  
                           Mean   : 3700  
                           3rd Qu.: 5500  
-                          Max.   :10000 
+                          Max.   :10000
 ```
 
 (¿Ven la *data frame* en el 3er panel? Pueden visualizarla si le hacen click. O escribiendo `View(dt)` en la consola)
@@ -464,10 +464,10 @@ Supongamos que tenemos un archivo con valores de expresión, donde las columnas 
 ```r
 dt_exp <- read.csv(file="./data/dt_TP1_cal.tsv",sep="\t")
 ```
-¿Les funcionó? ¿Les dió algún error? ¿Hay algo que este mal?
+¿Les funcionó? ¿Les dió algún error? ¿Hay algo que esté mal?
 Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista. (`help(read.csv)`)
 
-Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estandar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
+Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estándar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
 
 ## Funciones y paquetes en R
 
@@ -532,7 +532,7 @@ ggplot(data=dt,aes(x=log(con),y=abs,col=sol))+
 
 Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero creanme decirles que para los que solemos usarlas se vuelven fáciles de usar.
 
-Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`. 
+Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`.
 
 La idea no es que aprendan la estructura tan particular de `ggplot()`, es solo para que vean un ejemplo de lo que se puede hacer.
 
@@ -546,7 +546,7 @@ Todo esto realizado en tres lineas de código resulta un poco complejo ahora mis
 
 ## Segunda sección del TP
 
-R es muy útil a la hora de implementar visualizaciones de datos, análisis estadísticos, data mining, etc. Por lo que tendremos una clase específica para que puedan ver y probar ejemplos donde R les puede ser de gran ayuda para mejorar o facilitar el trabajo de análisis de datos. Sin embargo también puede ser útil en otros tipos problemas. 
+R es muy útil a la hora de implementar visualizaciones de datos, análisis estadísticos, data mining, etc. Por lo que tendremos una clase específica para que puedan ver y probar ejemplos donde R les puede ser de gran ayuda para mejorar o facilitar el trabajo de análisis de datos. Sin embargo también puede ser útil en otros tipos problemas.
 Es muy normal que en trabajos de biología sea necesario trabajar datos provenientes de servicios o equipos que no generan *outputs* de formato estándar (separados por tabs, comas, etc) y cuando queramos cargarlos en cualquier programa de análisis de datos, tengamos que darles formato manualmente...algo que no es muy complicado cuando se trata de unos pocos archivos o un ensayo, pero que puede ser complicado o imposible en grandes cantidades.
 
 Aun cuando los formatos que queramos trabajar no tengan el formato estándar que esperamos, suelen tener algún tipo de formato propio, y eso genera que haya patrones en el archivo. Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoría de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando *patterns*, otros hay que trabajarlos un poco más.
@@ -581,9 +581,9 @@ id <- paste(values[[1]][1],collapse=" ")
 values <- paste(values[[1]][-1],collapse=" ")
 ```
 
-* ¿Qué contienen ahora `id` y `values`? 
-* ¿Qué *pattern* estaría usando en este split? 
-* ¿Qué otros *pattern* se les ocurren que podemos usar? 
+* ¿Qué contienen ahora `id` y `values`?
+* ¿Qué *pattern* estaría usando en este split?
+* ¿Qué otros *pattern* se les ocurren que podemos usar?
 * ¿Que sucedió al volver a asignarle un valor a `values`?
 
 ¿Y si tengo un vector con muchísimos IDs de genes? (acá simplificamos a 3) ¿Será mucho más difícil encontrar los IDs?
@@ -612,27 +612,27 @@ vector_of_ids <- unlist(lapply(values, `[[`, 1))
 print(vector_of_ids)
 ```
 Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón.
-En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchisimo sus capacidades de análisis.
+En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
 Es importante recalcar que todo este trabajo de "parsear" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl (en estos casos suele ser un poco más sencillo y eficiente) o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
 
 
 
 ### Parseando archivos de salida del FilterMax y generar curvas dosis/respuesta
 
-Como ejemplo real de algo que podría serles de ayuda en su trabajo como biotecnólogos. 
+Como ejemplo real de algo que podría serles de ayuda en su trabajo como biotecnólogos.
 
 
 Tomemos el ejemplo de usar datos del equipo *Filter Max* que se dispone para uso de los que trabajan en el IIB. Este equipo es muy usado puesto que permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso te permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada cierto intervalos de tiempo).
 Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos en un solo ensayo si por ejemplo hacemos mediciones cada 5 minutos durante una hora en una placa de 384 wells.
 
-En nuestro ejemplo (datos reales) El investigador realiza un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 22 compuestos. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing). 
+En nuestro ejemplo (datos reales) El investigador realiza un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 22 compuestos. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
 **NOTA** Los nombres de las drogas son ficticios
 
-La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores. 
+La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores.
 
-Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración. 
+Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración.
 
-Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% mas lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
+Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% más lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
 
 Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar. Sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
 
@@ -640,7 +640,7 @@ Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo carg
 
 Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
 
-* ¿Puede terminar antes de las 10 de la noche? 
+* ¿Puede terminar antes de las 10 de la noche?
 
 Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo) y además de la que ustedes tienen, hay 12 placas más. Analizadas con el mismo diseño experimental y formato de salida.
 
@@ -648,7 +648,7 @@ Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo
 
 * ¿Cómo plantearían el análisis?
 
-Luego de consultar con un bioinformatico amigo, llegaron a la resolución rápida y pudieron informar los resultados al director con los archivos que tienen en la carpeta "results". 
+Luego de consultar con un bioinformático amigo, llegaron a la resolución rápida y pudieron informar los resultados al director con los archivos que tienen en la carpeta "results".
 
 En esta carpeta tienen tres archivos:
 
@@ -662,38 +662,38 @@ En esta carpeta tienen tres archivos:
 
 Además, pudieron exportar la siguiente tabla:
 
-| compuesto           | IC50   | min    | max     | 
-|---------------------|--------|--------|---------| 
-| DMSO                | 0      | 0      | 0       | 
-| Diclofenac sodium   | 0.06   | 0.05   | 0.06    | 
-| Lisinopril-2        | 0.48   | 0.44   | 0.52    | 
-| Rasagiline mesylate | 0.69   | 0.47   | 1.04    | 
-| Amlodipine besylate | 0.69   | 0.08   | 4.87    | 
-| Carbinoxamine       | 0.69   | 0.43   | 1.03    | 
-| Alendronate sodium  | 2.35   | 0.94   | 58.44   | 
-| Aripiprazole        | 2.83   | 1.04   | 9.08    | 
-| Acetaminophen       | 5.25   | 1.4    | 12.68   | 
-| Diltiazem HCl       | 5.32   | 2.8    | 9.67    | 
-| Dihydrochloride     | 9.8    | 4.36   | 22.78   | 
-| Quetiapine fumarate | 38.25  | 4.3    | 70.45   | 
-| Flunarizine         | 150.16 | 110.39 | 189.78  | 
-| Oxcarbazepine       | 155.37 | 17.1   | 504.75  | 
-| Isatin              | 164.53 | 123.37 | 262.81  | 
-| Dutasteride         | 200.93 | 76.15  | 200.93  | 
-| Irbesartan          | 201.93 | 142.02 | 269.2   | 
-| Duloxetine          | 218.64 | 136.79 | 329.02  | 
-| Nicorandil          | 294.12 | 223.16 | 351.76  | 
-| Nicorandil-2        | 828.37 | 612.85 | 1054.84 | 
-| Lisinopril          | NA     | NA     | NA      | 
-| Milrinone           | NA     | NA     | NA      | 
-| Pregabalin          | NA     | NA     | NA      | 
+| compuesto           | IC50   | min    | max     |
+|---------------------|--------|--------|---------|
+| DMSO                | 0      | 0      | 0       |
+| Diclofenac sodium   | 0.06   | 0.05   | 0.06    |
+| Lisinopril-2        | 0.48   | 0.44   | 0.52    |
+| Rasagiline mesylate | 0.69   | 0.47   | 1.04    |
+| Amlodipine besylate | 0.69   | 0.08   | 4.87    |
+| Carbinoxamine       | 0.69   | 0.43   | 1.03    |
+| Alendronate sodium  | 2.35   | 0.94   | 58.44   |
+| Aripiprazole        | 2.83   | 1.04   | 9.08    |
+| Acetaminophen       | 5.25   | 1.4    | 12.68   |
+| Diltiazem HCl       | 5.32   | 2.8    | 9.67    |
+| Dihydrochloride     | 9.8    | 4.36   | 22.78   |
+| Quetiapine fumarate | 38.25  | 4.3    | 70.45   |
+| Flunarizine         | 150.16 | 110.39 | 189.78  |
+| Oxcarbazepine       | 155.37 | 17.1   | 504.75  |
+| Isatin              | 164.53 | 123.37 | 262.81  |
+| Dutasteride         | 200.93 | 76.15  | 200.93  |
+| Irbesartan          | 201.93 | 142.02 | 269.2   |
+| Duloxetine          | 218.64 | 136.79 | 329.02  |
+| Nicorandil          | 294.12 | 223.16 | 351.76  |
+| Nicorandil-2        | 828.37 | 612.85 | 1054.84 |
+| Lisinopril          | NA     | NA     | NA      |
+| Milrinone           | NA     | NA     | NA      |
+| Pregabalin          | NA     | NA     | NA      |
 
-Pueden ver los archivos .pdf si les interesa ver como dieron el resto de los compuestos, por ejemplo podrían discutir porque puede ser que el investigador haya descartado el IC50 de los primeros 6 compuestos de la tabla. 
+Pueden ver los archivos .pdf si les interesa ver cómo dieron el resto de los compuestos, por ejemplo podrían discutir porque puede ser que el investigador haya descartado el IC50 de los primeros 6 compuestos de la tabla.
 
-¿Creen que es muy dificl/laborioso hacer todos estos gráficos y análisis en R?
+¿Creen que es muy difícil/laborioso hacer todos estos gráficos y análisis en R?
 
-Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran. 
-En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta. 
+Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
+En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta.
 
 #### Parsear los datos
 
@@ -842,14 +842,14 @@ dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors 
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
 print(nueva_dt_completa)
 ```
-¿Alguien no entiende a que se debe el "dec = ","? Pueden sacarse la duda leyendo el `help(read.csv)`
+¿Alguien no entiende a qué se debe el "dec = ","? Pueden sacarse la duda leyendo el `help(read.csv)`
 
 La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
 ¿Pueden hacer esto mismo pero para los compuestos?
 
-Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador. 
+Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador.
 
-#### Análisis de dosis/respuesta para inhibición de la reacción enzimatica
+#### Análisis de dosis/respuesta para inhibición de la reacción enzimática
 
 Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
 
@@ -869,20 +869,20 @@ Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
  Mode  :character   Mode  :character   Mode  :character   Mode  :character   Median :  9.755   Mode  :character  
                                                                              Mean   : 37.414                     
                                                                              3rd Qu.: 44.444                     
-                                                                             Max.   :200.000 
+                                                                             Max.   :200.000
 ```
-Como pueden ver, las columnas de señal y tiempo estan cargadas como "character", lo cual no es correcto, porque en realidad son variables numericas, y en todo el análisis posterior vamos a necesitar considerarlos así.
+Como pueden ver, las columnas de señal y tiempo están cargadas como "character", lo cual no es correcto, porque en realidad son variables numéricas, y en todo el análisis posterior vamos a necesitar considerarlos así.
 
-¿Como podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
+¿Cómo podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
 
 
 ```r
 nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
 ```
 
-Aparentemente la columna de señal se transforma bastante fácil puesto que son números interpretados como caracteres, algo que ya vimos. ¿Pero que pasa con la columna de tiempo? La solución es un poco mas compleja puesto que el programa usa un formato donde los segundos, minutos y horas están separados por ":" ¿Se les ocurre alguna forma de aprovechar ese formato para darle formato de números? Ya vimos una función con la que se puede resolver el problema. No es solución tan lineal, si no pueden hacerlo no se preocupen, en el script resuelto pueden ver una forma de hacerlo.
+Aparentemente la columna de señal se transforma bastante fácil puesto que son números interpretados como caracteres, algo que ya vimos. ¿Pero qué pasa con la columna de tiempo? La solución es un poco más compleja puesto que el programa usa un formato donde los segundos, minutos y horas están separados por ":" ¿Se les ocurre alguna forma de aprovechar ese formato para darle formato de números? Ya vimos una función con la que se puede resolver el problema. No es solución tan lineal, si no pueden hacerlo no se preocupen, en el script resuelto pueden ver una forma de hacerlo.
 
-Además, tengo otro problema, todas las concetraciones de 0 para cualquier compuesto inhibidor son en realidad el control de la reacción sin inhibidor. Por lo que el investigador prefiere que en la columna "compuesto" donde la concentración es 0, este el valor "DMSO" 
+Además, tengo otro problema, todas las concentraciones de 0 para cualquier compuesto inhibidor son en realidad el control de la reacción sin inhibidor. Por lo que el investigador prefiere que en la columna "compuesto" donde la concentración es 0, este el valor "DMSO"
 
 Luego de las transformaciones planteadas, deberían llegar a algo así:
 
@@ -909,9 +909,9 @@ Luego de las transformaciones planteadas, deberían llegar a algo así:
 
 Ahora podríamos hacer un gráfico, muy similar al que vieron en esta guía con `ggplot()` para una regresión lineal de las reacciones. Comencemos con la reacción sin inhibidores (*DMSO*).
 según la estructura de ggplot, primero tenemos que decirle:
-* Los datos que graficar: ¿Toda la tabla? ¿Una parte? 
+* Los datos que graficar: ¿Toda la tabla? ¿Una parte?
 * Las columnas con los ejes (x, y)
-* La columna que identifica como colorear los datos (esto es, cuando hay mas de una serie y las queremos diferenciar)
+* La columna que identifica como colorear los datos (esto es, cuando hay más de una serie y las queremos diferenciar)
 
 Y luego, agregar cada uno de los diferentes componentes que queremos graficar. Para seguir con el ejemplo que habíamos visto anteriormente, queremos agregar un scatterplot (`geom_point()`) y una regresión lineal (`geom_smooth()`).
 Por lo cual, deberían haber llegado a algo así:
@@ -922,9 +922,9 @@ ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y
     geom_smooth(method="lm")+
     theme_minimal()
 ```
-Luego, para cada uno de los compuestos queremos agregarles una nueva serie para cada concentración, y que tenga tanto los puntos como la regresión lineal. ¿Se imaginan como lo podemos hacer? 
+Luego, para cada uno de los compuestos queremos agregarles una nueva serie para cada concentración, y que tenga tanto los puntos como la regresión lineal. ¿Se imaginan como lo podemos hacer?
 
-Como ejemplo, si queremos agregar la concentracion "59.25926" del compuesto "Acetaminophen" deberíamos hacer algo así:
+Como ejemplo, si queremos agregar la concentración "59.25926" del compuesto "Acetaminophen" deberíamos hacer algo así:
 
 ```r
 plot_1 <- ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y=signal,color=Compuesto))+
@@ -937,11 +937,11 @@ plot_1 <- plot_1+ geom_point(data=dt_plot)+geom_smooth(data=dt_plot,method="lm")
 
 ```
 
-Claramente escribir el código para cada una de las concentraciones y cada uno de los compuestos es muchisimo trabajo y bastante desprolijo.
+Claramente escribir el código para cada una de las concentraciones y cada uno de los compuestos es muchísimo trabajo y bastante desprolijo.
 
-¿Se les ocurre alguna forma de hacerlo mas fácil?
+¿Se les ocurre alguna forma de hacerlo más fácil?
 
-No es tan sencillo, pero basicamente tenemos que iterar cada uno de los compuestos, y cada una de las concentraciones. Si no pueden hacerlo ustedes, recuerden que lo tienen resuelto en el archivo "scripts/Analisis_filerMax_resuelto.R".
+No es tan sencillo, pero básicamente tenemos que iterar cada uno de los compuestos, y cada una de las concentraciones. Si no pueden hacerlo ustedes, recuerden que lo tienen resuelto en el archivo "scripts/Analisis_filerMax_resuelto.R".
 
 Por último cuando hayan hecho todos los plots, quieren exportarlo a un .pdf. Una opción es una hoja del pdf por cada plot de cada compuesto, con lo cual simplemente tenemos que hacer:
 
@@ -957,6 +957,8 @@ dev.off()
 ```
 
 Recuerden que es muy importante esta última orden, de lo contrario el pdf queda corrupto, no se puede abrir. Y tampoco puedo ver en Rstudio los plots que haga, suele ser un recurrente dolor de cabeza.
+
+
 
 
 
