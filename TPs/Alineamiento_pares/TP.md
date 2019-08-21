@@ -11,7 +11,7 @@ El alineamiento de secuencias de a pares comprende la asignacion uno-a-uno de co
 * **Gap (g):** Cuando un elemento de una secuencia no tiene par en la otra y se enfrenta a un espacio, caracterizado por un guion (-).
 Por ejemplo si alienamos las secuencias abcde y acxef un posible resutado seria:
 
-> abcde-
+> abcde-  
 > a-cxef
 
 La principal función de los alineamientos es establecer una medida de similitud entre las secuencias que participan en el mismo. Para ello es necesario definir un sistema de puntuación que pese cada uno de los eventos que tienen lugar en el. Este puntaje nos permitirá tambien optimizar el alineamiento utilizando algoritmos que elijan la correspondencia entre secuencias que lo maximicen. 
@@ -56,17 +56,17 @@ Para eso ubicamos las secuencias en la matriz como ya vimos:
 y la completamos calculando para cada vertice el score acumulado de cada posible camino que nos lleve hasta el. Por ejemplo, para alcanzar el primer vertice, los tres caaminos posibles serian:
 * Movernos diagonalmente, alineando A con A con un score de 1 (M).
 
-> A
+> A  
 > A
 
 * Hacer un movimiento horizontal, alineando la A de ATTGAG con un gap (score de -1) y un movimiento vertical alineando la A de AGATGGAT con un gap (otra vez -1) con un score total de -2. 
 
-> A-
+> A-  
 > -A
 
 * Hacer un movimiento vertical, alineando la A de AGATGGAT con un gap (score de -1) y un movimiento horizontal alineando la A de ATTGAG con un gap (otra vez -1) con un score total de -2.
 
-> -A
+> -A  
 > A-
 
 Para decidir que valor ubicamos en el vertice simplemente optamos por el que nos de el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal
