@@ -140,9 +140,9 @@ Hola mundo
 
 ## El mundo de las variables
 
-###strings
+### strings
 
-Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo escalar (string). Por ejemplo, creamos una variable name, e imprimimos :
+Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo carácter (string). Por ejemplo, creamos una variable name, e imprimimos :
 
 ```r
 name <- "Hermenegildo"
