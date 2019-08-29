@@ -32,7 +32,7 @@ Pueden ver el resultado del *blast*, por ejemplo paginando el archivo
 less xlrhodop.blastp
 ```
 
-# FASTA intro
+## FASTA intro
 Al igual que **BLAST**, **FASTA** necesita los mismos tres argumentos obligatorios. Sin embargo, el paquete **FASTA** provee un comando ejecutable para cada tipo de búsqueda.
  
 Comparison programs in the FASTA package
@@ -60,22 +60,22 @@ fasta xlrhodop.pep Swissprot.fasta > xlrhodop.fasta
  
 # Diferencias entre BLAST y FASTA
 
-* **ktup:** Tanto **FASTA** como **BLAST** usan una estrategia de búsqueda inicial basada en palabras cortas. ktup en **FASTA** es el parámetro que indica el tamaño de la palabra utilizada en esta búsqueda inicial. **FASTA** utiliza por default ktup=2, mientras que **BLAST** utiliza ktup=3. Sin embargo, **FASTA** sólo considera identidades respecto a la palabra, mientras que **BLAST** utiliza identidades y sustituciones conservativas. Por lo tanto **BLAST** con ktup=3 es en general más sensible que **FASTA** con ktup=2. **FASTA** con ktup=1 es más sensible, pero es también más lento. 
-* **Matrices y scores:** **BLAST** y **FASTA** usan distintas matrices de scoring y gap penalties por default (**BLAST**: BLOSUM62, -12 first gap, -1 each additional gap; **FASTA**: BLOSUM50, -12 first gap, -2 each additional gap). 
-* **Estadísticas** Los parámetros *kappa* y *lambda* son centrales para estimar scores en **BLAST** y en **FASTA**. **FASTA** calcula estos parámetros on the fly a partir de la base de datos. Esto produce estadísticas más representativas, pero puede ser problemático para bases de datos pequeñas. Si la base de datos es de menos de 10 secuencias, **FASTA** no estima estos parámetros. **BLAST** usa valores pre-calculados para estos parámetros, que fueron derivados a partir de simulaciones. 
-* **Alineamientos:** **BLAST** puede mostrar varios alineamientos por cada par de secuencias (varios high-scoring pairs o HSPs), **FASTA** sólo muestra un alineamiento. 
-* **Filtrado de secuencias de baja complejidad:** Por default, **BLAST** filtra secuencias de baja complejidad o repeticiones. **FASTA** no!. Esto puede afectar la capacidad de discriminar falsos positivos, aunque **FASTA** provee otro tipo de opciones para manejar este tipo de casos. Ver la sección específica sobre este punto más abajo. 
+* **ktup:** Tanto FASTA como BLAST usan una estrategia de búsqueda inicial basada en palabras cortas. ktup en FASTA es el parámetro que indica el tamaño de la palabra utilizada en esta búsqueda inicial. FASTA utiliza por default ktup=2, mientras que BLAST utiliza ktup=3. Sin embargo, FASTA sólo considera identidades respecto a la palabra, mientras que BLAST utiliza identidades y sustituciones conservativas. Por lo tanto BLAST con ktup=3 es en general más sensible que FASTA con ktup=2. FASTA con ktup=1 es más sensible, pero es también más lento. 
+* **Matrices y scores:** BLAST y FASTA usan distintas matrices de scoring y gap penalties por default (BLAST: BLOSUM62, -12 first gap, -1 each additional gap; FASTA: BLOSUM50, -12 first gap, -2 each additional gap). 
+* **Estadísticas** Los parámetros *kappa* y *lambda* son centrales para estimar scores en BLAST y en FASTA. FASTA calcula estos parámetros on the fly a partir de la base de datos. Esto produce estadísticas más representativas, pero puede ser problemático para bases de datos pequeñas. Si la base de datos es de menos de 10 secuencias, FASTA no estima estos parámetros. BLAST usa valores pre-calculados para estos parámetros, que fueron derivados a partir de simulaciones. 
+* **Alineamientos:** BLAST puede mostrar varios alineamientos por cada par de secuencias (varios high-scoring pairs o HSPs), FASTA sólo muestra un alineamiento. 
+* **Filtrado de secuencias de baja complejidad:** Por default, BLAST filtra secuencias de baja complejidad o repeticiones. FASTA no!. Esto puede afectar la capacidad de discriminar falsos positivos, aunque FASTA provee otro tipo de opciones para manejar este tipo de casos. Ver la sección específica sobre este punto más abajo. 
 * **Traducciones:** *blastx* hace 6 búsquedas independientes (una en cada marco de lectura) mientras que *fastx3* y *fasty3* hacen una única búsqueda forward (o reverse usando -i) que permite frameshifts. Estos últimos son más sensibles y pueden producir mejores alineamientos que *blastx* cuando se usan secuencias de baja calidad. Lo mismo es cierto para *tblastn* vs *tfastx3* y *tfasty3*). 
-* **Homólogos distantes:** Existe una opción en **FASTA** (-F) que les permite ignorar (i.e. que no aparezcan en el output) secuencias altamente similares al query. Esto es útil, por ejemplo, para focalizar una búsqueda en las secuencias más divergentes. No existe una opción similar en **BLAST**. 
-* **Secuencias cortas:** Ya sea que busquen un primer o un péptido, si quieren utilizar **BLAST** o **FASTA** para esto, tengan en cuenta que **BLAST** es generalmente inútil al respecto. Esto es porque **BLAST** tiene un límite inferior sobre la longitud que puede tener una palabra (ktup). En el caso de nucleotidos, el límite inferior es 7 (el default es 11). En este sentido **FASTA** es mejor, porque siempre pueden usar ktup=1. Por otra parte, en el caso específico de péptidos, **FASTA** provee algunos algoritmos particulares de búsqueda (*fastf*, *fasts* y *tfasf*, *tfasts*).
+* **Homólogos distantes:** Existe una opción en FASTA (-F) que les permite ignorar (i.e. que no aparezcan en el output) secuencias altamente similares al query. Esto es útil, por ejemplo, para focalizar una búsqueda en las secuencias más divergentes. No existe una opción similar en **BLAST**. 
+* **Secuencias cortas:** Ya sea que busquen un primer o un péptido, si quieren utilizar BLAST o FASTA para esto, tengan en cuenta que BLAST es generalmente inútil al respecto. Esto es porque BLAST tiene un límite inferior sobre la longitud que puede tener una palabra (ktup). En el caso de nucleotidos, el límite inferior es 7 (el default es 11). En este sentido FASTA es mejor, porque siempre pueden usar ktup=1. Por otra parte, en el caso específico de péptidos, FASTA provee algunos algoritmos particulares de búsqueda (*fastf*, *fasts* y *tfasf*, *tfasts*).
 
 >**Nota al margen:** usar un cuchillo en lugar de un destornillador, a veces puede funcionar; pero no deja de ser cierto que cada herramienta fue diseñada para un fin distinto. Si quieren realizar búsquedas de secuencias cortas prueben primero con *fuzznuc*, *fuzzpro* o *findpatterns* (todos parte de **EMBOSS**). 
 
-# Filtros
+## Filtros
 
 Muchas secuencias son altamente repetitivas. Si la secuencia query contiene regiones de baja complejidad o repeticiones, es posible que una búsqueda encuentre muchas secuencias no relacionadas, con altos scores (por ej hits contra colas de poly-A o regiones ricas en Prolina).
 En otros casos, la secuencia puede contener vector (plásmido) o repeticiones como Alu, que ustedes pueden querer omitir en la búsqueda. 
-**BLAST** permite filtrar el primer tipo de casos, mediante la opción **-F**. 
+**BLAST** permite filtrar el primer tipo de casos, mediante la opción -F. 
 **FASTA** en cambio no provee esta alternativa. Es el usuario el que tiene que filtrar el query antes de realizar una búsqueda. 
 
 Ejercicio. usar la proteína Groucho de Drosophila (grou_drome) para buscar secuencias similares en *Swissprot* usando **BLAST**. Comparar los resultados obtenidos usando (-F T) o sin usar (-F F) la opción de filtrado que provee **BLAST**. 
@@ -98,7 +98,7 @@ Qué diferencias encuentran en los histogramas de cada búsqueda?
 Para el segundo tipo de casos (vector, elementos repetitivos), es necesario detectarlos y enmascararlos (reemplazarlos por N o X) o marcarlos (con minúscula, por ejemplo, si toda la secuencia esta en mayúsculas) previo a la búsqueda. 
 Ejercicio. la secuencia *est.fasta* contiene una región correspondiente al vector (plásmido). Esta secuencia fue enmascarada (reemplazada por X, *est_masked_X.fasta*) y marcada en minúsculas (*est_masked_lc.fasta*). Utilicen las tres secuencias para realizar una una búsqueda contra *Swissprot*, usando **BLAST** o **FASTA** (el que más les guste). Qué opciones tienen que usar en cada caso para evitar que en la lista de hits aparezcan beta-galactosidasas mencionadas y comparen los resultados. 
 
-# Bases de datos propias
+## Bases de datos propias
 
 Tener acceso a **BLAST** o **FASTA** en la línea de comando les da la posibilidad de crear sus propias bases de datos para realizar búsquedas. 
 **FASTA** puede realizar búsquedas sobre un archivo en formato *fasta* conteniendo varias secuencias sin ningún otro tipo de tratamiento. **BLAST**, sin embargo necesita contar con una base de datos indexada. *formatdb* es el comando que vamos a utilizar para generar los índices que **BLAST** necesita. 
@@ -128,7 +128,7 @@ Pueden ver las opciones que acepta el comando formatdb pidiendo ayuda:
 formatdb --help
 ```
 
-# BLAST con multiples secuencias
+## BLAST con multiples secuencias
 Si tienen un archivo multiple de secuencias en formato *fasta*, pueden usarlo como query en una búsqueda, usando **BLAST**. 
 El archivo *opsv.fasta* contiene la secuencia de 4 fotorreceptores, usen este archivo para realizar una búsqueda, usando *blastp*, contra la base de datos ops que crearon en el ejercicio anterior. 
 El output generado consiste en 4 reportes de **BLAST**, concatenados en un único archivo. Cómo pueden navegar fácilmente dentro del documento usando less? (Tip: qué palabras o conjunto de palabras ocurren una sola vez en cada reporte?) 
@@ -139,7 +139,7 @@ Para esto pueden usar el comando de unix split que puede partir un archivo en ot
 man split 
 ```
 
-Tanto en Linux, como en cualquier Unix, una manera de partir un archivo en varios, usando un pattern es usando el comando awk(1). Dado un archivo llamado *blast.out*, podemos partirlo en varios usando la siguiente invocación: 
+Tanto en Linux, como en cualquier Unix, una manera de partir un archivo en varios, usando un pattern es usando el comando *awk*. Dado un archivo llamado *blast.out*, podemos partirlo en varios usando la siguiente invocación: 
 
 ```Bash
 awk --assign i=0 '/pattern/{i++}{print > "blast."i}' blast.out 
