@@ -68,7 +68,7 @@ Que no es otra cosa que código ejemplo para que lo copien y peguen en R y pueda
 ## Entrando en calor
 
 
-Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. U cualquier otra que se les ocurra necesaria.
+Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. O cualquier otra que se les ocurra necesaria.
 
 ¿Sabrían hacer esto desde la consola de UNIX, si fuese necesario? Sería algo así:
 
@@ -91,7 +91,7 @@ o
 2+2
 ```
 
-Ya se imaginaran que cabría esperar de cada orden
+Ya se imaginarán que pueden esperar de cada orden
 
 Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? En realidad R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo esta forma de almacenar instrucciones es un poco sucia, ya que se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (:laughing: lo cual es muy frecuente :laughing:)
 La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac..digo la necesidad de reutilizar el código.
@@ -110,9 +110,9 @@ cat("Hola mundo")
 (¿Que es cat()? ¿se parece a algo que ya vieron? ¿como podrían investigarlo?)
 
 Muy bien, tenemos las complejas instrucciones, ¿como la ejecutamos?
-En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma asunción, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
+En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
-También podríamos ejecutarlo desde BASH, para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
+También podríamos ejecutarlo desde BASH (linea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
 ```shell
 $ cd ~/scripts/
