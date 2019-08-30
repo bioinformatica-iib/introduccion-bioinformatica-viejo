@@ -968,7 +968,7 @@ Recuerden que es muy importante esta última orden, de lo contrario el pdf queda
 
 Para evaluar el efecto de los compuestos como inhibidores de la reacción estudiada, se plantea hacer un análisis de cómo cambia la velocidad de la reacción a lo largo de las distintas concentraciones evaluadas. Si el inhibidor funciona de libro, lo que esperaríamos obtener es una curva sigmoidea, donde podríamos hacer un ajuste sigmoidal e interpolar la concentración esperada para obtener una inhibición del 50% en esa curva. Lo que para nosotros se conoce como **IC50**. 
 
-Hay muchas formas de hacer esto, pero como puede ser un poco complejo hacer este tipo de análisis, se me ocurre que ya puede existir algún paquete disponible para su utilización que resuelva todo esto. Busqué un poco en google y llegué al paquete `nplr` que pueden ver una descripción de todo lo que hace en [https://cran.r-project.org/web/packages/nplr/vignettes/nplr.pdf] (este link) .
+Hay muchas formas de hacer esto, pero como puede ser un poco complejo hacer este tipo de análisis, se me ocurre que ya puede existir algún paquete disponible para su utilización que resuelva todo esto. Busqué un poco en google y llegué al paquete `nplr` que pueden ver una descripción de todo lo que hace en [https://cran.r-project.org/web/packages/nplr/vignettes/nplr.pdf](este link) .
 
 
 Después de leer detenidamente la documentación, llegué a la conclusión que tengo que pasarle una tabla con la velocidad de reacción de cada concentración medida, para que la función `nplr()` haga el ajuste sigmoidal e incluso me va a permitir hacer un análisis de inferencia de que cual es el rango en el que se puede estimar el **IC50**. 
@@ -1028,4 +1028,4 @@ Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimo
 # Bibliografía
 
 Todas las dúdas con respecto a programar en R o hacer análisis de datos, las pueden resolver en este libro que esta disponible on line y esta integramente desarrollado en R:
-[https://r4ds.had.co.nz/index.html] (R for Data Science, Garrett Grolemund, 2017)
+[https://r4ds.had.co.nz/index.html](R for Data Science, Garrett Grolemund, 2017)
