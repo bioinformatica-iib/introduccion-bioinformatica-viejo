@@ -1024,3 +1024,7 @@ Deberían llegar a algo así:
 
 Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimos y resolviendo algunos de los que no se mostraba resuelto, pero recuerden que todo el script está resuelto en: "scripts/Analisis_filerMax_resuelto.R"
 
+# Bibliografía
+
+Todas las dúdas con respecto a programar en R o hacer análisis de datos, las pueden resolver en este libro que esta disponible on line y esta integramente desarrollado en R:
+(R for Data Science, Garrett Grolemund, 2017) [https://r4ds.had.co.nz/index.html] 
