@@ -31,7 +31,7 @@ Los dot-plots son representaciones graficas que dan un pantallazo sobre la simil
 La forma de obtener uno es muy sencilla: se establece una matriz donde cada elemento de una de las secuencias se corresponde con una fila y los de la otra con una columna. Acto seguido se procede a colorear cada celda donde los caracteres correspondientes a fila y columna sean equivalentes.
 Por ejemplo:
 
-![DotPlot](./images/DotPlot1.png)
+![DotPlot](./images/DotPlot1.jpeg)
 
 Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar nuestros propios plots. Pueden utilizar la secuencia *HS-ch11-fragment.fasta* que se encuentra en la carpeta *data* para copararla contra si misma. Esta secuencia es un pequeno fragmento del cromosoma 1 de *Homo sapiens* y la vamos a utilizar unicamente para ver algunos de los patrones que podemos encontrar en un dotplot.
 
@@ -108,19 +108,18 @@ Este procedimiento se repite iterativamente calculando los scores para cada vert
 Los terminos similitud y homologia se suelen utilizar como sinonimos por muchos investigadores, sin embargo no es el caso. La similitud es una caracteristica cuantitativa de de un par de secuencias, donde se establece en que grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntajes). La homologia por otro lado es una caracteristica cualitativa, dos secuencias son o no son homologas, decir que un par de secuencias tiene N% de homologia es incorrecto. Homologia implica especificamente que el par de secuencias estudiadas provienen de un mismo ancestro comun. Esta afirmacion es completamente hipotetica, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
 A partir de esta relacion entre similitud y homologia se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
-3.1 Determinar que especies estan mas relacionadas utilizando la ribonucleasa pancreatica de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).
- 3.1.1 Descargue las secuencias antes mencionadas de la base de datos UniProt en formato fasta.
- 3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.
+3.1 Determinar que especies estan mas relacionadas utilizando la ribonucleasa pancreatica de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).  
+ 3.1.1 Descargue las secuencias antes mencionadas de la base de datos UniProt en formato fasta.  
+ 3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
 
 ```Bash
 needle -asequence -gapopen 10 -gapextend 1 <secuencia_1> -bsequence <secuencia_2> -outfile <salida>
 ```
 
- 3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?
+ 3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
-
-3.2.1 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son mas cercanos a los elefantes africanos (Loxodonta africana) o asiaticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.
- 3.2.2 Que le sugieren los resultados obtenidos?
- 3.2.3 Que otras explicaciones pueden satisfacer estos resultados?
- 3.2.4 Proponga soluciones para los problemas encontrados.
+3.2.1 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son mas cercanos a los elefantes africanos (Loxodonta africana) o asiaticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.  
+ 3.2.2 Que le sugieren los resultados obtenidos?  
+ 3.2.3 Que otras explicaciones pueden satisfacer estos resultados?  
+ 3.2.4 Proponga soluciones para los problemas encontrados.  
 
