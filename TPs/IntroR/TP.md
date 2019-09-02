@@ -160,16 +160,14 @@ print(saludo)
 ```
 
 El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. :eyes: (**Ojo con esto**) :eyes:
-Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo. Por ejemplo, supongamos que queremos ingresar el nombre por consola:
+Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo. Por ejemplo:
 
 ```r
-name <- ""
-cat("What is your name?")
-name <- readline()
-cat(paste("\t hello", name,"\n\n"))
+name <- "Walter"
+surname <- "White"
+cat(paste("\t hello", name,"\t",surname,"\n\n"))
+print("my name is Heisenberg")
 ```
-
-fijense que el cursor de la consola desapareció, (esta esperando que ingresen algo). Pueden escribirlo en la consola directamente o seleccionar algo del script y presionar [Ctrl]+[ENTER] como siempre.
 
 ### Variables escalares
 
@@ -186,17 +184,14 @@ Con respecto a las comparaciones entre números y palabras podemos hacer las ope
 Para probar un poco:
 1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla
 2. Usar diferentes operadores matemáticos entre ellas, incluir una variable que sea 0 y probar la división.
-3. Ingresar una o ambas variables por consola
-4. Ingresar una o ambas variables por consola y preguntar al usuario que operación realizar entre ellas *(opcional)*
-5. Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
+3 Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
 
 Ejemplo:
 
 ```r
-print("Ingrese una cadena de DNA corta:")
-dna1 <- readline()
-print("Ingrese una cadena de DNA corta:")
-dna2 <- readline()
+
+dna1 <- "GATACA"
+dna2 <- "GAGA"
 print(paste("Las longitudes ingresadas son:",nchar(dna1),"y",nchar(dna2)))
 #Podríamos también generar una tercer variable dna3 para concatenar las 2 anteriores:
 dna3 <- paste(dna1,dna2)
@@ -226,6 +221,14 @@ print(variable_logica)
 
 variable_logica <- as.logical(1)
 print(variable_logica)
+
+```
+Las variables lógicas se pueden invertir facilmente (es muy útil) solamente anteponiendo el signo `!`. Por ejemplo, fijense que si ingresan:
+
+```r
+variable_logica <- T
+print(variable_logica)
+print(!variable_logica)
 
 ```
 
@@ -342,6 +345,14 @@ vector_numeros <- c(3,4,7,13,45.3)
 vector_strings <- c("hola","chau","perro")
 vector <- c(vector_strings,vector_numeros)
 print(vector)
+```
+
+```r
+> print(vector)
+[1] "hola"  "chau"  "perro" "3"     "4"     "7"     "13"    "45.3" 
+```
+
+```r
 list_numeros <- list(3,4,7,13,45.3)
 list_strings <- list("hola","chau","perro")
 list <- c(list_numeros,list_strings)
@@ -375,10 +386,18 @@ list <- c(list_numeros,list_strings)
 [1] "perro"
 ```
 
-¿Ven que aparecen comillas ("") en los números del vector que contiene tanto cadenas de texto como números?
-Esto es así puesto que R transforma los números a cadenas de texto para poder almacenarlos en el vector. ¿Qué pasaría si ahora quisiera sumar dos números que se transformaron en texto?
+¿Ven que aparecen comillas ("") en los números del **vector** que contiene tanto cadenas de texto como números? ¿Pero **NO** en los números que están dentro de la lista?
+Esto es así puesto que R transforma los números a cadenas de texto para poder almacenarlos en el vector. 
+
+¿Qué pasaría si ahora quisiera sumar dos números que se transformaron en texto?
 (si les interesa pueden probarlo, indexen el vector para sumar dos valores numéricos transformados a cadena de texto y fijense que pasa)
 La otra diferencia con los vectores es que las listas se indexan con doble corchete, es decir, para acceder al primer ítem de una lista hay que hacer ```nombre_de_mi_lista[[1]]```, para el segundo ```nombre_de_mi_lista[[2]]```, etc.
+
+### Tipos de variables y transformaciones
+
+Esto último que estuvimos viendo les puedo asegurar que algunas veces puede generar problemas (por eso lo estamos mencionando). Muchas veces queremos operar con variables y obtenemos errores puesto que son de un tipo distinto al que esperabamos. ¿Cómo podemos entonces averiguar de que tipo son las variables? ¿Si tienen comillas texto y en caso contrario números? 
+
+La verdad es que no, hay incluso distintos tipos de números y la forma correcta de saber que tipo de variable es una es usando la formula: `typeof()`
 
 ## Iteraciones y evaluaciones usando R
 
