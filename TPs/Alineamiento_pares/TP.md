@@ -60,12 +60,12 @@ Si aumentan estos parametros pueden ir eliminando fragmentos que correspondan a 
 Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del mismo?** Busque explicaciones posibles a los patrones encontrados.
 
 1.2 Teniendo en cuenta lo visto anteriormente, imagine y dibuje en forma esquemática dot-plots que sean el resultado de comparar las siguientes secuencias:  
-	1.2.1 Un genoma conteniendo tres copias del mismo gen contra si mismo  
-	1.2.2 Una secuencia palindrómica contra si misma  
-	1.2.3 Dos proteínas que comparten un motivo  
-	1.2.4 Dos secuencias idénticas, pero una de ellas se encuentra invertida  
-	1.2.5 Un fragmento o gen contra una secuencia mayor (que lo contiene)  
-	1.2.6 Dos proteínas con tres motivos compartidos (distintos entre sí) pero en distinto orden.  
+    1.2.1 Un genoma conteniendo tres copias del mismo gen contra si mismo  
+    1.2.2 Una secuencia palindrómica contra si misma  
+    1.2.3 Dos proteínas que comparten un motivo  
+    1.2.4 Dos secuencias idénticas, pero una de ellas se encuentra invertida  
+    1.2.5 Un fragmento o gen contra una secuencia mayor (que lo contiene)  
+    1.2.6 Dos proteínas con tres motivos compartidos (distintos entre sí) pero en distinto orden.  
 
 ## 2. Dynamic programming
 
@@ -109,17 +109,17 @@ Los terminos similitud y homologia se suelen utilizar como sinonimos por muchos 
 A partir de esta relacion entre similitud y homologia se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
 3.1 Determinar que especies estan mas relacionadas utilizando la ribonucleasa pancreatica de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).  
-	3.1.1 Descargue las secuencias antes mencionadas de la base de datos UniProt en formato fasta.  
-	3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
+    3.1.1 Descargue las secuencias antes mencionadas de la base de datos UniProt en formato fasta.  
+    3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
+    3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
 ```Bash
 needle -asequence -gapopen 10 -gapextend 1 <secuencia_1> -bsequence <secuencia_2> -outfile <salida>
 ```
 
-    3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
 3.2 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son mas cercanos a los elefantes africanos (Loxodonta africana) o asiaticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.  
-	3.2.2 Que le sugieren los resultados obtenidos?  
-	3.2.3 Que otras explicaciones pueden satisfacer estos resultados?  
-	3.2.4 Proponga soluciones para los problemas encontrados.  
+    3.2.2 Que le sugieren los resultados obtenidos?  
+    3.2.3 Que otras explicaciones pueden satisfacer estos resultados?  
+    3.2.4 Proponga soluciones para los problemas encontrados.  
 
