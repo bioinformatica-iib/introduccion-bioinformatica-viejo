@@ -114,7 +114,7 @@ A partir de esta relación entre similitud y homología se puede aplicar para in
     3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
 ```Bash
-needle -asequence -gapopen 10 -gapextend 1 <secuencia_1> -bsequence <secuencia_2> -outfile <salida>
+needle -gapopen 10 -gapextend 1 -asequence <secuencia_1> -bsequence <secuencia_2> -outfile <salida>
 ```
 
 
