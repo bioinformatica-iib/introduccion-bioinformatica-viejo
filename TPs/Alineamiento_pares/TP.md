@@ -38,7 +38,7 @@ Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar n
 1.1 Genere un dotplot utilizando la secuencia HS-ch11-fragment.fasta contra sí misma.
 
 ```Bash
-dotmatcher data/HS-ch1-fragment.fasta data/HS-ch1-fragment.fasta
+dotmatcher HS-ch1-fragment.fasta HS-ch1-fragment.fasta
 ```
 
 **Que podemos interpretar de lo que vemos?**
@@ -53,7 +53,7 @@ Esto quiere decir que solo va a poner un punto cuando un fragmento del largo *wi
 Por ejemplo:
 
 ```Bash
-dotmatcher -windowsize 50 -threshold 20 data/HS-ch1-fragment.fasta data/HS-ch1-fragment.fasta
+dotmatcher -windowsize 50 -threshold 20 HS-ch1-fragment.fasta HS-ch1-fragment.fasta
 ```
 
 Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a secciones compartidas más cortas, sin embargo existe una relación de compromiso, utilizar tamaño de ventana y umbral muy grandes nos llevan a perder información por lo que hay que seleccionarlos con cuidado.
