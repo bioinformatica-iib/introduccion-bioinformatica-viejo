@@ -31,11 +31,11 @@ Pueden ver el resultado del *blast*, por ejemplo paginando el archivo
 ```Bash
 less xlrhodop.blastp
 ```
-**BLAST** tiene otras opciones interesantes, como:
--G Para cambiar la penalizacion del gap de apertura.
--E Para cambiar la penalizacion del gap de extencion.
--W Para establecer el tamaño de la ktupla.
--f Para indicar el umbral de extencion de alineamiento.
+**BLAST** tiene otras opciones interesantes, como:  
+-G Para cambiar la penalizacion del gap de apertura.  
+-E Para cambiar la penalizacion del gap de extencion.  
+-W Para establecer el tamaño de la ktupla.  
+-f Para indicar el umbral de extencion de alineamiento.  
 
 Utilice distintas combinaciones de estos parametros y observe su impacto en las secuencias que son reportadas por **BLAST**
 
