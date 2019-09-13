@@ -10,7 +10,7 @@ Desarrollo del TP. Para realizar este TP tienen que estar frente a una terminal 
 **BLAST**, tal como es distribuído por el **NCBI**, se encuentra disponible mediante el comando *blastall*. Este comando necesita como mínimo tres argumentos para realizar una búsqueda:
 * -i una secuencia query (recordar, i = input) 
 * -d una base de datos con secuencias (recordar, d = database) 
-* -p el tipo de busqueda (p = programa: *blastp*, *blastn*, *blastx*, etc.) 
+* -p el tipo de busqueda (p = programa: *blastp*, *tblastn*, *blastx*, etc.) 
 Para ver una lista de los argumentos que acepta *blastall* prueben correr el comando sin argumentos. 
 Como primer ejemplo podemos usar la secuencia *xlrhodop.pep* para realizar una búsqueda contra *Swissprot*. Como estamos trabajando con una secuencia y una base de datos de proteínas, usamos *blastp* para realizar la busqueda: 
 
