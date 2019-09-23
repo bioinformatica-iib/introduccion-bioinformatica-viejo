@@ -38,7 +38,7 @@ Ahora que tenemos todo lo necesario, vamos a arrancar ACT. **Cuando se abre un p
 
 ACT está basado en Artemis, por lo que ya estarán familiarizados con muchas de sus funciones generales; y está compuesto esencialmente de tres capas o ventanas. La ventana superior e inferior son mini-ventanas de Artemis (con sus funcionalidades heredadas), mostrando la representación lineal de la secuencia de ADN con sus "*features*" asociados. La ventana del medio, muestra bloques rojos y azules, que se extienden y conectan regiones conservadas entre las dos secuencias, en el sentido directo e inverso, respectivamente. Por lo cual, si estuviéramos comparando dos secuencias idénticas en la misma orientación veríamos, en la capa central, un bloque rojo que se extiende a lo largo de la longitud de las dos secuencias. Si una de las secuencias estuviera invertida se observaría un bloque azul entre las dos secuencias. Regiones únicas en cualquiera de las secuencias, como deleciones o inserciones, se visualizarán como espacios blancos entre los bloques rojos o azules.
 
-![Arreglos](images/genome-arrangements.png)
+![Arreglos](images/genome-arrangements.PNG)
 
 Veamos cómo se organizan estas ventanas y cómo podemos hacer para navegar a través de ellas:
 
