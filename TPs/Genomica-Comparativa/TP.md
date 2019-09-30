@@ -160,4 +160,3 @@ Comiencen cargando las secuencias, apagando codones de stop y agregando las anot
 
 - ¿Qué pasa con la conservación de la arquitectura genómica entre estos dos cromosomas? ¿Dirían que hay o que no hay sintenia?
 - ¿Hay regiones conservadas entre los organismos? ¿Cuáles son los productos predichos para los genes en esas regiones?
-
