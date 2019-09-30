@@ -306,7 +306,7 @@ Para ver una región con algo de variación genética interesante vayan al gen C
 
 ¿Qué tipos de variantes pueden identificar?
 
-Ahora leeremos en Artemis el archivo BCF que recien crearon. Para esto diríjanse al menú principal, seleccionen ``'File'`` ,``'Read BAM / VCF'`` , ``'Select...'`` y abran el archivo ``"NV.vcf"``. Como siempre ajusten el tamaño de las ventanas BAM y BCF para poder visualizarlas bien. Abran notado que, en un principio, en la ventana BCF solo se muestran los SNPs del cromosoma. Para mostrar los SNPs del plásmido abran el ícono que se encuentra arriba y a la izquierda en el panel de BCF y seleccionen ``'Combine References'``. Ahora ambos serán visibles.
+Ahora leeremos en Artemis el archivo BCF que recien crearon. Para esto diríjanse al menú principal, seleccionen ``'File'`` ,``'Read BAM / VCF'`` , ``'Select...'`` y abran el archivo ``"NV.vcf"``. Como siempre ajusten el tamaño de las ventanas BAM y BCF para poder visualizarlas bien. Habrán notado que, en un principio, en la ventana BCF solo se muestran los SNPs del cromosoma. Para mostrar los SNPs del plásmido abran el ícono que se encuentra arriba y a la izquierda en el panel de BCF y seleccionen ``'Combine References'``. Ahora ambos serán visibles.
 
 Aquí abajo se lista el esquema de colores y formas utilizado para las variantes en el panel de BCF. Noten que a su vez se incluyen los indels. Muevanse a lo largo de la secuencia y encuentren busquen algunas de las variantes:
 
