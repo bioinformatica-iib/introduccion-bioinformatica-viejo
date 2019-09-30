@@ -39,6 +39,7 @@
 - [Búsquedas de secuencias por similitud](#)
 - [Visualizando genomas con Artemis](TPs/Artemis/TP.md)
 - [Genómica comparativa con ACT](TPs/Genomica-Comparativa/TP.md)
+- [Mapeo de *reads* en Artemis](TPs/Short-Read-Mapping/TP.md)
 - [Programando en biología](TPs/IntroR/TP.md)
 - [Data Mining](TPs/DataMining/TP.md)
 - [Filogenias, árboles filogenéticos y filogenómica](#)
