@@ -40,6 +40,8 @@ Cada lectura de secuencia está representada por cuatro lineas.
 
 Para comenzar el ejercicio necesitamos abrir una terminal y movernos hacia el directorio del TP de "Short-Read-Mapping" (o, si lo copiaron y pegaron en otro lado, vayan a ese directorio).
 
+Hallarán los materiales de trabajo en [este link](https://www.dropbox.com/sh/0fh6ie9vpzsuigx/AABW8kgVKRKbd7gl9VfXY2tEa?dl=0):
+
 Antes de hacer cualquier cosa, vamos a revisar la calidad de nuestras lecturas. Como podemos ver más arriba en el esquema del flujo de trabajo necesario para obtener nuestras lecturas de secuencia, hay una multitud de pasos necesarios para tener un fastq. Una buena lectura dependerá en gran medida del éxito individual en cada uno de todos estos pasos. Explorar y entender las características de los datos en crudo, antes de cualquier análisis, nos dará confianza en que los experimentos ulteriores que llevemos adelante con las secuencias estarán más cerca de la realidad, además de sugerir si hubo o no problemas durante los pasos anteriores a la secuenciación propiamente dicha.
 
 #### FastQC:
