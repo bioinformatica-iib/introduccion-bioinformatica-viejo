@@ -31,6 +31,13 @@ Pueden ver el resultado del *blast*, por ejemplo paginando el archivo
 ```Bash
 less xlrhodop.blastp
 ```
+**BLAST** tiene otras opciones interesantes, como:  
+-G Para cambiar la penalizacion del gap de apertura.  
+-E Para cambiar la penalizacion del gap de extencion.  
+-W Para establecer el tamaño de la ktupla.  
+-f Para indicar el umbral de extencion de alineamiento.  
+
+Utilice distintas combinaciones de estos parametros y observe su impacto en las secuencias que son reportadas por **BLAST**
 
 ## FASTA intro
 Al igual que **BLAST**, **FASTA** necesita los mismos tres argumentos obligatorios. Sin embargo, el paquete **FASTA** provee un comando ejecutable para cada tipo de búsqueda.
@@ -109,7 +116,7 @@ seqret "Swissprot.fasta:ops*" fasta::ops
 ```
 Esto debería generar un archivo FASTA múltiple conteniendo secuencias de opsinas. 
 
-Pregunta: cuántas secuencias tiene nuestra base de datos? 
+**Pregunta:** cuántas secuencias tiene nuestra base de datos? 
 Ahora para indexar el archivo ops (en formato *fasta*), usamos *formatdb*, indicandole el archivo que contiene las secuencias (-i) y si el archivo contiene secuencias de ADN (-p F) o de proteínas (-p T). 
 
 ```Bash
@@ -128,6 +135,7 @@ Pueden ver las opciones que acepta el comando formatdb pidiendo ayuda:
 formatdb --help
 ```
 
+
 ## BLAST con multiples secuencias
 Si tienen un archivo multiple de secuencias en formato *fasta*, pueden usarlo como query en una búsqueda, usando **BLAST**. 
 El archivo *opsv.fasta* contiene la secuencia de 4 fotorreceptores, usen este archivo para realizar una búsqueda, usando *blastp*, contra la base de datos ops que crearon en el ejercicio anterior. 
@@ -144,3 +152,4 @@ Tanto en Linux, como en cualquier Unix, una manera de partir un archivo en vario
 ```Bash
 awk --assign i=0 '/pattern/{i++}{print > "blast."i}' blast.out 
 ```
+**Recuerden reemplazar "*pattern*" por el patron que quieren utilizar para dividir el archivo.**
