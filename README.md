@@ -10,6 +10,7 @@
 - **Dr. Morten Nielsen**
 - **Dra. Lucia Chemes**
 - **Dr. Nicolás Palopoli**
+- **Dra. Juliana Glavina**
 
 ## Cronograma
 - [2do cuatrimestre (2019)](Cronograma%202-2019.pdf)
