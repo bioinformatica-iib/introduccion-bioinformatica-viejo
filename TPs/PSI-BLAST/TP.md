@@ -148,7 +148,7 @@ hmm2search globin.hmm swissprot.fasta
 
 HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
 
-##Bases de datos de HMM
+## Bases de datos de HMM
 
  Así como nos es posible realizar búsquedas de profiles contra bases de datos de secuencias, podemos crear una base de datos de profiles y utilizar como query una secuencia. Este es el caso de la base de datos **PFAM** (Sonnhammer et al., 1997; Sonnhammer et al., 1998) que nuclea profiles de una gran variedad de dominios y es una herramienta sumamente utilizada para analizar secuencias de proteínas de las cuales no tenemos información previa.
 
