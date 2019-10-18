@@ -52,7 +52,9 @@ Lo que hicimos acá, fue leer el archivo de texto TablaEjemplo.txt utilizando la
 Ahora si tipeamos el nombre de esta variable, seguido de Enter, R nos muestra el contenido de la variable (nuestra tabla).
 
 ```r
-MiTabla # seguido de Enter, nos muestra la tabla cargada.
+MiTabla # En la conssola, si escribo esto y presiono Enter, nos muestra la tabla cargada.
+#En un archivo de texto donde estoy escribiendo mi script escribo eso y apreto enter y solo salta a la próxima línea ¿tiene sentido?
+
 ```
 A continuación vamos a utilizar la función `dist()` para calcular una matriz de distancias a partir de los datos de la tabla. Recordar que estos datos ya están cargados en una variable que se llama `MiTabla`. Como convención a lo largo de esta guía, cualquier cosa que empiece con Mi o Mis es un nombre de variable. Podríamos haber usado cualquier nombre (por ejemplo, pepe), y ustedes pueden cambiarlos cuando usen R por su cuenta.
 
@@ -270,7 +272,7 @@ El set de datos fibro.data proviene de un experimento donde se analizan los camb
 
 El siguiente heatmap muestra los 7 clusters en los que los datos fueron agrupados mediante un clustering jerárquico utilizando el criterio de agregación de vecino más lejano y una medida de distancias basada en correlación.
 
-A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots*:
+A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots* (y para los que no sepan y/o recuerden que es un parallel plot, pueden leer [esto](https://en.wikipedia.org/wiki/Parallel_coordinates) ):
 
 ¿Está de acuerdo con los grupos formados? ¿Partiría o fusionaría algunos clusters?
 * Reproducir estos gráficos y probar con diferente número de clusters, utilizando además del método del Vecino más lejano (complete linkage) el promedio (average) y evaluando las siluetas.
@@ -279,18 +281,28 @@ Otra forma de representar los datos agrupados, mediante un diagrama de dispersi�
 
 
 ```r
-fibro=read.csv("fibro.data",sep="\t")
-fibroClust=hclust(as.dist(1-cor(t(fibro))),method="complete")
-fibroCorte=cutree(fibroClust,7)
 library(lattice) # traigo este paquete para generar el gráfico parallel
-library(gplots) # traigo este paquete para usar la escala de colores redgreen(75) en el heatmap
 library(cluster) # traigo este paquete para calcular los coeficientes silueta
+library(pheatmap)
+library(ggbiplot)
+fibro=read.csv("./data/clustering/fibro.data",sep="\t")
+summary(fibro)
+
+fibroClust=hclust(as.dist(1-cor(t(fibro))),method="complete") #usamos este método de distancia (1-cor)
+fibroCorte=cutree(fibroClust,7) #Definimos 7 clusters, buscar cuantos clusters tomar es otro trabajo completo
 pdf("graficos_fibro.pdf")
-heatmap(as.matrix(fibro),Colv=NA,distfun=function(c) as.dist(1-cor(t(fibro))),RowSideColor=as.character(fibroCorte),col=redgreen(75),cexRow=0.1)
-parallel(~fibro | factor(fibroCorte),horizontal=FALSE)
-fibro.std=t(scale(t(fibro)))
-clusplot(fibro.std,fibroCorte)
-plot(silhouette(fibroCorte,as.dist(1 - cor(t(fibro)))))
+pheatmap(fibro,cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro))),cluster_cols = F)
+pheatmap(fibro,kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
+parallelplot(~fibro | factor(fibroCorte),horizontal=FALSE)
+fibro.std=t(scale(t(fibro))) #para escalar
+# O podemos usar parametros del paquete de pheatmap
+pheatmap(fibro,scale = "row",cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro))),cluster_cols = F)
+pheatmap(fibro,scale = "row",kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
+#Hacer un PCA y un gráfico de elipses para los grupos que definimos previamente:
+fibro.pca <- prcomp(fibro, center = TRUE,scale. = TRUE)
+ggbiplot(fibro.pca, ellipse = T, labels=rownames(fibro), groups=as.factor(fibroCorte))+theme_minimal()
+
+
 dev.off()
 ```
 
