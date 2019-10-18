@@ -197,6 +197,7 @@ Ahora con lo aprendido, importar y analizar el conjunto de datos diauxic.txt.
 1. Identificar grupos de genes que se comporten de manera similar.
 
 Deberían llegar a algo así:
+
 ![](./images/plot_ejemplo_3.png)
 
 2. Análisis de enriquecimiento funcional Después de haber identificado clusters, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes clusters encontrados (ver instrucciones abajo). En esta instancia tenemos clusters de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, están involucrados en procesos biológicos diferentes a los genes de otro de los clusters. Ya que el genoma de *Saccharomyces cerevisiae* está anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO) podemos averiguar si los genes de un cluster están enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro cluster o bien, respecto a todo el genoma. Para esto utilizar algún servidor online, como FatiGO, GOrilla o DAVID.
@@ -325,49 +326,13 @@ library(cluster)
 Para instalar un paquete no incluido en R base, por ejemplo ggplots que trae herramientas adicionales para graficar datos :
 
 ```r
-install.packages("ggplots")
+install.packages("ggplot2")
 ```
 
 y luego lo cargamos normalmente:
 
 ```r
-library(ggplots)
+library(ggplot2)
 ```
 
 Hay un gran número de paquetes orientados específicamente al análisis de datos genómicos (en su mayoría aquellos derivados de microarrays de ADN, pero también de SAGE, SNPs, etc.) provenientes del proyecto Bioconductor. Por el momento, exceden los objetivos de este TP introductorio, pero puede serles útil.
-
-
-    UnderConstruction.jpg
- (7.1 KB) - added by santiago 8 years ago.
-    dendogramaEjemplo.jpg
- (12.7 KB) - added by santiago 8 years ago.
-    diauxic_heatmap.jpg
- (35.8 KB) - added by santiago 8 years ago.
-    diauxic_4clust_silhouette.jpg
- (26.2 KB) - added by santiago 8 years ago.
-    MiTablaSTD_heatmap.jpg
- (9.6 KB) - added by santiago 8 years ago.
-    diauxic.txt
- (38.6 KB) - added by santiago 8 years ago.
-    fibro.data
- (33.1 KB) - added by santiago 8 years ago.
-    fibro_heatmap.jpg
- (71.3 KB) - added by santiago 8 years ago.
-    fibro_parallel.jpg
- (77.0 KB) - added by santiago 8 years ago.
-    TablaEjemplo.txt
- (65 bytes) - added by santiago 8 years ago.
-    IntroClustering2012.pdf
- (716.7 KB) - added by santiago 5 years ago.
-    maizeTranscDataMappedAt.csv
- (3.0 MB) - added by santiago 4 years ago. "Maize leaf development RNA-seq (Pinghua Li, et al 2010). Gene mapping to A. thaliana"
-    introDataMining2013.pdf
- (1.7 MB) - added by santiago 4 years ago. "Slides Intro Data Mining"
-    fibro.cluplot.jpg
- (39.6 KB) - added by santiago 4 years ago.
-    RNASeqFiles.tar.gz
- (2.4 MB) - added by laura 2 years ago.
-    intro_R_UNSAM.pdf
- (726.3 KB) - added by emancini 13 months ago.
-
-
