@@ -273,16 +273,7 @@ Este tipo de gráfico es una herramienta muy útil para determinar cuál es el n
 
 El set de datos fibro.data proviene de un experimento donde se analizan los cambios de expresión génica de fibroblastos humanos en respuesta al suero http://genome-www.stanford.edu/serum/.
 
-El siguiente heatmap muestra los 7 clusters en los que los datos fueron agrupados mediante un clustering jerárquico utilizando el criterio de agregación de vecino más lejano y una medida de distancias basada en correlación.
-
-A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots* (y para los que no sepan y/o recuerden que es un parallel plot, pueden leer [esto](https://en.wikipedia.org/wiki/Parallel_coordinates) ):
-
-¿Está de acuerdo con los grupos formados? ¿Partiría o fusionaría algunos clusters?
-* Reproducir estos gráficos y probar con diferente número de clusters, utilizando además del método del Vecino más lejano (complete linkage) el promedio (average) y evaluando las siluetas.
-
-Otra forma de representar los datos agrupados, mediante un diagrama de dispersión sobre las 2 primeras Componentes Principales:
-
-
+Primero que nada cargamos paquetes y datos que vamos a usar:
 ```r
 library(lattice) # traigo este paquete para generar el gráfico parallel
 library(cluster) # traigo este paquete para calcular los coeficientes silueta
@@ -290,24 +281,47 @@ library(pheatmap)
 library(ggbiplot)
 fibro=read.csv("./data/clustering/fibro.data",sep="\t")
 summary(fibro)
+```
+Ahora hagamos un clustering de la misma forma que lo hacen en este trabajo (quizá ni sea la mejor forma, no importa, es solo para tener algo) En el **paper** usan 1 - correlación de pearson y el método completo para separar los génes en 7 grupos:
 
+```r
 fibroClust=hclust(as.dist(1-cor(t(fibro))),method="complete") #usamos este método de distancia (1-cor)
-fibroCorte=cutree(fibroClust,7) #Definimos 7 clusters, buscar cuantos clusters tomar es otro trabajo completo
-pdf("graficos_fibro.pdf")
+fibroCorte=cutree(fibroClust,7) #Definimos 7 clusters
+```
+
+Ahora podríamos hacer unos preciosos heatmaps de nuestros perfiles de expresión. El siguiente heatmap muestra los 7 clusters en los que los datos fueron agrupados mediante un clustering jerárquico utilizando el criterio de agregación de vecino más lejano y una medida de distancias basada en correlación.
+
+```r
 pheatmap(fibro,cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro))),cluster_cols = F)
 pheatmap(fibro,kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
+```
+
+A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots* (y para los que no sepan y/o recuerden que es un parallel plot, pueden leer [esto](https://en.wikipedia.org/wiki/Parallel_coordinates) ):
+
+¿Está de acuerdo con los grupos formados? ¿Partiría o fusionaría algunos clusters?
+* Reproducir estos gráficos y probar con diferente número de clusters, utilizando además del método del Vecino más lejano (complete linkage) el promedio (average) y evaluando las siluetas.
+
+```
 parallelplot(~fibro | factor(fibroCorte),horizontal=FALSE)
-fibro.std=t(scale(t(fibro))) #para escalar
-# O podemos usar parametros del paquete de pheatmap
+```
+Ahora nuestro jefe nos viene a decir que esta todo mal porque no escalamos los valores de expresión de los genes :scream: :boom: :scream: :boom: :scream: :boom: :scream: :boom: 
+¿Que hacemos? ¿Tiramos todo? ¿O el código se puede usar solamente cambiando algo al principio de todo el análisis?
+
+```
+fibro.std=t(scale(t(fibro))) #para escalar y despues hacen todo lo de antes
+# O simplemente podemos usar parametros del paquete de pheatmap
 pheatmap(fibro,scale = "row",cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro))),cluster_cols = F)
-pheatmap(fibro,scale = "row",kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
+pheatmap(fibro,scale = "row",kmeans_k = 10,cutree_rows =   7,cluster_cols = F) 
+```
+
+Otra forma de representar los datos agrupados, mediante un diagrama de dispersión sobre las 2 primeras Componentes Principales:
+
+```r
 #Hacer un PCA y un gráfico de elipses para los grupos que definimos previamente:
 fibro.pca <- prcomp(fibro, center = TRUE,scale. = TRUE)
 ggbiplot(fibro.pca, ellipse = T, labels=rownames(fibro), groups=as.factor(fibroCorte))+theme_minimal()
-
-
-dev.off()
 ```
+
 ### BONUS TRACK del BONUS TRACK
 
 Tomando de [esta guía](https://moderndata.plot.ly/interactive-heat-maps-for-r/) podemos hacer en unos pocos pasos los mismos heatmaps que hicimos hasta ahora pero interactivos ¿Qué es interactivo? 
