@@ -336,11 +336,18 @@ Prueben lo siguente:
 
 ```r
 library(heatmaply)
-heatmaply(fibro, k_row = 7)
+plot_interact <- heatmaply(fibro, k_row = 7)
+plot_interact
 ```
 Les debe haber aparecído un gráfico interactivo en la pestaña de **viewer** en Rstudio con un heatmap hermoso.
 
 Este paquete usa **plotly** un paquete para hacer gráficos interactivos muy usado.Pueden ver que arriba a la derecha tienen varias opciones para interaccionar con su gráfico, las mas usadas son el zoom, y el de guardar el gráfico como imagen. Sepan que hasta ahí hicimos un gráfico con todas las opciones default, pero hay muchísimas cosas que podrían custimizar (muchiiiiiiisimas) si quisieran. Si les llegara a interesar, pueden encontrar toda la info [acá](https://plot.ly/r/)
+
+Esto último es simplemente para exportar el gráfico interactivo y guardarlo como una página .html que pueden abrir y visualizar en el navegador:
+```r
+htmlwidgets::saveWidget(as_widget(plot_interact), "plot.html",selfcontained = F) 
+```
+
 
 ## NOTA INSTALACIÓN DE PAQUETES EN R:
 
