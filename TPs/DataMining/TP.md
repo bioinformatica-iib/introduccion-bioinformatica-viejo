@@ -265,9 +265,9 @@ plot(MiSiluetaKMeans)
 Este tipo de gráfico es una herramienta muy útil para determinar cuál es el número "natural" de clusters en un conjunto de datos. En este caso, probamos con K=5 y vemos que el cluster 1 (que contiene 203 genes) no es muy bueno ya que además de tener un coeficiente de silueta promedio bajo (0.13), muchos de los genes que contiene, tienen coeficientes de silueta negativos. Habría que probar con otro número K de clusters y/o con otro método de clustering.
 
 
-**EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters.
+**EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters. 
 
-**BONUS TRACK**
+## BONUS TRACK
 
 El set de datos fibro.data proviene de un experimento donde se analizan los cambios de expresión génica de fibroblastos humanos en respuesta al suero http://genome-www.stanford.edu/serum/.
 
@@ -306,6 +306,20 @@ ggbiplot(fibro.pca, ellipse = T, labels=rownames(fibro), groups=as.factor(fibroC
 
 dev.off()
 ```
+### BONUS TRACK del BONUS TRACK
+
+Tomando de [esta guía](https://moderndata.plot.ly/interactive-heat-maps-for-r/) podemos hacer en unos pocos pasos los mismos heatmaps que hicimos hasta ahora pero interactivos ¿Qué es interactivo? 
+Es igual pero te permite hacer zoom, desplegar información al posar el cursor e incluso si se ponen en modo programadores, podrían generar gráficos interacivos donde al hacer click se generen nuevos gráficos o cambien los que ya tienen (eso ya excede lo que podemos mostrar en el curso, pero sepan que en R la forma mas sencilla es integrando todo esto con **shiny**)
+
+Prueben lo siguente:
+
+```r
+library(heatmaply)
+heatmaply(fibro, k_row = 7)
+```
+Les debe haber aparecído un gráfico interactivo en la pestaña de **viewer** en Rstudio con un heatmap hermoso.
+
+Este paquete usa **plotly** un paquete para hacer gráficos interactivos muy usado.Pueden ver que arriba a la derecha tienen varias opciones para interaccionar con su gráfico, las mas usadas son el zoom, y el de guardar el gráfico como imagen. Sepan que hasta ahí hicimos un gráfico con todas las opciones default, pero hay muchísimas cosas que podrían custimizar (muchiiiiiiisimas) si quisieran. Si les llegara a interesar, pueden encontrar toda la info [acá](https://plot.ly/r/)
 
 ## NOTA INSTALACIÓN DE PAQUETES EN R:
 
