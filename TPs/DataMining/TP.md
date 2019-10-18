@@ -296,6 +296,8 @@ pheatmap(fibro,cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro)
 pheatmap(fibro,kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
 ```
 
+![](./images/heatmap_fibro.png)
+
 A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada cluster por separado, usando gráficos de perfiles multivariados o *parallel plots* (y para los que no sepan y/o recuerden que es un parallel plot, pueden leer [esto](https://en.wikipedia.org/wiki/Parallel_coordinates) ):
 
 ¿Está de acuerdo con los grupos formados? ¿Partiría o fusionaría algunos clusters?
@@ -304,6 +306,8 @@ A continuación se puede ver otra representación de los perfiles de expresión,
 ```
 parallelplot(~fibro | factor(fibroCorte),horizontal=FALSE)
 ```
+![](./images/parallelPlot_fibro.png)
+
 Ahora nuestro jefe nos viene a decir que esta todo mal porque no escalamos los valores de expresión de los genes :scream: :boom: :scream: :boom: :scream: :boom: :scream: :boom: 
 ¿Que hacemos? ¿Tiramos todo? ¿O el código se puede usar solamente cambiando algo al principio de todo el análisis?
 
@@ -321,6 +325,7 @@ Otra forma de representar los datos agrupados, mediante un diagrama de dispersi�
 fibro.pca <- prcomp(fibro, center = TRUE,scale. = TRUE)
 ggbiplot(fibro.pca, ellipse = T, labels=rownames(fibro), groups=as.factor(fibroCorte))+theme_minimal()
 ```
+![](./images/PCA_fibro.png)
 
 ### BONUS TRACK del BONUS TRACK
 
