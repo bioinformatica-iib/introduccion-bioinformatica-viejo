@@ -36,7 +36,7 @@ genB | -1 | -1 | -2
 genC | -2 | 0 | 1
 genD | 0 | -1 | -6
 
-* **Grupo Norte** graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo. Realizar a mano o en Excel un *clustering* jerárquico utilizando la distancia Euclídea, y el criterio de agregación de "Vecino más lejano" (o *complete linkage*).
+* **Grupo Norte** graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo. Realizar a mano o en Excel un *clustering* jerárquico utilizando la distancia Euclídea, y el criterio de agregación de "Vecino más lejano" (o *complete linkage*, pueden seguir el [ejemplo de wikipedia](https://en.wikipedia.org/wiki/Complete-linkage_clustering) si no recuerdan el algoritmo).
 * **Grupo Sur** lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresión del gen y dividirlo por su desviación estándar).
 
 Comparar gráficos y dendrogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
