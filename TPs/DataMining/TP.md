@@ -61,10 +61,11 @@ A continuación vamos a utilizar la función `dist()` para calcular una matriz d
 ```r
 MisDistancias <- dist(MiTabla,method="euclidean")
 ```
-          genA      genB      genC
-genB 11.575837                    
-genC  9.000000  3.316625          
-genD 15.000000  4.123106  7.348469
+gen | genA | genB | genC
+--- | - | - | -
+genB | 11.575837 |  | 
+genC | 9.000000 | 3.316625 | 
+genD | 15.000000 | 4.123106 | 7.348469
 
 La función `dist()` calcula la matriz de distancias usando la medida (el método) especificada/o, entre todas las filas de la matriz. En este ejemplo, calcula la distancia euclídea entre todos los genes tomados de a dos. El resultado se almacena en la variable llamada `MisDistancias`. ¿Como podemos ver el resultado?
 
