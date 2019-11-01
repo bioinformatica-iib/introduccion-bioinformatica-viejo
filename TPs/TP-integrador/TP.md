@@ -4,7 +4,7 @@ Este es un **trabajo práctico integrador** en el que deberán aplicar todos los
 
 ### Modalidad 
 
-El trabajo deberá ser entregado en forma escrita (como un informe de laboratorio), y para aprobar deberá cumplir con AL MENOS las consignas propuestas (debidamente señaladas). Esto significa que pueden extender el análisis cuanto gusten. ¡Sean creativos! El trabajo deberá ser realizado con la misma persona con la que realiza los TPs normalmente. 
+El trabajo deberá ser entregado en forma escrita (como un informe de laboratorio), y en formato digital. Para aprobar deberá cumplir con AL MENOS las consignas propuestas (debidamente señaladas). Esto significa que pueden extender el análisis cuanto gusten. ¡Sean creativos! El trabajo deberá ser realizado con la misma persona con la que realiza los TPs normalmente. 
 
 Dado que es un TP para hacer en casa, apelaremos a su buena voluntad y honestidad profesional... de todos modos, cabe advertir que **cualquier atisbo de plagio será severamente sancionado, equivalente al de copiarse en un examen**. 
 
@@ -16,9 +16,12 @@ Pueden consultar en cualquier momento acerca de las herramientas necesarias o so
 
 ### Consideraciones generales
 
+**Fecha de entrega:** 18/11 (o antes)
+
 - En todos los casos en los que utilicen algoritmos que requieran parámetros, indíquenlos debidamente y justifiquen su elección si lo considera necesario.
 - Agreguen a su reporte todos los resultados (figuras o texto) que consideren necesarios. Puede ser una *fotito*/*snapshot* de lo que aparece en pantalla, o pueden ponerlo en un archivo aparte (si el resultado fuera muy largo) y referenciarlo desde el texto.
 - Tendrán que leer e investigar acerca de el o los virus relacionados para dar sentido biológico a los resultados. Esto significa que no les va a alcanzar con lo que vimos/hicimos para hacer un buen TP. *Sorry, not sorry*.
+
 
 ### Propuesta
 
@@ -72,11 +75,11 @@ Realice el mapeo de dichas lecturas al genoma de referencia (`chr12-fragment.fas
 
 ##### Ejercicio de programación y data mining
 
-Finalmente, para corroborar las observaciones de los ejercicios anteriores, deciden hacer un experimento de expresión: Usan un microarray con 444 genes que por diversos motivos que su jefe no le quiere compartir pueden resultar de interés, y lo ensayan con 3 réplicas técnicas contra las líneas celulares susceptibles al virus (*cont1, cont2 y cont3*) y las resistentes (*test1, test2 y test3*). 
+Finalmente, para corroborar las observaciones de los ejercicios anteriores, usted decide hacer un experimento de expresión: Usa un microarray con 444 genes que, por diversos motivos (que su jefe también se niega a compartir) podrían resultar de interés; y lo ensayan con 3 réplicas técnicas contra una linea celular susceptible al virus (*cont1, cont2 y cont3*) y otra resistente (*test1, test2 y test3*). 
+
 Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](http://pi.iib.unsam.edu.ar/rserver/) como durante toda la cursada.
 
-Tu jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un ― ¡eureka! ― y te encarga comprar anticuerpos monoclonales de H3K9me3, entre otras cosas.
+Su jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un *¡eureka!* y le encarga comprar anticuerpos monoclonales de H3K9me3, entre otras cosas.
 
-* ¿Se te ocurre qué técnicas de data mining podemos usar para arribar a algún atisbo de información sin el superpoder de leer números en tablas de texto plano?
-
-* Luego de todo el análisis, ¿Tiene sentido el encargo, o tu jefe solo pretende derrochar fondos públicos?
+- ¿Se le ocurre qué técnicas de *data mining* podemos usar para arribar obtener algo de información sin el superpoder de leer patrones en tablas de texto plano?
+- Luego de todo el análisis, ¿Tiene sentido el encargo, o su jefe solo pretende derrochar fondos públicos?
