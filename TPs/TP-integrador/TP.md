@@ -75,7 +75,7 @@ Realice el mapeo de dichas lecturas al genoma de referencia (`chr12-fragment.fas
 Finalmente, para corroborar las observaciones de los ejercicios anteriores, deciden hacer un experimento de expresión: Usan un microarray con 444 genes que por diversos motivos que su jefe no le quiere compartir pueden resultar de interés, y lo ensayan con 3 réplicas técnicas contra las líneas celulares susceptibles al virus (*cont1, cont2 y cont3*) y las resistentes (*test1, test2 y test3*). 
 Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](http://pi.iib.unsam.edu.ar/rserver/) como durante toda la cursada.
 
-Tu jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un ― ¡eureka! ― y te encarga comprar anticuerpos monoclonales de K9me3, entre otras cosas.
+Tu jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un ― ¡eureka! ― y te encarga comprar anticuerpos monoclonales de H3K9me3, entre otras cosas.
 
 * ¿Se te ocurre qué técnicas de data mining podemos usar para arribar a algún atisbo de información sin el superpoder de leer números en tablas de texto plano?
 
