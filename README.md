@@ -49,6 +49,7 @@
 - [Quimioinformática](TPs/Quimioinfo/TP.md)
 
 ## Máquina virtual
-[Biolinux](https://www.dropbox.com/s/ue6xrvun6dwtcy8/Biolinux.vdi?dl=0)
+- [Instructivo sobre máquinas virtuales](Instructivos/Virtual-Machine.md)
+- [Descargar imagen Biolinux](https://www.dropbox.com/s/ue6xrvun6dwtcy8/Biolinux.vdi?dl=0)
 > Es pesada! Descarguenla con tiempo y con conexión estable.
 
