@@ -38,7 +38,7 @@ Sobre este aislamiento, en particular, se saben algunas cosas:
 #### Tareas mínimas a realizar:
 
 - **Búsqueda de marcos abiertos de lectura**: En el caso de hallar más de un marco abierto de lectura superpuestos, utilicen solo el de mayor longitud. 
-- **Búsqueda de secuencias relacionadas**: Realice una búsqueda tanto de la secuencia nucleotídica (completa) como de las proteína (que detectaron en el punto anterior). Si hubiera más de 20 hallazgos significativo, utlice solo 20 (emplee su criterio para seleccionar esas 20). Si hubiera menos de 20 *hits*, seleccinone solo aquellos que considere biológicamente significativos. Ahora que más o menos saben con qué virus se relaciona su aislamiento, ¿Qué opina de la/s proteina/s que halló en el primer experimento?
+- **Búsqueda de secuencias relacionadas**: Realice una búsqueda tanto de la secuencia nucleotídica (completa) como de las proteínas (que detectaron en el punto anterior). Si hubiera más de 20 hallazgos significativo, utlice solo 20 (emplee su criterio para seleccionar esas 20). Si hubiera menos de 20 *hits*, seleccione solo aquellos que considere biológicamente significativos. Ahora que más o menos saben con qué virus se relaciona su aislamiento, ¿Qué opina de la/s proteina/s que halló en el primer experimento?
 - **Construcción de un un alineamiento múltiple**: Con las secuencias genómicas capturadas, genere una alineamiento múltiple y visualícelo en JalView. 
 - **Construcción de un HMM**: Con su alineamiento múltiple, construya un HMM.
 - **Construcción de un árbol filogenético**: Construya un árbol filogenético utilizando cualquier estrategia que considere apropiada (justifique su elección) y determine cuáles son las cepas virales más relacionadas con su aislamiento. 
