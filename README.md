@@ -13,7 +13,7 @@
 - **Dra. Juliana Glavina**
 
 ## Cronograma
-- [1er cuatrimestre (2020)](Cronograma%22020-1.pdf)
+- [1er cuatrimestre (2020)](blob/master/Cronograma%202020-1.pdf)
 
 ## Programa Teórico
 
