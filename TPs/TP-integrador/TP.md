@@ -39,8 +39,8 @@ Sobre este aislamiento, en particular, se saben algunas cosas:
 
 - **Búsqueda de marcos abiertos de lectura**: En el caso de hallar más de un marco abierto de lectura superpuestos, utilicen solo el de mayor longitud. 
 - **Búsqueda de secuencias relacionadas**: Realice una búsqueda tanto de la secuencia nucleotídica (completa) como de las proteínas (que detectaron en el punto anterior). Si hubiera más de 20 hallazgos significativo, utlice solo 20 (emplee su criterio para seleccionar esas 20). Si hubiera menos de 20 *hits*, seleccione solo aquellos que considere biológicamente significativos. Ahora que más o menos saben con qué virus se relaciona su aislamiento, ¿Qué opina de la/s proteina/s que halló en el primer experimento?
-- **Construcción de un un alineamiento múltiple**: Con las secuencias genómicas capturadas, genere una alineamiento múltiple y visualícelo en JalView. 
-- **Construcción de un HMM**: Con su alineamiento múltiple, construya un HMM.
+- **Construcción de un un alineamiento múltiple**: Genere una alineamiento múltiple con al menos una proteína de su elección y visualícelo en JalView. 
+- **Construcción de un HMM**: Con su alineamiento múltiple, construya un HMM. ¿Para qué le serviría esto?
 - **Construcción de un árbol filogenético**: Construya un árbol filogenético utilizando cualquier estrategia que considere apropiada (justifique su elección) y determine cuáles son las cepas virales más relacionadas con su aislamiento. 
 
 #### Extras para entusiastas
@@ -71,7 +71,12 @@ Un colaborador ha observado, en esayos fenotípicos, que ciertas lineas celulare
 
 Realice el mapeo de dichas lecturas al genoma de referencia (`chr12-fragment.fasta`, secuencia; `chr12-fragment.gb`, anotaciones) y evalué si existen mutaciones con potencial para conferir resistencia al virus (si la/s halla, hipotetice el motivo por el cual dicha/s mutación/es funciona brindando resistencia a la linea celular). 
 
-> Usted ya hizo esto alguna vez en su vida, por lo que ya tiene script escrito `seqprep.sh`. Actualice dicho script con la secuencia de interés y explique qué hace cada comando. Luego ejecútelo para tener el mapeo listo para visualizar. 
+Usted ya hizo esto alguna vez en su vida, por lo que ya tiene script escrito `seqprep.sh`. Actualice dicho script con la secuencia de interés y explique qué hace cada comando.
+
+Luego de correr el script debería tener algo así (no hace falta que lo corran: el link de abajo es el resultado que obtendrían)
+- [mapping-sorted.bam](https://www.dropbox.com/s/ir1xro5ynqp6rd9/mapping-sorted.bam?dl=0)
+
+¿Encontró algo interesante?
 
 ##### Ejercicio de programación y data mining
 

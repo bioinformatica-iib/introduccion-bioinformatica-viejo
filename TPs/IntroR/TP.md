@@ -263,6 +263,52 @@ hist(Snorm)
 
 ¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
 
+### Factores
+
+Otro tipo de variable quizá no tan intuitivo de entender (especialmente si no tuviésemos formación en ciencias) son los factores. En sí no son más que unos vectores con vitaminas, pero en el trabajo que solemos hacer nos son muy útiles. A tal punto, que muchas de las funciones que van a trabajar directamente les van a devolver los resultados en forma de factores y si ustedes no saben que son, puede llegar a generar bastante confusión. :confused:
+  
+Un vector contiene valores de un tipo dado, pero no me dice nada sobre la relación entre estos valores. Por ejemplo, si yo tengo un tratamiento con una droga en tres concentraciones y almaceno dentro de un vector los niveles de concentración en forma cualitativa (quizá porque desconozco los valores exactos):
+
+```R
+niveles_tratamiento <- c("bajo","medio","alto") #Como no tengo un número exacto le asigno una palabra que descrive el tratamiento. Podría haber sido c("leve","moderado","fuerte") siempre y cuando nosotros entendamos a que nos referimos. 
+
+# Y los resultados:
+
+resultados_tratamiento <- c(4,6,25) 
+```
+
+Quisiera graficar para tener un bello resultado que mostrar a mi director.
+
+```R
+plot(niveles_tratamiento,resultados_tratamiento)
+```
+
+Sin embargo, R no entiende cómo graficar esto (pueden probar en sus consolas) puesto que si le damos `niveles_tratamiento` como eje X nos tira un error. Usando algunas otras funciones o paquetes para graficar (que veremos más adelante) es posible que obtengan el gráfico simplemente con estos vectores. Sin embargo no será el gráfico correcto puesto que R no sabe como ordenar los niveles (probablemente los ordene alfabéticamente, en nuestro caso ¿tiene sentido?).
+
+Así que nos surge la necesidad de que cuando tenemos este tipo de datos (no son tan raros en ciencia como se imaginarán) poder decirle a nuestro cerebrobito informático a través de R que los niveles del tratamiento van del (1 al 3) y que se ordenan así: (bajo, medio y alto) sería muy últil.
+Un factor es un vector con niveles. Para definirlo manualmente para nuestro caso solo tendríamos que decir:
+
+```R
+niveles_tratamiento_factor <- factor(x=c(1,2,3),labels=niveles_tratamiento, levels = c(1,2,3))
+```
+
+Donde estamos dándole a la función tres argumentos, la primera `x` es simplemente para decirle que el factor que queremos tiene esos tres niveles, la segunda `labels` es como queremos que se llamen (es lo que vamos a ver cuando hagamos gráficos) y la tercera `levels` es opcional y determina qué valores puede tomar este factor (podríamos haber creado un valor con estos 3 niveles, pero dejar abierta la posibilidad a un nivel más alto). 
+
+Ahora si usamos este nuevo factor recién salido del horno, tenemos un casi bello gráfico para mostrarle a nuestro director:
+
+```R
+plot(niveles_tratamiento_factor,resultados_tratamiento)
+```
+
+![](./images/ejemplo_factores.png)
+
+:satisfied:
+
+Fíjense que automáticamente R decidió que realizar este plot un poco distinto al plot anterior aun cuando la instrucción fue muy similar (¿recuerdan plot(x,y)?). Pueden discutir entre ustedes por que les parece que R decidió no hacer un gráfico de puntos como antes y si les parece correcto.
+
+Como se habrán dado cuenta se pueden hacer muchísimas cosas con factores y muchas veces encontrarán que son indispensables para hacer gráficos correctos para los trabajos que realicen. Otras veces tendrán errores en la consola o no podrán hacer lo que quieren hacer justamente porque sin saberlo están trabajando con factores, pensando que son simples vectores (pasa todo el tiempo).
+
+
 
 ### Dataframes, las tablas en R.
 
