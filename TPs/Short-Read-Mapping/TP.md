@@ -137,7 +137,11 @@ Antes de cambiar el formato, revisen de qué se trata el .sam usando el comando 
 
 **Paso 5:** Seguidamente necesitamos ordenar las lecturas de secuencia mapeadas en el archivo BAM. Muchas herramientas pueden leer SAM/BAM, pero la mayoría de ellas necesitan que éste esté debídamente ordenado por posición. Esto lo haremos con el siguiente comando:
 
-	samtools sort –o NV.bam mapping.bam
+	samtools sort –o NV.bam mapping.bam 
+
+o, alternativamente:
+
+	samtools sort mapping.bam > NV.bam
 
 **Paso 6:** Finalmente tenemos que indexar el archivo en formato BAM para que este listo para ser visualizado en Artemis:
 
