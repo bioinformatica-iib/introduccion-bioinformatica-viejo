@@ -34,11 +34,11 @@ Cada uno de ustedes tendrá datasets separados para trabajar, de modo que espera
 | Melina Serassio            | US2.csv | Estados Unidos  |
 | Abril San Martín           | US3.csv | Estados Unidos  |
 | Analía Etcheverrito        | US4.csv | Estados Unidos  |
-| Milagros Albornoz          | GR.csv  | Grecia          |
+| Jerónimo Batista Bucher    | GR.csv  | Grecia          |
 | Valentino Mórtola          | GR2.csv | Grecia          |
 | Tomás Zucchini             | GR3.csv | Grecia          |
 | Emilia Batista Bucher      | HK.csv  | Hong Kong       |
-| Jerónimo Batista Bucher    | HK2.csv | Hong Kong       |
+| Milagros Albornoz          | HK2.csv | Hong Kong       |
 | Emiliano Huang Luna        | NT.csv  | Paises Bajos    |
 | Facundo Nicolás Pauluk     | PO.csv  | Polonia         |
 | Lautaro Maceira            | CZ.csv  | República Checa |
