@@ -118,7 +118,7 @@ Luego de correr el script debería tener algo así (no hace falta que lo corran:
 
 Finalmente, para corroborar las observaciones de los ejercicios anteriores, usted decide hacer un experimento de expresión: Usa un microarray con 444 genes que, por diversos motivos (que su jefe también se niega a compartir) podrían resultar de interés; y lo ensayan con 3 réplicas técnicas contra una linea celular susceptible al virus (*cont1, cont2 y cont3*) y otra resistente (*test1, test2 y test3*). 
 
-Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](http://pi.iib.unsam.edu.ar/rserver/) como durante toda la cursada.
+Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](http://pi.iib.unsam.edu.ar/rserver2/) como durante toda la cursada.
 
 
 [comment]: <> (Su jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un *¡eureka!* y le encarga comprar anticuerpos monoclonales de H3K9me3, entre otras cosas.)
