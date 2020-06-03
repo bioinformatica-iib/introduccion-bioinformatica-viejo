@@ -67,7 +67,7 @@ Su jefe quiere contestar algunas preguntas mínimas (aunque puede extender su an
 - **Búsqueda de secuencias**: Obtenga las secuencias genómicas de los aislamientos que le pasó su jefe. 
 - **Alineamiento de a pares**: Realice un alineamiento entre la secuencia de referencia y una secuencia al azar entre las que acaba de descargar. 
 - **Marcos abiertos de lectura**: Obtenga las secuencias correspondientes a la proteína N de todos los aislamientos y construya una fasta múltiple con ellas 
-- **Desorden intrínseco**: Evalúe el desorden intrénseco de las proteínas `N`, `S` y `ORF1ab` (elija una aislamiento al azar). ¿Qué patrones de desorden encuentra?¿Qué correlato podrían tener los dominios desesctructurados hallados con la función biológica de la proteína?
+- **Determinación de dominios y desorden**: Evalúe los dominios presentas en las proteínas `N`, `S` y `ORF1ab` (elija una aislamiento al azar). ¿Qué patrones de desorden encuentra? ¿Qué correlato podrían tener los dominios hallados con la función biológica (ya sea predicha o comprobada experimentalmente) de la proteína?
 - **Construcción de un un alineamiento múltiple**: Genere un alineamiento múltiple a partir de un fasta múltiple de la proteína E y con este alineamiento:
   - **Construcción de una PSSM o un HMM**: Construya una PSSM o un HHM. 
   - **Construcción de un árbol filogenético**: Construya un árbol filogenético utilizando cualquier estrategia que considere apropiada (justifique su elección). 
