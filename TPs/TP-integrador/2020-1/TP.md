@@ -68,8 +68,8 @@ Su jefe quiere contestar algunas preguntas mínimas (aunque puede extender su an
 - **Alineamiento de a pares**: Realice un alineamiento entre la secuencia de referencia y una secuencia al azar entre las que acaba de descargar. 
 - **Marcos abiertos de lectura**: Obtenga las secuencias correspondientes a la proteína N de todos los aislamientos y construya una fasta múltiple con ellas 
 - **Desorden intrínseco**: Evalúe el desorden intrénseco de las proteínas `N`, `S` y `ORF1ab` (elija una aislamiento al azar). ¿Qué patrones de desorden encuentra?¿Qué correlato podrían tener los dominios desesctructurados hallados con la función biológica de la proteína?
-- **Construcción de un un alineamiento múltiple**: Genere un alineamiento múltiple de a partir de un fasta múltiple conteniendo la proteína E y, con éste:
-  - **Construcción de una PSSM o un HMM**: Realice un alineamiento múltiple de la proteína E. Construya una PSSM o un HHM. 
+- **Construcción de un un alineamiento múltiple**: Genere un alineamiento múltiple a partir de un fasta múltiple de la proteína E y con este alineamiento:
+  - **Construcción de una PSSM o un HMM**: Construya una PSSM o un HHM. 
   - **Construcción de un árbol filogenético**: Construya un árbol filogenético utilizando cualquier estrategia que considere apropiada (justifique su elección). 
 
 A partir de sus experimentos, conteste las siguientes preguntas:
@@ -100,7 +100,7 @@ Visualice su aislamiento más divergente con el genoma de refencia usando genóm
 
 ##### Ejercicio de short-read mapping y variant calling
 
-Un colaborador ha observado, en esayos fenotípicos, que ciertas lineas celulares presentan resistencia a la infección viral. El mecanismo de resistencia es, a priori, desconocido. Lo único notable es que las células presentan muy baja tasa de infección (incluso a altas multiplicidad de infección). Su director ha obtenido lecturas cortas de secuenciación Illumina (*paired end*) del genoma de dicha linea celular, y ha hecho un sorteo entre todos sus becarios para repartir los cromosomas a estudiar. A usted le ha tocado un fragmento del cromosoma X. 
+Un colaborador ha observado, en esayos fenotípicos, que ciertas lineas celulares presentan resistencia a la infección viral. El mecanismo de resistencia es, *a priori*, desconocido. Lo único notable es que las células presentan muy baja tasa de infección (incluso a altas multiplicidad de infección). Su director ha obtenido lecturas cortas de secuenciación Illumina (*paired end*) del genoma de dicha linea celular, y ha hecho un sorteo entre todos sus becarios para repartir los cromosomas a estudiar. A usted le ha tocado un fragmento del cromosoma X. 
 
 - [Lecturas *forward*]()
 - [Lecturas *reverse*]()
