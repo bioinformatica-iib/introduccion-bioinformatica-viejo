@@ -125,4 +125,4 @@ Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](
 
 - ¿Se le ocurre qué técnicas de *data mining* podemos usar para obtener algo de información sin el superpoder de leer patrones en tablas de texto plano? 
 
-- Su jefe, espera minimamente una tabla de los genes que se encuentran diferencialmente expresados. Pero cualquier otro análisis que le acerquen será bienvenido.
+- Su jefe, espera mínimamente una tabla de los genes que se encuentran diferencialmente expresados. Pero cualquier otro análisis que le acerquen será bienvenido.
