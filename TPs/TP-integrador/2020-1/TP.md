@@ -123,4 +123,6 @@ Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](
 
 [comment]: <> (Su jefe, solo viendo los archivos de texto plano y sin ningún tipo de procesamiento o visualización, exclama un *¡eureka!* y le encarga comprar anticuerpos monoclonales de H3K9me3, entre otras cosas.)
 
-- ¿Se le ocurre qué técnicas de *data mining* podemos usar para obtener algo de información sin el superpoder de leer patrones en tablas de texto plano?
+- ¿Se le ocurre qué técnicas de *data mining* podemos usar para obtener algo de información sin el superpoder de leer patrones en tablas de texto plano? 
+
+- Su jefe, espera minimamente una tabla de los genes que se encuentran diferencialmente expresados. Pero cualquier otro análisis que le acerquen será bienvenido.
