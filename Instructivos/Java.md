@@ -20,9 +20,28 @@ Para evitar problemas de virtualización, voy a describir cómo hacerlo andar en
 2. Instalar Java Runtime Environment `sudo apt-get install default-jre` y aceptar todos los cambios.
 3. En la consola, posicionarse en la carpeta de Artemis y tipear, `./artemis` o `./art` (el ejecutable varía según la versión, verifiquen cuál de esos tienen haciendo `ls` dentro de la carpeta)
    
-Normalmente, esto debería funcionar. Pero si no funciona, puede que tengamos un problema de virtualización y tengamos que mudarnos a Windows.
+Normalmente, esto debería funcionar. Pero si no funciona (¡como ya hemos visto!), puede que tengamos un problema de virtualización y tengamos que mudarnos a Windows :poop:
 
-### Windows 7 a 10 (64 bits)
+### Windows 7 a 10 
+
+#### La fácil
+
+1. Ir a la página de [AdoptJDK](https://adoptopenjdk.net/releases.html).
+2. Seleccionen alguna de las versiones con LTS (Long Term Support). Recomiendo arrancar con la 14 y si esa no funciona, bajar a la 11 (y por último a la 8, en el peor de los casos)
+3. En _Operating System_ seleccionen "Windows" y, en Arquitectura, "x64" para 64 bits o "x86" para 32 bits. 
+4. Entre las opciones que aparecen para descargar, descargamos el JDK con extensión ``.msi``. 
+
+![msi](images/msi.png)
+
+5. Cuando esté listo, ejecutamos y seguimos los pasos que dicta el instalador
+6. Cuando finalice, podremos ``Artemis.jar`` con la plataforma JDK. Acá es importante que, al ejecutar, no estemos usando un versión de Java que ya teníamos instalada. Para eso, podemos darle ``click derecho`` > ``Abrir con`` > ``OpenJDK Platform binary``
+
+![msi](images/OpenJDK.png). 
+
+
+#### La difícil (Esta solo me funcionó en Windows 64 Bits )
+
+Si nada de eso funciona, pueden probar con esto:
 
 1. Descargar [JDK 14.0.1](https://download.java.net/java/GA/jdk14.0.1/664493ef4a6946b186ff29eb326336a2/7/GPL/openjdk-14.0.1_windows-x64_bin.zip) desde ese link o desde la [página oficial de JDK](https://jdk.java.net/14/), haciendo click en el "zip" de Windows.
 2. Una vez descargado tendremos un archivo .zip. Lo colocaremos dentro de la carpeta de Artemis y lo descomprimimos usando cualquier gestor de archivos comprimidos.
