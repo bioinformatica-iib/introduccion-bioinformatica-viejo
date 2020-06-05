@@ -31,12 +31,12 @@ Normalmente, esto debería funcionar. Pero si no funciona (¡como ya hemos visto
 3. En _Operating System_ seleccionen "Windows" y, en Arquitectura, "x64" para 64 bits o "x86" para 32 bits. 
 4. Entre las opciones que aparecen para descargar, descargamos el JDK con extensión ``.msi``. 
 
-![msi](images/msi.png)
+![msi](images/msi.PNG)
 
 5. Cuando esté listo, ejecutamos y seguimos los pasos que dicta el instalador
 6. Cuando finalice, podremos ``Artemis.jar`` con la plataforma JDK. Acá es importante que, al ejecutar, no estemos usando un versión de Java que ya teníamos instalada. Para eso, podemos darle ``click derecho`` > ``Abrir con`` > ``OpenJDK Platform binary``
 
-![msi](images/OpenJDK.png). 
+![msi](images/OpenJDK.PNG). 
 
 
 #### La difícil (Esta solo me funcionó en Windows 64 Bits )
