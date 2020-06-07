@@ -5,7 +5,7 @@
 Como no está en la guía lo agrego acá
 
 1. Descargar Artemis [desde acá](https://github.com/sanger-pathogens/Artemis/releases/download/v18.1.0/artemis-windows-release-18.1.0.zip) o desde la página de [artemis oficial](http://sanger-pathogens.github.io/Artemis/Artemis/) del Sanger Institute, haciendo click en la plataforma deseada
-2. Una vez descargado tendremos un zip. Descomprimirlo en la carpeta en la que queramos que quede el programita
+2. Una vez descargado tendremos un zip. Descomparimirlo en la carpeta en la que queramos que quede el programita
 3. Ejecutar según corresponda a su sistema operativo (ver debajo)
 
 ## Ejecutar artemis
@@ -57,7 +57,7 @@ Nótese que lo que estamos haciendo es usar el ejecutable de JDK y pasándole el
 
 > Si usaron otro JDK (11 u 8, por ejemplo), cambien apropiadamente la ruta al java.exe.
 
-6. **Opcional:** Si nos andubo (es decir, si se ejecutó artemis), tomamos nota del comando que acaban de ejecutar. Copiamos y pegamos el comando en un nuevo archivo en blanco, dentro en la carpeta de artemis ( click derecho > Nuevo > Documento de texto)
+6. **Opcional:** Si nos anduvo (es decir, si se ejecutó artemis), tomamos nota del comando que acaban de ejecutar. Copiamos y pegamos el comando en un nuevo archivo en blanco, dentro en la carpeta de artemis ( click derecho > Nuevo > Documento de texto)
 
 ![carpeta](images/bat1.PNG)
 ![carpeta](images/bat2.PNG)
