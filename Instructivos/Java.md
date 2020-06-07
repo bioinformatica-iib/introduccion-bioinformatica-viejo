@@ -47,10 +47,21 @@ Si nada de eso funciona, pueden probar con esto:
 2. Una vez descargado tendremos un archivo .zip. Lo colocaremos dentro de la carpeta de Artemis y lo descomprimimos usando cualquier gestor de archivos comprimidos.
 3. Ahora abrimos una consola de Windows (`Windows`+`R`, escribimos `cmd` y le damos a `ejecutar`)
 4. En la consola que se abre, navegaremos hasta la carpeta de Artemis, usando `cd`, como en UNIX. Por ejemplo: `cd C:\Users\RYZEN\Desktop\artemis>`
-5. Una vez allí ejecutaremos el comando ():
+5. Una vez allí ejecutaremos el comando:
 ```
-    "./jdk-14.0.1/bin/java.exe" -jar artem  is.jar    
+    "./jdk-14.0.1/bin/java.exe" -jar artemis.jar    
 ```
 Nótese que lo que estamos haciendo es usar el ejecutable de JDK y pasándole el programa ``artemis.jar`` como parámetro. Revisen que la ruta al archivo ``java.exe`` coincida con lo que tienen ustedes en sus carpetas:
 
 ![carpeta](images/jdk.PNG)
+
+> Si usaron otro JDK (11 u 8, por ejemplo), cambien apropiadamente la ruta al java.exe.
+
+6. **Opcional:** Si nos andubo (es decir, si se ejecutó artemis), tomamos nota del comando que acaban de ejecutar. Copiamos y pegamos el comando en un nuevo archivo en blanco, dentro en la carpeta de artemis ( click derecho > Nuevo > Documento de texto)
+
+![carpeta](images/bat1.PNG)
+![carpeta](images/bat2.PNG)
+
+7. Cambiamos el nombre a "Artemis.bat". Ahora, haciendo doble click en el .bat que acabamos de crear, deberían ejecutarse Artemis.
+
+![carpeta](images/bat3.PNG)
