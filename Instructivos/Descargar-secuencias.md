@@ -106,6 +106,7 @@ Finalmente lo óptimo sería que el resultado de nuestra búsqueda se guardara e
 
 El archivo puede llamarse como quieran, esta es solo una sugerencia.
 
+Pueden repetir este comando cuantas veces necesiten para descargar todas las secuencias que quieran, o armar un script que lo haga por ustedes (ver TP de UNIX). 
 
 
 
