@@ -60,7 +60,7 @@ Todos los aislamientos se encuentran en la carpeta _isolates_ de este repositori
 Usted trabaja en un laboratorio que tiene a su cargo la vigilancia  epidemiológica nacional de varios agentes infecciosos (revise la tabla de datasets para hallar qué país le tocó). Como parte del mismo, todos los días se obtienen clones y secuencias de nuevos aislamientos. Su jefe lo pone a cargo de analizar varios, cuya secuencia ya ha puesto en el dominio público, para extraer toda la información bioinformática posible de su colección de datos. 
 
 - Los _accession numbers_ correspondientes a los aislamientos designados (`PAIS.csv`)
-- El _accession number_ de la secuencia  de referencia de SARS-CoV-2 (`RefSeq.csv`)
+- El genoma completo y anotado del aislamiento de referencia de SARS-CoV-2 (`RefSeq.fa` y `RefSeq.gb`, respectivamente)
 
 Su jefe quiere contestar algunas preguntas mínimas (aunque puede extender su análisis todo lo que quiera). 
 
