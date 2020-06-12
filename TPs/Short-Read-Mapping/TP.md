@@ -61,7 +61,13 @@ Lo principal que vamos a mirar cuando usemos FastQC es:
 
 Los reportes de FastQC se generan para cada FastQ que tengamos. No obstante, si tenemos muchos datasets, sería tedioso analizar uno por uno los reportes individualmente. Podemos usar [MultiQC](http://multiqc.info/), una herramienta que automáticamente reconoce los resultados de múltiples corridas de FastQC y los agrupa para analizar los resultados globalmente. No solo soporta resultados de FastQC, sino una gran variedad de outputs de más de 60 softwares de análisis de calidad. 
 
-Revisen la calidad de las secuencias de *C. trachomatis* con FastQC y MultiQC:
+FastQC también es un programa hecho en Java y, como tal, todo lo que hicimos para que Artemis y ACT funcionaran en nuestras compus no habrá sido en vano! Vamos a descargarlo haciendo click [acá](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip).
+
+Una vez descargado, lo descomprimimos y ejecutamos de la misma manera que ejecutamos Artemis o ACT.
+
+#### Revisen la calidad de las secuencias de *C. trachomatis* con FastQC y MultiQC:
+
+Pueden hacerlo abriendo cada archivo por separado en el programa o, si lo corren desde la consola, pueden pasarle las secuencias por linea de comando:
 
 ```Bash 
 fastqc NV_1.fastq.gz
@@ -103,7 +109,6 @@ Sean pacientes y esperen a que vuelva a aparecer el prompt antes de continuar.
 
 	bwa aln -q 15 L2_cat.fasta NV_1.fastq.gz > F.sai  
 	bwa aln -q 15 L2_cat.fasta NV_2.fastq.gz > R.sai  
-
 
 Ambos comandos se tomarán un poco de tiempo ya que son muchas las lecturas a alinear.
 
@@ -190,7 +195,7 @@ Hay otras maneras de visualizar la información de las lecturas alineadas. Cada 
 
 Es difícil ver la utilidad de algunas de estas funciones sin buenos ejemplos biológicos. Así que para ver uno, diríjanse, como deseen, hacia el final de la secuencia o a la posición 1044000. Ajusten la vista de tal forma que puedan ver la ventana de lecturas apiladas y el gráfico de cobertura. Noten dos cosas:
 
-![cover](images/cover.png)
+![inferredsize](images/coverage.png)
 
 1. La profundidad de la cobertura se incrementa al comienzo del "DNA feature" indicado con una línea marrón.
 2. La cobertura cae a cero dentro de una región de este "DNA feature".
@@ -201,11 +206,13 @@ La respuesta al primer interrogante es que la secuencia que esta visualizando es
 
 Aquí es donde la vista de tamaño inferido ('inferred size view') es realmente útil: Cambien la vista, como antes, a 'inferred size' y usen la escala logarítmica ( esto lo realizan chequeando la caja 'Use log Scale' en en el mismo menú que abren para cambiar las vistas de las lecturas mapeadas). Nuevamente ajusten el tamaño de las ventanas para ver las lecturas sobre la región que nos interesa. Lo que observarán es que el tamaño inferido de las lecturas pareadas a los lados de esta zona es mucho mayor al tamaño normal observado por fuera de esta región. No observándose ninguna línea gris uniendo lecturas pareadas dentro del rango normal de tamaño cruzando esta región. Esto es indicativo de una deleción en la cepa secuenciada comparada con la referencia.
 
+![cover](images/cover.png)
+
 > ¿Ya intuyen por qué esta cepa no era detectada en el ensayo diagnóstico estándar?
 
 #### Visualización de múltiples archivos BAM
 
-También pueden visualizar múltiples archivos BAM al mismo tiempo. Recuerden que los archivos BAM son un grupo procesado de lecturas alineadas de una bacteria (en este caso) contra una secuencia de referencia. Asi que en principio podriamos observar múltiples aislados bacterianos diferentes mapeados contra la misma referencia. La cepa de *C. trachomatis* que van a leer es la **L2b**. Es filogenéticamente más cercana a la cepa de referencia que la que hemos analizado hasta el momento, por eso el nombre similar.
+También pueden visualizar múltiples archivos BAM al mismo tiempo. Recuerden que los archivos BAM son un grupo procesado de lecturas alineadas de una bacteria (en este caso) contra una secuencia de referencia. Asi que en principio podriamos observar múltiples aislamientos bacterianos diferentes mapeados contra la misma referencia. La cepa de *C. trachomatis* que van a leer es la **L2b**. Es filogenéticamente más cercana a la cepa de referencia que la que hemos analizado hasta el momento, por eso el nombre similar.
 
 No harán nuevamente el mapeo para esta cepa, ya hemos procesado los datos crudos en fastq por ustedes (y ustedes, si recuerdan, indexaron un L2b.bam hace un ratito). El archivo que necesitan se denomina "L2b.bam". Para abrirlo hagan clic derecho sobre la vista de las lecturas apiladas y luego en el menú ``'Add Bam...'`` > ``'Select'`` y seleccionen el archivo correspondiente.
 

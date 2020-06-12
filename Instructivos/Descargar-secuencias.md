@@ -88,11 +88,11 @@ Esto ejecutará una serie de comandos que involucra la descarga, instalación y 
 - "Remove regular file 'edirect.tar.gz'": contestan con `y` y dan ``Enter``
 - "Would you like to do that automatically now?" : contestan con `y` y dan ``Enter``
 
-![bashinstall](images/installbash.PNG)
+![bashinstall](images/installbash.png)
 
 ¡Con esto deberíamos tenerlo instalado! Podemos comprobarlo escribiendo esearch -version y deberíamos ver un numerito, como en la imagen
 
-### Ahora sí...
+### Ahora sí...	
 
 El acceso programático a una base de datos es muy poderoso y, con un gran poder, viene una gran responsabilidad (?); asi como también una gran complejidad. Si alguna vez quieren profundizar su conocimiento sobre acceso programático a NCBI, puede leer [este libro](https://www.ncbi.nlm.nih.gov/books/NBK179288/). Para este curso nos alcanza con hacer algunas cuestiones más bien básicas como, por ejemplo, traer una secuencia.
 
