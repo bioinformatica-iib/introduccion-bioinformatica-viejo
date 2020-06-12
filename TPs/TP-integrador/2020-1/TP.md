@@ -132,21 +132,17 @@ _Extra Extra:_ Usando IUPred, identifique las regiones desordenadas y globulares
 
 Un colaborador ha observado, en esayos fenotípicos, que ciertas lineas celulares presentan resistencia a la infección viral. El mecanismo de resistencia es, *a priori*, desconocido. Lo único notable es que las células presentan muy baja tasa de infección (incluso a altas multiplicidad de infección). Su director ha obtenido lecturas cortas de secuenciación Illumina (*paired end*) del genoma de dicha linea celular, y ha hecho un sorteo entre todos sus becarios para repartir los cromosomas a estudiar. A usted le ha tocado un fragmento del cromosoma X. 
 
-- [Lecturas *forward*]()
-- [Lecturas *reverse*]()
+Deberá realizar el mapeo de dichas lecturas al genoma de referencia (`X-fragment.fasta`, secuencia; `X-fragment.gb`, anotaciones) y evaluar si existen mutaciones con potencial para conferir resistencia al virus (si la/s halla, hipotetice el motivo por el cual dicha/s mutación/es funciona brindando resistencia a la linea celular). 
 
-Realice el mapeo de dichas lecturas al genoma de referencia (`X-fragment.fasta`, secuencia; `X-fragment.gb`, anotaciones) y evalúe si existen mutaciones con potencial para conferir resistencia al virus (si la/s halla, hipotetice el motivo por el cual dicha/s mutación/es funciona brindando resistencia a la linea celular). 
+Usted ya hizo esto alguna vez en su vida, por lo que ya tiene un script escrito `seqprep.sh`. Actualice dicho script con la secuencia de interés y explique qué hace cada comando (Utilice comentarios "#" adentro del script). Deberá entregar el script conjuntamente con su informe)
 
-Usted ya hizo esto alguna vez en su vida, por lo que ya tiene script escrito `seqprep.sh`. Actualice dicho script con la secuencia de interés y explique qué hace cada comando (Utilice comentarios "#" adentro del script). Deberá entregar el script conjuntamente con su informe.
-
-Luego de correr el script debería tener algo así (no hace falta que lo corran: el link de abajo es el resultado que obtendrían)
-- [mapping-sorted.bam]()
+**No hace falta que corran el script, solo edítenlo y describan qué hace cada comando. Ya corrimos el script por ustedes. Pueden hallarlo entre sus materiales de trabajo como ``mapping-sorted.bam``, dentro de ``short-read-mapping-precalcs.zip``**
 
 ¿Encontró algo interesante?
 
 ##### 🎉 Ejercicio de programación y data mining
 
-Finalmente, para corroborar las observaciones de los ejercicios anteriores, usted decide hacer un experimento de expresión: Usa un microarray con 444 genes que, por diversos motivos (que su jefe también se niega a compartir) podrían resultar de interés; y lo ensayan con 3 réplicas técnicas contra una linea celular susceptible al virus (*cont1, cont2 y cont3*) y otra resistente (*test1, test2 y test3*). 
+No obstante, no todos los los fenotipos resistentes se explican con el experimento anterior. Para ellos, usted decide hacer un experimento de expresión: Usa un microarray con 444 genes que podrían resultar de interés; y lo ensayan con 3 réplicas técnicas contra una linea celular susceptible al virus (*cont1, cont2 y cont3*) y otra resistente (*test1, test2 y test3*). 
 
 Los resultados se encuentran en el archivo `data.csv`. Pueden usar el [rserver](http://pi.iib.unsam.edu.ar/rserver2/) como durante toda la cursada.
 
