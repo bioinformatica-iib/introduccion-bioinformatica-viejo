@@ -57,7 +57,11 @@ Luego, haciendo click en donde dice "X Items" abriremos una lista de elementos q
 
 La base de datos NCBI ha desarrollado una forma de acceso programático a sus registros, que podemos aprovechar para automatizar nuestras búsquedas o simplemente para buscar cosas desde un entorno que no tiene interfaz gráfica y en el que solo se puede usar una triste consola (como un servidor, por ejemplo)
 
-El acceso programático requiere que instalemos un pequeño paquete de UNIX, cuyo nombre es Entrez. En este ejemplo lo haremos con Ubuntu (los comandos podrían cambiar ligeramente en otros entornos UNIX, pero por ahora con este les alcanza). Para instalarlo, en la consola escribiremos: `sudo apt-get install ncbi-entrez-direct`
+El acceso programático requiere que instalemos un pequeño paquete de UNIX, cuyo nombre es Entrez. Este se puede instalar de (al menos) dos maneras. 
+
+### La forma fácil
+
+En este ejemplo lo haremos con Ubuntu (los comandos podrían cambiar ligeramente en otros entornos UNIX, pero por ahora con este les alcanza). Para instalarlo, en la consola escribiremos: `sudo apt-get install ncbi-entrez-direct`
 
 > **_sudo_** para ejecutar el comando como administrador
 
@@ -68,6 +72,27 @@ El acceso programático requiere que instalemos un pequeño paquete de UNIX, cuy
 > **_ncbi-entrez-direct_** es el nombre del paquete que queremos instalar
 
 Aceptamos todo lo que nos dice que va a instalar y ya estamos listos para empezar. 
+
+### La forma no tan fácil
+
+La instalación descrita arriba parece no funcionar con el Biolinux de Environmental Omics, de modo que para los que tengan esa máquina virtual vamos a necesitar una alternativa. 
+
+1. Vamos a descargar este [archivo de instalación](https://www.ncbi.nlm.nih.gov/books/NBK179288/bin/install-edirect.sh) y lo vamos a poner en algún lugar de fácil acceso. Por ejemplo en ``Downloads``. 
+2. Luego abrimos la consola y nos dirijimos a `Downloads` (``cd ~/Downloads``)
+3. Una vez dentro, escribiremos:
+
+	source install-entrez.sh
+
+Esto ejecutará una serie de comandos que involucra la descarga, instalación y configuración mínima de Entrez. Durante el progreso, les hará una serie de preguntas:
+
+- "Remove regular file 'edirect.tar.gz'": contestan con `y` y dan ``Enter``
+- "Would you like to do that automatically now?" : contestan con `y` y dan ``Enter``
+
+![bashinstall](images/installbash.PNG)
+
+¡Con esto deberíamos tenerlo instalado! Podemos comprobarlo escribiendo esearch -version y deberíamos ver un numerito, como en la imagen
+
+### Ahora sí...
 
 El acceso programático a una base de datos es muy poderoso y, con un gran poder, viene una gran responsabilidad (?); asi como también una gran complejidad. Si alguna vez quieren profundizar su conocimiento sobre acceso programático a NCBI, puede leer [este libro](https://www.ncbi.nlm.nih.gov/books/NBK179288/). Para este curso nos alcanza con hacer algunas cuestiones más bien básicas como, por ejemplo, traer una secuencia.
 
