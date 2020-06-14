@@ -69,11 +69,11 @@ Su jefe quiere contestar algunas preguntas mínimas (aunque puede extender su an
 ##### ▶️ Entrada en calor:
 - **Búsqueda de secuencias**: Obtenga las secuencias genómicas de los aislamientos que le pasó su jefe. 
 - **Alineamiento de a pares**: Realice un alineamiento entre la secuencia de referencia y una secuencia al azar entre las que acaba de descargar. 
-- **Marcos abiertos de lectura**: Obtenga las secuencias correspondientes a la proteína N de todos los aislamientos y construya una fasta múltiple con ellas 
+- **Marcos abiertos de lectura**: Obtenga las secuencias correspondientes a la proteína N o E (alcanza con una de las dos, pero si quieren hacer ambas mejor) de todos los aislamientos y construya una fasta múltiple con ellas 
 
 ##### ▶️ Alineamientos múltiples e información contenida
-Genere un alineamiento múltiple a partir de un fasta múltiple de la proteína E y, con este alineamiento,
-- **Construcción de una PSSM o un HMM**: Construya una PSSM o un HHM. 
+Genere un alineamiento múltiple a partir de el/los fasta múltiple/s de proteína N y E. Con este alineamiento,
+- **Construcción de una PSSM o un HMM**: Construya una PSSM o un HHM. Indique para qué podría usarla.
 - **Construcción de un árbol filogenético**: Construya un árbol filogenético utilizando cualquier estrategia que considere apropiada (justifique su elección). 
 
 A partir de sus experimentos, conteste las siguientes preguntas:
