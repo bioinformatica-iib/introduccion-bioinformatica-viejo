@@ -8,7 +8,7 @@ Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de 
 
 ## Introducción
 
-Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver/) 
+Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver2/) 
 
 En este TP retomamos el trabajo con R, con lo cual es preferible que repasen como abrir nuevos archivos de texto donde escribir sus *scripts*, cuales eran los atajos para ejecutar código seleccionado, que representaba cada panel de Rstudio, etc. Para eso, pueden aprovechar el [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) 
 
