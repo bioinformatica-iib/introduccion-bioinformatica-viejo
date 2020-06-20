@@ -98,6 +98,7 @@ Su jefe también está interesado en que Ud. entienda más sobre los mecanismos 
 
 #### Extras para entusiastas [🎉]
 
+<!--
 ##### 🎉 Ejercicio de *parseo* de datos
 
 Su jefe le ha encargado la utilización predictores para hallar dominios funcionales y ontologías (PFAM, Gene Ontologies, InterPro, etc) en todo el genoma de referencia. Le pide que reporte sus resultados en formato de tabla, a partir del archivo `anotaciones.list`
@@ -110,6 +111,8 @@ Su jefe le ha encargado la utilización predictores para hallar dominios funcion
 | ... | ... |
 
 NOTA: Entregue el/los scripts que utilizó para generar la tabla.
+
+--!>
 
 ##### 🎉 Ejercicio de visualización y anotación
 
