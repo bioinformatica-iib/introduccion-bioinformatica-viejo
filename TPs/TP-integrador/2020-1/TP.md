@@ -110,9 +110,9 @@ Su jefe le ha encargado la utilización predictores para hallar dominios funcion
 | Proteina 3| anotacion x |
 | ... | ... |
 
-NOTA: Entregue el/los scripts que utilizó para generar la tabla.
+NOTA: Entregue el/los scripts que utilizó para generar la tabla.-->
 
---!>
+
 
 ##### 🎉 Ejercicio de visualización y anotación
 
