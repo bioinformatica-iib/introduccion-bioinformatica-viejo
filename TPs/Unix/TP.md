@@ -9,6 +9,6 @@ En este trabajo práctico vamos a aprender a usar la :skull: **LINEA DE COMANDO*
 Todo lo que hagamos en este TP se puede hacer directamente en el navegador, gracias a [Alex Morley](https://github.com/blahah/command_line_bootcamp) y colaboradores, que armaron una interfaz web especialmente diseñada para aprender lo básico de linea de comando: 
 
 ## Bootcamp!
-Sin más, vamos a trabajar! Diríjanse al siguiente link: [Command-line Bootcamp](http://rik.smith-unna.com/command_line_bootcamp/?id=i8w8szoe5up9cqp5m8ytzw7b9). 
+Sin más, vamos a trabajar! Diríjanse al siguiente link: [Command-line Bootcamp](cli-boot.camp/). 
 
 > The bootcamp tutorial text was adapted from the original by Keith Bradnam. The infrastructure, including adventure-time and docker-browser-server, was built by @maxogden and @mafintosh. The setup of this app was based on the get-dat adventure. This adventure was made by Richard Smith-Unna. This work is licensed under a Creative Commons 4.0 International License. Creative Commons License
