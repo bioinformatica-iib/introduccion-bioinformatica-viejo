@@ -8,7 +8,7 @@ Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de 
 
 ## Introducción
 
-Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver/) 
+Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver2/) 
 
 En este TP retomamos el trabajo con R, con lo cual es preferible que repasen como abrir nuevos archivos de texto donde escribir sus *scripts*, cuales eran los atajos para ejecutar código seleccionado, que representaba cada panel de Rstudio, etc. Para eso, pueden aprovechar el [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) 
 
@@ -44,7 +44,7 @@ Comparar gráficos y dendrogramas y discutir qué resultado (Norte o Sur) tiene 
 Lo primero que vamos a hacer en R es cargar los datos de la tabla de ejemplo `TablaEjemplo.txt`. Para esto tendrán que setear el directorio de trabajo correcto (pista: usar la función `setwd()`) y luego usar alguna función de las que ya conocemos para cargar tablas.
 
 ```r
-MiTabla <- read.csv("./data/TablaEjemplo.txt", sep="\t", row.names="gen")
+MiTabla <- read.csv("./dataDataMining/TablaEjemplo.txt", sep="\t", row.names="gen")
 ```
 
 Lo que hicimos acá, fue leer el archivo de texto TablaEjemplo.txt utilizando la función `read.csv()` de R (csv -- *comma separated values* -- es la extensión que suele usarse para nombrar archivos de texto conteniendo valores separados por algún delimitador, que comúnmente es una coma, o un carácter de tabulación). Además del nombre del archivo, la función `read.csv()` nos permite declarar cuál es el separador de campos (en este caso son tabulaciones, que se indican como \\t), y cual es la columna que contiene los identificadores para las filas ("gen" es el nombre de esta columna en nuestro ejemplo). Finalmente, notar que el resultado de ejecutar la función `read.csv()` se está almacenando en la variable `MiTabla`.
