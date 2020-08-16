@@ -1558,11 +1558,11 @@ La verdad sea dicha, todos los biotecnológos hemos jugado (o jugamos) con secue
 
 En el TP de hoy vamos a familiarizarnos con EMBOSS y algunas herramientas del paquete, aplicándolas al diseño de una estrategia de clonado, puntualmente para diseñar/optimizar proteinas para expresion recombinante heteróloga. 
 
-En los últimos años, se ha simplificado cuantiosamente la ejecución de un proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o la posibilidad de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón 90% off en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
+En los últimos años, se ha simplificado cuantiosamente la ejecución de un proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o el riesgo de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón *90% off* en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
 
-Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Lo procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* (ese que todos llevamos dentro) montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
+Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Lo procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
 
-La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir el ácido ferúlico en ¡nada menos que vainillín! 
+La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir el ácido ferúlico en **¡nada menos que vainillín!**
 
 ![Catalisis de VpVAN](images/vainillin.png)
 
@@ -1577,7 +1577,6 @@ Intentaremos expresarla en las siguientes condiciones:
 
 Sistema de expresión heterólogo:
 - En *E. coli BL21*
-- En *S. cerevisiae*
 
 Sistema de purificación:
 - Con His-tag
@@ -1590,12 +1589,12 @@ Por cuestiones de practicidad, todos los tags van a estar el C-terminal.
 
 **En lineas generales vamos a:**
 
-1. Generar secuencia de aminoácidos VpVAn-Tag para cada tag de interés.
+1. Generar secuencia de aminoácidos VpVAN-Tag para cada tag de interés.
 2. Obtener las secuencias codificantes del organismo de interés y generar tabla de uso de codones para el organismo de interés.
 3. Generar la secuencia nucleotídica VpVAN-tag con los codones optimizados para el organismo de interés.
-4. Verificar que no hayan quedado sitios de restricción propios de la estrategia de clonado DENTRO de la secuecnia VpVAN-tag optimizada. 
+4. Verificar que no hayan quedado sitios de restricción propios de la estrategia de clonado DENTRO de la secuecnia VpVAN-tag optimizada.
 
-## Manos a la obra!
+## ¡Manos a la obra!
 
 ### 1. Secuencias VpVan-Tag
 
@@ -1620,7 +1619,9 @@ done;
 
 ¡Ya tenemos nuestras secuencias quiméricas!
 
-Comencemos por instalar EMBOSS en nuestro sistema. Para esto vamos a encender nuestra máquina virtual con Bio-Linux y, una vez encendida, vamos a abrir la linea de comando. Alli ingresaremos
+Comencemos por instalar EMBOSS en nuestro sistema. Si no tuviéramos la máquina virtual (que ya tiene todo instlado), podríamos instalar EMBOSS como sigue: 
+
+En una linea de comando, ingresaríamos:
 
 ```Bash
 sudo apt-get install emboss emboss-data emboss-doc
@@ -1631,30 +1632,17 @@ man sudo
 man apt-get
 ```
 
-El paquete EMBOSS ya está instalado en las máquinas virtuales porque la *Distro* (así le decimos los algo-informáticos a las *distribuciones o paquetes* de un sistema operativo) Bio-Linux ya viene con muchas utilidades pre-instaladas para empezar a trabajar lo antes posible; entre ellas EMBOSS suite.
-
-
 #### 2. Construir tabla de frecuencias de uso de codones
 
 Para poder calcular la tabla de uso de codones, podemos usar `cusp`, de EMBOSS. Por si no recurdan, del manual de cusp (`tfm cusp` en la linea de comando), "*cusp calculates a codon usage table for one or more nucleotide coding sequences and writes the table to file*".
 
-Esto significa que necesitaremos un FASTA conteniendo secuencias codificantes.
+Esto significa que necesitaremos una lista de secuencias codificantes.
+
+El formato más común que usamos los bioinformáticos para guardar (y usar) listas de secuencias es el formato FASTA. Vamos a construir un archivo tipo fasta con nuestras secuencias codificantes.
 
 ##### 2.1 Obtener secuencias codificantes
 
-###### 2.1.a Obtener la frecuencia de uso de codones *team eucariota*
-
-> Solo de interés para quienes van a trabajar con *S. cerevisiae*.
-
-Para levaduras, pueden usar [BioMart](https://fungi.ensembl.org/biomart/martview) para conseguir la secuencia codificante de su organismo de interés. 
-
-![Frecuencia de uso de codones](images/codon-freq.png)
-
-###### 2.1.b Obtener la frecuencia de uso de codones *team procariota*
-
-> Solo de interés para quienes van a trabajar con *E. coli (BL21)*.
-
-Para bacterias, el cuento es un poco más complejo. Debemos seguir las instrucciones descritas en 
+Para bacterias descargar secuencias codificantes en bacterias, debemos seguir las instrucciones descritas en 
 https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/
 *How can I download RefSeq data for all complete bacterial genomes?*, que básicamente se resumen en los siguientes pasos:
 
@@ -1679,6 +1667,15 @@ wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 
 Podemos agregar manualmente (buh! :poop:) o podemos hacer todo en un solo paso (eeh! :tada: ):
 
+### Una forma simple pero efectiva:
+```Bash
+# Obtengo los links
+grep "BL21" assembly_summary.txt | grep "coli" | awk -F'\t' '{print $8,$20}'
+# y los pego en el navegador para descargarlos manualmente
+```
+
+### Otra forma más prolija y programática
+
 ```Bash
 # Obtengo los links <- Esto puede ser muy distinto a lo que hicieron ustedes para obtener sus links, revisen las diferencias :)
 cat assembly_summary.txt | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest" && $8 ~ "BL21") {print $20}}'  > ftpdirpaths
@@ -1690,11 +1687,9 @@ wget -i ftpfilepaths
 
 <details>
 <summary>Ver links a los genomas</summary>
-<ul>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz ">GCF_000009565.1_ASM956v1</a></li>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz ">GCF_000022665.1_ASM2266v1</a></li>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz ">GCF_000023665.1_ASM2366v1</a></li>
-</ul>
+   - [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
+   - [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
+   - [GCF_000023665.1_ASM2366v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz)
 </details>
 
 ---
@@ -1707,6 +1702,14 @@ Veamos cómo puede ayudarnos EMBOSS a hacer esto.
 
 Para familiarizarnos con EMBOSS, comencemos por buscar qué herramientas vamos a usar durante el TP. Si emboss-doc está instalado, se puede ver la documentación de los paquetes en la linea de comando. Ya sabemos que vamos a estar optimizando codones para algún organismo así que arranquemos por ahí: 
 Para buscar comandos que hacen cosas, usar `wossname` con palabras clave (en inglés, ej: 'codon'). El comando `wossname` nos da una lista de comandos asociados con esas palabras clave y lo que hace cada programa.
+
+> Esto solo funcionará si instalamos la documentación de EBMOS.
+
+```Bash
+   sudo apt-get install emboss-doc
+```
+
+Luego, podremos usar wossname para buscar comandos que trabajen con codones. 
 
 ```Bash
 wossname codon
@@ -1763,22 +1766,15 @@ tfm cusp
 
 Ya tenemos nuestra lista de secuencias codificantes así que ya estamos en condiciones de calcularel uso de codones usando `cusp`.
 
-##### El *Team eucariota*:
-
-```Bash
-# Podemos hacerlo así (3 veces, una por cada archivo):
-cusp -sequence scerevisiae.cds.fasta -outfile scerevisiae.cusp
-```
-
 ##### El *Team procariota*:
 
 ```Bash
 # Podemos hacerlo así (3 veces, una por cada archivo):
-zcat GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz | cusp -sequence stdin -outfile ecoli.cusp
+zcat GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz | cusp -sequence stdin -outfile ecoli-clase.cusp
 
 # O así (3 veces, una por cada archivo):
 gzip -d GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz
-cusp -sequence GCF_000009565.1_ASM956v1_cds_from_genomic.fna -outfile GCF_000009565.1_ASM956v1_cds_from_genomic.cusp
+cusp -sequence GCF_000009565.1_ASM956v1_cds_from_genomic.fna -outfile GCF_000009565.1_ASM956v1_cds_from_genomic-clase.cusp
 
 # O así (una sola vez!): 
 files=`ls GCF*.gz`
@@ -1788,7 +1784,7 @@ for file in ${files}; do zcat ${file} | cusp -auto -sequence stdin -outfile ${fi
 ```
 ---
 
-Dado que este comando puede demorar mucho en calcular todo, ya tiene el archivo **.cusp* listo para usar en su carpeta de trabajo.
+Dado que este comando puede demorar mucho en calcular todo, **ya tienen el archivo .cusp listo para usar en su carpeta de trabajo.**
 
 Revisen la tabla de codones. ¿Qué representa? Pregunta para el *team procarita*, ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma que analizaron?
 
@@ -1939,11 +1935,12 @@ TTT    F     0.575    22.385  30499
 
 </details>
 
-Si se pusieron a buscar diferencias a ojo entre un archivo y otro, todavía no aprendieron nada: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión). 
+Si se pusieron a buscar diferencias a ojo entre un archivo y otro, todavía no aprendieron nada: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
 
 ```Bash
 codcmp <primer.cusp> <segund.cusp> cusp-comparison.out
 ```
+
 Comparen dos tablas de frecuencia de uso de la misma especie (distinto proyecto) y entre especies. ¿Qué pueden decir al respecto? *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
 
 ### 3. Optimizar la secuencia en función de la tabla de uso de codones
@@ -1958,9 +1955,10 @@ tfm backgranseq
 # Igual acá está el que anda, vagxs. 
 backtranseq -auto -sequence <myprotein.fasta> -cfile <ecoli.cusp> -outfile <myprotein.ecoli.codons.dna.fasta>
 ```
+
 ¡Tenemos que hacerlo para todas nuestras secuencias quiméricas!
 
-El archivo `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon. 
+El archivo `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon.
 
 ### 4. Analizar los patrones de restriccion de mi nueva secuencia (optimizada)
 
@@ -1975,19 +1973,21 @@ Bajar los archivos withrefm.907 y proto.907 desde [aquí](ftp://ftp.neb.com/pub/
 ```bash
 rebaseextract -infile withrefm.907 -protofile proto.907
 ```
+
 Es posible que Ubuntu no nos deje hacer esto, dado que vamos a estar modificando cosas del sistema operativo, y para eso requerimos permisos. Podemos enseñarle quién manda con un `sudo`
 
 ```bash
+#la contraseña es "unsam"
 sudo rebaseextract -infile withrefm.907 -protofile proto.907
 ```
-Pregúntenle la contraseña al profe :P
 
 #### 4.1. Verificar sitios de restricción
 
 ```Bash
 remap -auto -sequence myprotein.ecoli.codons.dna.fasta -single -width 80 -commercial -sitelen 6 -frame 1 -enzymes all -outfile remap
 ```
-Donde: 
+
+Donde:
 - -single = enzimas que cortan solo una vez (mincuts = maxcuts = 1)
 - -commercial = only enzymes with commercial supplier
 - -sitelen = min length of enzyme recognition site
