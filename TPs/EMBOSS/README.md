@@ -1766,8 +1766,6 @@ tfm cusp
 
 Ya tenemos nuestra lista de secuencias codificantes así que ya estamos en condiciones de calcularel uso de codones usando `cusp`.
 
-##### El *Team procariota*:
-
 ```Bash
 # Podemos hacerlo así (3 veces, una por cada archivo):
 zcat GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz | cusp -sequence stdin -outfile ecoli-clase.cusp
@@ -1786,7 +1784,7 @@ for file in ${files}; do zcat ${file} | cusp -auto -sequence stdin -outfile ${fi
 
 Dado que este comando puede demorar mucho en calcular todo, **ya tienen el archivo .cusp listo para usar en su carpeta de trabajo.**
 
-Revisen la tabla de codones. ¿Qué representa? Pregunta para el *team procarita*, ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma que analizaron?
+Revisen la tabla de codones. ¿Qué representa? ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma que analizaron?
 
 ```Bash
 head -20 <organismo-de-interes.cusp>
@@ -1941,7 +1939,7 @@ Si se pusieron a buscar diferencias a ojo entre un archivo y otro, todavía no a
 codcmp <primer.cusp> <segund.cusp> cusp-comparison.out
 ```
 
-Comparen dos tablas de frecuencia de uso de la misma especie (distinto proyecto) y entre especies. ¿Qué pueden decir al respecto? *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
+Comparen dos tablas de frecuencia de uso de la misma especie (distinto proyecto) ¿Qué pueden decir al respecto? *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
 
 ### 3. Optimizar la secuencia en función de la tabla de uso de codones
 
