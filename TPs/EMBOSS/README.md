@@ -1583,7 +1583,7 @@ Sistema de purificación:
 - Con MBP-tag
 - Con FLAG-tag
 
-Por cuestiones de practicidad, todos los tags van a estar el C-terminal. 
+Por cuestiones de practicidad, todos los tags van a estar en el C-terminal. 
 
 > **NOTA**: Estamos asumiendo que TODOS saben de qué estamos hablando con las condiciones expuestas. Si no es el caso, **pregunten**.
 
