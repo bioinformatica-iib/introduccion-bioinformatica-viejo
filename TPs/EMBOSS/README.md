@@ -1949,14 +1949,14 @@ Para ello, podemos usar `backtranseq`: Dada una secuencia de aminoácidos corres
 
 ```Bash
 # A Leer?
-tfm backgranseq
+tfm backtranseq
 # Igual acá está el que anda, vagxs. 
 backtranseq -auto -sequence <myprotein.fasta> -cfile <ecoli.cusp> -outfile <myprotein.ecoli.codons.dna.fasta>
 ```
 
 ¡Tenemos que hacerlo para todas nuestras secuencias quiméricas!
 
-El archivo `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon.
+Los archivos `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon.
 
 ### 4. Analizar los patrones de restriccion de mi nueva secuencia (optimizada)
 
