@@ -1560,7 +1560,7 @@ En el TP de hoy vamos a familiarizarnos con EMBOSS y algunas herramientas del pa
 
 En los últimos años, se ha simplificado cuantiosamente la ejecución de un proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o el riesgo de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón *90% off* en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
 
-Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Lo procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
+Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Los procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
 
 La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir el ácido ferúlico en **¡nada menos que vainillín!**
 
@@ -1583,7 +1583,7 @@ Sistema de purificación:
 - Con MBP-tag
 - Con FLAG-tag
 
-Por cuestiones de practicidad, todos los tags van a estar el C-terminal. 
+Por cuestiones de practicidad, todos los tags van a estar en el C-terminal. 
 
 > **NOTA**: Estamos asumiendo que TODOS saben de qué estamos hablando con las condiciones expuestas. Si no es el caso, **pregunten**.
 
