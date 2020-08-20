@@ -1914,7 +1914,7 @@ TTT    F     0.575    22.385  30499
    <td>T</td>
    </tr>
    <tr>
-   <td>Tryptophan</td>
+   <td>Tryptophans</td>
    <td>Trp</td>
    <td>W</td>
    </tr>
