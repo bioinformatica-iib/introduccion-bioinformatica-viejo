@@ -12,10 +12,10 @@ El alineamiento de secuencias de a pares comprende la asignación uno-a-uno de c
    * **Gap open:** Cuando se abre un gap.
    * **Gap extend:** Cuando se agregan gaps a continuación de otro gap.
 
-Por ejemplo si alineamos las secuencias abcde y acxef un posible resultado sería:
+Por ejemplo si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
 
-> abcde-  
-> a-cxef
+> AFGIVHKLIVS
+> AFGI-HK-IVS
 
 La principal función de los lineamientos es establecer una medida de similitud entre las secuencias que participan en el mismo. Para ello es necesario definir un sistema de puntuación que pese cada uno de los eventos que tienen lugar en el. Este puntaje nos permitirá también optimizar el alineamiento utilizando algoritmos que elijan la correspondencia entre secuencias que lo maximicen.
 
@@ -24,8 +24,70 @@ Los **alineamientos globales** (o de Needleman-Wunsch por sus creadores), se rea
 Los **alineamientos locales** (o de Smith-Waterman), parean solo parte de las secuencias y son útiles para identificar por ejemplo dominios en comun.
 **Alineamientos mixtos**, que combinan los anteriores.
 
+## 1. Dynamic programming
 
-## 1. Dot-Plots
+Dado un par de secuencias y un sistema de puntuación se pueden aplicar diversos algoritmos para encontrar el alineamiento que de el mejor puntaje. El algoritmo más popular, utiliza una técnica matemática llamada *dynamic programming*. El mismo consiste en comparar ambas secuencias en una matriz, calculando el costo que tiene llegar a cada una de las celdas (dado el sistema de puntaje preestablecido) y eligiendo la opción más favorable, guardando el puntaje con el que se llega a la celda y el movimiento que lo originó. Una vez la matriz está completa en su totalidad se puede recorrer hacia atrás (desde el extremo inferior derecho al superior izquierdo) para reconstruir el alineamiento.
+La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, puede que existan varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica, la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad depende del largo de las secuencias implicadas, lo cual lo hace poco eficiente para búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
+
+En la práctica: imaginen que quieren alinear las secuencias ATTGAG y AGATGGAT utilizando un scoring de M=1, m=0, g=-1
+Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensiones corresponda a una de las secuencias:
+
+![Dynamic0](./images/Matriz0.png)
+
+El primer vértice aduiere el valor e cero ya que es con el puntaje con el que iniciamos el alineamiento. A partir de allí completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta él. Por ejemplo, para alcanzar el siguiente vértice (a la derecha del inicial), solamente se podria acceder por un solo camino:
+* Moverse horizontalmente desde el nodo inicial, alineando A con un gap con un score de -1 (g).
+
+![Dynamicb1](./images/Matriz0_b1.png)
+
+> A  
+> -  
+
+* Lo mismo pasa con el vértice debajo de el nodo de inicio, pero la interpretación es que alineamos la A de la segunda secuencia con un gap en la primera.
+
+![Dynamicb2](./images/Matriz0_b2.png)
+
+> -  
+> A  
+
+Para completar el nodo que intersecta ambas A, ahí si vamos a encontrarnos que podemos acceder de tres maneras distintas:
+
+* Hacer un movimiento vertical, lo cual nos daria un score de -2 (-1 de la casilla de partida -1 por insertar un gap).
+
+> A-  
+> -A  
+
+* Hacer un movimiento horizontal, similar al caso anterior, resultando en un score de -2.
+
+> -A  
+> A-  
+
+* Hacer un movimiento diagonal, lo cual implica alinear ambos caracteres. Como son dos A en cada secuencia, el score seria +1, que es el valor del match.
+
+> A  
+> A  
+
+Para decidir que valor ubicamos en el vértice simplemente optamos por el que nos dé el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal.
+
+![Dynamic1](./images/Matriz0_b3.png)
+
+Este procedimiento se repite iterativamente calculando los scores para cada vértice e indicando el mejor movimiento. 
+
+![Dynamic2](./images/Matriz1.png)
+
+Al finalizar la matriz, se puede obtener el mejor alineamiento al reconstruir el camino que nos lleva del extremo inferior derecho al superior izquierdo:
+
+![Dynamic3](./images/Matriz2.png)
+
+El score final del alineamiento es el score de la ultima celda de la matriz (en este caso +2) y el alineamiento se puede reconstruir siguiendo el camino que hemos establecido, insertando gaps en una u otra secuencia segun si hay un movimiento horizontal o vertical:
+
+> AT-TG-AG
+> AGATGGAT
+
+2.1 Utilizando el algoritmo de *dynamic programming* complete la matriz y reconstruya el alineamiento utilizando las secuencias y el scoring del ejemplo:
+
+![Dynamic4](./images/Matriz_ej.png)
+
+## 2. Dot-Plots
 
 Los dot-plots son representaciones gráficas que dan un pantallazo sobre la similitud entre dos secuencias. En ellos se pueden identificar patrones que aporten información sobre la relación entre ambas secuencias.
 La forma de obtener uno es muy sencilla: se establece una matriz donde cada elemento de una de las secuencias se corresponde con una fila y los de la otra con una columna. Acto seguido se procede a colorear cada celda donde los caracteres correspondientes a fila y columna sean equivalentes.
@@ -38,7 +100,7 @@ Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar n
 1.1 Genere un dotplot utilizando la secuencia HS-ch11-fragment.fasta contra sí misma.
 
 ```Bash
-dotmatcher HS-ch1-fragment.fasta HS-ch1-fragment.fasta
+dotmatcher -graph X11 HS-ch1-fragment.fasta HS-ch1-fragment.fasta
 ```
 
 **Que podemos interpretar de lo que vemos?**
@@ -49,79 +111,51 @@ Para limpiar el plot y quedarnos con los matches más significativos podemos jug
 * windowsize: Tamaño de ventana
 * threshold: Umbral de ocurrencia
 
-Esto quiere decir que solo va a poner un punto cuando un fragmento del largo *windowsize* contenga *threshold* matches.
+Esto quiere decir que solo va a poner un punto cuando un fragmento del largo *windowsize* contenga un score mayor a *threshold*.
 Por ejemplo:
 
 ```Bash
-dotmatcher -windowsize 50 -threshold 20 HS-ch1-fragment.fasta HS-ch1-fragment.fasta
+dotmatcher -graph X11 -windowsize 50 -threshold 20 HS-ch1-fragment.fasta HS-ch1-fragment.fasta
 ```
 
-Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a secciones compartidas más cortas, sin embargo existe una relación de compromiso, utilizar tamaño de ventana y umbral muy grandes nos llevan a perder información por lo que hay que seleccionarlos con cuidado.
-Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del mismo?** Busque explicaciones posibles a los patrones encontrados.
+Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a secciones compartidas más cortas, sin embargo existe una relación de compromiso, utilizar tamaño de ventana y umbral muy grandes nos llevan a perder información por lo que hay que seleccionarlos con cuidado. Aqui hay algunos patrones con los que se pueden encontrar en este tipo de plots:
 
-1.2 Teniendo en cuenta lo visto anteriormente, imagine y dibuje en forma esquemática dot-plots que sean el resultado de comparar las siguientes secuencias:  
-    1.2.1 Un genoma conteniendo tres copias del mismo gen contra sí mismo  
-    1.2.2 Una secuencia palindrómica contra sí misma  
-    1.2.3 Dos proteínas que comparten un motivo  
-    1.2.4 Dos secuencias idénticas, pero una de ellas se encuentra invertida  
-    1.2.5 Un fragmento o gen contra una secuencia mayor (que lo contiene)  
-    1.2.6 Dos proteínas con tres motivos compartidos (distintos entre sí) pero en distinto orden.  
+![DotPlot](./images/DotPlot_patterns.png)
 
-## 2. Dynamic programming
+**a)** Match perfecto.
+**b)** Repeticiones.
+**c)** Palindromo.
+**d)** Repeticiones invertidas.
+**e)** Zonas de baja complejidad (microsatelites).
+**f)** Zonas altamente repetitivas (minisatelites).
+**g)** Secuencias con alta conservación.
+**h)** Inserción o deleción.
 
-Dado un par de secuencias y un sistema de puntuación se pueden aplicar diversos algoritmos para encontrar el alineamiento que de el mejor puntaje. El algoritmo más popular, utiliza una técnica matemática llamada *dynamic programming*. En el mismo se parte de una matriz idéntica a la utilizada para graficar los dot-plots, pero se la completa en su totalidad, calculando el costo que tiene llegar a cada una de las celdas (dado el sistema de puntaje preestablecido) y eligiendo la opción más favorable, guardando el puntaje con el que se llega a la celda y el movimiento que lo originó. Una vez la matriz está completa en su totalidad se puede recorrer hacia atrás (desde el extremo inferior derecho al superior izquierdo) para reconstruir el alineamiento.
-La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, puede que existan varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica, la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad depende del largo de las secuencias implicadas, lo cual lo hace poco eficiente para búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
 
-En la práctica: imaginen que quieren alinear las secuencias ATTGAG y AGATGGAT utilizando un scoring de M=1, m=0, g=-1
-Para eso ubicamos las secuencias en la matriz como ya vimos:
-
-![Dynamic0](./images/DyP0.png)
-
-y la completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta el. Por ejemplo, para alcanzar el primer vértice, los tres caminos posibles serían:
-* Moverse diagonalmente, alineando A con A con un score de 1 (M).
-
-> A  
-> A
-
-* Hacer un movimiento horizontal, alineando la A de ATTGAG con un gap (score de -1) y un movimiento vertical alineando la A de AGATGGAT con un gap (otra vez -1) con un score total de -2.
-
-> A-  
-> -A
-
-* Hacer un movimiento vertical, alineando la A de AGATGGAT con un gap (score de -1) y un movimiento horizontal alineando la A de ATTGAG con un gap (otra vez -1) con un score total de -2.
-
-> -A  
-> A-
-
-Para decidir que valor ubicamos en el vértice simplemente optamos por el que nos dé el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal
-
-![Dynamic1](./images/DyP1.png)
-
-Este procedimiento se repite iterativamente calculando los scores para cada vértice e indicando el mejor movimiento. Al finalizar la matriz, se puede obtener el mejor alineamiento al reconstruir el camino que nos lleva del extremo inferior derecho al superior izquierdo.
-
-2.1 Utilizando el algoritmo de *dynamic programming* complete la matriz y reconstruya el alineamiento utilizando las secuencias y el scoring del ejemplo:
-
-![Dynamic2](./images/DyP2.png)
+Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del mismo?** Identifique patrones en el mismo.
 
 ## 3. Similitud y Homología
 
-Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no es el caso. La similitud es una característica cuantitativa de de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntajes). La homología por otro lado es una característica cualitativa, dos secuencias son o no son homólogas, decir que un par de secuencias tiene N% de homología es incorrecto. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
+Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no es el caso. La similitud es una característica cuantitativa de de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). La homología por otro lado es una característica cualitativa, dos secuencias son o no son homólogas, **decir que un par de secuencias tiene N% de homología es incorrecto**. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
 3.1 Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).  
-    3.1.1 Descargue las secuencias antes mencionadas de la base de datos UniProt en formato fasta.  
+    3.1.1 Descargue las secuencias antes mencionadas de la carpeta del TP.  
     3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
     3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
 ```Bash
-needle -gapopen 10 -gapextend 1 -asequence <secuencia_1> -bsequence <secuencia_2> -outfile <salida>
+needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2* -outfile *salida*
 ```
-
+![Animales](./images/Animales.png)
 
 3.2 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son más cercanos a los elefantes africanos (Loxodonta africana) o asiáticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.  
     3.2.2 Qué le sugieren los resultados obtenidos?  
     3.2.3 Qué otras explicaciones pueden satisfacer estos resultados?  
     3.2.4 Proponga soluciones para los problemas encontrados.  
+
+![Elefantes](./images/Elefantes.png)
+
 
 ## 4. Alineamientos múltiples
 
