@@ -36,7 +36,7 @@ Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensione
 
 ![Dynamic0](./images/Matriz0.png)
 
-El primer vértice aduiere el valor e cero ya que es con el puntaje con el que iniciamos el alineamiento. A partir de allí completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta él. Por ejemplo, para alcanzar el siguiente vértice (a la derecha del inicial), solamente se podria acceder por un solo camino:
+El primer vértice adquiere el valor e cero ya que es con el puntaje con el que iniciamos el alineamiento. A partir de allí completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta él. Por ejemplo, para alcanzar el siguiente vértice (a la derecha del inicial), solamente se podria acceder por un solo camino:
 
 * Moverse horizontalmente desde el nodo inicial, alineando A con un gap con un score de -1 (g).  
 
@@ -102,6 +102,8 @@ AGATGGAT
 
 ![Dynamic4](./images/Matriz_ej.png)
 
+
+
 ## 2. Dot-Plots
 
 Los dot-plots son representaciones gráficas que dan un pantallazo sobre la similitud entre dos secuencias. En ellos se pueden identificar patrones que aporten información sobre la relación entre ambas secuencias.
@@ -141,9 +143,9 @@ Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a
 **b)** Repeticiones.  
 **c)** Palindromo.  
 **d)** Repeticiones invertidas.  
-**e)** Zonas de baja complejidad (microsatelites).  
-**f)** Zonas altamente repetitivas (minisatelites).  
-**g)** Secuencias con alta conservación.  
+**e)** Repeticion de patrones muy pequeños (microsatelites).  
+**f)** Repeticion de patrones cortos (minisatelites).  
+**g)** Secuencias muy similares.  
 **h)** Inserción o deleción.  
 
 
@@ -155,7 +157,7 @@ Los términos similitud y homología se suelen utilizar como sinónimos por much
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
 3.1 Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).  
-    3.1.1 Descargue las secuencias antes mencionadas de la carpeta del TP.  
+    3.1.1 Descargue las secuencias antes mencionadas de la carpeta del TP (Con nombre del organismo).  
     3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
     3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
 
