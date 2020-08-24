@@ -35,13 +35,14 @@ Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensione
 ![Dynamic0](./images/Matriz0.png)
 
 El primer vértice aduiere el valor e cero ya que es con el puntaje con el que iniciamos el alineamiento. A partir de allí completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta él. Por ejemplo, para alcanzar el siguiente vértice (a la derecha del inicial), solamente se podria acceder por un solo camino:
-* Moverse horizontalmente desde el nodo inicial, alineando A con un gap con un score de -1 (g).
 
-![Dynamicb1](./images/Matriz0_b1.png)
+* Moverse horizontalmente desde el nodo inicial, alineando A con un gap con un score de -1 (g).  
+
+![Dynamicb1](./images/Matriz0_b1.png)  
 
 
-> A  
-> -  
+> A   
+> -    
 
 
 * Lo mismo pasa con el vértice debajo de el nodo de inicio, pero la interpretación es que alineamos la A de la segunda secuencia con un gap en la primera.
