@@ -56,7 +56,7 @@ A
 A  
 ```
 
-Para completar el nodo que intersecta ambas A, ahí si vamos a encontrarnos que podemos acceder de tres maneras distintas:
+Para completar el nodo que intersecta ambas A, ahí si vamos a encontrar que podemos acceder a él de tres maneras distintas:
 
 * Hacer un movimiento vertical, lo cual nos daria un score de -2 (-1 de la casilla de partida -1 por insertar un gap).
 
