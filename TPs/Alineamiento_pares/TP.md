@@ -40,31 +40,42 @@ El primer vértice aduiere el valor e cero ya que es con el puntaje con el que i
 
 ![Dynamicb1](./images/Matriz0_b1.png)  
 
+```Bash
+A  
+-  
+```
 
 * Lo mismo pasa con el vértice debajo de el nodo de inicio, pero la interpretación es que alineamos la A de la segunda secuencia con un gap en la primera.
 
 ![Dynamicb2](./images/Matriz0_b2.png)
 
-> -  
-> A  
-
+```Bash
+-  
+A  
+```
 
 Para completar el nodo que intersecta ambas A, ahí si vamos a encontrarnos que podemos acceder de tres maneras distintas:
 
 * Hacer un movimiento vertical, lo cual nos daria un score de -2 (-1 de la casilla de partida -1 por insertar un gap).
 
-> A-  
-> -A  
+```Bash
+A-  
+-A  
+```
 
 * Hacer un movimiento horizontal, similar al caso anterior, resultando en un score de -2.
 
-> -A  
-> A-  
+```Bash
+-A  
+A-  
+```
 
 * Hacer un movimiento diagonal, lo cual implica alinear ambos caracteres. Como son dos A en cada secuencia, el score seria +1, que es el valor del match.
 
-> A  
-> A  
+```Bash
+A  
+A  
+```
 
 Para decidir que valor ubicamos en el vértice simplemente optamos por el que nos dé el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal.
 
