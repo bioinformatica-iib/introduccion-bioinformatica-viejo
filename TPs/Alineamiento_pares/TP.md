@@ -14,7 +14,7 @@ El alineamiento de secuencias de a pares comprende la asignación uno-a-uno de c
 
 Por ejemplo si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
 
-> AFGIVHKLIVS
+> AFGIVHKLIVS  
 > AFGI-HK-IVS
 
 La principal función de los lineamientos es establecer una medida de similitud entre las secuencias que participan en el mismo. Para ello es necesario definir un sistema de puntuación que pese cada uno de los eventos que tienen lugar en el. Este puntaje nos permitirá también optimizar el alineamiento utilizando algoritmos que elijan la correspondencia entre secuencias que lo maximicen.
@@ -49,6 +49,7 @@ El primer vértice aduiere el valor e cero ya que es con el puntaje con el que i
 > -  
 > A  
 
+
 Para completar el nodo que intersecta ambas A, ahí si vamos a encontrarnos que podemos acceder de tres maneras distintas:
 
 * Hacer un movimiento vertical, lo cual nos daria un score de -2 (-1 de la casilla de partida -1 por insertar un gap).
@@ -80,7 +81,7 @@ Al finalizar la matriz, se puede obtener el mejor alineamiento al reconstruir el
 
 El score final del alineamiento es el score de la ultima celda de la matriz (en este caso +2) y el alineamiento se puede reconstruir siguiendo el camino que hemos establecido, insertando gaps en una u otra secuencia segun si hay un movimiento horizontal o vertical:
 
-> AT-TG-AG
+> AT-TG-AG  
 > AGATGGAT
 
 2.1 Utilizando el algoritmo de *dynamic programming* complete la matriz y reconstruya el alineamiento utilizando las secuencias y el scoring del ejemplo:
@@ -122,17 +123,17 @@ Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a
 
 ![DotPlot](./images/DotPlot_patterns.png)
 
-**a)** Match perfecto.
-**b)** Repeticiones.
-**c)** Palindromo.
-**d)** Repeticiones invertidas.
-**e)** Zonas de baja complejidad (microsatelites).
-**f)** Zonas altamente repetitivas (minisatelites).
-**g)** Secuencias con alta conservación.
-**h)** Inserción o deleción.
+**a)** Match perfecto.  
+**b)** Repeticiones.  
+**c)** Palindromo.  
+**d)** Repeticiones invertidas.  
+**e)** Zonas de baja complejidad (microsatelites).  
+**f)** Zonas altamente repetitivas (minisatelites).  
+**g)** Secuencias con alta conservación.  
+**h)** Inserción o deleción.  
 
 
-Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del mismo?** Identifique patrones en el mismo.
+Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del mismo?** Identifique patrones.
 
 ## 3. Similitud y Homología
 
