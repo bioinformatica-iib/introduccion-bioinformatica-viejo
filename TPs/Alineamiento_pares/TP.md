@@ -41,10 +41,6 @@ El primer vértice aduiere el valor e cero ya que es con el puntaje con el que i
 ![Dynamicb1](./images/Matriz0_b1.png)  
 
 
-> A   
-> -    
-
-
 * Lo mismo pasa con el vértice debajo de el nodo de inicio, pero la interpretación es que alineamos la A de la segunda secuencia con un gap en la primera.
 
 ![Dynamicb2](./images/Matriz0_b2.png)
