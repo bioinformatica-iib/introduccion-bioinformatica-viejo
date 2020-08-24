@@ -14,8 +14,10 @@ El alineamiento de secuencias de a pares comprende la asignación uno-a-uno de c
 
 Por ejemplo si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
 
-> AFGIVHKLIVS  
-> AFGI-HK-IVS
+```Bash
+AFGIVHKLIVS  
+AFGI-HK-IVS
+```
 
 La principal función de los lineamientos es establecer una medida de similitud entre las secuencias que participan en el mismo. Para ello es necesario definir un sistema de puntuación que pese cada uno de los eventos que tienen lugar en el. Este puntaje nos permitirá también optimizar el alineamiento utilizando algoritmos que elijan la correspondencia entre secuencias que lo maximicen.
 
@@ -91,8 +93,10 @@ Al finalizar la matriz, se puede obtener el mejor alineamiento al reconstruir el
 
 El score final del alineamiento es el score de la ultima celda de la matriz (en este caso +2) y el alineamiento se puede reconstruir siguiendo el camino que hemos establecido, insertando gaps en una u otra secuencia segun si hay un movimiento horizontal o vertical:
 
-> AT-TG-AG  
-> AGATGGAT
+```Bash
+AT-TG-AG  
+AGATGGAT
+```
 
 2.1 Utilizando el algoritmo de *dynamic programming* complete la matriz y reconstruya el alineamiento utilizando las secuencias y el scoring del ejemplo:
 
