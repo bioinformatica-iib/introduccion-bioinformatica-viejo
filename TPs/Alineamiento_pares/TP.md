@@ -28,11 +28,10 @@ Los **alineamientos locales** (o de Smith-Waterman), parean solo parte de las se
 
 ## 1. Dynamic programming
 
-Dado un par de secuencias y un sistema de puntuación se pueden aplicar diversos algoritmos para encontrar el alineamiento que de el mejor puntaje. El algoritmo más popular, utiliza una técnica matemática llamada *dynamic programming*. El mismo consiste en comparar ambas secuencias en una matriz, calculando el costo que tiene llegar a cada una de las celdas (dado el sistema de puntaje preestablecido) y eligiendo la opción más favorable, guardando el puntaje con el que se llega a la celda y el movimiento que lo originó. Una vez la matriz está completa en su totalidad se puede recorrer hacia atrás (desde el extremo inferior derecho al superior izquierdo) para reconstruir el alineamiento.
-La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, puede que existan varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica, la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad depende del largo de las secuencias implicadas, lo cual lo hace poco eficiente para búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
+Dado un par de secuencias y un sistema de puntuación se pueden aplicar diversos algoritmos para encontrar el alineamiento que dé el mejor puntaje. El algoritmo más popular, utiliza una técnica matemática llamada *dynamic programming*. El mismo consiste en comparar ambas secuencias en una matriz, calculando el costo que tiene llegar a cada una de las celdas (dado el sistema de puntaje preestablecido) y eligiendo la opción más favorable, guardando el puntaje con el que se llega a la celda y el movimiento que lo originó. Una vez la matriz está completa en su totalidad se puede recorrer hacia atrás (desde el extremo inferior derecho al superior izquierdo) para reconstruir el alineamiento.
+La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, puede que existan varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica: la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad dependa del largo de las secuencias implicadas, lo cual lo hace poco eficiente para búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
 
-En la práctica: imaginen que quieren alinear las secuencias ATTGAG y AGATGGAT utilizando un scoring de M=1, m=0, g=-1
-Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensiones corresponda a una de las secuencias:
+En la práctica: imaginen que quieren alinear las secuencias ATTGAG y AGATGGAT utilizando un scoring de M=1, m=0, g=-1 .Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensiones corresponda a una de las secuencias:
 
 ![Dynamic0](./images/Matriz0.png)
 
@@ -156,7 +155,7 @@ Una vez obtengan un plot que les parezca adecuado. **Que pueden interpretar del 
 Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no es el caso. La similitud es una característica cuantitativa de de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). La homología por otro lado es una característica cualitativa, dos secuencias son o no son homólogas, **decir que un par de secuencias tiene N% de homología es incorrecto**. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
-3.1 Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (Equus caballus), ballena enana (Balaenoptera acutorostrata) y canguro rojo (Macropus rufus).  
+3.1 Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (_Equus caballus_), ballena enana (_Balaenoptera acutorostrata_) y canguro rojo (_Macropus rufus_).  
     3.1.1 Descargue las secuencias antes mencionadas de la carpeta del TP (Con nombre del organismo).  
     3.1.2 Utilice la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.  
     3.1.3 Observe e interprete las salidas obtenidas. Que secuencias son mas similares? Tiene sentido el resultado obtenido?  
@@ -166,7 +165,7 @@ needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2
 ```
 ![Animales](./images/Animales.png)
 
-3.2 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son más cercanos a los elefantes africanos (Loxodonta africana) o asiáticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.  
+3.2 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (_Mammuthus primigenius_) son más cercanos a los elefantes africanos (_Loxodonta africana_) o asiáticos (_Elephas maximus_) utilizando la secuencia de la cadena alfa de la hemoglobina.  
     3.2.2 Qué le sugieren los resultados obtenidos?  
     3.2.3 Qué otras explicaciones pueden satisfacer estos resultados?  
     3.2.4 Proponga soluciones para los problemas encontrados.  
@@ -178,32 +177,55 @@ needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2
 
 Un alineamiento múltiple (MSA) involucra tres o más secuencias biológicas. Debido a que la tarea de alinear múltiples secuencias de largos biológicamente significativos suele ser muy demandante en términos de recursos computacionales y tiempos de ejecución estos requieren metodologías más sofisticadas para llevarse a cabo. Por ello la mayoría de los programas disponibles para realizar MSA utiliza heurísticas en vez de algoritmos de optimización global.
 
->**Heurística:** es una estrategia que busca resolver un problema más simple cuya solución intersecta con la solución de un problema más complejo. Generalmente esto implica que no es seguro encontrar el mejor resultado pero sí una solución que sea aceptable. Las heurísticas se aplican con frecuencia en computación para poder resolver problemas que por su complejidad serían imposibles de abordar dados los limitados recursos con los que se cuentan.
+> **Heurística:** es una estrategia que busca resolver un problema más simple cuya solución intersecta con la solución de un problema más complejo. Generalmente esto implica que no es seguro encontrar el mejor resultado pero sí una solución que sea aceptable. Las heurísticas se aplican con frecuencia en computación para poder resolver problemas que por su complejidad serían imposibles de abordar dados los limitados recursos con los que se cuentan.
 
 Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comparar, el MSA muestra los residuos de cada proteína en una fila junto con los gaps que le correspondan de tal manera que todos los residuos "equivalentes" se encuentren en la misma columna. El significado de equivalencia depende por lo general del contexto: para alguien que hace una filogenia puede significar que comparten una ancestro común; un biólogo estructural puede interpretar que son residuos que corresponden a posiciones análogas de un plegado determinado; para el biólogo molecular, residuos equivalentes juegan roles funcionales similares dentro de sus proteínas correspondientes. En cada caso un MSA provee un pantallazo sobre las restricciones evolutivas, estructurales o funcionales que caracterizan un set de proteínas de una manera visual e intuitiva.
 
 ![MA0](./images/MA0.png)
 
 
-Un pipeline típico para realizar un MSA seria:
-1. Formular la pregunta que se quiere contestar. Por ej "Que estructura secundaria adopta X region de mi proteína de interés?"
+Un _pipeline_ (así le decimos los informáticos a un protocolo _in silico_) típico para realizar un MSA seria:
+1. Formular la pregunta qué se quiere contestar. Por ej. "Que estructura secundaria adopta _X_ región de mi proteína de interés?"
 2. Obtener secuencias que puedan contestar a mi pregunta. Por ej. secuencias que estén relacionadas a mi proteína de interés.
 3. Utilizar alguno de los programas disponibles para llevar a cabo el MSA. Por ej. EMBOSS
 4. Realizar ajustes manuales para corregir posibles errores de los algoritmos de alineamiento.
 
+### Ejercicios
 
-
-#### Ejercicios
-
-La gp120 es una proteína que recubre al virus del HIV y facilita su unión e ingreso a la célula que infecta (linfocitos CD4+)
+La gp120 es una proteína que recubre al virus del HIV y facilita su unión e ingreso a la célula que infecta (linfocitos CD4+).
 Entre nuestros archivos contamos con un multifasta (gp120.fasta) que contiene 27 secuencias de gp120 de HIV-1, HIV-2 y SIV.
-Estas proteínas contienen 9 puentes disulfuro conservados. También es de interés el loop V3, una porción expuesta de la proteína, conocido target de anticuerpos el cual constituye una región hipervariable dada la presión selectiva a la que se ve sometido. Pueden ver la disposicion de los diversos elementos de gp120 en [este esquema](http://www.cbs.dtu.dk/dtucourse/cookbooks/hnielsen/gp120.farve.gif).
+Estas proteínas contienen 9 puentes disulfuro conservados. También es de interés el loop V3, una porción expuesta de la proteína, conocido _target_ de anticuerpos el cual constituye una región hipervariable dada la presión selectiva a la que se ve sometido. Pueden ver la disposicion de los diversos elementos de gp120 en [este esquema](http://www.cbs.dtu.dk/dtucourse/cookbooks/hnielsen/gp120.farve.gif).
 
-4.1 Utilice las herramientas de EMBOSS para realizar un alineamiento múltiple con las secuencias de gp120 (recuerden que para buscar herramientas pueden usar *wossname*)  
+4.1 Utilice las herramientas de EMBOSS para realizar un alineamiento múltiple con las secuencias de gp120 (recuerden que para buscar herramientas pueden usar *wossname*).
 
-4.2 Utilice el comando **showalign** de EMBOSS para obtener una mejor visualización del alineamiento.  
+Si todavía no instalaron *wossname* (les va a aparecer un error diciendo "_Command not found_"), pueden hacerlo con: 
+
+    sudo apt-get intsall emboss-doc
+
+> La contraseña es **unsam**.
+
+Cuando lo encuentren, recuerden que pueden aprender cómo se usa usando el comando *tfm*
+
+    tfm COMANDO-EMBOSS
+
+Intenten ejecutar el comando que encontraron. Si hicieron todo bien, notaran que el programa no funciona :(
+
+    Died: COMANDO-EMBOSS uses external program 'clustalw' which is not in the PATH or defined as EMBOSS_CLUSTALW.
+
+Esto significa que EMBOSS necesita de un programa adiciona que aún no hemos instalado: Clustal. Se trata de un programa de alineamientos múltiples desarrollado por Desmond G. Higgins hace más de 20 años y que es ampliamente utilizado en el campo (tiene más de 25 mil citas). Para instalarlo:
+
+    sudo apt-get install clustalw
+
+> La contraseña es **unsam**.
+
+4.2 Utilice el comando **showalign** de EMBOSS para obtener una visualización del alineamiento. 
+
+El comando showalign tiene varias formas de reformatear una alineamiento para visualizar las cosas de diferente manera. Por defecto (es decir, sin opciones adicionales), showalign nos mostrara todas las secuencias alineadas, una debajo de la otra y una secuencia consenso debajo de éstas. Los puntitos "." indican conservación del aminoácido, los caracteres en minúscula indican conservación del tipo de aminoácido, mientras que los caracteres en mayúscula muestran no-conservación. 
+
+Investiguen opciones alternativas de visualización leyendo el manual de **showalign**
 
 4.3. Observe el alineamiento, como primer control podemos corroborar que las 18 Cisteínas (**C**) estén bien alineadas.  
 
 4.4 Utilice el esquema de gp120 para identificar diversas regiones ya sea conservadas o muy variables (Estructuras, loops, etc.)  
+
  **Note que las posiciones en el alineamiento cuentan gaps por lo que no se corresponden exactamente con el esquema, utilice las posiciones de las cisteínas conservadas para identificar regiones**
