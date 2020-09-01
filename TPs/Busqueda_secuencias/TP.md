@@ -62,7 +62,7 @@ Comparison programs in the FASTA package
 Ahora corramos la misma búsqueda del ejemplo anterior usando FASTA: 
 
 ```Bash
-fasta xlrhodop.pep Swissprot.fasta > xlrhodop.fasta
+fasta -H xlrhodop.pep Swissprot.fasta > xlrhodop.fasta
 ```
  
 # Diferencias entre BLAST y FASTA
