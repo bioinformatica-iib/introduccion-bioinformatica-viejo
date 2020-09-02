@@ -21,9 +21,9 @@ sudo ln -s ~/Tools/fasta-36.3.8h/bin/fasta36 /bin/fasta
 
 #fasta -q ../seq/mgstm1.aa ../seq/prot_test.lseg
 
-echo "${RED} Descargando la base de datos Swissprot...${NC}\n\n"
+echo -e "${RED} Descargando la base de datos Swissprot...${NC}\n\n"
 wget "https://www.dropbox.com/s/r2upggpdy502zx8/Swissprot_db.tar.gz?dl=1" -O ~/swissprot_db.tar.gz
-tar -xzvf ~/swissprot_db.tar.gz
+tar -C ~/ -xzvf ~/swissprot_db.tar.gz 
 
 echo -e "${RED}LA BASE DE DATOS SWISSPROT SE HA DESCARGADO EN EN EL DIRECTORIO ${NC} ${HOME} \n\n"
 
