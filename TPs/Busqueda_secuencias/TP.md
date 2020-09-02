@@ -15,7 +15,7 @@ Para ver una lista de los argumentos que acepta *blastall* prueben correr el com
 Como primer ejemplo podemos usar la secuencia *xlrhodop.pep* para realizar una búsqueda contra *Swissprot*. Como estamos trabajando con una secuencia y una base de datos de proteínas, usamos *blastp* para realizar la busqueda: 
 
 ```Bash
-blastall -p blastp -i xlrhodop.pep -d Swissprot.fasta
+blastall -p blastp -i xlrhodop.pep -d ~/Swissprot_db/Swissprot.fasta
 ``` 
 
 **Si la base de datos no se encuentra en el directorio de trabajo ni en un lugar accesible al programa, hay que especificar el camino completo**
@@ -23,7 +23,7 @@ blastall -p blastp -i xlrhodop.pep -d Swissprot.fasta
 En este ejemplo, el resultado de la busqueda es volcado en la pantalla (stdout). Para que el resultado aparezca en un archivo, podemos redireccionar stdout (usando **>**, ver TP Unix) o usar la opcion -o (output)
 
 ```Bash
-blastall -p blastp -i xlrhodop.pep -d Swissprot.fasta -o xlrhodop.blastp
+blastall -p blastp -i xlrhodop.pep -d ~/Swissprot_db/Swissprot.fasta -o xlrhodop.blastp
 ``` 
 
 Pueden ver el resultado del *blast*, por ejemplo paginando el archivo 
@@ -62,7 +62,7 @@ Comparison programs in the FASTA package
 Ahora corramos la misma búsqueda del ejemplo anterior usando FASTA: 
 
 ```Bash
-fasta -H xlrhodop.pep Swissprot.fasta > xlrhodop.fasta
+fasta -H xlrhodop.pep ~/Swissprot_db/Swissprot.fasta > xlrhodop.fasta
 ```
  
 # Diferencias entre BLAST y FASTA
@@ -97,7 +97,7 @@ Ahora, podemos buscar secuencias similares en *Swissprot* usando *grou_drome.fas
 
 ```Bash
 fasta grou_drome.fasta Swissprot.fasta
-fasta -S grou_drome_lc.fasta Swissprot.fasta
+fasta -S grou_drome_lc.fasta ~/Swissprot_db/Swissprot.fasta
 ```
 
 Qué diferencias encuentran en los histogramas de cada búsqueda? 
@@ -112,7 +112,7 @@ Tener acceso a **BLAST** o **FASTA** en la línea de comando les da la posibilid
 En primer lugar, vamos a generar un archivo *fasta* múltiple con algunas secuencias. Por ejemplo para construir una base de datos con secuencias de opsinas podemos empezar con 
 
 ```Bash
-seqret "Swissprot.fasta:ops*" fasta::ops
+seqret "~/Swissprot_db/Swissprot.fasta:ops*" fasta::ops
 ```
 Esto debería generar un archivo FASTA múltiple conteniendo secuencias de opsinas. 
 
