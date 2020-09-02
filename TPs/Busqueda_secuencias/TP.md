@@ -96,7 +96,7 @@ Comparen las secuencias *grou_drome.fasta* y *grou_drome_lc.fasta* e identifique
 Ahora, podemos buscar secuencias similares en *Swissprot* usando *grou_drome.fasta* (con opciones standard) y *grou_drome_lc.fasta* (usando la opción *-S*). 
 
 ```Bash
-fasta grou_drome.fasta Swissprot.fasta
+fasta grou_drome.fasta ~/Swissprot_db/Swissprot.fasta
 fasta -S grou_drome_lc.fasta ~/Swissprot_db/Swissprot.fasta
 ```
 
