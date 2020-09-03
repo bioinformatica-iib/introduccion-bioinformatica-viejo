@@ -165,7 +165,7 @@ Tanto en Linux como en cualquier Unix, una manera de partir un archivo en varios
 Dado un archivo llamado *blast.out*, podemos partirlo en varios usando la siguiente invocación: 
 
 ```Bash
-awk --assign i=0 '/pattern/{i++}{print > "blast."i}' blast.out 
+awk -v i=0 '/pattern/{i++}{print > "blast."i}' blast.out 
 ```
 
 **Recuerden reemplazar "*pattern*" por el patron que quieren utilizar para dividir el archivo.**
