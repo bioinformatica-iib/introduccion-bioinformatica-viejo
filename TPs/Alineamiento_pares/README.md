@@ -200,7 +200,7 @@ Estas proteínas contienen 9 puentes disulfuro conservados. También es de inter
 
 Si todavía no instalaron *wossname* (les va a aparecer un error diciendo "_Command not found_"), pueden hacerlo con: 
 
-    sudo apt-get intsall emboss-doc
+    sudo apt-get install emboss-doc
 
 > La contraseña es **unsam**.
 
