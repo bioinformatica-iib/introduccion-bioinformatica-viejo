@@ -7,6 +7,7 @@ Desarrollo del TP. Para realizar este TP tienen que estar frente a una terminal 
 Para instalarlos, descarguemos el archivo ``install.sh`` de la carpeta de trabajo provista y ejecutemos el comando.
 
 ```Bash
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Busqueda_secuencias/install.sh
 bash install.sh
 ``` 
 
