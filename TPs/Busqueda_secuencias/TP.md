@@ -96,14 +96,15 @@ Comparen las secuencias *grou_drome.fasta* y *grou_drome_lc.fasta* e identifique
 Ahora, podemos buscar secuencias similares en *Swissprot* usando *grou_drome.fasta* (con opciones standard) y *grou_drome_lc.fasta* (usando la opción *-S*). 
 
 ```Bash
-fasta grou_drome.fasta ~/Swissprot_db/Swissprot.fasta
-fasta -S grou_drome_lc.fasta ~/Swissprot_db/Swissprot.fasta
+fasta -H grou_drome.fasta ~/Swissprot_db/Swissprot.fasta
+fasta -H -S grou_drome_lc.fasta ~/Swissprot_db/Swissprot.fasta
 ```
 
 Qué diferencias encuentran en los histogramas de cada búsqueda? 
 
 Para el segundo tipo de casos (vector, elementos repetitivos), es necesario detectarlos y enmascararlos (reemplazarlos por N o X) o marcarlos (con minúscula, por ejemplo, si toda la secuencia esta en mayúsculas) previo a la búsqueda. 
-Ejercicio. la secuencia *est.fasta* contiene una región correspondiente al vector (plásmido). Esta secuencia fue enmascarada (reemplazada por X, *est_masked_X.fasta*) y marcada en minúsculas (*est_masked_lc.fasta*). Utilicen las tres secuencias para realizar una una búsqueda contra *Swissprot*, usando **BLAST** o **FASTA** (el que más les guste). Qué opciones tienen que usar en cada caso para evitar que en la lista de hits aparezcan beta-galactosidasas mencionadas y comparen los resultados. 
+
+**EJERCICIO:** la secuencia *est.fasta* contiene una región correspondiente al vector (plásmido). Esta secuencia fue enmascarada (reemplazada por X, *est_masked_X.fasta*) y marcada en minúsculas (*est_masked_lc.fasta*). Utilicen las tres secuencias para realizar una una búsqueda contra *Swissprot*, usando **BLAST** o **FASTA** (el que más les guste). Qué opciones tienen que usar en cada caso para evitar que en la lista de hits aparezcan beta-galactosidasas mencionadas y comparen los resultados. 
 
 ## Bases de datos propias
 
@@ -132,24 +133,31 @@ blastall -p blastp -d ./ops -i xlrhodop.pep > xlrhodop.ops.blastp
 Pueden ver las opciones que acepta el comando formatdb pidiendo ayuda: 
 
 ```Bash
-formatdb --help
-```
+#formatdb --help ... (en versiones viejas de blast se podía usar este comando... pero ya no)
+makeblastdb -help
 
+```
 
 ## BLAST con multiples secuencias
 Si tienen un archivo multiple de secuencias en formato *fasta*, pueden usarlo como query en una búsqueda, usando **BLAST**. 
 El archivo *opsv.fasta* contiene la secuencia de 4 fotorreceptores, usen este archivo para realizar una búsqueda, usando *blastp*, contra la base de datos ops que crearon en el ejercicio anterior. 
+
 El output generado consiste en 4 reportes de **BLAST**, concatenados en un único archivo. Cómo pueden navegar fácilmente dentro del documento usando less? (Tip: qué palabras o conjunto de palabras ocurren una sola vez en cada reporte?) 
-OK, puedo leer el reporte y manejarme bien dentro de él, ahora quiero partirlo en 4 reportes individuales, cómo hago? 
-Para esto pueden usar el comando de unix split que puede partir un archivo en otros más pequeños, ya sea por tamaño o cada vez que encuentre una palabra o pattern (expresión regular). Usando la opción -p pueden especificar un pattern (Nota: la opción -p sólo está disponible en el comando split de sistemas operativos del tipo BSD (*FreeBSD*, *NetBSD*). Linux usa el comando *split* de GNU, donde esta opción no existe). 
+
+OK, puedo leer el reporte y manejarme bien dentro de él, ahora quiero partirlo en 4 reportes individuales ¿Cómo hago? 
+
+Para esto pueden usar el comando de unix `split` que puede partir un archivo en otros más pequeños, ya sea por tamaño o cada vez que encuentre una palabra o pattern (patrón, expresión regular). Usando la opción -p pueden especificar un pattern (Nota: la opción -p sólo está disponible en el comando split de sistemas operativos del tipo BSD (*FreeBSD*, *NetBSD*). Linux usa el comando *split* de GNU, donde esta opción no existe). 
 
 ```Bash
 man split 
 ```
+Tanto en Linux como en cualquier Unix, una manera de partir un archivo en varios usando un pattern es usando el comando `awk`: 
 
-Tanto en Linux, como en cualquier Unix, una manera de partir un archivo en varios, usando un pattern es usando el comando *awk*. Dado un archivo llamado *blast.out*, podemos partirlo en varios usando la siguiente invocación: 
+Dado un archivo llamado *blast.out*, podemos partirlo en varios usando la siguiente invocación: 
 
 ```Bash
 awk --assign i=0 '/pattern/{i++}{print > "blast."i}' blast.out 
 ```
+
 **Recuerden reemplazar "*pattern*" por el patron que quieren utilizar para dividir el archivo.**
+
