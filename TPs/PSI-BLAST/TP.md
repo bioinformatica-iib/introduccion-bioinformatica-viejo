@@ -279,7 +279,12 @@ La salida de CPHmodels no es muy intuitiva, sin embargo, el método provee un Z-
 
 15. CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
 
-La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados (Pymol) para poder corroborar la ubicación de las posiciones seleccionadas. Cómo explicar el uso de Pymol o cualquier otro software de visualización puede llevar bastante tiempo, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
+La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados. Pueden instalar Pymol utilizando el comando:
+
+```Bash
+sudo apt install pymol
+```  
+Este programa es muy versatil pero tambien puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales y demás.Por lo pronto, cómo explicar su uso puede llevar bastante tiempo, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
 
 ![Model](images/CPHmodels.png)
 
