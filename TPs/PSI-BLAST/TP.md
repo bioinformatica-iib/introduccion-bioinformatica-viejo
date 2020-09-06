@@ -1,4 +1,8 @@
-# Profile searches with PSI-BLAST and HMMer
+# PSSM, HMMer y PSI-BLAST
+
+# PSSM
+
+Para esta parte vamos a resover la guía que se encuentra en este [link](http://www.cbs.dtu.dk/courses/BAcourse/PSSM/PSSM.php).
 
 # HMMer
 
