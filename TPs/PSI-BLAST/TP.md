@@ -284,7 +284,7 @@ La estructura puede descargarse (desde el link *query.pdb*) y abrirse con progra
 ```Bash
 sudo apt install pymol
 ```  
-Este programa es muy versatil pero tambien puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales y demás.Por lo pronto, cómo explicar su uso puede llevar bastante tiempo, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
+Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, cómo aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
 
 ![Model](images/CPHmodels.png)
 
