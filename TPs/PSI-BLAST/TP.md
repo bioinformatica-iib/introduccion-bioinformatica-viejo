@@ -141,7 +141,7 @@ tophits_s report:
 HMMer puede leer los formatos de la mayoría de las bases de datos conocidas. A diferencia de BLAST no es necesario indexar la base de datos. Si recuerdan de la práctica de BLAST/FASTA, uno podía crear su propia base de datos donde realizar los alineamientos a partir de un archivo multifasta utilizando el comando **formatdb**, el cual crea todo el sistema de índices de *ktuplas* y demás archivos para facilitar la búsqueda. En este caso HMMer puede realizar la búsqueda directamente sobre el multifasta sin necesidad de más procesamiento. En nuestro servidor podemos realizar la búsqueda utilizando:
 
 ```Bash
-hmm2search globin.hmm swissprot.fasta
+hmm2search globin.hmm ~/Swissprot_db/Swissprot.fasta
 ```
 
 ## Modos de alineamiento
