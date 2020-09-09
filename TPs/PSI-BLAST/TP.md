@@ -149,10 +149,10 @@ A continuación recarguen la página de EasyPred y carguen para entrenar el arch
 
 ## Encontrando epítopes en proteínas
 
-Para finalizar vamos a utilizar nuestra matriz peso-específica para encontrar epítopes potenciales en la proteína de la nucleocápside del virus SARS-CoV.  
-Recarguen EasyPred. El recuadro de entrenamiento debe quedar vacío. Ingresen el archivo con la secuencia de la proteína en el recuadro de evaluación y suban el archivo con la matriz que descargaron en el paso anterior abajo donde dice **Load saved prediction method**. Otra vez seleccionen **Sort output on predicted values** y denle *Submit query*.
+Para finalizar vamos a utilizar nuestra matriz peso-específica para encontrar epítopes potenciales en la proteína de la nucleocápside del virus SARS-CoV que pueden encontrar en el archivo NCAP_CVHSA.fasta.  
+Recarguen EasyPred. El recuadro de entrenamiento debe quedar vacio. Ingresen el archivo con la secuencia de la proteína en el recuadro de evaluación y suban el archivo con la matriz que descargaron en el paso anterior abajo donde dice **Load saved prediction method**. Utilicen los parámetros que crean mas convenientes segun lo que hemos visto y seleccionen **Sort output on predicted values** y denle *Submit query*.
 
-LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vio. La lista de péptidos son todos aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia que le administramos al servidor junto con el valor de predicción. Los péptidos de arriba de la lista son aquellos que más se adecúan a la preferencia del alelo con el que entrenamos el modelo y por lo tanto son buenos candidatos para testear en laboratorio húmedo si tienen la capacidad de despertar una respuesta inmune.
+LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vió. La lista de péptidos son todos aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia que le administramos al servidor junto con el valor de predicción. Los péptidos de arriba de la lista son aquellos que mas se adecúan a la preferencia del alelo con el que entrenamos el modelo y por lo tanto son buenos candidatos para testear en laboratorio si tienen la capacidad de despertar una respuesta inmune. La cantidad de péptidos que se pueden seleccionar depende de los recursos con los que se dispongan. 
 
 # PSI-BLAST
 
