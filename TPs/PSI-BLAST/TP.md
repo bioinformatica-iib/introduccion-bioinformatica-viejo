@@ -1,197 +1,158 @@
-# PSSM, HMMer y PSI-BLAST
+# Construcción de Logos y Matrices peso-específicas  
 
-# PSSM
+## Objetivos
 
-Para esta parte vamos a resover la guía que se encuentra en este [link](http://www.cbs.dtu.dk/courses/BAcourse/PSSM/PSSM.php).
+En este TP utilizaremos herramientas bioinformáticas para predecir la unión de peptidos a MHC y seleccionar potenciales epítopes como candidatos para desarrollar una vacuna.  
 
-# HMMer
+Los pasos a seguir serán:  
 
-## Introducción:
+1. Identificación de motivos de unión de MHC.  
+2. Visualización de motivos utilizando logos de secuencia.  
+3. Entrenamiento de métodos de predicción de unión a MHC.  
+4. Utilización de los métodos desarrollados para la selección de candidatos a vacuna.  
 
-**HMMer** es un paquete de programas que nuclea varias funciones para realizar búsquedas en bases de datos mediante la utilización de profiles. Está basado en *profile Hidden Marcov Models*, presentados por Anders Krogh en 1994 (Krogh et al., 1994). Estos perfiles son una aproximación estadística del consenso de un alineamiento múltiple y utilizan un sistema de puntaje posición-específico, en contraste con métodos ya vistos como BLAST o FASTA en donde la matriz de puntajes utilizada es la misma en cada posición.
+## Unión de peptidos a MHC
 
-### Construcción:
+Este paso es el mas selectivo en la identificación de péptidos inmunogénicos ya que sólamente 1 en 200 péptidos forma un complejo con el MHC. Existe una gran varidedad de MHC diferentes, cada uno con una alta especificidad.  
+El motivo de unión de los MHC de clase I es, en la mayoría de los casos, de 9 aminoácidos de longitud. Estos estan caracterizados por una marcada preferencia por ciertos aminoácidos en ciertas posiciones del motivo. Estas posiciones son llamadas "anclas". Para una gran cantidad de complejos de MHC clase I estas anclas se encuentran en las posiciones P2 y P9. Sin embargo, este no siempre es el caso.  
+Existe una gran cantidad de datos que describen las diferentes especificidades de las moleculas de MHC. Una base de datos muy conocida que almacena esta información es [SYFPEITHI](http://www.syfpeithi.de/). En ella se puede encontrar informacion de ligands y motivos de MHC.  
+Con este tipo de información es posible desarrollar un modelo de predicción de unión de péptidos a MHC y aplicarlo para descubrir nuevos epitopes con los cuales diseñar vacunas. Esto puede ser aplicado a nivel de proteomas enteros para ahorrar tanto tiempo como recursos.  
 
-Supongamos que trabajamos con globinas y queremos buscar homólogos lejanos. Para ello contamos con 50 secuencias de globinas las cuales alineamos y guardamos en el archivo *globins50.msf*. Como primer paso para realizar la búsqueda debemos generar un profile que las represente. Para crear el profile utilizamos la función **hmm2build** de la siguiente manera:
+A continuación vamos a:
 
-```Bash
-hmm2build globin.hmm globins50.msf
-```
+1. Visualizar motivos de unión utilizando logos de secuencia.  
+2. Entrenar un modelo predictivo utilizando el servidor de *Easypred*.  
+3. Aplicar el modelo para seleccionar péptidos con potencial inmunogénico de proteínas de SARS-CoV.  
 
-**hmm2build** recibe como argumentos el archivo en el cual va a guardar el perfil (*globin.hmm*) y el archivo con el cual crearlo (*globins50.msf*). Si bien el contenido del archivo donde se guardó el perfil es legible, su contenido no debería tener sentido para ustedes (más allá del encabezado con información sobre las opciones que se utilizaron para crearlo) porque únicamente almacena los pesos de las transiciones de estado en el HMM.
+## Identificación de motivos de unión a MHC
 
-### Calibración:
+Vayan a la página de [SYFPEITHI](http://www.syfpeithi.de/). Allí, una vez que hagan *click* en el logo, pueden buscar motivos con el botón **Find motif, Ligand or epitope**. Allí seleccione con el menu de la izquierda el alelo de MHC **HLA-A*02:01** y presione **do Query**. El resto de las opciones se pueden usar para refinar la búsqueda, limitandola a ligandos de proteínas determinadas o por referencia bibliográfica. En este caso queremos obtener **TODOS** los ligandos para poder ver que características comparten.  
 
-Este paso no es imprescindible pero si aconsejable. La calibración del perfil le otorga mayor sensibilidad en la búsqueda ya que modifica la estimación del E-value de los hits encontrados. Si recuerdan, la búsqueda contra bases de datos nos devuelve junto con cada alineamiento un score y un E-value, este último nos da una idea sobre la cantidad de hits que esperamos encontrar con ese score en una base de datos construida con secuencias aleatorias y se calcula según el largo de la secuencia query y el tamaño de la base de datos. En el caso de HMMer, la estimación del E-value es analítica y resulta muy conservativa, por lo que se dejan de lado posibles hits (como homólogos lejanos). Utilizando **hmm2calibrate** podemos calibrar el cálculo de E-values de manera empírica incrementando de manera significativa la sensibilidad de la búsqueda.
+En el resultado de la búsqueda podemos ver las posiciones ancla (*anchor*) con los aminoácidos preferidos en esas posiciones. También podemos ver si existen posiciones con residuos preferidos, osea, que aparecen mas seguido en los ligandos identificados. A continuacion tenemos una lista de otros aminoácidos que se ven con frecuencia en los ligandos de alelo que estamos estudiando y por último la lista de los ligandos que existen en esta base de datos, junto a su proteina de procedencia, la referencia del trabajo donde se lo identificó y alguna nota como la asociación de ese péptido con alguna enfermedad.  
 
-```Bash
-hmm2calibrate globin.hmm
-```
+1. Identifique la preferencia de aminoácidos del alelo estudiado en las posiciones ancla.  
 
-# Búsqueda en bases de datos
+## Logos de secuencia
 
-El comando para utilizar nuestro flamante profile en una búsqueda es **hmm2search**. En este caso lo vamos a utilizar contra el archivo Artemia.fa que contiene una única secuencia de globina en búsqueda de dominios pertenecientes a nuestra familia de interés.
+Esta es una herramienta muy útil para visualizar motivos de unión. En un logo de secuencia se grafica el contenido de información en cada posición de un motivo, el cual esta representado por el alto de la columna. A su vez, cada letra dentro de cada columna tiene un tamaño proporcional a la frecuencia con la que aparece en esa posición.  
+Un servidor que nos permite generar facilmente logos de secuencia es [Seq2Logo](http://www.cbs.dtu.dk/biotools/Seq2Logo/). Este método nos da la opción de ingresar un alineamiento multiple, una lista de péptidos o matriz peso-específica con la cual realizar la gráfica. La información puede pegarse directamente en el cuadro de texto que allí se ve, o subiendo directamente el archivo que la contiene utilizando la opción *Switch to file upload* que se encuentra debajo del cuadro.  
 
-```Bash
-hmm2search globin.hmm Artemia.fa
-```
+> Recuerde que el gráfico es el resultado del calculo de contenido de información para cada posición, tal como lo vieron en la teoria, por lo que puede variar según los criterios que apliquen.  
 
-La salida de este comando es más larga que las anteriores, consta de un encabezado con la información sobre el programa y los parámetros que utilizamos en la búsqueda:
+Dentro de las opciones que nos permite cambiar tenemos:  
 
-```
-hmmsearch - search a sequence database with a profile HMM  
-HMMER 2.3.2 (Oct 2003)  
-Copyright (C) 1992-2003 HHMI/Washington University School of Medicine  
-Freely distributed under the GNU General Public License (GPL)  
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-HMM file:                   globin2.hmm [globins50]  
-Sequence database:          Artemia.fa  
-per-sequence score cutoff:  [none]  
-per-domain score cutoff:    [none]  
-per-sequence Eval cutoff:   <= 10        
-per-domain Eval cutoff:     [none]
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+* **tipo de logo:**  Por lo que existen diferentes variantes que se pueden utiizar (Kullback-Leiber, Shannon, etc.).  
+* **Método de clustering:** se encarga de agrupar las secuencias que muy similares para no sesgar el resultado.  
+* **Weight on prior:** éste es el valor que le asignamos al parámetro beta en la ecuacion del cálculo de contenido de información. Recuerde que la relacion entre *alfa* y *beta* es determinante para este cálculo.   
+* **Unidad de información:** generalmente esta medida en bits, pero en algunos casos se opta por *half-bits*.  
+* **formato de salida:** bastante autoexplicativo.  
 
-Query HMM:   globins50  
-Accession:   [none]  
-Description: [none]  
-  [HMM has been calibrated; E-values are empirical estimates]  
-```
+También tenemos la opción de realizar cambios avanzados, como modificar las frecuencias de background o la matriz de scoring, limitar la región del alineamiento que queremos graficar, etc. y opciones gráficas, como el tamaño de a imagen y los colores con los que se representa cada aminoácido.  
 
-Una lista tipo BLAST con los hits mas importantes ordenados por su E-value:
+Por convención los colores que se utilizan son:  
 
-```
-Scores for complete sequences (score includes all domains):
-Sequence Description                                    Score    E-value  N
--------- -----------                                    -----    ------- ---
-S13421   S13421 GLOBIN - BRINE SHRIMP                   474.3   1.7e-143   9
-```
+* Rojo: Aminoácidos ácidos [DE]  
+* Azul: Aminoácidos básicos [HKR]  
+* Negro: Aminoácidos hidrofóbicos [ACFILMPVW]  
+* Verde: Aminoácidos neutros [GNQSTY]  
 
- Noten que después del E-value hay un campo que no se encontraban en los otros algoritmos de búsqueda denominado "N". Este valor representa la cantidad de dominios de nuestro profile que fueron encontrados en el hit.
+En la carpeta del TP pueden encontrar los archivos **HLA-A01**, **HLA-A0201** y **HLA-B27**, los cuales contienen ligandos de cada uno de estos alelos de MHC. Utilicelos para generar logos que muestren sus motivos de preferencia. **Utilicen como opción de clustering Heuristics.**
 
-Luego encontramos información sobre los dominios de nuestro profile individualmente. Los campos son el nombre del hit, el dominio que se alineó (por ej. 7/9 significa que es el dominio Nro 7 de 9 que hay en total en nuestro profile) **seq-f** y **seq-t** son las posiciones del hit donde comienza y termina el alineamiento de ese dominio y el campo siguiente a estos valores (sin nombre) es una codificación de qué parte de la secuencia fue alineada. Los corchetes significan extremos y los puntos posiciones en el medio, por lo que ".." significa que el alineamiento comenzó y terminó en una posición que no es terminal de la secuencia hit; "\[." significa que el alineamiento empieza al comienzo de la secuencia y termina en alguna posición en medio; al revés, ".\]" empieza en una posición intermedia y termina en el fin de la secuencia y por último "\[\]" es que el dominio abarca toda la secuencia. Los tres siguientes campos son análogos pero refiriéndose a la secuencia del dominio. y luego se reportan el score y el E-value.
+2. Identifique las posiciones ancla y las preferencias de cada alelo. ¿El grafico obtenido de HLA-A02:01 se condice con lo que encontré en la base de datos?
 
-```
-Parsed for domains:
-Sequence Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
--------- ------- ----- -----    ----- -----      -----  -------
-S13421     7/9     932  1075 ..     1   143 []    76.9  7.3e-24
-S13421     2/9     153   293 ..     1   143 []    63.7  6.8e-20
-S13421     3/9     307   450 ..     1   143 []    59.8  9.8e-19
-S13421     8/9    1089  1234 ..     1   143 []    57.6  4.5e-18
-S13421     9/9    1248  1390 ..     1   143 []    52.3  1.8e-16
-S13421     1/9       1   143 [.     1   143 []    51.2    4e-16
-S13421     4/9     464   607 ..     1   143 []    46.7  8.6e-15
-S13421     6/9     775   918 ..     1   143 []    42.2    2e-13
-S13421     5/9     623   762 ..     1   143 []    23.9  6.6e-08
-```
+## Construcción de matrices peso-específicas
 
- La sección siguiente contiene los alineamientos de los dominios que fueron hit en la lista anterior en un formato similar al de BLAST, teniendo como primera secuencia el consenso del profile (noten que hay aminoácidos en mayúsculas, estos se encuentran altamente conservados en el profile). AL igual que BLAST en medio de ambas secuencias se escriben los aminoácidos que machean y signos más (+) en donde hay mismatches con puntaje positivo en la matriz de sustitución.
+Para este punto vamos a utilizar el servidos de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). Esta herramienta nos permite tanto construir matrices peso-específicas como aplicarlas a set de datos para calcular su score. El servidor consta de dos cuadros de texto, el de la izquierda con el cual se ingresan datos para construir la matriz y el de la derecha donde uno puede ingresar secuencias sobre las cuales quiere realizar una predicción.
 
-```
-Alignments of top-scoring domains:
-S13421: domain 7 of 9, from 932 to 1075: score 76.9, E = 7.3e-24
-                   *->eekalvksvwgkveknveevGaeaLerllvvyPetkryFpkFkdLss
-                      +e a vk+ w+ v+ ++  vG  +++ l++ +P+ +++FpkF d+  
-      S13421   932    REVAVVKQTWNLVKPDLMGVGMRIFKSLFEAFPAYQAVFPKFSDVPL 978  
-
-                   adavkgsakvkahgkkVltalgdavkkldd...lkgalakLselHaqklr
-                    d++++++ v +h   V t+l++ ++ ld++ +l+   ++L+e H+  lr
-      S13421   979 -DKLEDTPAVGKHSISVTTKLDELIQTLDEpanLALLARQLGEDHIV-LR 1026
-
-                   vdpenfkllsevllvvlaeklgkeftpevqaalekllaavataLaakYk<
-                   v+   fk +++vl+  l++ lg+ f+  ++ +++k+++++++ +++  +
-      S13421  1027 VNKPMFKSFGKVLVRLLENDLGQRFSSFASRSWHKAYDVIVEYIEEGLQ  1075
-
-                   -*
-                     
-      S13421     -    -    
-
-```
-
-Llegando al final encontramos un histograma, similar al que nos mostraba FASTA. En este caso como nuestra "base de datos" tiene una sola secuencia no es informativo en absoluto.
-
-```
-Histogram of all scores:
-score    obs    exp  (one = represents 1 sequences)
------    ---    ---
-  474      1      0|=}}}
-
-Y por último algunos datos estadísticos que no tienen mucha utilidad y podemos obviar.
-
-{{{% Statistical details of theoretical EVD fit:
-              mu =   -38.9116
-          lambda =     0.2355
-chi-sq statistic =     0.0000
-  P(chi-square)  =          0
-
-Total sequences searched: 1
-
-Whole sequence top hits:
-tophits_s report:
-     Total hits:           1
-     Satisfying E cutoff:  1
-     Total memory:         20K
-
-Domain top hits:
-tophits_s report:
-     Total hits:           9
-     Satisfying E cutoff:  9
-     Total memory:         26K
-```
-
-## Búsqueda en bases de datos reales
-
-HMMer puede leer los formatos de la mayoría de las bases de datos conocidas. A diferencia de BLAST no es necesario indexar la base de datos. Si recuerdan de la práctica de BLAST/FASTA, uno podía crear su propia base de datos donde realizar los alineamientos a partir de un archivo multifasta utilizando el comando **formatdb**, el cual crea todo el sistema de índices de *ktuplas* y demás archivos para facilitar la búsqueda. En este caso HMMer puede realizar la búsqueda directamente sobre el multifasta sin necesidad de más procesamiento. En nuestro servidor podemos realizar la búsqueda utilizando:
+Para explorar un poco la construcción de matrices solo utilizaremos el recuadro de la izquierda donde ingresaremos las siguientes secuencias:
 
 ```Bash
-hmm2search globin.hmm ~/Swissprot_db/Swissprot.fasta > globin.out
-# Paciencia... ¡esto puede demorar varios minutos!
+VFAAA  
+VHYWW  
+VLQPK  
+LREWQ  
+LPYIH  
 ```
 
-Como habrán notado, esta versatilidad trae acomplejada un mayor costo computacional, que se traduce en tiempo de procesamiento. Una vez terminada la búsqueda, podemos revisar el resultado leyendo el archivo `globin.out`
+Las opciones que tenemos aquí son muy similares a las que habiamos visto en el servidor de *Seq2Logo* debido a que ambos realizan cálculos de contenido de información.  
+En este caso vamos a seleccionar que no se lleve a cabo **ningun tipo de clustering** y que el **weight on prior** (beta) sea de 10000.
+
+Hagan *submit* y observen la salida. Allí podran encontrar informacion sobre los parámetros utilizados y un logo que representa el set de datos que ingresamos.
+
+Observando el logo generado:  
+3. ¿Cuántos aminoácidos puede hallar en la posición P1?  
+4. ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
+5. ¿A qué se debe esta diferencia?  
 
 
-## Modos de alineamiento
+## Predicción de unión a MHC
 
-HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
+Habiendonos familiarizado con la interfaz de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) vamos a utiizarlo para entrenar un modelo con mas datos y ponerlo a prueba. Para eso utilizaremos dos sets de entrenamiento que poseen peptidos fueron testeados con el alelo HLA-A02:01. Cada uno tiene un valor asociado que denota si son positivos (1) o negativos (0.1). A lo largo del proceso iremos variando diferentes parametros para observar que efectos produce en el poder predictivo del modelo al ser testeado en un set de evaluación con valores de affinidad de unión a MHC reales (convertidos entre 0 y 1). 
 
-## Bases de datos de HMM
+Los datos que utilizaremos están en los archivos:
 
- Así como nos es posible realizar búsquedas de profiles contra bases de datos de secuencias, podemos crear una base de datos de profiles y utilizar como query una secuencia. Este es el caso de la base de datos **PFAM** (Sonnhammer et al., 1997; Sonnhammer et al., 1998) que nuclea profiles de una gran variedad de dominios y es una herramienta sumamente utilizada para analizar secuencias de proteínas de las cuales no tenemos información previa.
+* **Entrenamiento_chico.set** que contiene 110 peptidos de los cuales solo 10 son positivos.  
+* **Entrenamiento_grande.set** contiene 232 peptidos de los cuales todos son positivos.  
 
-Las bases de datos de profiles no son más que múltiples HMMs concatenados, por lo que el comando para construirlas es también **hmm2build**, pero vamos a utilizar la opción **-A** (append) para agregar nuevos profiles a nuestro archivo de HMMs.
+Para evaluar el desempeño de nuestro modelo utilizaremos el archivo **Evaluacion.set**, el cual contiene 1266 peptidos con valores de affinidad convertidos al rango 0-1 mediante la formula 1-log(x)/log(50000). Utilizando esta transformación, valores mayores a **0.638** (equivalente a 50nM) representan una unión fuerte, entre **0.638** y **0.426** (equivalente a 500nM) una union débil y péptidos con valores menores a **0.426** no se consideran ligandos. En el caso de la transformación.  
 
-Por ejemplo, si queremos construir una base de datos "myhmms" que contiene perfiles de dominios **rrm** de reconocimiento de ARN, **fn3** de fibronectina tipo III y **pkinase** del dominio catalítico de las kinasas podemos realizarlo fácilmente con:
+Para analizar el desempeño de nuestros modelos vamos a tener en cuenta dos métricas:  
+* **Aroc:** este valor varía entre 0 y 1, siendo 1 el puntaje perfecto y 0.5 el valor aleatorio. Por regla general, valores mayores a 0.85 son altamente deseables.  
+* **Coeficiente de Pearson:** también oscila entre 0 y 1 siendo 1 el puntaje perfecto, pero en este caso el valor que implica aleatoriedad total es 0.  
+Estas nos van a ayudar a seleccionar el mejor de nuestros modelos, siendo este el que alcance los mejores valores.
 
-```Bash
-hmm2build -A myhmms rrm.sto
-hmm2build -A myhmms fn3.sto
-hmm2build -A myhmms pkinase.sto
-hmm2calibrate myhmms
-```
+> **A continuacion vamos a entrenar varios modelos y comparar sus resultados. Haga cada prueba en una ventana nueva o guarde las salidas de alguna manera que crea conveniente.** 
 
-Para realizar búsquedas en nuestra nueva base de datos el comando que utilizamos es **hmm2pfam**. En este caso vamos a usar el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo guardado en el archivo **7LES_DROME**:
+### Primera prueba
 
-```Bash
-hmm2pfam myhmms 7LES_DROME
-```
+Vuelva a abrir [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) o recargue la página para que todas las opciones vuelvan a estar por defecto y realice los siguientes cambios: utilice los datos del archivo **Entrenamiento_chico.set** en el recuadro de entrenamiento y los de **Evaluacion.set** en el recuadro de evaluación. Coloque el **umbral de corte para positivos** (*Cutoff for counting an example as a positive example*) en 0 y dele a *Submit*.  
 
-La salida es muy parecida a la de **hmm2search** pero los hits reportados no serán secuencias sino dominios contenidos en la base de datos. En nuestro caso particular podrán notar que tenemos un hit contra un dominio RRM aun cuando nuestra proteína query no contiene ningún dominio de este tipo. Nos podemos dar cuenta que este hit es al menos sospechoso debido a su score negativo y su E-value cercano a 1. Por defecto el límite de E-value, al igual que BLAST es 10, este umbral es extremadamente permisivo y proclive a devolver ruido. Si queremos ser más quisquillosos podemos utilizar la opción **-E** seguida del umbral deseado. Por ejemplo:
+La salida consta de varias partes. Al principio tenemos una pequeña descripcion de los parametros con los que se llevo a cabo el entrenamiento, tanto de los datos como del método. Esto es siempre útil para poder reproducir los resultados. Luego tenemos un logo construido a partir de los datos de entrenamiento. Esto nos puede ayudar a identificar (como hicimos anteriormente) la preferencia de la molecula que se une a nuestro set de péptidos. A continuación sigue la información sobre la evaluación. Allí podemos encontrar los valores de Pearson y Aroc y la lista de predicciones sobre el set de evaluacion. Fíjense que *Assignment* se refiere al valor medido que esta en el archivo de evaluación y va de 0 a 1, sin embargo la predicción puede adoptar otros valores, incluso negativos. Las métricas que utilizamos no se basan en la presición a la hora de encontrar el valor sino que haya una correlación entre los valores predichos y reales.  
 
-```Bash
-hmm2pfam -E 0.1 myhmms 7LES_DROME
-```
+Revisando la salida conteste:  
+6. ¿Que valores de AUC y Pearson obtuvo?  
+7. Viendo el logo resultante ¿Entiende por qué el modelo tiene tan mal desempeño?  
+8. ¿Cuántos de los 110 péptidos se utilizaron en el entrenamiento?  
 
-## Alineamientos multiples con HMM
+### Segunda prueba
 
-Otro uso que se les da a los profiles es la de asistir a la hora de llevar a cabo alineamientos múltiples de grandes cantidades de secuencias. En general este proceso suele ser lento y los alineamientos resultantes contienen errores que requieren curarse a mano. Utilizando HMMs construidos a partir de un alineamiento de unas pocas secuencias representativas, se pueden alinear grandes cantidades de secuencias relacionadas fácilmente. Siguiendo con nuestras globinas, tenemos un archivo (**globins630.fa**), que como habrán deducido, contiene 630 secuencias de globinas que vamos a alinear utilizando el comando **hmm2align**:
+Vuelva a la página principal de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). Esta vez coloque el **umbral de positivos** en 0.5 pero especifique que no haya **clustering** y ponga un **weight on prior** de 0.0.
+ 
+9. ¿Qué valores de desempeño tenemos ahora?  
+10. ¿Cuántos de los 110 péptidos se utilizaron en este caso?  
+11. Mirando el logo ¿Se parece al motivo de unión de HLA-A02:01 que habíamos visto?  
 
-```Bash
-hmmalign -o globins630.ali globin.hmm globins630.fa
-```
+### Tercera prueba
 
-mediante la opción **-o** indicamos el archivo en el que deseamos guardar el alineamiento (**globins630.ali**), y como argumentos debemos indicar el profile que vamos a utilizar como "semilla" y el archivo con las secuencias a alinear (**globin.hmm** y **globins630.fa** respectivamente). Noten que también se puede utilizar la opción **--outformat** para cambiar el formato del alineamiento producido. Por defecto se utiliza el formato *Stockholm*, pero también puede producir alineamientos en formato *MSF*, *Clustal*, *Phylip* y *SELEX*.
+Vuelva atrás y repita el caso anterior pero seleccionando **Clustering at 62% identity**. mantenga el **weight on prior** en 0.0.
+
+12. ¿Cuál es el desempeño ahora?  
+13. ¿Cambió el logo con respecto al anterior?  
+
+### Cuarta prueba
+
+Vuelva una vez más, manteniendo **Clustering at 62% identity** pero utilice como **weight on prior** un valor de 200.
+
+14. Una vez mas revise las métricas de desempeño.  
+15. Mirando el logo ¿Cuál es la gran diferencia con aquellos que veniamos viendo?¿Cuál es la razón de este cambio?¿Empieza ahora a parecerce a los motivos que habíamos visto antes?  
+
+### Última prueba
+
+Hasta ahora veniamos utilizando un set de datos sumamente reducido, con solo 10 péptidos positivos para entrenar. Aún asi hemos conseguido valores de desempeño muy aceptables. Sin embargo, estos metodos suelen utilizar bastante mas información para su entrenamiento.  
+A continuación recarguen la página de EasyPred y carguen para entrenar el archivo Entrenamiento_grande.set. En el cuadro de evaluación volvemos a cargar Evaluacion.set. Seleccionemos una vez mas **Clustering at 62% identity** y pongamos el **weight on prior** en 200. Tilden también la opcion **Sort output on predicted values** para ver la tabla de peptidos ordenada por los valores de predicción.
+
+16. Revise una vez mas los valores de desempeño.
+17. Vea el logo, ¿qué le parece?
+18. Mirando la tabla de predicciónes ¿Cuántos falsos positivos encuentra entre los primeros 20 péptidos? (con *Assignment* menor a 0.426)
+
+> **Antes de cerrar la ventana haga *click* en *Parameters for prediction method*. Allí podrá descargar la matriz calculada a partir de los datos de entrenamiento (Se descarga con el nombre para.dat). Esta puede ser utilizada luego para llevar a cabo predicciones.**
+
+## Encontrando epitopes en proteínas
+
+Para finalizar vamos a utilizar nuestra matriz peso-específica para encontrar epítopes potenciales en la proteína de la nucleocápside del virus SARS-CoV.  
+Recarguen EasyPred. El recuadro de entrenamiento debe quedar vacio. Ingresen el archivo con la secuencia de la proteína en el recuadro de evaluación y suban el archivo con la matriz que descargaron en el paso anterior abajo donde dice **Load saved prediction method**. Otra vez seleccionen **Sort output on predicted values** y denle *Submit query*.
+
+LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vió. La lista de péptidos son todos aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia que le administramos al servidor junto con el valor de predicción. Los péptidos de arriba de la lista son aquellos que mas se adecúan a la preferencia del alelo con el que entrenamos el modelo y por lo tanto son buenos candidatos para testear en laboratorio si tienen la capacidad de despertar una respuesta inmune.
 
 # PSI-BLAST
 
@@ -297,9 +258,5 @@ Este programa es muy versátil pero también puede resultar complejo de usar al 
 ![Model](images/CPHmodels.png)
 
 16. Podrían estos residuos ser parte del sitio activo?
-
-
-
-
 
 
