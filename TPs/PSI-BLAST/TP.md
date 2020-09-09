@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Construcción de Logos y Matrices peso-específicas  
 
 ## Objetivos
