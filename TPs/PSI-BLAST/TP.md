@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Construcción de Logos y Matrices peso-específicas  
 
 ## Objetivos
@@ -124,6 +125,134 @@ Vuelva a la página principal de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyP
 
 ### Segunda prueba
 
+=======
+# PSSM y PSI-BLAST
+
+# Construcción de Logos y Matrices peso-específicas  
+
+## Objetivos
+
+En este TP utilizaremos herramientas bioinformáticas para predecir la unión de peptidos a MHC y seleccionar potenciales epítopes como candidatos para desarrollar una vacuna.  
+
+Los pasos a seguir serán:  
+
+1. Identificación de motivos de unión de MHC.  
+2. Visualización de motivos utilizando logos de secuencia.  
+3. Entrenamiento de métodos de predicción de unión a MHC.  
+4. Utilización de los métodos desarrollados para la selección de candidatos a vacuna.  
+
+## Unión de peptidos a MHC
+
+Este paso es el mas selectivo en la identificación de péptidos inmunogénicos ya que sólamente 1 en 200 péptidos forma un complejo con el MHC. Existe una gran varidedad de MHC diferentes, cada uno con una alta especificidad.  
+El motivo de unión de los MHC de clase I es, en la mayoría de los casos, de 9 aminoácidos de longitud. Estos estan caracterizados por una marcada preferencia por ciertos aminoácidos en ciertas posiciones del motivo. Estas posiciones son llamadas "anclas". Para una gran cantidad de complejos de MHC clase I estas anclas se encuentran en las posiciones P2 y P9. Sin embargo, este no siempre es el caso.  
+Existe una gran cantidad de datos que describen las diferentes especificidades de las moleculas de MHC. Una base de datos muy conocida que almacena esta información es [SYFPEITHI](http://www.syfpeithi.de/). En ella se puede encontrar informacion de ligands y motivos de MHC.  
+Con este tipo de información es posible desarrollar un modelo de predicción de unión de péptidos a MHC y aplicarlo para descubrir nuevos epitopes con los cuales diseñar vacunas. Esto puede ser aplicado a nivel de proteomas enteros para ahorrar tanto tiempo como recursos.  
+
+A continuación vamos a:
+
+1. Visualizar mtivos de unión utilizando logos de secuencia.  
+2. Utilizar entrenar un modelo predictivo utilizando el servidor de *Easypred*.  
+3. Aplicar el modelo para seleccionar péptidos con potencial inmunogénico del genoma de Sars.  
+
+## Identificación de motivos de unión a MHC
+
+Vayan a la página de [SYFPEITHI](http://www.syfpeithi.de/). Allí, una vez que hagan *click* en el logo, pueden buscar motivos con el botón **Find motif, Ligand or epitope**. Allí seleccione con el menu de la izquierda el alelo de MHC **HLA-A*02:01** y presione **do Query**. El resto de las opciones se pueden usar para refinar la búsqueda, limitandola a ligandos de proteínas determinadas o por referencia bibliográfica. En este caso queremos obtener **TODOS** los ligandos para poder ver que características comparten.  
+
+En el resultado de la búsqueda podemos ver las posiciones ancla (*anchor*) con los aminoácidos preferidos en esas posiciones. También podemos ver si existen posiciones con residuos preferidos, osea, que aparecen mas seguido en los ligandos identificados. A continuacion tenemos una lista de otros aminoácidos que se ven con frecuencia en los ligandos de alelo que estamos estudiando y por último la lista de los ligandos que existen en esta base de datos, junto a su proteina de procedencia, la referencia del trabajo donde se lo identificó y alguna nota como la asociación de ese péptido con alguna enfermedad.  
+
+1. Identifique la preferencia de aminoácidos del alelo estudiado en las posiciones ancla.  
+
+## Logos de secuencia
+
+Esta es una herramienta muy útil para visualizar motivos de unión. En un logo de secuencia se grafica el contenido de información en cada posición de un motivo, el cual esta representado por el alto de la columna. A su vez, cada letra dentro de cada columna tiene un tamaño proporcional a la frecuencia con la que aparece en esa posición.  
+Un servidor que nos permite generar facilmente logos de secuencia es [Seq2Logo](http://www.cbs.dtu.dk/biotools/Seq2Logo/). Este método nos da la opción de ingresar un alineamiento multiple, una lista de péptidos o matriz peso-específica con la cual realizar la gráfica. La información puede pegarse directamente en el cuadro de texto que allí se ve, o subiendo directamente el archivo que la contiene utilizando la opción *Switch to file upload* que se encuentra debajo del cuadro.  
+
+> Recuerde que el gráfico es el resultado del calculo de contenido de información para cada posición, tal como lo vieron en la teoria, por lo que puede variar según los criterios que apliquen.  
+
+Dentro de las opciones que nos permite cambiar tenemos:  
+
+* **tipo de logo:**  Por lo que existen diferentes variantes que se pueden utiizar (Kullback-Leiber, Shannon, etc.).  
+* **Método de clustering:** se encarga de agrupar las secuencias que muy similares para no sesgar el resultado.  
+* **Weight on prior:** éste es el valor que le asignamos al parámetro beta en la ecuacion del cálculo de contenido de información. Recuerde que la relacion entre *alfa* y *beta* es determinante para este cálculo.   
+* **Unidad de informacion:** generalmente esta medida en bits, pero en algunos casos se opta por *half-bits*.  
+* **formato de salida:** bastante autoexplicativo.  
+
+También tenemos la opción de realizar cambios avanzados, como modificar las frecuencias de background o la matriz de scoring, limitar la region del alineamiento que queremos graficar, etc. y opciones gráficas, como el tamaño de a imagen y los colores con los que se representa cada aminoácido.  
+
+Por convención los colores que se utilizan son:  
+
+* Rojo: Aminoácidos ácidos [DE]  
+* Azul: Aminoácidos básicos [HKR]  
+* Negro: Aminoácidos hidrofóbicos [ACFILMPVW]  
+* Verde: Aminoácidos neutros [GNQSTY]  
+
+En la carpeta del TP pueden encontrar los archivos **HLA-A01**, **HLA-A0201** y **HLA-B27**, los cuales contienen ligandos de cada uno de estos alelos de MHC. Utilicelos para generar logos que muestren sus motivos de preferencia. **Utilicen como opción de clustering Heuristics.**
+
+2. Identifique las posiciones ancla y las preferencias de cada alelo. ¿El grafico obtenido de HLA-A02:01 se condice con lo que encontré en la base de datos?
+
+## Construcción de matrices peso-específicas
+
+Para este punto vamos a utilizar el servidos de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). Esta herramienta nos permite tanto construir matrices peso-específicas como aplicarlas a set de datos para calcular su score. El servidor consta de dos cuadros de texto, el de la izquierda con el cual se ingresan datos para construir la matriz y el de la derecha donde uno puede ingresar secuencias sobre las cuales quiere realizar una predicción.
+
+Para explorar un poco la construcción de matrices solo utilizaremos el recuadro de la izquierda donde ingresaremos las siguientes secuencias:
+
+VFAAA  
+VHYWW  
+VLQPK  
+LREWQ  
+LPYIH  
+
+Las opciones que tenemos aquí son muy similares a las que habiamos visto en el servidor de Seq2Logo debido a que ambos realizan calculos de contenido de información.  
+En este caso vamos a seleccionar que no se lleve a cabo ningun tipo de clustering y que el *weight on prior* (beta) sea de 10000.
+
+Hagan *submit* y observen la salida. Allí podran encontrar informacion sobre los parámetros utilizados y un logo que representa el set de datos que ingresamos.
+
+Observando el logo generado:  
+3. ¿Cuántos aminoácidos puede hallar en la posición P1?  
+4. ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
+5. ¿A qué se debe esta diferencia?  
+
+
+## Predicción de unión a MHC
+
+Habiendonos familiarizado con la interfaz de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) vamos a utiizarlo para entrenar un modelo con mas datos y ponerlo a prueba. Para eso utilizaremos dos sets de entrenamiento que poseen peptidos fueron testeados con el alelo HLA-A02:01. Cada uno tiene un valor asociado que denota si son positivos (1) o negativos (0.1). A lo largo del proceso iremos variando diferentes parametros para observar que efectos produce en el poder predictivo del modelo al ser testeado en un set de evaluación con valores de affinidad de unión a MHC reales (convertidos entre 0 y 1). 
+
+Los datos que utilizaremos estan en los archivos:
+
+* **Entrenamiento_chico.set** que contiene 110 peptidos de los cuales solo 10 son positivos.  
+* **Entrenamiento_grande.set** contiene 232 peptidos de los cuales todos son positivos.  
+
+Para evaluar el desempeño de nuestro modelo utilizaremos el archivo **Evaluacion.set**, el cual contiene 1266 peptidos con valores de affinidad convertidos al rango 0-1 mediante la formula 1-log(x)/log(50000). Utilizando esta transformación, valores mayores a **0.638** (equivalente a 50nM) representan una unión fuerte, entre **0.638** y **0.426** (equivalente a 500nM) una union débil y péptidos con valores menores a **0.426** no se consideran ligandos. En el caso de la transformación.  
+
+Para analizar el desempeño de nuestros modelos vamos a tener en cuenta dos métricas:  
+* **Aroc** este valor varía entre 0 y 1, siendo 1 el puntaje perfecto y 0.5 el valor aleatorio. Por regla general, valores mayores a 0.85 son altamente deseables.  
+* **Coeficiente de Pearson** también oscila entre 0 y 1 siendo 1 el puntaje perfecto, pero en este caso el valor que implica aleatoriedad total es 0.  
+Estas nos van a ayudar a seleccionar el mejor de nuestros modelos, siendo este el que alcance los mejores valores.
+
+> **A continuacion vamos a entrenar varios modelos y comparar sus resultados. Haga cada prueba en una ventana nueva o guarde las salidas de alguna manera que crea conveniente.** 
+
+### Primera prueba
+
+Vuelva a abrir [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) o recargue la página para que todas las opciones vuelvan a estar por defecto y realice los siguientes cambios: utilice los datos del archivo **Entrenamiento_chico.set** en el recuadro de entrenamiento y los de **Evaluacion.set** en el recuadro de evaluación. Coloque el **umbral de corte para positivos** (*Cutoff for counting an example as a positive example*) en 0 y dele a *Submit*.  
+
+La salida consta de varias partes. Al principio tenemos una pequeña descripcion de los parametros con los que se llevo a cabo el entrenamiento, tanto de los datos como del método. Esto es siempre útil para poder reproducir los resultados. Luego tenemos un logo construido a partir de los datos de entrenamiento. Esto nos puede ayudar a identificar (como hicimos anteriormente) la preferencia de la molecula que se une a nuestro set de péptidos. A continuación sigue la información sobre la evaluación. Allí podemos encontrar los valores de Pearson y Aroc y la lista de predicciones sobre el set de evaluacion. Fíjense que *Assignment* se refiere al valor medido que esta en el archivo de evaluación y va de 0 a 1, sin embargo la predicción puede adoptar otros valores, incluso negativos. Las métricas que utilizamos no se basan en la presición a la hora de encontrar el valor sino que haya una correlación entre los valores predichos y reales.  
+
+Revisando la salida conteste:  
+6. ¿Que valores de AUC y Pearson obtuvo?  
+7. Viendo el logo resultante ¿Entiende por qué el modelo tiene tan mal desempeño?  
+8. ¿Cuántos de los 110 péptidos se utilizaron en el entrenamiento?  
+
+### Segunda prueba
+
+Vuelva a la página principal de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). Esta vez coloque el **umbral de positivos** en 0.5 pero especifique que no haya **clustering** y ponga un **weight on prior** de 0.0.
+ 
+9. ¿Qué valores de desempeño tenemos ahora?  
+10. ¿Cuántos de los 110 péptidos se utilizaron en este caso?  
+11. Mirando el logo ¿Se parece al motivo de unión de HLA-A02:01 que habíamos visto?  
+
+### Segunda prueba
+
+>>>>>>> 776219b085cc547b9846bcff685277bfa621e5f2
 Vuelva atrás y repita el caso anterior pero seleccionando **Clustering at 62% identity**. mantenga el **weight on prior** en 0.0.
 
 12. ¿Cuál es el desempeño ahora?  
@@ -151,8 +280,14 @@ A continuación recarguen la página de EasyPred y carguen para entrenar el arch
 
 Para finalizar vamos a utilizar nuestra matriz peso-específica para encontrar epítopes potenciales en la proteína de la nucleocápside del virus SARS-CoV.  
 Recarguen EasyPred. El recuadro de entrenamiento debe quedar vacio. Ingresen el archivo con la secuencia de la proteína en el recuadro de evaluación y suban el archivo con la matriz que descargaron en el paso anterior abajo donde dice **Load saved prediction method**. Otra vez seleccionen **Sort output on predicted values** y denle *Submit query*.
+<<<<<<< HEAD
 
 LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vió. La lista de péptidos son todos aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia que le administramos al servidor junto con el valor de predicción. Los péptidos de arriba de la lista son aquellos que mas se adecúan a la preferencia del alelo con el que entrenamos el modelo y por lo tanto son buenos candidatos para testear en laboratorio si tienen la capacidad de despertar una respuesta inmune.
+=======
+
+LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vió. La lista de péptidos son todos aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia que le administramos al servidor junto con el valor de predicción. Los péptidos de arriba de la lista son aquellos que mas se adecúan a la preferencia del alelo con el que entrenamos el modelo y por lo tanto son buenos candidatos para testear en laboratorio si tienen la capacidad de despertar una respuesta inmune.
+
+>>>>>>> 776219b085cc547b9846bcff685277bfa621e5f2
 
 # PSI-BLAST
 
@@ -248,7 +383,12 @@ La salida de CPHmodels no es muy intuitiva, sin embargo, el método provee un Z-
 
 15. CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
 
-La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados (Pymol) para poder corroborar la ubicación de las posiciones seleccionadas. Cómo explicar el uso de Pymol o cualquier otro software de visualización puede llevar bastante tiempo, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
+La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados. Pueden instalar Pymol utilizando el comando:
+
+```Bash
+sudo apt install pymol
+```  
+Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, cómo aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
 
 ![Model](images/CPHmodels.png)
 
