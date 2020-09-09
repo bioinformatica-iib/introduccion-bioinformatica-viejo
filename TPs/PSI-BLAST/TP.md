@@ -232,7 +232,7 @@ Para esto vamos a utilizar lo que ya hemos hecho con PSI-BLAST y el programa [Bl
 * (g): R400
 * (h): Y436
 
-Para identificar los residuos conservados vamos al servidor de [Blast2logo](http://www.cbs.dtu.dk/biotools/Blast2logo/) y suban la secuencia query. Seleccionen la base de datos NR70 y denle *submit* (esto puede llevar un tiempito). En caso de que algo falle puede encontrar la salida [aca](http://www.cbs.dtu.dk/biotools/Blast2logo/teaching/Query1/).
+Para identificar los residuos conservados vayan al servidor de [Blast2logo](http://www.cbs.dtu.dk/biotools/Blast2logo/) y suban la secuencia query. Seleccionen la base de datos NR70 y denle *submit* (esto puede llevar un tiempito). En caso de que algo falle puede encontrar la salida [acá](http://www.cbs.dtu.dk/biotools/Blast2logo/teaching/Query1/).
 
 Cuando esto termine deberían tener un logo de toda la secuencia. Si les resulta difícil de leer pueden hacer click en el botón *Customize visualization using Seq2Logo*. Al hacer esto los transfiere al servidor de **Seq2logo**, allí, sin tocar ninguna opción denle submit. Arriba tienen la opción de descargar cada imagen por separado (JPEG(1), JPEG(2), etc.) o en un solo archivo, similar a PDF (EPS) en el cual van a poderlo ver mucho más claro (recomiendo esta ultima opción).
 
@@ -246,17 +246,17 @@ Para seguir acumulando pruebas de que nuestro ensayo realmente podría funcionar
 
 La salida de CPHmodels no es muy intuitiva, sin embargo, el método provee un Z-score cuando el query y la proteína modelo tienen poca similitud de secuencia. Como regla general, un Z-score mayor a 10 significa que el modelo es confiable.
 
-15. CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
+15. ¿CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
 
 La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados. Pueden instalar Pymol utilizando el comando:
 
 ```Bash
 sudo apt install pymol
 ```  
-Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, cómo aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
+Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, como aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
 
 ![Model](images/CPHmodels.png)
 
-16. Podrían estos residuos ser parte del sitio activo?
+16. ¿Podrían estos residuos ser parte del sitio activo?
 
 
