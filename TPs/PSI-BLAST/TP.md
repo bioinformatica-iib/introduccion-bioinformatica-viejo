@@ -122,14 +122,14 @@ Vuelva a la página principal de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyP
 10. ¿Cuántos de los 110 péptidos se utilizaron en este caso?  
 11. Mirando el logo ¿Se parece al motivo de unión de HLA-A02:01 que habíamos visto?  
 
-### Segunda prueba
+### Tercera prueba
 
 Vuelva atrás y repita el caso anterior pero seleccionando **Clustering at 62% identity**. mantenga el **weight on prior** en 0.0.
 
 12. ¿Cuál es el desempeño ahora?  
 13. ¿Cambió el logo con respecto al anterior?  
 
-### Tercera prueba
+### Cuarta prueba
 
 Vuelva una vez más, manteniendo **Clustering at 62% identity** pero utilice como **weight on prior** un valor de 200.
 
