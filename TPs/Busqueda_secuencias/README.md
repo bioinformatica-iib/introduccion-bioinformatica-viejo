@@ -113,8 +113,6 @@ Qué diferencias encuentran en los histogramas de cada búsqueda?
 
 Para el segundo tipo de casos (vector, elementos repetitivos), es necesario detectarlos y enmascararlos (reemplazarlos por N o X) o marcarlos (con minúscula, por ejemplo, si toda la secuencia esta en mayúsculas) previo a la búsqueda. 
 
-**EJERCICIO:** la secuencia *est.fasta* contiene una región correspondiente al vector (plásmido). Esta secuencia fue enmascarada (reemplazada por X, *est_masked_X.fasta*) y marcada en minúsculas (*est_masked_lc.fasta*). Utilicen las tres secuencias para realizar una una búsqueda contra *Swissprot*, usando **BLAST** o **FASTA** (el que más les guste). Qué opciones tienen que usar en cada caso para evitar que en la lista de hits aparezcan beta-galactosidasas mencionadas y comparen los resultados. 
-
 ## Bases de datos propias
 
 Tener acceso a **BLAST** o **FASTA** en la línea de comando les da la posibilidad de crear sus propias bases de datos para realizar búsquedas. 
