@@ -42,7 +42,7 @@ Un servidor que nos permite generar facilmente logos de secuencia es [Seq2Logo](
 Dentro de las opciones que nos permite cambiar tenemos:  
 
 * **tipo de logo:**  Por lo que existen diferentes variantes que se pueden utiizar (Kullback-Leiber, Shannon, etc.).  
-* **Método de clustering:** se encarga de agrupar las secuencias que muy similares para no sesgar el resultado.  
+* **Método de clustering:** se encarga de agrupar las secuencias que son muy similares para no sesgar el resultado.  
 * **Weight on prior:** éste es el valor que le asignamos al parámetro beta en la ecuacion del cálculo de contenido de información. Recuerde que la relacion entre *alfa* y *beta* es determinante para este cálculo.   
 * **Unidad de información:** generalmente esta medida en bits, pero en algunos casos se opta por *half-bits*.  
 * **formato de salida:** bastante autoexplicativo.  
