@@ -49,9 +49,9 @@ Lo primero que vamos a hacer es un árbol simple utilizando el método de **Neig
 Para poder calcular el árbol primero debemos obtener la matriz de distancias, esto lo podemos hacer mediante el comando **fprotdist**.
 Este comando utiliza uno de tres algoritmos para calcular las distancias:
 
-1. PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen un tasa de mutación esperada del 1%.
-2. JTT: Nombrado por sus creadores, Jones, Taylor y Thornton, se basa en el mismo concepto que el método PAM, solo que la matriz de sustitución fue creada con un set de datos mucho más grande.
-3. PBM: Las matrices de este modelo derivan de la base de datos *Blocks* que contiene secuencias de dominios conservados.
+- PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen un tasa de mutación esperada del 1%.
+- JTT: Nombrado por sus creadores, Jones, Taylor y Thornton, se basa en el mismo concepto que el método PAM, solo que la matriz de sustitución fue creada con un set de datos mucho más grande.
+- PBM: Las matrices de este modelo derivan de la base de datos *Blocks* que contiene secuencias de dominios conservados.
 
 ```Bash
 fprotdist -method j -sequence Ribonucleasas.msa -outfile Ribonucleasas.dist
@@ -64,8 +64,10 @@ fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefi
 ```
 
 Investiguen los archivos Ribonucleasas.tree y Ribonucleasas.treefile:
-- ¿Qué información tiene **Ribonucleasas-NJ.tree**?
-- ¿Qué les parece que contiene **Ribonucleasas-NJ.treefile** y por qué cree que es conveniente su creación?
+1. ¿Qué información tiene **Ribonucleasas-NJ.tree**?
+2. ¿Qué les parece que contiene **Ribonucleasas-NJ.treefile** y por qué cree que es conveniente su creación?
+3. Observe la topología del arbol a diferentes niveles e identifique diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
+4. Hay algunos OTUs que no parecen estar bien ubicados. ¿Cuáles son? ¿Qué puede estar pasando?
 
 Comparemos ahora con el método **UPGMA**. La manera de generar el árbol es esencialmente la misma que **Neighbor-Joining**, ir agrupando los pares de elementos con la menor distancia. La diferencia radica en cómo se calculan las distancias una vez se empiezan a generar grupos. **Neighbor-Joining** utiliza una metodología un tanto compleja que pueden encontrar explicada [acá](http://www.deduveinstitute.be/~opperd/private/neighbor.html), mientras que **UPGMA** usa un *average linking* pesado por la cantidad de secuencias que componen cada grupo.
 
@@ -76,10 +78,12 @@ fneighbor -treetype u -datafile Ribonucleasas.dist -outfile Ribonucleasas-UPGMA.
 ```
 
 Ahora comparen las salidas de ambos métodos.
-- Identifiquen si hay cambios en las agrupaciones
+5. Identifiquen si hay cambios en las agrupaciones.
 
 Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos.
 - Investigue con la opción **-help** los parámetros que estos comandos reciben y grafique los árboles como le parezca más correcto.
+
+6. Grafique los resultados de ambos métodos. Se ven diferentes ¿no? Investigue las razones.
 
 ### Metodos de busqueda de árboles
 
@@ -94,8 +98,8 @@ fproml -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML.tree -outtr
 >**NOTA**: Fijense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependendiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
 
 Observen e interpreten la salida obtenida
-- Comprueben si hubo cambios radicales con respecto a los árboles anteriores.
-- ¿Con qué nueva información contamos?
+7. Comprueben si hubo cambios radicales con respecto a los árboles anteriores.
+8. ¿Con qué nueva información contamos?
 
 ¡Aprovechemos que tenemos a un intruso! Hasta ahora veniamos generando arboles sin raiz, donde las distancias entre los OTUs son relativas. Como habiamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divirgió antes que el resto, así podemos tener una referencia a partir de la cual construir el arbol.  
 Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placentarios, excepto por el canguro rojo del TP de alineamientos. Su aparición no es casualidad ya que como miembro de otra infraclase nos va a servir de referencia para proponer una raíz a nuestro arbol. Para ello debemos utilizar la opción **-outgrno**, la cual recibe el número del organismo que vamos a utilizar como referencia. Este número esta dado por el orden del alineamiento múltiple. Pueden averiguar que número es corriendo el siguiente comando:
@@ -118,8 +122,8 @@ Para una mejor visualización pueden utilizar el comando **fdrawgram** dandole c
 El método de ML tiene una ventaja: utiliza un modelo de markov para estimar las tasas de cambio de las diferentes posiciones y así poder hacer cálculos más precisos. Esto se debe a que no todas las posiciones varían con la misma frecuencia, posiciones importantes para la estructura/función de la proteína (ej. sitio activo), tienden a variar mucho menos que el resto y esto debe ser tenido en cuenta a la hora de construir la filogenia.
 
 Genere el árbol utilizando máxima parsimonia con el comando **fprotpars**, utilice **-help** para ver qué argumentos recibe.
-- ¿Qué información nos da?
-- ¿Cuántos árboles nos devuelve? ¿Por qué?
+9. ¿Qué información nos da?
+10. ¿Cuántos árboles nos devuelve? ¿Por qué?
 
 ## Paso 4. Tests – Seleccionar árboles en el bosque
 
@@ -160,10 +164,10 @@ Para poder utilizar toda la información de estas numerosas réplicas vamos a un
 fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas.consense
 ```
 Observando el árbol consenso:
-- Resulta ser un buen árbol?
-- En que se basa para afirmarlo?
-- Cómo podría lidiar con nodos de baja calidad?
-- Compare el árbol obtenido con alguno de los anteriores.
+11. ¿Resulta ser un buen árbol?
+12. ¿En que se basa para afirmarlo?
+13. ¿Cómo podría lidiar con nodos de baja calidad?
+14. Compare el árbol obtenido con alguno de los anteriores.
 
 ## Step 5. Presentación
 
