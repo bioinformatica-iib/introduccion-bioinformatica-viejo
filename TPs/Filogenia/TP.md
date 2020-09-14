@@ -4,7 +4,7 @@ La filogenética es la ciencia de estimar el pasado evolutivo basado en la compa
 
 ![Arbol1](images/Arbol1.jpg)
 
-Generalmente los árboles filogenéticos tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen igualmente árboles particulares (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna, sino que solo son más agradables estéticamente.
+Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen tambièn otras representaciones (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna más allá de los agrupamientos.
 
 ![Clado](images/Arbol-Clado.jpg)
 
