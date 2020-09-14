@@ -109,10 +109,10 @@ fneighbor -treetype u -datafile Ribonucleasas.dist -outfile Ribonucleasas-UPGMA.
 ```
 
 Ahora comparen las salidas de ambos métodos.  
+
 5. Identifiquen si hay cambios en las agrupaciones.
 
-Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos.
-- Investigue con la opción **-help** los parámetros que estos comandos reciben y grafique los árboles como le parezca más correcto.
+Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos. **Investigue con la opción ``-help ``los parámetros que estos comandos reciben y grafique los árboles como le parezca más correcto.**
 
 6. Grafiquen los resultados de ambos métodos. Se ven diferentes ¿no? Investigue las razones.
 
@@ -126,20 +126,22 @@ En este caso **NO** va a ser necesario calcular una matriz de distancias, podemo
 fproml -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML.tree -outtreefile Ribonucleasas-ML.treefile
 ```
 
->**NOTA**: Fijense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
+>**NOTA**: Fíjense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
 
-Observen e interpreten la salida obtenida  
+Observen e interpreten la salida obtenida.
+
 7. Comprueben si hubo cambios radicales con respecto a los árboles anteriores.  
 8. ¿Con qué nueva información contamos?  
 
 ¡Aprovechemos que tenemos a un intruso! Hasta ahora veníamos generando árboles sin raiz, donde las distancias entre los OTUs son relativas. Como habíamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divergió antes que el resto, así podemos tener una referencia a partir de la cual construir el árbol.  
+
 Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placentarios, excepto por el canguro rojo del TP de alineamientos. Su aparición no es casualidad ya que como miembro de otra infraclase nos va a servir de referencia para proponer una raíz a nuestro arbol. Para ello debemos utilizar la opción **-outgrno**, la cual recibe el número del organismo que vamos a utilizar como referencia. Este número esta dado por el orden del alineamiento múltiple. Pueden averiguar que número es corriendo el siguiente comando:
 
 ```Bash
 cat Ribonucleasas.msa | grep ">" | grep -n "Macropus"
 ```
 
-cuya salida se verá similar a esta: *45:>Macropus_rufus*. En mi caso, el número que buscamos es 45 por lo que voy a utilizar ese de ahora en más para definir el *outgroup* pero a ustedes les puede llegar a dar diferente.
+La salida se verá similar a esta: ``45:>Macropus_rufus``. En mi caso, el número que buscamos es 45 por lo que voy a utilizar ese de ahora en más para definir el *outgroup* pero a ustedes les puede llegar a dar diferente.
 
 Una vez obtenido este valor podemos volver a correr fproml
 
@@ -190,6 +192,7 @@ Para poder utilizar toda la información de estas numerosas réplicas vamos a un
 fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas-CONS.tree -outtreefile Ribonucleasas-CONS.treefile
 ```
 Observando el árbol consenso:  
+
 11. ¿Resulta ser un buen árbol?   
 12. ¿En que se basan para afirmarlo?   
 13. ¿Cómo podrían lidiar con nodos de baja calidad?   
@@ -197,5 +200,6 @@ Observando el árbol consenso:
 ## Step 5. Presentación
 
 Finalmente algunos conceptos en cuanto a la presentación de los datos. Por lo general no hay reglas duras de cómo debe hacerse pero sí convenciones que están bastante aceptadas.
+
 En árboles de filogenia molecular, los largos de las ramas suelen dibujarse a escala; esto es, proporcional a la cantidad de evolución que se estima ocurrió entre los nodos que conecta. A pesar de que la relación entre el largo de la rama y el tiempo real no es directa y muy probablemente no es confiable, los largos dan una idea general de las tasa de cambio relativas del árbol. Los valores de Bootstrap deben ser presentados en forma de porcentajes, no de valores crudos, para que sea más sencillo de leer y comparar con otros árboles. Por convención, sólo valores de Bootstrap del 50% o mayores son reportados; valores menores significan que la calidad del nodo encontrado es muy baja. Por último, tengan en cuenta la legibilidad del árbol en general. Utilizar nombres para las ramas con códigos de acceso a bases de datos o acrónimos de pocas letras puede resultar muy confuso. Hoy en día existen numerosos softwares para la visualización de árboles (ej. Hypertree) que nos permiten, mediante agrupamientos, colores, fuentes, etc. llamar la atención del lector sobre uno u otro aspecto importante del mismo y lograr que transmita la información que nos interesa mostrar.
 
