@@ -11,18 +11,23 @@ Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son pro
 En la base del árbol vamos a encontrar su raíz. Este es el punto más antiguo del árbol y marca el orden de ramificación del mismo, osea, quien comparte un ancestro más reciente con quien. La forma de ubicar la raíz del árbol es a través de un "*outgroup*": un punto externo de referencia. Un *outgroup* puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningún lado.
 
 ## Paso 1. Construyendo el dataset
-Un árbol filogenético se construye a partir de un alineamiento múltiple que a su vez debe calcularse a partir de un set de secuencias representativas. La topología de el o los árboles resultantes va a depender mucho de la cantidad y calidad de los datos que utilicemos. Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya que un set de datos ruidoso puede llevarnos a resultados erróneos y por lo tanto a conclusiones inválidas. En la práctica, la obtención de secuencias puede realizarse como ya hemos visto en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función. Estas luego se ven sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso se realizan pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar. En este TP todos esos paso no van a ser llevados a cabo por cuestiones de tiempo pero tengan presente a la hora de hacer sus propias filogenias que se debe prestar máxima atención a el acondicionamiento de los datos.
+Un árbol filogenético se construye a partir de un alineamiento múltiple que a su vez debe calcularse a partir de un set de secuencias representativas. La topología de el o los árboles resultantes va a depender mucho de la cantidad y calidad de los datos que utilicemos. Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya que un set de datos ruidoso puede llevarnos a resultados erróneos y por lo tanto a conclusiones inválidas. En la práctica, la obtención de secuencias puede realizarse como ya hemos visto en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función. Estas luego se ven sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso se realizan pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar. En este TP todos esos paso no van a ser llevados a cabo por cuestiones de tiempo pero tengan presente a la hora de hacer sus propias filogenias que **se debe prestar máxima atención a el acondicionamiento de los datos**.
 
 Para trabajar hoy vamos a utilizar las secuencias contenidas en el archivo **Ribonucleasas.fasta**. Estas 64 secuencias protéicas provienen de ribonucleasas pancreáticas de diversos animales. Todas pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro que como despistó a más de uno en el TP de Alineamientos se ganó su lugar.
 
 ## Paso 2. Alineamiento múltiple
 
 Para este paso vamos a utilizar la herramienta de EMBOSS que vimos en el TP de alineamiento de a pares/alineamiento múltiple: *emma*
-Si recuerdan *emma* toma como entrada nuestro archivo multifasta (*-sequence*) y devuelve dos salidas: las secuencias con los gaps incluidos para su debido alineamiento (*-outseq*) y el dendograma que sirve de guía para el alineamiento (*-dendoutfile*).
+Si recuerdan, *emma* toma como entrada nuestro archivo multifasta (*-sequence*) y devuelve dos salidas: 
+
+- Las secuencias con los gaps incluidos para su debido alineamiento (*-outseq*) 
+- Y el dendograma que sirve de guía para el alineamiento (*-dendoutfile*).
 
 ```Bash
 emma -sequence Ribonucleasas.fasta -dendoutfile Ribonucleasas.dend -outseq Ribonucleasas.msa
 ```
+
+> Recuerden que *emma* utiliza *clustalw*. En el TP de alineamientos ya lo instalamos pero si tuvieran que instalarlo, pueden hacerlo ingresando `sudo apt-get install clustalw`
 
 Ahora si abrimos el archivo **Ribonucleasas.msa** vamos a ver un multifasta con secuencias con gaps, sin embargo no nos permite visualizar rápidamente si hay regiones conservadas o con muchos gaps a simple vista. Para eso podemos utilizar el comando **showalign** que ya hemos utilizado anteriormente con la opción **-show A** para que **no reemplace** las bases conservadas por puntos:
 
@@ -31,10 +36,29 @@ showalign -show A -sequence Ribonucleasas.msa -outfile Ribonucleasas.showalign
 less Ribonucleasas.showalign
 ```
 
-La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de él abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple, que en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
-Por esto es **SUMAMENTE IMPORTANTE** revisar los alineamientos múltiples! Como ya hemos mencionado, para realizarlos en un tiempo aceptable, los algoritmos utilizan heurísticas y aproximaciones que suelen dar lugar a errores. Por ello muchas veces es necesario curar manualmente los alineamientos, eliminando o agregando gaps. También se puede recurrir a la eliminación de columnas completas si contienen una gran mayoría de gaps o hay dudas sobre su veracidad. En muchos casos, es mejor eliminar estos eventos para deshacernos del ruido.
+La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de él abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple que, en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
 
-Revisen nuestro alineamiento con la ayuda de **showalign** para ver si hay errores o posiciones dudosas y en caso de encontrarlos corrijanlos en **Ribonucleasas.msa**.
+Por esto es **SUMAMENTE IMPORTANTE** ¡revisar los alineamientos múltiples! Como ya hemos mencionado, para realizarlos en un tiempo aceptable, los algoritmos utilizan heurísticas y aproximaciones que pueden (y suelen) dar lugar a errores. Por ello muchas veces es necesario _curar_ manualmente los alineamientos, eliminando o agregando _gaps_. También se puede recurrir a la eliminación de columnas completas si contienen una gran mayoría de gaps o hay dudas sobre su veracidad. En muchos casos, es mejor eliminar estos eventos para deshacernos del ruido.
+
+En el TP de alineamientos, con el ningún otro fin más que la tortura (y con la excusa de la familiarización con la linea de comandos), utilizamos el programa **showalign** para mirar los alineamientos producidos por Emma. 
+
+Dado que el curado de un alineamiento para filogenética es un proceso crítico y muy "visual", existen herramientas más apropiadas (y vistosas) para esta tarea. La que vamos a usar hoy se llama Jalview. 
+
+Pueden ejecutar Javliew desde sus máquinas virtuales:
+```Bash
+cd ~/Tools/Jalview
+bash jalview.sh
+```
+
+O desde el el explorador de archivos:
+
+![Jalview](images/open-jalview.png)
+
+Una vez abierto el programa, podemos cargar el alineamiento generado por Emma haciendo click en `Archivo` > `Alineamiento de entrada` > `Desde fichero`. Esto nos abrirá una ventana en la que tendremos que ubicar nuestro archivo dirigiéndonos a nuestra carpeta de trabajo.
+
+> **POR DEFECTO JALVIEW NO "VE" EL ARCHIVO. ASEGÚRENSE DE COLOCAR "TODOS LOS ARCHIVOS" EN EL MENU DESPLEGABLE DE "ARCHIVOS DEL TIPO"**
+
+Revisen su alineamiento con Jalview para ver si hay errores o posiciones dudosas y, en caso de encontrarlos, corríjanlos en **Ribonucleasas.msa**.
 
 ## Paso 3. Arboles – Methods, Models and Madness
 
