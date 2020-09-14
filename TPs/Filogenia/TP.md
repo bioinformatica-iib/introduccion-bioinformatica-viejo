@@ -56,6 +56,8 @@ O desde el el explorador de archivos:
 
 Una vez abierto el programa, podemos cargar el alineamiento generado por Emma haciendo click en `Archivo` > `Alineamiento de entrada` > `Desde fichero`. Esto nos abrirá una ventana en la que tendremos que ubicar nuestro archivo dirigiéndonos a nuestra carpeta de trabajo.
 
+![Jalivew-2](images/jalview-all.png)
+
 > **POR DEFECTO JALVIEW NO "VE" EL ARCHIVO. ASEGÚRENSE DE COLOCAR "TODOS LOS ARCHIVOS" EN EL MENU DESPLEGABLE DE "ARCHIVOS DEL TIPO"**
 
 Revisen su alineamiento con Jalview para ver si hay errores o posiciones dudosas y, en caso de encontrarlos, corríjanlos en **Ribonucleasas.msa**.
