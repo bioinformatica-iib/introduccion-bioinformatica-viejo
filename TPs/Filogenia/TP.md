@@ -73,11 +73,16 @@ El funcionamiento de estos es relativamente sencillo. Se cuenta con un solo par�
 Lo primero que vamos a hacer es un árbol simple utilizando el método de **Neighbor-Joining**. Para ello utilizaremos el comando **fneighbor**. Este comando construye un árbol a partir de una matriz de distancias, haciendo clustering de sus elementos como lo vimos en clase, utilizando los valores de la matriz para calcular el largo de las ramas. El árbol resultante es un árbol sin raíz, lo que quiere decir es que las distancias son relativas entre los miembros y no hay información sobre qué evento se produjo primero (no hay un reloj evolutivo).
 
 Para poder calcular el árbol primero debemos obtener la matriz de distancias, esto lo podemos hacer mediante el comando **fprotdist**.
-Este comando utiliza uno de tres algoritmos para calcular las distancias:
+Este comando utiliza uno de cienco algoritmos para calcular las distancias:
 
-- PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen un tasa de mutación esperada del 1%.
-- JTT: Nombrado por sus creadores, Jones, Taylor y Thornton, se basa en el mismo concepto que el método PAM, solo que la matriz de sustitución fue creada con un set de datos mucho más grande.
-- PBM: Las matrices de este modelo derivan de la base de datos *Blocks* que contiene secuencias de dominios conservados.
+- PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen un tasa de mutación esperada del 1% (`-method d`).
+- JTT: Nombrado por sus creadores, Jones, Taylor y Thornton, se basa en el mismo concepto que el método PAM, solo que la matriz de sustitución fue creada con un set de datos mucho más grande (`-method j`).
+- PBM: Las matrices de este modelo derivan de la base de datos *Blocks* que contiene secuencias de dominios conservados (`-method h`).
+- Kimura Formula (`-method k`): Una aproximación precalculada de la matriz PAM, lo que ofrece un cálculo más veloz sacrificando specificidad.
+- Similarity Table (`-method s`): Una proyección de distancias en la que se asume que los aminoácidos varían según un caso particular de la fórmula de Kimura. 
+
+
+Los tres primeros son los más ampliamente utilizados. 
 
 ```Bash
 fprotdist -method j -sequence Ribonucleasas.msa -outfile Ribonucleasas.dist
