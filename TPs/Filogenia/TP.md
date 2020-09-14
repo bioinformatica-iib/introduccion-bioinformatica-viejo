@@ -63,7 +63,7 @@ Ahora con nuestras distancias podemos comenzar a agrupar. Fijense que este méto
 fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefile Ribonucleasas-NJ.treefile
 ```
 
-Investiguen los archivos Ribonucleasas.tree y Ribonucleasas.treefile:
+Investiguen los archivos Ribonucleasas.tree y Ribonucleasas.treefile:  
 1. ¿Qué información tiene **Ribonucleasas-NJ.tree**?  
 2. ¿Qué les parece que contiene **Ribonucleasas-NJ.treefile** y por qué cree que es conveniente su creación?  
 3. Observe la topología del árbol a diferentes niveles e identifiquen diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?  
@@ -77,7 +77,7 @@ Para construir un árbol con **UPGMA** corremos el comando *neighbor* pero con l
 fneighbor -treetype u -datafile Ribonucleasas.dist -outfile Ribonucleasas-UPGMA.tree -outtreefile Ribonucleasas-UPGMA.treefile
 ```
 
-Ahora comparen las salidas de ambos métodos.
+Ahora comparen las salidas de ambos métodos.  
 5. Identifiquen si hay cambios en las agrupaciones.
 
 Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos.
@@ -97,8 +97,8 @@ fproml -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML.tree -outtr
 
 >**NOTA**: Fijense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
 
-Observen e interpreten la salida obtenida
-7. Comprueben si hubo cambios radicales con respecto a los árboles anteriores.   
+Observen e interpreten la salida obtenida  
+7. Comprueben si hubo cambios radicales con respecto a los árboles anteriores.  
 8. ¿Con qué nueva información contamos?  
 
 ¡Aprovechemos que tenemos a un intruso! Hasta ahora veníamos generando árboles sin raiz, donde las distancias entre los OTUs son relativas. Como habíamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divergió antes que el resto, así podemos tener una referencia a partir de la cual construir el árbol.  
@@ -120,7 +120,7 @@ Para una mejor visualización pueden utilizar el comando **fdrawgram** dandole c
 
 El método de ML tiene una ventaja: utiliza un modelo de markov para estimar las tasas de cambio de las diferentes posiciones y así poder hacer cálculos más precisos. Esto se debe a que no todas las posiciones varían con la misma frecuencia, posiciones importantes para la estructura/función de la proteína (ej. sitio activo), tienden a variar mucho menos que el resto y esto debe ser tenido en cuenta a la hora de construir la filogenia.
 
-Genere el árbol utilizando máxima parsimonia con el comando **fprotpars**, utilice **-help** para ver qué argumentos recibe.
+Genere el árbol utilizando máxima parsimonia con el comando **fprotpars**, utilice **-help** para ver qué argumentos recibe.  
 9. ¿Qué información nos da?  
 10. ¿Cuántos árboles nos devuelve? ¿Por qué?  
 
@@ -158,7 +158,7 @@ Para poder utilizar toda la información de estas numerosas réplicas vamos a un
 ```Bash
 fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas-CONS.tree -outtreefile Ribonucleasas-CONS.treefile
 ```
-Observando el árbol consenso:
+Observando el árbol consenso:  
 11. ¿Resulta ser un buen árbol?   
 12. ¿En que se basan para afirmarlo?   
 13. ¿Cómo podrían lidiar con nodos de baja calidad?   
