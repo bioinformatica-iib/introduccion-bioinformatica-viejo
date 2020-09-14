@@ -66,7 +66,7 @@ fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefi
 Investiguen los archivos Ribonucleasas.tree y Ribonucleasas.treefile:
 1. ¿Qué información tiene **Ribonucleasas-NJ.tree**?
 2. ¿Qué les parece que contiene **Ribonucleasas-NJ.treefile** y por qué cree que es conveniente su creación?
-3. Observe la topología del árbol a diferentes niveles e identifique diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
+3. Observe la topología del árbol a diferentes niveles e identifiquen diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
 4. Hay algunos OTUs que no parecen estar bien ubicados. ¿Cuáles son? ¿Qué puede estar pasando?
 
 Comparemos ahora con el método **UPGMA**. La manera de generar el árbol es esencialmente la misma que **Neighbor-Joining**, ir agrupando los pares de elementos con la menor distancia. La diferencia radica en cómo se calculan las distancias una vez se empiezan a generar grupos. **Neighbor-Joining** utiliza una metodología un tanto compleja que pueden encontrar explicada [acá](http://www.deduveinstitute.be/~opperd/private/neighbor.html), mientras que **UPGMA** usa un *average linking* pesado por la cantidad de secuencias que componen cada grupo.
@@ -83,7 +83,7 @@ Ahora comparen las salidas de ambos métodos.
 Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos.
 - Investigue con la opción **-help** los parámetros que estos comandos reciben y grafique los árboles como le parezca más correcto.
 
-6. Grafique los resultados de ambos métodos. Se ven diferentes ¿no? Investigue las razones.
+6. Grafiquen los resultados de ambos métodos. Se ven diferentes ¿no? Investigue las razones.
 
 ### Metodos de busqueda de árboles
 
@@ -108,7 +108,7 @@ Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placenta
 cat Ribonucleasas.msa | grep ">" | grep -n "Macropus"
 ```
 
-cuya salida se verá similar a esta: *45:>Macropus_rufus*. En este caso, el número que buscamos es 45.
+cuya salida se verá similar a esta: *45:>Macropus_rufus*. En mi caso, el número que buscamos es 45 por lo que voy a utilizar ese de ahora en más para definir el *outgroup* pero a ustedes les puede llegar a dar diferente.
 
 Una vez obtenido este valor podemos volver a correr fproml
 
@@ -117,7 +117,6 @@ fproml -outgrno 45 -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML
 ```
 
 Para una mejor visualización pueden utilizar el comando **fdrawgram** dandole como entrada el archivo *.treefile*. Este comando nos abre una ventana nueva con un preview del dendograma. Para guardar la imagen y poder verla en detalle tienen que ir a *File* -> *Plot*. Una vez guardado lo pueden ver con el explorador de carpetas.
-
 
 El método de ML tiene una ventaja: utiliza un modelo de markov para estimar las tasas de cambio de las diferentes posiciones y así poder hacer cálculos más precisos. Esto se debe a que no todas las posiciones varían con la misma frecuencia, posiciones importantes para la estructura/función de la proteína (ej. sitio activo), tienden a variar mucho menos que el resto y esto debe ser tenido en cuenta a la hora de construir la filogenia.
 
@@ -161,9 +160,8 @@ fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas.cons
 ```
 Observando el árbol consenso:
 11. ¿Resulta ser un buen árbol?
-12. ¿En que se basa para afirmarlo?
-13. ¿Cómo podría lidiar con nodos de baja calidad?
-14. Compare el árbol obtenido con alguno de los anteriores.
+12. ¿En que se basan para afirmarlo?
+13. ¿Cómo podrían lidiar con nodos de baja calidad?
 
 ## Step 5. Presentación
 
