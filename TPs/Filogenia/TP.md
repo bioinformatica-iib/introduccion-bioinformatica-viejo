@@ -1,6 +1,6 @@
 # Filogenia
 
-La filogenética es la ciencia de estimar el pasado evolutivo basado en la comparación de secuencias ADN o protéicas. Un árbol filogenético está compuesto de ramas (o ejes) y nodos. Los ejes conectan nodos y los nodos son los puntos en los cuales dos o más ramas divergen. Ambos pueden ser internos o externos. Un nodo interno corresponde al último ancestro común hipotético de todo lo que está debajo de él. Los nodos terminales, en cambio, son las secuencias a partir de las cuales se construyó el árbol. Los árboles pueden derivarse a partir de varios genes (árboles genéticos), de un único gen proveniente de diferentes especies (arbol de especies) o de una combinación de ambos. En el primer caso, los nodos internos podrían interpretarse como eventos de duplicación, mientras que en el segundo, podrían obedecer a eventos de especiación.
+La filogenética es la ciencia de estimar el pasado evolutivo basado en la comparación de secuencias ADN o protéicas. Un árbol filogenético está compuesto de ramas (o ejes) y nodos. Los ejes conectan nodos y los nodos son los puntos en los cuales dos o más ramas divergen. Ambos pueden ser internos o externos. Un nodo interno corresponde al último ancestro común hipotético de todo lo que está debajo de él. Los nodos terminales, en cambio, son las secuencias a partir de las cuales se construyó el árbol. Los árboles pueden derivarse a partir de varios genes (árboles genéticos), de un único gen proveniente de diferentes especies (árbol de especies) o de una combinación de ambos. En el primer caso, los nodos internos podrían interpretarse como eventos de duplicación, mientras que en el segundo, podrían obedecer a eventos de especiación.
 
 ![Arbol1](images/Arbol1.jpg)
 
@@ -8,12 +8,12 @@ Generalmente los árboles filogenéticos tienen ramas que son proporcionales a l
 
 ![Clado](images/Arbol-Clado.jpg)
 
-En la base del árbol vamos a encontrar su raíz. Este es el punto más antiguo del árbol y marca el orden de ramificación del mismo, osea, quien comparte un ancestro más reciente con quien. La forma de ubicar la raíz del árbol es a través de un "*outgroup*": un punto externo de referencia. Un *outgroup* puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningun lado.
+En la base del árbol vamos a encontrar su raíz. Este es el punto más antiguo del árbol y marca el orden de ramificación del mismo, osea, quien comparte un ancestro más reciente con quien. La forma de ubicar la raíz del árbol es a través de un "*outgroup*": un punto externo de referencia. Un *outgroup* puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningún lado.
 
 ## Paso 1. Construyendo el dataset
 Un árbol filogenético se construye a partir de un alineamiento múltiple que a su vez debe calcularse a partir de un set de secuencias representativas. La topología de el o los árboles resultantes va a depender mucho de la cantidad y calidad de los datos que utilicemos. Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya que un set de datos ruidoso puede llevarnos a resultados erróneos y por lo tanto a conclusiones inválidas. En la práctica, la obtención de secuencias puede realizarse como ya hemos visto en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función. Estas luego se ven sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso se realizan pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar. En este TP todos esos paso no van a ser llevados a cabo por cuestiones de tiempo pero tengan presente a la hora de hacer sus propias filogenias que se debe prestar máxima atención a el acondicionamiento de los datos.
 
-Para trabajar hoy vamos a utilizar las secuencias contenidas en el archivo **Ribonucleasas.fasta**. Estas 64 secuencias protéicas provienen de ribonucleasas pancreáticas de diversos animales. Todas pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro que como despistó a más de uno en el TP de Alineamientos se gano su lugar.
+Para trabajar hoy vamos a utilizar las secuencias contenidas en el archivo **Ribonucleasas.fasta**. Estas 64 secuencias protéicas provienen de ribonucleasas pancreáticas de diversos animales. Todas pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro que como despistó a más de uno en el TP de Alineamientos se ganó su lugar.
 
 ## Paso 2. Alineamiento múltiple
 
@@ -31,14 +31,14 @@ showalign -show A -sequence Ribonucleasas.msa -outfile Ribonucleasas.showalign
 less Ribonucleasas.showalign
 ```
 
-La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de el abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple, que en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
+La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de él abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple, que en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
 Por esto es **SUMAMENTE IMPORTANTE** revisar los alineamientos múltiples! Como ya hemos mencionado, para realizarlos en un tiempo aceptable, los algoritmos utilizan heurísticas y aproximaciones que suelen dar lugar a errores. Por ello muchas veces es necesario curar manualmente los alineamientos, eliminando o agregando gaps. También se puede recurrir a la eliminación de columnas completas si contienen una gran mayoría de gaps o hay dudas sobre su veracidad. En muchos casos, es mejor eliminar estos eventos para deshacernos del ruido.
 
 Revisen nuestro alineamiento con la ayuda de **showalign** para ver si hay errores o posiciones dudosas y en caso de encontrarlos corrijanlos en **Ribonucleasas.msa**.
 
 ## Paso 3. Arboles – Methods, Models and Madness
 
-Los métodos para llevar a cabo la filogenia se pueden separar en dos categorías generales. Estas son: métodos basados en distancia, también conocidos como de clustering o algorítmicos (UPGMA, neighbour-joining, Fitch–Margoliash), y métodos de busqueda de árboles o discretos (parsimony, maximum likelihood, Bayesian methods)
+Los métodos para llevar a cabo la filogenia se pueden separar en dos categorías generales. Estas son: métodos basados en distancia, también conocidos como de clustering o algorítmicos (UPGMA, neighbour-joining, Fitch–Margoliash), y métodos de búsqueda de árboles o discretos (parsimony, maximum likelihood, Bayesian methods)
 
 ### Métodos basados en distancias
 
@@ -66,7 +66,7 @@ fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefi
 Investiguen los archivos Ribonucleasas.tree y Ribonucleasas.treefile:
 1. ¿Qué información tiene **Ribonucleasas-NJ.tree**?
 2. ¿Qué les parece que contiene **Ribonucleasas-NJ.treefile** y por qué cree que es conveniente su creación?
-3. Observe la topología del arbol a diferentes niveles e identifique diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
+3. Observe la topología del árbol a diferentes niveles e identifique diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
 4. Hay algunos OTUs que no parecen estar bien ubicados. ¿Cuáles son? ¿Qué puede estar pasando?
 
 Comparemos ahora con el método **UPGMA**. La manera de generar el árbol es esencialmente la misma que **Neighbor-Joining**, ir agrupando los pares de elementos con la menor distancia. La diferencia radica en cómo se calculan las distancias una vez se empiezan a generar grupos. **Neighbor-Joining** utiliza una metodología un tanto compleja que pueden encontrar explicada [acá](http://www.deduveinstitute.be/~opperd/private/neighbor.html), mientras que **UPGMA** usa un *average linking* pesado por la cantidad de secuencias que componen cada grupo.
@@ -87,21 +87,21 @@ Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede 
 
 ### Metodos de busqueda de árboles
 
-Ahora vamos a realizar la misma tarea pero con los métodos de busqueda de árbol. Estos métodos examinan cada columna del MSA de manera individual y buscan un árbol que mejor represente esta información. Este procedimiento los vuelve mas lentos que los métodos basados en distancia, pero el hecho que se examine cada posición por separado nos da no solo un árbol más acertado sino que nos brinda la posibilidad de relacionar los eventos a cada una.
+Ahora vamos a realizar la misma tarea pero con los métodos de búsqueda de árbol. Estos métodos examinan cada columna del MSA de manera individual y buscan un árbol que mejor represente esta información. Este procedimiento los vuelve mas lentos que los métodos basados en distancia, pero el hecho que se examine cada posición por separado nos da no solo un árbol más acertado sino que nos brinda la posibilidad de relacionar los eventos a cada una.
 
-En este caso **NO** va a ser necesario calcular una matriz de distancias, podemos ejecutar el método directamente sobre el alineamiento. Primero vamos a utilizar Máxima verosimilitud con el comando **fproml**, al cual le indicamos el MSA de entrada **-sequence** y le indicamos donde guardar la salida (**-outfile**). Podemos tambien pasarle (aunque es opcional) un árbol para usar de guia (**-intreefile**), en nuestro caso no lo vamos a hacer pero nos va a preguntar igual, en ese caso apretamos *Enter*.
+En este caso **NO** va a ser necesario calcular una matriz de distancias, podemos ejecutar el método directamente sobre el alineamiento. Primero vamos a utilizar Máxima verosimilitud con el comando **fproml**, al cual le indicamos el MSA de entrada **-sequence** y le indicamos donde guardar la salida (**-outfile**). Podemos también pasarle (aunque es opcional) un árbol para usar de guia (**-intreefile**), en nuestro caso no lo vamos a hacer pero nos va a preguntar igual, en ese caso apretamos *Enter*.
 
 ```Bash
 fproml -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML.tree -outtreefile Ribonucleasas-ML.treefile
 ```
 
->**NOTA**: Fijense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependendiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
+>**NOTA**: Fijense que estamos pasando, además de los argumentos mínimos, el argumento **-seed**. Esto es una buena práctica para que nuestro experimento sea reproducible. Como probablemente sepan, en computación, lo que llamamos "random" en realidad no lo es. Para obtener números cuya distribución se acerque a la aleatoria se aplica una serie de fórmulas que dan un resultado dependiendo del número del cual se parte. Este valor es la semilla (seed). Por lo general se utiliza como semilla el tiempo, el cual cambia constantemente, pero nosotros podemos fijar esa semilla, para que otras personas, o nosotros mismos en algún futuro, podamos correr nuestros comandos y obtener exactamente los mismos resultados.
 
 Observen e interpreten la salida obtenida
 7. Comprueben si hubo cambios radicales con respecto a los árboles anteriores.
 8. ¿Con qué nueva información contamos?
 
-¡Aprovechemos que tenemos a un intruso! Hasta ahora veniamos generando arboles sin raiz, donde las distancias entre los OTUs son relativas. Como habiamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divirgió antes que el resto, así podemos tener una referencia a partir de la cual construir el arbol.  
+¡Aprovechemos que tenemos a un intruso! Hasta ahora veníamos generando árboles sin raiz, donde las distancias entre los OTUs son relativas. Como habíamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divergió antes que el resto, así podemos tener una referencia a partir de la cual construir el árbol.  
 Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placentarios, excepto por el canguro rojo del TP de alineamientos. Su aparición no es casualidad ya que como miembro de otra infraclase nos va a servir de referencia para proponer una raíz a nuestro arbol. Para ello debemos utilizar la opción **-outgrno**, la cual recibe el número del organismo que vamos a utilizar como referencia. Este número esta dado por el orden del alineamiento múltiple. Pueden averiguar que número es corriendo el siguiente comando:
 
 ```Bash
@@ -131,7 +131,7 @@ Entonces, qué tan bueno es nuestro árbol?
 Uno de los test más simples para medir la veracidad de nuestro árbol es el *bootstrap*. Hoy en dia seria muy raro encontrar un árbol filogenético que no lo haya utilizado. El *bootstrap* esencialmente prueba si todo el set de datos está de acuerdo con el árbol resultante, o si dicho árbol es un outlier entre varias otras posibilidades. Esto se hace tomando muestras aleatorias de nuestro set de datos y armando varios árboles con estas y calculando la frecuencia de ocurrencia de cada fragmento del árbol.
 Si un agrupamiento determinado es encontrado en todos los árboles, entonces tienen un score de 100%; si solo ocurre en 2/3 de los árboles generados el score será de 67% y así.
 
-Es importante aclarar que el sampleo se hace a nivel columna (del MSA), no secuencia. Nuestro árbol va a establecer la relación entre diferentes secuencias dada la conservación/mutación de posiciones "homólogas" y esto es lo que se intenta probar con bootstrap: que cualquier tipo de composición que mantenga esos patrones de conservacion/mutacion va a dar el mismo arbol. Por ello, vamos a tener la misma cantidad de secuencias, y del mismo largo, ya que no solo vamos a reordenar las posiciones al azar sino que también vamos a quitar y repetir columnas. En la siguiente imagen pueden ver un ejemplo de los resultados de un *Bootstrapping*
+Es importante aclarar que el sampleo se hace a nivel columna (del MSA), no secuencia. Nuestro árbol va a establecer la relación entre diferentes secuencias dada la conservación/mutación de posiciones "homólogas" y esto es lo que se intenta probar con bootstrap: que cualquier tipo de composición que mantenga esos patrones de conservación/mutación va a dar el mismo árbol. Por ello, vamos a tener la misma cantidad de secuencias, y del mismo largo, ya que no solo vamos a reordenar las posiciones al azar sino que también vamos a quitar y repetir columnas. En la siguiente imagen pueden ver un ejemplo de los resultados de un *Bootstrapping*
 
 ![Boots](images/Bootstrap.png)
 
@@ -143,13 +143,9 @@ Para generar nuestro set de alineamientos vamos a utilizar el comando **fseqboot
 fseqboot -reps 10 -sequence Ribonucleasas.msa -outfile Ribonucleasas.boot
 ```
 
-**-reps** indica el número de resampleos que queremos producir. Como después calcular los arboles lleva bastante tiempo solo vamos a hacer 10 repeticiones pero deberian ser varias más.
+**-reps** indica el número de resampleos que queremos producir. Calcular varios árboles puede llevar bastante tiempo por lo que solo vamos a hacer 10 repeticiones. En un típico ensayo se realizan muchas más repeticiones.
 
-
-Si abren **Ribonucleasas.boot** veran varios MSA correspondientes al resampleo, con posiciones faltantes, repetidas y en distinto orden que el MSA original. Ahora podemos utilizar este archivo para llevar a cabo numerosos árboles filogenéticos:
-
-
-Recuerden renombrar **Ribonucleasas.treefile** para no sobreescribirlo!
+Si abren **Ribonucleasas.boot** verán varios MSA correspondientes al resampleo, con posiciones faltantes, repetidas y en distinto orden que el MSA original. Ahora podemos utilizar este archivo para llevar a cabo numerosos árboles filogenéticos:
 
 ```Bash
 fproml -seed 1 -sequence Ribonucleasas.boot -outfile Ribonucleasas-ML-BOOT.tree -outtreefile Ribonucleasas-ML-BOOT.treefile
@@ -172,5 +168,5 @@ Observando el árbol consenso:
 ## Step 5. Presentación
 
 Finalmente algunos conceptos en cuanto a la presentación de los datos. Por lo general no hay reglas duras de cómo debe hacerse pero sí convenciones que están bastante aceptadas.
-En árboles de filogenia molecular, los largos de las ramas suelen dibujarse a escala; esto es, proporcional a la cantidad de evolución que se estima ocurrió entre los nodos que conecta. A pesar de que la relación entre el largo de la rama y el tiempo real no es directa y muy probablemente no es confiable, los largos dan una idea general de las tasa de cambio relativas del árbol. Los valores de Bootstrap deben ser presentados en forma de porcentajes, no de valores crudos, para que sea más sencillo de leer y comparar con otros árboles. Por convención, sólo valores de Bootstrap del 50% o mayores son reportados; valores menores significan que la calidad del nodo encontrado es muy baja. Por último, tengan en cuenta la legibilidad del árbol en general. Utilizar nombres para las ramas con códigos de acceso a bases de datos o acrónimos de pocas letras puede resultar muy confuso. Hoy en día existen numerosos softwares para la visualización de arboles (ej. Hypertree) que nos permiten, mediante agrupamientos, colores, fuentes, etc. llamar la atención del lector sobre uno u otro aspecto importante del mismo y lograr que transmita la información que nos interesa mostrar.
+En árboles de filogenia molecular, los largos de las ramas suelen dibujarse a escala; esto es, proporcional a la cantidad de evolución que se estima ocurrió entre los nodos que conecta. A pesar de que la relación entre el largo de la rama y el tiempo real no es directa y muy probablemente no es confiable, los largos dan una idea general de las tasa de cambio relativas del árbol. Los valores de Bootstrap deben ser presentados en forma de porcentajes, no de valores crudos, para que sea más sencillo de leer y comparar con otros árboles. Por convención, sólo valores de Bootstrap del 50% o mayores son reportados; valores menores significan que la calidad del nodo encontrado es muy baja. Por último, tengan en cuenta la legibilidad del árbol en general. Utilizar nombres para las ramas con códigos de acceso a bases de datos o acrónimos de pocas letras puede resultar muy confuso. Hoy en día existen numerosos softwares para la visualización de árboles (ej. Hypertree) que nos permiten, mediante agrupamientos, colores, fuentes, etc. llamar la atención del lector sobre uno u otro aspecto importante del mismo y lograr que transmita la información que nos interesa mostrar.
 
