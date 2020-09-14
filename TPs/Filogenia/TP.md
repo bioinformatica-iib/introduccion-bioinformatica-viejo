@@ -156,7 +156,7 @@ En el archivo **Ribonucleasas-ML-BOOT.tree** va a contener todos los árboles re
 Para poder utilizar toda la información de estas numerosas réplicas vamos a unirlas con el comando **fconsense**. Este toma como entrada el archivo *.treefile* que contiene todos los árboles en formato Phyllip y los va a condensar en uno solo, anotando a cada rama la cantidad de veces que esta fue hallada en nuestros sampleos.
 
 ```Bash
-fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas.consense
+fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas-CONS.tree -outtreefile Ribonucleasas-CONS.treefile
 ```
 Observando el árbol consenso:
 11. ¿Resulta ser un buen árbol?
