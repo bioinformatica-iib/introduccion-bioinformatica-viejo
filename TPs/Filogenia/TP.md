@@ -112,7 +112,12 @@ Ahora comparen las salidas de ambos métodos.
 
 5. Identifiquen si hay cambios en las agrupaciones.
 
-Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar lo comandos **fdrawtree** para obtener imágenes de los mismos. **Investigue con la opción ``-help ``los parámetros que estos comandos reciben y grafique los árboles como le parezca más correcto.**
+Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* puede utilizar el programa **figtree** para obtener imágenes de los mismos. Para esto en la terminal ingrese:
+
+```Bash
+figtree Ribonucleasas-UPGMA.treefile
+```
+Para guardar la imagen y poder verla en detalle tienen que ir a *File* -> *Export PDF*. **Explore las distintas opciones de representación de árboles y grafique los árboles como le parezca más correcto.**
 
 6. Grafiquen los resultados de ambos métodos. Se ven diferentes ¿no? Investigue las razones.
 
@@ -149,7 +154,7 @@ Una vez obtenido este valor podemos volver a correr fproml
 fproml -outgrno 45 -seed 1 -sequence Ribonucleasas.msa -outfile Ribonucleasas-ML-OUTGR.tree -outtreefile Ribonucleasas-ML-OUTGR.treefile
 ```
 
-Para una mejor visualización pueden utilizar el comando **fdrawgram** dandole como entrada el archivo *.treefile*. Este comando nos abre una ventana nueva con un preview del dendograma. Para guardar la imagen y poder verla en detalle tienen que ir a *File* -> *Plot*. Una vez guardado lo pueden ver con el explorador de carpetas.
+Para una mejor visualización utilice el programa **figtree** dandole como entrada el archivo *.treefile*. Para guardar la imagen y poder verla en detalle tienen que ir a *File* -> *Export PDF*. Una vez guardado lo pueden ver con el explorador de carpetas.
 
 El método de ML tiene una ventaja: utiliza un modelo de markov para estimar las tasas de cambio de las diferentes posiciones y así poder hacer cálculos más precisos. Esto se debe a que no todas las posiciones varían con la misma frecuencia, posiciones importantes para la estructura/función de la proteína (ej. sitio activo), tienden a variar mucho menos que el resto y esto debe ser tenido en cuenta a la hora de construir la filogenia.
 
