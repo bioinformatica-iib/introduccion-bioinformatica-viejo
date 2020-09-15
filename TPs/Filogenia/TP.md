@@ -135,7 +135,7 @@ Observen e interpreten la salida obtenida.
 
 ¡Aprovechemos que tenemos a un intruso! Hasta ahora veníamos generando árboles sin raiz, donde las distancias entre los OTUs son relativas. Como habíamos mencionado antes, para colocar una raíz debemos utilizar un OTU que sepamos *a priori* que divergió antes que el resto, así podemos tener una referencia a partir de la cual construir el árbol.  
 
-Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placentarios, excepto por el canguro rojo del TP de alineamientos. Su aparición no es casualidad ya que como miembro de otra infraclase nos va a servir de referencia para proponer una raíz a nuestro arbol. Para ello debemos utilizar la opción **-outgrno**, la cual recibe el número del organismo que vamos a utilizar como referencia. Este número esta dado por el orden del alineamiento múltiple. Pueden averiguar que número es corriendo el siguiente comando:
+Nuestro set de datos esta compuesto casi en su totalidad por mamíferos placentarios, excepto por el canguro rojo del TP de alineamientos. Su aparición no es casualidad ya que como miembro de otra infraclase nos va a servir de referencia para proponer una raíz a nuestro árbol. Para ello debemos utilizar la opción **-outgrno**, la cual recibe el número del organismo que vamos a utilizar como referencia. Este número esta dado por el orden del alineamiento múltiple. Pueden averiguar que número es corriendo el siguiente comando:
 
 ```Bash
 cat Ribonucleasas.msa | grep ">" | grep -n "Macropus"
@@ -159,7 +159,7 @@ Genere el árbol utilizando máxima parsimonia con el comando **fprotpars**, uti
 
 ## Paso 4. Tests – Seleccionar árboles en el bosque
 
-Entonces, qué tan bueno es nuestro árbol?
+Entonces, ¿qué tan bueno es nuestro árbol?
 Uno de los test más simples para medir la veracidad de nuestro árbol es el *bootstrap*. Hoy en dia seria muy raro encontrar un árbol filogenético que no lo haya utilizado. El *bootstrap* esencialmente prueba si todo el set de datos está de acuerdo con el árbol resultante, o si dicho árbol es un outlier entre varias otras posibilidades. Esto se hace tomando muestras aleatorias de nuestro set de datos y armando varios árboles con estas y calculando la frecuencia de ocurrencia de cada fragmento del árbol.
 Si un agrupamiento determinado es encontrado en todos los árboles, entonces tienen un score de 100%; si solo ocurre en 2/3 de los árboles generados el score será de 67% y así.
 
