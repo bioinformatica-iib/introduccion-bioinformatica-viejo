@@ -160,14 +160,14 @@ Genere el árbol utilizando máxima parsimonia con el comando **fprotpars**, uti
 ## Paso 4. Tests – Seleccionar árboles en el bosque
 
 Entonces, ¿qué tan bueno es nuestro árbol?
-Uno de los test más simples para medir la veracidad de nuestro árbol es el *bootstrap*. Hoy en dia seria muy raro encontrar un árbol filogenético que no lo haya utilizado. El *bootstrap* esencialmente prueba si todo el set de datos está de acuerdo con el árbol resultante, o si dicho árbol es un outlier entre varias otras posibilidades. Esto se hace tomando muestras aleatorias de nuestro set de datos y armando varios árboles con estas y calculando la frecuencia de ocurrencia de cada fragmento del árbol.
+Uno de los test más simples para medir la veracidad de nuestro árbol es el *bootstrap*. Hoy en día sería muy raro encontrar un árbol filogenético que no lo haya utilizado. El *bootstrap* esencialmente prueba si todo el set de datos está de acuerdo con el árbol resultante, o si dicho árbol es un outlier entre varias otras posibilidades. Esto se hace tomando muestras aleatorias de nuestro set de datos, armando varios árboles y calculando la frecuencia de ocurrencia de cada fragmento del árbol.
 Si un agrupamiento determinado es encontrado en todos los árboles, entonces tienen un score de 100%; si solo ocurre en 2/3 de los árboles generados el score será de 67% y así.
 
 Es importante aclarar que el sampleo se hace a nivel columna (del MSA), no secuencia. Nuestro árbol va a establecer la relación entre diferentes secuencias dada la conservación/mutación de posiciones "homólogas" y esto es lo que se intenta probar con bootstrap: que cualquier tipo de composición que mantenga esos patrones de conservación/mutación va a dar el mismo árbol. Por ello, vamos a tener la misma cantidad de secuencias, y del mismo largo, ya que no solo vamos a reordenar las posiciones al azar sino que también vamos a quitar y repetir columnas. En la siguiente imagen pueden ver un ejemplo de los resultados de un *Bootstrapping*
 
 ![Boots](images/Bootstrap.png)
 
-Este test parece sencillo, pero estudios en filogenias conocidas (poblaciones virales cultivadas en laboratorio) muestra que es una medida adecuada de la certeza de del arbol resultante, y que un valor de 70% o más suele indicar un agrupamiento adecuado.
+Este test parece sencillo, y estudios en filogenias conocidas (poblaciones virales cultivadas en laboratorio) muestran que es una medida adecuada de la certeza del árbol resultante; y que un valor de 70% o más suele indicar un agrupamiento adecuado.
 
 Para generar nuestro set de alineamientos vamos a utilizar el comando **fseqboot** el cual va a tomar nuestro MSA y generar un archivo con todos los samples:
 
