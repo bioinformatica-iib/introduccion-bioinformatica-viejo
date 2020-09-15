@@ -4,14 +4,14 @@ La filogenética es la ciencia de estimar el pasado evolutivo basado en la compa
 
 ![Arbol1](images/Arbol1.jpg)
 
-Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen tambièn otras representaciones (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna más allá de los agrupamientos.
+Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen también otras representaciones (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna más allá de los agrupamientos.
 
 ![Clado](images/Arbol-Clado.jpg)
 
 En la base del árbol vamos a encontrar su raíz. Este es el punto más antiguo del árbol y marca el orden de ramificación del mismo, osea, quien comparte un ancestro más reciente con quien. La forma de ubicar la raíz del árbol es a través de un "*outgroup*": un punto externo de referencia. Un *outgroup* puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningún lado.
 
 ## Paso 1. Construyendo el dataset
-Un árbol filogenético se construye a partir de un alineamiento múltiple que a su vez debe calcularse a partir de un set de secuencias representativas. La topología de el o los árboles resultantes va a depender mucho de la cantidad y calidad de los datos que utilicemos. Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya que un set de datos ruidoso puede llevarnos a resultados erróneos y por lo tanto a conclusiones inválidas. En la práctica, la obtención de secuencias puede realizarse como ya hemos visto en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función. Estas luego se ven sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso se realizan pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar. En este TP todos esos paso no van a ser llevados a cabo por cuestiones de tiempo pero tengan presente a la hora de hacer sus propias filogenias que **se debe prestar máxima atención a el acondicionamiento de los datos**.
+Un árbol filogenético se construye a partir de un alineamiento múltiple que a su vez debe calcularse a partir de un set de secuencias representativas. La topología de el o los árboles resultantes va a depender mucho de la cantidad y calidad de los datos que utilicemos. Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya que un set de datos ruidoso puede llevarnos a resultados erróneos y por lo tanto a conclusiones inválidas. En la práctica, la obtención de secuencias puede realizarse como ya hemos visto en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función. Estas luego se ven sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso se realizan pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar. En este TP todos esos pasos no van a ser llevados a cabo por cuestiones de tiempo pero tengan presente a la hora de hacer sus propias filogenias que **se debe prestar máxima atención al acondicionamiento de los datos**.
 
 Para trabajar hoy vamos a utilizar las secuencias contenidas en el archivo **Ribonucleasas.fasta**. Estas 64 secuencias protéicas provienen de ribonucleasas pancreáticas de diversos animales. Todas pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro que como despistó a más de uno en el TP de Alineamientos se ganó su lugar.
 
@@ -36,7 +36,7 @@ showalign -show A -sequence Ribonucleasas.msa -outfile Ribonucleasas.showalign
 less Ribonucleasas.showalign
 ```
 
-La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de él abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple que, en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
+La premisa básica de los alineamientos múltiples es que, en cada columna del alineamiento, cada residuo de cada secuencia es homólogo; osea, ha evolucionado de la misma posición en un ancestro común. Cuando esto se cumple, uno puede obtener de él abundante información sobre la estructura, función, modo de evolución y, por supuesto, filogenia. Sin embargo, las conclusiones a las que lleguemos van a depender mucho de la calidad del alineamiento múltiple. Un alineamiento múltiple de mala calidad en el mejor de los casos no nos va a dar información útil, pero en el peor nos va a dar información errónea muy convincente.  
 
 Por esto es **SUMAMENTE IMPORTANTE** ¡revisar los alineamientos múltiples! Como ya hemos mencionado, para realizarlos en un tiempo aceptable, los algoritmos utilizan heurísticas y aproximaciones que pueden (y suelen) dar lugar a errores. Por ello muchas veces es necesario _curar_ manualmente los alineamientos, eliminando o agregando _gaps_. También se puede recurrir a la eliminación de columnas completas si contienen una gran mayoría de gaps o hay dudas sobre su veracidad. En muchos casos, es mejor eliminar estos eventos para deshacernos del ruido.
 
@@ -44,7 +44,7 @@ En el TP de alineamientos, con el ningún otro fin más que la tortura (y con la
 
 Dado que el curado de un alineamiento para filogenética es un proceso crítico y muy "visual", existen herramientas más apropiadas (y vistosas) para esta tarea. La que vamos a usar hoy se llama Jalview. 
 
-Pueden ejecutar Javliew desde sus máquinas virtuales:
+Pueden ejecutar Jalview desde sus máquinas virtuales:
 ```Bash
 cd ~/Tools/Jalview
 bash jalview.sh
@@ -73,9 +73,9 @@ El funcionamiento de estos es relativamente sencillo. Se cuenta con un solo par�
 Lo primero que vamos a hacer es un árbol simple utilizando el método de **Neighbor-Joining**. Para ello utilizaremos el comando **fneighbor**. Este comando construye un árbol a partir de una matriz de distancias, haciendo clustering de sus elementos como lo vimos en clase, utilizando los valores de la matriz para calcular el largo de las ramas. El árbol resultante es un árbol sin raíz, lo que quiere decir es que las distancias son relativas entre los miembros y no hay información sobre qué evento se produjo primero (no hay un reloj evolutivo).
 
 Para poder calcular el árbol primero debemos obtener la matriz de distancias, esto lo podemos hacer mediante el comando **fprotdist**.
-Este comando utiliza uno de cienco algoritmos para calcular las distancias:
+Este comando utiliza uno de cinco algoritmos para calcular las distancias:
 
-- PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen un tasa de mutación esperada del 1% (`-method d`).
+- PAM: Utiliza una matriz PAM 001. Como ya hemos visto, la matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen una tasa de mutación esperada del 1% (`-method d`).
 - JTT: Nombrado por sus creadores, Jones, Taylor y Thornton, se basa en el mismo concepto que el método PAM, solo que la matriz de sustitución fue creada con un set de datos mucho más grande (`-method j`).
 - PBM: Las matrices de este modelo derivan de la base de datos *Blocks* que contiene secuencias de dominios conservados (`-method h`).
 - Kimura Formula (`-method k`): Una aproximación precalculada de la matriz PAM, lo que ofrece un cálculo más veloz sacrificando specificidad.
