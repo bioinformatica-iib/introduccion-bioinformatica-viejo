@@ -184,7 +184,7 @@ fproml -seed 1 -sequence Ribonucleasas.boot -outfile Ribonucleasas-ML-BOOT.tree 
 ```
 Esto puede tardar un rato, podría ser un buen momento para preparar un mate...
 
-En el archivo **Ribonucleasas-ML-BOOT.tree** va a contener todos los árboles resultantes de todas nuestros sampleos. Al ser tantos, uno puede ver las diferentes topologías creadas, sin embargo es muy difícil sacar conclusiones.
+El archivo **Ribonucleasas-ML-BOOT.tree** va a contener todos los árboles resultantes de todos nuestros sampleos. Al ser tantos, uno puede ver las diferentes topologías creadas, sin embargo es muy difícil sacar conclusiones.
 
 Para poder utilizar toda la información de estas numerosas réplicas vamos a unirlas con el comando **fconsense**. Este toma como entrada el archivo *.treefile* que contiene todos los árboles en formato Phyllip y los va a condensar en uno solo, anotando a cada rama la cantidad de veces que esta fue hallada en nuestros sampleos.
 
