@@ -9,3 +9,6 @@ wget "https://software-ab.informatik.uni-tuebingen.de/download/dendroscope/Dendr
 
 echo -e "${RED} Instalando Dendroscope...${NC}\n\n "
 bash ~/Dendroscope_unix_3_7_2.sh
+
+echo -e "${RED} Instalando Figtree...${NC}\n\n "
+sudo apt install figtree
