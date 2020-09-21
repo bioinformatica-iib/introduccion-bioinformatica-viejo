@@ -1,3 +1,13 @@
+# Preparativos
+
+
+```bash
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/install.sh
+bash install.sh
+```
+
+
+
 # Introducción
 
 Es un hecho que la producción de información es cada día mayor, es más, si uno observa los volúmenes de datos que se manejan en los últimos años y las predicciones más serias, el crecimiento parece exponencial:
