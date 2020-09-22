@@ -150,6 +150,7 @@ Como ya hablamos programar es encontrar algoritmos que solucionen problemas. Par
 ```r
 variableLINDA <- 44
 ```
+De ahora en más, siempre que hagamos referencia a "variableLinda" R va a devolver el valor que esta "almacenado" ahí.
 
 ### strings
 
