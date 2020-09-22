@@ -31,9 +31,26 @@ sudo dpkg -i rstudio*.deb
 sudo apt-get -f -y install 
 
 echo -e "${RED} INSTALANDO paquetes...${NC}\n\n "
+
+if [ "${ARCH32}" = "1" ]
+then
+#Esto hay que hacerlo porque hay unos paquetes viejos que rstudio pide y si instalas la versión nueva no reconoce X_X
+wget http://fr.archive.ubuntu.com/ubuntu/pool/universe/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.5ubuntu1_i386.deb
+wget http://archive.ubuntu.com/ubuntu/pool/universe/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-2_i386.deb
+sudo dpkg -i libgstreamer0.10-0_0.10.36-1.5ubuntu1_i386.deb
+sudo dpkg -i libgstreamer-plugins-base0.10-0_0.10.36-2_i386.deb
+sudo apt-mark hold libgstreamer-plugins-base0.10-0
+sudo apt-mark hold libgstreamer0.10
+sudo apt-get install -y libjpeg62-dev
+fi
+
+
 sudo apt-get -y install libcurl4-openssl-dev
 sudo apt-get -y install libssl-dev
 sudo apt-get -y install libxml2-dev
+
+
+
 sudo Rscript -e 'install.packages("ggplot2", repos="https://cloud.r-project.org")'
 sudo Rscript -e 'install.packages("nplr", repos="https://cloud.r-project.org")'
 sudo Rscript -e 'install.packages("cluster", repos="https://cloud.r-project.org")'
