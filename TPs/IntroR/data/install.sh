@@ -24,13 +24,13 @@ fi
 if [ "${ARCH32}" = "1" ]
 then
 #Esto hay que hacerlo porque hay unos paquetes viejos que rstudio pide y si instalas la versión nueva no reconoce X_X
+sudo apt-get install -y libjpeg62-dev
 wget http://fr.archive.ubuntu.com/ubuntu/pool/universe/g/gstreamer0.10/libgstreamer0.10-0_0.10.36-1.5ubuntu1_i386.deb
 wget http://archive.ubuntu.com/ubuntu/pool/universe/g/gst-plugins-base0.10/libgstreamer-plugins-base0.10-0_0.10.36-2_i386.deb
 sudo dpkg -i libgstreamer0.10-0_0.10.36-1.5ubuntu1_i386.deb
 sudo dpkg -i libgstreamer-plugins-base0.10-0_0.10.36-2_i386.deb
 sudo apt-mark hold libgstreamer-plugins-base0.10-0
 sudo apt-mark hold libgstreamer0.10
-sudo apt-get install -y libjpeg62-dev
 wget http://download1.rstudio.org/rstudio-1.1.463-i386.deb
 fi
 
