@@ -31,6 +31,15 @@ Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitam
 ```bash
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/install.sh
 bash install.sh
+#Y pueden crear una carpeta donde hacer el TP (tanto en la VM como en el server):
+mkdir ~/TP_introR
+#Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
+cd TP_introR
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/datos_filtermax.txt
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_compuestos
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_diluciones
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dt_TP1_cal.tsv
+
 ```
 
 ![](./images/Rserver_1.png)
