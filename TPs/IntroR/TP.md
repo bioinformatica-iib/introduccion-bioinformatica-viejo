@@ -12,13 +12,11 @@ Si les parece que cada vez hay más datos; más grandes; más complejos, eso no 
 
 ![](./images/cpu-power.png)
 
-Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus límites de volúmenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. Es por todo esto que limitarse con estos programas parece un tanto suicida....
+Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus límites de volúmenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. 
 
 En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora, cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". Cada día es más imprescindible tener una idea (aunque sea básica) de programación, por eso planteamos algunos conceptos básicos de programación a lo largo de la materia, y en este TP lo vamos a profundizar.
 
 La idea de esta actividad, es que sirva como una introducción muy liviana a la tarea de programar resoluciones de problemas sencillos, enfocándonos en manipular datos biológicos o que suelen surgir en un laboratorio de biotecnología. La primera parte de la guía es una introducción a conceptos básicos del lenguaje R, cómo escribir un programa, como ejecutarlo, almacenar y manipular datos en variables, etc. Siguiendo el estilo de la guía sobre Unix, no se espera que estén familiarizados con estos conceptos, en lo posible la guía los va a ir llevando.
-
-Verán que algunos ejemplos son muy sencillos, pero en desarrollo de la guía alcanzaremos un nivel de resolución de problemas reales, con un ejemplo que surge del trabajo de un investigador del IIB en su labor cotidiano.
 
 ## Rstudio, nuestro pequeño espacio de desarrollo
 
@@ -28,6 +26,21 @@ Para acceder, simplemente entren al siguiente enlace:
 [rserver](http://pi.iib.unsam.edu.ar/rserver/)
 
 *Rstudio* les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado. Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
+
+Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitamos para trabajar en el TP con el siguiente comando:
+```bash
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/install.sh
+bash install.sh
+#Y pueden crear una carpeta donde hacer el TP (tanto en la VM como en el server):
+mkdir ~/TP_introR
+#Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
+cd TP_introR
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/datos_filtermax.txt
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_compuestos
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_diluciones
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dt_TP1_cal.tsv
+
+```
 
 ![](./images/Rserver_1.png)
 
@@ -56,7 +69,7 @@ help(print)
 
 Tranquilos, este texto de "ayuda" les irá siendo cada vez más ameno a medida que se vayan familiarizando con el formato que tienen, sientanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
 
-Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos, e incluso descargar/subir archivos desde *Rstudio* a la computadora desde donde acceden. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
+Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos, e incluso descargar/subir archivos desde *Rstudio server* a la computadora desde donde acceden. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
 
 A lo largo de todo este TP, encontrarán texto resaltado como este:
 
@@ -70,17 +83,7 @@ Que no es otra cosa que código ejemplo para que lo copien y peguen en R y pueda
 
 Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. O cualquier otra que se les ocurra necesaria.
 
-¿Sabrían hacer esto desde la consola de UNIX, si fuese necesario? Sería algo así:
-(Hoy no es necesario)
-
-```shell
-$ mkdir scripts
-$ cd scripts
-$ pwd #ubiquemos el directorio de trabajo
-$ ls #chequear su contenido
-```
-
-Ahora vamos a la consola de R y pueden probar cosas sencillas como:
+Vamos a la consola de R y pueden probar cosas como:
 
 ```r
 > print("hola mundo")
@@ -98,7 +101,7 @@ Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? En reali
 La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac..digo la necesidad de reutilizar el código.
 Es algo así como el cuaderno de laboratorio bioinformático.
 (En R, comentamos el texto anteponiendo un # a la línea deseada).
-Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*.
+Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*. Este archivo de texto va a ser nuestro "cuaderno" o script, que recuerde exactamente todo el trabajo que hicimos y lo más detallado y prolijo que se pueda.
 
 Prueben de escribir un sencillo comando y documentarlo:
 
@@ -108,9 +111,10 @@ cat("Hello World")
 #No soy un cipayo:
 cat("Hola mundo")
 ```
-(¿Que es cat()? ¿se parece a algo que ya vieron? ¿como podrían investigarlo?)
+¿Qué es cat()? ¿se parece a algo que ya vieron? ¿cómo podrían investigarlo? 
+¿Alguien que lea este *script* lo podría entender?
 
-Muy bien, tenemos las complejas instrucciones, ¿como la ejecutamos?
+Muy bien, tenemos las complejas instrucciones, ¿cómo las ejecutamos?
 En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
 También podríamos ejecutarlo desde BASH (linea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
@@ -141,9 +145,15 @@ Hola mundo
 
 ## El mundo de las variables
 
+Como ya hablamos programar es encontrar algoritmos que solucionen problemas. Para resolverlos necesitamos poder manipular información. Desde valores numericos, texto, *booleanos* , tablas y hasta construcciones más complejas. Cada tipo de información tiene sus particularidades y es necesario entender como las interpreta cada lenguaje de programación, además nos es de suma importancia comprender la forma de almacenarlas (recordarlas) para poder usarlas en el momento deseado. Almacenar estos tipos de información en un lenguaje de programación se denomina declarar variables. Uno puede declarar que de ahora en más, la palabra "variableLINDA" hace referencia al valor numérico 44 y para hacerlo (en R) es necesario:
+
+```r
+variableLINDA <- 44
+```
+
 ### strings
 
-Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo carácter (string). Por ejemplo, creamos una variable name, e imprimimos :
+Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo carácter (string o "texto"). Por ejemplo, creamos una variable name, e imprimimos :
 
 ```r
 name <- "Hermenegildo"
@@ -184,7 +194,7 @@ Con respecto a las comparaciones entre números y palabras podemos hacer las ope
 Para probar un poco:
 1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla
 2. Usar diferentes operadores matemáticos entre ellas, incluir una variable que sea 0 y probar la división.
-3 Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
+3. Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
 
 Ejemplo:
 
@@ -223,7 +233,7 @@ variable_logica <- as.logical(1)
 print(variable_logica)
 
 ```
-Las variables lógicas se pueden invertir facilmente (es muy útil) solamente anteponiendo el signo `!`. Por ejemplo, fijense que si ingresan:
+Las variables lógicas se pueden invertir facilmente (es muy útil) solamente anteponiendo el signo `!`. Por ejemplo, fijense que sucede si ingresan:
 
 ```r
 variable_logica <- T
