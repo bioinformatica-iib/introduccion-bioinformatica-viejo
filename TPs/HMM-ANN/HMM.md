@@ -163,7 +163,6 @@ Por ejemplo, si queremos construir una base de datos "myhmms" que contiene perfi
 hmm2build -A myhmms rrm.sto
 hmm2build -A myhmms fn3.sto
 hmm2build -A myhmms pkinase.sto
-hmm2calibrate myhmms
 ```
 
 Para realizar búsquedas en nuestra nueva base de datos el comando que utilizamos es **hmm2pfam**. En este caso vamos a usar el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo guardado en el archivo **7LES_DROME**:
