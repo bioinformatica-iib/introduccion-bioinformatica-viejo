@@ -144,7 +144,7 @@ hmm2search globin.hmm ~/Swissprot_db/Swissprot.fasta
 
 ## Modos de alineamiento
 
-HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
+HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. ¿Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
 
 ## Bases de datos de HMM
 
@@ -185,10 +185,10 @@ mediante la opción **-o** indicamos el archivo en el que deseamos guardar el al
 
 # Artificial neural networks
 
-En la siguiente parte vamos a utilizar redes neuronales para hacer predicciones como habiamos hecho anteriormente con las PSSM. La idea es similar a la de ese TP donde vamos a entrenar un modelo con péptidos que tienen unión a MHC variando parámetros para mejorarlo sensando los indicadores de desempeño (Aroc y Pearson). Para esto vamos a volver a utilizar [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) y los archivos de Entrenamiento.set y Evaluacion.set en la carpeta del TP.
+En la siguiente parte vamos a utilizar redes neuronales para hacer predicciones como habíamos hecho anteriormente con las PSSM. La idea es similar a la de ese TP donde entrenamos un modelo con péptidos que tienen unión a MHC variando parámetros para mejorarlo sensando los indicadores de desempeño (Aroc y Pearson). Para esto vamos a volver a utilizar [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) y los archivos de Entrenamiento.set y Evaluacion.set en la carpeta del TP.
 
-Entrenamiento.set contiene 1200 péptidos de largo 9, con un valor asociado de afinidad de unión a HLA-A*02:01 transformado entre 0 y 1. Recuerde que mientras mas cercano a 1 el péptido tiene mayor afinidad de unión y que a partir de 0.426 se considera que el péptido es un ligando. Por otro lado Evaluacion.set contiene 66 de estos péptidos.  
-Les sugiero que abran los archivos y vean a vuelo de pájaro que es lo que contienen. Siempre es una buena práctica saber con lo que uno esta trabajando.
+Entrenamiento.set contiene 1200 péptidos de largo 9, con un valor asociado de afinidad de unión a HLA-A*02:01 transformado entre 0 y 1. Recuerde que mientras más cercano a 1 el péptido tiene mayor afinidad de unión y que a partir de 0.426 se considera que el péptido es un ligando. Por otro lado Evaluacion.set contiene 66 de estos péptidos.  
+Les sugiero que abran los archivos y vean a vuelo de pájaro qué es lo que contienen. Siempre es una buena práctica saber con lo que uno esta trabajando.
 
 >Nota: A lo largo del TP vamos a mantener el valor de *Cutoff for counting an example as a positive example* en 0.5.  
 
@@ -197,7 +197,7 @@ Les sugiero que abran los archivos y vean a vuelo de pájaro que es lo que conti
 ## Primera prueba
 
 Para nuestro primer modelo vamos a ir a EasyPred, cargar los archivos en los cuadros correspondientes (Entrenamiento.set -> *Paste in training examples* y Evaluacion.set -> *Paste in evaluation examples*) y bajar hasta la opción *Select method* dónde vamos a cambiar de *Matrix method* a *Neural Network*.  
-Allí vamos a poder ver que nos habilita a ingresar otros parametros que estan relacionados a la arquitectura y el entrenamiento de la red.
+Allí vamos a poder ver que nos habilita a ingresar otros parametros que están relacionados a la arquitectura y el entrenamiento de la red.
 
 Los parámetros que queremos utilizar en este paso son:
 
@@ -219,13 +219,13 @@ Mantenga los mismos parámetros que en el paso anterior pero esta vez seleccione
 
 * *Use bottom sequences for training*  
 
-4. ¿Cuál es el máximo valor de Pearson alcanzado sobre el set de prueba y en que iteración ocurre esta vez?
+4. ¿Cuál es el máximo valor de Pearson alcanzado sobre el set de prueba y en qué iteración ocurre esta vez?
 5. ¿Qué valores de desempeño alcanza el modelo aplicado al set de evaluación?
 6. ¿A qué se debe que no coincidan con el paso anterior?
 
 ## Tercera prueba
 
-Repita los parámetros de la prueba uno excepto por el numero de neuronas en la capa intermedia:
+Repita los parámetros de la prueba uno excepto por el número de neuronas en la capa intermedia:
 
 * *Number of hidden units*: 1
 
