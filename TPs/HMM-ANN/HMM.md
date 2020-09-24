@@ -108,11 +108,14 @@ Llegando al final encontramos un histograma, similar al que nos mostraba FASTA. 
 Histogram of all scores:
 score    obs    exp  (one = represents 1 sequences)
 -----    ---    ---
-  474      1      0|=}}}
+  474      1      0|=
+
+```
 
 Y por último algunos datos estadísticos que no tienen mucha utilidad y podemos obviar.
 
-{{{% Statistical details of theoretical EVD fit:
+```
+% Statistical details of theoretical EVD fit:
               mu =   -38.9116
           lambda =     0.2355
 chi-sq statistic =     0.0000
