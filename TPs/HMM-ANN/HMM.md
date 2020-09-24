@@ -14,6 +14,13 @@ hmm2build globin.hmm globins50.msf
 
 **hmm2build** recibe como argumentos el archivo en el cual va a guardar el perfil (*globin.hmm*) y el archivo con el cual crearlo (*globins50.msf*). Si bien el contenido del archivo donde se guardó el perfil es legible, su contenido no debería tener sentido para ustedes (más allá del encabezado con información sobre las opciones que se utilizaron para crearlo) porque únicamente almacena los pesos de las transiciones de estado en el HMM.
 
+### Calibración:
+
+Este paso no es imprescindible pero si aconsejable. La calibración del perfil le otorga mayor sensibilidad en la búsqueda ya que modifica la estimación del E-value de los hits encontrados. Si recuerdan, la búsqueda contra bases de datos nos devuelve junto con cada alineamiento un score y un E-value, este último nos da una idea sobre la cantidad de hits que esperamos encontrar con ese score en una base de datos construida con secuencias aleatorias y se calcula según el largo de la secuencia query y el tamaño de la base de datos. En el caso de HMMer, la estimación del E-value es analítica y resulta muy conservativa, por lo que se dejan de lado posibles hits (como homólogos lejanos). Utilizando **hmm2calibrate** podemos calibrar el cálculo de E-values de manera empírica incrementando de manera significativa la sensibilidad de la búsqueda.
+
+```Bash
+hmm2calibrate globin.hmm
+```
 # Búsqueda en bases de datos
 
 El comando para utilizar nuestro flamante profile en una búsqueda es **hmm2search**. En este caso lo vamos a utilizar contra el archivo Artemia.fa que contiene una única secuencia de globina en búsqueda de dominios pertenecientes a nuestra familia de interés.
@@ -41,6 +48,7 @@ per-domain Eval cutoff:     [none]
 Query HMM:   globins50  
 Accession:   [none]  
 Description: [none]  
+  [HMM has been calibrated; E-values are empirical estimates]  
 ```
 
 Una lista tipo BLAST con los hits mas importantes ordenados por su E-value:
@@ -149,6 +157,7 @@ Por ejemplo, si queremos construir una base de datos "myhmms" que contiene perfi
 hmm2build -A myhmms rrm.sto
 hmm2build -A myhmms fn3.sto
 hmm2build -A myhmms pkinase.sto
+hmm2calibrate myhmms
 ```
 
 Para realizar búsquedas en nuestra nueva base de datos el comando que utilizamos es **hmm2pfam**. En este caso vamos a usar el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo guardado en el archivo **7LES_DROME**:
