@@ -651,7 +651,8 @@ Todo esto realizado en tres lineas de código resulta un poco complejo ahora mis
 ## Segunda sección del TP
 
 R es muy útil a la hora de implementar visualizaciones de datos, análisis estadísticos, data mining, etc. Por lo que tendremos una clase específica para que puedan ver y probar ejemplos donde R les puede ser de gran ayuda para mejorar o facilitar el trabajo de análisis de datos. Sin embargo también puede ser útil en otros tipos problemas.
-Es muy normal que en trabajos de biología sea necesario trabajar datos provenientes de servicios o equipos que no generan *outputs* de formato estándar (separados por tabs, comas, etc) y cuando queramos cargarlos en cualquier programa de análisis de datos, tengamos que darles formato manualmente...algo que no es muy complicado cuando se trata de unos pocos archivos o un ensayo, pero que puede ser complicado o imposible en grandes cantidades.
+
+Es muy normal que en trabajos de biología sea necesario trabajar datos provenientes de servicios o equipos que no generan *outputs* de formato estándar (separados por tabs, comas, etc) y cuando queramos cargarlos en cualquier programa de análisis de datos, tengamos que darles formato manualmente... algo que no es muy complicado cuando se trata de unos pocos archivos o un ensayo, pero que puede ser complicado o imposible en grandes cantidades.
 
 Aun cuando los formatos que queramos trabajar no tengan el formato estándar que esperamos, suelen tener algún tipo de formato propio, y eso genera que haya patrones en el archivo. Entender la existencia de patrones en los archivos es una de las claves para el diseño de buenos scripts. La mayoría de los formatos de archivos en bioinformática están pensados de manera que sea sencillo manipularlos usando *patterns*, otros hay que trabajarlos un poco más.
 Recordar que vimos, por ejemplo, en los archivos FASTA el marcador “>" para indicar el comienzo del encabezado de una secuencias. Hay caracteres muy usados como por ejemplo “#","!","*" etc… También palabras claves como veremos más adelante.
@@ -707,7 +708,7 @@ print(vector_of_ids)
 [1] "AAC82598.2" "AAD20388.1" "AAC82597.1"
 ```
 
-Como ven, strsplit nos devuelve una lista donde cada uno de los elementos de la lista tiene un vector con todas las partes del string que partió en pedazos. Ahora pudimos tomar la parte que nos interesa de cada elemento y guardarlo en nuevas variables. Esto, sin embargo se puede hacer todavía más sencillo si aprovechamos una función que trabaja las listas y de forma automática podemos tomar todos los primeros elementos de una lista:
+Como ven, ``strsplit`` nos devuelve una lista donde cada uno de los elementos de la lista tiene un vector con todas las partes del string que partió en pedazos. Ahora pudimos tomar la parte que nos interesa de cada elemento y guardarlo en nuevas variables. Esto, sin embargo se puede hacer todavía más sencillo si aprovechamos una función que trabaja las listas y de forma automática podemos tomar todos los primeros elementos de una lista:
 
 ```r
 string <-c("AAC82598.2 Pol, partial [Human immunodeficiency virus 1]","AAD20388.1 Vpu [Human immunodeficiency virus 1]","AAC82597.1 Nef [Human immunodeficiency virus 1]")
@@ -715,32 +716,32 @@ values <- strsplit(string," ")
 vector_of_ids <- unlist(lapply(values, `[[`, 1))
 print(vector_of_ids)
 ```
-Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón.
-En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
-Es importante recalcar que todo este trabajo de "parsear" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl (en estos casos suele ser un poco más sencillo y eficiente) o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
 
+Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón. En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
 
+Es importante recalcar que todo este trabajo de "*parsear*" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl (en estos casos suele ser un poco más sencillo y eficiente) o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
 
 ### Parseando archivos de salida del FilterMax y generar curvas dosis/respuesta
 
 Como ejemplo real de algo que podría serles de ayuda en su trabajo como biotecnólogos.
 
+Tomemos el ejemplo de usar datos del equipo *Filter Max* que se dispone para uso de los que trabajan en el IIB. Este equipo es muy usado puesto que permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada ciertos intervalos temporales).
 
-Tomemos el ejemplo de usar datos del equipo *Filter Max* que se dispone para uso de los que trabajan en el IIB. Este equipo es muy usado puesto que permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso te permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada cierto intervalos de tiempo).
 Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos en un solo ensayo si por ejemplo hacemos mediciones cada 5 minutos durante una hora en una placa de 384 wells.
 
-En nuestro ejemplo (datos reales) El investigador realiza un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de well donde en cada columna dispuso 16 concentraciones seriadas de 22 compuestos. Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
+En nuestro ejemplo (datos reales), el investigador realizó un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de 384 wells, donde en cada columna dispuso 16 concentraciones (diluciones seriadas) de un compuesto distinto (22 compuestos, 1 por columna, de la 1 a la 22). Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
+
 **NOTA** Los nombres de las drogas son ficticios
 
-La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal a lo largo del tiempo, con la cual podemos estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores.
+La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal de la abundancia de dicho producto a lo largo del tiempo, para estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores.
 
 Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración.
 
-Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cual es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% más lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
+Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cuál es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% más lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
 
 Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar. Sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
 
-Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas series de concentraciones de cada compuesto para cada tiempo.
+Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que, como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas series de concentraciones de cada compuesto para cada tiempo.
 
 Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
 
@@ -797,7 +798,7 @@ Pueden ver los archivos .pdf si les interesa ver cómo dieron el resto de los co
 ¿Creen que es muy difícil/laborioso hacer todos estos gráficos y análisis en R?
 
 Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
-En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta.
+En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta (con la ayuda del paso a paso que desarrollaremos a continuación).
 
 #### Parsear los datos
 
@@ -807,7 +808,7 @@ Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los
 Intentamos cargar los datos con la función `read.csv()` como vimos en anteriormente.
 
 ```r
-dt <- read.csv("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
+dt <- read.csv("datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
 ¿Les dió un error?
 
@@ -817,14 +818,14 @@ Aparentemente el formato que quiere leer esta función no funciona porque las pr
 Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuántas columnas necesitan, por ejemplo yo encontré que `read.table()` podría funcionar:
 
 ```r
-dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
+dt <- read.table("datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
 
 Ahora me dice que hay un nuevo error, puesto que `*line 1 did not have 387 elements*`. Si leemos el help de esta función:
 Resulta que en caso de que las filas tengan distinta cantidad de columnas hay que explicárselo para que las llene, agregando el argumento, `fill = TRUE`
 
 ```r
-dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
+dt <- read.table("datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 ```
 
 Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en Rstudio?
@@ -835,6 +836,7 @@ Se dan cuenta que uno de los problemas principales es que la primera y las últi
 dt <- dt[c(2:6),]
 head(dt)
 ```
+
 Además, la fila 1 contiene los nombres de las columnas, esto se puede asignar bastante fácil:
 
 ```r
@@ -842,7 +844,8 @@ colnames(dt) <- dt[1,]
 dt <- dt[-1,]
 head(dt)
 ```
-Muy bien, ahora que tenemos los datos cargados, deberíamos buscar los valores de cada compuesto para cada concentración, ¿Se les ocurre como?
+
+Muy bien, ahora que tenemos los datos cargados, deberíamos buscar los valores de cada compuesto para cada concentración, ¿Se les ocurre cómo?
 
 Podríamos recorrer (iterar) la dt desde la tercer columna en adelante (cada uno de los pocillos) y guardar en una nueva dt los valores de cada columna. Recuerden, que las columnas son los números y las letras son las filas de la placa de well.
 
@@ -852,7 +855,9 @@ for (i in 3:length(dt[1,])){
   print(nombre_pocillo)
 }
 ```
+
 Bien, creo que es bastante claro que la primer letra de todas las columnas representa a la fila de la placa, mientras que el resto de los caracteres son las columnas (ya sea una sola o dos). ¿Podría aprovechar esto con alguna función que ya vimos?
+
 ```r
 for (i in 3:length(dt[1,])){
   nombre_pocillo <- colnames(dt)[i]
@@ -943,10 +948,11 @@ Hay algo más que podemos hacer muy fácil y es asignar el valor de dilución y 
 Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar cómo funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
 
 ```r
-dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
+dt_diluciones <- read.csv("diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
 print(nueva_dt_completa)
 ```
+
 ¿Alguien no entiende a qué se debe el "dec = ","? Pueden sacarse la duda leyendo el `help(read.csv)`
 
 La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
