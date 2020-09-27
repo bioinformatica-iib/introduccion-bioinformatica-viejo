@@ -916,6 +916,7 @@ for (i in 3:length(dt[1,])){
   print(head(dt_pocillo))
 }
 ```
+
 Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma `rbind()` nos va a dar un error)
 
 ```r
@@ -962,11 +963,11 @@ Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisi
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimática
 
-Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual ustedes deberían poder resolverlos. La idea es que aquellos que ya tienen alguna experiencia con R u otros lenguaje de programación puedan explorar esta resolución en detalle, mientras que los que están empezando a entender *de qué va la cosa* adquieran las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. Y vean como todo eso se puede usar en un script que resuelve un problema particular. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos.
+> Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual buscaremos que intenten resolverlos (solos o con nuestra ayuda). La idea es que se animen a explorar esta resolución en detalle mientras qentienden *de qué va la cosa* adquiriendo las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos, pero se busca que lo intenten :)
 
 Retomemos el parseado de datos donde lo habíamos dejado:
 
-Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
+Si hicieron ambos *merge* correctamente, deberían haber llegado a algo así:
 
 ```r
 > head(nueva_dt_completa)
@@ -986,10 +987,10 @@ Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
                                                                              3rd Qu.: 44.444                     
                                                                              Max.   :200.000
 ```
+
 Como pueden ver, las columnas de señal y tiempo están cargadas como "character", lo cual no es correcto, porque en realidad son variables numéricas, y en todo el análisis posterior vamos a necesitar considerarlos así.
 
 ¿Cómo podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
-
 
 ```r
 nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
