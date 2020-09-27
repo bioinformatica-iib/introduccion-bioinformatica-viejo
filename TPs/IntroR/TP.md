@@ -35,6 +35,9 @@ bash install.sh
 mkdir ~/TP_introR
 #Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
 cd TP_introR
+mkdir data
+mkdir results
+cd data
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/datos_filtermax.txt
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_compuestos
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/dise%C3%B1o_diluciones
