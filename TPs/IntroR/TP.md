@@ -541,18 +541,36 @@ for(i in 1:length(dt[,1])){
 }
 ```
 
+## Directorio de trabajo
+
+Ahora que ya estamos más o menos familiarizados con el entorno, vamos a arrancar a trabajar con datos posta. Tal como hacemos en una consola de UNIX, es importante que saber dónde estamos parados (``pwd``) y dónde queremos pararnos (``cd ruta/al/directorio/deseado``). En R, los comandos para saber esto son `getwd()` y `setwd("ruta/al/directorio/deseado")`. Por defecto, la ubicación del R es el *home*:
+
+```r
+getwd()
+[1] "/home/ibioinfo"
+```
+
+Comencemos por situarnos en la carpeta que generamos al comienzo del TP:
+```r
+setwd("~/TP_introR")
+```
+
+De este modo tendremos acceso directo a todos los archivos del TP. 
+
 ## Cargando datos a R
 
 Algo muy interesante que siempre necesitamos es pasar datos de distintos formatos y cargarlos en nuestro *Rstudio* para trabajarlo, claramente no podemos ingresar un gen de forma manual, ni miles de registros de una base de datos...o podemos pero no nos conviene.
-Por un lado los datos más fáciles de cargar son los del estilo de tablas separadas por valores específicos, como "comas" (,) o "tabs" (\\t). En esos casos tenemos la función `read.table()` que se encarga de hacerlo de forma muy sencilla, eso sí, hay que saber bien qué formato tiene el archivo que queremos cargar.
+
+Por un lado los datos más fáciles de cargar son los del estilo de tablas separadas por valores específicos, como "comas" (,) o "tabs" (\\t). Estos archivos son conocidos como "csv" o "tsv", respectivamnete. En esos casos tenemos la función `read.table()` que se encarga de hacerlo de forma muy sencilla, eso sí, hay que saber bien qué formato tiene el archivo que queremos cargar.
 
 Supongamos que tenemos un archivo con valores de expresión, donde las columnas están separadas por tabs y se llama "resultados_ensayo1.tsv". La función para cargarlo y guardarlo en una *dataframe* sería:
 
 ```r
-dt_exp <- read.csv(file="./data/dt_TP1_cal.tsv",sep="\t")
+dt_exp <- read.csv(file="dt_TP1_cal.tsv",sep="\t")
 ```
+
 ¿Les funcionó? ¿Les dió algún error? ¿Hay algo que esté mal?
-Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista. (`help(read.csv)`)
+Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista (`help(read.csv)`).
 
 Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estándar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
 
@@ -603,7 +621,7 @@ Seguramente estarán pensando que esto es mucho trabajo para realizar algo que t
 
 Por esto es que en R tenemos la posibilidad de cargar "paquetes" que dentro tienen un conjunto de funciones, siempre referidas a algún tipo de problema en particular. Muchas de estas funciones como `print()` o `paste()` son básicas de R y ya las tenemos instaladas y cargadas en R por defecto, sin embargo, esto no ocurre así para cosas más particulares de nuestro trabajo como por ejemplo trabajar con secuencias de ADN, RNA o proteínas donde ya hay gran cantidad de funciones que resuelven nuestras necesidades y se encuentran en paquetes que podemos cargar libremente.
 
-Oro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado *ggplot*, en nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
+Otro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado *ggplot*, en nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
 
 Supongamos que mido dos solutos a 5 concentraciones distintas y obtengo dos curvas de calibración y quiero presentarle a mi director los resultados en un formato agradable e intuitivo de comprender:
 
@@ -615,18 +633,17 @@ ggplot(data=dt,aes(x=log(con),y=abs,col=sol))+
   geom_smooth(method="lm")+
   theme_minimal()
 ```
+
 ![](./images/plot_ejemplo_5.png)
 
-Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero creanme decirles que para los que solemos usarlas se vuelven fáciles de usar.
+
+Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero con el uso se vuelven cada vez más amigables. Acá va una explicación de qué está haciendo ese código:
 
 Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje x era el logaritmo de la columna "con", que el eje y era la columna "abs" y que los datos se dividen en grupos por la columna "sol". Luego le pedí que use la función específica para este tipo de gráficos, `geom_smooth()`. Automáticamente hizo un análisis de regresión lineal, y me muestra los intervalos de confianza de la regresión (por defecto usa IC95, pero se podría cambiar) qué son las zonas sombreadas alrededor de la líneas. La función `geom_point()` agrega los puntos de cada recta para que se note en base a qué datos se hizo el ajuste. Fijense como ambas funciones respetan los mismos valores de eje x, y y los grupos de datos que previamente se definen en `ggplot()`.
 
-La idea no es que aprendan la estructura tan particular de `ggplot()`, es solo para que vean un ejemplo de lo que se puede hacer.
+**La idea no es que aprendan la estructura tan particular de `ggplot()`, es solo para que vean un ejemplo de lo que se puede hacer.**
 
 Todo esto realizado en tres lineas de código resulta un poco complejo ahora mismo, pero sepan que es un ejemplo que facilmente podrían haber tomado de algun tutorial de internet, por ejemplo podrían haber arribado al código de arriba siguiendo lo que explican [acá](https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/)
-
-
-
 
 
 :skull: **¿Cansados?** :skull:
