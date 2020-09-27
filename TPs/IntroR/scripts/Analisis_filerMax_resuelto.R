@@ -1,6 +1,6 @@
 library(nplr)
 library(ggplot2)
-setwd("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR")
+setwd("/home/ibioinfo/TP_introR/")
 dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 dt <- dt[c(2:6),]
 colnames(dt) <- dt[1,]
@@ -58,7 +58,7 @@ for(i in 1:length(lista_compuestos)){
 }
 dev.off()
 
-dt_inhibicion <- data.frame(compuesto="",concentracion=0,vel.reaccion=0,stringsAsFactors = F)
+dt_actividad <- data.frame(compuesto="",concentracion=0,vel.reaccion=0,stringsAsFactors = F)
 for(i in 1:length(lista_compuestos)){
   # i<-1
   compuesto <- lista_compuestos[i]
@@ -67,18 +67,18 @@ for(i in 1:length(lista_compuestos)){
   for(concentracion in concentraciones){
     dt_regresion <- dt_compuesto[dt_compuesto$Inhibidor.uM==concentracion,]
     lm_temp <- lm(data = dt_regresion,formula = signal~Time)
-    dt_inhibicion_temp <- dt_inhibicion[1,]
-    dt_inhibicion_temp$compuesto[1] <- compuesto
-    dt_inhibicion_temp$concentracion[1] <- concentracion
-    dt_inhibicion_temp$vel.reaccion[1] <- lm_temp$coefficients[2]
-    dt_inhibicion <- rbind(dt_inhibicion,dt_inhibicion_temp)
+    dt_actividad_temp <- dt_actividad[1,]
+    dt_actividad_temp$compuesto[1] <- compuesto
+    dt_actividad_temp$concentracion[1] <- concentracion
+    dt_actividad_temp$vel.reaccion[1] <- lm_temp$coefficients[2]
+    dt_actividad <- rbind(dt_actividad,dt_actividad_temp)
   }
 }
-dt_inhibicion <- dt_inhibicion[-1,]
-head(dt_inhibicion)
-vel.sin.inhibicion <- dt_inhibicion[dt_inhibicion$compuesto=="DMSO",]$vel.reaccion
-dt_inhibicion$inhibicion <- 100*(dt_inhibicion$vel.reaccion/vel.sin.inhibicion)
-head(dt_inhibicion)
+dt_actividad <- dt_actividad[-1,]
+head(dt_actividad)
+vel.sin.inhibicion <- dt_actividad[dt_actividad$compuesto=="DMSO",]$vel.reaccion
+dt_actividad$actividad <- 100*(dt_actividad$vel.reaccion/vel.sin.inhibicion)
+head(dt_actividad)
 
 dt_resultado <- data.frame(compuesto=lista_compuestos,IC50=0,min=0,max=0)
 pdf("./results/Curvas_dosisRespuesta.pdf")
@@ -88,11 +88,11 @@ for(i in 1:length(lista_compuestos)){
   if(compuesto=="DMSO"){
     next()
   }
-  dt_plot <- dt_inhibicion[dt_inhibicion$compuesto==compuesto,]
-  sigm_temp <- nplr(x = dt_plot$concentracion,y=dt_plot$inhibicion/100)
+  dt_plot <- dt_actividad[dt_actividad$compuesto==compuesto,]
+  sigm_temp <- nplr(x = dt_plot$concentracion,y=dt_plot$actividad/100)
   temp_IC50 <- round(getEstimates(sigm_temp, .5, conf.level=.99),2)
   titulo <- paste0(compuesto,"\n IC50 : ",temp_IC50$x , " uM [", temp_IC50$x.005, "," ,temp_IC50$x.995,"]") 
-  print(plot(sigm_temp,main=titulo))
+  print(plot(sigm_temp,main=titulo,xlab="Log10 concentration",ylab= "Activity"))
   dt_resultado[dt_resultado$compuesto==compuesto,]$IC50 <- temp_IC50$x
   dt_resultado[dt_resultado$compuesto==compuesto,]$min <- temp_IC50$x.005
   dt_resultado[dt_resultado$compuesto==compuesto,]$max <- temp_IC50$x.995
