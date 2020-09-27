@@ -1,6 +1,6 @@
 library(nplr)
 library(ggplot2)
-setwd("/home/leonel/Dropbox (trypanosomatics)/Personal/docencia/introduccion-bioinformatica/TPs/IntroR")
+setwd("/home/ibioinfo/TP_introR")
 dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 dt <- dt[c(2:6),]
 colnames(dt) <- dt[1,]
