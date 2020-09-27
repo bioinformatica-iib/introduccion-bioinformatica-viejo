@@ -44,21 +44,21 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ![](./images/Rserver_1.png)
 
-*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo.
-Para empezar, creemos uno nuevo, básicamente lo que conocemos como "Script" que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
-Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". (Como verán hay muchas más cosas que se pueden hacer en Rstudio, nosotros solo vamos a ver las más básicas, pero sientanse libres de explorarlas en su tiempo libre si les genera interés. [Rstudio](https://www.rstudio.com/))
+*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar, creemos uno nuevo. Básicamente lo que conocemos como "Script", que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
+
+Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". Como verán, hay muchas más cosas que se pueden hacer en Rstudio. Nosotros solo vamos a ver las más básicas, pero siéntanse libres de explorarlas en su tiempo libre si les genera interés. [Rstudio](https://www.rstudio.com/)
 
 Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
 
 1. **Esquina superior izquierda:** Acá tenemos el script que acabamos de abrir (por ahora está vacío) pero también podremos ver cualquier archivo nuevo o tabla que usemos en R, a medida que los vayamos abriendo *Rstudio* simplemente nos pondrá más pestañas y podrán pasar libremente de una a la otra.
 
-2. **Esquina inferior izquierda:** Acá tenemos la "consola" igual a la que ya vieron en UNIX, solo que esta solo entiende R. Cualquier cosa que escriban aquí, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden.
+2. **Esquina inferior izquierda:** Acá tenemos la "consola", en una pestaña, y una "Terminal" en otra. La primera es igual a la que ya vieron en UNIX, solo que esta solo entiende R. La segunda es, en efecto, una terminal de UNIX. Cualquier cosa que escriban aquí, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden.
 
-3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar, pueden hacerles click y se abriran en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útil pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
+3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar, pueden hacerles click y se abriran en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útiles pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
 
 4. **Esquina inferior derecha:** Este panel tiene varias pestañas útiles:
     * **Files** La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles y visualizar los archivos que encuentren (Rstudio es muy versátil y pueden probar de abrir archivos de texto (aparecerán en una nueva pestaña del primer panel), .pdf (se abrirá en una nueva pestaña del explorador), imagenes varias (.jpg, .png, etc). Les será muy útil para ver qué tienen en su sesión de *Rstudio* mientras trabajan.
-    * **Plots** Como su nombre indica, acá aparecerán todos los plots que vayan generando, más adelante veremos más detalles de esta pestaña.
+    * **Plots** Como su nombre indica, acá aparecerán todos los *plots* (gráficos) que vayan generando, más adelante veremos más detalles de esta pestaña.
     * **Help** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la consola el comando `help()` (muy similar el comando man que ya usaron en UNIX), prueben con:
 
 ```r
@@ -67,26 +67,25 @@ help(print)
 
 ¿Entienden algo? :disappointed_relieved: **¿¡NO!?**
 
-Tranquilos, este texto de "ayuda" les irá siendo cada vez más ameno a medida que se vayan familiarizando con el formato que tienen, sientanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
+Tranquilos, este texto de "ayuda" les irá siendo cada vez más ameno a medida que se vayan familiarizando con el formato que tienen, siéntanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
 
 Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos, e incluso descargar/subir archivos desde *Rstudio server* a la computadora desde donde acceden. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
 
-A lo largo de todo este TP, encontrarán texto resaltado como este:
+Ya deben estar acostumbrados, pero por las dudas: A lo largo de todo este TP, encontrarán texto resaltado como este:
 
 ```r
 #esto es código
 ```
-Que no es otra cosa que código ejemplo para que lo copien y peguen en R y puedan ver cómo se ejecuta y qué resultados obtienen.
+Que no es otra cosa que código ejemplo para que lo copien y peguen en sus consolas de R o en sus scripts, y puedan ver cómo se ejecuta y qué resultados obtienen.
 
 ## Entrando en calor
-
 
 Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. O cualquier otra que se les ocurra necesaria.
 
 Vamos a la consola de R y pueden probar cosas como:
 
 ```r
-> print("hola mundo")
+print("hola mundo")
 ```
    
 o
@@ -98,9 +97,9 @@ o
 Ya se imaginarán que pueden esperar de cada orden
 
 Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? En realidad R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo esta forma de almacenar instrucciones es un poco sucia, ya que se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (:laughing: lo cual es muy frecuente :laughing:)
-La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac..digo la necesidad de reutilizar el código.
-Es algo así como el cuaderno de laboratorio bioinformático.
-(En R, comentamos el texto anteponiendo un # a la línea deseada).
+
+La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac... digo la necesidad, de reutilizar el código. Es algo así como el cuaderno de laboratorio bioinformático. En R, comentamos el texto anteponiendo un # a la línea deseada.
+
 Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*. Este archivo de texto va a ser nuestro "cuaderno" o script, que recuerde exactamente todo el trabajo que hicimos y lo más detallado y prolijo que se pueda.
 
 Prueben de escribir un sencillo comando y documentarlo:
@@ -111,20 +110,21 @@ cat("Hello World")
 #No soy un cipayo:
 cat("Hola mundo")
 ```
+
 ¿Qué es cat()? ¿se parece a algo que ya vieron? ¿cómo podrían investigarlo? 
 ¿Alguien que lea este *script* lo podría entender?
 
-Muy bien, tenemos las complejas instrucciones, ¿cómo las ejecutamos?
-En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
+Muy bien, tenemos las instrucciones, ¿cómo las ejecutamos?
+En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco c onfundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
-También podríamos ejecutarlo desde BASH (linea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
+También podríamos ejecutarlo desde Bash (linea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
-```shell
-$ cd ~/scripts/
-$ Rscript hello.R
+```Bash
+cd ~/scripts/
+Rscript hello.R
+# Resultado: 
 Hello WorldHola mundo
 ```
-
 
 Podemos mejorar la impresión simplemente agregando un “salto de carro" (se simboliza con “\\n") al final de la impresión:
 
@@ -136,25 +136,28 @@ cat("Hello World\n")
 cat("Hola mundo")
 ```
 
-```shell
-$ Rscript hello.R
+```Bash
+Rscript hello.R
+# Resultado
 Hello World
 Hola mundo
 ```
+
 ¿Notan la diferencia? Podríamos usar también otros caracteres como “\\t" (tabulación), “\\s" (espacios):
 
 ## El mundo de las variables
 
-Como ya hablamos programar es encontrar algoritmos que solucionen problemas. Para resolverlos necesitamos poder manipular información. Desde valores numericos, texto, *booleanos* , tablas y hasta construcciones más complejas. Cada tipo de información tiene sus particularidades y es necesario entender como las interpreta cada lenguaje de programación, además nos es de suma importancia comprender la forma de almacenarlas (recordarlas) para poder usarlas en el momento deseado. Almacenar estos tipos de información en un lenguaje de programación se denomina declarar variables. Uno puede declarar que de ahora en más, la palabra "variableLINDA" hace referencia al valor numérico 44 y para hacerlo (en R) es necesario:
+Como ya hablamos programar es crear algoritmos (secuencias lógicas de instrucciones) que solucionen problemas. Para hacerlo necesitamos poder manipular información. Desde valores numericos, texto, *booleanos* , tablas y hasta construcciones más complejas. Cada tipo de información tiene sus particularidades y es necesario entender cómo las interpreta cada lenguaje de programación, además es de suma importancia comprender la forma de almacenarlas (recordarlas) para poder usarlas en el momento deseado. Almacenar estos tipos de información en un lenguaje de programación se denomina declarar variables. Uno puede declarar que, de ahora en más, la palabra `variableLINDA` hace referencia al valor numérico 44 y para hacerlo (en R) es necesario:
 
 ```r
 variableLINDA <- 44
 ```
-De ahora en más, siempre que hagamos referencia a "variableLinda" R va a devolver el valor que esta "almacenado" ahí.
+
+De ahora en más, siempre que hagamos referencia a `variableLinda` R va a devolver el valor que esta "almacenado" ahí.
 
 ### strings
 
-Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo carácter (string o "texto"). Por ejemplo, creamos una variable name, e imprimimos :
+Comenzaremos a explorar el uso de variables en R. En primer lugar una variable de tipo carácter (*string* o "texto"). Por ejemplo, creamos una variable `name`, e imprimimos :
 
 ```r
 name <- "Hermenegildo"
@@ -171,13 +174,14 @@ print(saludo)
 ```
 
 El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. :eyes: (**Ojo con esto**) :eyes:
-Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo. Por ejemplo:
+
+Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo; o actualizando su valor conforme éste avanza en la resolución del problema. Por ejemplo:
 
 ```r
-name <- "Walter"
-surname <- "White"
-cat(paste("\t hello", name,"\t",surname,"\n\n"))
-print("my name is Heisenberg")
+name <- "Walter White"
+cat(paste("Hello", name,"\n\n"))
+name <- "Heisenberg"
+cat(paste("My name is", name,"\n\n"))
 ```
 
 ### Variables escalares
@@ -192,15 +196,14 @@ log(val)
 
 Con respecto a las comparaciones entre números y palabras podemos hacer las operaciones tradicionales:
 
-Para probar un poco:
-1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla
+#### **Para probar un poco:**
+1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla.
 2. Usar diferentes operadores matemáticos entre ellas, incluir una variable que sea 0 y probar la división.
 3. Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
 
-Ejemplo:
+**Ejemplo:**
 
 ```r
-
 dna1 <- "GATACA"
 dna2 <- "GAGA"
 print(paste("Las longitudes ingresadas son:",nchar(dna1),"y",nchar(dna2)))
@@ -217,11 +220,10 @@ dna3 <- paste(dna1,dna2,sep="\t")
 print(dna3)
 ```
 
-
 ### Variables lógicas
 
-Son las más sencillas de todas, básicamente sólo almacenan un 1 o 0, que solemos escribir como TRUE o FALSE, o T o F. (R entiende todas estas formas)
-Son de especial interés cuando trabajamos con evaluaciones lógicas, algo que se hace muy frecuente, por ahora solo sepan que existen como tipo de variable.
+Son las más sencillas de todas. Básicamente sólo almacenan un 1 o un 0, que solemos escribir como TRUE o FALSE, o T o F. (R entiende todas estas formas)
+Son de especial interés cuando trabajamos con evaluaciones lógicas, algo que se hace muy frecuente. Por ahora solo sepan que existen como tipo de variable.
 
 ```r
 variable_logica <- T
@@ -234,7 +236,8 @@ variable_logica <- as.logical(1)
 print(variable_logica)
 
 ```
-Las variables lógicas se pueden invertir facilmente (es muy útil) solamente anteponiendo el signo `!`. Por ejemplo, fijense que sucede si ingresan:
+
+Las variables lógicas se pueden invertir fácilmente (es muy útil) solamente anteponiendo el signo `!`. Por ejemplo, fíjense qué sucede si ingresan:
 
 ```r
 variable_logica <- T
@@ -245,26 +248,33 @@ print(!variable_logica)
 
 ### Vectores
 
-Es muy útil poder almacenar conjuntos ordenados de un tipo de variable, los cuales en R se llaman vectores.
-Podemos generarlos de distintas formas, por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que queramos:
+Es muy útil poder almacenar conjuntos ordenados de un tipo de variable, los cuales, en R se, llaman vectores. Podemos generarlos de distintas formas. Por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que queramos:
 
 ```R
 vector678 <- c(6,7,8)
 ```
-También podemos indicarle a R el primer y el último número de una serie consecutiva y automáticamente genera todo el resto:
-R interpreta los dos puntos (:) entre números como una serie que tiene que complementar. Si quieren cosas más complejas, como que vaya de 10 en 10, pueden revisar la documentación de la función seq, con `help(seq)`.
 
-Por ejemplo quiero hacer un sencillo gráfico de una serie de números elevados al cuadrado
+También podemos indicarle a R el primer y el último número de una serie consecutiva y automáticamente genera todo el resto:
+
+R interpreta los dos puntos ("`:`") entre números como una serie que tiene que complementar. Si quieren cosas más complejas, como que vaya de 10 en 10, pueden revisar la documentación de la función `seq`, con `help(seq)`.
+
+Se pueden hacer operaciones logico-matemáticas sobre series enteras:
 
 ```R
 serieDeNumeros <- 1:100
 x <- serieDeNumeros
 y <- serieDeNumeros ^ 2
+```
+
+Esto es muy útil para hacer gráficos de prueba, que podemos hacer con la función ``plot``
+
+```r
 plot(x, y)
 ```
+
 ![](./images/plot_ejemplo_1.png)
 
-Quiero hacer muchos números aleatorios pero con una media en 15, una desviación estándar de 2,5 y una distribución normal.
+También podemos generar datos con características determinadas para evaluar modelos o probar algoritmos. Por ejemplo un set de datos aleatorios  con una media en 15, una desviación estándar de 2,5 y una distribución normal.
 
 ```R
 Snorm <- rnorm(mean=15,sd=2.5,n=1000)
@@ -276,12 +286,13 @@ hist(Snorm)
 
 ### Factores
 
-Otro tipo de variable quizá no tan intuitivo de entender (especialmente si no tuviésemos formación en ciencias) son los factores. En sí no son más que unos vectores con vitaminas, pero en el trabajo que solemos hacer nos son muy útiles. A tal punto, que muchas de las funciones que van a trabajar directamente les van a devolver los resultados en forma de factores y si ustedes no saben que son, puede llegar a generar bastante confusión. :confused:
+Otro tipo de variable quizá no tan intuitivo de entender (especialmente si no tuviésemos formación en ciencias) son los factores. En sí no son más que unos vectores con vitaminas, pero en el trabajo que solemos hacer nos son muy útiles. A tal punto, que muchas de las funciones que van a trabajar directamente les van a devolver los resultados en forma de factores y, si ustedes no saben que son, puede llegar a generar bastante confusión. :confused:
   
 Un vector contiene valores de un tipo dado, pero no me dice nada sobre la relación entre estos valores. Por ejemplo, si yo tengo un tratamiento con una droga en tres concentraciones y almaceno dentro de un vector los niveles de concentración en forma cualitativa (quizá porque desconozco los valores exactos):
 
 ```R
-niveles_tratamiento <- c("bajo","medio","alto") #Como no tengo un número exacto le asigno una palabra que descrive el tratamiento. Podría haber sido c("leve","moderado","fuerte") siempre y cuando nosotros entendamos a que nos referimos. 
+niveles_tratamiento <- c("bajo","medio","alto") 
+#Como no tengo un número exacto le asigno una palabra que descrive el tratamiento. Podría haber sido c("leve","moderado","fuerte") siempre y cuando nosotros entendamos a que nos referimos. 
 
 # Y los resultados:
 
@@ -317,7 +328,7 @@ plot(niveles_tratamiento_factor,resultados_tratamiento)
 
 Fíjense que automáticamente R decidió que realizar este plot un poco distinto al plot anterior aun cuando la instrucción fue muy similar (¿recuerdan plot(x,y)?). Pueden discutir entre ustedes por que les parece que R decidió no hacer un gráfico de puntos como antes y si les parece correcto.
 
-Como se habrán dado cuenta se pueden hacer muchísimas cosas con factores y muchas veces encontrarán que son indispensables para hacer gráficos correctos para los trabajos que realicen. Otras veces tendrán errores en la consola o no podrán hacer lo que quieren hacer justamente porque sin saberlo están trabajando con factores, pensando que son simples vectores (pasa todo el tiempo).
+Como se habrán dado cuenta se pueden hacer muchísimas cosas con factores y muchas veces encontrarán que son indispensables para hacer gráficos correctos para los trabajos que realicen. Otras veces tendrán errores en la consola o no podrán hacer lo que quieren hacer justamente porque, sin saberlo, están trabajando con factores, pensando que son simples vectores (pasa todo el tiempo).
 
 
 
@@ -389,12 +400,12 @@ dt$expresion > 100
 dt[dt$expresion > 100 ,]
 ```
 
-
 Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma más sencilla pero, quizá, no tan intuitiva. Más adelante en otra clase las trabajaremos.
 
 ### Listas
 
 Las listas son otro tipo de variables, muy similares a los vectores pero que pueden contener distintos tipos de variables en contrario a los vectores que todos sus valores tienen que ser del mismo tipo. Es más, si guardamos un vector con distintos tipos de variables, R automáticamente transforma todo al tipo de variable que pueda contener ambos.
+
 Para que puedan verlo, prueben este ejemplo contrastante:
 
 ```r
@@ -458,7 +469,7 @@ La verdad es que no, hay incluso distintos tipos de números y la forma correcta
 
 ## Iteraciones y evaluaciones usando R
 
-Una de las cosas más útiles, pero a su vez difícil de comprender, son las evaluaciones e iteraciones.
+Una de las cosas más útiles, pero a su vez difícil de comprender, son las evaluaciones e iteraciones. A lo largo de la materia fuimos introduciendo algunos de estos conceptos en UNIX. La lógica detrás de esto es la misma en cualquier lenguaje de programación (aunque podremos ver ligeros cambios de sintaxis).
 
 ### Evaluaciones en R
 
@@ -489,9 +500,9 @@ if(evaluacion){
 
 ### Iteraciones con for y while:
 
-Las iteraciones son básicamente ordenarle a nuestra computadora, que ejecute ciertas acciones reiteradas veces. Hay dos formas más usadas, una es mediante `for` y la otra es con `while`.
+Las iteraciones son, básicamente, una orden a nuestra computadora para que  ejecute ciertas operaciones en forma reiterada. Hay dos formas más usadas, una es mediante `for` y la otra es con `while`.
 
-* Iteraciones con `for`:
+* Iteraciones con `for` en R:
 La idea es que se programan ciertas instrucciones para cada uno de los elementos de un vector. Por ejemplo, calcular el logaritmo de todos los números de un vector en particular sería:
 
 ```r
@@ -500,9 +511,9 @@ for (i in vector_de_numeros) {
   print(log(vector_de_numeros[i]))
 }
 ```
-La estructura del for es la siguiente: entre paréntesis, tenemos que variable va a tomar los distintos valores del vector (en este caso, la variable es `i` y el vector son los números del 1 al 100) y entre llaves, tenemos que código se debe ejecutar. En cada una de las iteraciones del for, `i` tendrá un valor distinto y por ende el código que se va a ejecutar es ligeramente distinto.
+La estructura del ``for`` es la siguiente: entre paréntesis, tenemos que variable va a tomar los distintos valores del vector (en este caso, la variable es `i` y el vector son los números del 1 al 100) y entre llaves, tenemos que código se debe ejecutar. En cada una de las iteraciones del for, `i` tendrá un valor distinto y por ende el código que se va a ejecutar es ligeramente distinto.
 
-* Iteraciones con `while`:
+* Iteraciones con `while` en R:
 La estructura es muy similar, sin embargo, el concepto es distinto. Este iterador ejecuta el código entre llaves, **hasta** que se cumple cierta condición. Por ejemplo lo mismo que hicimos anteriormente con el `for`, sería:
 
 ```r
@@ -513,11 +524,13 @@ while (i <= length(vector_de_numeros)) {
   i <- i + 1
 }
 ```
+
 Ambas pueden resolver cualquier problema que ustedes necesiten iterar, en algunos casos será más fácil o intuitivo de resolver con un `for` y otras veces con un `while`, sin embargo recomiendo que si van a usar el segundo, presten mucha atención a no escribir un código que genere un **loop infinito**. Esto es, cuando la condición nunca se cumple y el código se ejecuta eternamente. Puesto que de ser así habrán "colgado" R y tendrán que reiniciarlo o interrumpirlo para volver a programar. Esto sucedería si por ejemplo en el ejemplo anterior, no hubiesen puesto la linea que aumenta el valor de `i`.
 
 ### Integrando ambas:
 
 Es muy frecuente tener que integrar evaluaciones e iteraciones, por ejemplo, siguiendo el ejemplo de expresión que usamos antes, podríamos pedirle a R que exporte un archivo .txt con los IDs de genes de la tabla, que sean esenciales (resulta muy sencillo con una dt de 3 genes, pero los quiero ver con un genoma entero, réplicas y distintos tratamientos).
+
 En este caso tendríamos que iterar cada observación de `dt` y evaluar si es o no esencial:
 
 ```r
@@ -527,9 +540,6 @@ for(i in 1:length(dt[,1])){
   }
 }
 ```
-
-
-
 
 ## Cargando datos a R
 
