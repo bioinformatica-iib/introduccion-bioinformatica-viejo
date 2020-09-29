@@ -983,7 +983,7 @@ Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisi
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimática
 
-> Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual buscaremos que intenten resolverlos (solos o con nuestra ayuda). La idea es que se animen a explorar esta resolución en detalle mientras qentienden *de qué va la cosa* adquiriendo las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos, pero se busca que lo intenten :)
+> Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual buscaremos que intenten resolverlos (solos o con nuestra ayuda). La idea es que se animen a explorar esta resolución en detalle mientras entienden *de qué va la cosa* adquiriendo las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos, pero se busca que lo intenten :)
 
 Retomemos el parseado de datos donde lo habíamos dejado:
 
