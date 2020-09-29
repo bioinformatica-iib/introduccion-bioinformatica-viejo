@@ -803,7 +803,7 @@ Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los
 Intentamos cargar los datos con la función `read.csv()` como vimos en anteriormente.
 
 ```r
-dt <- read.csv("datos_filtermax.txt",sep="\t",stringsAsFactors = F)
+dt <- read.csv("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
 ¿Les dió un error?
 
@@ -813,14 +813,14 @@ Aparentemente el formato que quiere leer esta función no funciona porque las pr
 Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuántas columnas necesitan, por ejemplo yo encontré que `read.table()` podría funcionar:
 
 ```r
-dt <- read.table("datos_filtermax.txt",sep="\t",stringsAsFactors = F)
+dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 ```
 
 Ahora me dice que hay un nuevo error, puesto que `*line 1 did not have 387 elements*`. Si leemos el help de esta función:
 Resulta que en caso de que las filas tengan distinta cantidad de columnas hay que explicárselo para que las llene, agregando el argumento, `fill = TRUE`
 
 ```r
-dt <- read.table("datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
+dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 ```
 
 Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en Rstudio?
