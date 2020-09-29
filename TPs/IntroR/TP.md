@@ -969,7 +969,7 @@ Hay algo más que podemos hacer muy fácil y es asignar el valor de dilución y 
 Hay muchas formas de resolver el problema, una es iterando la dt, pero para mostrarle otro ejemplo donde una función que alguien ya hizo nos resuelve la vida, les voy a mostrar cómo funciona la función `merge()`. Es muy útil en nuestros problemas diarios, y en este caso, se va a encargar de resolvernos todo:
 
 ```r
-dt_diluciones <- read.csv("diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
+dt_diluciones <- read.csv("./data/diseño_diluciones",sep="\t",stringsAsFactors = F,dec = ",")
 nueva_dt_completa <- merge(x = nueva_dt, y = dt_diluciones,by.x="filaW",by.y="Fila")
 print(nueva_dt_completa)
 ```
