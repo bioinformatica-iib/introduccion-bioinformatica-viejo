@@ -770,31 +770,21 @@ En esta carpeta tienen tres archivos:
 
 Además, pudieron exportar la siguiente tabla:
 
-| compuesto           | IC50   | min    | max     |
-|---------------------|--------|--------|---------|
-| DMSO                | 0      | 0      | 0       |
-| Diclofenac sodium   | 0.06   | 0.05   | 0.06    |
-| Lisinopril-2        | 0.48   | 0.44   | 0.52    |
-| Rasagiline mesylate | 0.69   | 0.47   | 1.04    |
-| Amlodipine besylate | 0.69   | 0.08   | 4.87    |
-| Carbinoxamine       | 0.69   | 0.43   | 1.03    |
-| Alendronate sodium  | 2.35   | 0.94   | 58.44   |
-| Aripiprazole        | 2.83   | 1.04   | 9.08    |
-| Acetaminophen       | 5.25   | 1.4    | 12.68   |
-| Diltiazem HCl       | 5.32   | 2.8    | 9.67    |
-| Dihydrochloride     | 9.8    | 4.36   | 22.78   |
-| Quetiapine fumarate | 38.25  | 4.3    | 70.45   |
-| Flunarizine         | 150.16 | 110.39 | 189.78  |
-| Oxcarbazepine       | 155.37 | 17.1   | 504.75  |
-| Isatin              | 164.53 | 123.37 | 262.81  |
-| Dutasteride         | 200.93 | 76.15  | 200.93  |
-| Irbesartan          | 201.93 | 142.02 | 269.2   |
-| Duloxetine          | 218.64 | 136.79 | 329.02  |
-| Nicorandil          | 294.12 | 223.16 | 351.76  |
-| Nicorandil-2        | 828.37 | 612.85 | 1054.84 |
-| Lisinopril          | NA     | NA     | NA      |
-| Milrinone           | NA     | NA     | NA      |
-| Pregabalin          | NA     | NA     | NA      |
+| compuesto     | IC50   | min    | max     |
+|---------------|--------|--------|---------|
+| Umbrella6     | 0.06   | 0.05   | 0.06    |
+| Umbrella15    | 0.48   | 0.44   | 0.52    |
+| Umbrella22    | 0.69   | 0.47   | 1.04    |
+| Umbrella3     | 0.69   | 0.08   | 4.87    |
+| Umbrella5     | 0.69   | 0.43   | 1.03    |
+| Umbrella2     | 2.35   | 0.94   | 58.44   |
+| Umbrella4     | 2.83   | 1.04   | 9.08    |
+|       .       |   .    |  .     |   .     |
+|       .       |   .    |  .     |   .     |
+|       .       |   .    |  .     |   .     |
+| Umbrella9     | 218.64 | 136.79 | 329.02  |
+| Umbrella17    | 294.12 | 223.16 | 351.76  |
+| Umbrella18    | 828.37 | 612.85 | 1054.84 |
 
 Pueden ver los archivos .pdf si les interesa ver cómo dieron el resto de los compuestos, por ejemplo podrían discutir porque puede ser que el investigador haya descartado el IC50 de los primeros 6 compuestos de la tabla.
 
@@ -919,6 +909,7 @@ for (i in 3:length(dt[1,])){
   print(head(dt_pocillo))
 }
 ```
+
 Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma `rbind()` nos va a dar un error)
 
 ```r
@@ -965,21 +956,21 @@ Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisi
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimática
 
-Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual ustedes deberían poder resolverlos. La idea es que aquellos que ya tienen alguna experiencia con R u otros lenguaje de programación puedan explorar esta resolución en detalle, mientras que los que están empezando a entender *de qué va la cosa* adquieran las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. Y vean como todo eso se puede usar en un script que resuelve un problema particular. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos.
+> Esta última parte del TP va a ser mucho más complicada. Especialmente porque hay muchos pasos no tan sencillos que no se explican, con lo cual buscaremos que intenten resolverlos (solos o con nuestra ayuda). La idea es que se animen a explorar esta resolución en detalle mientras qentienden *de qué va la cosa* adquiriendo las bases, tipos de variables, evaluaciones, iterar, cargar datos, etc. No se espera que en una primer clase alcancen a comprender todo y/o a hacerlo ustedes solos, pero se busca que lo intenten :)
 
 Retomemos el parseado de datos donde lo habíamos dejado:
 
-Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
+Si hicieron ambos *merge* correctamente, deberían haber llegado a algo así:
 
 ```r
 > head(nueva_dt_completa)
   columnaW filaW signal     Time Inhibidor.uM     Compuesto
-1        1     D 609960 00:04:59     59.25926 Acetaminophen
-2        1     E 679028 00:04:59     39.50617 Acetaminophen
-3        1     E 896665 00:10:00     39.50617 Acetaminophen
-4        1     F 724846 00:04:59     26.33745 Acetaminophen
-5        1     B 426093 00:00:00    133.33333 Acetaminophen
-6        1     B 618868 00:04:59    133.33333 Acetaminophen
+1        1     D 609960 00:04:59     59.25926 Umbrella1
+2        1     E 679028 00:04:59     39.50617 Umbrella1
+3        1     E 896665 00:10:00     39.50617 Umbrella1
+4        1     F 724846 00:04:59     26.33745 Umbrella1
+5        1     B 426093 00:00:00    133.33333 Umbrella1
+6        1     B 618868 00:04:59    133.33333 Umbrella1
 > summary(nueva_dt_completa)
    columnaW            filaW              signal              Time            Inhibidor.uM      Compuesto        
  Length:1408        Length:1408        Length:1408        Length:1408        Min.   :  0.000   Length:1408       
@@ -989,10 +980,10 @@ Si hicieron ambos merge correctamente, deberían haber llegado a algo así:
                                                                              3rd Qu.: 44.444                     
                                                                              Max.   :200.000
 ```
+
 Como pueden ver, las columnas de señal y tiempo están cargadas como "character", lo cual no es correcto, porque en realidad son variables numéricas, y en todo el análisis posterior vamos a necesitar considerarlos así.
 
 ¿Cómo podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
-
 
 ```r
 nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
@@ -1006,21 +997,28 @@ Luego de las transformaciones planteadas, deberían llegar a algo así:
 
 ```r
 > head(nueva_dt_completa)
-  columnaW filaW signal      Time Inhibidor.uM     Compuesto
-1        1     D 609960  4.983333     59.25926 Acetaminophen
-2        1     E 679028  4.983333     39.50617 Acetaminophen
-3        1     E 896665 10.000000     39.50617 Acetaminophen
-4        1     F 724846  4.983333     26.33745 Acetaminophen
-5        1     B 426093  0.000000    133.33333 Acetaminophen
-6        1     B 618868  4.983333    133.33333 Acetaminophen
+  columnaW filaW signal      Time Inhibidor.uM Compuesto
+1        1     D 609960  4.983333     59.25926 Umbrella1
+2        1     E 679028  4.983333     39.50617 Umbrella1
+3        1     E 896665 10.000000     39.50617 Umbrella1
+4        1     F 724846  4.983333     26.33745 Umbrella1
+5        1     B 426093  0.000000    133.33333 Umbrella1
+6        1     B 618868  4.983333    133.33333 Umbrella1
 > summary(nueva_dt_completa)
-   columnaW            filaW               signal             Time         Inhibidor.uM      Compuesto        
- Length:1408        Length:1408        Min.   : 131934   Min.   : 0.000   Min.   :  0.000   Length:1408       
- Class :character   Class :character   1st Qu.: 450696   1st Qu.: 3.737   1st Qu.:  2.120   Class :character  
- Mode  :character   Mode  :character   Median : 777522   Median : 7.492   Median :  9.755   Mode  :character  
-                                       Mean   : 850579   Mean   : 7.496   Mean   : 37.414                     
-                                       3rd Qu.:1217152   3rd Qu.:11.250   3rd Qu.: 44.444                     
-                                       Max.   :4809139   Max.   :15.000   Max.   :200.000   
+   columnaW            filaW               signal             Time       
+ Length:1408        Length:1408        Min.   : 131934   Min.   : 0.000  
+ Class :character   Class :character   1st Qu.: 450696   1st Qu.: 3.737  
+ Mode  :character   Mode  :character   Median : 777522   Median : 7.492  
+                                       Mean   : 850579   Mean   : 7.496  
+                                       3rd Qu.:1217152   3rd Qu.:11.250  
+                                       Max.   :4809139   Max.   :15.000  
+  Inhibidor.uM      Compuesto        
+ Min.   :  0.000   Length:1408       
+ 1st Qu.:  2.120   Class :character  
+ Median :  9.755   Mode  :character  
+ Mean   : 37.414                     
+ 3rd Qu.: 44.444                     
+ Max.   :200.000    
 ```
 
 ##### Velocidad de las reacciones
@@ -1104,14 +1102,12 @@ Deberían llegar a algo así:
 ```r
 > head(dt_inhibicion)
       compuesto concentracion vel.reaccion
-2 Acetaminophen     59.259259     37805.37
-3 Acetaminophen     39.506173     43217.32
-4 Acetaminophen     26.337449     46771.97
-5 Acetaminophen    133.333333     40353.69
-6 Acetaminophen      7.803688     35481.71
-7 Acetaminophen      2.312204     52110.30
-
-
+2 Umbrella1     59.259259     37805.37
+3 Umbrella1     39.506173     43217.32
+4 Umbrella1     26.337449     46771.97
+5 Umbrella1    133.333333     40353.69
+6 Umbrella1      7.803688     35481.71
+7 Umbrella1      2.312204     52110.30
 ```
 
 5. Guardamos el valor de velocidad para el compuesto “DMSO” (es decir, sin inhibidor) como la velocidad original de la reacción
@@ -1126,13 +1122,12 @@ Deberían llegar a algo así:
 
 ```
 > head(dt_resultado)
-             compuesto IC50  min  max
-2                 DMSO 0.00 0.00 0.00
-20   Diclofenac sodium 0.06 0.05 0.06
-8         Lisinopril-2 0.48 0.44 0.52
-16 Rasagiline mesylate 0.69 0.48 1.02
-17 Amlodipine besylate 0.69 0.07 4.97
-19       Carbinoxamine 0.69 0.44 1.03
+    compuesto IC50  min  max
+20  Umbrella6 0.06 0.05 0.06
+8  Umbrella15 0.47 0.44 0.52
+16 Umbrella22 0.69 0.47 1.01
+17  Umbrella3 0.69 0.05 5.13
+19  Umbrella5 0.69 0.44 1.03
 ```
 
 Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimos y resolviendo algunos de los que no se mostraba resuelto, pero recuerden que todo el script está resuelto en: "scripts/Analisis_filerMax_resuelto.R"
@@ -1141,4 +1136,3 @@ Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimo
 
 Todas las dúdas con respecto a programar en R o hacer análisis de datos, las pueden resolver en este libro que esta disponible on line y esta integramente desarrollado en R:
 [R for Data Science, Garrett Grolemund, 2017](https://r4ds.had.co.nz/index.html)
-
