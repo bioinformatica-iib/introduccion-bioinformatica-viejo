@@ -856,12 +856,17 @@ Bien, creo que es bastante claro que la primer letra de todas las columnas repre
 ```r
 for (i in 3:length(dt[1,])){
   nombre_pocillo <- colnames(dt)[i]
+
+  # Nuevas lineas
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
+
+  # Imprimimos para ver que generamos
   print(nombre_pocillo)
   print(fila_pocillo)
   print(numero_pocillo)
+
 }
 ```
 Muy bien, tengo las filas y las columnas, ¿Para que me podría servir?. Una idea que se me ocurre es tomar de la dt original, todos los "tiempos" y su señal pero solo para este pocillo que estamos iterando...sería simplemente filtrar la dt, ¿se les ocurre como?
@@ -871,7 +876,11 @@ for (i in 3:length(dt[1,])){
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
+
+  # Nuevas lineas
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
+
+  # Imprimimos para ver que generamos
   print(head(dt_pocillo))
 }
 ```
@@ -884,8 +893,12 @@ for (i in 3:length(dt[1,])){
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
+
+  # Nuevas lineas
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
+
+  # Imprimimos para ver que generamos
   print(head(dt_pocillo))
 }
 ```
@@ -904,10 +917,16 @@ for (i in 3:length(dt[1,])){
   fila_pocillo <- nombre_split[1]
   numero_pocillo <- paste(nombre_split[-1],collapse = "",sep="")
   dt_pocillo <- dt[,c("Time",nombre_pocillo)]
-  dt_pocillo$signal <- dt_pocillo[,2] # creo esta nueva columna con nombre “signal” y le doy los valores de la columna con el nombre del pocillo
+
+   # Nuevas lineas hasta ###
+  dt_pocillo$signal <- dt_pocillo[,2]  # creo esta nueva columna con nombre “signal” y le doy los valores de la columna con el nombre del pocillo
   dt_pocillo[,2] <- NULL # borro la anterior
+  ###
+
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
+
+  # Imprimimos para ver que generamos
   print(head(dt_pocillo))
 }
 ```
@@ -915,7 +934,10 @@ for (i in 3:length(dt[1,])){
 Ahora solo faltas juntarlas, para esto, tendría que haber creado, antes de todo esto, una DT donde empezar (para unir la primera a algo, de otra forma `rbind()` nos va a dar un error)
 
 ```r
+# Nuevas lineas hasta ###
 nueva_dt <- data.frame(filaW="",columnaW=0,signal=0,Time="",stringsAsFactors = F)
+###
+
 for (i in 3:length(dt[1,])){
   nombre_pocillo <- colnames(dt)[i]
   nombre_split <- strsplit(nombre_pocillo,split="")[[1]]
@@ -926,8 +948,11 @@ for (i in 3:length(dt[1,])){
   dt_pocillo[,2] <- NULL
   dt_pocillo$filaW <- fila_pocillo
   dt_pocillo$columnaW <- numero_pocillo
+
+   # Nueva linea
   nueva_dt <- rbind(nueva_dt,dt_pocillo)
 }
+# Imprimimos para ver que generamos
 print(nueva_dt)
 ```
 Si miran `nueva_dt` van a ver que, por cómo la creamos, tiene una primer fila de valores nulos, podríamos borrarlos. 
