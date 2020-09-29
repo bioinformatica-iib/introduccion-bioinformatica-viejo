@@ -569,13 +569,15 @@ Por un lado los datos más fáciles de cargar son los del estilo de tablas separ
 Supongamos que tenemos un archivo con valores de expresión, donde las columnas están separadas por tabs y se llama "resultados_ensayo1.tsv". La función para cargarlo y guardarlo en una *dataframe* sería:
 
 ```r
-dt_exp <- read.csv(file="dt_TP1_cal.tsv",sep="\t")
+dt <- read.csv(file="dt_TP1_cal.tsv",sep="\t")
 ```
 
 ¿Les funcionó? ¿Les dió algún error? ¿Hay algo que esté mal?
 Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista (`help(read.csv)`).
 
 Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estándar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
+
+`Read.csv()` es una función, ahora vamos a explorar otros tipos de funciones y como utilizar algunas de ellas.
 
 ## Funciones y paquetes en R
 
