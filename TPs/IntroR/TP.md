@@ -746,7 +746,7 @@ Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cu
 
 Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar. Sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
 
-Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que, como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas series de concentraciones de cada compuesto para cada tiempo.
+Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que, como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas las series de concentraciones de cada compuesto para cada tiempo.
 
 Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
 
