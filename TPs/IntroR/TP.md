@@ -564,7 +564,7 @@ De este modo tendremos acceso directo a todos los archivos del TP.
 
 Algo muy interesante que siempre necesitamos es pasar datos de distintos formatos y cargarlos en nuestro *Rstudio* para trabajarlo, claramente no podemos ingresar un gen de forma manual, ni miles de registros de una base de datos...o podemos pero no nos conviene.
 
-Por un lado los datos más fáciles de cargar son los del estilo de tablas separadas por valores específicos, como "comas" (,) o "tabs" (\\t). Estos archivos son conocidos como "csv" o "tsv", respectivamnete. En esos casos tenemos la función `read.table()` que se encarga de hacerlo de forma muy sencilla, eso sí, hay que saber bien qué formato tiene el archivo que queremos cargar.
+Por un lado los datos más fáciles de cargar son los del estilo de tablas separadas por valores específicos, como "comas" (,) o "tabs" (\\t). Estos archivos son conocidos como "csv" o "tsv", respectivamente. En esos casos tenemos la función `read.table()` que se encarga de hacerlo de forma muy sencilla, eso sí, hay que saber bien qué formato tiene el archivo que queremos cargar.
 
 Supongamos que tenemos un archivo con valores de expresión, donde las columnas están separadas por tabs y se llama "resultados_ensayo1.tsv". La función para cargarlo y guardarlo en una *dataframe* sería:
 
