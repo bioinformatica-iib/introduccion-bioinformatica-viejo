@@ -1040,14 +1040,14 @@ ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y
 ```
 Luego, para cada uno de los compuestos queremos agregarles una nueva serie para cada concentración, y que tenga tanto los puntos como la regresión lineal. ¿Se imaginan como lo podemos hacer?
 
-Como ejemplo, si queremos agregar la concentración "59.25926" del compuesto "Acetaminophen" deberíamos hacer algo así:
+Como ejemplo, si queremos agregar la concentración "59.25926" del compuesto "Umbrella1" deberíamos hacer algo así:
 
 ```r
 plot_1 <- ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y=signal,color=Compuesto))+
     geom_point()+
     geom_smooth(method="lm")+
     theme_minimal()
-dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto=="Acetaminophen",]   
+dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto=="Umbrella1",]   
 dt_plot <- dt_compuesto[dt_compuesto$Inhibidor.uM=="59.25926",]
 plot_1 <- plot_1+ geom_point(data=dt_plot)+geom_smooth(data=dt_plot,method="lm")
 
