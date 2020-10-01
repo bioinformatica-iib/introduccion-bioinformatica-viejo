@@ -30,7 +30,7 @@ Para acceder, simplemente entren al siguiente enlace:
 Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitamos para trabajar en el TP con el siguiente comando:
 ```bash
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/install.sh
-bash install.sh
+bash install.sh #Esto no hay que hacerlo si usan Rstudio desde el servidor
 #Y pueden crear una carpeta donde hacer el TP (tanto en la VM como en el server):
 mkdir ~/TP_introR
 #Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
