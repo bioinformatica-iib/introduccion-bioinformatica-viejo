@@ -538,7 +538,7 @@ En este caso tendríamos que iterar cada observación de `dt` y evaluar si es o 
 
 ```r
 for(i in 1:length(dt[,1])){
-  if(dt[i,]$escencial == T){
+  if(dt[i,]$esencial == T){
     print(dt[i,]$gen)
   }
 }
