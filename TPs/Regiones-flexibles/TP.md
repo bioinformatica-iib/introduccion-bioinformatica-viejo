@@ -32,13 +32,13 @@ Selecciona la proteína que se llama: [Cellular tumor antigen p53 (TP53) Homo sa
 Chequea que en la parte superior de la página, en **alignments** esté seleccionada la opción **QFO**.
 
 
- A. ¿Qué regiones parecen estar mejor alineadas?
+1. ¿Qué regiones parecen estar mejor alineadas?
 
- B. ¿Existe diferencia en la composición de secuencia entre las regiones mejor alineadas y las no tan bien alineadas?
+2. ¿Existe diferencia en la composición de secuencia entre las regiones mejor alineadas y las no tan bien alineadas?
 
- C. ¿Se observan diferencias en el grado de conservación de estas regiones?
+3. ¿Se observan diferencias en el grado de conservación de estas regiones?
 
- D. ¿A qué pueden deberse las diferencias observadas?
+4. ¿A qué pueden deberse las diferencias observadas?
 
 
 ### Ejercicio 2. Predicción de desorden a partir de la secuencia.
@@ -56,12 +56,12 @@ cd ~/Tools/IUPred/
 
 # Debería aparecer lo siguiente:
 
-Usage: ./iupred2a.py (options) (seqfile) (iupred type)
-    Available types: "long", "short", "glob"
+# Usage: ./iupred2a.py (options) (seqfile) (iupred type)
+#    Available types: "long", "short", "glob"
 
-Options
-    -d str   -   Location of data directory (default='./')
-    -a       -   Enable ANCHOR2 predition
+# Options
+#    -d str   -   Location of data directory (default='./')
+#    -a       -   Enable ANCHOR2 predition
 
 # En base a eso, el comando a utilizar es el siguiente
  
@@ -176,23 +176,23 @@ La ontología de desorden está organizada en cinco categorías diferentes:
 **Ejercicio:**
 La proteína p53 es una proteína supresora de tumores, es decir que su mutación favorece el crecimiento tumoral. p53 es uno de los genes más mutados en el cáncer humano, y actúa como un factor de transcripción que se expresa en todos los tejidos. Cumple un rol principal en el ciclo celular y es el regulador principal de la apoptosis. Es esencial para inducir la respuesta celular ante el daño al ADN, deteniendo el ciclo celular cuando las células no pueden reparar el ADN dañado por agentes genotóxicos. Si falla p53 podrían facilitar la formación de tumores celulares y en consecuencia producir cáncer. Alrededor de un 50% de los tumores humanos identificados poseen mutaciones en la proteína p53. Esta proteína, por su importancia para la salud humana, es una de las proteínas más estudiadas en cuanto a su estructura y función.
 
- A. Ingresa a la página web de DisProt (www.disprot.org) y encuentra la proteína p53 (P53_HUMAN, P04637). La búsqueda puede realizarse utilizando el Accession Number o por palabras claves. El identificador de DisProt que deberían encontrar es DP00086.
+ 1. Ingresa a la página web de DisProt (www.disprot.org) y encuentra la proteína p53 (P53_HUMAN, P04637). La búsqueda puede realizarse utilizando el Accession Number o por palabras claves. El identificador de DisProt que deberían encontrar es DP00086.
 
- B. Expande “Disprot consensus” ¿Qué tipo de información observa en la página?
+ 2. Expande “Disprot consensus” ¿Qué tipo de información observa en la página?
 
-i. Expande “Structural state” y luego expande “Disorder”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+* Expande “Structural state” y luego expande “Disorder”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
- C. ¿Cuál es el rol de las regiones desordenadas?
+ 3. ¿Cuál es el rol de las regiones desordenadas?
 
-i. Expande “Interaction” ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
+* Expande “Interaction” ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
 
-ii. Expande “Function” ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
+* Expande “Function” ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
- D. ¿Se observa algún dominio globular conservado?
+ 4. ¿Se observa algún dominio globular conservado?
 
-i. Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+* Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
- E. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en los ejercicios 1 y 2?
+ 5. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en los ejercicios 1 y 2?
 
 
 # PARTE II: Análisis de alineamientos múltiples de secuencia de proteínas - Visualizando alineamientos con JalView
@@ -234,32 +234,31 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 6. Ingresa la proteína en IUPred. ¿Se corresponden las regiones identificadas como Disorder en PFAM con las predichas por IUPred?
 
 ### Ejercicio 2. Usando JalView para analizar un MSA de p53
-Descarga un conjunto de secuencias homólogas de p53 obtenido de la base de datos Swiss Prot. El archivo también se encuentra en la carpeta MSA del TP de la materia y se llama p53.fasta
+1. Descarga un conjunto de secuencias homólogas de p53 obtenido de la base de datos Swiss Prot. El archivo también se encuentra en la carpeta MSA del TP de la materia y se llama p53.fasta
 
 *File* → *Input Alignment* →  *From File*
 
-Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
+2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
 
 *Web Service* → *Alignment* →  *Clustal* → *With defaults*
 
 (o descarga y abre el archivo p53_aligned.fasta que se encuentra en la carpeta MSA del TP de la materia)
 
-Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
+3. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
 
 *Format* → *Show Non-Conserved*
 
-a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
+* Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
 
-b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
+* ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
 
-c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
+* ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
 
-d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
+* Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
 
-e. ¿Existen regiones del alineamiento que no estén alineadas correctamente?
-
-Para editar el alineamiento, primero asegurate de realizar:
-*Select* → *Deselect All*
+* ¿Existen regiones del alineamiento que no estén alineadas correctamente?
+    Para editar el alineamiento, primero asegurate de realizar:
+    *Select* → *Deselect All*
 
 **Eliminar gaps:** Seleccione con el mouse el gap o arrastrando sobre el grupo de gaps que desea eliminar y presione “Backspace” o “Del”
 **Agregar gaps:** Presione F2. En primera posición del alineamiento en la primera secuencia aparecerá un cursor de color negro. Colóquelo en la posición donde desee ingresar un gap y presione la barra espaciadora.
