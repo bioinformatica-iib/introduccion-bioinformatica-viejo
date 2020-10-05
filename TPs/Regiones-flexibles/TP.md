@@ -408,7 +408,7 @@ Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar 
 6. ¿Existen contradicciones entre la asignación de dominios PFAM y el desorden predicho?
 
 ### Ejercicio Adicional 5. Caracterización de la proteína humana N-WASP (O00401) desde el punto de vista de orden y desorden.
-1. Busca el número de estructuras PDB que existen para esta proteína ([http://www.rcsb.org/pdb/protein/O00401](http://www.rcsb.org/pdb/protein/O00401) → “Number of PDB entries for O00401”
+1. Busca el número de estructuras PDB que existen para esta proteína ([http://www.rcsb.org/pdb/protein/O00401](http://www.rcsb.org/pdb/protein/O00401) → *Number of PDB entries for O00401*)
 2. ¿Qué regiones de la proteína N-WASP están resueltas para cada entrada del PDB?
 3. Busca familias PFAM y observa el tipo.
 
