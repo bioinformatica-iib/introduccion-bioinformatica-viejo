@@ -381,13 +381,13 @@ Muchas proteínas desordenadas ejercen su función uniéndose a una proteína gl
 
 3. La base de datos IDEAL se enfoca en IDRs que adoptan una estructura 3D al unirse a sus pares proteicos y se los llama *Protean Segments* (ProS), que se definen cuando la información estructural y no desestructural existen. Hay otros conceptos similares a los ProS que difieren en la definición, como por ejemplo, los *Molecular recognition features* (MoRFs), que tienen una limitación de longitud de 70 residues y los motivos lineales eucarióticos que son expresados por expresiones regulares.
 
-Ingresa a la base de datos IDEAL y busca la proteína p53 (P53_HUMAN, P04637). ¿Qué regiones están involucradas en la formación de complejos?
+    Ingresa a la base de datos IDEAL y busca la proteína p53 (P53_HUMAN, P04637). ¿Qué regiones están involucradas en la formación de complejos?
 
-Prestando atención a la región C-terminal:
+    Prestando atención a la región C-terminal:
 
-    a. ¿A cuántas proteínas distintas se une p53?
+        a. ¿A cuántas proteínas distintas se une p53?
     
-    b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
+        b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
 
 4. Busca los PDBs: 1MA3, 1H26, 1JSP, 1DT7.
 
