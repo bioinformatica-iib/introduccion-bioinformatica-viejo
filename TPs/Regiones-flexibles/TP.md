@@ -180,17 +180,17 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
  2. Expande *Disprot consensus* ¿Qué tipo de información observa en la página?
 
-* Expande *Structural state* y luego expande *Disorder*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+    a. Expande *Structural state* y luego expande *Disorder*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
  3. ¿Cuál es el rol de las regiones desordenadas?
 
-* Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
+    a. Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
 
-* Expande *Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
+    b. Expande *Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
  4. ¿Se observa algún dominio globular conservado?
 
-* Expande *Domains*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+    a. Expande *Domains*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
  5. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en el **Ejercicio 1** y en el **Ejercicio 2**?
 
@@ -217,6 +217,7 @@ Existen un alto número de guías y tutoriales disponibles online que pueden enc
 
 Los desarrolladores de JalView crearon numerosos videos de entrenamiento disponibles en el [Canal de YouTube de JalView](https://www.youtube.com/channel/UCIjpnvZB770yz7ftbrJ0tfw)
 
+## Guía de Ejercicios - Jalview
 ### Ejercicio 1. Identificando Módulos en Proteínas
 Utilizando su código UNIPROT (P04637), busca la proteína p53 humana (P53_HUMAN) en la base de datos PFAM [https://pfam.xfam.org/](https://pfam.xfam.org/)
 
@@ -236,33 +237,34 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 ### Ejercicio 2. Usando JalView para analizar un MSA de p53
 1. Descarga un conjunto de secuencias homólogas de p53 obtenido de la base de datos Swiss Prot. El archivo también se encuentra en la carpeta MSA del TP de la materia y se llama p53.fasta
 
-*File* → *Input Alignment* →  *From File*
+    *File* → *Input Alignment* →  *From File*
 
 2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
 
-*Web Service* → *Alignment* →  *Clustal* → *With defaults*
+    *Web Service* → *Alignment* →  *Clustal* → *With defaults*
 
-(o descarga y abre el archivo p53_aligned.fasta que se encuentra en la carpeta MSA del TP de la materia)
+    (o descarga y abre el archivo p53_aligned.fasta que se encuentra en la carpeta MSA del TP de la materia)
 
 3. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
 
-*Format* → *Show Non-Conserved*
+    *Format* → *Show Non-Conserved*
 
-a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
+    a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
 
-b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
+    b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
 
-c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
+    c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
 
-d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
+    d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
 
-e. ¿Existen regiones del alineamiento que no estén alineadas correctamente?
+    e. ¿Existen regiones del alineamiento que no estén alineadas correctamente?
 
-Para editar el alineamiento, primero asegurate de realizar:
-*Select* → *Deselect All*
+    Para editar el alineamiento, primero asegurate de realizar:
+    
+    *Select* → *Deselect All*
 
-**Eliminar gaps:** Seleccione con el mouse el gap o arrastrando sobre el grupo de gaps que desea eliminar y presione “Backspace” o “Del”
-**Agregar gaps:** Presione F2. En primera posición del alineamiento en la primera secuencia aparecerá un cursor de color negro. Colóquelo en la posición donde desee ingresar un gap y presione la barra espaciadora.
+    **Eliminar gaps:** Seleccione con el mouse el gap o arrastrando sobre el grupo de gaps que desea eliminar y presione “Backspace” o “Del”
+    **Agregar gaps:** Presione F2. En primera posición del alineamiento en la primera secuencia aparecerá un cursor de color negro. Colóquelo en la posición donde desee ingresar un gap y presione la barra espaciadora.
 
 ### Ejercicio 3. Análisis de distintas propiedades del MSA utilizando el menú COLOUR.
 Este menú permite colorear el alineamiento con diferentes paletas de colores que permiten visualizar determinadas características fisicoquímicas o relacionadas con la conservación o identidad de secuencia que facilitan el análisis de la información contenida en el MSA.
@@ -273,38 +275,39 @@ También es posible disminuir la intensidad de los colores según el grado de co
 
 1. Seleccione para colorear el alineamiento desde el menú la opción:
 
-*Colour* → *Clustalx*
+    *Colour* → *Clustalx*
 
-Este esquema es muy comúnmente utilizado para la visualización de MSAs y permite representar información importante contenida en los patrones de sustitución de un MSA
+    Este esquema es muy comúnmente utilizado para la visualización de MSAs y permite representar información importante contenida en los patrones de sustitución de un MSA
 
-Observando el alineamiento intente identificar:
+    Observando el alineamiento intente identificar:
 
-a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?
+    a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?
 
-b. ¿Cuantos colores existen?
+    b. ¿Cuántos colores existen?
 
-c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?
+    c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?
 
-d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). Qué observa respecto de la coloración de la cisteína: ¿Es siempre igual? ¿A qué se debe el cambio en la representación?
+    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). Qué observa respecto de la coloración de la cisteína: ¿Es siempre igual? ¿A qué se debe el cambio en la representación?
 
-e. ¿En qué situaciones los residuos no están coloreados?
+    e. ¿En qué situaciones los residuos no están coloreados?
 
-f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
+    f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
 
 2. Manteniendo el esquema de color Clustal, es posible filtrar regiones de acuerdo al % identidad en el alineamiento múltiple. Para ello, aplique el filtro de identidad yendo a:
 
-*Colour* → *Above identity threshold*
+    *Colour* → *Above identity threshold*
 
-Se abrirá una ventana en la cual podrá seleccionar el % identidad del filtro en escala de 0 a 100%. Explore los cambios en todo el alineamiento al variar la escala de 0 a 100%.
+    Se abrirá una ventana en la cual podrá seleccionar el % identidad del filtro en escala de 0 a 100%. Explore los cambios en todo el alineamiento al variar la escala de 0 a 100%.
 
-Utilizando el filtro, respondan:
+    Utilizando el filtro, respondan:
 
-a. ¿Qué regiones muestran una identidad de secuencia mayor al 80% en el MSA de p53? ¿Y al 100%? Anote los límites de estas regiones y responda: ¿Qué correlación observa con la información obtenida de PFAM?
+    a. ¿Qué regiones muestran una identidad de secuencia mayor al 80% en el MSA de p53? ¿Y al 100%? Anote los límites de estas regiones y responda: ¿Qué correlación observa con la información obtenida de PFAM?
  
-En las regiones conservadas, observe los patrones de sustitución en diferentes columnas del MSA. Estos patrones son un reflejo de la historia evolutiva de la proteína y contienen mucha información funcional que aprenderemos a cuantificar más adelante en la materia. Observando detenidamente, responda:
+    En las regiones conservadas, observe los patrones de sustitución en diferentes columnas del MSA. Estos patrones son un reflejo de la historia evolutiva de la proteína y contienen mucha información funcional que aprenderemos a cuantificar más adelante en la materia. Observando detenidamente, responda:
 
-b. ¿Qué tipos de patrones observa?
-c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?
+    b. ¿Qué tipos de patrones observa?
+    
+    c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?
 
 ## Ejercicios Adicionales de Desorden
 ### Ejercicio Adicional 1. Base de datos MobiDB
@@ -317,17 +320,17 @@ La base de datos MobiDB centraliza diferentes recursos que facilitan la anotaci�
 
 3. Ve a la pestaña *Indirect*.  A la izquierda se ve lo siguiente:
 
-![](./images/MobiDB1.png)
+    ![](./images/MobiDB1.png)
 
-En la primera línea se indica la secuencia y en la segunda línea (*Consensus*) se indica el consenso en base a la evidencia estructural. Ubique el mouse sobre las distintas regiones y responda: ¿Qué significan los distintos colores de las regiones marcados en el consenso?
+    En la primera línea se indica la secuencia y en la segunda línea (*Consensus*) se indica el consenso en base a la evidencia estructural. Ubique el mouse sobre las distintas regiones y responda: ¿Qué significan los distintos colores de las regiones marcados en el consenso?
 
 4. Exploremos la evidencia proveniente de la estructura cristalográfica. Para eso despliegue  la sección *Missing residues* (PDB).
 
 ![](./images/MobiDB2.png)
 
-* ¿Qué regiones tienen una estructura? 
+    * ¿Qué regiones tienen una estructura? 
 
-Busca la entrada 5AOM_A y cliquea en el último botón de la línea  (*go to PDB*). En la web de la base de datos de PDB ve a la sección *Macromolecules*. Mira la sección correspondiente a la cadena A. ¿Puedes decir cómo se determinó que estas regiones eran desordenadas?
+    Busca la entrada 5AOM_A y cliquea en el último botón de la línea  (*go to PDB*). En la web de la base de datos de PDB ve a la sección *Macromolecules*. Mira la sección correspondiente a la cadena A. ¿Puedes decir cómo se determinó que estas regiones eran desordenadas?
 
 5. Vuelva a la pestaña de MobiDB. Existen regiones de la proteína que presentan evidencia conflictiva de desorden en el consenso (marcadas como *conflict* en la pestaña *overview*). Mirando las distintas estructuras resueltas en MobiDB responda ¿Por qué estas regiones están marcadas como conflictivas?
 
@@ -380,12 +383,15 @@ Muchas proteínas desordenadas ejercen su función uniéndose a una proteína gl
 Ingresa a la base de datos IDEAL y busca la proteína p53 (P53_HUMAN, P04637). ¿Qué regiones están involucradas en la formación de complejos?
 
 Prestando atención a la región C-terminal:
-a. ¿A cuántas proteínas distintas se une p53?
-b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
+
+    a. ¿A cuántas proteínas distintas se une p53?
+    
+    b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
 
 4. Busca los PDBs: 1MA3, 1H26, 1JSP, 1DT7.
 
-¿Cuán parecidas son las predicciones de ANCHOR con las regiones de unión conocidas?
+    ¿Cuán parecidas son las predicciones de ANCHOR con las regiones de unión conocidas?
+
 
 Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar los siguientes métodos en casa y ver las diferencias:
 
