@@ -23,14 +23,14 @@ La idea de esta actividad, es que sirva como una introducción muy liviana a la 
 Todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio-server*, en el cual operarán de forma remota solo a través del explorador de internet como si entraran a cualquier sitio web. Podrán trabajar en la misma sesión tanto durante las clases como desde cualquier computadora personal con acceso a internet (donde prefieran practicar, repasar, o profundizar lo realizado en clase.)
 Para acceder, simplemente entren al siguiente enlace:
 
-[rserver](http://pi.iib.unsam.edu.ar/rserver/)
+[rserver](http://pi.iib.unsam.edu.ar/rserver2/)
 
 *Rstudio* les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado. Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
 
 Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitamos para trabajar en el TP con el siguiente comando:
 ```bash
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/IntroR/data/install.sh
-bash install.sh
+bash install.sh #Esto no hay que hacerlo si usan Rstudio desde el servidor
 #Y pueden crear una carpeta donde hacer el TP (tanto en la VM como en el server):
 mkdir ~/TP_introR
 #Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
@@ -538,7 +538,7 @@ En este caso tendríamos que iterar cada observación de `dt` y evaluar si es o 
 
 ```r
 for(i in 1:length(dt[,1])){
-  if(dt[i,]$escencial == T){
+  if(dt[i,]$esencial == T){
     print(dt[i,]$gen)
   }
 }
