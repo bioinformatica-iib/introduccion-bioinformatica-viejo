@@ -180,18 +180,18 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
  B. Expande “Disprot consensus” ¿Qué tipo de información observa en la página?
 
-    i. Expande “Structural state” y luego expande “Disorder”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
-    
+i. Expande “Structural state” y luego expande “Disorder”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+
  C. ¿Cuál es el rol de las regiones desordenadas?
 
-    i. Expande “Interaction” ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
-    
-    ii. Expande “Function” ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
-    
+i. Expande “Interaction” ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
+
+ii. Expande “Function” ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
+
  D. ¿Se observa algún dominio globular conservado?
 
-    i. Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
-    
+i. Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+
  E. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en los ejercicios 1 y 2?
 
 
