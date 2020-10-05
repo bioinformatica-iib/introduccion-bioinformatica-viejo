@@ -202,7 +202,7 @@ i. Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué
 * PFAM:                    [https://pfam.xfam.org/](https://pfam.xfam.org/)
 
 ## Introducción
-####Objetivos:
+#### Objetivos:
 * Aprender a utilizar Jalview para visualizar un MSA y familiarizarse con el manejo de programas de visualización de alineamientos.
 * Interpretar alineamientos múltiples de secuencias. Identificar regiones de secuencia conservadas y asociarlas a diferentes elementos funcionales de las proteínas. 
 * Visualizar y analizar los patrones de sustitución aminoacídica encontrados en proteínas modulares. Correlacionar con sus conocimientos sobre matrices de sustitución 
@@ -369,9 +369,9 @@ Explora los resultados. ¿Elegimos correctamente?
 * Familiarizarse con la identificación de sitios de unión en IDPs
 * Interpretación de los resultados de los distintos métodos.
 
-Muchas proteínas desordenadas ejercen su función uniéndose a una proteína globular, mediante una transición de desorden a orden. *ANCHOR* es un algoritmo para predecir sitios de unión en proteínas desordenadas buscando identificar segmentos que residen en regiones desordenadas y no forman interacciones intracatenarias suficientes que favorezcan el plegado por sí mismas, pero si logran estabilizarse al interactuar con una proteína globular.
+Muchas proteínas desordenadas ejercen su función uniéndose a una proteína globular, mediante una transición de desorden a orden. ANCHOR es un algoritmo para predecir sitios de unión en proteínas desordenadas buscando identificar segmentos que residen en regiones desordenadas y no forman interacciones intracatenarias suficientes que favorezcan el plegado por sí mismas, pero si logran estabilizarse al interactuar con una proteína globular.
 
-1. Ve a la web de *IUPred*. [https://iupred2a.elte.hu](https://iupred2a.elte.hu)
+1. Ve a la web de IUPred. [https://iupred2a.elte.hu](https://iupred2a.elte.hu)
 
 2. Ingresa la proteína p53 (P53_HUMAN), asegúrate que la opción ANCHOR en *Context-dependent predictions* esté seleccionada.
     * ¿Cuántas regiones de interacción identifica ANCHOR?
@@ -412,9 +412,13 @@ Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar 
 1. Busca el número de estructuras PDB que existen para esta proteína ([http://www.rcsb.org/pdb/protein/O00401](http://www.rcsb.org/pdb/protein/O00401) → “Number of PDB entries for O00401”
 2. ¿Qué regiones de la proteína N-WASP están resueltas para cada entrada del PDB?
 3. Busca familias PFAM y observa el tipo.
-    a. Haz click en el domain
-    b. Haz click en “Curation and model”
-    c. Chequea el tipo: “Domain”, “Family” o “Motif”
+
+a. Haz click en el domain
+
+b. Haz click en *Curation and model*
+
+c. Chequea el tipo: *Domain*, *Family* o *Motif*
+
 4. Encuentra regiones de baja complejidad (“low complexity”) ¿Qué aminoácidos son más frecuentes en esta región?
 5. Utiliza el predictor de desorden de tu preferencia.
 6. ¿Qué regiones llamarías desordenadas?
