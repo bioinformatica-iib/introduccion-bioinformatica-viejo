@@ -178,21 +178,21 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
  1. Ingresa a la página web de DisProt (www.disprot.org) y encuentra la proteína p53 (P53_HUMAN, P04637). La búsqueda puede realizarse utilizando el Accession Number o por palabras claves. El identificador de DisProt que deberían encontrar es DP00086.
 
- 2. Expande “Disprot consensus” ¿Qué tipo de información observa en la página?
+ 2. Expande *Disprot consensus* ¿Qué tipo de información observa en la página?
 
-* Expande “Structural state” y luego expande “Disorder”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+* Expande *Structural state* y luego expande *Disorder*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
  3. ¿Cuál es el rol de las regiones desordenadas?
 
-* Expande “Interaction” ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
+* Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
 
-* Expande “Function” ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
+* Expande *Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
  4. ¿Se observa algún dominio globular conservado?
 
-* Expande “Domains”. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+* Expande *Domains*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
- 5. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en los ejercicios 1 y 2?
+ 5. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en el **Ejercicio 1** y en el **Ejercicio 2**?
 
 
 # PARTE II: Análisis de alineamientos múltiples de secuencia de proteínas - Visualizando alineamientos con JalView
@@ -359,7 +359,6 @@ Pega la secuencia en el box *Enter Query Sequence*. Chequear que el box *align t
 En la sección **Choose Search Set**, selecciona la **database Protein Data Bank proteins (pdb)**.
 
 Explora los resultados. ¿Elegimos correctamente?
-
 
 > El predictor de desorden DisMeta cuya página web es: [http://www-nmr.cabm.rutgers.edu/bioinformatics/disorder/](http://www-nmr.cabm.rutgers.edu/bioinformatics/disorder/) se desarrolló específicamente para diseñar construcciones para cristalografía de rayos X. El método es **muy lento**. Por lo tanto, explora los resultados fuera de clase.
 
