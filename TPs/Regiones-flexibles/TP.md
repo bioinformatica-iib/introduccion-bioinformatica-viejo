@@ -248,17 +248,18 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 
 *Format* → *Show Non-Conserved*
 
-* Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
+a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
 
-* ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
+b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
 
-* ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
+c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
 
-* Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
+d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
 
-* ¿Existen regiones del alineamiento que no estén alineadas correctamente?
-    Para editar el alineamiento, primero asegurate de realizar:
-    *Select* → *Deselect All*
+e. ¿Existen regiones del alineamiento que no estén alineadas correctamente?
+
+Para editar el alineamiento, primero asegurate de realizar:
+*Select* → *Deselect All*
 
 **Eliminar gaps:** Seleccione con el mouse el gap o arrastrando sobre el grupo de gaps que desea eliminar y presione “Backspace” o “Del”
 **Agregar gaps:** Presione F2. En primera posición del alineamiento en la primera secuencia aparecerá un cursor de color negro. Colóquelo en la posición donde desee ingresar un gap y presione la barra espaciadora.
