@@ -184,8 +184,7 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
  3. ¿Cuál es el rol de las regiones desordenadas?
 
-    a. Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
-
+    a. Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?  
     b. Expande *Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
  4. ¿Se observa algún dominio globular conservado?
@@ -249,14 +248,10 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 
     *Format* → *Show Non-Conserved*
 
-    a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?
-
-    b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?
-
-    c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?
-
-    d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*
-
+    a. Algunas secuencias son más cortas que otras ¿por qué crees que es esto?  
+    b. ¿Todas las secuencias comienzan con el aminoácido metionina? A qué corresponden las secuencias que no?  
+    c. ¿Si quieren construir un alineamiento de alta calidad, preservarían o descartarían estas secuencias?  
+    d. Remuevan las secuencias que no corresponden a proteínas completas. Para ello seleccionar las secuencias haciendo click sobre el nombre de la misma en el panel izquierdo, la secuencia se marcará con una caja roja punteada. Remover la secuencia seleccionada utilizando la tecla *Backspace* o *Del*  
     e. ¿Existen regiones del alineamiento que no estén alineadas correctamente?
 
     Para editar el alineamiento, primero asegurate de realizar:
@@ -281,16 +276,11 @@ También es posible disminuir la intensidad de los colores según el grado de co
 
     Observando el alineamiento intente identificar:
 
-    a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?
-
-    b. ¿Cuántos colores existen?
-
-    c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?
-
-    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). Qué observa respecto de la coloración de la cisteína: ¿Es siempre igual? ¿A qué se debe el cambio en la representación?
-
-    e. ¿En qué situaciones los residuos no están coloreados?
-
+    a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?  
+    b. ¿Cuántos colores existen?  
+    c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?  
+    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). Qué observa respecto de la coloración de la cisteína: ¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
+    e. ¿En qué situaciones los residuos no están coloreados?  
     f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
 
 2. Manteniendo el esquema de color Clustal, es posible filtrar regiones de acuerdo al % identidad en el alineamiento múltiple. Para ello, aplique el filtro de identidad yendo a:
@@ -305,8 +295,7 @@ También es posible disminuir la intensidad de los colores según el grado de co
  
     En las regiones conservadas, observe los patrones de sustitución en diferentes columnas del MSA. Estos patrones son un reflejo de la historia evolutiva de la proteína y contienen mucha información funcional que aprenderemos a cuantificar más adelante en la materia. Observando detenidamente, responda:
 
-    b. ¿Qué tipos de patrones observa?
-    
+    b. ¿Qué tipos de patrones observa?  
     c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?
 
 ## Ejercicios Adicionales de Desorden
@@ -385,8 +374,7 @@ Muchas proteínas desordenadas ejercen su función uniéndose a una proteína gl
 
     Prestando atención a la región C-terminal:
 
-    a. ¿A cuántas proteínas distintas se une p53?
-
+    a. ¿A cuántas proteínas distintas se une p53?  
     b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
         
 
@@ -420,12 +408,9 @@ Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar 
 2. ¿Qué regiones de la proteína N-WASP están resueltas para cada entrada del PDB?
 3. Busca familias PFAM y observa el tipo.
 
-    a. Haz click en el domain
-  
-    b. Haz click en *Curation and model*
-  
+    a. Haz click en el domain  
+    b. Haz click en *Curation and model*  
     c. Chequea el tipo: *Domain*, *Family* o *Motif*
-  
 
 4. Encuentra regiones de baja complejidad (“low complexity”) ¿Qué aminoácidos son más frecuentes en esta región?
 5. Utiliza el predictor de desorden de tu preferencia.
