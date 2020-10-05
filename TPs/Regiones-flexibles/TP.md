@@ -385,9 +385,10 @@ Muchas proteínas desordenadas ejercen su función uniéndose a una proteína gl
 
     Prestando atención a la región C-terminal:
 
-        a. ¿A cuántas proteínas distintas se une p53?
-    
-        b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
+    a. ¿A cuántas proteínas distintas se une p53?
+
+    b. ¿Qué tipo de estructura secundaria adquieren en el complejo?
+        
 
 4. Busca los PDBs: 1MA3, 1H26, 1JSP, 1DT7.
 
