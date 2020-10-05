@@ -412,9 +412,12 @@ Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar 
 2. ¿Qué regiones de la proteína N-WASP están resueltas para cada entrada del PDB?
 3. Busca familias PFAM y observa el tipo.
 
-  a. Haz click en el domain
-  b. Haz click en *Curation and model*
-  c. Chequea el tipo: *Domain*, *Family* o *Motif*
+    a. Haz click en el domain
+  
+    b. Haz click en *Curation and model*
+  
+    c. Chequea el tipo: *Domain*, *Family* o *Motif*
+  
 
 4. Encuentra regiones de baja complejidad (“low complexity”) ¿Qué aminoácidos son más frecuentes en esta región?
 5. Utiliza el predictor de desorden de tu preferencia.
