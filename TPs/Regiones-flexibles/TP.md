@@ -63,6 +63,8 @@ Options
     -d str   -   Location of data directory (default='./')
     -a       -   Enable ANCHOR2 predition
 
+# En base a eso, el comando a utilizar es el siguiente
+ 
 ./iupred2a.py -a P53_HUMAN.seq long >P53_HUMAN.iupred
 
 ```
@@ -165,11 +167,11 @@ Deberías obtener un gráfico como el siguiente:
 La base de datos DisProt es una colección de evidencia de desorden experimental recolectada de la literatura y curada manualmente. La evidencia corresponde a una región proteica, e incluye por lo menos: un experimento, el artículo científico correspondiente a ese experimento, el inicio y final de la región en la secuencia proteica y un término de anotación que corresponde a la Ontología de desorden. **Cada una de las entradas en la base de datos posee un identificador único**.
 
 La ontología de desorden está organizada en cinco categorías diferentes:
-* Estado estructural (Structural State): Order or Disorder
-* Transición estructural (Structural Transition): Transiciones que pueden ocurrir entre diferentes estados estructurales (Disorder to order)
-* Par de Interacción (Interaction Partner): La entidad que interactúa (proteína, ión, moléculas pequeñas)
-* Función de desorden (Disorder Function): La función de una región incluyendo términos específicos a desorden.
-* Método experimental (Experimental Method): Métodos experimentales para detectar regiones desordenadas.
+* Estado estructural (*Structural State*): Order or Disorder
+* Transición estructural (*Structural Transition*): Transiciones que pueden ocurrir entre diferentes estados estructurales (*Disorder to order*)
+* Par de Interacción (*Interaction Partner*): La entidad que interactúa (proteína, ión, moléculas pequeñas)
+* Función de desorden (*Disorder Function*): La función de una región incluyendo términos específicos a desorden.
+* Método experimental (*Experimental Method*): Métodos experimentales para detectar regiones desordenadas.
 
 **Ejercicio:**
 La proteína p53 es una proteína supresora de tumores, es decir que su mutación favorece el crecimiento tumoral. p53 es uno de los genes más mutados en el cáncer humano, y actúa como un factor de transcripción que se expresa en todos los tejidos. Cumple un rol principal en el ciclo celular y es el regulador principal de la apoptosis. Es esencial para inducir la respuesta celular ante el daño al ADN, deteniendo el ciclo celular cuando las células no pueden reparar el ADN dañado por agentes genotóxicos. Si falla p53 podrían facilitar la formación de tumores celulares y en consecuencia producir cáncer. Alrededor de un 50% de los tumores humanos identificados poseen mutaciones en la proteína p53. Esta proteína, por su importancia para la salud humana, es una de las proteínas más estudiadas en cuanto a su estructura y función.
