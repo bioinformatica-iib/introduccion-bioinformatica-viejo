@@ -326,7 +326,8 @@ La base de datos MobiDB centraliza diferentes recursos que facilitan la anotaci�
 
 4. Exploremos la evidencia proveniente de la estructura cristalográfica. Para eso despliegue  la sección *Missing residues* (PDB).
 
-![](./images/MobiDB2.png)
+    ![](./images/MobiDB2.png)
+
 
     * ¿Qué regiones tienen una estructura? 
 
