@@ -244,8 +244,9 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ```
 
-    Lo abrimos en Jalview:  
-    *File* → *Input Alignment* →  *From File*
+Lo abrimos en Jalview:
+
+*File* → *Input Alignment* →  *From File*
 
 
 2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
@@ -255,10 +256,9 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
     o descarga y abre el archivo p53_aligned.fasta:
 
 ``` bash
-    wget 
-https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53_aligned.fasta
+    wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53_aligned.fasta
 
-``` 
+```
 
 3. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
 
