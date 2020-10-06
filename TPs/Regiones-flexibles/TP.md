@@ -245,7 +245,7 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 ```
 
     Lo abrimos en Jalview:
-    
+
     *File* → *Input Alignment* →  *From File*
 
 2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
