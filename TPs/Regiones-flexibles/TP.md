@@ -368,7 +368,6 @@ En la sección **Choose Search Set**, selecciona la **database Protein Data Bank
 
 Explora los resultados. ¿Elegimos correctamente?
 
-> El predictor de desorden DisMeta cuya página web es: [http://www-nmr.cabm.rutgers.edu/bioinformatics/disorder/](http://www-nmr.cabm.rutgers.edu/bioinformatics/disorder/) se desarrolló específicamente para diseñar construcciones para cristalografía de rayos X. El método es **muy lento**. Por lo tanto, explora los resultados fuera de clase.
 
 ### Ejercicio Adicional 3. Búsqueda de regiones funcionales dentro de las IDPs, usando como ejemplo la proteína p53.
 
