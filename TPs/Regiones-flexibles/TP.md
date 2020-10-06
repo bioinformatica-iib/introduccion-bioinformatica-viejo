@@ -244,12 +244,12 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ```
 
-    Lo abrimos en Jalview:
-    
+2. Lo abrimos en Jalview:
+
     *File* → *Input Alignment* →  *From File*
 
 
-2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
+3. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
 
     *Web Service* → *Alignment* →  *Clustal* → *With defaults*
 
@@ -260,7 +260,7 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ```
 
-3. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
+4. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
 
     *Format* → *Show Non-Conserved*
 
