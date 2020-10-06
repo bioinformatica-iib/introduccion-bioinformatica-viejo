@@ -32,19 +32,15 @@ Entre los algoritmos que se basan en composición de secuencia podemos nombrar I
 
 Selecciona la proteína que se llama: [Cellular tumor antigen p53 (TP53) Homo sapiens (Human)](http://slim.icr.ac.uk/proviz/proviz.php?uniprot_acc=P04637). Es la primera de la lista.
 
-Chequea que en la parte superior de la página, en **alignments** esté seleccionada la opción **QFO**.
-
+> Para responder las preguntas debajo, asegúrate de que en el panel superior de la página, en **alignments**, esté seleccionada la opción **QFO**. Puedes investigar qué pasa si cambian a otras opciones, como _mammalian_ o _vertebrates_. 
 
 1. ¿Qué regiones parecen estar mejor alineadas?
-
 2. ¿Existe diferencia en la composición de secuencia entre las regiones mejor alineadas y las no tan bien alineadas?
-
 3. ¿Se observan diferencias en el grado de conservación de estas regiones?
-
 4. ¿A qué pueden deberse las diferencias observadas?
 
-
 ### Ejercicio 2. Predicción de desorden a partir de la secuencia.
+
 Ingresa en la web de **IUPred2A** [https://iupred2a.elte.hu](https://iupred2a.elte.hu) e ingresa la proteína p53 (puede ingresarse la secuencia de aminoácidos, el UNIPROT ID, P53_HUMAN, o el accession number, P04637). El algoritmo IUPred considera que un residuo es desordenado cuando el valor de IUPred es mayor o igual a 0.5 y ordenado cuando es menor a 0.5. Anota las posiciones iniciales y finales de las regiones predichas como desordenadas. ¿Se correlacionan las regiones predichas como ordenadas o desordenadas con las diferencias observadas en el ejercicio anterior?
 
 Imaginemos que queremos correr la predicción de desorden para cientos de proteínas, o que queremos contar el porcentaje de aminoácidos que se encuentran en regiones desordenadas ¿Le parece que el visualizador online sería una herramienta útil para hacerlo? ¡Claro que no! Por suerte, el algoritmo IUPred puede también correrse de manera local y además es rápido.
