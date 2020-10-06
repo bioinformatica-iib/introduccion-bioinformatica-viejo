@@ -41,7 +41,7 @@ Selecciona la proteína que se llama: [Cellular tumor antigen p53 (TP53) Homo sa
 
 ### Ejercicio 2. Predicción de desorden a partir de la secuencia.
 
-Ingresa en la web de **IUPred2A** [https://iupred2a.elte.hu](https://iupred2a.elte.hu) e ingresa la proteína p53 (puede ingresarse la secuencia de aminoácidos, el UNIPROT ID, P53_HUMAN, o el accession number, P04637). El algoritmo IUPred considera que un residuo es desordenado cuando el valor de IUPred es mayor o igual a 0.5 y ordenado cuando es menor a 0.5. Anota las posiciones iniciales y finales de las regiones predichas como desordenadas. ¿Se correlacionan las regiones predichas como ordenadas o desordenadas con las diferencias observadas en el ejercicio anterior?
+Ingresa en la web de **IUPred2A** [https://iupred2a.elte.hu](https://iupred2a.elte.hu) e ingresa la proteína p53 (puede ingresarse la secuencia de aminoácidos, el _UNIPROT ID_ - P53_HUMAN o el _accession number_ - P04637). El algoritmo IUPred considera que un residuo es desordenado cuando el valor de IUPred es mayor o igual a 0.5 y ordenado cuando es menor a 0.5. Anota las posiciones iniciales y finales de las regiones predichas como desordenadas. ¿Se correlacionan las regiones predichas como ordenadas o desordenadas con las diferencias observadas en el ejercicio anterior?
 
 Imaginemos que queremos correr la predicción de desorden para cientos de proteínas, o que queremos contar el porcentaje de aminoácidos que se encuentran en regiones desordenadas ¿Le parece que el visualizador online sería una herramienta útil para hacerlo? ¡Claro que no! Por suerte, el algoritmo IUPred puede también correrse de manera local y además es rápido.
 
@@ -52,33 +52,33 @@ cd ~/Tools/IUPred/
 
 # Primero corremos IUPred sin ninguna opción para ver cómo es su uso:
 ./iupred2a.py
+```
+Debería aparecer lo siguiente:
+```bash
+Usage: ./iupred2a.py (options) (seqfile) (iupred type)
+   Available types: "long", "short", "glob"
 
-# Debería aparecer lo siguiente:
-
-# Usage: ./iupred2a.py (options) (seqfile) (iupred type)
-#    Available types: "long", "short", "glob"
-
-# Options
-#    -d str   -   Location of data directory (default='./')
-#    -a       -   Enable ANCHOR2 predition
+Options
+   -d str   -   Location of data directory (default='./')
+   -a       -   Enable ANCHOR2 predition
 
 ```
 
-El archivo con la secuencia de p53 (P53_HUMAN.seq) está guardado en el mismo directorio que IUPred. En base a esto, el comando a utilizar es el siguiente
+El archivo con la secuencia de p53 (`P53_HUMAN.seq`) está guardado en el mismo directorio que IUPred. En base a esto, el comando a utilizar es el siguiente
 
 ```bash
-./iupred2a.py -a P53_HUMAN.seq long >P53_HUMAN.iupred
+./iupred2a.py -a P53_HUMAN.seq long > P53_HUMAN.iupred
 
 ```
 
-Explora el archivo generado (P53_HUMAN.iupred).
+Explora el archivo generado (`P53_HUMAN.iupred`).
 
 * ¿Cómo es el formato de los datos?
 * ¿Las columnas tienen nombre? ¿Serán interpretadas correctamente por R?
 
 Crea un script en R. Recuerda ver en qué directorio estás trabajando y configurarlo para trabajar en el directorio deseado, por si no lo recuerdas las funciones eran: ```getwd()``` y ```setwd()```.
 
-A cargar los datos! ¿Te acordás cómo se hacía? Se utilizaba la función ```read.csv()```. Vamos a modificar algunos argumentos para que lea correctamente el archivo. Si querés saber que es cada argumento siempre se puede revisar el uso de las funciones con ```help(read.csv)```
+A cargar los datos! ¿Te acordás cómo se hacía? Se utilizaba la función `read.csv()`. Vamos a modificar algunos argumentos para que lea correctamente el archivo. Si querés saber qué es cada argumento siempre se puede revisar el uso de las funciones con ```help(read.csv)```
 
 ``` R
 p53 <- read.csv(file="~/Tools/IUPred/P53_HUMAN.iupred", header=F ,sep="\t", col.names=c("Posición","Aminoácido","Iupred","Anchor"),  comment.char="#")
@@ -102,7 +102,7 @@ Para obtener un gráfico similar al que brinda el servidor de IUPred, utilizarem
 ``` R
 library(ggplot2)
 
-p3 <- ggplot(p53,aes(x=Posición,y=Iupred)) +
+plot_p53 <- ggplot(p53,aes(x=Posición,y=Iupred)) +
   scale_x_continuous(n.breaks = 20,expand = c(0.01,0.01)) +
   scale_y_continuous(n.breaks = 10) +
   geom_line(color="navyblue") +
@@ -150,7 +150,7 @@ Ahora lo vamos a convertir la tabla en un dataframe para graficar con ggplot2:
 aminoacidos_df<-as.data.frame(aminoacidos_porcentaje)
 colnames(aminoacidos_df) <- c("Aminoacidos","Prediccion","Porcentaje")
 
-p2 <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)) + geom_col(position = "dodge") + theme_bw()
+plot_aa <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)) + geom_col(position = "dodge") + theme_bw()
 
 ```
 Deberías obtener un gráfico como el siguiente:
@@ -159,14 +159,13 @@ Deberías obtener un gráfico como el siguiente:
 
 * ¿Qué aminoácidos son los más abundantes? ¿La abundancia de los aminoácidos coincide con lo esperado?
 
-
 ### Ejercicio 3. Base de datos DisProt
 #### Objetivos:
 * Familiarizarse con la base de datos DisProt
 * Entender las técnicas experimentales que permiten la identificación de regiones desordenadas.
 
 #### Introducción a Disprot
-La base de datos DisProt es una colección de evidencia de desorden experimental recolectada de la literatura y curada manualmente. La evidencia corresponde a una región proteica, e incluye por lo menos: un experimento, el artículo científico correspondiente a ese experimento, el inicio y final de la región en la secuencia proteica y un término de anotación que corresponde a la Ontología de desorden. **Cada una de las entradas en la base de datos posee un identificador único**.
+La base de datos DisProt es una colección de evidencia de desorden experimental recolectada de la literatura y curada manualmente. La evidencia corresponde a una región proteica, e incluye por lo menos: un experimento, el artículo científico correspondiente a ese experimento, el inicio y final de la región desordenada en la secuencia proteica y un término de anotación que corresponde a la Ontología de desorden. **Cada una de las entradas en la base de datos posee un identificador único**.
 
 La ontología de desorden está organizada en cinco categorías diferentes:
 * Estado estructural (*Structural State*): Order or Disorder
@@ -182,7 +181,7 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
  2. Expande *Disprot consensus* ¿Qué tipo de información observa en la página?
 
-    a. Expande *Structural state* y luego expande *Disorder*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+    Expande *Structural state* y luego expande *Disorder*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
 
  3. ¿Cuál es el rol de las regiones desordenadas?
 
@@ -287,14 +286,14 @@ También es posible disminuir la intensidad de los colores según el grado de co
 
     *Colour* → *Clustalx*
 
-    Este esquema es muy comúnmente utilizado para la visualización de MSAs y permite representar información importante contenida en los patrones de sustitución de un MSA
+    Este esquema es muy comúnmente utilizado para la visualización de MSAs y permite representar información importante contenida en los patrones de sustitución de un MSA.
 
     Observando el alineamiento intente identificar:
 
     a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?  
     b. ¿Cuántos colores existen?  
     c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?  
-    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). Qué observa respecto de la coloración de la cisteína: ¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
+    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). ¿Qué observa respecto de la coloración de la cisteína?¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
     e. ¿En qué situaciones los residuos no están coloreados?  
     f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
 
