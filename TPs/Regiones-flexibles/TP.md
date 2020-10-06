@@ -63,8 +63,11 @@ cd ~/Tools/IUPred/
 #    -d str   -   Location of data directory (default='./')
 #    -a       -   Enable ANCHOR2 predition
 
-# En base a eso, el comando a utilizar es el siguiente
- 
+```
+
+El archivo con la secuencia de p53 (P53_HUMAN.seq) está guardado en el mismo directorio que IUPred. En base a esto, el comando a utilizar es el siguiente
+
+```bash
 ./iupred2a.py -a P53_HUMAN.seq long >P53_HUMAN.iupred
 
 ```
@@ -74,9 +77,9 @@ Explora el archivo generado (P53_HUMAN.iupred).
 * ¿Cómo es el formato de los datos?
 * ¿Las columnas tienen nombre? ¿Serán interpretadas correctamente por R?
 
-Crea un script en R. Recuerda ver en qué directorio estás trabajando y configurarlo para trabajar en el directorio deseado, por si no lo recuerdas los comandos eran: ```getwd()``` y ```setwd()```.
+Crea un script en R. Recuerda ver en qué directorio estás trabajando y configurarlo para trabajar en el directorio deseado, por si no lo recuerdas las funciones eran: ```getwd()``` y ```setwd()```.
 
-A cargar los datos! ¿Te acordás cómo se hacía?
+A cargar los datos! ¿Te acordás cómo se hacía? Se utilizaba la función ```read.csv()```. Vamos a modificar algunos argumentos para que lea correctamente el archivo. Si querés saber que es cada argumento siempre se puede revisar el uso de las funciones con ```help(read.csv)```
 
 ``` R
 p53 <- read.csv(file="~/Tools/IUPred/P53_HUMAN.iupred", header=F ,sep="\t", col.names=c("Posición","Aminoácido","Iupred","Anchor"),  comment.char="#")
@@ -231,18 +234,31 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 3. ¿En qué regiones de la secuencia se encuentran estos dominios? Anotar de qué residuo a qué residuo abarca cada dominio, para usar más adelante. 
 4. ¿Creen que estos dominios corresponden unívocamente a dominios globulares?
 5. ¿A qué cree que corresponden las regiones marcadas como “Disorder” y “Low Complexity” en p53?
-6. Ingresa la proteína en IUPred. ¿Se corresponden las regiones identificadas como Disorder en PFAM con las predichas por IUPred?
+6. ¿Se corresponden las regiones identificadas como Disorder en PFAM con las predichas por IUPred en el **Ejercicio 1** de la guía de desorden?
 
 ### Ejercicio 2. Usando JalView para analizar un MSA de p53
-1. Descarga un conjunto de secuencias homólogas de p53 obtenido de la base de datos Swiss Prot. El archivo también se encuentra en la carpeta MSA del TP de la materia y se llama p53.fasta
+1. Descarga un conjunto de secuencias homólogas de p53 obtenido de la base de datos Swiss Prot. El archivo también se puede obtener desde la página de la materia por:
 
+``` bash
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53.fasta
+
+```
+
+    Lo abrimos en Jalview:
+    
     *File* → *Input Alignment* →  *From File*
 
 2. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
 
     *Web Service* → *Alignment* →  *Clustal* → *With defaults*
 
-    (o descarga y abre el archivo p53_aligned.fasta que se encuentra en la carpeta MSA del TP de la materia)
+    o descarga y abre el archivo p53_aligned.fasta:
+
+``` bash
+    wget 
+https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53_aligned.fasta
+
+``` 
 
 3. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
 
