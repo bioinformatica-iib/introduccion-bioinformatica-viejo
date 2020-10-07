@@ -311,14 +311,13 @@ También es posible disminuir la intensidad de los colores según el grado de co
 
     b. ¿Qué tipos de patrones observa?  
     c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?  
-    d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya reconocidas en p53. Compare sus observaciones en este alineamiento con el alineamiento visualizado en ProViz en el **Ejercicio 1** de la guía de desorden.
+    d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya reconocidas en p53. Compare sus observaciones en este alineamiento con el alineamiento visualizado en ProViz en el **Ejercicio 1** de la guía de desorden.  
+    * ¿Puede distinguir las mismas regiones?  
+    * ¿Ve diferencias en la composición de seucencia en cada región?  
+    * ¿Se observan diferencias en el grado de conservación?  
+    * ¿Las especies a las que corresponde cada secuencia son las mismas en los alineamientos? ¿Cuál posee organismos más distantes?  
+    * Discuta qué ventajas considera que tiene trabajar con un alineamiento propio respecto de trabajar con el alineamiento de ProViz?
 
-        * ¿Puede distinguir las mismas regiones?  
-        * ¿Ve diferencias en la composición de seucencia en cada región?  
-        * ¿Se observan diferencias en el grado de conservación?  
-        * ¿Las especies a las que corresponde cada secuencia son las mismas en los alineamientos? ¿Cuál posee organismos más distantes?  
-        * Discuta qué ventajas considera que tiene trabajar con un alineamiento propio respecto de trabajar con el alineamiento de ProViz?
-        
 
 ## Ejercicios Adicionales de Desorden
 ### Ejercicio Adicional 1. Base de datos MobiDB
