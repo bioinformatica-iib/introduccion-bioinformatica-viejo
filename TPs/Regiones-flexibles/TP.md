@@ -310,8 +310,8 @@ También es posible disminuir la intensidad de los colores según el grado de co
     En las regiones conservadas, observe los patrones de sustitución en diferentes columnas del MSA. Estos patrones son un reflejo de la historia evolutiva de la proteína y contienen mucha información funcional que aprenderemos a cuantificar más adelante en la materia. Observando detenidamente, responda:
 
     b. ¿Qué tipos de patrones observa?  
-    c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?
-    d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya reconocidas en p53. Compare sus observaciones en este alineamiento con el alineamiento visualizado en ProViz en el **Ejercicio 1** de la guía de desorden.
+    c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?  
+    d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya reconocidas en p53. Compare sus observaciones en este alineamiento con el alineamiento visualizado en ProViz en el **Ejercicio 1** de la guía de desorden.  
         * ¿Puede distinguir las mismas regiones?
         * ¿Ve diferencias en la composición de seucencia en cada región?
         * ¿Se observan diferencias en el grado de conservación?
