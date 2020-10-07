@@ -32,7 +32,7 @@ Entre los algoritmos que se basan en composición de secuencia podemos nombrar I
 
 Selecciona la proteína que se llama: [Cellular tumor antigen p53 (TP53) Homo sapiens (Human)](http://slim.icr.ac.uk/proviz/proviz.php?uniprot_acc=P04637). Es la primera de la lista.
 
-> Para responder las preguntas debajo, asegúrate de que en el panel superior de la página, en **alignments**, esté seleccionada la opción **QFO**. Puedes investigar qué pasa si cambian a otras opciones, como _mammalian_ o _vertebrates_. 
+> Para responder las preguntas debajo, asegúrate de que en el panel superior de la página, en **alignments**, esté seleccionada la opción **QFO**. Puedes investigar qué pasa si cambian a otras opciones, como _mammalian_ o _vertebrates_ y en **Options** a la izquierda hacé click en Show/Hide gaps (deberían aparecer más gaps).
 
 1. ¿Qué regiones parecen estar mejor alineadas?
 2. ¿Existe diferencia en la composición de secuencia entre las regiones mejor alineadas y las no tan bien alineadas?
