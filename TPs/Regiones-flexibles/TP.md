@@ -78,7 +78,7 @@ Explora el archivo generado (`P53_HUMAN.iupred`).
 
 Crea un script en R. Recuerda ver en qué directorio estás trabajando y configurarlo para trabajar en el directorio deseado, por si no lo recuerdas las funciones eran: ```getwd()``` y ```setwd()```.
 
-A cargar los datos! ¿Te acordás cómo se hacía? Se utilizaba la función `read.csv()`. Vamos a modificar algunos argumentos para que lea correctamente el archivo. Si querés saber qué es cada argumento siempre se puede revisar el uso de las funciones con ```help(read.csv)```
+¡A cargar los datos! ¿Te acordás cómo se hacía? Se utilizaba la función `read.csv()`. Vamos a modificar algunos argumentos para que lea correctamente el archivo. Si querés saber qué es cada argumento siempre se puede revisar el uso de las funciones con ```help(read.csv)```
 
 ``` R
 p53 <- read.csv(file="~/Tools/IUPred/P53_HUMAN.iupred", header=F ,sep="\t", col.names=c("Posición","Aminoácido","Iupred","Anchor"),  comment.char="#")
@@ -127,7 +127,7 @@ porcentaje <- 100*cuentaTotal/length(p53$Position)
 * En base a los valores obtenidos, ¿diría que la proteína p53 es altamente desordenada?
 
 Por último, analizaremos la composición de aminoácidos de p53. Pero antes:
-* ¿Qué residuos espera ver enriquecidos en las regiones desordenadas y cuales en las ordenadas? ¿Porqué?
+* ¿Qué residuos espera ver enriquecidos en las regiones desordenadas y cuales en las ordenadas? ¿Por qué?
 
 Vamos a graficar el porcentaje de cada aminoácido predicho como ordenado o desordenado en la secuencia de p53
 
@@ -144,7 +144,7 @@ aminoacidos_porcentaje <- 100*aminoácidos/length(p53$Posición)
 
 ```
 
-Ahora lo vamos a convertir la tabla en un dataframe para graficar con ggplot2:
+Ahora vamos a convertir la tabla en un dataframe para graficar con ggplot2:
 
 ``` R
 aminoacidos_df<-as.data.frame(aminoacidos_porcentaje)
@@ -209,11 +209,11 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
 
 
 #### JalView, software de visualización de alineamientos.
-Para poder visualizar alineamientos múltiples de secuencias (MSA, de sus siglas en inglés: Multiple Sequence Alignment) utilizaremos el visualizador de alineamientos JalView desarrollado en JAVA. Jalview permite generar alineamientos, manipularlos, editarlos y anotarlos. Tiene una interfaz que permite acceder remotamente numerosas herramientas como programas para realizar alineamientos múltiples de secuencia y predictores de estructura secundaria. A lo largo de la guía de ejercicios, introduciremos este programa usandolo para visualizar alineamientos múltiples de secuencias (MSAs) de proteínas modulares y discutir características de secuencia asociadas a los dominios y motivos funcionales encontrados en las  proteínas.
+Para poder visualizar alineamientos múltiples de secuencias (MSA, de sus siglas en inglés: Multiple Sequence Alignment) utilizaremos el visualizador de alineamientos JalView desarrollado en JAVA. Jalview permite generar alineamientos, manipularlos, editarlos y anotarlos. Tiene una interfaz que permite acceder remotamente numerosas herramientas como programas para realizar alineamientos múltiples de secuencia y predictores de estructura secundaria. A lo largo de la guía de ejercicios, introduciremos este programa usandolo para visualizar alineamientos múltiples de secuencias (MSAs) de proteínas modulares y discutir características de secuencia asociadas a los dominios y motivos funcionales encontrados en las proteínas.
 
-JalView es un programa disponible de manera gratuita, y está disponible para descargar e instalar en tu propia computadora en [https://www.jalview.org/](https://www.jalview.org/)
+JalView es un programa que se ofrece de manera gratuita, y está disponible para descargar e instalar en tu propia computadora en [https://www.jalview.org/](https://www.jalview.org/)
  
-Existen un alto número de guías y tutoriales disponibles online que pueden encontrarse en: [https://www.jalview.org/training](https://www.jalview.org/training)
+Existen un alto número de guías y tutoriales disponibles online que pueden encontrar en: [https://www.jalview.org/training](https://www.jalview.org/training)
 
 Los desarrolladores de JalView crearon numerosos videos de entrenamiento disponibles en el [Canal de YouTube de JalView](https://www.youtube.com/channel/UCIjpnvZB770yz7ftbrJ0tfw)
 
@@ -223,7 +223,7 @@ Utilizando su código UNIPROT (P04637), busca la proteína p53 humana (P53_HUMAN
 
 La base de datos PFAM es una colección de familias de dominios de proteínas construida en base a alineamientos múltiples de secuencia y modelos ocultos de markov (HMMs). Las proteínas están compuestas por una o más regiones funcionales o dominios, que combinados de distintas maneras crean la diversidad proteica que se encuentra en las proteínas naturales.
 
-* ¿Porqué es necesario identificar dominios en las proteínas?
+* ¿Por qué es necesario identificar dominios en las proteínas?
 
 Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el accession number (P04637) o el uniprot ID (P53_HUMAN)
 
@@ -327,7 +327,7 @@ La base de datos MobiDB centraliza diferentes recursos que facilitan la anotaci�
 
     En la primera línea se indica la secuencia y en la segunda línea (*Consensus*) se indica el consenso en base a la evidencia estructural. Ubique el mouse sobre las distintas regiones y responda: ¿Qué significan los distintos colores de las regiones marcados en el consenso?
 
-4. Exploremos la evidencia proveniente de la estructura cristalográfica. Para eso despliegue  la sección *Missing residues* (PDB).
+4. Exploremos la evidencia proveniente de la estructura cristalográfica. Para eso despliegue la sección *Missing residues* (PDB).
 
     ![](./images/MobiDB2.png)
 
@@ -374,7 +374,7 @@ Explora los resultados. ¿Elegimos correctamente?
 * Familiarizarse con la identificación de sitios de unión en IDPs
 * Interpretación de los resultados de los distintos métodos.
 
-Muchas proteínas desordenadas ejercen su función uniéndose a una proteína globular, mediante una transición de desorden a orden. ANCHOR es un algoritmo para predecir sitios de unión en proteínas desordenadas buscando identificar segmentos que residen en regiones desordenadas y no forman interacciones intracatenarias suficientes que favorezcan el plegado por sí mismas, pero si logran estabilizarse al interactuar con una proteína globular.
+Muchas proteínas desordenadas ejercen su función uniéndose a una proteína globular, mediante una transición de desorden a orden. ANCHOR es un algoritmo para predecir sitios de unión en proteínas desordenadas buscando identificar segmentos que residen en regiones desordenadas y no forman interacciones intracatenarias suficientes que favorezcan el plegado por sí mismas, pero sí logran estabilizarse al interactuar con una proteína globular.
 
 1. Ve a la web de IUPred. [https://iupred2a.elte.hu](https://iupred2a.elte.hu)
 
