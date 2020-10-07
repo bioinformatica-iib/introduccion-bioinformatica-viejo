@@ -68,7 +68,6 @@ El archivo con la secuencia de p53 (`P53_HUMAN.seq`) está guardado en el mismo 
 
 ```bash
 ./iupred2a.py -a P53_HUMAN.seq long > P53_HUMAN.iupred
-
 ```
 
 Explora el archivo generado (`P53_HUMAN.iupred`).
@@ -82,7 +81,6 @@ Crea un script en R. Recuerda ver en qué directorio estás trabajando y configu
 
 ``` R
 p53 <- read.csv(file="~/Tools/IUPred/P53_HUMAN.iupred", header=F ,sep="\t", col.names=c("Posición","Aminoácido","Iupred","Anchor"),  comment.char="#")
-
 ```
 Asegurate que los datos se cargaron correctamente, esperamos un dataframe con 4 columnas.
 
@@ -94,7 +92,6 @@ Primero crearemos una columna en el dataframe:
 p53$Prediccion <- NA
 p53$Prediccion[p53$Iupred>=0.5] <- "Desorden"
 p53$Prediccion[p53$Iupred<0.5] <- "Orden"
-
 ```
 
 Para obtener un gráfico similar al que brinda el servidor de IUPred, utilizaremos la librería ggplot2:
@@ -109,7 +106,6 @@ plot_p53 <- ggplot(p53,aes(x=Posición,y=Iupred)) +
   geom_point(aes(color=Prediccion)) +
   geom_hline(yintercept = 0.5,lty="dotted",size=1) +
   theme_linedraw()
-
 ```
 
 Debería obtener un gráfico como el siguiente:
@@ -121,7 +117,6 @@ Ahora, quisiéramos evaluar el porcentaje de residuos predichos ordenados y deso
 ``` R
 cuentaTotal <- table(p53$Prediccion)
 porcentaje <- 100*cuentaTotal/length(p53$Position)
-
 ```
 
 * En base a los valores obtenidos, ¿diría que la proteína p53 es altamente desordenada?
@@ -133,7 +128,6 @@ Vamos a graficar el porcentaje de cada aminoácido predicho como ordenado o deso
 
 ``` R
 aminoacidos <- table(p53$Aminoácido,p53$Prediccion)
-
 ```
 * ¿Qué hizo la función ```table``` en este caso?
 
@@ -141,7 +135,6 @@ Para calcular el porcentaje de aminoácidos:
 
 ``` R
 aminoacidos_porcentaje <- 100*aminoacidos/length(p53$Posición)
-
 ```
 
 Ahora vamos a convertir la tabla en un dataframe para graficar con ggplot2:
@@ -151,7 +144,6 @@ aminoacidos_df<-as.data.frame(aminoacidos_porcentaje)
 colnames(aminoacidos_df) <- c("Aminoacidos","Prediccion","Porcentaje")
 
 plot_aa <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)) + geom_col(position = "dodge") + theme_bw()
-
 ```
 Deberías obtener un gráfico como el siguiente:
 
@@ -239,7 +231,6 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 
 ``` bash
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53.fasta
-
 ```
 
 2. Lo abrimos en Jalview:
@@ -255,7 +246,6 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ``` bash
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53_aligned.fasta
-
 ```
 
 4. Inspecciona el alineamiento visualmente y reconoce algunas características de las secuencias. Si no se muestran todos los residuos y algunos aparecen como **“.”** ve a:
@@ -353,15 +343,13 @@ Una de las aplicaciones principales de la predicción de desorden es encontrar r
 Dada la siguiente proteína misteriosa:
 
 ```
->mystery_protein
-
+>mystery_protein  
 MMQDLRLILIIVGAIAIIALLVHGFWTSRKERSSMFRDRPLKRMKSKRDDDSYDEDVEDD
 EGVGEVRVHRVNHAPANAQEHEAARPSPQHQYQPPYASAQPRQPVQQPPEAQVPPQHAPH
 PAQPVQQPAYQPQPEQPLQQPVSPQVAPAPQPVHSAPQPAQQAFQPAEPVAAPQPEPVAE
 PAPVMDKPKRKEAVIIMNVAAHHGSELNGELLLNSIQQAGFIFGDMNIYHRHLSPDGSGP
 ALFSLANMVKPGTFDPEMKDFTTPGVTIFMQVPSYGDELQNFKLMLQSAQHIADEVGGVV
 LDDQRRMMTPQKLREYQDIIREVKDANA
-
 ```
 
 2. Utilizando IUPred2A, pega solamente la secuencia sin el header ¿Qué región de la proteína trataría de cristalizar?
