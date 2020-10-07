@@ -140,7 +140,7 @@ aminoacidos <- table(p53$Aminoácido,p53$Prediccion)
 Para calcular el porcentaje de aminoácidos:
 
 ``` R
-aminoacidos_porcentaje <- 100*aminoácidos/length(p53$Posición)
+aminoacidos_porcentaje <- 100*aminoacidos/length(p53$Posición)
 
 ```
 
