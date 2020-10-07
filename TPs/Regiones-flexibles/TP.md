@@ -157,7 +157,7 @@ Deberías obtener un gráfico como el siguiente:
 
 ![](./images/Aminoacidos.png)
 
-* ¿Qué aminoácidos son los más abundantes? ¿La abundancia de los aminoácidos coincide con lo esperado?
+* ¿Qué aminoácidos son los más abundantes en las regiones desordenadas? ¿La abundancia de los aminoácidos coincide con lo esperado?
 
 ### Ejercicio 3. Base de datos DisProt
 #### Objetivos:
