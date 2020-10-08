@@ -181,9 +181,9 @@ La proteína p53 es una proteína supresora de tumores, es decir que su mutació
     a. Expande *Interaction* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?  
     b. Expande *Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
- 4. ¿Se observa algún dominio globular conservado?
+ 4. Expande *Domains*.
 
-    a. Expande *Domains*. ¿A qué corresponden los segmentos coloreados? ¿Qué tipo de evidencia poseen dichos fragmentos?
+    a. Sabiendo que los dominios **PFAM** son asignados a partir de un perfil de HMMs creado de un alineamiento de proteínas representativas y que **Gene3D** contiene anotaciones de dominios estructurados. ¿Se observa algún dominio conservado que **NO** adquiera una estructura globular?
 
  5. ¿La evidencia experimental recolectada coincide con las predicciones realizadas en el **Ejercicio 1** y en el **Ejercicio 2**?
 
@@ -234,10 +234,13 @@ Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el acc
 wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/Regiones-flexibles/data/p53.fasta
 ```
 
-2. Lo abrimos en Jalview:
+2. Abre Jalview
+
+    >Para abrir Jalview vayan al directorio: ```~/Tools/JalView/``` y correr el archivo ```jalview.sh```
+
+    Para cargar el alineamiento en Jalview:  
 
     *File* → *Input Alignment* →  *From File*
-
 
 3. Para realizar el alineamiento utilizaremos el programa Clustal, al cual accederemos de manera remota desde JalView:
 
@@ -285,6 +288,8 @@ También es posible disminuir la intensidad de los colores según el grado de co
     b. ¿Cuántos colores existen?  
     c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?  
     d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). ¿Qué observa respecto de la coloración de la cisteína?¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
+    >En ProViz estaba siempre coloreada, pero en el esquema de colores de ClustalX no lo está
+
     e. ¿En qué situaciones los residuos no están coloreados?  
     f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
 
@@ -304,7 +309,7 @@ También es posible disminuir la intensidad de los colores según el grado de co
     c. ¿Qué relación guardan estos patrones con las matrices PAM y BLOSUM utilizadas para construir alineamientos de proteínas?  
     d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya reconocidas en p53. Compare sus observaciones en este alineamiento con el alineamiento visualizado en ProViz en el **Ejercicio 1** de la guía de desorden.  
     * ¿Puede distinguir las mismas regiones?  
-    * ¿Ve diferencias en la composición de seucencia en cada región?  
+    * ¿Ve diferencias en la composición de secuencia en cada región?  
     * ¿Se observan diferencias en el grado de conservación?  
     * ¿Las especies a las que corresponde cada secuencia son las mismas en los alineamientos? ¿Cuál posee organismos más distantes?  
     * Discuta qué ventajas considera que tiene trabajar con un alineamiento propio respecto de trabajar con el alineamiento de ProViz?
