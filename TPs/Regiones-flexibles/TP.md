@@ -117,7 +117,7 @@ Ahora, quisiéramos evaluar el porcentaje de residuos predichos ordenados y deso
 
 ``` R
 cuentaTotal <- table(p53$Prediccion)
-porcentaje <- 100*cuentaTotal/length(p53$Position)
+porcentaje <- 100*cuentaTotal/length(p53$Posición)
 ```
 
 * En base a los valores obtenidos, ¿diría que la proteína p53 es altamente desordenada?
