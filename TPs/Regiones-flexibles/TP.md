@@ -284,11 +284,11 @@ También es posible disminuir la intensidad de los colores según el grado de co
 
     Observando el alineamiento intente identificar:
 
-    a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview?  
+    a. ¿Cuál es la base del esquema de color “ClustalX” provisto por Jalview? *Nota:* Google provee respuestas pero... pueden ir directamente al [esquema de colores de ClustalX](http://www.jalview.org/help/html/colourSchemes/clustal.html)  
     b. ¿Cuántos colores existen?  
     c. ¿Qué propiedades fisicoquímicas representa cada grupo de color?  
-    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). ¿Qué observa respecto de la coloración de la cisteína?¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
-    >En ProViz estaba siempre coloreada, pero en el esquema de colores de ClustalX no lo está
+    d. La cisteína cumple un rol estructural importante en algunas proteínas (¿cual?). ¿Qué observa respecto de la coloración de la cisteína? ¿Es siempre igual? ¿A qué se debe el cambio en la representación?  
+    >En ProViz estaba siempre coloreada del mismo color, pero en el esquema de colores de ClustalX no lo está.
 
     e. ¿En qué situaciones los residuos no están coloreados?  
     f. Hay residuos que siempre están coloreados? ¿Cuáles son y a qué cree que se debe?
