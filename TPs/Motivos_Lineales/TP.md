@@ -97,12 +97,12 @@ La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se en
 * ¿Que se puede decir sobre la estructura de la proteína? ¿Se observa algún dominio? ¿Se observan regiones desordenadas?  
 * ¿Los predictores estructurales y filtros (SMART, GlobPlot, IUPRED, Secondary Structure) coinciden sobre qué regiones son estructuradas/desordenadas?
 
-3. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón “Reset Form”. Ingrese el accession number (P04637).
+3. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el accession number (P04637).
 * ¿Qué proteína es?
 * ¿Qué compartimentos celulares se le asignaron? ¿Tienen sentido?
 * Realice la predicción y conteste: ¿Cuántas instancias de motivos se encuentran ahora?
 
-4. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *"Reset Form"*. Ingrese el accession number (P04637) y modifique el parámetro:  
+4. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el accession number (P04637) y modifique el parámetro:  
 
     **Motif Probability Cutoff:** 0.01
 
