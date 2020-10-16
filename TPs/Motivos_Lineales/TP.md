@@ -69,8 +69,8 @@ LVPDAASKHKQLSELLRGGSGSSINPG
 La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se enfoca principalmente en la anotación y detección de motivos lineales (MLs). Para ello cuenta con un repositorio de motivos manualmente anotados, por lo cual está altamente curada y una herramienta de predicción de motivos. Esta predicción de motivos se realiza mediante una búsqueda de patrones de secuencia basada en texto utilizando expresiones regulares.
  
 1. Busque en ELM [http://elm.eu.org](http://elm.eu.org) en la pestaña Prediction una de las proteínas de la lista que usamos en el **Ejercicio 1**: la proteína PGC-1-alpha utilizando el accession number o uniprot ID (Q9UBK2 - PRGC1_HUMAN). Para cada motivo encontrado, se indica con símbolos (descriptos en la parte superior de la página) si la instancia del motivo es predicha o fue identificada experimentalmente (anotadas o "True Positives"). Responda: 
-* ¿Encuentra el motivo NRBox entre los true positives?
-* ¿Cuántas instancias “True Positive” existen?
+* ¿Encuentra el motivo NRBox entre los *True positives*?
+* ¿Cuántas instancias *True Positive* existen?
 * ¿Cómo es la estructura de la proteína donde se encuentran estos motivos?
 
 2. Pegue y copie la siguiente secuencia en ELM y utilice los parámetros que se indican a continuación.
@@ -93,7 +93,7 @@ La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se en
     **Motif Probability Cutoff:** 100  
     **Taxonomic context:** (leave blank)  
  
-* ¿Cuántas instancias de motivos se encuentran?  
+* ¿Cuántas instancias predichas de motivos se encuentran?  
 * ¿Qué se puede decir sobre la estructura de la proteína? ¿Se observa algún dominio? ¿Se observan regiones desordenadas?  
 * ¿Los predictores estructurales y filtros (SMART, GlobPlot, IUPRED, Secondary Structure) coinciden sobre qué regiones son estructuradas/desordenadas?
 
@@ -106,18 +106,20 @@ La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se en
 
     **Motif Probability Cutoff:** 0.01
 
-* ¿Cuántas instancias de motivos se encuentran ahora?
+* ¿Cuántas instancias predichas de motivos se encuentran ahora?
 * ¿Por qué cree que es útil usar la localización celular, el contexto taxonómico y el umbral de probabilidad del motivo?
 
 5. ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
 
-6. ¿Cuántas instancias de la clase MOD_CK1_1 se encontraron? ¿Cuál es la diferencia entre estas instancias?
+6. Vuelva a modificar el parámetro: **Motif Probability Cutoff:** 100 o 0.1
 
-7. ¿Cuántos degrons hay en p53? ¿Cuál es la función de estos motivos?
+* ¿Cuántas instancias de la clase MOD_CK1_1 se encontraron? ¿Cuál es la diferencia entre estas instancias?
 
-8. ¿Existe algún sitio CDK en p53?
+7. ¿Cuántos degrons anotados hay en p53? ¿Cuál es la función de estos motivos?
 
-9. ¿Existe algún sitio DOC_CYCLIN_RXL_1? ¿Qué relación funcional existe entre este sitio y el sitio CDK?
+8. ¿Existe algún sitio anotado CDK en p53?
+
+9. ¿Existe algún sitio anotado DOC_CYCLIN_RXL_1? ¿Qué relación funcional existe entre este sitio y el sitio CDK?
 
 10. Busque la proteína P53_MOUSE en ELM.
 * ¿Existen instancias anotadas?
@@ -126,14 +128,14 @@ La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se en
 ### Ejercicio 3. Identificación de motivos cortos de interacción en p53 en un alineamiento propio.
 La región amino terminal de p53 posee un motivo de unión a la E3 ligasa MDM2, el cual está caracterizado por una secuencia conservada que puede representarse por una expresión regular.
 
-1. Entre en la base de datos ELM y busque la expresión regular del motivo con el ID: DEG_MDM2_SWIB_1. Para esto ingrese el ID en la parte superior derecha donde dice: Search ELM database. La expresión regular se encuentra marcada como *"Pattern"*. A continuación, busque las ocurrencias de esta expresión regular en las secuencias de p53. Para ello, abra en **Jalview** el alineamiento de p53 con el cuál estás trabajando. **Jalview** permite la búsqueda de motivos por expresiones regulares. Para hacerlo, utilice la función:
+1. Entre en la base de datos ELM y busque la expresión regular del motivo con el ID: DEG_MDM2_SWIB_1. Para esto ingrese el ID en la parte superior derecha donde dice: Search ELM database. La expresión regular se encuentra marcada como *"Pattern"*. A continuación, busque las ocurrencias de esta expresión regular en las secuencias de p53. Para ello, abra en **Jalview** el alineamiento de p53 con el cuál estuvo trabajando en la clase de *Regiones Flexibles*. **Jalview** permite la búsqueda de motivos por expresiones regulares. Para hacerlo, utilice la función:
 
     *Select* → *Find*
 
     En la ventana tipee la expresión regular. Si este procedimiento falla, y tiene la ventana de las secuencias no alineadas abiertas, ciérrela. Si aún así falla, identifique el motivo utilizando el filtro de conservación.
 
 * ¿Todas las secuencias de p53 tienen el motivo de interacción con MDM2?
-* ¿Todos los motivos MDM2 tienen la misma longitud?
+* ¿Todos los motivos MDM2 tienen la misma longitud de secuencia?
 * ¿Qué nivel de identidad de secuencia observa en esta región? ¿A qué puede deberse?
 
 ## Ejercicios Adicionales
