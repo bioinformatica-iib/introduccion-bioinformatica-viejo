@@ -76,20 +76,13 @@ click en *Run Procheck*.
 
 12. Para cuantificar el alineamiento de secuencia obtenido, podemos calcular el % de identidad de secuencia. Para ello, en la ventana del alineamiento de secuencias vaya a: *Info → Percent identity*. Seleccione una estructura en *Compare* y la otra estructura en *with*. En *Divide by* seleccione *longer sequence length*. Presiona en Ok.  
 
-* ¿Qué valor de identidad de secuencia obtiene? ¿Porque cree que difiere del reportado anteriormente? ¿Las sustituciones observadas en las secuencias son
-conservativas?  
+* ¿Qué valor de identidad de secuencia obtiene? ¿Porque cree que difiere del reportado anteriormente? ¿Las sustituciones observadas en las secuencias son conservativas?  
 
-* En base a los resultados obtenidos. ¿Intentaría obtener experimentalmente la
-estructura de la nueva proteína, o confiaría en el modelo?  
+* En base a los resultados obtenidos. ¿Intentaría obtener experimentalmente la estructura de la nueva proteína, o confiaría en el modelo?  
 
 ## Ejercicio 2.
-Usted es un famoso ecólogo que desde siempre sintió un especial interés por las ranas.
-Durante un viaje de campaña se encontró con unas ranas muy inusuales que poseían una
-fascinante coloración azul. Luego de años de investigación y muchos subsidios invertidos,
+Usted es un famoso ecólogo que desde siempre sintió un especial interés por las ranas. Durante un viaje de campaña se encontró con unas ranas muy inusuales que poseían una fascinante coloración azul. Luego de años de investigación y muchos subsidios invertidos, su becario descubrió que esta coloración se debe a la existencia de una proteína en la linfa de las ranas que es capaz de conjugar biliverdina. Luego de aislar la proteína, obtiene su secuencia:
 
-su becario descubrió que esta coloración se debe a la existencia de una proteína en la
-linfa de las ranas que es capaz de conjugar biliverdina. Luego de aislar la proteína,
-obtiene su secuencia:
 ```Bash
 >Hypsiboas_punctatus_BP
 MRVLLILGVVVLSTLAFAHHEEGHHDDEDLKDDHDPFLPEDHKKALFVYQKPALNNINFA
@@ -101,19 +94,27 @@ EIMQYQLIDLSLPKLSVSGILNLKETLSKLGIVDVFSNHADLSGITDESHLKVSKAIHKA
 MMSFDEHGTEAAPATAAEADPLMLPPHFKFDYPFIFRVQDLKTKNPLLVGRIANPQK
 ```
 
-Utilizando la secuencia, el becario busca en las bases de datos y descubre que su proteína es homóloga a una superfamilia de proteínas conocidas como serpinas compartiendo un 43% de identidad de secuencia con la proteína de humanos.  
+Utilizando la secuencia, el becario busca en las bases de datos y descubre que su proteína es homóloga a una superfamilia de proteínas conocidas como *serpinas* compartiendo un 43% de identidad de secuencia con la proteína de humanos.  
 
 Para entender las diferencias con la proteína de humanos, estuvo muy interesado en obtener la estructura tridimensional de la proteína de rana. Sin embargo, todos los intentos de cristalización fallaron rotundamente. Su subsidio se está terminando rápidamente pero afortunadamente, un becario muy interesado en bioinformática y el modelado por homología lo salva de su desesperación.  
 
-Utilizando la herramienta HHPred el becario encontró que el mejor template era: 3NE4, Chain A, correspondiente al inhibidor de tripsina humano (Alpha-1-antitrypsin, P01009). Utilizando herramientas de modelado desarrolla un modelo 3D y le asegura que el modelo es de muy buena calidad.  
+Utilizando la herramienta **HHPred** el becario encontró que el mejor template era: 3NE4, Chain A, correspondiente al inhibidor de tripsina humano (Alpha-1-antitrypsin, P01009). Utilizando herramientas de modelado desarrolla un modelo 3D y le asegura que el modelo es de muy buena calidad.  
 
 Desconfiando de los resultados de su becario, Ud. decide analizar la calidad del modelo obtenido. Para esto utiliza todas las herramientas que conoce:
-1. Descargue el modelo creado por su becario (Hypsiboas_punctatus_BP.pdb). Utilice las herramientas aprendidas en el punto anterior (Verify3D) e investigue los resultados obtenidos. ¿Le parece que su becario estaba en lo cierto, o equivocado?  
 
-Para explicar las diferencias obtenidas analice las estructuras como se indica en los puntos siguientes (2, 3 y 4) usando Chimera y IUPred:  
-2. Utilizando el modelo generado y el PDB (3NE4) utilizado como molde realice un alineamiento estructural en Chimera (*Tools → Structure Comparison → MatchMaker*). ¿Cuál es el RMSD global? ¿Qué diferencias observa en las
-estructuras alineadas? ¿Tiene relación con lo obtenido por Verify3D?
-3. En Chimera observe el alineamiento de secuencia (*Tools → Structure Comparison Match -> Align*). ¿En qué regiones hay mayor número de Gaps? Observe el RMSD por posición. ¿En qué regiones se observan las mayores diferencias? ¿A qué estructura corresponde? ¿Por qué cree que ocurre esto?
+1. Descargue el modelo creado por su becario (Hypsiboas_punctatus_BP.pdb). Utilice las herramientas aprendidas en el punto anterior (Verify3D) e investigue los resultados obtenidos.
+* ¿Le parece que su becario estaba en lo cierto, o equivocado?  
+
+  Para explicar las diferencias obtenidas analice las estructuras como se indica en los puntos siguientes (2, 3 y 4) usando **Chimera** y **IUPred**:  
+2. Utilizando el modelo generado y el PDB (3NE4) utilizado como molde realice un alineamiento estructural en Chimera (*Tools → Structure Comparison → MatchMaker*).
+* ¿Cuál es el RMSD global?
+* ¿Qué diferencias observa en las
+estructuras alineadas?
+* ¿Tiene relación con lo obtenido por Verify3D?
+
+3. En Chimera observe el alineamiento de secuencia (*Tools → Structure Comparison Match -> Align*).
+* ¿En qué regiones hay mayor número de Gaps?
+* Observe el RMSD por posición. ¿En qué regiones se observan las mayores diferencias? ¿A qué estructura corresponde? ¿Por qué cree que ocurre esto?
 4. Ingrese la secuencia de la rana en [IUPRed2A](https://iupred2a.elte.hu/plot). ¿Qué relación encuentra con lo obtenido por Verify3D?
 
 En base a los resultados de su análisis, responda:
@@ -125,29 +126,23 @@ En base a los resultados de su análisis, responda:
 Después del exitoso resultado que obtuvo, ahora más relajado luego de haber salvado a la población porcina, decide rechequear los resultados obtenidos con la proteína misteriosa patogénica 1 utilizando otro programa que requiere más tiempo para modelar su proteína.
 
 1. Ingrese la secuencia de la proteína en la web de [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index) Espere… Espere… Espere… (Puede llevar horas).
-2. Observe los resultados obtenidos. ¿Cuál es el valor de “*Confidence*” del modelo?
+2. Observe los resultados obtenidos. ¿Cuál es el valor de *Confidence* del modelo?
 ¿Cuál es el coverage de la secuencia? ¿A qué se debe este valor?
-3. Descargue el modelo (haciendo click sobre la representación) y trate de alinearlo
-en chimera con los otros modelos, ¿es muy diferente? Investigue las regiones con
-mayor valor de RMSD ¿A qué estructuras corresponde? ¿Qué concluye sobre las
-regiones más difíciles de modelar?
-4. En la web de Phyre, vaya a la sección Detailed template information. Haga click en
-*Run Investigator*.
-Explore en Quality las distintas opciones:
+3. Descargue el modelo (haciendo click sobre la representación) y trate de alinearlo en Chimera con los otros modelos, ¿es muy diferente? Investigue las regiones con mayor valor de RMSD ¿A qué estructuras corresponde? ¿Qué concluye sobre las regiones más difíciles de modelar?
+4. En la web de Phyre, vaya a la sección Detailed template information. Haga click en *Run Investigator*.  
+Explore en Quality las distintas opciones:  
 
-![img1](./images/img1.png)
+    ![img1](./images/img1.png)
 
-Al final de la página posee el alineamiento y puede ir estudiando estas
+    Al final de la página posee el alineamiento y puede ir estudiando estas
 características posición por posición.
 ¿Son muy diferentes los resultados obtenidos en comparación a los anteriores?
 
-## Estructura de Proteínas y Visualización de Estructuras con Chimera
+# Estructura de Proteínas y Visualización de Estructuras con Chimera
 
-### Introducción
-#### Chimera, software de visualización de estructuras.
-Para poder visualizar estructuras macromoleculares tales como proteínas globulares y
-ácidos nucleicos, se usará el software UCSF Chimera. Existen otros software similares
-pero Chimera tiene la ventaja de ser mantenido actualmente por sus desarrolladores.  
+## Introducción
+### Chimera, software de visualización de estructuras.
+Para poder visualizar estructuras macromoleculares tales como proteínas globulares y ácidos nucleicos, se usará el software UCSF Chimera. Existen otros software similares pero Chimera tiene la ventaja de ser mantenido actualmente por sus desarrolladores.  
 
 Chimera es un programa disponible de manera gratuita, y está disponible para descargar
 e instalar en tu propia computadora en http://www.cgl.ucsf.edu/chimera/  
@@ -164,7 +159,6 @@ estructuras? ¿Cómo accedemos a ellas?
 La base de datos de proteínas (Protein Data Bank, PDB) almacena actualmente más de
 150000 estructuras. Puedes acceder a ella aquí: http://www.rcsb.org/pdb/home/home.do
 
-
 Existe también una versión europea de esta base de datos (European Protein Data Bank,
 PDBe). Puedes acceder a ella desde aquí: https://www.ebi.ac.uk/pdbe/  
 
@@ -172,33 +166,27 @@ Las estructuras poseen un identificador de 4 caracteres alfanuméricos. Por ejem
 **1GUX** es el identificador, o PDB ID, de la proteína retinoblastoma unida a un péptido de la
 proteína E7 de papillomavirus.  
 
-La búsqueda de estructuras puede realizarse utilizando palabras claves, por ejemplo, la
-palabra clave **retinoblastoma** devuelve un total de 173 estructuras, o por otras
-características como nombre de alguno de los autores que participó en el estudio de esa
-estructura, por ejemplo, **Rubin, S.M.** devuelve un total de 32 estructuras. Pueden explorar
-la base de datos RCSB PDB para familiarizarse con ella.
-#### El archivo PDB. ¿Cómo están codificadas las estructuras?
+La búsqueda de estructuras puede realizarse utilizando palabras claves, por ejemplo, la palabra clave **retinoblastoma** devuelve un total de 173 estructuras, o por otras características como nombre de alguno de los autores que participó en el estudio de esa estructura, por ejemplo, **Rubin, S.M.** devuelve un total de 32 estructuras. Pueden explorar la base de datos RCSB PDB para familiarizarse con ella.
+
+### El archivo PDB. ¿Cómo están codificadas las estructuras?
 Las estructuras tridimensionales de las proteı́nas pueden generarse por diferentes métodos (cristalografía de rayos X o XRay, resonancia magnética nuclear o RMN, criomicroscopía electrónica o CryoEM) y están codificadas en archivos pdb. Un archivo pdb está compuesto por múltiples lı́neas de registros, cada uno identificado por una etiqueta determinada incluidos dentro de distintas secciones. En la figura se muestra un fragmento de la sección de coordenadas que describe la estructura de la proteına dando las coordenadas x, y y z (azul claro) de cada uno de los átomos identificados.
 
 ![img2](./images/img2.png)
 
 En cada lı́nea, además, se identifica si es un átomo (rojo) perteneciente a un aminoácido o nucleótido, o heteroátomo (azul oscuro), la numeración (verde), el nombre del átomo (naranja), el nombre del residuo en el que está incluido el átomo (violeta), la cadena a la que pertenece (negro), el número del residuo al que pertenece (verde). Este archivo puede incluir más columnas para cada átomo con datos relacionados con el espacio que ocupa el átomo, la movilidad del átomo (el factor de temperatura o B-factor), el sı́mbolo que representa al átomo y la carga del mismo (señaladas con “...” en la figura). El encabezado o header del archivo PDB puede tener muchísima información no relacionada directamente con la conformación tridimensional de la proteína, sino con cómo se hizo el experimento, las publicaciones relacionadas y otros. La descripción del resto del contenido de las secciones del archivo pdb puede obtenerse en la sección documentación de http://www.wwpdb.org/.  
 
-**Ejercicio. Busca, descarga y abre un archivo PDB. ¿Puedes identificar los distintos
-datos? ¿Puedes identificar qué otra información se encuentra? ¿Cómo está
-señalizada u organizada dicha información?**
+**Ejercicio.** Busca, descarga y abre un archivo PDB.
+* ¿Puedes identificar los distintos 
+datos?
+* ¿Puedes identificar qué otra información se encuentra? ¿Cómo está señalizada u organizada dicha información?**
 
-Los archivos PDB, fueron utilizados por décadas para describir la estructura de una
-macromolécula. Sin embargo, tiene un número limitado de líneas y átomos que se pueden
-codificar y actualmente no puede manejar complejos macromoleculares muy grandes,
-partículas virales, etc.
-Recientemente, se desarrolló un nuevo formato de archivo, MMCIF, que puede codificar
-estructuras de complejos macromoleculares mucho más grandes. Sin embargo, no todos
-los programas utilizados para visualizar estructuras soportan este formato.  
+Los archivos PDB, fueron utilizados por décadas para describir la estructura de una macromolécula. Sin embargo, tiene un número limitado de líneas y átomos que se pueden codificar y actualmente no puede manejar complejos macromoleculares muy grandes, partículas virales, etc.  
+Recientemente, se desarrolló un nuevo formato de archivo, MMCIF, que puede codificar estructuras de complejos macromoleculares mucho más grandes. Sin embargo, no todos los programas utilizados para visualizar estructuras soportan este formato.  
 
-**Ejercicio. Busca, descarga y abre un archivo MMCIF. ¿Puedes identificar los
-distintos datos? ¿Puedes identificar qué otra información se encuentra? ¿Cómo
-está señalizada u organizada dicha información?**
+**Ejercicio.** Busca, descarga y abre un archivo MMCIF.
+* ¿Puedes identificar los distintos datos?
+* ¿Puedes identificar qué otra información se encuentra? ¿Cómo
+está señalizada u organizada dicha información?
 
 ### Guía de Ejercicios - Chimera
  Chimera es un programa con muchas potencialidades y herramientas de análisis. En la
@@ -219,14 +207,10 @@ mismos.
 1. Localiza chimera en tu computadora y abrelo.
 2. Existen dos formas de cargar una estructura en Chimera:
 
-**Opción 1:** Ve a File, selecciona Fetch by ID.
-Ingresa el identificador del PDB deseado. Por ejemplo: 2AZE.
-Se descargará de manera remota el PDB 2AZE de la base de datos PDB.
+**Opción 1:** Ve a File, selecciona Fetch by ID. Ingresa el identificador del PDB deseado. Por ejemplo: 2AZE. Se descargará de manera remota el PDB 2AZE de la base de datos PDB.
 
 **Opción 2:** Ve a File, selecciona Open.
-Busca el archivo PDB en la carpeta donde lo hayas descargado previamente y
-seleccionalo. Todos los archivos se encuentran además en la carpeta PDBs del TP
-de la materia.
+Busca el archivo PDB en la carpeta donde lo hayas descargado previamente y seleccionalo. Todos los archivos se encuentran además en la carpeta PDBs del TP de la materia.
 
 Archivos PDBs con los que trabajaremos:  
 
@@ -238,13 +222,13 @@ PDB ID | Descripción
 **3RGK** | Estructura de la Myoglobin humana  
 **5LGY** | 4 Core Domain DE P53 unidos al BAX response element (DNA)
 
-**Ejercicio 1. Algunas definiciones antes de empezar a visualizar**  
+### Ejercicio 1. Algunas definiciones antes de empezar a visualizar
 1. ¿Como se define una superficie de interacción?
 2. ¿Como se definen interacciones puentes de hidrógeno, interacciones mediadas por
 carga, hidrofóbicas?
 3. ¿Por qué sería útil superponer estructuras relacionadas?
 
-**Ejercicio 2. Familiarizándonos con Chimera**  
+### Ejercicio 2. Familiarizándonos con Chimera
 Existen diversas maneras de visualizar los complejos estructurales. Dependiendo cuál es
 el objetivo del análisis a veces es mejor utilizar distintos métodos de visualización como
 superficies, átomos o ribbons (cinta).
