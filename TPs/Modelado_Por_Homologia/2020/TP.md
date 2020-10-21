@@ -17,15 +17,13 @@ YLARVS
 ```
 
 2. Haga click en **Submit** en la parte inferior de la página y seleccione el hit que le parezca más conveniente y luego seleccione en la parte
-superior Model using selection. ¿Qué se muestra en la nueva ventana? (Mueva la
+superior **Model using selection**.  
+* ¿Qué se muestra en la nueva ventana? (Mueva la
 barra inferior para ver que hay en la ventana).
-3. Haga click en Forward to Modeller y luego en Submit. (De ser necesario ingrese la
-siguiente key: MODELIRANJE en el recuadro que dice “Modeller key” y luego haga
-click en Submit)
-¿Qué aparece en la nueva ventana?
-4. Descargue el archivo PDB (Download PDB File)
-5. La herramienta **Verify3D** permite determinar la compatibilidad de un modelo 3D de
-una proteína con su secuencia aminoacídica en base a cuál es el ambiente en el cual se encuentra cada residuo y la compatibilidad con la estructura secundaria en la que se encuentra.
+3. Haga click en **Forward to Modeller** y luego en **Submit**. (De ser necesario ingrese la siguiente key: **MODELIRANJE** en el recuadro que dice **Modeller key** y luego haga click en Submit)  
+* ¿Qué aparece en la nueva ventana?
+4. Descargue el archivo PDB (**Download PDB File**)
+5. La herramienta **Verify3D** permite determinar la compatibilidad de un modelo 3D de una proteína con su secuencia aminoacídica en base a cuál es el ambiente en el cual se encuentra cada residuo y la compatibilidad con la estructura secundaria en la que se encuentra.
 
 
 Vaya a la web de [Verify3D](https://servicesn.mbi.ucla.edu/Verify3D/), suba el
