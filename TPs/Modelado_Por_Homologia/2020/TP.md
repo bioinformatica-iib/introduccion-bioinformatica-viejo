@@ -1,6 +1,6 @@
 # Modelado por Homología
 
-<div align="right"> <span style="color:grey; font-size:1.5em;"> Lucía Chemes y Juliana Glavina</span></div>
+<div align="right"> <span style="color:grey; font-size:2em;"> Lucía Chemes y Juliana Glavina</span></div>
 
 ## Ejercicio 1.
 Luego de dos años y numerosos intentos fallidos, usted logró determinar por resonancia magnética nuclear una región de la proteína misteriosa y depositar la estructura en la
@@ -255,13 +255,13 @@ PDB ID | Descripción
 **3RGK** | Estructura de la Myoglobin humana  
 **5LGY** | 4 Core Domain DE P53 unidos al BAX response element (DNA)
 
-<span style="color:grey;">Ejercicio 1. Algunas definiciones antes de empezar a visualizar</span>  
+**Ejercicio 1. Algunas definiciones antes de empezar a visualizar**  
 1. ¿Como se define una superficie de interacción?
 2. ¿Como se definen interacciones puentes de hidrógeno, interacciones mediadas por
 carga, hidrofóbicas?
 3. ¿Por qué sería útil superponer estructuras relacionadas?
 
-<span style="color:grey;">Ejercicio 2. Familiarizándonos con Chimera</span>  
+**Ejercicio 2. Familiarizándonos con Chimera**  
 Existen diversas maneras de visualizar los complejos estructurales. Dependiendo cuál es
 el objetivo del análisis a veces es mejor utilizar distintos métodos de visualización como
 superficies, átomos o ribbons (cinta).
@@ -296,7 +296,7 @@ Permite realizar determinadas acciones en la molécula, relacionadas con:
 **Ejercicio para discutir. ¿Se te ocurre para qué puede ser útil cada forma de
 visualización?**
 
-<span style="color:grey;">Ejercicio 3. Analizando estructuras</span>  
+**Ejercicio 3. Analizando estructuras**  
 En este ejercicio trabajaremos con el complejo formado entre las proteínas E2F y DP1
 (factores de transcripción) y la región C-terminal del regulador del ciclo celular
 Retinoblastoma. El objetivo es familiarizarse con el uso de diferentes modos de
@@ -331,7 +331,7 @@ Asegúrate que la opción *Include Intra-molecule H-bonds* **NO** está seleccio
 ¿Qué se observa? ¿Entre qué grupos se forman los puentes de hidrógeno? ¿De
 qué tipo de estructura forman parte?
 
-<span style="color:grey;"> Ejercicio 4. Estudiando interacciones intermoleculares</span>    
+**Ejercicio 4. Estudiando interacciones intermoleculares**    
 En este ejercicio vamos a trabajar con el complejo entre el dominio TAD de p53 y el
 dominio globular de la E3 ligasa MDM2, e interpretaremos el tipo de interacciones que
 estabilizan este complejo utilizando métodos para visualizar este tipo de interacción
@@ -366,7 +366,7 @@ Colorea la superficie por heteroátomos. Para esto: *Action → Color → by het
 representación? Pensar en las propiedades fisicoquímicas de los grupos que
 componen a las proteína, y sus tipos de interacciones**
 
-4. Selecciona ahora la cadena B, represéntala como ribbon.
+4. Selecciona ahora la **cadena **, represéntala como **ribbon**.
 Muestra las cadenas laterales de los aminoácidos. Para esto:
 
   *Action → atoms/bonds → Show*
@@ -379,6 +379,7 @@ Muestra las cadenas laterales de los aminoácidos. Para esto:
 y selecciona la **cadena B**.
 
  **¿Puedes correlacionar los residuos en la secuencia con la estructura?**
+
 5. Ahora representaremos algunos aminoácidos de distinta manera. En la ventana de
 la secuencia marca los residuos F19 y W23. Para seleccionar es necesario hacer
 click y arrastrar levemente el mouse. Luego, manteniendo shift apretado selecciona
@@ -403,7 +404,7 @@ de heteroátomos: ¿qué significa la escala de color que se ve, y qué propieda
 fisicoquímica tiene el área (parche de unión) donde se unen los residuos F19 y
 W23? ¿De qué tipo de interacciones se trata?**
 
-<span style="color:grey;">Ejercicio 5. Alineando estructuras de dos proteínas </span>   
+**Ejercicio 5. Alineando estructuras de dos proteínas**   
 En este ejercicio, compararemos dos estructuras de proteínas transportadoras de
 oxígeno: Mioglobina humana y Leghemoglobina de plantas. Carga los PDBs
 correspondientes: 3RGK y 2GDM utilizando la función “fetch”.
@@ -450,28 +451,20 @@ Prueba dividiendo por *longer, shorter and non-gap columns*.
 ¿Qué valores de identidad de secuencia obtienes? ¿Las sustituciones observadas en las
 secuencias son conservativas?
 
-En la carpeta MSA del TP de la materia, pueden encontrar las secuencias FASTA de
-ambas proteínas. El archivo **P02240.fasta** corresponde a Leghemoglobina y el archivo
-**P02144.fasta** corresponde a la Mioglobina. Utilizando las herramientas ya aprendidas,
-realicen un alineamiento de a pares de las secuencias y respondan: Obtienen la misma
-identidad de secuencia que por el método usado recién en Chimera? Si hay diferencias,
-pueden interpretarlas?
+En la carpeta MSA del TP de la materia, pueden encontrar las secuencias FASTA de ambas proteínas. El archivo **P02240.fasta** corresponde a Leghemoglobina y el archivo **P02144.fasta** corresponde a la Mioglobina. Utilizando las herramientas ya aprendidas, realicen un alineamiento de a pares de las secuencias y respondan: Obtienen la misma identidad de secuencia que por el método usado recién en Chimera? Si hay diferencias, pueden interpretarlas?
 
-**Entonces: ¿Qué se puede concluir de la divergencia estructural en comparación a
-la divergencia de secuencia en proteínas transportadoras de oxígeno? ¿Qué implica
-esto a nivel evolutivo?**
+**Entonces: ¿Qué se puede concluir de la divergencia estructural en comparación a la divergencia de secuencia en proteínas transportadoras de oxígeno? ¿Qué implica esto a nivel evolutivo?**
 
-<span style="color:grey;"> Ejercicio 6. Visualizando ácidos nucleicos</span>  
-Aquí analizaremos el dominio de unión a DNA de p53 estudiado previamente. Carga el
-pdb **1YCR**.
+**Ejercicio 6. Visualizando ácidos nucleicos**  
+Aquí analizaremos el dominio de unión a DNA de p53 estudiado previamente. Carga el pdb **1YCR**.
 
 ¿Cuántas cadenas observas? ¿A qué corresponde cada cadena?
 Colorea cada dominio proteico con un color diferente.
 
 Ve a *Actions → Atoms/Bonds → Nucleotide objects → off*  
 Selecciona los ácidos nucleicos: *Select → Residue → Standard nucleic acids*  
-Encuentra los puentes de hidrógeno.
-* *Tools→ Structural Analysis → Find H Bonds*
+Encuentra los puentes de hidrógeno.  
+*Tools→ Structural Analysis → Find H Bonds*
 
 Selecciona:  
 *Only find H-Bonds → with both ends selected*  
