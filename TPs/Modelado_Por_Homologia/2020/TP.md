@@ -1,7 +1,5 @@
 # Modelado por Homología
 
-<div align="right"> <span style="color:grey; font-size:2em;"> Lucía Chemes y Juliana Glavina</span></div>
-
 ## Ejercicio 1.
 Luego de dos años y numerosos intentos fallidos, usted logró determinar por resonancia magnética nuclear una región de la proteína misteriosa y depositar la estructura en la
 base de datos de proteínas PDB (1F7W).
