@@ -21,7 +21,6 @@ Este paso no es imprescindible pero si aconsejable. La calibración del perfil l
 ```Bash
 hmm2calibrate globin.hmm
 ```
-
 # Búsqueda en bases de datos
 
 El comando para utilizar nuestro flamante profile en una búsqueda es **hmm2search**. En este caso lo vamos a utilizar contra el archivo Artemia.fa que contiene una única secuencia de globina en búsqueda de dominios pertenecientes a nuestra familia de interés.
@@ -109,11 +108,14 @@ Llegando al final encontramos un histograma, similar al que nos mostraba FASTA. 
 Histogram of all scores:
 score    obs    exp  (one = represents 1 sequences)
 -----    ---    ---
-  474      1      0|=}}}
+  474      1      0|=
+
+```
 
 Y por último algunos datos estadísticos que no tienen mucha utilidad y podemos obviar.
 
-{{{% Statistical details of theoretical EVD fit:
+```
+% Statistical details of theoretical EVD fit:
               mu =   -38.9116
           lambda =     0.2355
 chi-sq statistic =     0.0000
@@ -139,16 +141,19 @@ tophits_s report:
 HMMer puede leer los formatos de la mayoría de las bases de datos conocidas. A diferencia de BLAST no es necesario indexar la base de datos. Si recuerdan de la práctica de BLAST/FASTA, uno podía crear su propia base de datos donde realizar los alineamientos a partir de un archivo multifasta utilizando el comando **formatdb**, el cual crea todo el sistema de índices de *ktuplas* y demás archivos para facilitar la búsqueda. En este caso HMMer puede realizar la búsqueda directamente sobre el multifasta sin necesidad de más procesamiento. En nuestro servidor podemos realizar la búsqueda utilizando:
 
 ```Bash
-hmm2search globin.hmm ~/Swissprot_db/Swissprot.fasta
+hmm2search globin.hmm ~/Swissprot_db/Swissprot.fasta > globin.swissprot.search
+less globin.swissprot.search
 ```
+
+> Notarán que la búsqueda directa aumenta considerablemente el tiempo de cómputo necesario para obtener un resultado
 
 ## Modos de alineamiento
 
-HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
+HMMer no utiliza los métodos clásicos de alineamiento (*Smith-Waterman o Needleman-Wunsch*) como el resto de los algoritmos de alineamiento sino que el modo de alinear (local o global) está dado por el modelo que construimos. Por defecto **hmm2build** lleva a cabo alineamientos que son globales con respecto al HMM y local con respecto a la secuencia objetivo, permitiendo alinear varios dominios en esa misma secuencia. ¿Qué significa esto? que cada dominio se intenta alinear completamente en alguna porción de la secuencia objetivo. Si queremos recuperar secuencias que contengan alineamientos parciales de dominios podemos agregar la opcion -f a **hmm2build**.
 
 ## Bases de datos de HMM
 
- Así como nos es posible realizar búsquedas de profiles contra bases de datos de secuencias, podemos crear una base de datos de profiles y utilizar como query una secuencia. Este es el caso de la base de datos **PFAM** (Sonnhammer et al., 1997; Sonnhammer et al., 1998) que nuclea profiles de una gran variedad de dominios y es una herramienta sumamente utilizada para analizar secuencias de proteínas de las cuales no tenemos información previa.
+ Así como nos es posible realizar búsquedas de profiles contra bases de datos de secuencias, podemos crear una base de datos de profiles y utilizar como query una secuencia. Este es el caso de la base de datos **PFAM** (Sonnhammer et al., 1997; Sonnhammer et al., 1998) que nuclea *profiles* de una gran variedad de dominios y es una herramienta sumamente utilizada para analizar secuencias de proteínas de las cuales no tenemos información previa.
 
 Las bases de datos de profiles no son más que múltiples HMMs concatenados, por lo que el comando para construirlas es también **hmm2build**, pero vamos a utilizar la opción **-A** (append) para agregar nuevos profiles a nuestro archivo de HMMs.
 
@@ -158,7 +163,6 @@ Por ejemplo, si queremos construir una base de datos "myhmms" que contiene perfi
 hmm2build -A myhmms rrm.sto
 hmm2build -A myhmms fn3.sto
 hmm2build -A myhmms pkinase.sto
-hmm2calibrate myhmms
 ```
 
 Para realizar búsquedas en nuestra nueva base de datos el comando que utilizamos es **hmm2pfam**. En este caso vamos a usar el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo guardado en el archivo **7LES_DROME**:
@@ -175,20 +179,20 @@ hmm2pfam -E 0.1 myhmms 7LES_DROME
 
 ## Alineamientos multiples con HMM
 
-Otro uso que se les da a los profiles es la de asistir a la hora de llevar a cabo alineamientos múltiples de grandes cantidades de secuencias. En general este proceso suele ser lento y los alineamientos resultantes contienen errores que requieren curarse a mano. Utilizando HMMs construidos a partir de un alineamiento de unas pocas secuencias representativas, se pueden alinear grandes cantidades de secuencias relacionadas fácilmente. Siguiendo con nuestras globinas, tenemos un archivo (**globins630.fa**), que como habrán deducido, contiene 630 secuencias de globinas que vamos a alinear utilizando el comando **hmm2align**:
+Otro uso que se les da a los profiles es el de asistir a la hora de llevar a cabo alineamientos múltiples de grandes cantidades de secuencias. En general este proceso suele ser lento y los alineamientos resultantes contienen errores que requieren curarse a mano. Utilizando HMMs construidos a partir de un alineamiento de unas pocas secuencias representativas, se pueden alinear grandes cantidades de secuencias relacionadas fácilmente. Siguiendo con nuestras globinas, tenemos un archivo (**globins630.fa**), que como habrán deducido, contiene 630 secuencias de globinas que vamos a alinear utilizando el comando **hmm2align**:
 
 ```Bash
-hmmalign -o globins630.ali globin.hmm globins630.fa
+hmm2align -o globins630.ali globin.hmm globins630.fa
 ```
 
 mediante la opción **-o** indicamos el archivo en el que deseamos guardar el alineamiento (**globins630.ali**), y como argumentos debemos indicar el profile que vamos a utilizar como "semilla" y el archivo con las secuencias a alinear (**globin.hmm** y **globins630.fa** respectivamente). Noten que también se puede utilizar la opción **--outformat** para cambiar el formato del alineamiento producido. Por defecto se utiliza el formato *Stockholm*, pero también puede producir alineamientos en formato *MSF*, *Clustal*, *Phylip* y *SELEX*.
 
 # Artificial neural networks
 
-En la siguiente parte vamos a utilizar redes neuronales para hacer predicciones como habiamos hecho anteriormente con las PSSM. La idea es similar a la de ese TP donde vamos a entrenar un modelo con péptidos que tienen unión a MHC variando parámetros para mejorarlo sensando los indicadores de desempeño (Aroc y Pearson). Para esto vamos a volver a utilizar [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) y los archivos de Entrenamiento.set y Evaluacion.set en la carpeta del TP.
+En la siguiente parte vamos a utilizar redes neuronales para hacer predicciones como habíamos hecho anteriormente con las PSSM. La idea es similar a la de ese TP donde entrenamos un modelo con péptidos que tienen unión a MHC variando parámetros para mejorarlo sensando los indicadores de desempeño (Aroc y Pearson). Para esto vamos a volver a utilizar [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) y los archivos de Entrenamiento.set y Evaluacion.set en la carpeta del TP.
 
-Entrenamiento.set contiene 1200 péptidos de largo 9, con un valor asociado de afinidad de unión a HLA-A*02:01 transformado entre 0 y 1. Recuerde que mientras mas cercano a 1 el péptido tiene mayor afinidad de unión y que a partir de 0.426 se considera que el péptido es un ligando. Por otro lado Evaluacion.set contiene 66 de estos péptidos.  
-Les sugiero que abran los archivos y vean a vuelo de pájaro que es lo que contienen. Siempre es una buena práctica saber con lo que uno esta trabajando.
+Entrenamiento.set contiene 1200 péptidos de largo 9, con un valor asociado de afinidad de unión a HLA-A*02:01 transformado entre 0 y 1. Recuerde que mientras más cercano a 1 el péptido tiene mayor afinidad de unión y que a partir de 0.426 se considera que el péptido es un ligando. Por otro lado Evaluacion.set contiene 66 de estos péptidos.  
+Les sugiero que abran los archivos y vean a vuelo de pájaro qué es lo que contienen. Siempre es una buena práctica saber con lo que uno esta trabajando.
 
 >Nota: A lo largo del TP vamos a mantener el valor de *Cutoff for counting an example as a positive example* en 0.5.  
 
@@ -197,7 +201,7 @@ Les sugiero que abran los archivos y vean a vuelo de pájaro que es lo que conti
 ## Primera prueba
 
 Para nuestro primer modelo vamos a ir a EasyPred, cargar los archivos en los cuadros correspondientes (Entrenamiento.set -> *Paste in training examples* y Evaluacion.set -> *Paste in evaluation examples*) y bajar hasta la opción *Select method* dónde vamos a cambiar de *Matrix method* a *Neural Network*.  
-Allí vamos a poder ver que nos habilita a ingresar otros parametros que estan relacionados a la arquitectura y el entrenamiento de la red.
+Allí vamos a poder ver que nos habilita a ingresar otros parametros que están relacionados a la arquitectura y el entrenamiento de la red.
 
 Los parámetros que queremos utilizar en este paso son:
 
@@ -219,13 +223,13 @@ Mantenga los mismos parámetros que en el paso anterior pero esta vez seleccione
 
 * *Use bottom sequences for training*  
 
-4. ¿Cuál es el máximo valor de Pearson alcanzado sobre el set de prueba y en que iteración ocurre esta vez?
+4. ¿Cuál es el máximo valor de Pearson alcanzado sobre el set de prueba y en qué iteración ocurre esta vez?
 5. ¿Qué valores de desempeño alcanza el modelo aplicado al set de evaluación?
 6. ¿A qué se debe que no coincidan con el paso anterior?
 
 ## Tercera prueba
 
-Repita los parámetros de la prueba uno excepto por el numero de neuronas en la capa intermedia:
+Repita los parámetros de la prueba uno excepto por el número de neuronas en la capa intermedia:
 
 * *Number of hidden units*: 1
 
