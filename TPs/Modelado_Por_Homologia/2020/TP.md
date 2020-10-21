@@ -3,7 +3,7 @@
 ## Ejercicio 1.
 Luego de dos años y numerosos intentos fallidos, usted logró determinar por resonancia magnética nuclear una región de la proteína misteriosa y depositar la estructura en la
 base de datos de proteínas PDB (1F7W).
-Años después ocurre una pandemia de una enfermedad respiratoria causada por Actinobacillus pleuropneumoniae que está causando un rápido aumento en la mortalidad de la población porcina, trayendo terribles consecuencias en la actividad económica mundial. Una vez que se logró aislar la cepa responsable, se cree que una proteína que comparte casi el 25 % de identidad con la proteína misteriosa es un posible blanco para el diseño de una droga. Sin embargo, se desconoce la estructura de la misma. Como usted es el único experto en esa proteína en el mundo, la Asociación del Centro Médico Epidemiológico (ACME) se pone en contacto con usted en busca de una solución. Para solucionar el problema, Ud. decide primero intentar un modelado por homología de la nueva proteína.
+Años después ocurre una pandemia de una enfermedad respiratoria causada por *Actinobacillus pleuropneumoniae* que está causando un rápido aumento en la mortalidad de la población porcina, trayendo terribles consecuencias en la actividad económica mundial. Una vez que se logró aislar la cepa responsable, se cree que una proteína que comparte casi el 25 % de identidad con la proteína misteriosa es un posible blanco para el diseño de una droga. Sin embargo, se desconoce la estructura de la misma. Como usted es el único experto en esa proteína en el mundo, la Asociación del Centro Médico Epidemiológico (ACME) se pone en contacto con usted en busca de una solución. Para solucionar el problema, Ud. decide primero intentar un modelado por homología de la nueva proteína.
 1. Ingrese la secuencia de la proteína misteriosa patogénica en [HHPred](https://toolkit.tuebingen.mpg.de/tools/hhpred)
 
 ```Bash
@@ -16,7 +16,7 @@ PGIFDLTKIEHFSTVGLVLFMHLPSEGNDVVNFKLLLKTTENLAQALGGFVLNEHREIFDENSRQS
 YLARVS
 ```
 
-2. Seleccione el hit que le parezca más conveniente y luego seleccione en la parte
+2. Haga click en **Submit** en la parte inferior de la página y seleccione el hit que le parezca más conveniente y luego seleccione en la parte
 superior Model using selection. ¿Qué se muestra en la nueva ventana? (Mueva la
 barra inferior para ver que hay en la ventana).
 3. Haga click en Forward to Modeller y luego en Submit. (De ser necesario ingrese la
