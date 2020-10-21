@@ -2,7 +2,7 @@
 
 ## Ejercicio 1.
 Luego de dos años y numerosos intentos fallidos, usted logró determinar por resonancia magnética nuclear una región de la proteína misteriosa y depositar la estructura en la
-base de datos de proteínas PDB (1F7W).
+base de datos de proteínas PDB (1F46).
 Años después ocurre una pandemia de una enfermedad respiratoria causada por *Actinobacillus pleuropneumoniae* que está causando un rápido aumento en la mortalidad de la población porcina, trayendo terribles consecuencias en la actividad económica mundial. Una vez que se logró aislar la cepa responsable, se cree que una proteína que comparte casi el 25 % de identidad con la proteína misteriosa es un posible blanco para el diseño de una droga. Sin embargo, se desconoce la estructura de la misma. Como usted es el único experto en esa proteína en el mundo, la Asociación del Centro Médico Epidemiológico (ACME) se pone en contacto con usted en busca de una solución. Para solucionar el problema, Ud. decide primero intentar un modelado por homología de la nueva proteína.
 1. Ingrese la secuencia de la proteína misteriosa patogénica en [HHPred](https://toolkit.tuebingen.mpg.de/tools/hhpred)
 
@@ -23,9 +23,7 @@ barra inferior para ver que hay en la ventana).
 3. Haga click en **Forward to Modeller** y luego en **Submit**. (De ser necesario ingrese la siguiente key: **MODELIRANJE** en el recuadro que dice **Modeller key** y luego haga click en Submit)  
 * ¿Qué aparece en la nueva ventana?
 4. Descargue el archivo PDB (**Download PDB File**)
-5. La herramienta **Verify3D** permite determinar la compatibilidad de un modelo 3D de una proteína con su secuencia aminoacídica en base a cuál es el ambiente en el cual se encuentra cada residuo y la compatibilidad con la estructura secundaria en la que se encuentra.
-
-
+5. La herramienta **Verify3D** permite determinar la compatibilidad de un modelo 3D de una proteína con su secuencia aminoacídica en base a cuál es el ambiente en el cual se encuentra cada residuo y la compatibilidad con la estructura secundaria en la que se encuentra.  
 Vaya a la web de [Verify3D](https://servicesn.mbi.ucla.edu/Verify3D/), suba el
 archivo PDB obtenido en el paso anterior y corra el programa.
 El gráfico reporta la calidad del modelo por posición y en él se observan tres
@@ -33,66 +31,55 @@ regiones:
 1) **Posiciones con score menor a cero** están **mal** modeladas,  
 2) **Posiciones con score entre cero y 0.2** están **pobremente** modeladas,  
 3) **Posiciones con score mayor a 0.2** están modeladas con **buena calidad**.  
-Verify 3D asigna como aceptado a un modelo con >80% posiciones en el área
-“bien modelada”.
+Verify 3D asigna como aceptado a un modelo con >80% posiciones en el área **bien modelada**.  
+Observe el resultado obtenido (Si tarda haga click en el botón *Check status*).  
+* ¿Cuál es el score global? ¿Cuál es el score de los residuos?
 
-Observe el resultado obtenido. ¿Cuál es el score global? ¿Cuál es el score de los residuos?
+6. La herramienta **Procheck** permite analizar la calidad de la geometría de los residuos en una estructura proteica dada en comparación a parámetros estereoquímicos derivados de estructuras tridimensionales de alta resolución ya conocidas. En la parte superior de la página elija **Procheck**. en Choose File, cargue el archivo PDB y haga
+click en *Run Procheck*.  
+**a.** Investigue los plots de Ramachandran. (“Main Ramachandran Plot” y “All residues Ramachandran plot)  
+* ¿Qué residuos no están en el área esperada?   
+**b.** Investigue las propiedades de los residuos.  
+* ¿Qué residuos se alejan de los ángulos dihédricos esperados?  
+**c.** Investigue los gráficos de las longitudes de enlace en la cadena principal (Main-chain bond lengths) y los ángulos de unión de la cadena principal (Main-chain bond angles).  
+* ¿Existen aminoácidos que se alejen significativamente de los resultados esperados?
 
-6. La herramienta **Procheck** permite analizar la calidad de la geometría de los residuos en una estructura proteica dada en comparación a parámetros estereoquímicos derivados de estructuras tridimensionales de alta resolución ya conocidas.
+7. En base a los resultados obtenidos por Verify3D y ProCheck responda: ¿Es bueno el modelo? ¿Por qué?
+8. Abra chimera y busque el modelo que determinó usted años atrás ( File → Fetch by ID → 1F46)
+9. Luego, cargue en la misma ventana de Chimera la estructura de la proteína misteriosa patogénica (*File → Open*).
+10. Para tener una noción de cuán similar es la estructura de dos proteínas, podemos realizar un **Alineamiento Estructural**, que consiste en superponer las estructuras de ambas proteínas en el espacio intentando alinear sus cadenas aminoacídicas. Alinear estructuras en chimera es muy fácil, sólo requiere un comando.  
+  
+    Vaya a *Tools → Structure Comparison → MatchMaker*
+    
+    Se abrirá una nueva ventana.
 
-En la parte superior elija **Procheck**. en Choose File, cargue el archivo PDB y haga
-click en *Run Procheck*.
+      En *Reference structure* (el panel de la izquierda) puede seleccionar una de las estructuras de referencia. Esta estructura es la que se mantendrá fija. (**Ej. 1F7W**)  
 
-**a.** Investigue los plots de Ramachandran. (“Main Ramachandran Plot” y “All
-residues Ramachandran plot) ¿Qué residuos no están en el área esperada?   
-**b.** Investigue las propiedades de los residuos. ¿Qué residuos se alejan de los
-ángulos dihédricos esperados?  
-**c.** Investigue los gráficos de las longitudes de enlace en la cadena principal
-(Main-chain bond lengths) y los ángulos de unión de la cadena principal
-(Main-chain bond angles). ¿Existen aminoácidos que se alejen significativamente de los resultados esperados?
+      En *Structure(s) to match* (el panel de la derecha) seleccione la estructura que será superpuesta y alineada con la que se eligió como referencia. (Ej. el modelo)
 
-7. En base a los resultados obtenidos por Verify3D y ProCheck responda: ¿Es bueno
-el modelo? ¿Por qué?
-8. Abra chimera y busque el modelo que determinó usted años atrás ( File → Fetch by
-ID → 1F7W)
-9. Luego, cargue en la misma ventana de Chimera la estructura de la proteína
-misteriosa patogénica (*File → Open*).
-10. Para tener una noción de cuán similar es la estructura de dos proteínas, podemos realizar un **Alineamiento Estructural**, que consiste en superponer las estructuras de ambas proteínas en el espacio intentando alinear sus cadenas aminoacídicas. Alinear estructuras en chimera es muy fácil, sólo requiere un comando.
+  * Observe el resultado del alineamiento: ¿Son parecidas las estructuras? ¿En donde se observan las mayores diferencias?
 
-  Vaya a *Tools → Structure Comparison → MatchMaker*
+      Vaya a *Favorites → Reply Log*
+  * ¿Cuál es el RMSD global reportado?
 
-  Se abrirá una nueva ventana.
+11. Para ver cómo se corresponde el grado de similitud estructural con el grado de similitud en secuencia podemos realizar un alineamiento de ambas secuencias guiado por el alineamiento estructural. Para esto, vaya a:
 
-  En *Reference structure* (el panel de la izquierda) puede seleccionar una de las estructuras de referencia. Esta estructura es la que se mantendrá fija. (**Ej. 1F7W**)  
+    *Tools → Structure comparison → “Match->Align”*
 
-  En *Structure(s) to match* (el panel de la derecha) seleccione la estructura que será superpuesta y alineada con la que se eligió como referencia. (Ej. el modelo)
+    **Ahora, observando la estructura y el alineamiento responda:**  
+    **I.** ¿Qué son las regiones marcadas en rosa en el alineamiento?  
+    **II.** ¿Este alineamiento, identifica regiones que no alinean estructuralmente? ¿A
+    qué se debe?  
+    **III.** En la parte superior de la ventana del alineamiento de secuencia vaya a
+    Headers y seleccione RMSD:*ca*  
+  * ¿Qué regiones poseen mayor RMSD? ¿A qué elementos estructurales corresponden? Para responder esto, seleccione estas regiones con el mouse en el alineamiento y visualícelas en la estructura alineada.
 
-  Observe el resultado del alineamiento: ¿Son parecidas las estructuras? ¿En donde se observan las mayores diferencias?
+12. Para cuantificar el alineamiento de secuencia obtenido, podemos calcular el % de identidad de secuencia. Para ello, en la ventana del alineamiento de secuencias vaya a: *Info → Percent identity*. Seleccione una estructura en *Compare* y la otra estructura en *with*. En *Divide by* seleccione *longer sequence length*. Presiona en Ok.  
 
-  Vaya a *Favorites → Reply Log*. ¿Cuál es el RMSD global reportado?
-
-11. Para ver cómo se corresponde el grado de similitud estructural con el grado de
-similitud en secuencia podemos realizar un alineamiento de ambas secuencias
-guiado por el alineamiento estructural. Para esto, vaya a:
-
-  *Tools → Structure comparison → “Match->Align”*
-
-**Ahora, observando la estructura y el alineamiento responda:**  
-**I.** ¿Qué son las regiones marcadas en rosa en el alineamiento?  
-**II.** ¿Este alineamiento, identifica regiones que no alinean estructuralmente? ¿A
-qué se debe?  
-**III.** En la parte superior de la ventana del alineamiento de secuencia vaya a
-Headers y seleccione RMSD:*ca*
-¿Qué regiones poseen mayor RMSD? ¿A qué elementos estructurales
-corresponden? Para responder esto, seleccione estas regiones con el
-mouse en el alineamiento y visualícelas en la estructura alineada.
-12. Para cuantificar el alineamiento de secuencia obtenido, podemos calcular el % de identidad de secuencia. Para ello, en la ventana del alineamiento de secuencias vaya a: *Info → Percent identity*. Seleccione una estructura en Compare y la otra estructura en with. En Divide by seleccione longer sequence length. Presiona en Ok.  
-
-  ¿Qué valor de identidad de secuencia obtiene? ¿Porque cree que difiere del
-reportado anteriormente? ¿Las sustituciones observadas en las secuencias son
+* ¿Qué valor de identidad de secuencia obtiene? ¿Porque cree que difiere del reportado anteriormente? ¿Las sustituciones observadas en las secuencias son
 conservativas?  
 
-  En base a los resultados obtenidos. ¿Intentaría obtener experimentalmente la
+* En base a los resultados obtenidos. ¿Intentaría obtener experimentalmente la
 estructura de la nueva proteína, o confiaría en el modelo?  
 
 ## Ejercicio 2.
