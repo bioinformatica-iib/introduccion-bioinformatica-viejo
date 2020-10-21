@@ -470,8 +470,8 @@ Colorea cada dominio proteico con un color diferente.
 
 Ve a *Actions → Atoms/Bonds → Nucleotide objects → off*  
 Selecciona los ácidos nucleicos: *Select → Residue → Standard nucleic acids*  
-Encuentra los puentes de hidrógeno.
-* *Tools→ Structural Analysis → Find H Bonds*
+Encuentra los puentes de hidrógeno.  
+*Tools→ Structural Analysis → Find H Bonds*
 
 Selecciona:  
 *Only find H-Bonds → with both ends selected*  
