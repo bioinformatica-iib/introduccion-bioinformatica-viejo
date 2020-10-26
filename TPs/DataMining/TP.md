@@ -10,7 +10,7 @@ Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de 
 
 Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver2/) 
 
-En este TP retomamos el trabajo con R, con lo cual es preferible que repasen como abrir nuevos archivos de texto donde escribir sus *scripts*, cuales eran los atajos para ejecutar código seleccionado, que representaba cada panel de Rstudio, etc. Para eso, pueden aprovechar el [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) 
+En este TP retomamos el trabajo con R (desde rserver o desde sus VMs), con lo cual es preferible que repasen como abrir nuevos archivos de texto donde escribir sus *scripts*, cuales eran los atajos para ejecutar código seleccionado, que representaba cada panel de Rstudio, etc. Para eso, pueden aprovechar el [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) 
 
 Durante el TP vamos a utilizar técnicas básicas para encontrar conglomerados o *clusters* en un conjunto de datos biológicos. La idea es identificar agrupamientos naturales en los datos, que presenten un comportamiento similar entre sí, con alguna relevancia biológica. En particular utilizaremos conjuntos de datos provenientes de medidas de expresión génica generadas mediante experimentos con *microarrays* con muestras tomadas a diferentes tiempos, para identificar grupos o *clusters* de genes que tengan un perfil de expresión común.
 
@@ -28,7 +28,6 @@ YOR230W | -2.19 | 0.13 |  0.65 |  -0.51 | 0.52 |  1.04 |  0.36
 2. En el archivo `TablaEjemplo.txt` hay una tabla mínima con datos inventados. La tabla contiene, para cuatro genes (A, B, C y D), el nivel de expresión a las 0hs, 1hs y 2 hs luego de algún tratamiento.
 
 
- 
 gen | 0h | 1h | 2h
 --- | - | - | -
 genA | 2 | 4 | 8
@@ -38,6 +37,15 @@ genD | 0 | -1 | -6
 
 * **Grupo Norte** graficar en Excel los niveles de expresión de cada gen por separado vs. tiempo. Realizar a mano o en Excel un *clustering* jerárquico utilizando la distancia Euclídea, y el criterio de agregación de "Vecino más lejano" (o *complete linkage*, pueden seguir el [ejemplo de wikipedia](https://en.wikipedia.org/wiki/Complete-linkage_clustering) si no recuerdan el algoritmo).
 * **Grupo Sur** lo mismo pero estandarizando previamente los datos por gen (a cada dato restarle la media de expresión del gen y dividirlo por su desviación estándar).
+
+Tabla con datos estandarizados:
+
+ gen  | 0h   | 1h   | 2h   
+ --- | - | - |- 
+ genA | -0.87 | 0.58  | 0.87
+ genB | -0.22 | -1.15 | 0.73
+ genC | 1.09  | -1.09 | 0.41
+ genD | 0.58  | 0.22  | -1.14
 
 Comparar gráficos y dendrogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
 
@@ -136,11 +144,11 @@ sd(t(MiTablaSTD))
 sd(t(MiTabla))
 ```
 
-Ahora vamos a repetir todos los comandos desde `MisDistancias <- dist(MiTabla,method="euclidean")` inclusive, en adelante, pero utilizando la tabla con los datos estandarizados `MiTablaSTD`
+Ahora vamos a repetir todos los comandos desde `MisDistancias <- dist(MiTabla,method="euclidean")` inclusive, en adelante, pero utilizando la tabla con los datos estandarizados `MiTablaSTD`. 
 
-**OPCIONAL**
+> ¿Almacenaría los resultados en las mismas variables, o crearía nuevas?
 
-Podemos probar con otras medidas de distancia entre datos de expresión, por ejemplo basadas en correlación. Las distancias basadas en correlación permiten comparar "tendencias" en los datos no estandarizados, en forma similar a la distancia euclídea con datos previamente estandarizados. Este tipo de distancias, como la correlación de Pearson, son las más utilizadas en análisis de expresiòn génica con **microarrays**.
+3. Podemos probar con otras medidas de distancia entre datos de expresión, por ejemplo basadas en correlación. Las distancias basadas en correlación permiten comparar "tendencias" en los datos no estandarizados, en forma similar a la distancia euclídea con datos previamente estandarizados. Este tipo de distancias, como la correlación de Pearson, son las más utilizadas en análisis de expresiòn génica con **microarrays**.
 
 ```r
 DistanciaCorr <- as.dist(1-cor(t(MiTabla)))
@@ -177,7 +185,7 @@ MiCorte <- cutree(MiClusteringJerarquicoSTD,k=2) # cortamos el árbol a una altu
 MiCorte #visualizamos a que cluster fue asignado cada gen
 ```
 
-Ahora vamos a agrupar los genes del mismo ejemplo por el método de K-medias (*k-means*), al que se le debe pedir a priori un número K de clusters. En este caso, vamos a pedir K=2.
+4. Ahora vamos a agrupar los genes del mismo ejemplo por el método de K-medias (*k-means*), al que se le debe pedir a priori un número K de clusters. En este caso, vamos a pedir K=2.
 
 ```r
 MiClusteringKMedias=kmeans(MiTablaSTD,2)
@@ -195,18 +203,20 @@ kmeans(MiTablaGrande,5,nstart=100)
 ### Análisis de Clustering de expresión génica durante salto diáuxico en levaduras
 
 Ahora con lo aprendido, importar y analizar el conjunto de datos `diauxic.txt`.
-1. Identificar grupos de genes que se comporten de manera similar (No se vuelvan locos en generar el mejoooor **clustering** de la historia de la biología, traten de avanzar rápido)
+5. Identificar grupos de genes que se comporten de manera similar (No se vuelvan locos en generar el mejoooor **clustering** de la historia de la biología, traten de avanzar rápido)
 
 Deberían llegar a algo así:
 
 ![](./images/plot_ejemplo_3.png)
 
-2. Análisis de enriquecimiento funcional 
+6. Análisis de enriquecimiento funcional 
 
-Después de haber identificado *clusters*, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes *clusters* encontrados (ver instrucciones abajo). En esta instancia tenemos *clusters* de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, están involucrados en procesos biológicos diferentes a los genes de otro de los *clusters*. Ya que el genoma de *Saccharomyces cerevisiae* está anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO) podemos averiguar si los genes de un cluster están enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro *cluster* o bien, respecto a todo el genoma. Para esto utilizar algún servidor online, como FatiGO, GOrilla o DAVID.
+Después de haber identificado *clusters*, analizado el comportamiento global de los datos y probado algunas herramientas de visualización, exportar los identificadores de los genes pertenecientes a los diferentes *clusters* encontrados (ver instrucciones abajo). En esta instancia tenemos *clusters* de genes (al menos 2) que presentan comportamientos diferentes y nos podríamos preguntar por ejemplo, si los genes pertenecientes a uno de los clusters, están involucrados en procesos biológicos diferentes a los genes de otro de los *clusters*. Ya que el genoma de *Saccharomyces cerevisiae* está anotado con mucho detalle y sus genes tienen asignados los procesos biológicos en los que participan ( mediante términos de la ontología GO) podemos averiguar si los genes de un cluster están enriquecidos en términos GO correspondientes a ciertos procesos biológicos, respecto a los genes de otro *cluster* o bien, respecto a todo el genoma. Para esto utilizar algún servidor online, como GOrilla (Eden et al., 2007) (existen otras herramientas similares, como DAVID).
 
  
-El servidor requiere seleccionar el organismo (*S. cerevisiae*), subir una lista de identificadores de genes de interés (uno de los *clusters*, en el que queremos detectar enriquecimiento funcional), e indicar contra qué los queremos contrastar (genoma u otra lista de interés, e.g. otro *cluster*). Dependiendo de la herramienta utilizada, también hay que seleccionar una o más bases de datos de anotación funcional (en este caso, "GO - biological process"; pero bien podríamos seleccionar otra, como "Interpro motifs" y detectar motivos que estén significativamente mas representados en uno de los *clusters* que en el otro). En este sentido, DAVID es una de las herramientas más completas ya que permite detectar enriquecimiento en diversos niveles de anotación: interacciones proteína-proteína, dominios funcionales, asociación con enfermedades, vías metabólicas, homología, patrones de expresión tejido-específicos, publicaciones en literatura, etc.
+El servidor requiere seleccionar el organismo (*S. cerevisiae*), subir una lista de identificadores de genes de interés (uno de los *clusters*, en el que queremos detectar enriquecimiento funcional), e indicar contra qué los queremos contrastar (genoma u otra lista de interés, e.g. otro *cluster*). Dependiendo de la herramienta utilizada, también hay que seleccionar una o más bases de datos de anotación funcional (en este caso, "GO - biological process"; pero bien podríamos seleccionar otra, como "Interpro motifs" y detectar motivos que estén significativamente mas representados en uno de los *clusters* que en el otro).
+
+> **NOTA** En este sentido, DAVID (Huang et al., 2009) es una de las herramientas más completas ya que permite detectar enriquecimiento en diversos niveles de anotación: interacciones proteína-proteína, dominios funcionales, asociación con enfermedades, vías metabólicas, homología, patrones de expresión tejido-específicos, publicaciones en literatura, etc.
 
 Para exportar una lista de identificadores a un archivo....
 
@@ -224,7 +234,7 @@ En el caso de usar Gorilla, deberían llegar a algo así para [función](./data/
 
 Hacer un análisis de *clustering*, ahora con el conjunto de datos `maizeTranscDataMappedAt.csv`. Este proviene de un estudio de transcriptómica por RNA-Seq de la hoja del maíz, durante su desarrollo desde la base hacia el ápice (Pinghua Li, et al 2010). La última columna de la tabla contiene el identificador del gen homólogo en **Arabidopsis thaliana** (si lo hubiera), para aprovechar el alto grado de anotación de este genoma en el análisis de enriquecimiento funcional de los clusters que se obtengan.
 
-**EXTRA** Si terminan el TP y les sobra tiempo, antes de calcular matrices de distancias entre genes, pueden probar diferentes transformaciones sobre las medidas de expresión (RPKM) evaluando las distribuciones obtenidas  (e.g. `scale(x)`, `log(x+1)`, `(x-median(x))/IQR(x)`, `t(scale(t(scale(x))))` )
+> **EXTRA** Si terminan el TP y les sobra tiempo, antes de calcular matrices de distancias entre genes, pueden probar diferentes transformaciones sobre las medidas de expresión (RPKM) evaluando las distribuciones obtenidas  (e.g. `scale(x)`, `log(x+1)`, `(x-median(x))/IQR(x)`, `t(scale(t(scale(x))))` )
 
 ## MEDIDAS DE CALIDAD DE LOS CLUSTERS
 
@@ -238,15 +248,17 @@ Cuando queremos decidir qué método de *clustering* o qué función de distanci
 
 El promedio de los **s** de los elementos dentro un cluster, da una idea de la calidad de ese cluster. El promedio de los **s** de todos los elementos dan una idea de que tan bien están agrupados todos los datos; si el clustering realizado es bueno o no.
 
-**Nota**: la silueta de un grupo con una sola observación es 0, sin embargo, dependiendo el trabajo que estemos realizando puede ser correcto que dicha observación tenga que estar sola y sin agrupar con nadie más. Si tengo varios grupos correctos de una sola observación, el promedio de todos los clusters será baja erróneamente y pueden llegar a tomar una mala elección de K o del método. (Para solucionarlo, por ejemplo, podrían sacar del clustering aquellas observaciones que no se agrupan o usar algún otro parámetro como la suma de todos los **s** en vez del promedio)   
+> **Nota**: la silueta de un grupo con una sola observación es 0, sin embargo, dependiendo el trabajo que estemos realizando puede ser correcto que dicha observación tenga que estar sola y sin agrupar con nadie más. Si tengo varios grupos correctos de una sola observación, el promedio de todos los clusters será baja erróneamente y pueden llegar a tomar una mala elección de K o del método. (Para solucionarlo, por ejemplo, podrían sacar del clustering aquellas observaciones que no se agrupan o usar algún otro parámetro como la suma de todos los **s** en vez del promedio)   
 
 
-En R se pueden computar fácilmente los coeficientes silueta mediante la función `silhouette()` incorporada en la librería `cluster`:
+7. En R se pueden computar fácilmente los coeficientes silueta mediante la función `silhouette()` incorporada en la librería `cluster`:
 
+> **PRESTEN ESPECIAL ATENCIÓN A LOS NOMBRES DE LAS VARIABLES**, ¿Ustedes las crearon con esos nombres o con otros?.
 ```r
 library(cluster) # llamamos a la librería "cluster"
-MiSiluetaKMeans <- silhouette(MiClusteringKMeans$cluster,MiMatrizDeDistancias) # para un clustering por K-means o bien...
+MiSiluetaKMeans <- silhouette(MiClusteringKMedias$cluster,MiMatrizDeDistancias) # para un clustering por K-means o bien...
 MiSiluetaJerarquico <- silhouette(MiCorteDelArbol,MiMatrizDeDistancias) # para un clustering con hclust() - cutree()
+
 ```
 
 Se pueden ver los coeficientes Silueta para todos los datos:
@@ -270,7 +282,7 @@ plot(MiSiluetaKMeans)
 Este tipo de gráfico es una herramienta muy útil para determinar cuál es el número "natural" de clusters en un conjunto de datos. En este caso, probamos con K=5 y vemos que el cluster 1 (que contiene 203 genes) no es muy bueno ya que además de tener un coeficiente de silueta promedio bajo (0.13), muchos de los genes que contiene, tienen coeficientes de silueta negativos. Habría que probar con otro número K de clusters y/o con otro método de clustering.
 
 
-**EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters. 
+8. **EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters. 
 
 ## BONUS TRACK
 
@@ -282,7 +294,7 @@ library(lattice) # traigo este paquete para generar el gráfico parallel
 library(cluster) # traigo este paquete para calcular los coeficientes silueta
 library(pheatmap)
 library(ggbiplot)
-fibro=read.csv("./data/clustering/fibro.data",sep="\t")
+fibro=read.csv("./dataDataMining/clustering/fibro.data",sep="\t")
 summary(fibro)
 ```
 Ahora hagamos un `clustering` de la misma forma que lo hacen en este trabajo (quizá ni sea la mejor forma, no importa, es solo para tener algo) En el **paper** usan 1 - correlación de pearson y método completo para separar los génes en 7 grupos:
