@@ -339,6 +339,7 @@ log_foldChange_drug1 <- log(foldChange_drug1,base = 2)
 log_foldChange_drug2 <- log(foldChange_drug2,base = 2)
 hist(log_foldChange_drug1)
 ```
+Antes y despúes de normalizar:
 ![](./images/histograma_bad_cruzi.png)
 
 Este es nuestro resultado final, por lo que ahora solo restaría construir una tabla donde guardar el resultado y exportar los genes que se encuentran diferencialmente expresados con cada droga:
@@ -349,6 +350,8 @@ pheatmap(exp_table,kmeans_k = 10) #Si quieren visualizar el comportamiento
 write.table(rownames(exp_table)[abs(exp_table$drug1) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug1")
 write.table(rownames(exp_table)[abs(exp_table$drug2) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug2")
 ```
+![](./images/heatmap_cruzi_FClog2.png)
+![](./images/histogramas_cruzi_comp.png)
 
 ¿Notan alguna diferencia entre las drogas? ¿La distribución de cambio de expresión fue igual? ¿La cantidad de genes diferencialmente expresados fue la misma?
 
