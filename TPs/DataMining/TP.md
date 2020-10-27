@@ -284,6 +284,94 @@ Este tipo de gráfico es una herramienta muy útil para determinar cuál es el n
 
 8. **EJERCICIO** Calcular los coeficientes silueta para los clusters encontrados en el dataset diauxic. Evaluar la silueta promedio para distintos números K de clusters. 
 
+## Ensayo de inhibidores de cruzipaína en cruzi; RNA-seq:
+
+Si recuerdan del [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) habíamos analizado un set de datos donde ensayaban la inhibición de una enzima (cruzipaína) frente a distintos compuestos.
+Ahora han seleccionado dos de estos inhibidores y deciden estudiar el comportamiento de parásitos de *Trypanosoma cruzi* cuando son expuestos a esta droga. Uno de los ensayos que realizan con este objetivo es un estudio de transcriptómica (RNA-seq).
+El ensayo que llevan a cabo consiste en exponer los parásitos a: Droga1, Droga2 y un control sin droga. Se toman tres muestras de cada grupo, se extrae el ARN y se analiza con Illumina. Cada *read* encontrado se mapea contra el genoma de referencia y se llega a una tabla de conteo para cada una de las proteínas del genoma.
+
+9. A Ud. le piden que utilice la tabla de conteos para poder evaluar que procesos biológicos se encuentran modificados en los grupos tratados.
+
+Primeramente empezamos cargando los datos:
+
+```r
+countsDrug1 <- read.csv("./dataDataMining/drug1.txt",sep="\t",row.names = "X")
+countsDrug2 <- read.csv("/dataDataMining/drug2.txt",sep="\t",row.names = "X")
+```
+> ¿Entiende la estructura de las tablas? ¿Se le ocurre alguna forma de visualizar o explorar los resultados que tenemos? 
+
+El conteo de *reads* no se puede comparar entre genes puesto que la expresión basal de cada uno es distinto, por lo cual encontrar 10 *reads* de un gen puede ser mucho, y encontrar 1000 de otro puede ser poco. Además cada ensayo de secuenciación puede tener distinta profundidad con lo que tampoco sería viable comparar 10 *reads* de un ensayo donde en total se mapearon 2.10^8 *reads* con los mismos 10 de otro ensayo donde se mapearon 1.10^8 (la mitad).
+
+Primero, definamos una formula que calcule el conteo por millón:
+
+```r
+cpm = function(matrix) t(apply(matrix,1,function(x) (x)*1000000)/apply(matrix,2, function(x) sum(x+1)))
+```
+> la fórmula `apply()` realiza un trabajo similar al que ustedes podrían realizar utilizando un for para recorrer todas las filas y/o todas las columnas y aplicar una fórmula o función. No es necesario que entiendan como funciona, pero si quisieran podrían explorar help(apply).
+
+Y ahora, calculemos el *cpm* para cada ensayo:
+
+```r
+cpm_control <- cpm(countsDrug1[,c("control1","control2","control3")])
+cpm_control <- apply(cpm_control, 1, FUN = mean) #Otra vez, esto se podría realizar con un for con el mismo resultado. 
+cpm_drug1 <- cpm(countsDrug1[,c("drug1_1","drug1_2","drug1_3")])
+cpm_drug1 <- apply(cpm_drug1, 1, FUN = mean) 
+cpm_drug2 <- cpm(countsDrug2[,c("drug2_1","drug2_2","drug2_3")])
+cpm_drug2 <- apply(cpm_drug2, 1, FUN = mean) 
+```
+
+Ahora para normalizar los valores entre genes, tenemos que calcular el *fold change*:
+
+```r
+foldChange_drug1 <- (cpm_drug1+0.125)/(cpm_control+0.125)
+foldChange_drug2 <- (cpm_drug2+0.125)/(cpm_control+0.125)
+#Y para visualizar la distribución observada en un histograma:
+hist(foldChange_drug1)
+```
+
+
+> ¿Se les ocurre a que se debe que la fórmula adiciona 0.125?
+
+Si exploran los datos, van a encontrar que casi todas las observaciones se encuentran cerca del cero. Por esto es que en estos tipos de ensayos se suele trabajar con el logaritmo (usualmente en base 2):
+
+```r
+log_foldChange_drug1 <- log(foldChange_drug1,base = 2)
+log_foldChange_drug2 <- log(foldChange_drug2,base = 2)
+hist(log_foldChange_drug1)
+```
+![](./images/histograma_bad_cruzi.png)
+
+Este es nuestro resultado final, por lo que ahora solo restaría construir una tabla donde guardar el resultado y exportar los genes que se encuentran diferencialmente expresados con cada droga:
+
+```r
+exp_table <- data.frame(drug1 = log_foldChange_drug1,drug2 = log_foldChange_drug2)
+pheatmap(exp_table,kmeans_k = 10) #Si quieren visualizar el comportamiento
+write.table(rownames(exp_table)[abs(exp_table$drug1) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug1")
+write.table(rownames(exp_table)[abs(exp_table$drug2) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug2")
+```
+
+¿Notan alguna diferencia entre las drogas? ¿La distribución de cambio de expresión fue igual? ¿La cantidad de genes diferencialmente expresados fue la misma?
+
+El gen que más aumenta la expresión, ¿tuvo una gran cantidad de observaciones?, ¿creen que esto sea un problema?.
+
+> Existen estrategias para solucionar este problema como el *Benjamini and Hochberg's FDR (False Discovery Rate)*, pero excede el alcance del TP.
+
+Finalmente, con la lista de genes diferencialmente expresados, quieren buscar cuales son los procesos biológicos alterados. Para esto suelen usarse la estrategia de *gene ontology enrichment analysis*, y como ya fue mencionado existen varias herramientas disponibles para realizarlo. Sin embargo, en este caso tenemos un limitante, si por ejemplo entran a GOrilla podrán observar que *T. cruzi* no se encuentra dentro de los organismos disponibles. Por lo tanto para realizar este análisis con este organismo es necesario recurrir a una herramienta especifica del mismo: *tritrypdb* parte de *VEuPathDB Project Team (Kissinger et al., 2018)*. 
+Por lo tanto, primero copien y pegen la lista de genes en:
+
+[https://tritrypdb.org/tritrypdb/app/search/transcript/GeneByLocusTag](https://tritrypdb.org/tritrypdb/app/search/transcript/GeneByLocusTag)
+
+Luego, cuando el sitio haya encontrado todos los genes que cargamos, hacemos click en *Analyze results* como se muestra en la imagen:
+
+![](./images/ejemplo_trytripdb.png)
+
+Aparecen opciones y una de ellas es *Gene ontology enrichment*. Finalmente nos da algunas opciones que dejamos como están, salvo que seleccionamos **Biological Process**.
+
+Finalmente han llegado al análisis de procesos biológicos que se buscaba. Con la información que ustedes disponen del tipo de enzima que se estaba buscando inhibir, ¿creen que la droga esta alterando un proceso relacionado o encuentran alguna evidencia de que otros procesos podrían estar siendo alterados?
+
+> ¿Esta información es de alguna forma concluyente?
+
+
 ## BONUS TRACK
 
 El set de datos `fibro.data` proviene de un experimento donde se analizan los cambios de expresión génica de fibroblastos humanos en respuesta al suero http://genome-www.stanford.edu/serum/.
