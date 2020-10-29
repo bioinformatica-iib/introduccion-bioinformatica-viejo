@@ -6,11 +6,28 @@ Comprender el "funcionamiento" de una de las técnicas más simples de clusterin
 Vamos a utilizar además otro método muy simple de clustering, en este caso particional, el *K-means*. Veremos algunas medidas de calidad de los clusters, como la suma de cuadrados intra-cluster y la silueta (*Silhouette*).
 Aplicar los conocimientos adquiridos para analizar e interpretar un conjunto de datos real de expresión génica con *microarrays*.
 
+## Preparar los datos
+
+Todos los datos del TP se pueden descargar desde una consola de bash con las siguientes instrucciones:
+
+```bash
+mkdir ~/dataDataMining
+#Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
+cd dataDataMining
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/maizeTranscDataMapped.csv
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/fibro.data
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/drug2.txt
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/drug1.txt
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/diauxic.txt
+wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformatica/master/TPs/DataMining/data/TablaEjemplo.txt
+```
+
 ## Introducción
 
 Por si no recuerdan la dirección del [rserver](http://pi.iib.unsam.edu.ar/rserver2/) 
 
 En este TP retomamos el trabajo con R (desde rserver o desde sus VMs), con lo cual es preferible que repasen como abrir nuevos archivos de texto donde escribir sus *scripts*, cuales eran los atajos para ejecutar código seleccionado, que representaba cada panel de Rstudio, etc. Para eso, pueden aprovechar el [TP de introducción a R.](https://github.com/trypanosomatics/introduccion-bioinformatica/blob/master/TPs/IntroR/TP.md) 
+
 
 Durante el TP vamos a utilizar técnicas básicas para encontrar conglomerados o *clusters* en un conjunto de datos biológicos. La idea es identificar agrupamientos naturales en los datos, que presenten un comportamiento similar entre sí, con alguna relevancia biológica. En particular utilizaremos conjuntos de datos provenientes de medidas de expresión génica generadas mediante experimentos con *microarrays* con muestras tomadas a diferentes tiempos, para identificar grupos o *clusters* de genes que tengan un perfil de expresión común.
 
