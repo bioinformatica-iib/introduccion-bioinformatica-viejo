@@ -59,10 +59,10 @@ Tabla con datos estandarizados:
 
  gen  | 0h   | 1h   | 2h   
  --- | - | - |- 
- genA | -0.87 | 0.58  | 0.87
- genB | -0.22 | -1.15 | 0.73
- genC | 1.09  | -1.09 | 0.41
- genD | 0.58  | 0.22  | -1.14
+ genA | -0.87 | -0.22  | 1.09
+ genB | 0.58 | 0.58 | -1.15
+ genC | -1.09 | 0.22 | 0.87
+ genD | 0.73  | 0.41  | -1.14
 
 Comparar gráficos y dendrogramas y discutir qué resultado (Norte o Sur) tiene más sentido biológico.
 
