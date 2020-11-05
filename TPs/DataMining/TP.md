@@ -330,7 +330,7 @@ Y ahora, calculemos el *cpm* para cada ensayo:
 
 ```r
 cpm_control <- cpm(countsDrug1[,c("control1","control2","control3")])
-cpm_control <- apply(cpm_control, 1, FUN = mean) #Otra vez, esto se podría realizar con un for con el mismo resultado. 
+cpm_control <- apply(cpm_control, 1, FUN = mean) # Esto solo calcula la media entre las réplicas técnicas, otra vez, esto se podría realizar con un for con el mismo resultado. 
 cpm_drug1 <- cpm(countsDrug1[,c("drug1_1","drug1_2","drug1_3")])
 cpm_drug1 <- apply(cpm_drug1, 1, FUN = mean) 
 cpm_drug2 <- cpm(countsDrug2[,c("drug2_1","drug2_2","drug2_3")])
@@ -362,6 +362,7 @@ Antes y despúes de normalizar:
 Este es nuestro resultado final, por lo que ahora solo restaría construir una tabla donde guardar el resultado y exportar los genes que se encuentran diferencialmente expresados con cada droga:
 
 ```r
+library(pheatmap)
 exp_table <- data.frame(drug1 = log_foldChange_drug1,drug2 = log_foldChange_drug2)
 pheatmap(exp_table,kmeans_k = 10) #Si quieren visualizar el comportamiento
 write.table(rownames(exp_table)[abs(exp_table$drug1) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug1")
