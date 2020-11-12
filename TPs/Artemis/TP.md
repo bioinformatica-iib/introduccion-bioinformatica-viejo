@@ -12,7 +12,12 @@ El objetivo de este módulo es familiarizarse con las funciones básicas de Arte
 
 #### 1. Iniciar el programa
 
-Para abrir el programa hagan doble click sobre el ícono de Artemis en el escritorio (también pueden arrancar Artemis desde la terminal tipeando 'art').
+Para abrir el programa podemos usar la terminal: 
+
+```bash
+cd ~/Tools/artemis/
+./art
+```
 
 ![Programa, ventana principal](images/0.png)
 
