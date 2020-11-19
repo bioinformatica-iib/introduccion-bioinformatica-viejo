@@ -18,7 +18,7 @@ Para abrir el programa podemos usar la terminal:
 
 ```bash
 cd ~/Tools/artemis/
-./art
+./act
 ```
 
 ### Preparación de los archivos de entrada
