@@ -14,6 +14,13 @@ El objetivo de este TP es que se familiaricen con las funciones básicas de ACT 
 
 En esta primera parte, vamos a trabajar con dos genomas bacterianos (*E. coli* y *S. tiphy*).
 
+Para abrir el programa podemos usar la terminal: 
+
+```bash
+cd ~/Tools/artemis/
+./art
+```
+
 ### Preparación de los archivos de entrada
 
 ACT necesita además de las secuencias, un archivo que contenga una comparación entre ellas. Pero dado que vamos a estar intentando comparar secuencias grandes, este archivo no puede ser simplemente un alineamiento continuo de las dos secuencias. La idea es poder visualizar rearreglos (inversiones, deleciones/inserciones, transposiciones) y para ello es necesario contar con una serie de alineamientos locales delimitados, con scores definidos (por ejemplo tal como los que produce BLAST. Ver [ACT:Running a comparison](https://www.sanger.ac.uk/science/tools/artemis-comparison-tool-act).
