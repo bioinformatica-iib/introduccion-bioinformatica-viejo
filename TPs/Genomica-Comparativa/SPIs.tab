@@ -1,0 +1,50 @@
+FT   misc_feature    302172..361067
+FT                   /label=SPI-6
+FT                   /colour=0
+FT                   /note="possible Salmonella Pathogenicity Island (59 kb)"
+FT   misc_feature    1085156..1092735
+FT                   /note="Salmonella Pathogenicity Island 5"
+FT                   /colour=0
+FT                   /label=SPI-5
+FT   misc_feature    1538899..1572919
+FT                   /colour=0
+FT                   /label=prophage
+FT                   /note="prophage"
+FT   misc_feature    1625084..1664823
+FT                   /colour=0
+FT                   /label=SPI-2
+FT                   /note="Salmonella pathogenicity island 2"
+FT   misc_feature    1887451..1933559
+FT                   /note="putative degenerate bacteriophage"
+FT                   /colour=0
+FT   misc_feature    2759732..2782363
+FT                   /label=bacteriophage
+FT                   /colour=0
+FT   misc_feature    2859261..2899033
+FT                   /note="pathogenicity island carrying multiple virulence
+FT                   determinants for adhesion and entry into cells"
+FT                   /label=SPI-1
+FT                   /colour=0
+FT   misc_feature    3132605..3139413
+FT                   /label=SPI-8
+FT                   /colour=0
+FT   misc_feature    3515396..3549054
+FT                   /note="bacteriophage insertion"
+FT                   /colour=0
+FT                   /label=bacteriophage
+FT   misc_feature    3883110..3900457
+FT                   /note="Salmonella pathogenicity island 3"
+FT                   /colour=0
+FT                   /label=SPI-3
+FT   misc_feature    4321942..4346613
+FT                   /label=SPI-4
+FT                   /colour=0
+FT   misc_feature    complement(4408806..4543071)
+FT                   /colour=0
+FT                   /note="The major Vi antigen Salmonella Pathogenicity
+FT                   Island"
+FT                   /label=SPI-7
+FT   misc_feature    4473839..4507384
+FT                   /note="bacteriophage"
+FT                   /colour=0
+FT                   /label=bacteriophage
