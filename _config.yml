@@ -22,8 +22,8 @@ title: Introducción a la Bioinformática
 email: introbioinfo@trypanosmatics.org
 description: >- # this means to ignore newlines until "baseurl:"
   Página de la asignatura Introducción a la Bioinformática (IIBio-UNSAM).
-baseurl: "introduccion-bioinformatica" # the subpath of your site, e.g. /blog
-url: "introbioinfo.trypanosmatics.org" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/introduccion-bioinformatica" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: trypanosomatics
 github_username:  trypanosomatics
 
