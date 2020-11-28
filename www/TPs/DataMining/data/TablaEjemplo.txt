@@ -1,0 +1,5 @@
+gen	0h	1h	2h
+genA	2	4	8
+genB	-1	-1	-2
+genC	-2	0	1
+genD	0	-1	-6
