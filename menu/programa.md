@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Programa
-permalink: /programa/
+permalink: programa/
 shortname: Programa
 ---
 Programa

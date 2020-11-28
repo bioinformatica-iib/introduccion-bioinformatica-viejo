@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Instructivos
-permalink: /intructivos/
+permalink: intructivos/
 shortname: Instructivos
 ---
 

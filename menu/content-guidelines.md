@@ -1,7 +1,7 @@
 --- 
 layout: page
 title: "Guia de creación de contenido para docentes"
-permalink: /content-guidelines/
+permalink: content-guidelines/
 exclude: True
 ---
 

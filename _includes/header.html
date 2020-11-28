@@ -1,16 +1,16 @@
 <header class="site-header bg-light" role="banner">
-
-  <div class="wrapper bg-light">
+<div class="container">
+  <div class="col-12 bg-light">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}    
     {%- if page_paths -%}
         {% assign navurl = page.url | remove: 'index.html' %}        
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="{{ "/" | relative_url }}">
-            <img src="assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+          <a class="navbar-brand col-4" href="{{ "/" | relative_url }}">
+            <img src="{{ "/" | relative_url }}assets/icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
             <span>{{ site.title | escape }}</span>
           </a> 
-          <div class="" id="navbarNav">
+          <div class="col-8" id="navbarNav" class="padding-left:50px">
             <ul class="navbar-nav">              
                 {% for page in site.pages %}
                 {% unless page.exclude %}
@@ -25,4 +25,5 @@
         </nav>
     {%- endif -%}
   </div>
+</div>
 </header>

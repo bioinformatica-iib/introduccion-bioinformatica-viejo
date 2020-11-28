@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Descargas
-permalink: /descargas/
+permalink: descargas/
 shortname: Descargas
 ---
 

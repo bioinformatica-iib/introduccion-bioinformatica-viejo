@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Guías de Trabajos Prácticos
-permalink: /tps/
+permalink: tps/
 shortname: TPs
 ---
 <ul>
