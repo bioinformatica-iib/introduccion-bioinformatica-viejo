@@ -15,7 +15,7 @@
                 {% for page in site.pages %}
                 {% unless page.exclude %}
                    {% if page.title %}
-                   <li class="nav-item active"><a class="nav-link" href="{{ page.permalink }}">{{ page.shortname }}</a></li>
+                   <li class="nav-item active"><a class="nav-link" href="{{ "/" | relative_url }}{{ page.permalink }}">{{ page.shortname }}</a></li>
                    {% endif %}
                 {% endunless %}
                 {% endfor %}   
