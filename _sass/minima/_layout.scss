@@ -175,6 +175,12 @@
 /**
  * Page content
  */
+.container-page {
+  display: flex;
+  min-height: 75vh;
+  flex-direction: column;
+}
+
 .page-content {
   padding: $spacing-unit 0;
   flex: 1;
