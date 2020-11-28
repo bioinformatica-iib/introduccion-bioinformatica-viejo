@@ -1,3 +1,11 @@
+---
+layout: tp
+title: Búsqueda de secuencias por similitud
+categories: TP
+descargas : False
+lesson: 4
+---
+
 # Búsqueda de secuencias por similitud
 
 Objetivo: familiarizarse con el uso de programas de busqueda de secuencias en bases de datos, y en particular con el uso de estos programas en la línea de comando. 
