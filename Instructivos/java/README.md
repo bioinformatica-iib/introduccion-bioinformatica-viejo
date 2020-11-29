@@ -1,3 +1,10 @@
+---
+layout: page
+title: Instalar/Ejecutar Java para usar con Artemis
+categories: Instructivo
+descargas : data.zip
+lesson: 2
+---
 # Instalar/Ejecutar Java para usar con Artemis
 
 ## Descargar Artemis

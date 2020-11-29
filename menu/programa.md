@@ -9,17 +9,19 @@ shortname: Info
 
 <div class="card-deck">
 {% for d in site.data.docentes %}
-  <div class="card mb-4" style="min-width:18rem; max-width:18rem; border:none"> 
+<div class="col-6">
+  <div class="card mb-3"> 
     <div class="card-body">
-    <div class="row">
-        <div class="col-6"><img style="border-radius:50%" src="{{ '/' | relative_url }}assets/img/{{ d.img }}"></div>
-        <div class="col-6">
+    <div class="row">      
+        <div class="col-3"><img style="border-radius:50%" src="{{ '/' | relative_url }}assets/img/{{ d.img }}"></div>
+        <div class="col-9">
             <h5 class="card-title"><a class="u-mail" href="mailto:{{ d.email }}" style="margin-right:10px"><i class="fas fa-envelope"></i></a>{{ d.add }} {{ d.name }}</h5>
             <p class="card-text"><small class="text-muted">{{ d.role }}</small></p>
         </div>
     </div>
     </div>
   </div>
+</div>
 {% endfor %}
 </div>
 

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Descargar secuencias de base de datos
+categories: Instructivo
+descargas : data.zip
+
+---
 # Descargar secuencias de base de datos
 
 Este es un breve instructivo para descargar secuencias usando el accession number desde el navegador (ideal para poquitas secuencias) o desde la consola, ideal para automatizar tareas que involucran muchas secuencias o que hacemos reiteradas veces.
