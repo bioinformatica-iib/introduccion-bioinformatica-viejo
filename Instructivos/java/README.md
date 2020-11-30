@@ -5,7 +5,11 @@ categories: Instructivo
 descargas : data.zip
 lesson: 2
 ---
-# Instalar/Ejecutar Java para usar con Artemis
+{% include alert-danger.html content="Este instructivo solo sirve para quienes no estén usando la máquina virtual. Artemis ya está instalado y funcionando en la máquina virtual del curso" %}
+
+Dada la amplia diversidad de compus (y la consiguiente variabilidad de versiones de sistemas operativos y arquitecturas en sus PCs), armo este documento para que puedan encontrar al menos una alternativa que les funcionen los programas que dependen de Java. Espero sea el caso y, sino, escríbannos con el/los errores que ven y buscamos una solución particular.
+
+Para evitar problemas de virtualización, voy a describir cómo hacerlo andar en Windows (puesto que es posible que el error que vimos en Ubuntu tenga que ver con la capacidad de virtualización, y ya contra eso no podemos hacer nada :c ). Aunque agrego la parte de Ubuntu que debería funcionar, para futuras generaciones.
 
 ## Descargar Artemis
 
@@ -14,12 +18,6 @@ Como no está en la guía lo agrego acá
 1. Descargar Artemis [desde acá](https://github.com/sanger-pathogens/Artemis/releases/download/v18.1.0/artemis-windows-release-18.1.0.zip) o desde la página de [artemis oficial](http://sanger-pathogens.github.io/Artemis/Artemis/) del Sanger Institute, haciendo click en la plataforma deseada
 2. Una vez descargado tendremos un zip. Descomparimirlo en la carpeta en la que queramos que quede el programita
 3. Ejecutar según corresponda a su sistema operativo (ver debajo)
-
-## Ejecutar artemis
-
-Dada la amplia diversidad de compus (y la consiguiente variabilidad de versiones de sistemas operativos y bits en sus PCs), armo este documento para que puedan encontrar al menos una alternativa que les funcionen los programas que dependen de Java. Espero sea el caso y, sino, escríbannos con el/los errores que ven y buscamos una solución particular.
-
-Para evitar problemas de virtualización, voy a describir cómo hacerlo andar en Windows (puesto que es posible que el error que vimos en Ubuntu tenga que ver con la capacidad de virtualización, y ya contra eso no podemos hacer nada :c ). Aunque agrego la parte de Ubuntu que debería funcionar, para futuras generaciones.
 
 ### Ubuntu 14 a 18 
 

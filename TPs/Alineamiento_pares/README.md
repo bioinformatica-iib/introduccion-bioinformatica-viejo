@@ -3,7 +3,7 @@ layout: tp
 title: Alineamientos de secuencias de a pares
 categories: TP
 descargas : data.zip
-lesson: 2
+lesson: 3
 ---
 ## Introducción
 

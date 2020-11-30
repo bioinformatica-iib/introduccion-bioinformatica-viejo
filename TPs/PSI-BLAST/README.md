@@ -1,6 +1,6 @@
 ---
 layout: tp
-title: EMBOSS Suite
+title: PSI-BLAST
 categories: TP
 descargas : data
 lesson: 5
