@@ -36,12 +36,12 @@ Normalmente, esto debería funcionar. Pero si no funciona (¡como ya hemos visto
 3. En _Operating System_ seleccionen "Windows" y, en Arquitectura, "x64" para 64 bits o "x86" para 32 bits. 
 4. Entre las opciones que aparecen para descargar, descargamos el JDK con extensión ``.msi``. 
 
-![msi](images/msi.PNG)
+![msi](img/msi.PNG)
 
 5. Cuando esté listo, ejecutamos y seguimos los pasos que dicta el instalador
 6. Cuando finalice, podremos ``Artemis.jar`` con la plataforma JDK. Acá es importante que, al ejecutar, no estemos usando un versión de Java que ya teníamos instalada. Para eso, podemos darle ``click derecho`` > ``Abrir con`` > ``OpenJDK Platform binary``
 
-![msi](images/OpenJDK.PNG). 
+![msi](img/OpenJDK.PNG). 
 
 
 #### La difícil (Esta solo me funcionó en Windows 64 Bits )
@@ -58,15 +58,15 @@ Si nada de eso funciona, pueden probar con esto:
 ```
 Nótese que lo que estamos haciendo es usar el ejecutable de JDK y pasándole el programa ``artemis.jar`` como parámetro. Revisen que la ruta al archivo ``java.exe`` coincida con lo que tienen ustedes en sus carpetas:
 
-![carpeta](images/jdk.PNG)
+![carpeta](img/jdk.PNG)
 
 > Si usaron otro JDK (11 u 8, por ejemplo), cambien apropiadamente la ruta al java.exe.
 
 6. **Opcional:** Si nos anduvo (es decir, si se ejecutó artemis), tomamos nota del comando que acaban de ejecutar. Copiamos y pegamos el comando en un nuevo archivo en blanco, dentro en la carpeta de artemis ( click derecho > Nuevo > Documento de texto)
 
-![carpeta](images/bat1.PNG)
-![carpeta](images/bat2.PNG)
+![carpeta](img/bat1.PNG)
+![carpeta](img/bat2.PNG)
 
 7. Cambiamos el nombre a "Artemis.bat". Ahora, haciendo doble click en el .bat que acabamos de crear, deberían ejecutarse Artemis.
 
-![carpeta](images/bat3.PNG)
+![carpeta](img/bat3.PNG)
