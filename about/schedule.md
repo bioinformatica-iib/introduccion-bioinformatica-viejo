@@ -4,6 +4,7 @@ title: Course Schedule
 permalink: /about/schedule/
 parent: Course Information
 hide_hero: True
+hide_footer: True
 ---
 
 <style>
