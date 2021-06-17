@@ -1,17 +1,17 @@
 - title: 
   images:
-    - link: instructivos/images/nucleotide.png
+    - link: instructivos/descarga-secuencias/images/nucleotide.png
       alt: The alt text for the image
       description: |- 
-        [Descargar secuencias usando el navegador](descarga-secuencias/)
+        [Descargar secuencias usando el navegador](instructivos/descarga-secuencias/descarga-secuencias/)
       ratio: is-4by3
-    - link: instructivos/images/msi.png
+    - link: instructivos/java/images/msi.png
       alt: The alt text for the image
       description: |- 
-        [Instalar/Ejecutar Java para usar con Artemis](java/)
+        [Instalar/Ejecutar Java para usar con Artemis](instructivos/descarga-secuencias/java/)
       ratio: is-4by3
-    - link: ./instructivos/images/vm5.png
+    - link: ./instructivos/biolinux/images/vm5.png
       alt: The alt text for the image
       description: |-
-        [Puesta en funcionamiento de máquina virtual con biolinux](biolinux/)
+        [Puesta en funcionamiento de máquina virtual con biolinux](instructivos/descarga-secuencias/biolinux/)
       ratio: is-4by3
