@@ -59,11 +59,11 @@ Ahora que tenemos todo lo necesario, vamos a arrancar ACT. **Cuando se abre un p
 
 ACT está basado en Artemis, por lo que ya estarán familiarizados con muchas de sus funciones generales; y está compuesto esencialmente de tres capas o ventanas. La ventana superior e inferior son mini-ventanas de Artemis (con sus funcionalidades heredadas), mostrando la representación lineal de la secuencia de ADN con sus "*features*" asociados. La ventana del medio, muestra bloques rojos y azules, que se extienden y conectan regiones conservadas entre las dos secuencias, en el sentido directo e inverso, respectivamente. Por lo cual, si estuviéramos comparando dos secuencias idénticas en la misma orientación veríamos, en la capa central, un bloque rojo que se extiende a lo largo de la longitud de las dos secuencias. Si una de las secuencias estuviera invertida se observaría un bloque azul entre las dos secuencias. Regiones únicas en cualquiera de las secuencias, como deleciones o inserciones, se visualizarán como espacios blancos entre los bloques rojos o azules.
 
-![Arreglos](images/genome-arrangements.PNG)
+![Arreglos]({{ site.baseurl }}/images/genome-arrangements.PNG)
 
 Veamos cómo se organizan estas ventanas y cómo podemos hacer para navegar a través de ellas:
 
-![Arreglos](images/ventanas.png)
+![Arreglos]({{ site.baseurl }}/images/ventanas.png)
 
 1. Menues desplegables. Son muy similares a los que vimos para Artemis, con la salvedad de que todos (salvo el de `File`) arrancan por seleccionar una de las dos secuencias en la comparación.
 2. Este es el panel de la secuencia 1 (la primera que ingresaron al comenzar la sesión de ACT). Básicamente es una mini-ventana de Artemis. 
@@ -73,23 +73,23 @@ Veamos cómo se organizan estas ventanas y cómo podemos hacer para navegar a tr
 
 Una vez abierto el proyecto, pueden incluir las anotaciones (el archivo `.tab`) de cada secuencia como lo hicieron con Artemis en el TP anterior (`File` > `Secuencia para la que queremos cargar las anotacioens` > `Read an entry`, salvando las distancias con los menues desplegables. 
 
-![menús](images/menus.png)
+![menús]({{ site.baseurl }}/images/menus.png)
 
 Navegar dentro de ACT puede marear un poco al principio, pero es indéntico a Artemis: Si miran arriba y abajo de las secuencias 1 y 2, respectivamente, verán una barra de desplazamiento horizontal; y a los los lados de ambas, una barra de desplazamiento vertical. Las primeras se usan para desplazarnos rio arriba o rio abajo en el genoma, mientras que las segundas se usan para acercar o alejar el foco.
 
 Para ir enganchándole la onda, lo primero que vamos a hacer es alejar el foco de ambas secuencias hasta que podamos ver ambos cromosomas completos en pantalla. Por el momento, es mejor si apagamos los codones de *stop* y, si las cargaron, las anotaciones. Tendrán que hacerlo para ambas secuencias, dado que la mini-ventana de Artemis es independiente en cada caso. Deberíamos ver algo así:
 
-![zoomout](images/zoomout.png)
+![zoomout]({{ site.baseurl }}/images/zoomout.png)
 
 Nótese que cuando nos desplazamos horizontalmente en una secuencia, la otra se desplaza acompañando el movimiento. Este es el comportamiento por defecto y ocurre porque las secuencias están "bloqueadas" o `LOCKED`. Se se fijan en la imagen anterior, verán que a la izquierda aparece "LOCKED" indicando que esa opción está activada. Generalmente es el comportamiento más conveniente, pero si quisiéramos desactivarlo podemos hacerlo con click derecho sobre el panel de comparación y desmarcando la opción `Lock Sequences`.
 
 Si fuera necesario, podemos refinar nuestra comparación cambiando los *cutoffs* que usa ACT para decidir si dibuja una linea o no conectando a los cromosomas. Dependiendo de cuánto divergan nuestras secuencias, esto podría ser fundamental para transformar una maraña de rayas en una gráfica con patrones o arreglos genómicos.
 
-![cutoffs](images/cutoffs.png)
+![cutoffs]({{ site.baseurl }}/images/cutoffs.png)
 
 Hallarán estos cuttoffs haciendo click derecho en el panel de comparación:
 
-![cutoffs](images/cutoffs-menu.png)
+![cutoffs]({{ site.baseurl }}/images/cutoffs-menu.png)
 
 Ahora que sabemos bien cómo movernos y enfocarnos, analicemos la imagen: ¿Qué patrones o arreglos ven en la comparación de estos cromosomas? Agreguen ahora, a *S. tiphy* las anotaciones con el nombre ``SPIs.tab``. Este archivo contiene todas las islas de patogenicidad de esta *Salmonella* (incluyendo la SPI-7, con la que trabajamos anteriormente) ¿Están presentes en *E. coli* K12?
 
@@ -119,7 +119,7 @@ Comencemos por cargar nuestros archivos en el ACT.
 
 NOTA: Fíjense que para *P. falciparum* tienen un archivo combinado (como el que generaron en el tp anterior), por lo pueden usar eso como secuencia. En el caso del otro parásito, tenemos los archivos de secuencia y anotaciones por separado. Es decir, el ``.embl`` de *knowlesi* no tiene secuencia! Podrán cargar las anotaciones de ese archivo una vez que hayan comenzado la sesión de trabajo. Sin las anotacioens, debería ver algo así:
 
-![plasmodium-act](images/plasmodium-act.png)
+![plasmodium-act]({{ site.baseurl }}/images/plasmodium-act.png)
 
 Prueben incluir las anotaciones de *P. knowlesi*. Utilicen las barras de desplazamiento horizontal para ubicar "geográficamente" el contig de *P. knowlesi* en el cromosoma 13 de *P. falciparum*. Un deslizador que aún no usamos pero que puede resultar muy útil para refinar la visualización, es la barra de desplazamiento vertical del panel de comparación. Moviéndolo hacia arriba o hacia abajo, filtrarán la aparición de cajas de comparación en función de la longitud del match (más largas o más cortas, respectivamente). ¡Pruébenlo! 
 
@@ -151,7 +151,7 @@ Por último, evaluaremos la capacidad predictiva de modelos génicos utilizada p
 
 Diríjanse, en el genoma de *P. falciparum*, al gen anotado como PFM1010w (o MAL13P1.103). ¿Pueden comparar el modelo génico de uno y otro parásito e identificar el/los exon/es conservado/s? Pueden usar el deslizador vertical del panel de comparación para incluir *hits* más cortos ¿Pueden encontrar a todos los exones en el contig de *P. knowlesi* (ignoren por ahora el *Phat4_alternative* en rojo)? Abran, para cada secuencia, los gráficos de %GC. ¿Qué características tiene la gráfica en *P. falciparum*? ¿Dirían que esa característica está conservada en *P. knowlesi* para el gen *Phat4*?
 
-![Phat4-gen](images/phat4.png)
+![Phat4-gen]({{ site.baseurl }}/images/phat4.png)
 
 Cuando hayan terminado avísenle a su instructor y, mientras esperan al resto de sus compañeros, evalúen las siguientes regiones en el cromosoma 13 de *P. falciparum* en Artemis. 
 
@@ -161,7 +161,7 @@ Cuando hayan terminado avísenle a su instructor y, mientras esperan al resto de
 
 Pueden abrir una sesión de Artemis directamente desde ACT:
 
-![artemis-edit](images/artemis-edit.png)
+![artemis-edit]({{ site.baseurl }}/images/artemis-edit.png)
 
 Revisen las regiones inter-exon ¿Pueden hallar algún patrón?
 

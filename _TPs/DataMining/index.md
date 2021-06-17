@@ -138,7 +138,7 @@ Para graficar el resultado de este agrupamiento utilizamos la función `plot()`
 ```r
 plot(MiClusteringJerarquico) #Grafica el dendograma que resulta del clustering jerárquico
 ```
-![](./images/plot_ejemplo_1.png)
+![](./{{ site.baseurl }}/images/plot_ejemplo_1.png)
 
 Los gráficos en R se pueden exportar a PDF y a JPEG fácilmente:
 
@@ -204,7 +204,7 @@ Luego de visualizar el nuevo dendrograma....
 ```r
 heatmap(MiTablaSTD, Colv=NA)
 ```
-![](./images/plot_ejemplo_2.png)
+![](./{{ site.baseurl }}/images/plot_ejemplo_2.png)
 
 
 Inspeccionamos el *heatmap* que es una imagen que muestra niveles de expresión más altos como más calientes o blancos/amarillos y los de menos expresion como mas frios o rojos. Colv indica si las columnas (tiempos en este caso) deben ser agrupadas o reordenadas y cómo. `Colv= NA` (NA = Not Available), indica que no las reagrupe (respetando el orden natural de la variable tiempo). Las filas (genes) van a ser agrupadas utilizando la función `hclust()` con sus opciones por *default* y la distancia euclídea, a menos que se indique otra cosa.
@@ -240,7 +240,7 @@ Ahora con lo aprendido, importar y analizar el conjunto de datos `diauxic.txt`.
 
 Deberían llegar a algo así:
 
-![](./images/plot_ejemplo_3.png)
+![](./{{ site.baseurl }}/images/plot_ejemplo_3.png)
 
 6. Análisis de enriquecimiento funcional 
 
@@ -373,7 +373,7 @@ log_foldChange_drug2 <- log(foldChange_drug2,base = 2)
 hist(log_foldChange_drug1)
 ```
 Antes y despúes de normalizar:
-![](./images/histograma_bad_cruzi.png)
+![](./{{ site.baseurl }}/images/histograma_bad_cruzi.png)
 
 Este es nuestro resultado final, por lo que ahora solo restaría construir una tabla donde guardar el resultado y exportar los genes que se encuentran diferencialmente expresados con cada droga:
 
@@ -384,8 +384,8 @@ pheatmap(exp_table,kmeans_k = 10) #Si quieren visualizar el comportamiento
 write.table(rownames(exp_table)[abs(exp_table$drug1) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug1")
 write.table(rownames(exp_table)[abs(exp_table$drug2) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug2")
 ```
-![](./images/heatmap_cruzi_FClog2.png)
-![](./images/histogramas_cruzi_comp.png)
+![](./{{ site.baseurl }}/images/heatmap_cruzi_FClog2.png)
+![](./{{ site.baseurl }}/images/histogramas_cruzi_comp.png)
 
 ¿Notan alguna diferencia entre las drogas? ¿La distribución de cambio de expresión fue igual? ¿La cantidad de genes diferencialmente expresados fue la misma?
 
@@ -400,7 +400,7 @@ Por lo tanto, primero copien y pegen la lista de genes en:
 
 Luego, cuando el sitio haya encontrado todos los genes que cargamos, hacemos click en *Analyze results* como se muestra en la imagen:
 
-![](./images/ejemplo_trytripdb.png)
+![](./{{ site.baseurl }}/images/ejemplo_trytripdb.png)
 
 Aparecen opciones y una de ellas es *Gene ontology enrichment*. Finalmente nos da algunas opciones que dejamos como están, salvo que seleccionamos **Biological Process**.
 
@@ -436,7 +436,7 @@ pheatmap(fibro,cutree_rows =   7,clustering_distance_rows=as.dist(1-cor(t(fibro)
 pheatmap(fibro,kmeans_k = 10,cutree_rows =   7,cluster_cols = F) # Para que vean qeu se puede combinar Kmeans y clustering jerárquico
 ```
 
-![](./images/heatmap_fibro.png)
+![](./{{ site.baseurl }}/images/heatmap_fibro.png)
 
 A continuación se puede ver otra representación de los perfiles de expresión, ahora de cada *cluster* por separado, usando gráficos de perfiles multivariados o *parallel plots* (y para los que no sepan y/o recuerden que es un *parallel plot*, pueden leer [esto](https://en.wikipedia.org/wiki/Parallel_coordinates) ):
 
@@ -445,7 +445,7 @@ A continuación se puede ver otra representación de los perfiles de expresión,
 ```
 parallelplot(~fibro | factor(fibroCorte),horizontal=FALSE)
 ```
-![](./images/parallelPlot_fibro.png)
+![](./{{ site.baseurl }}/images/parallelPlot_fibro.png)
 
 Ahora nuestro jefe nos viene a decir que esta todo mal porque no escalamos los valores de expresión de los genes :scream: :boom: :scream: :boom: :scream: :boom: :scream: :boom: 
 ¿Que hacemos? ¿Tiramos todo? ¿O el código se puede usar solamente cambiando algo al principio de todo el análisis?
@@ -464,7 +464,7 @@ Otra forma de representar los datos agrupados, mediante un diagrama de dispersi�
 fibro.pca <- prcomp(fibro, center = TRUE,scale. = TRUE)
 ggbiplot(fibro.pca, ellipse = T, labels=rownames(fibro), groups=as.factor(fibroCorte))+theme_minimal()
 ```
-![](./images/PCA_fibro.png)
+![](./{{ site.baseurl }}/images/PCA_fibro.png)
 
 * Reproducir estos gráficos y probar con diferente número de *clusters*, utilizando además del método del Vecino más lejano ("complete linkage") el promedio ("average") y evaluando las siluetas.
 

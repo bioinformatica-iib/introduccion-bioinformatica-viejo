@@ -128,7 +128,7 @@ plot_p53 <- ggplot(p53,aes(x=Posición,y=Iupred)) +
 
 Debería obtener un gráfico como el siguiente:
 
-![](./images/IUPred.png)
+![](./{{ site.baseurl }}/images/IUPred.png)
 
 Ahora, quisiéramos evaluar el porcentaje de residuos predichos ordenados y desordenados. Por suerte, R tiene una función que “cuenta” por nosotros:
 
@@ -165,7 +165,7 @@ plot_aa <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)
 ```
 Deberías obtener un gráfico como el siguiente:
 
-![](./images/Aminoacidos.png)
+![](./{{ site.baseurl }}/images/Aminoacidos.png)
 
 * ¿Qué aminoácidos son los más abundantes en las regiones desordenadas? ¿La abundancia de los aminoácidos coincide con lo esperado?
 
@@ -343,13 +343,13 @@ La base de datos MobiDB centraliza diferentes recursos que facilitan la anotaci�
 
 3. Ve a la pestaña *Indirect*.  A la izquierda se ve lo siguiente:
 
-    ![](./images/MobiDB1.png)
+    ![](./{{ site.baseurl }}/images/MobiDB1.png)
 
     En la primera línea se indica la secuencia y en la segunda línea (*Consensus*) se indica el consenso en base a la evidencia estructural. Ubique el mouse sobre las distintas regiones y responda: ¿Qué significan los distintos colores de las regiones marcados en el consenso?
 
 4. Exploremos la evidencia proveniente de la estructura cristalográfica. Para eso despliegue la sección *Missing residues* (PDB).
 
-    ![](./images/MobiDB2.png)
+    ![](./{{ site.baseurl }}/images/MobiDB2.png)
 
 
     * ¿Qué regiones tienen una estructura? 

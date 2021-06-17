@@ -46,12 +46,12 @@ La principal ventaja de este método es que **siempre encuentra el alineamiento 
 En la práctica: imaginen que quieren alinear las secuencias ATTGAG y AGATGGAT utilizando un scoring de M=1, m=0, g=-1
 Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensiones corresponda a una de las secuencias:
 
-![Dynamic0](./images/Matriz0.png)
+![Dynamic0](./{{ site.baseurl }}/images/Matriz0.png)
 
 El primer vértice aduiere el valor e cero ya que es con el puntaje con el que iniciamos el alineamiento. A partir de allí completamos calculando para cada vértice el score acumulado de cada posible camino que nos lleve hasta él. Por ejemplo, para alcanzar el siguiente vértice (a la derecha del inicial), solamente se podria acceder por un solo camino:
 * Moverse horizontalmente desde el nodo inicial, alineando A con un gap con un score de -1 (g).
 
-![Dynamicb1](./images/Matriz0_b1.png)
+![Dynamicb1](./{{ site.baseurl }}/images/Matriz0_b1.png)
 
 ```
 A
@@ -61,7 +61,7 @@ A
 
 * Lo mismo pasa con el vértice debajo de el nodo de inicio, pero la interpretación es que alineamos la A de la segunda secuencia con un gap en la primera.
 
-![Dynamicb2](./images/Matriz0_b2.png)
+![Dynamicb2](./{{ site.baseurl }}/images/Matriz0_b2.png)
 
 ```
 -
@@ -93,15 +93,15 @@ A
 
 Para decidir que valor ubicamos en el vértice simplemente optamos por el que nos dé el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal.
 
-![Dynamic1](./images/Matriz0_b3.png)
+![Dynamic1](./{{ site.baseurl }}/images/Matriz0_b3.png)
 
 Este procedimiento se repite iterativamente calculando los scores para cada vértice e indicando el mejor movimiento. 
 
-![Dynamic2](./images/Matriz1.png)
+![Dynamic2](./{{ site.baseurl }}/images/Matriz1.png)
 
 Al finalizar la matriz, se puede obtener el mejor alineamiento al reconstruir el camino que nos lleva del extremo inferior derecho al superior izquierdo:
 
-![Dynamic3](./images/Matriz2.png)
+![Dynamic3](./{{ site.baseurl }}/images/Matriz2.png)
 
 El score final del alineamiento es el score de la ultima celda de la matriz (en este caso +2) y el alineamiento se puede reconstruir siguiendo el camino que hemos establecido, insertando gaps en una u otra secuencia segun si hay un movimiento horizontal o vertical:
 
@@ -110,7 +110,7 @@ El score final del alineamiento es el score de la ultima celda de la matriz (en 
 
 2.1 Utilizando el algoritmo de *dynamic programming* complete la matriz y reconstruya el alineamiento utilizando las secuencias y el scoring del ejemplo:
 
-![Dynamic4](./images/Matriz_ej.png)
+![Dynamic4](./{{ site.baseurl }}/images/Matriz_ej.png)
 
 ## 2. Dot-Plots
 
@@ -118,7 +118,7 @@ Los dot-plots son representaciones gráficas que dan un pantallazo sobre la simi
 La forma de obtener uno es muy sencilla: se establece una matriz donde cada elemento de una de las secuencias se corresponde con una fila y los de la otra con una columna. Acto seguido se procede a colorear cada celda donde los caracteres correspondientes a fila y columna sean equivalentes.
 Por ejemplo:
 
-![DotPlot](./images/DotPlot1.jpeg)
+![DotPlot](./{{ site.baseurl }}/images/DotPlot1.jpeg)
 
 Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar nuestros propios plots. Pueden utilizar la secuencia *HS-ch11-fragment.fasta* que se encuentra en la carpeta *data* para compararla contra sí misma. Esta secuencia es un pequeño fragmento del cromosoma 1 de *Homo sapiens* y la vamos a utilizar únicamente para ver algunos de los patrones que podemos encontrar en un dotplot.
 
@@ -145,7 +145,7 @@ dotmatcher -graph X11 -windowsize 50 -threshold 20 HS-ch1-fragment.fasta HS-ch1-
 
 Si aumentan estos parámetros pueden ir eliminando fragmentos que corresponden a secciones compartidas más cortas, sin embargo existe una relación de compromiso, utilizar tamaño de ventana y umbral muy grandes nos llevan a perder información por lo que hay que seleccionarlos con cuidado. Aqui hay algunos patrones con los que se pueden encontrar en este tipo de plots:
 
-![DotPlot](./images/DotPlot_patterns.png)
+![DotPlot](./{{ site.baseurl }}/images/DotPlot_patterns.png)
 
 **a)** Match perfecto.  
 **b)** Repeticiones.  
@@ -172,14 +172,14 @@ A partir de esta relación entre similitud y homología se puede aplicar para in
 ```Bash
 needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2* -outfile *salida*
 ```
-![Animales](./images/Animales.png)
+![Animales](./{{ site.baseurl }}/images/Animales.png)
 
 3.2 Realice el mismo procedimiento pero esta vez para determinar si los mamuts (Mammuthus primigenius) son más cercanos a los elefantes africanos (Loxodonta africana) o asiáticos (Elephas maximus) utilizando la secuencia de la cadena alfa de la hemoglobina.  
     3.2.2 Qué le sugieren los resultados obtenidos?  
     3.2.3 Qué otras explicaciones pueden satisfacer estos resultados?  
     3.2.4 Proponga soluciones para los problemas encontrados.  
 
-![Elefantes](./images/Elefantes.png)
+![Elefantes](./{{ site.baseurl }}/images/Elefantes.png)
 
 
 ## 4. Alineamientos múltiples
@@ -190,7 +190,7 @@ Un alineamiento múltiple (MSA) involucra tres o más secuencias biológicas. De
 
 Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comparar, el MSA muestra los residuos de cada proteína en una fila junto con los gaps que le correspondan de tal manera que todos los residuos "equivalentes" se encuentren en la misma columna. El significado de equivalencia depende por lo general del contexto: para alguien que hace una filogenia puede significar que comparten una ancestro común; un biólogo estructural puede interpretar que son residuos que corresponden a posiciones análogas de un plegado determinado; para el biólogo molecular, residuos equivalentes juegan roles funcionales similares dentro de sus proteínas correspondientes. En cada caso un MSA provee un pantallazo sobre las restricciones evolutivas, estructurales o funcionales que caracterizan un set de proteínas de una manera visual e intuitiva.
 
-![MA0](./images/MA0.png)
+![MA0](./{{ site.baseurl }}/images/MA0.png)
 
 Un pipeline típico para realizar un MSA seria:
 1. Formular la pregunta que se quiere contestar. Por ej "Que estructura secundaria adopta X region de mi proteína de interés?"

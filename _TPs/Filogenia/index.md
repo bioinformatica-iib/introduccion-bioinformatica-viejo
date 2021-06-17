@@ -16,11 +16,11 @@ menubar_toc: true
 
 La filogenética es la ciencia de estimar el pasado evolutivo basado en la comparación de secuencias ADN o protéicas. Un árbol filogenético está compuesto de ramas (o ejes) y nodos. Los ejes conectan nodos y los nodos son los puntos en los cuales dos o más ramas divergen. Ambos pueden ser internos o externos. Un nodo interno corresponde al último ancestro común hipotético de todo lo que está debajo de él. Los nodos terminales, en cambio, son las secuencias a partir de las cuales se construyó el árbol. Los árboles pueden derivarse a partir de varios genes (árboles genéticos), de un único gen proveniente de diferentes especies (árbol de especies) o de una combinación de ambos. En el primer caso, los nodos internos podrían interpretarse como eventos de duplicación, mientras que en el segundo, podrían obedecer a eventos de especiación.
 
-![Arbol1](images/Arbol1.jpg)
+![Arbol1]({{ site.baseurl }}/images/Arbol1.jpg)
 
 Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen también otras representaciones (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna más allá de los agrupamientos.
 
-![Clado](images/Arbol-Clado.jpg)
+![Clado]({{ site.baseurl }}/images/Arbol-Clado.jpg)
 
 En la base del árbol vamos a encontrar su raíz. Este es el punto más antiguo del árbol y marca el orden de ramificación del mismo, osea, quién comparte un ancestro más reciente con quién. La forma de ubicar la raíz del árbol es a través de un "*outgroup*": un punto externo de referencia. Un *outgroup* puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningún lado.
 
@@ -66,11 +66,11 @@ bash jalview.sh
 
 O desde el el explorador de archivos:
 
-![Jalview](images/open-jalview.png)
+![Jalview]({{ site.baseurl }}/images/open-jalview.png)
 
 Una vez abierto el programa, podemos cargar el alineamiento generado por Emma haciendo click en `Archivo` > `Alineamiento de entrada` > `Desde fichero`. Esto nos abrirá una ventana en la que tendremos que ubicar nuestro archivo dirigiéndonos a nuestra carpeta de trabajo.
 
-![Jalivew-2](images/jalview-all.png)
+![Jalivew-2]({{ site.baseurl }}/images/jalview-all.png)
 
 > **POR DEFECTO JALVIEW NO "VE" EL ARCHIVO. ASEGÚRENSE DE COLOCAR "TODOS LOS ARCHIVOS" EN EL MENU DESPLEGABLE DE "ARCHIVOS DEL TIPO"**
 
@@ -184,7 +184,7 @@ Si un agrupamiento determinado es encontrado en todos los árboles, entonces tie
 
 Es importante aclarar que el sampleo se hace a nivel columna (del MSA), no secuencia. Nuestro árbol va a establecer la relación entre diferentes secuencias dada la conservación/mutación de posiciones "homólogas" y esto es lo que se intenta probar con bootstrap: que cualquier tipo de composición que mantenga esos patrones de conservación/mutación va a dar el mismo árbol. Por ello, vamos a tener la misma cantidad de secuencias, y del mismo largo, ya que no solo vamos a reordenar las posiciones al azar sino que también vamos a quitar y repetir columnas. En la siguiente imagen pueden ver un ejemplo de los resultados de un *Bootstrapping*
 
-![Boots](images/Bootstrap.png)
+![Boots]({{ site.baseurl }}/images/Bootstrap.png)
 
 Este test parece sencillo, y estudios en filogenias conocidas (poblaciones virales cultivadas en laboratorio) muestran que es una medida adecuada de la certeza del árbol resultante; y que un valor de 70% o más suele indicar un agrupamiento adecuado.
 

@@ -145,7 +145,7 @@ Después del exitoso resultado que obtuvo, ahora más relajado luego de haber sa
 4. En la web de Phyre, vaya a la sección Detailed template information. Haga click en *Run Investigator*.  
 Explore en Quality las distintas opciones:  
 
-    ![img1](./images/img1.png)
+    ![img1](./{{ site.baseurl }}/images/img1.png)
 
     Al final de la página posee el alineamiento y puede ir estudiando estas
 características posición por posición.
@@ -184,7 +184,7 @@ La búsqueda de estructuras puede realizarse utilizando palabras claves, por eje
 ### El archivo PDB. ¿Cómo están codificadas las estructuras?
 Las estructuras tridimensionales de las proteı́nas pueden generarse por diferentes métodos (cristalografía de rayos X o XRay, resonancia magnética nuclear o RMN, criomicroscopía electrónica o CryoEM) y están codificadas en archivos pdb. Un archivo pdb está compuesto por múltiples lı́neas de registros, cada uno identificado por una etiqueta determinada incluidos dentro de distintas secciones. En la figura se muestra un fragmento de la sección de coordenadas que describe la estructura de la proteına dando las coordenadas x, y y z (azul claro) de cada uno de los átomos identificados.
 
-![img2](./images/img2.png)
+![img2](./{{ site.baseurl }}/images/img2.png)
 
 En cada lı́nea, además, se identifica si es un átomo (rojo) perteneciente a un aminoácido o nucleótido, o heteroátomo (azul oscuro), la numeración (verde), el nombre del átomo (naranja), el nombre del residuo en el que está incluido el átomo (violeta), la cadena a la que pertenece (negro), el número del residuo al que pertenece (verde). Este archivo puede incluir más columnas para cada átomo con datos relacionados con el espacio que ocupa el átomo, la movilidad del átomo (el factor de temperatura o B-factor), el sı́mbolo que representa al átomo y la carga del mismo (señaladas con “...” en la figura). El encabezado o header del archivo PDB puede tener muchísima información no relacionada directamente con la conformación tridimensional de la proteína, sino con cómo se hizo el experimento, las publicaciones relacionadas y otros. La descripción del resto del contenido de las secciones del archivo pdb puede obtenerse en la sección documentación de http://www.wwpdb.org/.  
 

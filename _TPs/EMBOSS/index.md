@@ -1576,7 +1576,7 @@ Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las indu
 
 La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir el ácido ferúlico en **¡nada menos que vainillín!**
 
-![Catalisis de VpVAN](images/vainillin.png)
+![Catalisis de VpVAN]({{ site.baseurl }}/images/vainillin.png)
 
 Esta enzima ha sido aislada (y secuenciada) de *Vanilla planifolia* . Encontrarán la secuencia correspondiente entre sus materiales de trabajo (`VpVAN.fasta`) y más información acerca de esta *million-dollar-idea* en este [*paper*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4083428/).
 

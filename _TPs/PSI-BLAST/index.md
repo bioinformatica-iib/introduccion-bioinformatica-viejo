@@ -207,7 +207,7 @@ Teniendo en cuenta que el primer hit es nuestro query y por lo tanto vamos a ign
 
 Si se fijan debajo de los hits significativos van a tener la opción de seguir iterando PSI-BLAST:
 
-![2iter](images/2iter.png)
+![2iter]({{ site.baseurl }}/images/2iter.png)
  
 Allí pueden especificar cuantas secuencias queremos utilizar para refinar nuestras PSSM (*Position-Specific Scoring Matrix*). Conservando el valor por defecto corramos la siguiente iteración.
 
@@ -222,7 +222,7 @@ Antes de proseguir realice una o dos iteraciones más y observe la aparición de
 Ahora podemos utilizar la PSSM que está ajustada con los resultados obtenidos de PSI-BLAST para realizar búsquedas más significativas en otras bases de datos.
 Para obtener la PSSM descarguenla arriba donde dice "*Dowload All*"
 
-![DownloadPSSM](images/DPSSM.png)
+![DownloadPSSM]({{ site.baseurl }}/images/DPSSM.png)
 
 Volvamos una vez más a la página para realizar la búsqueda. Sin ingresar ninguna secuencia query seleccionemos otra vez la base de datos de estructuras (pdb) y como algoritmo PSI-BLAST. Por último, justo debajo del botón de BLAST, abramos el menú de *Algorithm parameters* y carguemos nuestra PSSM (justo al final). Ahora si corramos la búsqueda.
 
@@ -269,7 +269,7 @@ sudo apt install pymol
 ```  
 Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, como aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en rojo:
 
-![Model](images/CPHmodels.png)
+![Model]({{ site.baseurl }}/images/CPHmodels.png)
 
 16. ¿Podrían estos residuos ser parte del sitio activo?
 
