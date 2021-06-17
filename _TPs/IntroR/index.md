@@ -18,14 +18,14 @@ menubar_toc: true
 Es un hecho que la producción de información es cada día mayor, es más, si uno observa los volúmenes de datos que se manejan en los últimos años y las predicciones más serias, el crecimiento parece exponencial:
 
 
-![](./{{ site.baseurl }}/images/data_growth.png)
+![](./images/data_growth.png)
 
 ¿Entienden lo que esto implica?
 
 Si les parece que cada vez hay más datos; más grandes; más complejos, eso no es nada en comparación a lo que tendremos en unos años. Aunque por otro lado también aumenta el poder de procesamiento de datos de nuestras computadoras. Sin embargo, este crecimiento es lineal:
 
 
-![](./{{ site.baseurl }}/images/cpu-power.png)
+![](./images/cpu-power.png)
 
 Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus límites de volúmenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. 
 
@@ -60,7 +60,7 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ```
 
-![](./{{ site.baseurl }}/images/Rserver_1.png)
+![](./images/Rserver_1.png)
 
 *Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar, creemos uno nuevo. Básicamente lo que conocemos como "Script", que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
 
@@ -290,7 +290,7 @@ Esto es muy útil para hacer gráficos de prueba, que podemos hacer con la funci
 plot(x, y)
 ```
 
-![](./{{ site.baseurl }}/images/plot_ejemplo_1.png)
+![](./images/plot_ejemplo_1.png)
 
 También podemos generar datos con características determinadas para evaluar modelos o probar algoritmos. Por ejemplo un set de datos aleatorios  con una media en 15, una desviación estándar de 2,5 y una distribución normal.
 
@@ -298,7 +298,7 @@ También podemos generar datos con características determinadas para evaluar mo
 Snorm <- rnorm(mean=15,sd=2.5,n=1000)
 hist(Snorm)
 ```
-![](./{{ site.baseurl }}/images/plot_ejemplo_2.png)
+![](./images/plot_ejemplo_2.png)
 
 ¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
 
@@ -340,7 +340,7 @@ Ahora si usamos este nuevo factor recién salido del horno, tenemos un casi bell
 plot(niveles_tratamiento_factor,resultados_tratamiento)
 ```
 
-![](./{{ site.baseurl }}/images/ejemplo_factores.png)
+![](./images/ejemplo_factores.png)
 
 :satisfied:
 
@@ -614,7 +614,7 @@ y_vector_1 <- my_function(x_vector_1)
 plot(x_vector_1,y_vector_1)
 ```
 
-![](./{{ site.baseurl }}/images/plot_ejemplo_3.png)
+![](./images/plot_ejemplo_3.png)
 
 Esto nos ahorra tener que escribir muchas veces el mismo código cuando vamos a operar más o menos de la misma forma reiteradas veces. Digo más o menos porque el uso de funciones es muy versátil, en el ejemplo anterior nosotros declaramos que la función solo recibía una variable "x", pero tranquilamente yo podría haber sido más complejo:
 
@@ -632,8 +632,8 @@ y_vector_1 <- my_function(x_vector_1,20)
 plot(x_vector_1,y_vector_1)
 
 ```
-![](./{{ site.baseurl }}/images/plot_ejemplo_3.png)
-![](./{{ site.baseurl }}/images/plot_ejemplo_4.png)
+![](./images/plot_ejemplo_3.png)
+![](./images/plot_ejemplo_4.png)
 
 Y las funciones no solo se limitan a operaciones matemáticas, pueden escribir cualquier tipo de operación con cadenas de texto, manejar archivos, realizar test estadísticos, etc. Sólo están limitados por su creatividad.
 
@@ -654,7 +654,7 @@ ggplot(data=dt,aes(x=log(con),y=abs,col=sol))+
   theme_minimal()
 ```
 
-![](./{{ site.baseurl }}/images/plot_ejemplo_5.png)
+![](./images/plot_ejemplo_5.png)
 
 
 Como pueden ver, este paquete tiene funciones que son un poco distintas a las que veníamos usando, pero con el uso se vuelven cada vez más amigables. Acá va una explicación de qué está haciendo ese código:
@@ -779,11 +779,11 @@ En esta carpeta tienen tres archivos:
 
 * Un .pdf donde se realizaron todas las RL para cada compuesto, como el siguiente:
 
-![](./{{ site.baseurl }}/images/plot_ejemplo_7.png)
+![](./images/plot_ejemplo_7.png)
 
 * Un .pdf con un análisis de la curva dosis/respuesta donde estimaron el IC50, como el siguiente:
 
-![](./{{ site.baseurl }}/images/plot_ejemplo_6.png)
+![](./images/plot_ejemplo_6.png)
 
 Además, pudieron exportar la siguiente tabla:
 

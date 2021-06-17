@@ -46,7 +46,7 @@ La evidencia experimental recolectada de la literatura indica que:
 * El motivo NRBox forma una hélice alfa
 * Existen tres leucinas que **se encuentran en una misma cara de la hélice** que interactúan con un bolsillo hidrofóbico en la superficie del receptor nuclear (Figura 1).
 
-<img src="./{{ site.baseurl }}/images/NRBox.png" width=500>
+<img src="./images/NRBox.png" width=500>
  
 **Figura 1.** Fragmento de la proteína PGC-1 alfa unido al receptor nuclear PPAR-gamma. Se muestra en naranja el backbone de la proteína representado en *Cartoon* y en azul las tres leucinas que median la interacción representadas en *Sticks* (PDB:3CS8) y que conforman el motivo NRBox.
 

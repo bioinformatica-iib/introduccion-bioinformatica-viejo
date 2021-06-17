@@ -36,11 +36,11 @@ Vamos a mapear las lecturas producidas con Illumina de una nueva variante de tra
 
 **_In silico_**: Se generan archivos de secuencia de cada lectura en un formato denominados "fastq", los cuales son alineados a la secuencia de referencia del genoma en formato SAM. Luego se generan archivos en formato BAM, los cuales se pueden visualizar en Artemis.
 
-![Flujo]({{ site.baseurl }}/images/flow.png)
+![Flujo](images/flow.png)
 
 Hasta el momento, no hemos trabajado con archivos tipo FASTQ (Ni SAM/BAM). En la siguiente imagen se muestra las características del formato FASTQ:
 
-![Flujo]({{ site.baseurl }}/images/fastq.png)
+![Flujo](images/fastq.png)
 
 Cada lectura de secuencia está representada por cuatro lineas.
 
@@ -62,7 +62,7 @@ Antes de hacer cualquier cosa, vamos a revisar la calidad de nuestras lecturas. 
 #### FastQC:
 Este programa toma los datos crudos para realizar gráficas y tablas simplificadas que muestren, en un pantallazo, la calidad de los datos. Permite, además, identificar algunos problemas relacionados a distintos aspectos de los datos (aunque las alarmas que disparan estos problemas están parametrizadas con genomas humanos y podrían no ser relevantes para genomas de otros organismos). La ventana de FastQC es más o menos así:
 
-![fastQC]({{ site.baseurl }}/images/fastqc.png)
+![fastQC](images/fastqc.png)
 
 El panel principal muestra un ejemplo de comparación de la distribución de calidad de base (Phread score, en el eje y) por posición en la lectura (eje x). Los Phread scores por encima de 30 son, típicamente, considerados de buena calidad para una lectura de Illumina. En este caso, la lectura comienza con una alta calidad (zona verde), que decrece a medida que aumenta la longitud de la lectura (zonas amarilla, Phread < 30  y rojo, Phread < 20). Pueden encontrar ejemplos acerca de "buenas" y "malas" lecturas en el sitio web de FastQC (*example reports*). 
 
@@ -147,7 +147,7 @@ Ahora necesitamos cambiar el formato del archivo de SAM a BAM. A pesar de que el
 
 Antes de cambiar el formato, revisen de qué se trata el .sam usando el comando `head`. Debajo hay un ejemplo, detallando de qué se trata cada cosa:
 
-![sambam]({{ site.baseurl }}/images/sambam.png)
+![sambam](images/sambam.png)
 
 **Paso 4:** Para convertir nuestro alineamiento en formato SAM a formato BAM:
 
@@ -183,11 +183,11 @@ En este punto puede que las extensiones de los archivos empiecen a resultar conf
 
 En poco tiempo deberían ver aparecer la ventana BAM en la pantalla de Artemis. Recuerden que estas lecturas son de la cepa sueca "NV" mapeadas contra el genoma de referencia de la cepa L2. Esta visualización se denomina apilada o "stack view". Cada linea representa una lectura de secuencia. Notar que algunas lecturas estan coloreadas en azul y otras en verdes (o negras), las azules son lecturas únicas, mientras que las verdes (o negras) representan lecturas duplicadas que tienen el mismo comienzo y fin. Para ahorrar espacio si hay secuencias duplicadas, solo se muestra una. Esto significa que podrían haber una gran cantidad de lecturas duplicadas en el mismo punto, pero solo se verá una representada.
 
-![stackview]({{ site.baseurl }}/images/stack.png)
+![stackview](images/stack.png)
 
 Si clickean una lectura, también se seleccionará la lectura apareada. También notarán que si el cursor se detiene por suficiente tiempo sobre una lectura aparecerán los detalles de esa lectura en una pequeña caja. Si quieren saber más sobre una lectura, hagan click derecho sobre ella y seleccionen en el menú: ``'Show details of: READ NAME``' . Aparecerá una ventana detallando la calidad del mapeo, coordenadas, si es una lectura duplicada o no, etc. Si esta lectura se encontrase en una región interesante, poder acceder facilmente a esta información puede ser muy valioso.
 
-![details]({{ site.baseurl }}/images/details.png)
+![details](images/details.png)
 
 "Mapping quality"- El máximo valor posible es 99. La calidad de mapeo depende en la precisión de la lectura y el número de "*mismatches*" con la referencia. Un valor de 0 indica que la lectura mapea igualmente bien con al menos otro lugar por lo que **su mapeo no es confiable**.
 
@@ -206,11 +206,11 @@ Hay otras maneras de visualizar la información de las lecturas alineadas. Cada 
 - La vista 'Strand stack', muestra las lecturas directas y reversas separadas por encima y por debajo de la escala respectivamente. Muy útil para aplicaciones hebra específicas. - La vista 'Paired stack' une lecturas apareadas. Esto puede ser útil para visualizar rearreglos y para confirmar que regiones cercanas en el genoma de referencia también lo estan en el genoma del cual emanan las lecturas alineadas. 
 - La vista 'Inferred size' grafica las lecturas apareadas a lo largo del eje Y de acuerdo al tamaño de inserto inferido del fragmento de DNA utilizado para hacer la libreria. Noten que las librerias de Illumina son usualmente hechas de DNA fraccionado con un tamaño promedio de 250bp. Este no es el tamaño real de los fragmentos de la libreria, sin embargo uno esparía que correlacionen y que sean relativamente constante si la referencia esta altamente conservada con la secuencia mapeada. La utilidad de esto parece un poco oscura pero no lo es: es de gran utilidad para ver inserciones y deleciones, como veremos a continuación.
 
-![inferredsize]({{ site.baseurl }}/images/inferredsize.png)
+![inferredsize](images/inferredsize.png)
 
 Es difícil ver la utilidad de algunas de estas funciones sin buenos ejemplos biológicos. Así que para ver uno, diríjanse, como deseen, hacia el final de la secuencia o a la posición 1044000. Ajusten la vista de tal forma que puedan ver la ventana de lecturas apiladas y el gráfico de cobertura. Noten dos cosas:
 
-![inferredsize]({{ site.baseurl }}/images/coverage.png)
+![inferredsize](images/coverage.png)
 
 1. La profundidad de la cobertura se incrementa al comienzo del "DNA feature" indicado con una línea marrón.
 2. La cobertura cae a cero dentro de una región de este "DNA feature".
@@ -221,7 +221,7 @@ La respuesta al primer interrogante es que la secuencia que esta visualizando es
 
 Aquí es donde la vista de tamaño inferido ('inferred size view') es realmente útil: Cambien la vista, como antes, a 'inferred size' y usen la escala logarítmica ( esto lo realizan chequeando la caja 'Use log Scale' en en el mismo menú que abren para cambiar las vistas de las lecturas mapeadas). Nuevamente ajusten el tamaño de las ventanas para ver las lecturas sobre la región que nos interesa. Lo que observarán es que el tamaño inferido de las lecturas pareadas a los lados de esta zona es mucho mayor al tamaño normal observado por fuera de esta región. No observándose ninguna línea gris uniendo lecturas pareadas dentro del rango normal de tamaño cruzando esta región. Esto es indicativo de una deleción en la cepa secuenciada comparada con la referencia.
 
-![cover]({{ site.baseurl }}/images/cover.png)
+![cover](images/cover.png)
 
 > ¿Ya intuyen por qué esta cepa no era detectada en el ensayo diagnóstico estándar?
 
@@ -235,7 +235,7 @@ Lo primero que hace Artemis es unir todas las lecturas nuevas a las anteriores e
 
 Estén donde estén en el genoma, vayan nuevamente a la región del plásmido que está situada al final del genoma y observen la región no mapeada previamente (alrededor de la base 1044800). Pueden ver que el nuevo archivo BAM para la cepa L2b no muestra la deleción, mostrando lecturas cubriendo esta región. Miren la vista de 'Inferred size' también para comparar ( puede que se enlentezcan los desplazamientos, tengan paciencia).
 
-![cover]({{ site.baseurl }}/images/L2b.png)
+![cover](images/L2b.png)
 
 ¿Qué pasa con la región deleteada en NV para la cepa L2b?¿Qué pueden decir acerca de las tecnologías de secuenciación usadas para una u otra cepa?
 
@@ -245,11 +245,11 @@ Para comenzar, regresen a la visualización de lecturas apiladas.
 
 Para visualizar SNPs hagan click derecho en la ventana donde estan las lecturas apiladas. Luego en el menú que se despliega, hagan clic en ``'Show'`` y chequeen la caja que dice ``'SNP marks'``. Se mostrarán los SNPs contra la referencia como líneas rojas en las lecturas individuales. Observarán que algunos SNPs están presentes en todas las lecturas, formando líneas verticales rojas, mientras que otros SNPs se encuentran distribuidos más esporádicamente. Los primeros son con mayor probabilidad verdaderos SNPs mientras que los últimos más probablemente sean errores de secuencia. Pero claramente esa no es una verdad universal. 
 
-![snips]({{ site.baseurl }}/images/snps.png)
+![snips](images/snps.png)
 
 Si acercan la visualización de las lecturas apiladas al máximo podrán observar (1) las secuencias individuales de cada lectura y (2) las bases que difieren de la referencia estarán en rojo.
 
-![snips]({{ site.baseurl }}/images/snpzoom.png)
+![snips](images/snpzoom.png)
 
 > Muchos SNPs son bastante claros, sin embargo, esto no es siempre el caso. ¿Qué sucede si la profundidad de lecturas es muy baja? Si solo hay dos lecturas mapeando en un sector,la referencia es T y ambas lecturas son C, ¿Es evidencia suficiente para decir que hay un SNP? ¿Que pasa si hay muchas lecturas mapeando una región y, por ejemplo, de 100, 50 tienen G y las otras 50 tienen T en una posición en particular. ¿Es un SNP? También podria ser una coinfección o una variación en un genoma diploide...
 
@@ -328,11 +328,11 @@ Las nuevas instrucciones para construir nuestro bcf en la versión 1.9 (la últi
 
 Ya que estamos, visualicen el resultado de *variant calling* usando head:
 
-![vcf]({{ site.baseurl }}/images/vcf.png)
+![vcf](images/vcf.png)
 
 Para ver una región con algo de variación genética interesante vayan al gen CTL0578, (otra vez, usen el deslizador, el menú 'GoTo' o el 'Navigador')
 
-![variants]({{ site.baseurl }}/images/variants.png)
+![variants](images/variants.png)
 
 ¿Qué tipos de variantes pueden identificar?
 
@@ -394,12 +394,12 @@ Aquí abajo se lista el esquema de colores y formas utilizado para las variantes
 
 Las variantes pueden colorearse por tipo (por defecto) o por score. Las variantes en nuestro ejemplo están todas en la escala del rojo, siendo aquellas con mayor puntaje, de color más intenso. Pruébenlo! `Click derecho` > `Colour by` > `Score`.
 
-![red]({{ site.baseurl }}/images/red.png)
+![red](images/red.png)
 
 Se pueden leer múltiples archivos BCF de muchos aislamientos distintos. Para hacer esto hagan click derecho sobre la ventana BCF y seleccionen ``'Add VCF'`` ( recuerden que BCF y VCF son esencialmente la misma cosa). Ya hemos generado un archivo BCF para la cepa L2b, están en el directorio llamado ``"BCF"`` que se encuentra dentro de la carpeta de este TP. Una vez que hayan abierto el archivo y para facilitar la identificación de cada archivo BCF activo, hagan clic derecho en la ventana BCF y chequeen la caja ``'Show labels'`` . Verán las etiquetas a la izquierda de la ventana. Lo primero que deberían notar es que **L2b tiene bastante menor cantidad de SNPs e indels que NV**, comparado a la referencia. Esto es porque, como mencionamos anteriormente, L2b es un cepa de mayor cercanía filogenética a la de referencia.
 
 Como ya deben imaginarse, Artemis también permite filtrar los archivos BCF. Haciendo clic derecho sobre el panel y seleccionando 'Filter...' podrán ver las opciones de filtrado. Pueden seleccionar o deseleccionar diferentes tipos de variantes de SNPs para modificar la vista. Los sitios *'Non-Variants'* (no variantes) son importantes porque diferencian aquellos sitios que no cambian pero tienen lecturas que mapean sobre esas posiciones, de regiones que *aparentan* no tener variaciones prque no hay lecturas que mapean a ellas. Piénsenlo.
 
-![filters]({{ site.baseurl }}/images/filters.png)
+![filters](images/filters.png)
 
 Como la vista de archivos BAM, también pueden remover o incluir SNPs basado en, por ejemplo, el puntaje del mapeo, la profundidad de cobertura, la calidad de secuencia. Todo esto lo pueden hacer desde la sección ``PROPERTY`` del menú de filtrado de SNPs. Valores de corte útiles son de un "DP" de "10" y de un "Qual" de al menos "30".
