@@ -22,7 +22,7 @@ title: Introducción a la Bioinformática (IIBio-UNSAM)
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   Página web del curso de Introducción a la Bioinformática (IIBIO-UNSAM)
-baseurl: "/introduccion-bioinformatica" # the subpath of your site, e.g. /blog
+baseurl: "https://bioinformatica-iib.github.io/introduccion-bioinformatica" # the subpath of your site, e.g. /blog
 url: "https://trypanosomatics.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
