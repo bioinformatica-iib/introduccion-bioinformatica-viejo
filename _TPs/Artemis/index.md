@@ -34,23 +34,23 @@ cd ~/Tools/artemis/
 ./art
 ```
 
-![Programa, ventana principal](images/0.png)
+![Programa, ventana principal]({{ site.baseurl }}/images/0.png)
 
 Aparecerá una pequeña ventana de inicio. Cargaremos la secuencia del cromosoma de Salmonella typhi, para esto clickeen en **'File'** y luego **'Open'**. Vayan a la carpeta del TP y abran el archivo `S_typhi.dna` seleccionándolo y luego clickeando en **'Open'**. Si todo salió bien se les abrirá una ventana de Artemis. Si no fue así, pidan asistencia.
 
-![Genoma](images/1.png)
+![Genoma]({{ site.baseurl }}/images/1.png)
 
 #### 2. Cargando archivos de anotación (*entries*) en Artemis
 
 Ahora cargaremos un archivo de anotación para el cromosoma de *Salmonella typhi*. Esto lo haremos clickeando en **'File'** , **'Read An Entry'** y seleccionando el archivo **'S_typhi.tab'** y luego clickeando en **'Open'**.
 
-![Anotaciones](images/2.png)
+![Anotaciones]({{ site.baseurl }}/images/2.png)
 
 #### 3. Vista básica de Artemis
 
 Una vez realizado esto, démosle una mirada a que hay en la ventana ( de arriba hacia abajo):
 
-![Ventanas](images/3.png)
+![Ventanas]({{ site.baseurl }}/images/3.png)
 
 > 1. Menúes desplegables. Después iremos viendo algunas de sus utilidades.
 > 2. La siguiente línea muestra que entradas están activas. En nuestro caso estará `S_typhi.dna` y `S_typhi.tab`. Los detalles de los "features" que se encuentran actualmente seleccionados se muestran en el siguiente renglón.
@@ -73,7 +73,7 @@ Las 3 maneras principales de ir a región o posición que uno quiere en Artemis 
 
 Las funciones en este menu (ignoren el Navigator por ahora) son atajos para dirigirse a sitios dentro de "features" seleccionados o para saltar al final o principio de la secuencia de DNA. Son muy intuitivos, asi que pruebenlos!
 
-![Desplazamientos](images/4.png)
+![Desplazamientos]({{ site.baseurl }}/images/4.png)
 
 > ###### Tareas sugeridas:
 > 1. Alejen el visualizador, marquen una región grande de secuencia clickeando el botón izquierdo del mouse y arrastrando el cursor, luego vayan al principio y al final de la región seleccionada.
@@ -86,7 +86,7 @@ Las funciones en este menu (ignoren el Navigator por ahora) son atajos para diri
 
 El panel del navigator es muy intuitivo, así que ábranlo (Clic en 'Goto', luego en 'Navigator') y pruébenlo!.
 
-![Desplazamientos con navigator](images/5.png)
+![Desplazamientos con navigator]({{ site.baseurl }}/images/5.png)
 
 > ###### Sugerencias a donde ir:
 > 1. Piensen un número entre 1 y 4809037 y vayan a esa base.
@@ -121,15 +121,15 @@ Por el método de su elección diríjanse a la región localizada entre las base
 
 **Anotación**: Si clickean en un "feature" en particular pueden ver la anotación asociada a él: Seleccionen un "CDS feature" ( o cualquier otro "feature" y clickeen en el menú 'Edit' y seleccionen 'Selected Feature in Editor'. Aparecerá una ventana conteniendo toda la anotación asociada con este CDS.
 
-![Features](images/6.png)
+![Features]({{ site.baseurl }}/images/6.png)
 
 **Visualizando secuencias de aminoácidos:** Clickeen en el menú 'View' y verán varias opciones para visualizar las bases o aminoácidos del "feature" que han seleccionado, en dos formatos, EMBL o FASTA. Esto puede ser muy útil cuando se desea utilizar otros programas que no están integrados en Artemis, e.g. aquellos disponibles en la Web que requieren cortar y pegar la secuencia en ellos.
 
-![Plots](images/8.png)
+![Plots]({{ site.baseurl }}/images/8.png)
 
 **Gráficos**: Se pueden desplegar gráficos de características seleccionando un "CDS feature", luego clickeando en 'View' y 'Feature Plots'. La ventana que aparece muestra gráficos prediciendo hidrofobicidad, hidrofilicidad y alfa-hélices para la proteína codificada por el CDS seleccionado.
 
-![Plots](images/7.png)
+![Plots]({{ site.baseurl }}/images/7.png)
 
 #### 	Analizando información global:
 
@@ -137,29 +137,29 @@ Además de visualizar al detalle los "features" anotados también se puede obser
 
 Clickeen en el menú 'Graph' para ver todos los gráficos disponibles. Tal vez los gráficos más útiles sean 'GC content (%)' , 'GC Deviation' y 'Karlin Signature Difference' (es un gráfico de frecuencia de dinucleótidos). Despliéguenlos!. Para ajustar la suavidad de los gráficos pueden cambiar el tamaño de la ventana sobre la cual los puntos del gráfico son calculados, utilizando el deslizador vertical a la derecha de los mismos.
 
-![Plots](images/9.png)
+![Plots]({{ site.baseurl }}/images/9.png)
 
 > **Nota**: La información de los gráficos es generada dinámicamente por Artemis y aunque este es un ejercicio relativamente rápido para una pequeña región de ADN, en una vista de genoma completo esto puede demorar un rato, así que, en tal caso, tengan paciencia.
 
 Observen cómo los gráficos muestran una desviación marcada en la región que están visualizando (cerca del gen fbaB). Para apreciar mejor la anomalía de esta región, agranden un poco la región visualizada. **¿Qué les sugiere el contenido inusual de nucleótidos en esta región del ADN?**
 
-![GC Devs](images/10.png)
+![GC Devs]({{ site.baseurl }}/images/10.png)
 
 Además de visualizar las características de regiones pequeñas del genoma, también se puede alejar la imagen y observar características del genoma como un todo. Para esto primero tengan en cuenta que alejar la imagen rápidamente con todos los "features" desplegados puede bloquear momentáneamente la computadora. Por lo que para realizar este proceso rápidamente, (1) apaguen los indicadores de codones stop haciendo clic derecho sobre la ventana principal. Aparecerá un menú con la opción de deseleccionar los codones stop. (2) También se debe eliminar temporariamente todo los "features" de anotación. Para realizarlo descliqueen la caja de "S_typhi.tab" en la barra de entrada debajo de la barra de menú.
 
-![GC Devs](images/11.png)
+![GC Devs]({{ site.baseurl }}/images/11.png)
 
 Otro tip importante es ajustar la escala de los gráficos desplegados antes de alejar la imagen. Esto aumenta el tamaño de ventana sobre el cual un punto en cada gráfico es calculado. Para ajustar el escalado (3) cliqueen con el botón derecho del mouse sobre la ventana de un gráfico en particular. Aparecerá un menú con una serie de valores para los tamaños máximos de ventana, seleccionen 500. Esto deben hacerlo para cada gráfico desplegado.
 
 Ahora están listos para alejar la imagen haciendo clic sobre el deslizador (4) de la ventana principal y arrastrando hacia abajo.
 
-![GC Devs](images/12.png)
+![GC Devs]({{ site.baseurl }}/images/12.png)
 
 ### Ejercicio 3: Anotando el genoma
 
 Ahora vuelvan a seleccionar `S_typhi.tab` en las entradas activas para volver a visualizar las anotaciones. Vayan a la posición 4409511. Buscaremos aquí una región denominada *Salmonella pathogenicity island (SPI)*. En el genoma con el que estamos trabajando la veremos como "*The major Vi antigen pathogenicity island (SPI 7)*"; una región de ~134 kb de largo que contiene un bacteriófago de ~30 kb. 
 
-![SPI7](images/13.png)
+![SPI7]({{ site.baseurl }}/images/13.png)
 
 Esta región es un ejemplo más bien clásico de SPI. La definición exacta de qué constituye una isla de patogénesis es, de hecho, bastante diversa; pero las carcterísticas fundamentales comunmente observadas en estas regiones son, según Hacker *et al*., 1997.
 
@@ -194,7 +194,7 @@ Es importante notar que el `Feature Selector` puede usarse de muchas maneras. En
 
 Afortunadamente para nosotros, estas regiones ya han sido previamente identificadas y coloreadas en rosa (código de color 12). Para buscarlas podríamos emplear los métodos que ya aprendimos más arriba, pero una búsqueda avanzada por `Feature selector` es más apropiada:
 
-![advanced feature search](images/14.png)
+![advanced feature search]({{ site.baseurl }}/images/14.png)
 
 Todos los genes listados en (6) son aquellos cuyas anotaciones cumplen con los criterios seleccionados. Se pueden copiar/cortar/mover a una nueva entry para aislarlos del resto de la información contenida en `spi7.tab`. Para ello, primero vamos a crear una entry vacía: `Create` > `New Entry`. Veremos que aparece una nueva entrada que se llama, como habrán imaginado, `no name`.  
 
@@ -202,7 +202,7 @@ Ahora seleccionamos todos los CDSs mostrados en la lista haciendo click en `Sele
 
 Si miran a la ventana con la sesión del SPI7 (y desmarcaron la entry de `spi7.tab`, dejando solo la `phage.tab` marcada), podemos intuir que el profago ocupa una porción discreta de todo el SPI-7. Usualmente, es útil crear una nueva feature de DNA para marcar el genoma a partir de estas observaciones. Para esto, apaguen los *stop codons* y luego usen el botón izquierdo del mouse para generar una selección, arrastrándolo de izquierda a derecha, de lo que consideren ustedes que define al profago. 
 
-![phage.tab](images/15.png)
+![phage.tab]({{ site.baseurl }}/images/15.png)
 
 Ahora, con la región seleccionada hagan click en `Create` > `Create Feature from base range` y una ventana para editar la feature aparecerá en pantalla. Por defecto, Artemis asigna *CDS* a la *key* una nueva feature. Esto es incorrecto, ya que lo que buscamos marcar es una región del genoma que no es interesante por su caracter codificante/no-codificante; sino que tiene un fin más bien topográfico. Cambiemos esa key a *misc_feature*. También pueden agregar calificadores haciendo click en `Add Qualifier`. Usando calificadores podemos poner cosas como un `label`, que se usan para mostrar como *nombre* de una secuencia en el panel de visualización principal. 
 
@@ -212,11 +212,11 @@ Lo último que harán con este ejercicio es escribir sus nuevas anotaciones (`sp
 
 Para hacer esto, copien las anotaciones del .tab en el .dna y luego guarden esa entry como `EMBL format`. No se preocupen por los mensajes de error que aparecen. Estos errores tiene que ver con que no todas las features son aceptadas en la base de datos EMBL, y el programa nos advierte que éstas no se van a guardar. La siguiente figura muestra un paso a paso para generar el EMBL.
 
-![phage.tab](images/16.png)
+![phage.tab]({{ site.baseurl }}/images/16.png)
 
 Si todo salió bien, pueden abrir ahora el EMBL que acaban de guardar y deberían ver algo así
 
-![phage.tab](images/17.png)
+![phage.tab]({{ site.baseurl }}/images/17.png)
 
 Verán que los colores de la features han cambiado. Esto ocurre porque no todos los calificadores son válidos/acpetados por la base de datos de EMBL, así que éstos no han sido guardados. El qualifier '/colour', por ejemplo, es uno de ellos, por lo que al importar el archivo Artemis los muestra con los colores por defecto. 
 
@@ -238,11 +238,11 @@ Este proceso nos presentará una ventan con parámetros customizables para el bl
 
 Esto nos abrirá una ventana en el navegador en la que podremos seguir el estado del proceso y, eventualmente, visualizar los resultados. 
 
-![blastp](images/18.png)
+![blastp]({{ site.baseurl }}/images/18.png)
 
 ¿Pueden ver dónde está introducido el codón de stop en nuestro gen? Fíjense que el último aminoácido que comparte nuestra secuencia con el mejor hit en la base de datos, es una **K**. A partir de esa **K** vemos que las secuencias empiezan a diverger. Acá hay que ponerse meticulosos: Volvamos a la secuencia query y revisemos las secuencias de aminoácidos propuestas en los tres marcos abiertos de lectura. ¿Qué ven cuando lo ven? :3 
 
-![marcos-de-lectura](images/19.png)
+![marcos-de-lectura]({{ site.baseurl }}/images/19.png)
 
 ¡El marco de lectura está corrido! *¿Tienen alguna hipótesis de por qué puede pasar esto?*
 
@@ -252,7 +252,7 @@ Adicionalmente tendremos que editar la anotación anterior para acortarla. Para 
 
 Finalmente vamos a *mergear* (si alguien sabe un sinónimo de ésto en castellano me avisa) ambas anotaciones como indica la figura:
 
-![marcos-de-lectura](images/20.png)
+![marcos-de-lectura]({{ site.baseurl }}/images/20.png)
 
 1. Selecciono ambas anotaciones (usando shift)
 2. Click en edit
@@ -261,7 +261,7 @@ Finalmente vamos a *mergear* (si alguien sabe un sinónimo de ésto en castellan
 
 El resultado va a ser algo así:
 
-![marcos-de-lectura](images/21.png)
+![marcos-de-lectura]({{ site.baseurl }}/images/21.png)
 
 Si se fijan en sus resultados, van a ver que ambas anotaciones está conectadas por una linea; algo que veremos comunmente en genes con intrones... pero *S. tiphy*, como buena bacteria que es, no tiene intrones. 
 

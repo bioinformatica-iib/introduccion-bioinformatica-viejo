@@ -1,7 +1,8 @@
 ---
 layout: page
 title: Búsqueda de secuencias por similitud
-categories: TP
+permalink: TPs/busqueda_secuencias/
+menubar_toc: true
 data : True
 ---
 
