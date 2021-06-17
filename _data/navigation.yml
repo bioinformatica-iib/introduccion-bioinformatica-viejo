@@ -2,5 +2,7 @@
   link: /about/
 - name: Agenda
   link: /about/schedule
-- name: Novedades
-  link: /about/novedades 
+- name: TPs
+  link: /TPs
+- name: Instructivos
+  link: /instructivos

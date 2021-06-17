@@ -13,7 +13,7 @@
         - name: Clase 1
           link: /classes/class-1/
     - name: Clases Prácticas
-      link: #
+      link: /TPs/
       items:
         - name: Alineamientos de secuencias de a pares
           link: /TPs/alineamiento_pares/     

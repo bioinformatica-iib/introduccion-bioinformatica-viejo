@@ -12,7 +12,6 @@ menubar_toc: true
 
 ## Materiales
 
-
     {% for file in page.descargas %}
         {% assign url = "data/" | append : file %}
         {% include download.html link=url name=file %}
@@ -198,14 +197,11 @@ Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comp
 
 ![MA0](./images/MA0.png)
 
-
 Un pipeline típico para realizar un MSA seria:
 1. Formular la pregunta que se quiere contestar. Por ej "Que estructura secundaria adopta X region de mi proteína de interés?"
 2. Obtener secuencias que puedan contestar a mi pregunta. Por ej. secuencias que estén relacionadas a mi proteína de interés.
 3. Utilizar alguno de los programas disponibles para llevar a cabo el MSA. Por ej. EMBOSS
 4. Realizar ajustes manuales para corregir posibles errores de los algoritmos de alineamiento.
-
-
 
 #### Ejercicios
 

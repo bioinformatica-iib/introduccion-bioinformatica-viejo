@@ -1,0 +1,7 @@
+- title: 
+  images:
+    - link: TPs/alineamiento_pares/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [Alineamiento de a pares](alineamiento_pares/)
+      ratio: is-4by3
