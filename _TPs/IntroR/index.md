@@ -1,12 +1,17 @@
 ---
 layout: page
 title: Programando en Biología
-categories: TP
-descargas : True
-results : results
-scripts : scripts
-lesson: 8
+data : True
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 # Introducción
 

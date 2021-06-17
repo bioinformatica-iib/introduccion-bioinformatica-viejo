@@ -1,10 +1,17 @@
 ---
 layout: page
 title: Introducción a UNIX
-categories: TP
-descargas : False
-lesson: 1
+data : False
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 ## Introducción
 

@@ -11,11 +11,15 @@
       link: #
       items:
         - name: Clase 1
-          link: /classes/class-1/
+          link: /teoricas/clase-1/
     - name: Clases Prácticas
       link: /TPs/
       items:
         - name: Alineamientos de secuencias de a pares
-          link: /TPs/alineamiento_pares/     
+          link: /TPs/alineamiento_pares/    
+        - name: Visualización de genomas usando Artemis
+          link: /TPs/artemis/   
+        - name: Búsqueda de secuencias por similitud
+          link: /TPs/busqueda_secuencias/                        
 
         

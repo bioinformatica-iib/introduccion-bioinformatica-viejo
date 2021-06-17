@@ -1,10 +1,20 @@
 ---
 layout: page
 title: Visualización de genomas usando Artemis
-categories: TP
-descaras: False
-lesson: 13
+data: [S_typhi.cod,S_typhi.tab,S_typhi.dna]
+permalink: TPs/artemis/
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
+
+
 ## Introducción:
 
 Artemis es una herramienta de visualización y anotación de DNA gratuita desarrollada por Kim Rutherford ( Rutherford et al.,2000). Es utilizado rutinariamente para la anotación y el análisis de tanto genomas procariotas como eucariotas, y puede ser utilizado para visualizar datos mapeados de secuenciación de segunda generación. Este programa permite al usuario visualizar archivos de secuencias simples, archivos de EMBL/Genbank y los resultados de análisis de secuencias en un formato gráfico altamente interactivo e intuitivo. Multiples conjuntos/tipos de información pueden ser visualizados dentro de diferentes contextos, por ejemplo, en Artemis se puede inspeccionar motivos de secuencia de DNA, arquitecturas genicas locales (e.g. operones), varias kilobases de un genoma o hasta cromosomas enteros en una única pantalla. Se puede incluso realizar análisis dentro de Artemis guardando la salida para acceder luego.

@@ -1,13 +1,19 @@
 ---
 layout: page
 title: Short Read Mapping
-categories: TP
-descargas : data
-results : false
-scripts : false
-lesson: 15
+data : True
+menubar_toc: true
 ---
-### 	Short Read Mapping
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
+
+## Introducción
 
 Artemis, como ya hemos visto, nos permite cargar, ver y editar archivos de EMBL/Genbank (NCBI) en un formato gráfico altamente interactivo. También permite ver datos de secuenciación de tecnologías de nueva generación de Illumina, 454 o Solid ([NGS Tools](https://www.sanger.ac.uk/science/tools/categories/Sequence%2520data%2520processing/all&sa=D&ust=1548712235814000) para más información y ejemplos). La re-secuenciación tiene como objetivo capturar información de polimorfismos de una base (SNPs), inserciones y deleciones (indels) y variaciones en el número de copias (CNVs) entre variantes del mismo organismo, dentro de una población. Para cumplir esto, en vez de ensamblar las lecturas de secuencia de novo para producir un nuevo genoma, se suelen mapear los nuevos datos de secuencia al genoma de referencia. De esta forma podemos luego identificar SNPs e INDELS que pueden distinguir dos organismos altamente relacionados. Hay que tener en cuenta que se asumen muchas cosas al realizar esto, incluyendo que el organismo de referencia y el analizado tienen la misma arquitectura genómica.
 

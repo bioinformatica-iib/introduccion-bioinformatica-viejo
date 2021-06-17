@@ -1,12 +1,17 @@
 ---
 layout: page
 title: PSI-BLAST
-categories: TP
-descargas : data
-lesson: 5
+data : True
+menubar_toc: true
 ---
 
+{% if page.data %}
 
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 # Construcción de Logos y Matrices peso-específicas  
 
 ## Objetivos

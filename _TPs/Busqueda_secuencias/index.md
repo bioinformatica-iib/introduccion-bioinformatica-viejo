@@ -2,9 +2,17 @@
 layout: page
 title: Búsqueda de secuencias por similitud
 categories: TP
-descargas : False
-lesson: 4
+data : True
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
+
 
 # Búsqueda de secuencias por similitud
 

@@ -1,13 +1,17 @@
 ---
 layout: page
 title: Motivos Funcionales en proteínas
-categories: TP
-descargas : True
-results : results
-scripts : scripts
-lesson: 10
+data : True
+menubar_toc: true
 ---
-# Motivos Lineales en Proteínas
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 #### Recursos a utilizar:
 * Regex101 [https://regex101.com](https://regex101.com)

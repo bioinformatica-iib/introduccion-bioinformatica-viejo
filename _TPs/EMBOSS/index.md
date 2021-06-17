@@ -1,10 +1,17 @@
 ---
 layout: page
 title: EMBOSS Suite
-categories: TP
-descargas : False
-lesson: 2
+data : True
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 ## Introducción:
 

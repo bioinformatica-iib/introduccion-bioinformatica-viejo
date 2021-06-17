@@ -1,14 +1,17 @@
 ---
 layout: page
 title: Modelado por Homología
-categories: TP
-descargas : True
-results : results
-scripts : scripts
-lesson: 11
+data : True
+menubar_toc: true
 ---
 
-# Modelado por Homología
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 ## Ejercicio 1.
 Luego de dos años y numerosos intentos fallidos, usted logró determinar por resonancia magnética nuclear una región de la proteína misteriosa y depositar la estructura en la

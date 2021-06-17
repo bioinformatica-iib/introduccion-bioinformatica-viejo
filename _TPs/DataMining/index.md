@@ -1,12 +1,17 @@
 ---
 layout: page
 title: Data mining
-categories: TP
-descargas : True
-results : results
-scripts : scripts
-lesson: 12
+data : True
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 
 # TP Data mining - Introducción al clustering en bioinformática

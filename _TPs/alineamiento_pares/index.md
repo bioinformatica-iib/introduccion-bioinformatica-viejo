@@ -1,24 +1,19 @@
 ---
 layout: page
 title: Alineamientos de secuencias de a pares
-categories: TP
-descargas : [data.zip,otrodata.zip]
-lesson: 3
+descargas : True
 permalink: TPs/alineamiento_pares/
 menubar_toc: true
 ---
 
-{% if page.descargas %}
+{% if page.data %}
 
 ## Materiales
 
-    {% for file in page.descargas %}
-        {% assign url = "data/" | append : file %}
-        {% include download.html link=url name=file %}
-
-    {% endfor %}
+<a href="data/"> Descargar </a>
 
 {% endif %}
+
 
 ## Introducción
 

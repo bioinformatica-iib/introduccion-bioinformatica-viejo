@@ -1,10 +1,17 @@
 ---
 layout: page
 title: HMM & Artificial Neural Networks
-categories: TP
-descargas : False
-lesson: 7
+data : True
+menubar_toc: true
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 # HMMer
 

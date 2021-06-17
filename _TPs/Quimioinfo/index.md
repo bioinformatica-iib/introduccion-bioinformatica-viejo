@@ -1,14 +1,17 @@
 ---
 layout: page
 title: Quimioinformática
-categories: TP
-descargas : data
-results : results
-scripts : scripts
-lesson: 16
+data : True
+menubar_toc: true
 ---
 
-# Quimioinformática
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 
 ## Introducción
 

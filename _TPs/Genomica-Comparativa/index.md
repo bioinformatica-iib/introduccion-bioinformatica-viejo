@@ -1,13 +1,17 @@
 ---
 layout: page
 title: Genómica Comparativa
-categories: TP
-descargas : data
-results : false
-scripts : false
-lesson: 14
+data : True
+menubar_toc: true
 ---
 
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 # Genómica comparativa: ACT
 
 ## Introducción:

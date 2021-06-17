@@ -1,11 +1,17 @@
 ---
 layout: page
 title: Filogenias
-categories: TP
-descargas : data
-lesson: 6
+data : True
+menubar_toc: true
 ---
 
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
 # Filogenia
 
 La filogenética es la ciencia de estimar el pasado evolutivo basado en la comparación de secuencias ADN o protéicas. Un árbol filogenético está compuesto de ramas (o ejes) y nodos. Los ejes conectan nodos y los nodos son los puntos en los cuales dos o más ramas divergen. Ambos pueden ser internos o externos. Un nodo interno corresponde al último ancestro común hipotético de todo lo que está debajo de él. Los nodos terminales, en cambio, son las secuencias a partir de las cuales se construyó el árbol. Los árboles pueden derivarse a partir de varios genes (árboles genéticos), de un único gen proveniente de diferentes especies (árbol de especies) o de una combinación de ambos. En el primer caso, los nodos internos podrían interpretarse como eventos de duplicación, mientras que en el segundo, podrían obedecer a eventos de especiación.

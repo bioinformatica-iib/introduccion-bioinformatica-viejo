@@ -2,11 +2,18 @@
 layout: page
 title: Regiones Flexibles
 categories: TP
-descargas : data
-results : results
-scripts : scripts
-lesson: 9
+descargas : True
+data : True
 ---
+
+{% if page.data %}
+
+## Materiales
+
+<a href="data/"> Descargar </a>
+
+{% endif %}
+
 
 # PARTE I: Predicción de Desorden
 
