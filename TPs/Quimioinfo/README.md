@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Quimioinformática
 categories: TP
 descargas : data

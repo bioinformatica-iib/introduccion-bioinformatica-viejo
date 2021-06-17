@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Data mining
 categories: TP
 descargas : True

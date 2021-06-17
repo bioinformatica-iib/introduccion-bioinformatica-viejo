@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: PSI-BLAST
 categories: TP
 descargas : data

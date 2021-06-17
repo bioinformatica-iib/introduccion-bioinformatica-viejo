@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Filogenias
 categories: TP
 descargas : data

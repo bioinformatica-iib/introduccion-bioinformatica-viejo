@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Búsqueda de secuencias por similitud
 categories: TP
 descargas : False

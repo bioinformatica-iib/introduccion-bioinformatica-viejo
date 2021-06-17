@@ -1,0 +1,6 @@
+- name: Sobre el curso
+  link: /about/
+- name: Agenda
+  link: /about/schedule
+- name: Novedades
+  link: /about/novedades 

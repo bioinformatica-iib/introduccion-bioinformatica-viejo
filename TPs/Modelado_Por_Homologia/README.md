@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Modelado por Homología
 categories: TP
 descargas : True

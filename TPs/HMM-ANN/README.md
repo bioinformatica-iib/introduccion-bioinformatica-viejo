@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: HMM & Artificial Neural Networks
 categories: TP
 descargas : False

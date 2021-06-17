@@ -1,0 +1,21 @@
+- label: Clases y Materiales
+  items:
+    - name: Información General
+      link: /
+      items: 
+        - name: Sobre el curso
+          link: /about/    
+        - name: Agenda
+          link: /about/schedule/
+    - name: Clases Teóricas
+      link: #
+      items:
+        - name: Clase 1
+          link: /classes/class-1/
+    - name: Clases Prácticas
+      link: #
+      items:
+        - name: Alineamientos de secuencias de a pares
+          link: /TPs/alineamiento_pares/     
+
+        

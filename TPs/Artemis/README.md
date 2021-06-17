@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Visualización de genomas usando Artemis
 categories: TP
 descaras: False

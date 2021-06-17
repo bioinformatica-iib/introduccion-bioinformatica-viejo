@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Genómica Comparativa
 categories: TP
 descargas : data

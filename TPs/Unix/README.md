@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Introducción a UNIX
 categories: TP
 descargas : False

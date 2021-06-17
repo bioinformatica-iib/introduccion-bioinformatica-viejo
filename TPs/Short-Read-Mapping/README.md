@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Short Read Mapping
 categories: TP
 descargas : data

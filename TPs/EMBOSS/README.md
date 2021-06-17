@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: EMBOSS Suite
 categories: TP
 descargas : False

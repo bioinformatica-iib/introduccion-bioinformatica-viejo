@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Programando en Biología
 categories: TP
 descargas : True

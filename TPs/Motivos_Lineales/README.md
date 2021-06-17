@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Motivos Funcionales en proteínas
 categories: TP
 descargas : True

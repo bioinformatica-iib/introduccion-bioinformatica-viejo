@@ -1,5 +1,5 @@
 ---
-layout: tp
+layout: page
 title: Regiones Flexibles
 categories: TP
 descargas : data

@@ -1,0 +1,31 @@
+<style>
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+}
+
+.badge-success {
+    color: #fff;
+    background-color: #28a745;
+}
+
+.badge-danger {
+    color: #FFF;
+    background-color:  rgb(153, 18, 18);
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    box-sizing: border-box;
+}
+</style>
+
+<span class="badge badge-{{ include.badge }}"> {{include.text }} </span>
