@@ -1,7 +1,9 @@
 - name: Sobre el curso
-  link: /about/
+  link: /about
 - name: Agenda
   link: /about/schedule
+- name: Teóricas
+  link: /teóricas
 - name: TPs
   link: /TPs
 - name: Instructivos

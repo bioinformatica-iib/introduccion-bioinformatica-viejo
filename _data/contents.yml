@@ -8,7 +8,7 @@
         - name: Agenda
           link: /about/schedule/
     - name: Clases Teóricas
-      link: #
+      link: /teoricas/
       items:
         - name: Clase 1
           link: /teoricas/clase-1/

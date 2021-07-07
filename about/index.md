@@ -1,8 +1,9 @@
 ---
 layout: page
-title: Course Information
+title: Información General
 permalink: /about/
 menubar_toc: true
+toc_title: CONTENIDOS
 nav_order : 2
 hide_hero: True
 ---
