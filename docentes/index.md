@@ -23,7 +23,7 @@ hero_height: is-small
 
 **Ayudantes:**
 * Ing. Leonel Bracco
-* Lic. Heli García Martínez
+* Lic. Heli García Álvarez
 
 **Ayudante ad-honorem**
 * Lic. Ibel Carri
