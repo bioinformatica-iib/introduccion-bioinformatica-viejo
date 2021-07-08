@@ -9,9 +9,6 @@
           link: /about/schedule/
     - name: Clases Teóricas
       link: /teoricas/
-      items:
-        - name: Clase 1
-          link: /teoricas/clase_1/
     - name: Clases Prácticas
       link: /TPs/
       items:
