@@ -3,9 +3,10 @@ layout: page
 title: Información General
 permalink: /about/
 menubar_toc: true
-toc_title: CONTENIDOS
+toc_title: Contenidos
 nav_order : 2
-hide_hero: True
+hide_hero: false
+hero_height: is-small
 ---
 
 ## Correlativas para alumnos de grado UNSAM
@@ -28,6 +29,10 @@ hide_hero: True
 * **Alumnos de Posgrado Universidades Privadas:** $5000
 * **Empresas/Profesionales Independientes:** $7500
 * **Alumnos / Docentes / Profesionales Internacionales:** USD $250
+
+## Inscripción
+
+Para llevar a cabo la inscripción completá el siguiente [formulario](https://docs.google.com/forms/d/14hk7_hO2endahO1sbBwFjAMxgbuw47cCTAyba2YjwBY/prefill) 
 
 ## Horarios 2do Cuatrimestre 2021 (Virtual)
 

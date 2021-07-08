@@ -15,8 +15,4 @@
       description: |- 
         [Búsqueda de secuencias por similitud](busqueda_secuencias/)
       ratio: is-4by3                
-    - link: /TPs/busqueda_secuencias/featured.jpg
-      alt: The alt text for the image
-      description: |- 
-        [Data Mining](DataMining/)
-      ratio: is-4by3  
+

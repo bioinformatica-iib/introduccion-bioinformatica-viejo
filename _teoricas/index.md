@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Trabajos Prácticos
+title: Teóricas
 gallery: tps
 hero_height: is-small
 ---

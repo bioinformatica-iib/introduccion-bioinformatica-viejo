@@ -1,8 +1,10 @@
 ---
 layout: page
-title: Data mining
+title: Trabajo Práctico N°3
+subtitle: Data Mining
 data : True
 menubar_toc: true
+toc_title: Contenidos
 ---
 
 {% if page.data %}

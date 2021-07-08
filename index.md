@@ -7,6 +7,7 @@ subtitle: IIBio-UNSAM
 layout: page
 show_sidebar: false
 menubar: contents
+hero_height: is_small
 ---
 
 {% include notification.html message="Este sitio se encuentra en construcción" %}

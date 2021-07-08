@@ -11,7 +11,7 @@
       link: /teoricas/
       items:
         - name: Clase 1
-          link: /teoricas/clase-1/
+          link: /teoricas/clase_1/
     - name: Clases Prácticas
       link: /TPs/
       items:
@@ -21,5 +21,6 @@
           link: /TPs/artemis/   
         - name: Búsqueda de secuencias por similitud
           link: /TPs/busqueda_secuencias/                        
-
+        - name: Data Mining
+          link: /TPs/DataMining/  
         

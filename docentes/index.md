@@ -4,7 +4,7 @@ title: Docentes
 permalink: /docentes/
 menubar_toc: true
 nav_order : 2
-hide_hero: True
+hero_height: is-small
 ---
 
 ## Profesores Clases Teóricas
