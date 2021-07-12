@@ -26,17 +26,17 @@
           link: /TPs/Filogenia/
         - name: "TP N°7. HMM y Redes Neuronales"
           link: /TPs/HMM-ANN/
-        - name: "TP N°9. Programando en Biología"
+        - name: "TP N°8. Programando en Biología"
           link: /TPs/IntroR/
-        - name: "TP N°10. Predicción de Desorden"
+        - name: "TP N°9. Predicción de Desorden"
           link: /TPs/Regiones-flexibles/
-        - name: "TP N°11. Motivos Lineales en Proteínas"
+        - name: "TP N°10. Motivos Lineales en Proteínas"
           link: /TPs/Motivos_Lineales/
-        - name: "TP N°12. Dominios Proteicos"
+        - name: "TP N°11. Dominios Proteicos"
           link: /TPs/Modelado_Por_Homología/
-        - name: "TP N°13. Data Mining"
+        - name: "TP N°12. Data Mining"
           link: /TPs/DataMining/  
-        - name: "TP N°14. Visualización de genomas usando Artemis"
+        - name: "TP N°13. Visualización de genomas usando Artemis"
           link: /TPs/artemis/
-        - name: "TP N°15. Genómica comparativa"
+        - name: "TP N°14. Genómica comparativa"
           link: /TPs/Genomica-comparativa/        
