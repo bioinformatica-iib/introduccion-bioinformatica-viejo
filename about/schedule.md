@@ -80,27 +80,27 @@ hide_footer: True
 |26/08/2021 |  9 - 13hs| Práctico |	[TP N°3. Alineamientos de secuencias de a pares](/introduccion-bioinformatica/TPs/alineamiento_pares/) | H. García A. |
 |           | 14 - 18hs| Práctico |	[TP N°4. Búsqueda de secuencias por similitud y Alineamientos Múltiples](/introduccion-bioinformatica/TPs/busqueda_secuencias/) | H. García A. |
 |02/09/2021 |  9 - 13hs| Teórica |	Información contenida en alineamientos múltiples |	M. Nielsen |
-|           | 14 - 18hs| Práctico |	Perfiles de secuencia y PSI-BLAST |	H. García A |
+|           | 14 - 18hs| Práctico |	[TP N°5. Perfiles de secuencia y PSI-BLAST](/introduccion-bioinformatica/TPs/PSI-BLAST/) |	H. García A |
 |09/09/2021 |  9 - 13hs| Teórica | Reconstrucción de filogenias	| F. Agüero |
-|           | 14 - 18hs| Práctico |	Filogenias, árboles filogenéticos y filogenómica |	J. Glavina |
+|           | 14 - 18hs| Práctico |	[TP N°6. Filogenias, árboles filogenéticos y filogenómica](/introduccion-bioinformatica/TPs/Filogenia/) |	J. Glavina |
 |16/09/2021 |  9 - 13hs| Teórica |	Métodos de predicción basados en datos, M. Learning	 | M. Nielsen |
-|           | 14 - 18hs| Práctico |	HMM y Redes neuronales	| H. García A. | 
-|23/09/2021 |  9 - 13hs| Práctico |	Programando en Biología	| L. Bracco |
-|           | 14 - 18hs| Práctico |	Programando en Biología	| L. Bracco |
+|           | 14 - 18hs| Práctico |	[TP N°7. HMM y Redes neuronales](/introduccion-bioinformatica/TPs/HMM-ANN/)	| H. García A. | 
+|23/09/2021 |  9 - 13hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
+|           | 14 - 18hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
 |30/09/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Desorden |	L. Chemes |
-|           | 14 - 18hs| Práctico |	Bioinformática Estructural:  Predicción de Desorden	| J. Glavina |
+|           | 14 - 18hs| Práctico |	[TP N°9. Predicción de Desorden](/introduccion-bioinformatica/TPs/Regiones_flexibles/)	| J. Glavina |
 |07/10/2021 |  9 - 13hs | Teórica |	Bioinformática Estructural:  Motivos lineales |	L. Chemes |
-|           | 14 - 18hs| Práctico |	Bioinformática Estructural:  Motivos funcionales en proteínas |	J. Glavina |
+|           | 14 - 18hs| Práctico |	[TP N°10. Motivos Lineales en proteínas](/introduccion-bioinformatica/TPs/Motivos_Lineales/) |	J. Glavina |
 |14/10/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Dominios |	L. Chemes |
-|           | 14 - 18hs| Práctico | Bioinformática Estructural: Dominios 3D y Modelelado por homología |	J. Glavina |
+|           | 14 - 18hs| Práctico | [TP N°11. Dominios Proteicos](/introduccion-bioinformatica/TPs/Modelado_Por_Homologia) |	J. Glavina |
 |21/10/2021 |  9 - 13hs| Teórica |	Data clustering	| F. Agüero |
-|           | 14 - 18hs| Práctico |	Data mining	| L. Bracco |
+|           | 14 - 18hs| Práctico |	[TP N°12. Data Mining](/introduccion-bioinformatica/TPs/DataMining/)	| L. Bracco |
 |28/10/2021 |  9 - 13hs| Teórica | Secuenciación y ensamblado de genomas |	F. Agüero |
-|           | 14 - 18hs| Práctico |	Data mining	                     | L. Bracco |
+|           | 14 - 18hs| Práctico |	[TP N°12. Data mining](/introduccion-bioinformatica/TPs/DataMining/)    | L. Bracco |
 |04/11/2021 |  9 - 13hs|          | LIBRE                            |           |
-|           | 14 - 18hs| Práctico |	Visualizando genomas con Artemis |	I. Carri |
+|           | 14 - 18hs| Práctico |	[TP N°13. Visualización de genomas usando Artemis](/introduccion-bioinformatica/TPs/artemis/) |	I. Carri |
 |11/11/2021 |  9 - 13hs|          |	REPASO	                         |F. Agüero, L. Chemes , M. Nielsen |
-|           | 14 - 18hs| Práctico |	Genómica comparativa |	I. Carri |
+|           | 14 - 18hs| Práctico |	[TP N°14. Genómica comparativa](/introduccion-bioinformatica/TPs/Genomica-Comparativa/) |	I. Carri |
 |18/11/2021 |  9 - 13hs|          | LIBRE ||	
 |       	| 14 - 18hs|          |	EXAMEN	                         |F. Agüero, L. Chemes , M. Nielsen |
 |25/11/2021 |  9 - 13hs|          | LIBRE                            |           |
