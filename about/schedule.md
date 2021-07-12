@@ -72,7 +72,7 @@ hide_footer: True
 |**Fecha** |   **Horario**   |  **Tipo**    |   **Tema**	|   **Docente** |
 |:-------:|:-----------:|:-----------:|:-----------|:-----------|
 |05/08/2021 |  9 - 13hs| Teórica | Presentación de la materia | F. Agüero |
-|           | 14 - 18hs| Práctico| Introducción a UNIX	| L. Bracco |
+|           | 14 - 18hs| Práctico| [TP N°1. Introducción a UNIX](/introduccion-bioinformatica/TPs/Unix/)	| L. Bracco |
 |12/08/2021 |  9 - 13hs| Teórica |	Bases de datos. Ontologías.	| F. Agüero |
 |           | 14 - 18hs| Práctico|	EMBOSS Suite | L. Bracco |
 |19/08/2021 |  9 - 13hs| Teórica |	Alineamientos de a pares y Búsqueda de secuencias por Similitud |	F. Agüero |
