@@ -12,6 +12,8 @@
     - name: Clases Prácticas
       link: /TPs/
       items:
+        - name: "TP N°1: Introducción a UNIX"
+          link: /TPs/Unix/    
         - name: Alineamientos de secuencias de a pares
           link: /TPs/alineamiento_pares/    
         - name: Visualización de genomas usando Artemis

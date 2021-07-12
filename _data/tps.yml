@@ -1,15 +1,20 @@
 - title: 
   images:
+    - link: TPs/Unix/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°1. Introducción a UNIX](Unix/)
+      ratio: is-16by9
     - link: TPs/alineamiento_pares/featured.jpg
       alt: The alt text for the image
       description: |- 
         [Alineamiento de a pares](alineamiento_pares/)
-      ratio: is-4by3
+      ratio: is-16by9
     - link: TPs/artemis/featured.jpg
       alt: The alt text for the image
       description: |- 
         [Visualización de genomas usando Artemis](artemis/)
-      ratio: is-4by3 
+      ratio: is-16by9 
     - link: TPs/busqueda_secuencias/featured.jpg
       alt: The alt text for the image
       description: |- 

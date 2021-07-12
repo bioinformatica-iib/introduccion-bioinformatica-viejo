@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Introducción a UNIX
+title: TP N°1
+subtitle: Introducción a UNIX
 data : False
 menubar_toc: true
 ---
