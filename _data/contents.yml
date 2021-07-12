@@ -33,7 +33,7 @@
         - name: "TP N°10. Motivos Lineales en Proteínas"
           link: /TPs/Motivos_Lineales/
         - name: "TP N°11. Dominios Proteicos"
-          link: /TPs/Modelado_Por_Homología/
+          link: /TPs/Modelado_Por_Homologia/
         - name: "TP N°12. Data Mining"
           link: /TPs/DataMining/  
         - name: "TP N°13. Visualización de genomas usando Artemis"
