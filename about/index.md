@@ -32,7 +32,7 @@ hero_height: is-small
 
 ## Inscripción
 
-Para llevar a cabo la inscripción completá el siguiente [formulario](https://docs.google.com/forms/d/14hk7_hO2endahO1sbBwFjAMxgbuw47cCTAyba2YjwBY/prefill) 
+Para llevar a cabo la inscripción completá el siguiente [formulario](https://forms.gle/tFokYAyYtxZAC8UAA) 
 
 ## Horarios 2do Cuatrimestre 2021 (Virtual)
 
