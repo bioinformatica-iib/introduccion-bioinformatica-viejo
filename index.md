@@ -12,4 +12,4 @@ hero_height: is_small
 
 {% include notification.html message="Este sitio se encuentra en construcción" %}
 
-![flyer]({{ site.baseurl }}/img/flyer-bioinfo.png)
+![flyer]({{ site.baseurl }}/img/2021_Bioinfo_flyer.png)
