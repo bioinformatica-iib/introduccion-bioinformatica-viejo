@@ -2,6 +2,7 @@
 layout: page
 title: TP N°1
 subtitle: Introducción a UNIX
+hero_height: is_small
 data : False
 menubar_toc: true
 ---
