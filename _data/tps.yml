@@ -5,23 +5,68 @@
       description: |- 
         [TP N°1. Introducción a UNIX](Unix/)
       ratio: is-16by9
+    - link: TPs/EMBOSS/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°2. EMBOSS Suite](EMBOSS/)
+      ratio: is-16by9
     - link: TPs/alineamiento_pares/featured.jpg
       alt: The alt text for the image
       description: |- 
-        [Alineamiento de a pares](alineamiento_pares/)
+        [TP N°3. Alineamientos de secuencias de a pares](alineamiento_pares/)
+      ratio: is-16by9
+    - link: TPs/busqueda_secuencias/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°4. Búsqueda de secuencias por similitud](busqueda_secuencias/)
+      ratio: is-16by9
+    - link: TPs/PSI-BLAST/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°5. Perfiles de Secuencia y Blast](PSI-BLAST/)
+      ratio: is-16by9
+    - link: TPs/Filogenia/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°6. Filogenias, Árboles filogenéticos y filogenómica](Filogenia/)
+      ratio: is-16by9
+    - link: TPs/HMM-ANN/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°7. HMM y Redes Neuronales](HMM-ANN/)
+      ratio: is-16by9
+    - link: TPs/IntroR/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°8. Programando en Biología](IntroR/)
+      ratio: is-16by9
+    - link: TPs/Regiones-flexibles/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°9. Predicción de Desorden](Regiones-flexibles/)
+      ratio: is-16by9
+    - link: TPs/Motivos_Lineales/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°10. Motivos Lineales en Proteínas](Motivos_Lineales/)
+      ratio: is-16by9
+    - link: TPs/Modelado_Por_Homologia/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°11. Moddelado por Homología](Modelado_Por_Homologia/)
+      ratio: is-16by9
+    - link: TPs/DataMining/featured.jpg
+      alt: The alt text for the image
+      description: |- 
+        [TP N°12. Data Mining](DataMining/)
       ratio: is-16by9
     - link: TPs/artemis/featured.jpg
       alt: The alt text for the image
       description: |- 
-        [Visualización de genomas usando Artemis](artemis/)
-      ratio: is-16by9 
-    - link: TPs/busqueda_secuencias/featured.jpg
+        [TP N°13. Visualización de genomas usando Artemis](artemis/)
+      ratio: is-16by9
+    - link: TPs/Genomica-Comparativa/featured.jpg
       alt: The alt text for the image
       description: |- 
-        [Búsqueda de secuencias por similitud](busqueda_secuencias/)
-      ratio: is-4by3                
-    - link: /TPs/busqueda_secuencias/featured.jpg
-      alt: The alt text for the image
-      description: |- 
-        [Data Mining](DataMining/)
-      ratio: is-4by3  
+        [TP N°14. Genómica comparativa](Genomica-Comparativa/)
+      ratio: is-16by9
