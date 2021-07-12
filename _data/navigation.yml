@@ -1,6 +1,6 @@
 - name: Sobre el curso
   link: /about
-- name: Agenda
+- name: Cronograma
   link: /about/schedule
 - name: Teóricas
   link: /teoricas
