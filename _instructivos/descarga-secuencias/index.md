@@ -18,20 +18,20 @@ Para usarla, seguiremos los siguientes pasos:
 
 1. Acceder al [NCBI Nucleotide](https://www.ncbi.nlm.nih.gov/nucleotide/). Pueden googlearlo y sale, o seguir el link aquí señalado.
 
-![Nucleotide DB](../images/nucleotide.png)
+![Nucleotide DB](./images/nucleotide.png)
 
 2. En el cuadro de búsqueda, ingresaremos nuestro accession name, _MT510727_. Le damos ENTER (o click en la _search_)
 3. Al haber provisto de un _accession number_, la base de datos devuelve inequívocamente un único registro. 
 
-![NUCHIT](../images/nuchit.png)
+![NUCHIT](./images/nuchit.png)
 
 4. Si se fijan un poco la página a la que los trajo, verán que la respuesta contiene información nucleotídica y aminoacídica; y reconocerán algunas de las cosas que hemos visto en los TPs de Artemis/ACT, como las _FEATURES_.
 
-![features](../images/features.png)
+![features](./images/features.png)
 
 5. Para descargar este registro, lo único que necesitamos es hacer click en _Send To_ y elegir una opción que nos quede bien. Cada una de las opciones hace cosas distintas. 
 
-![features](../images/sendto.png)
+![features](./images/sendto.png)
 
 Primero tenemos que elegir entre el volumen de informacion que queremos
 - **Complete Record**: Todo el archivo genbank (todo lo que vemos), en formato de texto plano.
@@ -45,7 +45,7 @@ Luego tendremos que elegir entre distintos destinos. A saber:
 
 6. Nosotros vamos a elegir, en este caso, _Complete Record_ y _File_. Si todo salió bien aparecerá una nueva decisión para tomar, que tiene que ver con el formato
 
-![format](../images/format.png)
+![format](./images/format.png)
 
 El formato que quieran descargar depende de lo que quieran hacer y del tipo de archivos que necesite el software o algoritmo que quieran usar para hacerlo. En mi experiencia, Genbank (o Genbank full), FASTA y GFF3 son las más usadas. Descarguen una de cada y vean las diferencias :)
 
@@ -53,11 +53,11 @@ El formato Genbank es equivalente al formato EMBL que usamos en los TPs de artem
 
 Si en lugar de destinarlas al _File_ usamos el _Clipboard_ del NCBI, podemos juntar varias y descargar una sola vez. 
 
-![clipboard](../images/clipboard.png)
+![clipboard](./images/clipboard.png)
 
 Luego, haciendo click en donde dice "X Items" abriremos una lista de elementos que podremos descargar conjuntamente
 
-![clipboard2](../images/clipboard2.png)
+![clipboard2](./images/clipboard2.png)
 
 ## Descargar secuencias usando la linea de comando
 
@@ -94,7 +94,7 @@ Esto ejecutará una serie de comandos que involucra la descarga, instalación y 
 - "Remove regular file 'edirect.tar.gz'": contestan con `y` y dan ``Enter``
 - "Would you like to do that automatically now?" : contestan con `y` y dan ``Enter``
 
-![bashinstall](../images/installbash.png)
+![bashinstall](./images/installbash.png)
 
 ¡Con esto deberíamos tenerlo instalado! Podemos comprobarlo escribiendo esearch -version y deberíamos ver un numerito, como en la imagen
 
@@ -108,7 +108,7 @@ Una consulta estándar para traer una secuencia de NCBI sería así:
 
 	esearch -db nucleotide -query "ACCESSION-NUMBER" 
 
-![consulta](../images/consulta.png)
+![consulta](./images/consulta.png)
 
 Como ven, el resultado así puesto no nos dice nada. Es por esto que tenemos que **combinarlo** con efetch. Para hacerlo hacemos uso del pipe: `|`. Este caracter nos ayuda a pasar el output de un comando como input del siguiente; tal que:
 
@@ -125,9 +125,9 @@ Como ven, ambos requieren de una serie de argumentos que explicaremos a continua
 - **efetch** es el comando que usamos para interpretar la respuesta del **esearch**
 - **-format fasta** es el argumento que usamos para elegir el formato de la respuesta. Fasta es uno de los formatos, pero hay un montón (puden verlos todos usando `efetch -help`):
   
-![formatos](../images/formatheders.png)
+![formatos](./images/formatheders.png)
 
-![formatos](../images/formats.png)
+![formatos](./images/formats.png)
 
 El volumen de información y el formato estarán determinados por este último argumento.
 
