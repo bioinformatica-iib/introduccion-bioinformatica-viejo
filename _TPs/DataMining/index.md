@@ -1,10 +1,11 @@
 ---
 layout: page
-title: Trabajo Práctico N°3
+title: TP N°12
 subtitle: Data Mining
 data : True
 menubar_toc: true
-toc_title: Contenidos
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

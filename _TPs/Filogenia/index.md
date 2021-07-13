@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Filogenias
+title: TP N°6
+subtitle: Filogenias, árboles filogenéticos y filogenómica
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

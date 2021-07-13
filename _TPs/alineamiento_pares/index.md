@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Alineamientos de secuencias de a pares
-descargas : True
-permalink: TPs/alineamiento_pares/
+title: TP N°3
+subtitle: Alineamientos de secuencias de a pares
+data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

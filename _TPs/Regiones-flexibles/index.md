@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Regiones Flexibles
-categories: TP
-descargas : True
+title: TP N°9
+subtitle: Predicción de Desorden
 data : True
+menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

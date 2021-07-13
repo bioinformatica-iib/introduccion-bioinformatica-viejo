@@ -1,10 +1,13 @@
 ---
 layout: page
-title: Visualización de genomas usando Artemis
-data: [S_typhi.cod,S_typhi.tab,S_typhi.dna]
-permalink: TPs/artemis/
+title: TP N°13
+subtitle: Visualización de genomas usando Artemis
+data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
+
 
 {% if page.data %}
 

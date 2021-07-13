@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Programando en Biología
+title: TP N°8
+subtitle: Programando en Biología
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

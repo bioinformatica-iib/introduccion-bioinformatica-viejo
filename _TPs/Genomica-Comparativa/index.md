@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Genómica Comparativa
+title: TP N°14
+subtitle: Genómica Comparativa
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

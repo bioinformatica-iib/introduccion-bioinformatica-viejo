@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Motivos Funcionales en proteínas
+title: TP N°10
+subtitle: Motivos Lineales en Proteínas
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

@@ -1,8 +1,11 @@
 ---
 layout: page
-title: HMM & Artificial Neural Networks
+title: TP N°7
+subtitle: HMM y Redes Neuronales
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

@@ -1,8 +1,11 @@
 ---
 layout: page
-title: EMBOSS Suite
+title: TP N°2
+subtitle: EMBOSS Suite
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

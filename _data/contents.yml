@@ -20,7 +20,7 @@
           link: /TPs/alineamiento_pares/    
         - name: "TP N°4. Búsqueda de secuencias por similitud"
           link: /TPs/busqueda_secuencias/ 
-        - name: "TP N°5. Perfiles de Secuencia y Blast"
+        - name: "TP N°5. Perfiles de Secuencia y PSI-BLAST"
           link: /TPs/PSI-BLAST/
         - name: "TP N°6. Filogenias, Árboles filogenéticos y filogenómica"
           link: /TPs/Filogenia/

@@ -1,8 +1,11 @@
 ---
 layout: page
-title: Modelado por Homología
+title: TP N°11
+subtitle: Dominios Proteicos
 data : True
 menubar_toc: true
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

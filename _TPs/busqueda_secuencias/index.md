@@ -1,9 +1,12 @@
 ---
 layout: page
-title: Búsqueda de secuencias por similitud
+title: TP N° 4
+subtitle: Búsqueda de secuencias por similitud
 permalink: TPs/busqueda_secuencias/
 menubar_toc: true
 data : True
+hero_height: is-small
+toc_title: CONTENIDOS
 ---
 
 {% if page.data %}

@@ -88,7 +88,7 @@ hide_footer: True
 |23/09/2021 |  9 - 13hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
 |           | 14 - 18hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
 |30/09/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Desorden |	L. Chemes |
-|           | 14 - 18hs| Práctico |	[TP N°9. Predicción de Desorden](/introduccion-bioinformatica/TPs/Regiones_flexibles/)	| J. Glavina |
+|           | 14 - 18hs| Práctico |	[TP N°9. Predicción de Desorden](/introduccion-bioinformatica/TPs/Regiones-flexibles/)	| J. Glavina |
 |07/10/2021 |  9 - 13hs | Teórica |	Bioinformática Estructural:  Motivos lineales |	L. Chemes |
 |           | 14 - 18hs| Práctico |	[TP N°10. Motivos Lineales en proteínas](/introduccion-bioinformatica/TPs/Motivos_Lineales/) |	J. Glavina |
 |14/10/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Dominios |	L. Chemes |
