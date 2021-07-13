@@ -49,27 +49,27 @@ Virtual Box es un virtualizador de entornos. Nos permite generar una *máquinas 
 1. Abrimos Virtual Box
 2. Hacemos click en `New`
 
-![VM New](../images/vm1.png)
+![VM New](./images/vm1.png)
 
 3. Una cája de diálogo aparecerá, en donde deberemos indicar el nombre que queremos darle a la máquina virtual, el tipo de virtualización y la versión del sistema operativo. Virtual Box es bastante *inteligente* y si ponemos un nombre descriptivo (por ejemplo, Biolinux), Virtual Box cambiará los valores de Tipo y Versión a los necesario para emular: "Linux" y "Oracle (64-bit)", respectivamente.
 
 > Si no aparece NINGUNA opción con 64 bits, su sistema operativo no está preparado para emular a 64 bits y no podrán correr la máquina virtual del curso. Si esto ocurriera, prueben con otra compu.
 
-![VM2](../images/vm2.png)
+![VM2](./images/vm2.png)
 
 También puede aparecer una opción para determinar el lugar en el que vamos a guardar nuestra máquina virtual. Dejemos ese valor por defecto y presionamos `NEXT >`
 
 1. Ahora deberemos definir los recursos que vamos a *prestarle* a nuestra máquina virtual. El primero es la memoria RAM. Virtual box tiene un código de colores bastante intuitivo sobre cúanto podemos *prestar* sin comprometer las funciones básicas de nuestro *host*. Verde: "OK", Naranja: "Poneeeele", Rojo: "Noooo!". Estos valores dependerán de la cantidad de RAM física que tenga nuestro *host*. Cuanto más RAM le demos a la máquina virtual, más rápido va a andar. Para las tareas que realizaremos, darle entre 2 y 4 GB de ram (2048-4096 MB) estará bien. 
    
-![VM3](../images/vm3.png)
+![VM3](./images/vm3.png)
 
 5. El siguiente recurso será el disco duro. Aquí es donde entra la imagen que descargamos antes. Aquí podríamos *prestarle* cierta cantidad de espacio en el disco a nuestra máquina virtual, no prestarle nada, o prestarle aquel espacio que ya está ocupado por la imagen de biolinux que descargamos. Esto último será lo que hagamos.
 
-![vm4](../images/vm4.png)
+![vm4](./images/vm4.png)
 
 6. Con esto habremos finalizado la creación y podremos comenzar. Si todo salió bien, deberán ver una entrada con su máquina virtual recientemente creada en el Inicio del Virtual Box:
 
-![vm5](../images/vm4.png)
+![vm5](./images/vm4.png)
 
 Intenten correr la máquina virtual. En breve deberían ver el logo de Bio-linux
 
