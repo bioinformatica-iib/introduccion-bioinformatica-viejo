@@ -1,6 +1,5 @@
 ---
 title: "Descargar secuencias usando el navegador"
-permalink: instructivos/descarga-secuencias
 layout: page
 hide_hero: True
 hide_footer: True
