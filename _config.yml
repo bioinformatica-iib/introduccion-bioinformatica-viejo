@@ -76,7 +76,6 @@ plugins:
 collections:
   instructivos :
     output : true
-    permalink : /instructivos/:path 
   teoricas :
     output : true
   TPs : 
