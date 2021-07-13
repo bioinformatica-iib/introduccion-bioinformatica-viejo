@@ -29,7 +29,7 @@ Las máquinas virtuales no son más que compus *invitadas* (o *guests*), emulada
 Una *imagen* ISO es una captura o foto de un disco de almacenamiento. Esto es: todo lo que un disco duro tiene guardado, incluyendo el sistema operativo y los programas instalados, quedarán guardados en una imagen ISO cuando la creemos con las herramientas adecuadas. Una imagen ISO permite regenerar el estado de la compu desde la que se creó dicha imagen al momento de sacar la foto. Particularmente, las distribuciones de imagen ISO de biolinux, son una instancia de Linux con un montón de programas que usamos los bioinformáticos ya instalados. Nosotros no vamos a crear ninguna imagen, sino que vamos a usar una que ya existe. Comenzaremos por descargar la imagen. En el contexto de una máquina virtual, esta imagen ISO será la responsable de proveer al virtualizador de toda la información sobre el sistema operativo y programas instalados, necesaria para emular la computadora virtual. 
 
 Pueden usar este link, que tiene la máquina que usamos en los TPs (es un link a Dropbox)
-- [Biolinux via Dropbox de la materia](https://www.dropbox.com/s/ue6xrvun6dwtcy8/Biolinux.vdi?dl=0)
+- [Biolinux via Dropbox de la materia](https://www.dropbox.com/s/mh71ia4kts0n5ht/IBioinfo-Lubuntu-32.zip?dl=0)
 > Es pesada! Descarguenla con tiempo y con conexión estable.
 
 O este link, si el anterior no estuviera disponible
