@@ -68,7 +68,7 @@ También puede aparecer una opción para determinar el lugar en el que vamos a g
 
 6. Con esto habremos finalizado la creación y podremos comenzar. Si todo salió bien, deberán ver una entrada con su máquina virtual recientemente creada en el Inicio del Virtual Box:
 
-![vm5](./images/vm4.png)
+![vm5](./images/vm5.png)
 
 Intenten correr la máquina virtual. En breve deberían ver el logo de Bio-linux
 
