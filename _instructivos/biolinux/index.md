@@ -1,6 +1,5 @@
 ---
 title: "Instructivo: Puesta en funcionamiento de máquina virtual con biolinux"
-permalink: instructivos/biolinux
 layout: page
 hide_hero: True
 hide_footer: True
