@@ -16,9 +16,9 @@ hero_height: is-small
 
 ## Requisitos
 
-* Conocimientos de biología molecular: Dogma de la biologia molecular, codificacion de informacion en forma de ADN, ARN, proteinas, transcripcion, traduccion, organización celular en procariotas, eucariotas.
+* Conocimientos de biología molecular: Dogma de la biología molecular, codificación de información en forma de ADN, ARN, proteinas, transcripción, traducción, organización celular en procariotas, eucariotas.
 * Conocimientos básicos de estadística: distribuciones, probabilidades.
-* Manejo basico de computadoras. 
+* Manejo básico de computadoras. 
 
 ## Costos
 
@@ -54,7 +54,7 @@ Un examen hacia el final de la cursada, con recuperatorio. El examen se divide e
 Informes de trabajos prácticos. Se aprueban con 5.
 
 * **Promoción:** 
-Todas las instancias evaluatorias (teorico + practico) con puntaje de 7 o más.
+Todas las instancias evaluatorias (teórico + práctico) con puntaje de 7 o más.
 * **Examen Final:** En caso de instancias evaluatorias aprobadas con 5, o en caso de tener que recuperar. 
 * **Recursa:** En caso de no cumplir con requisito de asistencia o instancias evaluatorias no aprobadas.
 
