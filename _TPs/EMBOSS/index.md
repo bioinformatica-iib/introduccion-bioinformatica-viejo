@@ -6,6 +6,7 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+permalink: TPs/EMBOSS/
 ---
 <style>
 details > summary:first-of-type {
