@@ -21,8 +21,9 @@ toc_title: CONTENIDOS
 [EMBOSS](http://emboss.sourceforge.net/) es una *suite* bioinformática con una multitud de herramientas elementales en biología molecular y genética. Creada y mantenida por [EMBnet](http://www.embnet.org/), EMBOSS es la clase de herramientas que siempre es mejor tener que no tener, a pesar de que todo lo que podemos hacer con ésta, también lo podemos hacer *manualmente* (esto es, en papel o con algún software específico). La conveniencia radica en que el software no solo maneja información biológica en varios formatos para realizar distintos tipos de tareas, sino que además lo hace muy rápidamente (lo cual significa que es computacionalmente escalable) y con esfuerzo mínimo, dado que la *suite* provee al usuario con una interfaz unificada para todas las aplicaciones. La lista de herramientas disponibles es ENORME:
 
 ### Lista de utilidades en EMBOSS Suite
-<details title="Ver lista completa">
-<summary>Ver lista completa</summary>
+<details>
+<!--	<summary>Ver lista completa</summary> -->
+	
 <table>
    <tr>
       <th>Program name</th>
@@ -31,1543 +32,1543 @@ toc_title: CONTENIDOS
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/aaindexextract.html">aaindexextract</a></td>
       <td>
-         Extract amino acid property data from AAINDEX
+	 Extract amino acid property data from AAINDEX
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/abiview.html">abiview</a></td>
       <td>
-         Display the trace in an ABI sequencer file
+	 Display the trace in an ABI sequencer file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/acdc.html">acdc</a></td>
       <td>
-         Test an application ACD file
+	 Test an application ACD file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/acdpretty.html">acdpretty</a></td>
       <td>
-         Correctly reformat an application ACD file
+	 Correctly reformat an application ACD file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/acdtable.html">acdtable</a></td>
       <td>
-         Generate an HTML table of parameters from an application ACD file
+	 Generate an HTML table of parameters from an application ACD file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/acdtrace.html">acdtrace</a></td>
       <td>
-         Trace processing of an application ACD file (for testing)
+	 Trace processing of an application ACD file (for testing)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/acdvalid.html">acdvalid</a></td>
       <td>
-         Validate an application ACD file
+	 Validate an application ACD file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/aligncopy.html">aligncopy</a></td>
       <td>
-         Read and write alignments
+	 Read and write alignments
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/aligncopypair.html">aligncopypair</a></td>
       <td>
-         Read and write pairs from alignments
+	 Read and write pairs from alignments
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/antigenic.html">antigenic</a></td>
       <td>
-         Find antigenic sites in proteins
+	 Find antigenic sites in proteins
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/assemblyget.html">assemblyget</a></td>
       <td>
-         Get assembly of sequence reads
+	 Get assembly of sequence reads
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/backtranambig.html">backtranambig</a></td>
       <td>
-         Back-translate a protein sequence to ambiguous nucleotide sequence
+	 Back-translate a protein sequence to ambiguous nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/backtranseq.html">backtranseq</a></td>
       <td>
-         Back-translate a protein sequence to a nucleotide sequence
+	 Back-translate a protein sequence to a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/banana.html">banana</a></td>
       <td>
-         Plot bending and curvature data for B-DNA
+	 Plot bending and curvature data for B-DNA
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/biosed.html">biosed</a></td>
       <td>
-         Replace or delete sequence sections
+	 Replace or delete sequence sections
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/btwisted.html">btwisted</a></td>
       <td>
-         Calculate the twisting in a B-DNA sequence
+	 Calculate the twisting in a B-DNA sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cachedas.html">cachedas</a></td>
       <td>
-         Generate server cache file for DAS servers or for the DAS registry
+	 Generate server cache file for DAS servers or for the DAS registry
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cachedbfetch.html">cachedbfetch</a></td>
       <td>
-         Generate server cache file for Dbfetch/WSDbfetch data sources
+	 Generate server cache file for Dbfetch/WSDbfetch data sources
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cacheebeyesearch.html">cacheebeyesearch</a></td>
       <td>
-         Generate server cache file for EB-eye search domains
+	 Generate server cache file for EB-eye search domains
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cacheensembl.html">cacheensembl</a></td>
       <td>
-         Generate server cache file for an Ensembl server
+	 Generate server cache file for an Ensembl server
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cai.html">cai</a></td>
       <td>
-         Calculate codon adaptation index
+	 Calculate codon adaptation index
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/chaos.html">chaos</a></td>
       <td>
-         Draw a chaos game representation plot for a nucleotide sequence
+	 Draw a chaos game representation plot for a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/charge.html">charge</a></td>
       <td>
-         Draw a protein charge plot
+	 Draw a protein charge plot
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/checktrans.html">checktrans</a></td>
       <td>
-         Report STOP codons and ORF statistics of a protein
+	 Report STOP codons and ORF statistics of a protein
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/chips.html">chips</a></td>
       <td>
-         Calculate Nc codon usage statistic
+	 Calculate Nc codon usage statistic
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cirdna.html">cirdna</a></td>
       <td>
-         Draw circular map of DNA constructs
+	 Draw circular map of DNA constructs
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/codcmp.html">codcmp</a></td>
       <td>
-         Codon usage table comparison
+	 Codon usage table comparison
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/codcopy.html">codcopy</a></td>
       <td>
-         Copy and reformat a codon usage table
+	 Copy and reformat a codon usage table
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/coderet.html">coderet</a></td>
       <td>
-         Extract CDS, mRNA and translations from feature tables
+	 Extract CDS, mRNA and translations from feature tables
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/compseq.html">compseq</a></td>
       <td>
-         Calculate the composition of unique words in sequences
+	 Calculate the composition of unique words in sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cons.html">cons</a></td>
       <td>
-         Create a consensus sequence from a multiple alignment
+	 Create a consensus sequence from a multiple alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/consambig.html">consambig</a></td>
       <td>
-         Create an ambiguous consensus sequence from a multiple alignment
+	 Create an ambiguous consensus sequence from a multiple alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cpgplot.html">cpgplot</a></td>
       <td>
-         Identify and plot CpG islands in nucleotide sequence(s)
+	 Identify and plot CpG islands in nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cpgreport.html">cpgreport</a></td>
       <td>
-         Identify and report CpG-rich regions in nucleotide sequence(s)
+	 Identify and report CpG-rich regions in nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cusp.html">cusp</a></td>
       <td>
-         Create a codon usage table from nucleotide sequence(s)
+	 Create a codon usage table from nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cutgextract.html">cutgextract</a></td>
       <td>
-         Extract codon usage tables from CUTG database
+	 Extract codon usage tables from CUTG database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/cutseq.html">cutseq</a></td>
       <td>
-         Remove a section from a sequence
+	 Remove a section from a sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dan.html">dan</a></td>
       <td>
-         Calculate nucleic acid melting temperature
+	 Calculate nucleic acid melting temperature
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbiblast.html">dbiblast</a></td>
       <td>
-         Index a BLAST database
+	 Index a BLAST database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbifasta.html">dbifasta</a></td>
       <td>
-         Index a fasta file database
+	 Index a fasta file database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbiflat.html">dbiflat</a></td>
       <td>
-         Index a flat file database
+	 Index a flat file database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbigcg.html">dbigcg</a></td>
       <td>
-         Index a GCG formatted database
+	 Index a GCG formatted database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbtell.html">dbtell</a></td>
       <td>
-         Display information about a public database
+	 Display information about a public database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxcompress.html">dbxcompress</a></td>
       <td>
-         Compress an uncompressed dbx index
+	 Compress an uncompressed dbx index
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxedam.html">dbxedam</a></td>
       <td>
-         Index the EDAM ontology using b+tree indices
+	 Index the EDAM ontology using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxfasta.html">dbxfasta</a></td>
       <td>
-         Index a fasta file database using b+tree indices
+	 Index a fasta file database using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxflat.html">dbxflat</a></td>
       <td>
-         Index a flat file database using b+tree indices
+	 Index a flat file database using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxgcg.html">dbxgcg</a></td>
       <td>
-         Index a GCG formatted database using b+tree indices
+	 Index a GCG formatted database using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxobo.html">dbxobo</a></td>
       <td>
-         Index an obo ontology using b+tree indices
+	 Index an obo ontology using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxreport.html">dbxreport</a></td>
       <td>
-         Validate index and report internals for dbx databases
+	 Validate index and report internals for dbx databases
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxresource.html">dbxresource</a></td>
       <td>
-         Index a data resource catalogue using b+tree indices
+	 Index a data resource catalogue using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxstat.html">dbxstat</a></td>
       <td>
-         Dump statistics for dbx databases
+	 Dump statistics for dbx databases
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxtax.html">dbxtax</a></td>
       <td>
-         Index NCBI taxonomy using b+tree indices
+	 Index NCBI taxonomy using b+tree indices
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dbxuncompress.html">dbxuncompress</a></td>
       <td>
-         Uncompress a compressed dbx index
+	 Uncompress a compressed dbx index
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/degapseq.html">degapseq</a></td>
       <td>
-         Remove non-alphabetic (e.g. gap) characters from sequences
+	 Remove non-alphabetic (e.g. gap) characters from sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/density.html">density</a></td>
       <td>
-         Draw a nucleic acid density plot
+	 Draw a nucleic acid density plot
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/descseq.html">descseq</a></td>
       <td>
-         Alter the name or description of a sequence
+	 Alter the name or description of a sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/diffseq.html">diffseq</a></td>
       <td>
-         Compare and report features of two similar sequences
+	 Compare and report features of two similar sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/distmat.html">distmat</a></td>
       <td>
-         Create a distance matrix from a multiple sequence alignment
+	 Create a distance matrix from a multiple sequence alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dotmatcher.html">dotmatcher</a></td>
       <td>
-         Draw a threshold dotplot of two sequences
+	 Draw a threshold dotplot of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dotpath.html">dotpath</a></td>
       <td>
-         Draw a non-overlapping wordmatch dotplot of two sequences
+	 Draw a non-overlapping wordmatch dotplot of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dottup.html">dottup</a></td>
       <td>
-         Display a wordmatch dotplot of two sequences
+	 Display a wordmatch dotplot of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/dreg.html">dreg</a></td>
       <td>
-         Regular expression search of nucleotide sequence(s)
+	 Regular expression search of nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drfinddata.html">drfinddata</a></td>
       <td>
-         Find public databases by data type
+	 Find public databases by data type
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drfindformat.html">drfindformat</a></td>
       <td>
-         Find public databases by format
+	 Find public databases by format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drfindid.html">drfindid</a></td>
       <td>
-         Find public databases by identifier
+	 Find public databases by identifier
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drfindresource.html">drfindresource</a></td>
       <td>
-         Find public databases by resource
+	 Find public databases by resource
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drget.html">drget</a></td>
       <td>
-         Get data resource entries
+	 Get data resource entries
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/drtext.html">drtext</a></td>
       <td>
-         Get data resource entries complete text
+	 Get data resource entries complete text
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamdef.html">edamdef</a></td>
       <td>
-         Find EDAM ontology terms by definition
+	 Find EDAM ontology terms by definition
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamhasinput.html">edamhasinput</a></td>
       <td>
-         Find EDAM ontology terms by has_input relation
+	 Find EDAM ontology terms by has_input relation
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamhasoutput.html">edamhasoutput</a></td>
       <td>
-         Find EDAM ontology terms by has_output relation
+	 Find EDAM ontology terms by has_output relation
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamisformat.html">edamisformat</a></td>
       <td>
-         Find EDAM ontology terms by is_format_of relation
+	 Find EDAM ontology terms by is_format_of relation
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamisid.html">edamisid</a></td>
       <td>
-         Find EDAM ontology terms by is_identifier_of relation
+	 Find EDAM ontology terms by is_identifier_of relation
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edamname.html">edamname</a></td>
       <td>
-         Find EDAM ontology terms by name
+	 Find EDAM ontology terms by name
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/edialign.html">edialign</a></td>
       <td>
-         Local multiple alignment of sequences
+	 Local multiple alignment of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/einverted.html">einverted</a></td>
       <td>
-         Find inverted repeats in nucleotide sequences
+	 Find inverted repeats in nucleotide sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/embossdata.html">embossdata</a></td>
       <td>
-         Find and retrieve EMBOSS data files
+	 Find and retrieve EMBOSS data files
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/embossupdate.html">embossupdate</a></td>
       <td>
-         Checks for more recent updates to EMBOSS
+	 Checks for more recent updates to EMBOSS
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/embossversion.html">embossversion</a></td>
       <td>
-         Report the current EMBOSS version number
+	 Report the current EMBOSS version number
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/emma.html">emma</a></td>
       <td>
-         Multiple sequence alignment (ClustalW wrapper)
+	 Multiple sequence alignment (ClustalW wrapper)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/emowse.html">emowse</a></td>
       <td>
-         Search protein sequences by digest fragment molecular weight
+	 Search protein sequences by digest fragment molecular weight
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/entret.html">entret</a></td>
       <td>
-         Retrieve sequence entries from flatfile databases and files
+	 Retrieve sequence entries from flatfile databases and files
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/epestfind.html">epestfind</a></td>
       <td>
-         Find PEST motifs as potential proteolytic cleavage sites
+	 Find PEST motifs as potential proteolytic cleavage sites
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/eprimer3.html">eprimer3</a></td>
       <td>
-         Pick PCR primers and hybridization oligos
+	 Pick PCR primers and hybridization oligos
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/eprimer32.html">eprimer32</a></td>
       <td>
-         Pick PCR primers and hybridization oligos
+	 Pick PCR primers and hybridization oligos
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/equicktandem.html">equicktandem</a></td>
       <td>
-         Find tandem repeats in nucleotide sequences
+	 Find tandem repeats in nucleotide sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/est2genome.html">est2genome</a></td>
       <td>
-         Align EST sequences to genomic DNA sequence
+	 Align EST sequences to genomic DNA sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/etandem.html">etandem</a></td>
       <td>
-         Find tandem repeats in a nucleotide sequence
+	 Find tandem repeats in a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/extractalign.html">extractalign</a></td>
       <td>
-         Extract regions from a sequence alignment
+	 Extract regions from a sequence alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/extractfeat.html">extractfeat</a></td>
       <td>
-         Extract features from sequence(s)
+	 Extract features from sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/extractseq.html">extractseq</a></td>
       <td>
-         Extract regions from a sequence
+	 Extract regions from a sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/featcopy.html">featcopy</a></td>
       <td>
-         Read and write a feature table
+	 Read and write a feature table
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/featmerge.html">featmerge</a></td>
       <td>
-         Merge two overlapping feature tables
+	 Merge two overlapping feature tables
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/featreport.html">featreport</a></td>
       <td>
-         Read and write a feature table
+	 Read and write a feature table
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/feattext.html">feattext</a></td>
       <td>
-         Return a feature table original text
+	 Return a feature table original text
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/findkm.html">findkm</a></td>
       <td>
-         Calculate and plot enzyme reaction data
+	 Calculate and plot enzyme reaction data
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/freak.html">freak</a></td>
       <td>
-         Generate residue/base frequency table or plot
+	 Generate residue/base frequency table or plot
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/fuzznuc.html">fuzznuc</a></td>
       <td>
-         Search for patterns in nucleotide sequences
+	 Search for patterns in nucleotide sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/fuzzpro.html">fuzzpro</a></td>
       <td>
-         Search for patterns in protein sequences
+	 Search for patterns in protein sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/fuzztran.html">fuzztran</a></td>
       <td>
-         Search for patterns in protein sequences (translated)
+	 Search for patterns in protein sequences (translated)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/garnier.html">garnier</a></td>
       <td>
-         Predict protein secondary structure using GOR method
+	 Predict protein secondary structure using GOR method
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/geecee.html">geecee</a></td>
       <td>
-         Calculate fractional GC content of nucleic acid sequences
+	 Calculate fractional GC content of nucleic acid sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/getorf.html">getorf</a></td>
       <td>
-         Find and extract open reading frames (ORFs)
+	 Find and extract open reading frames (ORFs)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/godef.html">godef</a></td>
       <td>
-         Find GO ontology terms by definition
+	 Find GO ontology terms by definition
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/goname.html">goname</a></td>
       <td>
-         Find GO ontology terms by name
+	 Find GO ontology terms by name
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/helixturnhelix.html">helixturnhelix</a></td>
       <td>
-         Identify nucleic acid-binding motifs in protein sequences
+	 Identify nucleic acid-binding motifs in protein sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/hmoment.html">hmoment</a></td>
       <td>
-         Calculate and plot hydrophobic moment for protein sequence(s)
+	 Calculate and plot hydrophobic moment for protein sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/iep.html">iep</a></td>
       <td>
-         Calculate the isoelectric point of proteins
+	 Calculate the isoelectric point of proteins
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/infoalign.html">infoalign</a></td>
       <td>
-         Display basic information about a multiple sequence alignment
+	 Display basic information about a multiple sequence alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/infoassembly.html">infoassembly</a></td>
       <td>
-         Display information about assemblies
+	 Display information about assemblies
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/infobase.html">infobase</a></td>
       <td>
-         Return information on a given nucleotide base
+	 Return information on a given nucleotide base
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/inforesidue.html">inforesidue</a></td>
       <td>
-         Return information on a given amino acid residue
+	 Return information on a given amino acid residue
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/infoseq.html">infoseq</a></td>
       <td>
-         Display basic information about sequences
+	 Display basic information about sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/isochore.html">isochore</a></td>
       <td>
-         Plot isochores in DNA sequences
+	 Plot isochores in DNA sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/jaspextract.html">jaspextract</a></td>
       <td>
-         Extract data from JASPAR
+	 Extract data from JASPAR
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/jaspscan.html">jaspscan</a></td>
       <td>
-         Scan DNA sequences for transcription factors
+	 Scan DNA sequences for transcription factors
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/lindna.html">lindna</a></td>
       <td>
-         Draw linear maps of DNA constructs
+	 Draw linear maps of DNA constructs
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/listor.html">listor</a></td>
       <td>
-         Write a list file of the logical OR of two sets of sequences
+	 Write a list file of the logical OR of two sets of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/makenucseq.html">makenucseq</a></td>
       <td>
-         Create random nucleotide sequences
+	 Create random nucleotide sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/makeprotseq.html">makeprotseq</a></td>
       <td>
-         Create random protein sequences
+	 Create random protein sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/marscan.html">marscan</a></td>
       <td>
-         Find matrix/scaffold recognition (MRS) signatures in DNA sequences
+	 Find matrix/scaffold recognition (MRS) signatures in DNA sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/maskambignuc.html">maskambignuc</a></td>
       <td>
-         Mask all ambiguity characters in nucleotide sequences with N
+	 Mask all ambiguity characters in nucleotide sequences with N
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/maskambigprot.html">maskambigprot</a></td>
       <td>
-         Mask all ambiguity characters in protein sequences with X
+	 Mask all ambiguity characters in protein sequences with X
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/maskfeat.html">maskfeat</a></td>
       <td>
-         Write a sequence with masked features
+	 Write a sequence with masked features
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/maskseq.html">maskseq</a></td>
       <td>
-         Write a sequence with masked regions
+	 Write a sequence with masked regions
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/matcher.html">matcher</a></td>
       <td>
-         Waterman-Eggert local alignment of two sequences
+	 Waterman-Eggert local alignment of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/megamerger.html">megamerger</a></td>
       <td>
-         Merge two large overlapping DNA sequences
+	 Merge two large overlapping DNA sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/merger.html">merger</a></td>
       <td>
-         Merge two overlapping sequences
+	 Merge two overlapping sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/msbar.html">msbar</a></td>
       <td>
-         Mutate a sequence
+	 Mutate a sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/mwcontam.html">mwcontam</a></td>
       <td>
-         Find weights common to multiple molecular weights files
+	 Find weights common to multiple molecular weights files
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/mwfilter.html">mwfilter</a></td>
       <td>
-         Filter noisy data from molecular weights file
+	 Filter noisy data from molecular weights file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/needle.html">needle</a></td>
       <td>
-         Needleman-Wunsch global alignment of two sequences
+	 Needleman-Wunsch global alignment of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/needleall.html">needleall</a></td>
       <td>
-         Many-to-many pairwise alignments of two sequence sets
+	 Many-to-many pairwise alignments of two sequence sets
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/newcpgreport.html">newcpgreport</a></td>
       <td>
-         Identify CpG islands in nucleotide sequence(s)
+	 Identify CpG islands in nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/newcpgseek.html">newcpgseek</a></td>
       <td>
-         Identify and report CpG-rich regions in nucleotide sequence(s)
+	 Identify and report CpG-rich regions in nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/newseq.html">newseq</a></td>
       <td>
-         Create a sequence file from a typed-in sequence
+	 Create a sequence file from a typed-in sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/nohtml.html">nohtml</a></td>
       <td>
-         Remove mark-up (e.g. HTML tags) from an ASCII text file
+	 Remove mark-up (e.g. HTML tags) from an ASCII text file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/noreturn.html">noreturn</a></td>
       <td>
-         Remove carriage return from ASCII files
+	 Remove carriage return from ASCII files
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/nospace.html">nospace</a></td>
       <td>
-         Remove whitespace from an ASCII text file
+	 Remove whitespace from an ASCII text file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/notab.html">notab</a></td>
       <td>
-         Replace tabs with spaces in an ASCII text file
+	 Replace tabs with spaces in an ASCII text file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/notseq.html">notseq</a></td>
       <td>
-         Write to file a subset of an input stream of sequences
+	 Write to file a subset of an input stream of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/nthseq.html">nthseq</a></td>
       <td>
-         Write to file a single sequence from an input stream of sequences
+	 Write to file a single sequence from an input stream of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/nthseqset.html">nthseqset</a></td>
       <td>
-         Read and write (return) one set of sequences from many
+	 Read and write (return) one set of sequences from many
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/octanol.html">octanol</a></td>
       <td>
-         Draw a White-Wimley protein hydropathy plot
+	 Draw a White-Wimley protein hydropathy plot
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/oddcomp.html">oddcomp</a></td>
       <td>
-         Identify proteins with specified sequence word composition
+	 Identify proteins with specified sequence word composition
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontocount.html">ontocount</a></td>
       <td>
-         Count ontology term(s)
+	 Count ontology term(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontoget.html">ontoget</a></td>
       <td>
-         Get ontology term(s)
+	 Get ontology term(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetcommon.html">ontogetcommon</a></td>
       <td>
-         Get common ancestor for terms
+	 Get common ancestor for terms
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetdown.html">ontogetdown</a></td>
       <td>
-         Get ontology term(s) by parent id
+	 Get ontology term(s) by parent id
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetobsolete.html">ontogetobsolete</a></td>
       <td>
-         Get ontology ontology terms
+	 Get ontology ontology terms
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetroot.html">ontogetroot</a></td>
       <td>
-         Get ontology root terms by child identifier
+	 Get ontology root terms by child identifier
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetsibs.html">ontogetsibs</a></td>
       <td>
-         Get ontology term(s) by id with common parent
+	 Get ontology term(s) by id with common parent
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontogetup.html">ontogetup</a></td>
       <td>
-         Get ontology term(s) by id of child
+	 Get ontology term(s) by id of child
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontoisobsolete.html">ontoisobsolete</a></td>
       <td>
-         Report whether an ontology term id is obsolete
+	 Report whether an ontology term id is obsolete
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/ontotext.html">ontotext</a></td>
       <td>
-         Get ontology term(s) original full text
+	 Get ontology term(s) original full text
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/palindrome.html">palindrome</a></td>
       <td>
-         Find inverted repeats in nucleotide sequence(s)
+	 Find inverted repeats in nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pasteseq.html">pasteseq</a></td>
       <td>
-         Insert one sequence into another
+	 Insert one sequence into another
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/patmatdb.html">patmatdb</a></td>
       <td>
-         Search protein sequences with a sequence motif
+	 Search protein sequences with a sequence motif
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/patmatmotifs.html">patmatmotifs</a></td>
       <td>
-         Scan a protein sequence with motifs from the PROSITE database
+	 Scan a protein sequence with motifs from the PROSITE database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepcoil.html">pepcoil</a></td>
       <td>
-         Predict coiled coil regions in protein sequences
+	 Predict coiled coil regions in protein sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepdigest.html">pepdigest</a></td>
       <td>
-         Report on protein proteolytic enzyme or reagent cleavage sites
+	 Report on protein proteolytic enzyme or reagent cleavage sites
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepinfo.html">pepinfo</a></td>
       <td>
-         Plot amino acid properties of a protein sequence in parallel
+	 Plot amino acid properties of a protein sequence in parallel
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepnet.html">pepnet</a></td>
       <td>
-         Draw a helical net for a protein sequence
+	 Draw a helical net for a protein sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepstats.html">pepstats</a></td>
       <td>
-         Calculate statistics of protein properties
+	 Calculate statistics of protein properties
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepwheel.html">pepwheel</a></td>
       <td>
-         Draw a helical wheel diagram for a protein sequence
+	 Draw a helical wheel diagram for a protein sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepwindow.html">pepwindow</a></td>
       <td>
-         Draw a hydropathy plot for a protein sequence
+	 Draw a hydropathy plot for a protein sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pepwindowall.html">pepwindowall</a></td>
       <td>
-         Draw Kyte-Doolittle hydropathy plot for a protein alignment
+	 Draw Kyte-Doolittle hydropathy plot for a protein alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/plotcon.html">plotcon</a></td>
       <td>
-         Plot conservation of a sequence alignment
+	 Plot conservation of a sequence alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/plotorf.html">plotorf</a></td>
       <td>
-         Plot potential open reading frames in a nucleotide sequence
+	 Plot potential open reading frames in a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/polydot.html">polydot</a></td>
       <td>
-         Draw dotplots for all-against-all comparison of a sequence set
+	 Draw dotplots for all-against-all comparison of a sequence set
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/preg.html">preg</a></td>
       <td>
-         Regular expression search of protein sequence(s)
+	 Regular expression search of protein sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/prettyplot.html">prettyplot</a></td>
       <td>
-         Draw a sequence alignment with pretty formatting
+	 Draw a sequence alignment with pretty formatting
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/prettyseq.html">prettyseq</a></td>
       <td>
-         Write a nucleotide sequence and its translation to file
+	 Write a nucleotide sequence and its translation to file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/primersearch.html">primersearch</a></td>
       <td>
-         Search DNA sequences for matches with primer pairs
+	 Search DNA sequences for matches with primer pairs
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/printsextract.html">printsextract</a></td>
       <td>
-         Extract data from PRINTS database for use by pscan
+	 Extract data from PRINTS database for use by pscan
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/profit.html">profit</a></td>
       <td>
-         Scan one or more sequences with a simple frequency matrix
+	 Scan one or more sequences with a simple frequency matrix
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/prophecy.html">prophecy</a></td>
       <td>
-         Create frequency matrix or profile from a multiple alignment
+	 Create frequency matrix or profile from a multiple alignment
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/prophet.html">prophet</a></td>
       <td>
-         Scan one or more sequences with a Gribskov or Henikoff profile
+	 Scan one or more sequences with a Gribskov or Henikoff profile
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/prosextract.html">prosextract</a></td>
       <td>
-         Process the PROSITE motif database for use by patmatmotifs
+	 Process the PROSITE motif database for use by patmatmotifs
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/pscan.html">pscan</a></td>
       <td>
-         Scan protein sequence(s) with fingerprints from the PRINTS database
+	 Scan protein sequence(s) with fingerprints from the PRINTS database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/psiphi.html">psiphi</a></td>
       <td>
-         Calculates phi and psi torsion angles from protein coordinates
+	 Calculates phi and psi torsion angles from protein coordinates
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/rebaseextract.html">rebaseextract</a></td>
       <td>
-         Process the REBASE database for use by restriction enzyme applications
+	 Process the REBASE database for use by restriction enzyme applications
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/recoder.html">recoder</a></td>
       <td>
-         Find restriction sites to remove (mutate) with no translation change
+	 Find restriction sites to remove (mutate) with no translation change
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/redata.html">redata</a></td>
       <td>
-         Retrieve information from REBASE restriction enzyme database
+	 Retrieve information from REBASE restriction enzyme database
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/refseqget.html">refseqget</a></td>
       <td>
-         Get reference sequence
+	 Get reference sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/remap.html">remap</a></td>
       <td>
-         Display restriction enzyme binding sites in a nucleotide sequence
+	 Display restriction enzyme binding sites in a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/restover.html">restover</a></td>
       <td>
-         Find restriction enzymes producing a specific overhang
+	 Find restriction enzymes producing a specific overhang
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/restrict.html">restrict</a></td>
       <td>
-         Report restriction enzyme cleavage sites in a nucleotide sequence
+	 Report restriction enzyme cleavage sites in a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/revseq.html">revseq</a></td>
       <td>
-         Reverse and complement a nucleotide sequence
+	 Reverse and complement a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seealso.html">seealso</a></td>
       <td>
-         Find programs with similar function to a specified program
+	 Find programs with similar function to a specified program
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqcount.html">seqcount</a></td>
       <td>
-         Read and count sequences
+	 Read and count sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqmatchall.html">seqmatchall</a></td>
       <td>
-         All-against-all word comparison of a sequence set
+	 All-against-all word comparison of a sequence set
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqret.html">seqret</a></td>
       <td>
-         Read and write (return) sequences
+	 Read and write (return) sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqretsetall.html">seqretsetall</a></td>
       <td>
-         Read and write (return) many sets of sequences
+	 Read and write (return) many sets of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqretsplit.html">seqretsplit</a></td>
       <td>
-         Read sequences and write them to individual files
+	 Read sequences and write them to individual files
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqxref.html">seqxref</a></td>
       <td>
-         Retrieve all database cross-references for a sequence entry
+	 Retrieve all database cross-references for a sequence entry
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/seqxrefget.html">seqxrefget</a></td>
       <td>
-         Retrieve all cross-referenced data for a sequence entry
+	 Retrieve all cross-referenced data for a sequence entry
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/servertell.html">servertell</a></td>
       <td>
-         Display information about a public server
+	 Display information about a public server
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showalign.html">showalign</a></td>
       <td>
-         Display a multiple sequence alignment in pretty format
+	 Display a multiple sequence alignment in pretty format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showdb.html">showdb</a></td>
       <td>
-         Display information on configured databases
+	 Display information on configured databases
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showfeat.html">showfeat</a></td>
       <td>
-         Display features of a sequence in pretty format
+	 Display features of a sequence in pretty format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showorf.html">showorf</a></td>
       <td>
-         Display a nucleotide sequence and translation in pretty format
+	 Display a nucleotide sequence and translation in pretty format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showpep.html">showpep</a></td>
       <td>
-         Display protein sequences with features in pretty format
+	 Display protein sequences with features in pretty format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showseq.html">showseq</a></td>
       <td>
-         Display sequences with features in pretty format
+	 Display sequences with features in pretty format
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/showserver.html">showserver</a></td>
       <td>
-         Display information on configured servers
+	 Display information on configured servers
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/shuffleseq.html">shuffleseq</a></td>
       <td>
-         Shuffle a set of sequences maintaining composition
+	 Shuffle a set of sequences maintaining composition
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/sigcleave.html">sigcleave</a></td>
       <td>
-         Report on signal cleavage sites in a protein sequence
+	 Report on signal cleavage sites in a protein sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/silent.html">silent</a></td>
       <td>
-         Find restriction sites to insert (mutate) with no translation change
+	 Find restriction sites to insert (mutate) with no translation change
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/sirna.html">sirna</a></td>
       <td>
-         Find siRNA duplexes in mRNA
+	 Find siRNA duplexes in mRNA
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/sixpack.html">sixpack</a></td>
       <td>
-         Display a DNA sequence with 6-frame translation and ORFs
+	 Display a DNA sequence with 6-frame translation and ORFs
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/sizeseq.html">sizeseq</a></td>
       <td>
-         Sort sequences by size
+	 Sort sequences by size
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/skipredundant.html">skipredundant</a></td>
       <td>
-         Remove redundant sequences from an input set
+	 Remove redundant sequences from an input set
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/skipseq.html">skipseq</a></td>
       <td>
-         Read and write (return) sequences, skipping first few
+	 Read and write (return) sequences, skipping first few
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/splitsource.html">splitsource</a></td>
       <td>
-         Split sequence(s) into original source sequences
+	 Split sequence(s) into original source sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/splitter.html">splitter</a></td>
       <td>
-         Split sequence(s) into smaller sequences
+	 Split sequence(s) into smaller sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/stretcher.html">stretcher</a></td>
       <td>
-         Needleman-Wunsch rapid global alignment of two sequences
+	 Needleman-Wunsch rapid global alignment of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/stssearch.html">stssearch</a></td>
       <td>
-         Search a DNA database for matches with a set of STS primers
+	 Search a DNA database for matches with a set of STS primers
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/supermatcher.html">supermatcher</a></td>
       <td>
-         Calculate approximate local pair-wise alignments of larger sequences
+	 Calculate approximate local pair-wise alignments of larger sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/syco.html">syco</a></td>
       <td>
-         Draw synonymous codon usage statistic plot for a nucleotide sequence
+	 Draw synonymous codon usage statistic plot for a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/taxget.html">taxget</a></td>
       <td>
-         Get taxon(s)
+	 Get taxon(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/taxgetdown.html">taxgetdown</a></td>
       <td>
-         Get descendants of taxon(s)
+	 Get descendants of taxon(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/taxgetrank.html">taxgetrank</a></td>
       <td>
-         Get parents of taxon(s)
+	 Get parents of taxon(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/taxgetspecies.html">taxgetspecies</a></td>
       <td>
-         Get all species under taxon(s)
+	 Get all species under taxon(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/taxgetup.html">taxgetup</a></td>
       <td>
-         Get parents of taxon(s)
+	 Get parents of taxon(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tcode.html">tcode</a></td>
       <td>
-         Identify protein-coding regions using Fickett TESTCODE statistic
+	 Identify protein-coding regions using Fickett TESTCODE statistic
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/textget.html">textget</a></td>
       <td>
-         Get text data entries
+	 Get text data entries
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/textsearch.html">textsearch</a></td>
       <td>
-         Search the textual description of sequence(s)
+	 Search the textual description of sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tfextract.html">tfextract</a></td>
       <td>
-         Process TRANSFAC transcription factor database for use by tfscan
+	 Process TRANSFAC transcription factor database for use by tfscan
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tfm.html">tfm</a></td>
       <td>
-         Display full documentation for an application
+	 Display full documentation for an application
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tfscan.html">tfscan</a></td>
       <td>
-         Identify transcription factor binding sites in DNA sequences
+	 Identify transcription factor binding sites in DNA sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tmap.html">tmap</a></td>
       <td>
-         Predict and plot transmembrane segments in protein sequences
+	 Predict and plot transmembrane segments in protein sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/tranalign.html">tranalign</a></td>
       <td>
-         Generate an alignment of nucleic coding regions from aligned proteins
+	 Generate an alignment of nucleic coding regions from aligned proteins
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/transeq.html">transeq</a></td>
       <td>
-         Translate nucleic acid sequences
+	 Translate nucleic acid sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/trimest.html">trimest</a></td>
       <td>
-         Remove poly-A tails from nucleotide sequences
+	 Remove poly-A tails from nucleotide sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/trimseq.html">trimseq</a></td>
       <td>
-         Remove unwanted characters from start and end of sequence(s)
+	 Remove unwanted characters from start and end of sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/trimspace.html">trimspace</a></td>
       <td>
-         Remove extra whitespace from an ASCII text file
+	 Remove extra whitespace from an ASCII text file
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/twofeat.html">twofeat</a></td>
       <td>
-         Find neighbouring pairs of features in sequence(s)
+	 Find neighbouring pairs of features in sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/union.html">union</a></td>
       <td>
-         Concatenate multiple sequences into a single sequence
+	 Concatenate multiple sequences into a single sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/urlget.html">urlget</a></td>
       <td>
-         Get URLs of data resources
+	 Get URLs of data resources
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/variationget.html">variationget</a></td>
       <td>
-         Get sequence variations
+	 Get sequence variations
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/vectorstrip.html">vectorstrip</a></td>
       <td>
-         Remove vectors from the ends of nucleotide sequence(s)
+	 Remove vectors from the ends of nucleotide sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/water.html">water</a></td>
       <td>
-         Smith-Waterman local alignment of sequences
+	 Smith-Waterman local alignment of sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/whichdb.html">whichdb</a></td>
       <td>
-         Search all sequence databases for an entry and retrieve it
+	 Search all sequence databases for an entry and retrieve it
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wobble.html">wobble</a></td>
       <td>
-         Plot third base position variability in a nucleotide sequence
+	 Plot third base position variability in a nucleotide sequence
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wordcount.html">wordcount</a></td>
       <td>
-         Count and extract unique words in molecular sequence(s)
+	 Count and extract unique words in molecular sequence(s)
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wordfinder.html">wordfinder</a></td>
       <td>
-         Match large sequences against one or more other sequences
+	 Match large sequences against one or more other sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wordmatch.html">wordmatch</a></td>
       <td>
-         Find regions of identity (exact matches) of two sequences
+	 Find regions of identity (exact matches) of two sequences
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossdata.html">wossdata</a></td>
       <td>
-         Find programs by EDAM data
+	 Find programs by EDAM data
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossinput.html">wossinput</a></td>
       <td>
-         Find programs by EDAM input data
+	 Find programs by EDAM input data
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossname.html">wossname</a></td>
       <td>
-         Find programs by keywords in their short description
+	 Find programs by keywords in their short description
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossoperation.html">wossoperation</a></td>
       <td>
-         Find programs by EDAM operation
+	 Find programs by EDAM operation
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossoutput.html">wossoutput</a></td>
       <td>
-         Find programs by EDAM output data
+	 Find programs by EDAM output data
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wossparam.html">wossparam</a></td>
       <td>
-         Find programs by EDAM parameter
+	 Find programs by EDAM parameter
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/wosstopic.html">wosstopic</a></td>
       <td>
-         Find programs by EDAM topic
+	 Find programs by EDAM topic
       </td>
    </tr>
    <tr>
       <td><a href="http://emboss.sourceforge.net/apps/cvs/emboss/apps/yank.html">yank</a></td>
       <td>
-         Add a sequence reference (a full USA) to a list file
+	 Add a sequence reference (a full USA) to a list file
       </td>
    </tr>
 </table>
 
-</table>
 </details>
+<br>
 
 La verdad sea dicha, todos los biotecnológos hemos jugado (o jugamos) con secuencias de ácidos nucleicos o aminoácidos, y lo hemos hecho incluso sin saber que esta clase de herramientas existe: Así como podemos irnos de camping sin una de esas herramientas suizas multipropósito, también es cierto que podemos armar estrategias de clonado o hacer alineamientos múltiples sin EMBOSS. 
 
@@ -1604,10 +1605,10 @@ Por cuestiones de practicidad, todos los tags van a estar en el C-terminal.
 
 **En lineas generales vamos a:**
 
-1. Generar secuencia de aminoácidos VpVAN-Tag para cada tag de interés.
-2. Obtener las secuencias codificantes del organismo de interés y generar tabla de uso de codones para el organismo de interés.
-3. Generar la secuencia nucleotídica VpVAN-tag con los codones optimizados para el organismo de interés.
-4. Verificar que no hayan quedado sitios de restricción propios de la estrategia de clonado DENTRO de la secuecnia VpVAN-tag optimizada.
+- Generar secuencia de aminoácidos VpVAN-Tag para cada tag de interés.
+- Obtener las secuencias codificantes del organismo de interés y generar tabla de uso de codones para el organismo de interés.
+- Generar la secuencia nucleotídica VpVAN-tag con los codones optimizados para el organismo de interés.
+- Verificar que no hayan quedado sitios de restricción propios de la estrategia de clonado DENTRO de la secuecnia VpVAN-tag optimizada.
 
 ## ¡Manos a la obra!
 
@@ -1661,28 +1662,29 @@ Para bacterias descargar secuencias codificantes en bacterias, debemos seguir la
 https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/
 *How can I download RefSeq data for all complete bacterial genomes?*, que básicamente se resumen en los siguientes pasos:
 
-1. Bajar un resumen de todos los proyectos genoma disponibles para descargar en la base de datos RefSeq: 
+- Bajar un resumen de todos los proyectos genoma disponibles para descargar en la base de datos RefSeq: 
 ```Bash
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
 ```
-2. Una vez descargado el resumen, podemos buscar entre todas las secuencias cuáles podrían interesarnos. Prueben usando distintos comandos de unix, como ``grep``, ``awk`` y ``cat`` para obtener el link ftp de todas las secuencias de *E. coli* de la cepa BL21 (comunmente utilizada para expresión heteróloga).
+- Una vez descargado el resumen, podemos buscar entre todas las secuencias cuáles podrían interesarnos. Prueben usando distintos comandos de unix, como ``grep``, ``awk`` y ``cat`` para obtener el link ftp de todas las secuencias de *E. coli* de la cepa BL21 (comunmente utilizada para expresión heteróloga).
 
-<details>
-<summary>Ver links a los genomas</summary>
+<!--<details>
+<summary>Ver links a los genomas</summary>-->
 <ul>
 <li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1">GCF_000009565.1_ASM956v1</a></li>
 <li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1">GCF_000022665.1_ASM2266v1</a></li>
 <li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1">GCF_000023665.1_ASM2366v1</a></li>
 </ul>
-</details>
+<!--</details>-->
 
 ---
 
-3. Una vez identificada la manera de filtrar el `summary` hasta obtener el/los genomas de interés, bajar el/los archivos `<genoma>_cds_from_genomic.fna.gz`, donde `<genoma>` sería el link al genoma de interés. 
+- Una vez identificada la manera de filtrar el `summary` hasta obtener el/los genomas de interés, bajar el/los archivos `<genoma>_cds_from_genomic.fna.gz`, donde `<genoma>` sería el link al genoma de interés. 
 
 Podemos agregar manualmente (buh! :poop:) o podemos hacer todo en un solo paso (eeh! :tada: ):
 
 ### Una forma simple pero efectiva:
+
 ```Bash
 # Obtengo los links
 grep "BL21" assembly_summary.txt | grep "coli" | awk -F'\t' '{print $8,$20}'
@@ -1700,12 +1702,14 @@ awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;fi
 wget -i ftpfilepaths
 ```
 
-<details>
-<summary>Ver links a los genomas</summary>
+<!-- <details> -->
+
+<!--	<summary>Ver links a los genomas </summary>-->
+
    - [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
    - [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
    - [GCF_000023665.1_ASM2366v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz)
-</details>
+<!-- </details> -->
 
 ---
 
@@ -1824,8 +1828,12 @@ GAG    E     0.309    17.482  23819
 TTC    F     0.425    16.517  22504
 TTT    F     0.575    22.385  30499
 ```
+
+Ayuda-memoria con aminoácidos y sus abreviaturas:
+
 <details>
-<summary> Ayuda-memoria con aminoácidos y sus abreviaturas </summary>
+
+<!--<summary> Ayuda-memoria con aminoácidos y sus abreviaturas </summary>-->
 <table>
 <thead>
    <th>Full Name</th>
@@ -1947,6 +1955,7 @@ TTT    F     0.575    22.385  30499
 </table>
 
 </details>
+<br>
 
 Si se pusieron a buscar diferencias a ojo entre un archivo y otro, todavía no aprendieron nada: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
 
@@ -1994,7 +2003,7 @@ Es posible que Ubuntu no nos deje hacer esto, dado que vamos a estar modificando
 sudo rebaseextract -infile withrefm.907 -protofile proto.907
 ```
 
-#### 4.1. Verificar sitios de restricción
+#### 4.2. Verificar sitios de restricción
 
 ```Bash
 remap -auto -sequence myprotein.ecoli.codons.dna.fasta -single -width 80 -commercial -sitelen 6 -frame 1 -enzymes all -outfile remap
