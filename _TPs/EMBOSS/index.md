@@ -25,7 +25,7 @@ details summary > * {
 
 ## Materiales
 
-<a href="data/"> Descargar </a>
+<a href="./data/"> Descargar </a>
 
 {% endif %}
 
