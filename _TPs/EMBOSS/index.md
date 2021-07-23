@@ -2,7 +2,7 @@
 layout: page
 title: TP N°2
 subtitle: EMBOSS Suite
-data : True
+data : true
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
@@ -30,7 +30,6 @@ details summary > * {
 
 {% endif %}
 
-# Probando otra vez
 ## Introducción:
 
 [EMBOSS](http://emboss.sourceforge.net/) es una *suite* bioinformática con una multitud de herramientas elementales en biología molecular y genética. Creada y mantenida por [EMBnet](http://www.embnet.org/), EMBOSS es la clase de herramientas que siempre es mejor tener que no tener, a pesar de que todo lo que podemos hacer con ésta, también lo podemos hacer *manualmente* (esto es, en papel o con algún software específico). La conveniencia radica en que el software no solo maneja información biológica en varios formatos para realizar distintos tipos de tareas, sino que además lo hace muy rápidamente (lo cual significa que es computacionalmente escalable) y con esfuerzo mínimo, dado que la *suite* provee al usuario con una interfaz unificada para todas las aplicaciones. La lista de herramientas disponibles es ENORME:

@@ -80,7 +80,6 @@ collections:
     output : true
   TPs : 
     output : true
-    permalink: /TPs/:path
 
 kramdown:
   parse_block_html: true  
