@@ -19,13 +19,13 @@ toc_title: CONTENIDOS
 
 ## Objetivo
 
-En este trabajo práctico vamos a iniciarnos con el uso básico de los comandos de UNIX que más adelante nos permitirán sacar provecho de herramientas bioinformáticas, que solo se pueden utilizar de esta forma.
+* Familiarizarse con el uso básico de los comandos de UNIX que más adelante nos permitirán sacar provecho de herramientas bioinformáticas, que solo se pueden utilizar de esta forma.
 
 ## Introducción
 
-En este trabajo práctico vamos a aprender a usar la **LINEA DE COMANDO** (*o la consola, o el shell*). Para muchos de nosotros, que crecimos con la interfaz gráfica (GUI, por las siglas en ingles: *Graphic User Interface*) de sistemas operativos como los de Windows, la **LINEA DE COMANDO** puede parecer un desafío. Veremos que no solo no es difícil, sino que además tiene dos ventajas fundamentales:
-- Nos permitirá trabajar en entornos sin interfaz gráfica (GUI)
-- Y para los entornos que sí cuenten con interfaz gráfica, nos permitirá programatizar/automatizar procesos, acelerando el trabajo y minimizando la cantidad de errores que podemos cometer al realizar tareas repetitivas.
+En este trabajo práctico vamos a aprender a usar la **LINEA DE COMANDO** (*o la consola, o el shell*). Para muchos de nosotros, que crecimos con la interfaz gráfica (GUI, por las siglas en ingles: *Graphic User Interface*) de sistemas operativos como los de Windows, la **LINEA DE COMANDO** puede parecer un desafío. Con práctica y algo de paciencia descubrirán que puede resultar amena. Y su uso tiene dos ventajas destacables para nuestro campo:
+- Nos permitirá trabajar en entornos sin interfaz gráfica (GUI),
+- Para los entornos que sí cuenten con interfaz gráfica, nos permitirá programatizar/automatizar procesos, acelerando el trabajo y minimizando la cantidad de errores que podemos cometer con tareas repetitivas.
 
 Todo lo que hagamos en este TP se puede hacer directamente en el navegador, gracias a [Alex Morley](https://github.com/blahah/command_line_bootcamp) y colaboradores, que armaron una interfaz web especialmente diseñada para aprender lo básico de linea de comando: 
 
