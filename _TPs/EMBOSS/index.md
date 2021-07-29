@@ -30,6 +30,13 @@ details summary > * {
 
 {% endif %}
 
+## Objetivos:
+
+Objetivos:
+- Familiarizarse con el uso de herramientas bioinformáticas por línea de comandos,
+- Familiarizarse con los formatos característicos de datos biológicos.
+
+
 ## Introducción:
 
 [EMBOSS](http://emboss.sourceforge.net/) es una *suite* bioinformática con una multitud de herramientas elementales en biología molecular y genética. Creada y mantenida por [EMBnet](http://www.embnet.org/), EMBOSS es la clase de herramientas que siempre es mejor tener que no tener, a pesar de que todo lo que podemos hacer con ésta, también lo podemos hacer *manualmente* (esto es, en papel o con algún software específico). La conveniencia radica en que el software no solo maneja información biológica en varios formatos para realizar distintos tipos de tareas, sino que además lo hace muy rápidamente (lo cual significa que es computacionalmente escalable) y con esfuerzo mínimo, dado que la *suite* provee al usuario con una interfaz unificada para todas las aplicaciones. La lista de herramientas disponibles es ENORME:
@@ -1588,9 +1595,9 @@ details summary > * {
 
 La verdad sea dicha, todos los biotecnológos hemos jugado (o jugamos) con secuencias de ácidos nucleicos o aminoácidos, y lo hemos hecho incluso sin saber que esta clase de herramientas existe: Así como podemos irnos de camping sin una de esas herramientas suizas multipropósito, también es cierto que podemos armar estrategias de clonado o hacer alineamientos múltiples sin EMBOSS. 
 
-En el TP de hoy vamos a familiarizarnos con EMBOSS y algunas herramientas del paquete, aplicándolas al diseño de una estrategia de clonado, puntualmente para diseñar/optimizar proteinas para expresion recombinante heteróloga. 
+En el TP de hoy vamos a familiarizarnos con EMBOSS y algunas herramientas del paquete, aplicándolas al diseño de una estrategia de clonado, puntualmente para diseñar/optimizar proteínas para expresión recombinante heteróloga. 
 
-En los últimos años, se ha simplificado cuantiosamente la ejecución de un proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o el riesgo de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón *90% off* en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
+En los últimos años, se ha simplificado cuantiosamente la ejecución del proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o el riesgo de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón *90% off* en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
 
 Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Los procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
 
@@ -1600,7 +1607,16 @@ La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir 
 
 Esta enzima ha sido aislada (y secuenciada) de *Vanilla planifolia* . Encontrarán la secuencia correspondiente entre sus materiales de trabajo (`VpVAN.fasta`) y más información acerca de esta *million-dollar-idea* en este [*paper*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4083428/).
 
-Vamos a clonar en forma direccionada, usando las enzimas
+Por si no lo saben o no lo recuerdan, el formato FASTA es la forma más usada para trabajar secuencias biológicas (ADN, ARN, aminoácidos) en forma digital. Son archivos de texto plano, donde se asume un formato muy sencillo de interpretar para el ojo humano:
+
+![Formato FASTA](images/fasta.png)
+
+El archivo FASTA comienza por un `>` que indica la línea con el nombre, o identificador, de la secuencia. Esa linea puede contener información adicional como alguna descripción extra sobre la secuencia, tal como las condiciones en que fue obtenida u otra descripción opcional.
+Luego, el resto de las líneas que continuen contienen la secuencia propiamente dicha, hasta que aparezca otro `>`, indicando que termina la secuencia anterior y comienza otra. Cuando eso ocurre y el archivo contiene más de una secuencia, se lo denomina "multi-fasta".
+
+
+
+Volviendo a nuestro experimento, vamos a clonar en forma direccionada, usando las enzimas
 
 - BamHI
 - HindIII
@@ -1619,7 +1635,7 @@ Por cuestiones de practicidad, todos los tags van a estar en el C-terminal.
 
 > **NOTA**: Estamos asumiendo que TODOS saben de qué estamos hablando con las condiciones expuestas. Si no es el caso, **pregunten**.
 
-**En lineas generales vamos a:**
+**En líneas generales vamos a:**
 
 - Generar secuencia de aminoácidos VpVAN-Tag para cada tag de interés.
 - Obtener las secuencias codificantes del organismo de interés y generar tabla de uso de codones para el organismo de interés.
@@ -1628,35 +1644,70 @@ Por cuestiones de practicidad, todos los tags van a estar en el C-terminal.
 
 ## ¡Manos a la obra!
 
-### 1. Secuencias VpVan-Tag
+### Ejercicio 1. Secuencias aminoacídicas VpVan-Tag
 
-Vamos a generar las secuencias quiméricas VpVan-Tag (donde Tag = His/MBP/FLAG). En su directorio de trabajo tienen los siguientes archivos
+Vamos a generar las secuencias de aminoácidos quiméricas VpVan-Tag (donde Tag = His/MBP/FLAG). En su directorio de trabajo tienen los siguientes archivos
 
 - VpVan.fasta
 - His-tag.fasta
 - MBP-tag.fasta
 - FLAG-tag.fasta
 
-El primer objetivo será generar un nuevo fasta por cada construcción. Pueden hacerlo por *copy-paste*. Nadie los va a juzgar. PEEEEEEEERO, ya que estamos con la linea de comando, pueden aprovechar para practicar un poco de *scripting*. 
+Se recomienda **enfáticamente** crear una carpeta nueva donde pueden poner todos los archivos del trabajo práctico y trabajar en ese lugar, de forma tal que si más adelante tienen que buscar archivos, que ustedes hayan generados, saben donde están y no terminan rastreando por todo el sistema raiz. Si no lo recuerdan del TP anterior:
 
 ```Bash
+cd #me dirijo a la carpeta de mi usuario.
+mkdir TP_EMBOSS #creo una carpeta, ustedes pueden darle el nombre que quieran.
+cd TP_EMBOSS #entro en dicha carpeta.
+```
+
+El primer objetivo será generar un nuevo fasta por cada construcción. Pueden hacerlo por *copy-paste*. Nadie los va a juzgar. PEEEEEEEERO, ya que estamos con la linea de comando, pueden aprovechar para practicar un poco de *scripting*. 
+
+```Bash 
 # Acá va una propuesta. Pueden pensar en alguna alternativa, si quieren.
-for TAG in `ls *-tag.fasta`; # Por cada Fasta de tag disponible...
+for TAG in `ls *-tag.fasta`; # Por cada Fasta de tag disponible... 
+
 do 
-   vpvanseq=`cat VpVAN.fasta | grep -v ">"`; # leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable
-   tagseq=`cat $TAG | grep -v ">"`; # leer un archivo tag y quitarle el header (>), guardarlo en otra variable
-   printf ">VpVAN-$TAG\n$vpvanseq$tagseq" > VpVAN-$TAG; # imprimir y guardar en un archivo separado para cada tag
+   vpvanseq=`cat VpVAN.fasta | grep -v ">"`; # leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable (1)
+   tagseq=`cat $TAG | grep -v ">"`; # leer cada archivo tag y quitarle el header (>), guardarlo en otra variable (2)
+   printf ">VpVAN-$TAG\n$vpvanseq$tagseq" > VpVAN-$TAG; # imprimir y guardar en un archivo separado para cada tag (3)
 done;
 ```
+Para entender en detalle que hace todo este *script* de **BASH** vamos a dedicarle unos minutos:
+
+`for` es un comando muy útil que más adelante exploraremos en profundidad, por ahora solo importa entender que nos permite recorrer una lista. En este caso la lista que recibe, se genera con `ls *-tag-fasta`. `ls` lista archivos y carpetas, recuerden que el comodín `*` permite tomar cualquier valor, por lo que entonces estaremos listando todos los archivos y carpetas (aunque en este caso solo habrá archivos) que terminen con "-tag.fasta" y con cada uno de los nombres de estos archivos haremos (`do`) las tres líneas que siguen:
+
+1. Leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable:
+ - `cat VpVAN.fasta`: lee el archivo con la secuencia de AA que queremos expresar, 
+ - luego con el *pipe* (`|`) se lo pasamos al siguiente comando:
+ - `grep -v ">"`: grep, es un comando que realiza búsquedas de texto y devuelve las líneas que lo contengan. En este caso le estamos pidiendo que busque el carácter  `>`, pero con el argumento `-v` le decimos que nos devuelva los resultados que NO contengan dicha búsqueda.
+ - Finalmente todo se guardará en: **vpvanseq** puesto que fue declarada para almacenar el resultado del comando con el `=`.
+2. Leer cada archivo tag y quitarle el header (>), guardarlo en otra variable:
+ - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** definimos la palabra **TAG** (for TAG in ...) como la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos invocar variables tenemos que anteponerles un `$` al nombre.
+ - El resultado se guarda en la variable **tagseq**.
+3. Imprimir y guardar en un archivo separado para cada tag:
+ - Acá nos interesa generar los nuevos archivos FASTA, primero empezamos por los encabezados (nombres); donde sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos invocar con `$TAG` y nos queda: ">VpVAN-$TAG". Luego agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando echo que ya usaron en el TP anterior, pueden consultarlo con `man printf`). 
+ - Todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
+ 
 
 ¡Ya tenemos nuestras secuencias quiméricas!
 
-Comencemos por instalar EMBOSS en nuestro sistema. Si no tuviéramos la máquina virtual (que ya tiene todo instlado), podríamos instalar EMBOSS como sigue: 
+###### Entrada en calor con EMBOSS
 
+Para familiarizarnos con EMBOSS, comencemos por buscar qué herramientas vamos a usar durante el TP. Si emboss-doc está instalado, se puede ver la documentación de los paquetes en la linea de comando. Ya sabemos que vamos a estar optimizando codones para algún organismo así que arranquemos por ahí: 
+Para buscar comandos que hacen cosas, usar `wossname` con palabras clave (en inglés, ej: 'codon'). El comando `wossname` nos da una lista de comandos asociados con esas palabras clave y lo que hace cada programa.
+
+> Esto solo funcionará si instalamos la documentación de EMBOSS.
+
+Si no tuviéramos la máquina virtual (que ya tiene todo instlado), tendríamos que instalar EMBOSS en nuestro sistema: 
+
+
+<details>
+<summary> <h6> Ver cómo instalar EMBOSS </h6> </summary>
 En una linea de comando, ingresaríamos:
 
 ```Bash
-sudo apt-get install emboss emboss-data emboss-doc
+sudo apt-get install emboss emboss-data emboss-doc 
 ```
 > ¿Se acuerdan qué son estos comandos? Si no se acuerdan, siempre pueden acudir al manual:
 ```Bash
@@ -1664,84 +1715,13 @@ man sudo
 man apt-get
 ```
 
-#### 2. Construir tabla de frecuencias de uso de codones
+</details>
+<br>
 
-Para poder calcular la tabla de uso de codones, podemos usar `cusp`, de EMBOSS. Por si no recurdan, del manual de cusp (`tfm cusp` en la linea de comando), "*cusp calculates a codon usage table for one or more nucleotide coding sequences and writes the table to file*".
-
-Esto significa que necesitaremos una lista de secuencias codificantes.
-
-El formato más común que usamos los bioinformáticos para guardar (y usar) listas de secuencias es el formato FASTA. Vamos a construir un archivo tipo fasta con nuestras secuencias codificantes.
-
-##### 2.1 Obtener secuencias codificantes
-
-Para bacterias descargar secuencias codificantes en bacterias, debemos seguir las instrucciones descritas en 
-https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/
-*How can I download RefSeq data for all complete bacterial genomes?*, que básicamente se resumen en los siguientes pasos:
-
-- Bajar un resumen de todos los proyectos genoma disponibles para descargar en la base de datos RefSeq: 
-```Bash
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
-```
-- Una vez descargado el resumen, podemos buscar entre todas las secuencias cuáles podrían interesarnos. Prueben usando distintos comandos de unix, como ``grep``, ``awk`` y ``cat`` para obtener el link ftp de todas las secuencias de *E. coli* de la cepa BL21 (comunmente utilizada para expresión heteróloga).
-
-<!--<details>
-<summary>Ver links a los genomas</summary>-->
-<ul>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1">GCF_000009565.1_ASM956v1</a></li>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1">GCF_000022665.1_ASM2266v1</a></li>
-<li><a href="ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1">GCF_000023665.1_ASM2366v1</a></li>
-</ul>
-<!--</details>-->
-
----
-
-- Una vez identificada la manera de filtrar el `summary` hasta obtener el/los genomas de interés, bajar el/los archivos `<genoma>_cds_from_genomic.fna.gz`, donde `<genoma>` sería el link al genoma de interés. 
-
-Podemos agregar manualmente (buh! :poop:) o podemos hacer todo en un solo paso (eeh! :tada: ):
-
-### Una forma simple pero efectiva:
 
 ```Bash
-# Obtengo los links
-grep "BL21" assembly_summary.txt | grep "coli" | awk -F'\t' '{print $8,$20}'
-# y los pego en el navegador para descargarlos manualmente
-```
-
-### Otra forma más prolija y programática
-
-```Bash
-# Obtengo los links <- Esto puede ser muy distinto a lo que hicieron ustedes para obtener sus links, revisen las diferencias :)
-cat assembly_summary.txt | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest" && $8 ~ "BL21") {print $20}}'  > ftpdirpaths
-# Agrego el sufijo _cds_from_genomic_fna.gz
-awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
-# Descargo de todas las URLs adentro de ftpfilepaths
-wget -i ftpfilepaths
-```
-
-<!-- <details> -->
-
-<!--	<summary>Ver links a los genomas </summary>-->
-
-   - [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
-   - [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
-   - [GCF_000023665.1_ASM2366v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz)
-<!-- </details> -->
-
----
-
-#### 2.2 Obtener la frecuencia de uso de codones
-
-Veamos cómo puede ayudarnos EMBOSS a hacer esto.  
-
-##### Entrada en calor con EMBOSS
-
-Para familiarizarnos con EMBOSS, comencemos por buscar qué herramientas vamos a usar durante el TP. Si emboss-doc está instalado, se puede ver la documentación de los paquetes en la linea de comando. Ya sabemos que vamos a estar optimizando codones para algún organismo así que arranquemos por ahí: 
-Para buscar comandos que hacen cosas, usar `wossname` con palabras clave (en inglés, ej: 'codon'). El comando `wossname` nos da una lista de comandos asociados con esas palabras clave y lo que hace cada programa.
-
-> Esto solo funcionará si instalamos la documentación de EBMOS.
-
-```Bash
-   sudo apt-get install emboss-doc
+   sudo apt-get install emboss-doc #Esto SI hay que instalarlo en la máquina virtual (VM) 
+   #la contraseña es "unsam" en la VM
 ```
 
 Luego, podremos usar wossname para buscar comandos que trabajen con codones. 
@@ -1799,28 +1779,179 @@ tfm cusp
 
 ```
 
-Ya tenemos nuestra lista de secuencias codificantes así que ya estamos en condiciones de calcularel uso de codones usando `cusp`.
+
+
+
+#### Ejercicio 2. Construir tabla de frecuencias de uso de codones
+
+Para poder calcular la tabla de uso de codones, podemos usar `cusp`, de EMBOSS. Pueden ver el manual como en la sección anterior:
+
+ "*cusp calculates a codon usage table for one or more nucleotide coding sequences and writes the table to file*".
+
+Esto significa que necesitaremos una lista de secuencias codificantes.
+
+Vamos a construir un archivo tipo fasta con nuestras secuencias codificantes.
+
+##### 2.1 Obtener secuencias codificantes
+
+Para descargar secuencias codificantes en bacterias, debemos seguir las instrucciones descritas en: 
+
+[*How can I download RefSeq data for all complete bacterial genomes?*](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/), que básicamente se resumen en los siguientes pasos:
+
+- Bajar un resumen de todos los proyectos genoma disponibles para descargar en la base de datos RefSeq: 
+```Bash
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/bacteria/assembly_summary.txt
+```
+
+	- ¿Qué hace `wget`? ¿Cómo pueden averiguarlo si no lo saben?
+
+Una vez descargado el resumen, podemos buscar entre todas las secuencias cuáles podrían interesarnos. 
+
+- ¿Qué comandos pueden usar para explorar/visualizar el archivo que acaban de descargar?
+
+Si pensaron en `cat`, `less`, `head` o `more` (entre otros) ¡Muy bien! 
+Pero al probarlos ¿Encuentran el archivo fácil de interpretar?
+
+No, claro que no. Esto se debe a que es un archivo de muchas filas y muchas columnas, de diversos tamaños, que hacen compleja la visualización en un medio de texto plano como la consola. Para saltarnos esto y poder darnos una idea de lo que tenemos, vamos a hacer lo siguiente:
+
+1. Guardamos los *headers* (encabezados) del archivo en uno nuevo.
+```Bash
+head assembly_summary.txt -n 2 > assembly_summary_coli.txt
+```
+`head` toma las primeras líneas del archivo, en este caso como le damos el argumento `-n 2` tomará solo las 2 primeras. Luego con `>` creamos/sobreescribimos un archivo con el nombre de `assembly_summary_coli.txt` donde guardar lo que devuelva lo anterior.
+
+2. Le agregamos a ese archivo, todas las líneas que contengan la palabra **"BL21"** que es el nombre de la cepa donde haremos la expresión de nuestra enzima de interés.
 
 ```Bash
-# Podemos hacerlo así (3 veces, una por cada archivo):
-zcat GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz | cusp -sequence stdin -outfile ecoli-clase.cusp
+grep "BL21" assembly_summary.txt >> assembly_summary_coli.txt
+```
 
-# O así (3 veces, una por cada archivo):
-gzip -d GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz
-cusp -sequence GCF_000009565.1_ASM956v1_cds_from_genomic.fna -outfile GCF_000009565.1_ASM956v1_cds_from_genomic-clase.cusp
+`grep` como mencionamos antes, busca texto y nos devuelve las líneas que lo contengan. En este caso, estamos buscando todas las líneas que contengan la palabra **"BL21"** y con el comando `>>` lo anexamos al archivo assembly_summary_coli.txt.
 
-# O así (una sola vez!): 
-files=`ls GCF*.gz`
-for file in ${files}; do zcat ${file} | cusp -auto -sequence stdin -outfile ${file}.cusp; done
+`>>` funciona igual que `>` solo que en caso de que el archivo exista, no lo sobreescribe, si no que se lo agrega a continuación.
 
-# Todas las alternatias son correctas (incluso podría haber más... )
+Con este (ahora pequeño) archivo que hemos creado, pasamos a abrirlo en excel o programa similar. En las VMs tienen un programa que se llama *Gnumeric*. Para abrirlo, van al menú desplegable de abajo a la izquierda --> **Oficina** --> **Gnumeric**. Luego desde el programa van a **Archivo** --> **Abrir** y lo buscan en donde lo hayan guardado como en cualquier otro programa de interfaz gráfica, eso sí, abajo a la derecha donde dice **Hojas de cálculo** tienen que seleccionar **Todos los archivos** para que nuestro archivo aparezca.
+
+- Ahora que pueden ver cada una de las columnas y qué contienen, ¿se hacen una idea de donde está la información que necesitamos? ¿Detectan algún problema con algunos de los genomas que tenemos en este archivo?
+
+Si ya identificaron ambas cosas, pueden pasar al siguiente punto, donde detallaremos una solución completa:
+
+##### Filtrar *assembly_summary* y descargar los *links* de interés:
+
+```Bash
+# Obtengo los links (1)
+cat assembly_summary.txt |grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest") {print $20}}'  > ftpdirpaths
+
+# Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI (2)
+
+awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
+
+# Descargo de todas las URLs adentro de ftpfilepaths (3)
+wget -i ftpfilepaths
+```
+1. Obtengo los *links*:
+
+	- `cat assembly_summary.txt`: este comando simplemente lee el archivo con el resumen de todos los genomas que ya habíamos descargado que luego con el *pipe* (`|`) se lo pasamos a `awk`.
+
+	`awk` es un comando que nos permite realizar muchas operaciones, es muy útil en nuestro trabajo diario porque además de versátil resulta sumamente eficiente (escalable para trabajar con grandes volúmenes de datos). 
+
+	- En este caso a `awk` primero le estamos dando el argumento `-F "\t"` que le dice que interprete al archivo separado (cada columna) por espacios tabulados (*tabs*: "	"). 
+Dentro de las comillas del `awk` podemos realizar distintas operaciones como filtrar filas, seleccionar columnas o como en este caso, hacer ambas cosas. 
+	- Lo primero que hacemos es colocar un condicional `if()` que dentro del paréntesis se realiza una evaluación lógica, si se cumple, el registro (fila) se devuelve, caso contrario queda *filtrado*. En este ejemplo, la evaluación es: `$12 == "Complete Genome"` que se lee como: **"si el valor de la columna 12 es exactamente igual a Complete Genome"**. 
+	- A eso se le agrega un operador lógico `&&` que se lee como **"Y"**, es decir, que pedimos que se cumplan AMBAS evaluaciones para que todo sea verdadero [(Sencillo articulo que explica evaluaciones lógicas)](https://es.wikipedia.org/wiki/Puerta_l%C3%B3gica). Agregamos la evaluación `$11 == "latest"` **que se tendrá que cumplir al mismo tiempo que la anterior.** 
+	- Finalmente agregamos otra operación entre llaves ({}) en el awk `{print $20}` que simplemente selecciona la columna 20.
+
+2. Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI
+
+	Los links que nos da NCBI tienen el siguiente formato:
+>	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1
+	
+	Sin embargo, el mismo NCBI necesita otra dirección para descargar el genoma:
+>	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz
+	
+	Como pueden ver, hay que agregarle "_cds_from_genomic.fna.gz" al final, y repetir el nombre del genoma. Esto último es especialmente complejo de automatizar, ya que depende de cada línea de nuestro archivo. Por eso acá usamos el comando `awk` para darle el formato necesario para. Esta solución se toma **literal** de los ejemplos de NCBI previamente mencionados, por lo que puede ser un poco confuso y solo trataremos de explicarlo brevemente:
+
+	- `FS` es el argumento que indica como se separan las columnas en el archivo que lee `awk`, `OFS` indica lo mismo pero para la salida de `awk`. Con `FS=OFS="/"` simplemente indicamos que ambos serán la barra invertida **/**, de esta forma, nos será posible cortar el texto donde querramos y seleccionarlo. (hay otras formas, esta es la propuesta por el ejemplo de NCBI)
+
+	- En `filesuffix="cds_from_genomic.fna.gz"` se define la cadena de texto que queremos agregar al final de cada *link*.
+
+	- En `ftpdir=$0` tomamos toda la dirección que hay en **ftpdirpaths** al haber seleccionado el indice 0 (el 1 es el primer valor, el 2 el segundo, etc, pero el 0 toma todos.) y lo guardamos en **ftpdir**.
+
+	- En `asm=$10` guardamos el decimo campo, que contiene el nombre del genoma, dentro de la variable `asm`.
+
+	- En `file=asm"_"filesuffix` definimos `file` como la concatenación de `asm` un guión bajo y `filesuffix`que habíamos creado antes. 
+
+	- Finalmnente `print ftpdir,file` devuelve lo que tenía **ftpdirpaths** y todo lo que se creó ahora y luego usamos el `>` para guardar todo en un nuevo archivo, que denominamos ftpfilepaths
+	
+
+
+3. Descargo de todas las URLs adentro de ftpfilepaths
+
+	- Acá simplemente usamos el comando wget para descargar los links generados:
+		- ¿tienen idea para qué es el argumento `-i`? ¿Cómo pueden averiguarlo?
+
+Deberían haber llegado a lo siguiente:
+<details>
+<summary> <h6> Ver *links* a los genomas </h6> </summary>
+
+
+- [GCF_000833145.1_ASM83314v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz)
+- [GCF_009832985.1_ASM983298v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/832/985/GCF_009832985.1_ASM983298v1_cds_from_genomic.fna.gz)
+- [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
+- [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
+- [GCF_013167015.1_ASM1316701v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/167/015/GCF_013167015.1_ASM1316701v1_cds_from_genomic.fna.gz)
+- [GCF_013166975.1_ASM1316697v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/166/975/GCF_013166975.1_ASM1316697v1_cds_from_genomic.fna.gz)
+- [GCF_014263375.1_ASM1426337v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/263/375/GCF_014263375.1_ASM1426337v1_cds_from_genomic.fna.gz)
+- [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
+- [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
+- [GCF_013167015.1_ASM1316701v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/167/015/GCF_013167015.1_ASM1316701v1_cds_from_genomic.fna.gz)
+- [GCF_013166975.1_ASM1316697v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/166/975/GCF_013166975.1_ASM1316697v1_cds_from_genomic.fna.gz)
+- [GCF_014263375.1_ASM1426337v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/263/375/GCF_014263375.1_ASM1426337v1_cds_from_genomic.fna.gz)
+- [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
+- [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
+- [GCF_013167015.1_ASM1316701v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/167/015/GCF_013167015.1_ASM1316701v1_cds_from_genomic.fna.gz)
+- [GCF_013166975.1_ASM1316697v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/166/975/GCF_013166975.1_ASM1316697v1_cds_from_genomic.fna.gz)
+- [GCF_014263375.1_ASM1426337v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/263/375/GCF_014263375.1_ASM1426337v1_cds_from_genomic.fna.gz)
+- [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
+- [GCF_000022665.1_ASM2266v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/022/665/GCF_000022665.1_ASM2266v1_cds_from_genomic.fna.gz)
+- [GCF_013167015.1_ASM1316701v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/167/015/GCF_013167015.1_ASM1316701v1_cds_from_genomic.fna.gz)
+- [GCF_013166975.1_ASM1316697v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/166/975/GCF_013166975.1_ASM1316697v1_cds_from_genomic.fna.gz)
+- [GCF_014263375.1_ASM1426337v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/263/375/GCF_014263375.1_ASM1426337v1_cds_from_genomic.fna.gz)
+- [GCF_000023665.1_ASM2366v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz)
+   
+</details>
+<br>
+---
+
+##### Ejercicio 2.2 Obtener la frecuencia de uso de codones
+
+Veamos cómo puede ayudarnos EMBOSS a hacer esto.  
+
+
+Ya tenemos nuestra lista de secuencias codificantes así que ya estamos en condiciones de calcular el uso de codones usando `cusp`.
+
+```Bash
+files=`ls GCF*.gz` # Listamos todos genomas que descargamos. (1)
+for file in ${files}; # Recorremos los archivos (2)
+ do zcat ${file} | cusp -auto -sequence stdin -outfile ${file}.cusp; # Calculamos el uso de codones de cada genoma (3)
+ done
 ```
 ---
 
+1. Listamos todos genomas que descargamos:
+	- Con el comando `ls` listamos todos los archivos que empiezan con **"GCF"** y terminen con **".GZ"**  con lo cual solo tendremos los genomas que hayamos descargado. (¡recuerden el uso del comodín `*`!) y lo guardamos en la variable que estamos denominando **files**.
+2. Recorremos los archivos:
+	- Con el `for` recorremos cada uno de los archivos y lo vamos almacenando en la variable **file**.
+3. Calculamos el uso de codones de cada genoma:
+	- Primero descomprimimos cada archivo con `zcat ${file}`,
+	- Eso se lo pasamos con el *pipe* a `cusp`:
+	- Usamos el argumento `-auto` para que el programa use los parámetros por defecto y no nos consulte cuales usar.
+	- Usamos el argumento `-sequence stdin` para definir que el genoma se lo estamos dando con el *pipe*.
+	- Usamos el argumento `-outfile ${file}.cusp` para definir que el nombre del archivo de salida sea el nombre del genoma, seguido de **.cusp**
+
 Dado que este comando puede demorar mucho en calcular todo, **ya tienen el archivo .cusp listo para usar en su carpeta de trabajo.**
 
-Revisen la tabla de codones. ¿Qué representa? ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma que analizaron?
-
+Revisen la tabla de codones:
 ```Bash
 head -20 <organismo-de-interes.cusp>
 #CdsCount: 5421
@@ -1844,12 +1975,17 @@ GAG    E     0.309    17.482  23819
 TTC    F     0.425    16.517  22504
 TTT    F     0.575    22.385  30499
 ```
+- ¿Qué representa?
+- ¿Por qué un AA tiene más de un codón? 
+- ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma de *E.Coli BL21* que analizaron?
+
 
 Ayuda-memoria con aminoácidos y sus abreviaturas:
 
 <details>
 
-<!--<summary> Ayuda-memoria con aminoácidos y sus abreviaturas </summary>-->
+<summary> <h6> Ayuda-memoria con aminoácidos y sus abreviaturas </h6> </summary>
+
 <table>
 <thead>
    <th>Full Name</th>
@@ -1973,53 +2109,65 @@ Ayuda-memoria con aminoácidos y sus abreviaturas:
 </details>
 <br>
 
-Si se pusieron a buscar diferencias a ojo entre un archivo y otro, todavía no aprendieron nada: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
+Si se pusieron a buscar diferencias a ojo entre un archivo y otro, pueden hacerlo mejor: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
 
 ```Bash
 codcmp <primer.cusp> <segund.cusp> cusp-comparison.out
 ```
 
-Comparen dos tablas de frecuencia de uso de la misma especie (distinto proyecto) ¿Qué pueden decir al respecto? *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
+Comparen **dos** tablas de frecuencia de uso *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
 
-### 3. Optimizar la secuencia en función de la tabla de uso de codones
+- ¿Notan diferencias significativas entre las frecuencias de uso de codones de los distintos proyectos genoma de *E.Coli BL21* que analizaron?
 
-Recuerden que todo este embrollo devino de la necesidad de expresar en forma heteróloga una proteína de interés (a no perder el foco, que ya falta poco! :)), de modo que el siguiente paso es **adaptar nuestra secuencia quimérica al uso de codones del organismo en el que expresaremos nuestra proteína recombinante**. 
+#### Ejercicio 3. Optimizar la secuencia en función de la tabla de uso de codones
 
-Para ello, podemos usar `backtranseq`: Dada una secuencia de aminoácidos correspondiente a una proteína de interés, este programa nos permite (des?)-traducirla a la secuencia de DNA que, con mayor probabilidad, le dio origen. Es decir, backtranseq utilizará una tabla de uso de codones provista para escribir una secuencia de DNA a partir de una secuencia de aminoácidos. Revisen el manual de EMBOSS en búsqueda de información sobre cómo usar la herramienta. 
+Recuerden que todo este embrollo devino de la necesidad de expresar en forma heteróloga una proteína de interés (a no perder el foco, que ya falta poco! :)), de modo que el siguiente paso es **adaptar nuestra secuencia quimérica al uso de codones del organismo en el que expresaremos nuestra proteína recombinante**. Es decir, codificar una secuencia amionacídica de planta en la forma más óptima para su traducción en *E.coli*. 
+
+Para ello, podemos usar `backtranseq`: Dada una secuencia de aminoácidos correspondiente a una proteína de interés, este programa nos permite (des?)-traducirla a la secuencia de DNA que, con mayor probabilidad, le dio origen. Es decir, backtranseq utilizará una tabla de uso de codones provista para escribir una secuencia de DNA a partir de una secuencia de aminoácidos. Revisen el manual de EMBOSS en búsqueda de información sobre cómo usar la herramienta.
 
 ```Bash
-# A Leer?
+# A Leer:
 tfm backtranseq
-# Igual acá está el que anda, vagxs. 
+# Igual acá está el que anda: 
 backtranseq -auto -sequence <myprotein.fasta> -cfile <ecoli.cusp> -outfile <myprotein.ecoli.codons.dna.fasta>
 ```
 
-¡Tenemos que hacerlo para todas nuestras secuencias quiméricas!
+1. Contesten después de haber leído el manual de backtranseq:
+	-¿Qué hacen los siguientes argumentos?:
+	`-auto`
+	`-sequence <myprotein.fasta>`
+	`-cfile <ecoli.cusp>`
+	`-outfile <myprotein.ecoli.codons.dna.fasta>`
+2. Después de haber comparado las tablas de codones (los archivos **.cusp**) ¿Cúal cree que debería usar? ¿Por qué?.
+
+
+¡Tenemos que hacerlo para todas nuestras secuencias quiméricas! 
+
 
 Los archivos `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon.
 
-### 4. Analizar los patrones de restriccion de mi nueva secuencia (optimizada)
+#### Ejercicio 4. Analizar los patrones de restricción de mi nueva secuencia (optimizada)
 
 FINALMENTE, lo ultimísimo que vamos a hacer es verificar que las enzimas que vamos a usar para clonar no están en nuestras secuencias quiméricas optimizadas. Podemos hacer utilizando `remap` (también de EMBOSS). Pero antes de eso, tendremos que indicarle a EMBOSS una base de datos de enzimas de restricción.
 
-#### 4.1. Instalar la base de datos de enzimas de restricción (REBASE) y configurarla para que la pueda usar EMBOSS
+##### 4.1. Instalar la base de datos de enzimas de restricción (REBASE) y configurarla para que la pueda usar EMBOSS
 
-Bajar los archivos withrefm.907 y proto.907 desde [aquí](ftp://ftp.neb.com/pub/rebase/) o desde [aquí](ftp://ftp.ebi.ac.uk/pub/databases/rebase)... aunque ya deberían estar descargados en la carpeta del TP. 
+Bajar los archivos withrefm.107 y proto.107 desde [aquí](ftp://ftp.neb.com/pub/rebase/) o desde [aquí](ftp://ftp.ebi.ac.uk/pub/databases/rebase)... aunque ya deberían estar descargados en la carpeta del TP. 
 
-(hoy la ultima version es 907, mañana esto puede cambiar!)
+(hoy la ultima version es 107, mañana esto puede cambiar!)
 
 ```bash
-rebaseextract -infile withrefm.907 -protofile proto.907
+rebaseextract -infile withrefm.107 -protofile proto.107
 ```
 
 Es posible que Ubuntu no nos deje hacer esto, dado que vamos a estar modificando cosas del sistema operativo, y para eso requerimos permisos. Podemos enseñarle quién manda con un `sudo`
 
 ```bash
-#la contraseña es "unsam"
-sudo rebaseextract -infile withrefm.907 -protofile proto.907
+#la contraseña es "unsam" en la VM
+sudo rebaseextract -infile withrefm.107 -protofile proto.107
 ```
 
-#### 4.2. Verificar sitios de restricción
+##### 4.2. Verificar sitios de restricción
 
 ```Bash
 remap -auto -sequence myprotein.ecoli.codons.dna.fasta -single -width 80 -commercial -sitelen 6 -frame 1 -enzymes all -outfile remap
@@ -2031,4 +2179,6 @@ Donde:
 - -sitelen = min length of enzyme recognition site
 - -width = ancho de secuencia en el outfile 
 
-Abran el archivo `remap` que acaban de generar. Pueden revisar la secuencia en busca de las enzimas que íbamos a usar para cortar (HindIII/BamHI). Si no están, estamos listos para agregarlas a la secuencia que vamos a pedir. ¿Qué pasa si están? ¿Qué alternativas tenemos? Si tuvieramos otras enzimas en el labo ¿Cuáles podríamos usar? ¿Qué enzimas podríamos usar para seleccionar clones una vez que tengamos nuestras construcciones transformadas?
+Abran el archivo `remap` que acaban de generar. Pueden revisar la secuencia en busca de las enzimas que íbamos a usar para cortar (HindIII/BamHI). Si no están, estamos listos para agregarlas a la secuencia que vamos a pedir. 
+
+- ¿Qué pasa si están? ¿Qué alternativas tenemos? 
