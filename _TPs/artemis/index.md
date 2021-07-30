@@ -6,7 +6,15 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 
 {% if page.data %}
@@ -269,3 +277,5 @@ El resultado va a ser algo así:
 Si se fijan en sus resultados, van a ver que ambas anotaciones está conectadas por una linea; algo que veremos comunmente en genes con intrones... pero *S. tiphy*, como buena bacteria que es, no tiene intrones. 
 
 ¿Qué alternativa se les ocurre para arreglar este error?
+
+{% endif %}

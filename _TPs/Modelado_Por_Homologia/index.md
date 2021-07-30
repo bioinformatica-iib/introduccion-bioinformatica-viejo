@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -458,3 +465,5 @@ Y asegurate que NO estén seleccionados:
 
 **Según los conocimientos que tienes de las uniones en el ADN ¿Se observa lo que
 esperabas?**
+
+{% endif %}

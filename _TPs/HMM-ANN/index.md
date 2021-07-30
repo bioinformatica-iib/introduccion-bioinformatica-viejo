@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -285,7 +292,7 @@ Una vez obtenido el archivo con los parámetros, volvamos EasyPred y carguemos l
 13. ¿Cuántos péptidos fueron predichos como ligandos en esta proteína?
 14. ¿Tiene sentido este resultado teniendo en cuenta la especificidad del MHC?
 
-
+{% endif %}
 
 
 

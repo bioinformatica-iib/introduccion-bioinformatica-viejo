@@ -3,7 +3,13 @@ layout: page
 title: Short Read Mapping
 data : True
 menubar_toc: true
+construccion: true
 ---
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -403,3 +409,5 @@ Como ya deben imaginarse, Artemis también permite filtrar los archivos BCF. Hac
 ![filters](images/filters.png)
 
 Como la vista de archivos BAM, también pueden remover o incluir SNPs basado en, por ejemplo, el puntaje del mapeo, la profundidad de cobertura, la calidad de secuencia. Todo esto lo pueden hacer desde la sección ``PROPERTY`` del menú de filtrado de SNPs. Valores de corte útiles son de un "DP" de "10" y de un "Qual" de al menos "30".
+
+{% endif %}

@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -353,3 +360,5 @@ Las proteínas efectoras CagA son secretadas por la cepa patogénica de Helicoba
 * ¿Cuál es el mayor número de motivos EPIYA en una proteína?
 * ¿Algún motivo EPIYA se superpone con algún motivo SH2?
 * ¿Cree que las proteínas CagA son fosforiladas por tirosin-quinasas?
+
+{% endif %}

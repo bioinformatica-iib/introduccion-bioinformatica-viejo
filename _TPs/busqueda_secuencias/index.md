@@ -7,7 +7,14 @@ menubar_toc: true
 data : True
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -16,7 +23,6 @@ toc_title: CONTENIDOS
 <a href="data/"> Descargar </a>
 
 {% endif %}
-
 
 # Búsqueda de secuencias por similitud
 
@@ -188,3 +194,4 @@ awk -v i=0 '/pattern/{i++}{print > "blast."i}' blast.out
 
 **Recuerden reemplazar "*pattern*" por el patron que quieren utilizar para dividir el archivo.**
 
+{% endif %}

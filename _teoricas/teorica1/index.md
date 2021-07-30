@@ -4,7 +4,14 @@ title: Teórica N°1
 subtitle: Introducción a la Materia
 menubar_toc: false
 hero_height: is-small
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% endif %}
 
 <!--- This is an HTML comment in Markdown 
 - Slides [[PDF]](https://drive.google.com/file/d/1G8qlYmIyX-gYTdqBYOU2eSHSy2djYCPJ/view?usp=sharing)

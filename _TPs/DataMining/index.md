@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -15,7 +22,6 @@ toc_title: CONTENIDOS
 <a href="data/"> Descargar </a>
 
 {% endif %}
-
 
 # TP Data mining - Introducción al clustering en bioinformática
 Técnicas para analizar grandes conjuntos de datos y encontrar patrones o comportamientos similares entre ellos
@@ -522,3 +528,5 @@ library(ggplot2)
 ```
 
 Hay un gran número de paquetes orientados específicamente al análisis de datos genómicos (en su mayoría aquellos derivados de microarrays de ADN, pero también de SAGE, SNPs, etc.) provenientes del proyecto Bioconductor. Por el momento, exceden los objetivos de este TP introductorio, pero puede serles útil
+
+{% endif %}

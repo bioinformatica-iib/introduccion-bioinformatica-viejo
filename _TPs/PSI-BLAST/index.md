@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -276,4 +283,4 @@ Este programa es muy versátil pero también puede resultar complejo de usar al 
 
 16. ¿Podrían estos residuos ser parte del sitio activo?
 
-
+{% endif %}

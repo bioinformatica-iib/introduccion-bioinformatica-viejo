@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -15,7 +22,6 @@ toc_title: CONTENIDOS
 <a href="data/"> Descargar </a>
 
 {% endif %}
-
 
 ## Introducción
 
@@ -214,3 +220,5 @@ Estas proteínas contienen 9 puentes disulfuro conservados. También es de inter
 
 4.4 Utilice el esquema de gp120 para identificar diversas regiones ya sea conservadas o muy variables (Estructuras, loops, etc.)  
  **Note que las posiciones en el alineamiento cuentan gaps por lo que no se corresponden exactamente con el esquema, utilice las posiciones de las cisteínas conservadas para identificar regiones**
+
+{% endif %}

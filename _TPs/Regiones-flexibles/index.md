@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -449,3 +456,4 @@ Existen muchísimos métodos para predecir regiones desordenadas. Puedes probar 
 5. Utiliza el predictor de desorden de tu preferencia.
 6. ¿Qué regiones llamarías desordenadas?
 
+{% endif %}

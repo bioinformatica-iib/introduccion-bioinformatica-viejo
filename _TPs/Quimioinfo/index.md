@@ -3,7 +3,14 @@ layout: page
 title: Quimioinformática
 data : True
 menubar_toc: true
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -313,3 +320,4 @@ Aunque solo algunos de estos nuevos compuestos tiene capacidad inhibitoria: CMP4
 
 ![And the winner is... (are?)](images/image_4.png)
 
+{% endif %}

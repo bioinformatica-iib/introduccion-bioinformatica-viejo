@@ -5,6 +5,7 @@ subtitle: EMBOSS Suite
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
 
 <style>
@@ -20,6 +21,12 @@ details summary > * {
 }
 
 </style>
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 ## Materiales
 
@@ -2177,3 +2184,5 @@ Donde:
 Abran el archivo `remap` que acaban de generar. Pueden revisar la secuencia en busca de las enzimas que íbamos a usar para cortar (HindIII/BamHI). Si no están, estamos listos para agregarlas a la secuencia que vamos a pedir. 
 
 - ¿Qué pasa si están? ¿Qué alternativas tenemos? 
+
+{% endif %}

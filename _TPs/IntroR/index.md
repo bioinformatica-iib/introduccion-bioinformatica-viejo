@@ -6,7 +6,14 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
+construccion: true
 ---
+
+{% if page.construccion %}
+
+**Pagina en construccion**
+
+{% else %}
 
 {% if page.data %}
 
@@ -1181,3 +1188,5 @@ Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimo
 
 Todas las dúdas con respecto a programar en R o hacer análisis de datos, las pueden resolver en este libro que esta disponible on line y esta integramente desarrollado en R:
 [R for Data Science, Garrett Grolemund, 2017](https://r4ds.had.co.nz/index.html)
+
+{% endif %}
