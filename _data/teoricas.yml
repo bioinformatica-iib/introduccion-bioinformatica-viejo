@@ -1,0 +1,7 @@
+- title: 
+  images:
+    - link: teoricas/teorica1/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teorica N°1. Introducción a la Materia](teorica1/)
+      ratio: is-16by9
