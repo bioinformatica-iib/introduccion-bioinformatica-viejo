@@ -2,7 +2,6 @@
 layout: page
 title: TP N°2
 subtitle: EMBOSS Suite
-data : true
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
@@ -22,13 +21,9 @@ details summary > * {
 
 </style>
 
-{% if page.data %}
-
 ## Materiales
 
-<a href="data/"> Descargar </a>
-
-{% endif %}
+[Descargar](https://drive.google.com/file/d/1DqEbN6w4AyrhyYSyUPai0_weAjJiR8sx/view?usp=sharing)
 
 ## Objetivos:
 
