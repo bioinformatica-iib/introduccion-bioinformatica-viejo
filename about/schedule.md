@@ -71,31 +71,31 @@ hide_footer: True
 
 |**Fecha** |   **Horario**   |  **Tipo**    |   **Tema**	|   **Docente** |
 |:-------:|:-----------:|:-----------:|:-----------|:-----------|
-|05/08/2021 |  9 - 13hs| Teórica | Presentación de la materia | F. Agüero |
+|05/08/2021 |  9 - 13hs| Teórica | [T1. Presentación de la materia](/introduccion-bioinformatica/teoricas/teorica1/) | F. Agüero |
 |           | 14 - 18hs| Práctico| [TP N°1. Introducción a UNIX](/introduccion-bioinformatica/TPs/Unix/)	| L. Bracco |
-|12/08/2021 |  9 - 13hs| Teórica |	Bases de datos. Ontologías.	| F. Agüero |
+|12/08/2021 |  9 - 13hs| Teórica |	T2. Bases de datos. Ontologías.	| F. Agüero |
 |           | 14 - 18hs| Práctico| [TP N°2. EMBOSS Suite](/introduccion-bioinformatica/TPs/EMBOSS/) | L. Bracco |
-|19/08/2021 |  9 - 13hs| Teórica |	Alineamientos de a pares y Búsqueda de secuencias por Similitud |	F. Agüero |
-|           | 14 - 18hs| Teórica |	Alineamientos múltiples	| F. Agüero |
+|19/08/2021 |  9 - 13hs| Teórica |	T3. Alineamientos de a pares y Búsqueda de secuencias por Similitud |	F. Agüero |
+|           | 14 - 18hs| Teórica |	T4. Alineamientos múltiples	| F. Agüero |
 |26/08/2021 |  9 - 13hs| Práctico |	[TP N°3. Alineamientos de secuencias de a pares](/introduccion-bioinformatica/TPs/alineamiento_pares/) | H. García A. |
 |           | 14 - 18hs| Práctico |	[TP N°4. Búsqueda de secuencias por similitud y Alineamientos Múltiples](/introduccion-bioinformatica/TPs/busqueda_secuencias/) | H. García A. |
-|02/09/2021 |  9 - 13hs| Teórica |	Información contenida en alineamientos múltiples |	M. Nielsen |
+|02/09/2021 |  9 - 13hs| Teórica |	T5. Información contenida en alineamientos múltiples |	M. Nielsen |
 |           | 14 - 18hs| Práctico |	[TP N°5. Perfiles de secuencia y PSI-BLAST](/introduccion-bioinformatica/TPs/PSI-BLAST/) |	H. García A |
-|09/09/2021 |  9 - 13hs| Teórica | Reconstrucción de filogenias	| F. Agüero |
+|09/09/2021 |  9 - 13hs| Teórica | T6. Reconstrucción de filogenias	| F. Agüero |
 |           | 14 - 18hs| Práctico |	[TP N°6. Filogenias, árboles filogenéticos y filogenómica](/introduccion-bioinformatica/TPs/Filogenia/) |	J. Glavina |
-|16/09/2021 |  9 - 13hs| Teórica |	Métodos de predicción basados en datos, M. Learning	 | M. Nielsen |
+|16/09/2021 |  9 - 13hs| Teórica |	T7. Métodos de predicción de Machine Learning basados en datos (HMM y ANN)	 | M. Nielsen |
 |           | 14 - 18hs| Práctico |	[TP N°7. HMM y Redes neuronales](/introduccion-bioinformatica/TPs/HMM-ANN/)	| H. García A. | 
 |23/09/2021 |  9 - 13hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
 |           | 14 - 18hs| Práctico |	[TP N°8. Programando en Biología](/introduccion-bioinformatica/TPs/IntroR/)	| L. Bracco |
-|30/09/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Desorden |	L. Chemes |
+|30/09/2021 |  9 - 13hs| Teórica |	T8. Bioinformática Estructural: Desorden |	L. Chemes |
 |           | 14 - 18hs| Práctico |	[TP N°9. Predicción de Desorden](/introduccion-bioinformatica/TPs/Regiones-flexibles/)	| J. Glavina |
-|07/10/2021 |  9 - 13hs | Teórica |	Bioinformática Estructural:  Motivos lineales |	L. Chemes |
+|07/10/2021 |  9 - 13hs | Teórica |	T9. Bioinformática Estructural:  Motivos lineales |	L. Chemes |
 |           | 14 - 18hs| Práctico |	[TP N°10. Motivos Lineales en proteínas](/introduccion-bioinformatica/TPs/Motivos_Lineales/) |	J. Glavina |
-|14/10/2021 |  9 - 13hs| Teórica |	Bioinformática Estructural: Dominios |	L. Chemes |
+|14/10/2021 |  9 - 13hs| Teórica |	T10. Bioinformática Estructural: Dominios |	L. Chemes |
 |           | 14 - 18hs| Práctico | [TP N°11. Dominios Proteicos](/introduccion-bioinformatica/TPs/Modelado_Por_Homologia) |	J. Glavina |
-|21/10/2021 |  9 - 13hs| Teórica |	Data clustering	| F. Agüero |
+|21/10/2021 |  9 - 13hs| Teórica |	T11. Data clustering	| F. Agüero |
 |           | 14 - 18hs| Práctico |	[TP N°12. Data Mining](/introduccion-bioinformatica/TPs/DataMining/)	| L. Bracco |
-|28/10/2021 |  9 - 13hs| Teórica | Secuenciación y ensamblado de genomas |	F. Agüero |
+|28/10/2021 |  9 - 13hs| Teórica | T12. Secuenciación y ensamblado de genomas |	F. Agüero |
 |           | 14 - 18hs| Práctico |	[TP N°12. Data mining](/introduccion-bioinformatica/TPs/DataMining/)    | L. Bracco |
 |04/11/2021 |  9 - 13hs|          | LIBRE                            |           |
 |           | 14 - 18hs| Práctico |	[TP N°13. Visualización de genomas usando Artemis](/introduccion-bioinformatica/TPs/artemis/) |	I. Carri |
