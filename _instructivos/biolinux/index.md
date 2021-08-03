@@ -40,7 +40,11 @@ Los docentes ya hemos ensamblado, para la materia, un disco de máquina virtual 
 
 ## Paso 1. Descargar la Máquina Virtual
 Pueden usar este link, que tiene la máquina que usamos en los TPs (es un link a Dropbox).
-* [IBioinfo-Lubuntu-32.vmdk](https://www.dropbox.com/s/mh71ia4kts0n5ht/IBioinfo-Lubuntu-32.zip?dl=0)
+* [IBioinfo-Lubuntu-32.vmdk - DROPBOX](https://www.dropbox.com/s/mh71ia4kts0n5ht/IBioinfo-Lubuntu-32.zip?dl=0)
+
+O este otro (link a Drive).
+* [IBioinfo-Lubuntu-32.vmdk - DRIVE](https://drive.google.com/file/d/16zMi4nsLLwGqU4WNMvzdVs3n7ruXZoNX/view?usp=sharing)
+
 
 Una vez descargado el archivo, descomprimir para obtener el vmdk.
 
