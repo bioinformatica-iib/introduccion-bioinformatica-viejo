@@ -55,7 +55,7 @@ Lo cual es esperable porque como ya se mencionó anteriormente, cada sistema tie
 
 Esto se debe a que cada terminal de UNIX se puede configurar para visualizar el contenido de distintas formas; desde no colorear nada (como en la guía) o colorear según se trate de una carpeta, archivo, enlace suave, etc.
 
-
-
+**Para quienes NO pudieron instalar la VM**
+Pueden usar una terminal de unix online de [JSLinux](https://bellard.org/jslinux/vm.html?url=alpine-x86.cfg&mem=192)
 
 > The bootcamp tutorial text was adapted from the original by Keith Bradnam. The infrastructure, including adventure-time and docker-browser-server, was built by @maxogden and @mafintosh. The setup of this app was based on the get-dat adventure. This adventure was made by Richard Smith-Unna. This work is licensed under a Creative Commons 4.0 International License. Creative Commons License
