@@ -22,7 +22,7 @@ Modo de cursada, cronograma, evaluaciones, etc.
 
 ### Conceptos Elementales de Computación
 - Slides [[PDF]](https://drive.google.com/file/d/10BmIcpfDtL6E0R0vnKqs6BCStTAWpmDK/view?usp=sharing)
-- Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing)
+<!-- - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing) -->
 
 <!-- <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe> -->
 
