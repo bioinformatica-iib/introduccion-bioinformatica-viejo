@@ -27,7 +27,7 @@ Modo de cursada, cronograma, evaluaciones, etc.
 <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe>
 
 ### Como hacer experimentos en Bioinformática
-- Slides [[PDF]](https://drive.google.com/file/d/1_xFuIaJVNrHBC0c4WhNPghsLRQwg5Ty1/view?usp=sharing)
+- Slides [[PDF]](https://drive.google.com/file/d/16MD9KYFr5hRPh4C28i_i9uYv0ZS589d6/view?usp=sharing)
 
 
 {% endif %}
