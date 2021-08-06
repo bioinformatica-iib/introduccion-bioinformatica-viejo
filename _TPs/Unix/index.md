@@ -22,9 +22,63 @@ toc_title: CONTENIDOS
 
 <iframe src="https://drive.google.com/file/d/123NmScxbJY3gds-WSVQfSAudRvTPbRvb/preview" width="800" height="440"></iframe>
 
-<!---
-Comment
---->
+<!--
+### Encuesta del final de clase
+
+**Pregunta 1.** ¿Cúal es la forma correcta de dirigirse desde **cualquier** carpeta al home directory del usuario “pareto”?
+
+**Opciones**
+
+**1.** <b><span style="color:orange"> cd ~ </span></b>
+>Engañoso. Si el usuario actual en la terminal es pareto es correcta. Si no, no.
+
+**2.** cd home/pareto
+> No. Sólo funciona si el directorio de trabajo en la terminal es el directorio raíz (o el *barra*).
+
+**3.** cd home / pareto
+> No. En primer lugar, `cd home` no tiene adelante el directorio raíz. En segundo lugar, al separar con espacios todo lo que sigue a `cd home` se consideran **argumentos** del comando `cd`.
+
+**4.** cd / home / pareto
+
+> No. En primer lugar, `cd /` cambiaría al directorio raíz y al separar con espacios todo lo que sigue a `cd /` se consideran **argumentos** del comando `cd`.
+
+**5.** <b><span style="color:green"> cd /home/pareto </span></b> 
+> Correcta. El comando `cd` (**c**hange **d**irectory) indica el cambio al home del usuario pareto iniciando el **path** (o *caminito*) desde el directorio raíz (el *barra*).
+
+**6.** cd /pareto/home
+> No. El comando `cd` (**c**hange **d**irectory) indica cambiar el directorio `home`, dentro del directorio `pareto` que se encuentra en el directorio raíz (o *barra*).
+
+**7.** cd ././pareto
+> No. El `.` se utiliza para indicar de manera **relativa** el directorio actual.
+
+**8.** cd ./home/pareto
+> No. El `.` se utiliza para indicar de manera **relativa** el directorio actual. No serviría desde **cualquier** carpeta como lo pide el enunciado, únicamente serviría si el directorio actual es el directorio raíz.
+
+
+**Pregunta 2.** Seleccione los **Paths relativos** de la siguiente lista:
+
+**1.** /var/foo/tom_yerry
+> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
+
+**2.** <b><span style="color:green"> var/foo/tom_yerry </span></b>
+> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
+
+**3.** /home/tom/Documentos/catfood.png
+> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el archivo catfood.png 
+
+**4.** <b><span style="color:green"> ../../yerry/Documentos/cheese.png </span></b>
+> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el archivo cheese.png. Los segundos `..` indican el directorio parental a `yerry` y los primeros `..` indican el directorio parental del parental de yerry
+
+**5.** <b><span style="color:green"> ./Videos/Capitulos/ </span></b> 
+> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
+
+**6.** <b><span style="color:green"> ./Descargas/tom_yerry_cap1.torrent </span></b> 
+> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
+
+**7.** /home/tom/Descargas/tom_yerry_cap1.torrent
+> Este es un **path absoluto**. Indica toda la ruta desde el barra hasta el archivo tom_yerry_cap1.torrent 
+
+-->
 ---
 
 ## Objetivo
