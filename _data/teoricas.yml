@@ -5,3 +5,8 @@
       description: |- 
         [Teorica N°1. Introducción a la Materia](teorica1/)
       ratio: is-16by9
+    - link: teoricas/teorica2/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teorica N°2. Bases de datos. Ontologías.](teorica2/)
+      ratio: is-16by9

@@ -73,7 +73,7 @@ hide_footer: True
 |:-------:|:-----------:|:-----------:|:-----------|:-----------|
 |05/08/2021 |  9 - 13hs| Teórica | [T1. Presentación de la materia](/introduccion-bioinformatica/teoricas/teorica1/) | F. Agüero |
 |           | 14 - 18hs| Práctico| [TP N°1. Introducción a UNIX](/introduccion-bioinformatica/TPs/Unix/)	| L. Bracco |
-|12/08/2021 |  9 - 13hs| Teórica |	T2. Bases de datos. Ontologías.	| F. Agüero |
+|12/08/2021 |  9 - 13hs| Teórica |	[T2. Bases de datos. Ontologías.](/introduccion-bioinformatica/teoricas/teorica2/)	| F. Agüero |
 |           | 14 - 18hs| Práctico| [TP N°2. EMBOSS Suite](/introduccion-bioinformatica/TPs/EMBOSS/) | L. Bracco |
 |19/08/2021 |  9 - 13hs| Teórica |	T3. Alineamientos de a pares y Búsqueda de secuencias por Similitud |	F. Agüero |
 |           | 14 - 18hs| Teórica |	T4. Alineamientos múltiples	| F. Agüero |
