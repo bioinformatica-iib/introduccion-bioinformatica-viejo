@@ -1,5 +1,10 @@
 # Intro a la Bioinformática
 
+## Para acceder al sitio:
+
+Donde se hace el deploy:  
+[Sitio Web Generado](https://bioinformatica-iib.github.io/introduccion-bioinformatica/)
+
 ## Para editar este sitio:
 
 El sitio web está escrito en ruby+jekyll usando un theme que se llama bulma clean theme. Para hacer cosas muy locas ver la documentaación de cada cosa
