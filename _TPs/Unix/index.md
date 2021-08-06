@@ -22,7 +22,7 @@ toc_title: CONTENIDOS
 
 <iframe src="https://drive.google.com/file/d/123NmScxbJY3gds-WSVQfSAudRvTPbRvb/preview" width="800" height="440"></iframe>
 
-<!--
+
 ### Encuesta del final de clase
 
 **Pregunta 1.** ¿Cúal es la forma correcta de dirigirse desde **cualquier** carpeta al home directory del usuario “pareto”?
@@ -76,9 +76,8 @@ toc_title: CONTENIDOS
 > Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
 
 **7.** /home/tom/Descargas/tom_yerry_cap1.torrent
-> Este es un **path absoluto**. Indica toda la ruta desde el barra hasta el archivo tom_yerry_cap1.torrent 
+> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el archivo tom_yerry_cap1.torrent 
 
--->
 ---
 
 ## Objetivo
