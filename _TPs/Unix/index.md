@@ -16,6 +16,13 @@ toc_title: CONTENIDOS
 
 {% endif %}
 
+## Recording
+
+* Introducción y puesta en común TP N°1. [[MP4]](https://drive.google.com/file/d/123NmScxbJY3gds-WSVQfSAudRvTPbRvb/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/123NmScxbJY3gds-WSVQfSAudRvTPbRvb/preview" width="800" height="440"></iframe>
+
+---
 
 ## Objetivo
 
