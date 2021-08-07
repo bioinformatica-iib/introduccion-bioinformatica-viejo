@@ -124,7 +124,7 @@ toc_title: CONTENIDOS
     </li>
     <li class="is-highlighted is-success has-icon"> <b>6. ./Descargas/tom_yerry_cap1.torrent </b> <br>
         <span class="icon"> <i class="fas fa-check-double"></i> </span> 
-        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
+        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el archivo tom_yerry_cap1.torrent. El `.` indica el directorio actual.
     </li>
     <li class="is-highlighted is-danger has-icon"> <b>7. /home/tom/Descargas/tom_yerry_cap1.torrent</b> <br>
         <span class="icon"> <i class="fas fa-times"></i> </span> 
