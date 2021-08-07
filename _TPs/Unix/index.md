@@ -16,6 +16,14 @@ toc_title: CONTENIDOS
 
 {% endif %}
 
+<!--
+<ul class="block-list is-outlined is-primary has-radius is-highlighted">
+<li class="is-highlighted is-danger"><b>Leo</b></li>
+<li>Sos</li>
+<li class="is-highlighted is-success is-big"><b>Un Genio</b></li>
+</ul>
+-->
+
 ## Recording
 
 * Introducción y puesta en común TP N°1. [[MP4]](https://drive.google.com/file/d/123NmScxbJY3gds-WSVQfSAudRvTPbRvb/view?usp=sharing)
@@ -25,10 +33,45 @@ toc_title: CONTENIDOS
 
 ### Encuesta del final de clase
 
-**Pregunta 1.** ¿Cúal es la forma correcta de dirigirse desde **cualquier** carpeta al home directory del usuario “pareto”?
+#### Pregunta 1. ¿Cúal es la forma correcta de dirigirse desde cualquier carpeta al home directory del usuario "pareto”?
 
-**Opciones**
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-info has-icon"> <b>1. cd ~ </b> <br>
+        <span class="icon"> <i class="fas fa-check"></i> </span>
+        Engañoso. Si el usuario actual en la terminal es pareto es correcta. Si no, no.
+    </li>
+    <li class="is-highlighted is-danger"> <b>2. cd home/pareto</b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. Sólo funciona si el directorio de trabajo en la terminal es el directorio raíz (o el <i>barra</i>).
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>3. cd home / pareto </b>
+        <br>
+        <span class="icon"> <i class="fas fa-times"> </i> </span>
+        No. En primer lugar, `cd home` no tiene adelante el directorio raíz. En segundo lugar, al separar con espacios todo lo que sigue a `cd home` se consideran <b>argumentos</b> del comando `cd`.
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b> 4. cd / home / pareto</b>
+        <br> <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. En primer lugar, `cd /` cambiaría al directorio raíz y al separar con espacios todo lo que sigue a `cd /` se consideran <b>argumentos</b> del comando `cd`.
+    </li>
+    <li class="is-highlighted is-success has-icon"> <b>5. cd /home/pareto </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Correcta. El comando `cd` (<b>c</b>hange <b>d</b>irectory) indica el cambio al home del usuario pareto iniciando el <b>path</b> (o <i>caminito</i>) desde el directorio raíz (el <i>barra</i>).
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>6.</b> cd /pareto/home</b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. El comando `cd` (<b>c</b>hange <b>d</b>irectory) indica cambiar el directorio `home`, dentro del directorio `pareto` que se encuentra en el directorio raíz (o <i>barra</i>).
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>7. cd ././pareto</b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. El `.` se utiliza para indicar de manera <b>relativa</b> el directorio actual.
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>8. cd ./home/pareto</b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. El `.` se utiliza para indicar de manera <b>relativa</b> el directorio actual. No serviría desde <b>cualquier</b> carpeta como lo pide el enunciado, únicamente serviría si el directorio actual es el directorio raíz.
+    </li>
+</ul>
 
+<!--
 **1.** <b><span style="color:orange"> cd ~ </span></b>
 >Engañoso. Si el usuario actual en la terminal es pareto es correcta. Si no, no.
 
@@ -53,31 +96,41 @@ toc_title: CONTENIDOS
 
 **8.** cd ./home/pareto
 > No. El `.` se utiliza para indicar de manera **relativa** el directorio actual. No serviría desde **cualquier** carpeta como lo pide el enunciado, únicamente serviría si el directorio actual es el directorio raíz.
+-->
 
+#### Pregunta 2. Seleccione los Paths relativos de la siguiente lista:
 
-**Pregunta 2.** Seleccione los **Paths relativos** de la siguiente lista:
-
-**1.** /var/foo/tom_yerry
-> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
-
-**2.** <b><span style="color:green"> var/foo/tom_yerry </span></b>
-> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
-
-**3.** /home/tom/Documentos/catfood.png
-> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el archivo catfood.png 
-
-**4.** <b><span style="color:green"> ../../yerry/Documentos/cheese.png </span></b>
-> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el archivo cheese.png. Los segundos `..` indican el directorio parental a `yerry` y los primeros `..` indican el directorio parental del parental de yerry
-
-**5.** <b><span style="color:green"> ./Videos/Capitulos/ </span></b> 
-> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
-
-**6.** <b><span style="color:green"> ./Descargas/tom_yerry_cap1.torrent </span></b> 
-> Este es un **path relativo**. **No** indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
-
-**7.** /home/tom/Descargas/tom_yerry_cap1.torrent
-> Este es un **path absoluto**. Indica toda la ruta desde el directorio raíz hasta el archivo tom_yerry_cap1.torrent 
-
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-danger has-icon"> <b>1. /var/foo/tom_yerry </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        Este es un <b>path absoluto</b>. Indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
+    </li>
+    <li class="is-highlighted is-success has-icon"> <b>2. var/foo/tom_yerry </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el directorio tom_yerry
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>3. /home/tom/Documentos/catfood.png </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        Este es un <b>path absoluto</b>. Indica toda la ruta desde el directorio raíz hasta el archivo catfood.png 
+    </li>
+    <li class="is-highlighted is-success has-icon"> <b>4. ../../yerry/Documentos/cheese.png </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el archivo cheese.png. Los segundos `..` indican el directorio parental a `yerry` y los primeros `..` indican el directorio parental del parental de yerry
+    </li>
+    <li class="is-highlighted is-success has-icon"> <b>5. ./Videos/Capitulos/ </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span> 
+        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. <br>
+        El `.` indica el directorio actual.
+    </li>
+    <li class="is-highlighted is-success has-icon"> <b>6. ./Descargas/tom_yerry_cap1.torrent </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span> 
+        Este es un <b>path relativo</b>. <b>No</b> indica toda la ruta desde el directorio raíz hasta el directorio Capitulos. El `.` indica el directorio actual.
+    </li>
+    <li class="is-highlighted is-danger has-icon"> <b>7. /home/tom/Descargas/tom_yerry_cap1.torrent</b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span> 
+        Este es un <b>path absoluto</b>. Indica toda la ruta desde el directorio raíz hasta el archivo tom_yerry_cap1.torrent 
+    </li>
+</ul>
 ---
 
 ## Objetivo
