@@ -32,16 +32,31 @@ details summary > * {
 
 [Descargar](https://drive.google.com/file/d/1DqEbN6w4AyrhyYSyUPai0_weAjJiR8sx/view?usp=sharing)
 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      Entren a la web directamente desde la VM, así descargan el material en la VM para poder trabajar durante la clase.
+      Cuando hagan click se irá a una ventana como se muestra en la figura. Descarguen el zip utilizando el botón de descarga.
+      <figure>
+         <img src="images/descargas.png" alt="Descargas">
+      </figure>
+   </li>
+</ul>
+
+
 ## Objetivos:
 
-Objetivos:
-- Familiarizarse con el uso de herramientas bioinformáticas por línea de comandos,
+- Familiarizarse con el uso de herramientas bioinformáticas por línea de comandos.
 - Familiarizarse con los formatos característicos de datos biológicos.
-
+- <span style="color:red"> Aprender a NO copiar y pegar comandos ! :D </span>
 
 ## Introducción:
 
-[EMBOSS](http://emboss.sourceforge.net/) es una *suite* bioinformática con una multitud de herramientas elementales en biología molecular y genética. Creada y mantenida por [EMBnet](http://www.embnet.org/), EMBOSS es la clase de herramientas que siempre es mejor tener que no tener, a pesar de que todo lo que podemos hacer con ésta, también lo podemos hacer *manualmente* (esto es, en papel o con algún software específico). La conveniencia radica en que el software no solo maneja información biológica en varios formatos para realizar distintos tipos de tareas, sino que además lo hace muy rápidamente (lo cual significa que es computacionalmente escalable) y con esfuerzo mínimo, dado que la *suite* provee al usuario con una interfaz unificada para todas las aplicaciones. La lista de herramientas disponibles es ENORME:
+[EMBOSS](http://emboss.sourceforge.net/) es una *suite* bioinformática con una multitud de herramientas elementales en biología molecular y genética. Creada y mantenida por [EMBnet](http://www.embnet.org/), EMBOSS es la clase de herramientas que siempre es mejor tener que no tener, a pesar de que todo lo que podemos hacer con ésta, también lo podemos hacer *manualmente* (esto es, en papel o con algún software específico). Las ventajas principales de EMBOSS son dos:
+* Maneja información biológica en varios formatos para realizar distintos tipos de tareas
+* Es muy rápida (lo cual significa que es computacionalmente escalable) y con esfuerzo mínimo, dado que la *suite* provee al usuario con una interfaz unificada para todas las aplicaciones.
+
+La lista de herramientas disponibles es ENORME:
 
 ### Lista de utilidades en EMBOSS Suite
 
@@ -1601,7 +1616,9 @@ En el TP de hoy vamos a familiarizarnos con EMBOSS y algunas herramientas del pa
 
 En los últimos años, se ha simplificado cuantiosamente la ejecución del proceso de clonado/expresión; por un lado gracias a la aparición de múltiples herramientas de Ing. Genética y por la posibilidad de sintetizar largas secuencias de ácidos nucleicos *in vitro*, lo que quita el peso de *levantar un gen* de interés o el riesgo de *meter errores* durante la PCR que ejecutamos para hacerlo. Para este TP, consideraremos que hace rato compramos groupón *90% off* en ADN sintético, que está por vencer y que, por ende,tenemos/podemos usar.
 
-Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lacteos para intolerantes a este azúcar. Los procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga. Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
+Como buenos biotecnólogxs (o *biotec-wannabes*), ya sabemos que una de las industrias biotecnológicas más antigua es la industria alimenticia. Centenas de microorganismos distintos y decenas de enzimas son utilizados en esta industria para distintos procesos. Algunos muy complejos, como la fermentación de un buen vino (y de uno malo también); y otros muy simples y puntuales, como la degradación de lactosa en productos lácteos para intolerantes a este azúcar. Los procesos enzimáticos simples pueden resolverse *fácilmente* mediante la producción de la enzima de interés en forma heteróloga.
+
+Con el fin de dar rienda suelta a nuestro *científico entrepeneur* montaremos las bases de una empresa biotecnológica: vamos a producir enzimas.
 
 La enzima que queremos producir es la *VpVan*, la enzima encargada de convertir el ácido ferúlico en **¡nada menos que vainillín!**
 
@@ -1613,9 +1630,20 @@ Por si no lo saben o no lo recuerdan, el formato FASTA es la forma más usada pa
 
 ![Formato FASTA](images/fasta.png)
 
-El archivo FASTA comienza por un `>` que indica la línea con el nombre, o identificador, de la secuencia. Esa linea puede contener información adicional como alguna descripción extra sobre la secuencia, tal como las condiciones en que fue obtenida u otra descripción opcional.
-Luego, el resto de las líneas que continuen contienen la secuencia propiamente dicha, hasta que aparezca otro `>`, indicando que termina la secuencia anterior y comienza otra. Cuando eso ocurre y el archivo contiene más de una secuencia, se lo denomina "multi-fasta".
-
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info">
+      Un archivo FASTA tiene dos elementos importantes:
+      <ul>
+      <li style="background-color:transparent">
+         <b>Header:</b> Está indicado con un <code>></code> . Es la línea con el nombre o identificador de la secuencia. Puede contener información adicional como alguna descripción extra sobre la secuencia, tal como las condiciones en que fue obtenida u otra descripción opcional.
+      </li>
+         <li style="background-color:transparent">
+         <b>Secuencia:</b> El resto de las líneas que continúan contienen la secuencia propiamente dicha.
+      </li>
+      </ul>
+      <b>Nota:</b> En un archivo <b>multi-fasta</b> cada <code>></code>, indica que termina la secuencia anterior y que comienza otra.
+   </li>
+</ul>
 
 
 Volviendo a nuestro experimento, vamos a clonar en forma direccionada, usando las enzimas
@@ -1635,7 +1663,12 @@ Sistema de purificación:
 
 Por cuestiones de practicidad, todos los tags van a estar en el C-terminal. 
 
-> **NOTA**: Estamos asumiendo que TODOS saben de qué estamos hablando con las condiciones expuestas. Si no es el caso, **pregunten**.
+<ul class="block-list has-radius is-highlighted is-success">
+   <li class="has-icon">
+   <span class="icon"><i class="fas fa-question-circle"></i></span>
+   <b>NOTA:</b> Estamos asumiendo que TODOS saben de qué estamos hablando con las condiciones expuestas. Si no es el caso, <b>pregunten</b>.
+   </li>
+</ul>
 
 **En líneas generales vamos a:**
 
@@ -1659,7 +1692,9 @@ Se recomienda **enfáticamente** crear una carpeta nueva donde pueden poner todo
 
 ```Bash
 cd #me dirijo a la carpeta de mi usuario.
+
 mkdir TP_EMBOSS #creo una carpeta, ustedes pueden darle el nombre que quieran.
+
 cd TP_EMBOSS #entro en dicha carpeta.
 ```
 
@@ -1667,7 +1702,8 @@ El primer objetivo será generar un nuevo fasta por cada construcción. Pueden h
 
 ```Bash 
 # Acá va una propuesta. Pueden pensar en alguna alternativa, si quieren.
-for TAG in `ls *-tag.fasta`; # Por cada Fasta de tag disponible... 
+
+for TAG in `ls *-tag.fasta`; # Por cada archivo Fasta de tag disponible... 
 
 do 
    vpvanseq=`cat VpVAN.fasta | grep -v ">"`; # leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable (1)
@@ -1700,32 +1736,53 @@ Donde **VARIABLE** puede ser cualquier nombre que ustedes decidan y tomará cada
 
 `for` nos permite recorrer una lista. En este caso la lista que recibe, se genera con `ls *-tag-fasta`.
 
+ `ls` lista archivos y carpetas. El comodín `*` permite tomar cualquier valor, por lo que entonces estaremos listando todos los archivos que terminen con "-tag.fasta", guardando el valor en la **variable** `TAG` y haremos (`do`) las tres líneas que siguen con cada archivo:
 
- `ls` lista archivos y carpetas, (recuerden que el comodín `*` permite tomar cualquier valor) por lo que entonces estaremos listando todos los archivos que terminen con "-tag.fasta", guardando el valor en `TAG` y haremos (`do`) las tres líneas que siguen con cada archivo:
-
-1. Leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable:
+1. Leer el archivo VpVAN, quitarle el header (>) y guardarlo en una variable:
  - `cat VpVAN.fasta`: lee el archivo con la secuencia de AA que queremos expresar, 
  - luego con el *pipe* (`|`) se lo pasamos al siguiente comando:
  - `grep -v ">"`: grep, realiza búsquedas de texto y devuelve las líneas que lo contengan. En este caso le estamos pidiendo que busque el carácter  `>`, pero con el argumento `-v` le decimos que nos devuelva los resultados que NO contengan dicha búsqueda.
- - Finalmente todo se guardará en: **vpvanseq** puesto que fue declarada para almacenar el resultado del comando con el `=`.
+ - Finalmente todo se guardará en la variable **vpvanseq** puesto que fue *declarada* para almacenar el resultado del comando con el `=`.
 2. Leer cada archivo tag y quitarle el header (>), guardarlo en otra variable:
- - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** definimos la palabra **TAG** (for TAG in ...) como la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos invocar variables tenemos que anteponerles un `$` al nombre.
+ - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** definimos la palabra **TAG** (for TAG in ...) como la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos *invocar* variables tenemos que anteponerles un `$` al nombre (pero no al declararlas).
  - El resultado se guarda en la variable **tagseq**.
 3. Imprimir y guardar en un archivo separado para cada tag:
- - Acá nos interesa generar los nuevos archivos FASTA, primero empezamos por los encabezados (nombres); donde sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos invocar con `$TAG` y nos queda: ">VpVAN-$TAG". Luego agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando `echo` que ya usaron en el TP anterior, pueden consultarlo con `man printf`). 
- - Todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
+<ul>
+   <li markdown="span">
+   Generamos los nuevos archivos FASTA:
  
+   **Primero** empezamos por los encabezados (nombres). Sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos *invocar* con `$TAG` y nos queda: ">VpVAN-$TAG".
+   
+   **Segundo** agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y la del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando `echo` que ya usaron en el TP anterior, pueden consultarlo con `man printf`).
+   </li>
+   <li markdown="span">
+   Todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que el archivo se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
+   </li>
+ </ul>
 
 ¡Ya tenemos nuestras secuencias quiméricas!
 
 ###### Entrada en calor con EMBOSS
 
-Para familiarizarnos con EMBOSS, comencemos por buscar qué herramientas vamos a usar durante el TP. Si emboss-doc está instalado, se puede ver la documentación de los paquetes en la linea de comando. Ya sabemos que vamos a estar optimizando codones para algún organismo así que arranquemos por ahí: 
-Para buscar comandos que hacen cosas, usar `wossname` con palabras clave (en inglés, ej: 'codon'). El comando `wossname` nos da una lista de comandos asociados con esas palabras clave y lo que hace cada programa.
+Para familiarizarnos con EMBOSS, comencemos por buscar qué herramientas vamos a usar durante el TP.
 
-> Esto solo funcionará si instalamos la documentación de EMBOSS.
+Si emboss-doc está instalado, se puede ver la documentación de los paquetes en la línea de comando. Ya sabemos que vamos a estar optimizando codones para algún organismo así que arranquemos por ahí:
 
-Si no tuviéramos la máquina virtual (que ya tiene todo instlado), tendríamos que instalar EMBOSS en nuestro sistema: 
+Para buscar comandos que hacen cosas, se usa `wossname` con palabras clave (en inglés, ej: 'codon'). El comando `wossname` nos da una lista de comandos asociados con esas palabras clave y lo que hace cada programa.
+
+<ul class="block-list has-radius is-highlighted is-danger">
+   <li class="has-icon">
+   <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+   Esto solo funcionará si instalamos la documentación de EMBOSS.
+   </li>
+</ul>
+
+```Bash
+   sudo apt-get install emboss-doc #Esto SI hay que instalarlo en la máquina virtual (VM) 
+   #la contraseña es "unsam" en la VM
+```
+
+Si no tuviéramos la máquina virtual (que ya tiene todo instalado), tendríamos que instalar EMBOSS en nuestro sistema: 
 
 
 <details>
@@ -1745,12 +1802,7 @@ man apt-get
 <br>
 
 
-```Bash
-   sudo apt-get install emboss-doc #Esto SI hay que instalarlo en la máquina virtual (VM) 
-   #la contraseña es "unsam" en la VM
-```
-
-Luego, podremos usar wossname para buscar comandos que trabajen con codones. 
+Luego, podremos usar `wossname` para buscar comandos que trabajen con codones. 
 
 ```Bash
 wossname codon
@@ -1808,7 +1860,7 @@ tfm cusp
 
 
 
-#### Ejercicio 2. Construir tabla de frecuencias de uso de codones
+### Ejercicio 2. Construir tabla de frecuencias de uso de codones
 
 Para poder calcular la tabla de uso de codones, podemos usar `cusp`, de EMBOSS. Pueden ver el manual como en la sección anterior:
 
@@ -1818,7 +1870,7 @@ Esto significa que necesitaremos una lista de secuencias codificantes.
 
 Vamos a construir un archivo tipo fasta con nuestras secuencias codificantes.
 
-##### 2.1 Obtener secuencias codificantes
+#### 2.1 Obtener secuencias codificantes
 
 Para descargar secuencias codificantes en bacterias, debemos seguir las instrucciones descritas en: 
 
@@ -1864,10 +1916,10 @@ Si ya identificaron ambas cosas, pueden pasar al siguiente punto, donde detallar
 
 ##### Filtrar *assembly_summary* y descargar los *links* de interés:
 
+###### 1er Paso: Obtengo los links
 
 ```Bash
-# Obtengo los links 
-cat assembly_summary.txt |grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest") {print $20}}'  > ftpdirpaths
+cat assembly_summary.txt | grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest") {print $20}}'  > ftpdirpaths
 ```
 
 - `cat assembly_summary.txt`: este comando simplemente lee el archivo con el resumen de todos los genomas que ya habíamos descargado que luego con el *pipe* (`|`) se lo pasamos a `grep`.
@@ -1878,17 +1930,13 @@ cat assembly_summary.txt |grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 == 
 Dentro de las comillas del `awk` podemos realizar distintas operaciones como filtrar filas, seleccionar columnas o como en este caso, hacer ambas cosas. 
 	- Lo primero que hacemos es colocar un condicional `if()` que dentro del paréntesis se realiza una evaluación lógica, si se cumple, el registro (fila) se devuelve, caso contrario queda *filtrado*. En este ejemplo, la evaluación es: `$12 == "Complete Genome"` que se lee como: **"si el valor de la columna 12 es exactamente igual a Complete Genome"**. 
 	- A eso se le agrega un operador lógico `&&` que se lee como **"Y"**, es decir, que pedimos que se cumplan AMBAS evaluaciones para que todo sea verdadero [(Sencillo articulo que explica evaluaciones lógicas)](https://es.wikipedia.org/wiki/Puerta_l%C3%B3gica). Agregamos la evaluación `$11 == "latest"` **que se tendrá que cumplir al mismo tiempo que la anterior.** 
-	- Finalmente agregamos otra operación entre llaves ({}) en el awk `{print $20}` que simplemente selecciona la columna 20.
+	- Finalmente agregamos otra operación entre llaves ({ }) en el awk `{print $20}` que simplemente selecciona la columna 20.
 
-```Bash
-# Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI 
-awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
-```
-
+###### 2do Paso: Agrego el sufijo necesario para la descarga
 
 Los links que nos da NCBI en la tabla *assembly_summary.txt* tienen el siguiente formato:
 
-<ul class="block-list has-radius is-small  is-info "> 
+<ul class="block-list has-radius is-small is-info"> 
 <li>
 ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1
 </li>
@@ -1896,35 +1944,42 @@ ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v
 
 Sin embargo, el mismo NCBI necesita otro *link* para descargar el genoma:
 
-<ul class="block-list has-radius is-small  is-info "> 
-<li>
-ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz
+<ul class="block-list has-radius is-small is-info"> 
+<li style="word-wrap:break-word;">
+ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1<b>/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz</b>
 </li>
 </ul>
 
 	
-Como pueden ver, hay que agregarle "_cds_from_genomic.fna.gz" al final, y repetir el nombre del genoma. Esto último depende de cada línea de nuestro archivo. Por eso usamos el comando `awk` para darle el formato necesario. Esta solución se toma **literal** de [la guía de NCBI previamente mencionada](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/). Dada la profundidad que permite este curso solo trataremos de explicarlo brevemente pero si alguien tiene dudas, puede consultar.
+Como pueden ver, hay que repetir el nombre del genoma y agregarle "_cds_from_genomic.fna.gz" al final. El nombre de genoma depende de cada línea de nuestro archivo por lo que necesitaremos automatizarlo utilizando el comando `awk` y dar el formato necesario. 
 
-- `FS` es el argumento que indica como se separan las columnas en el archivo que lee `awk`, `OFS` indica lo mismo pero para la salida de `awk`. Con `FS=OFS="/"` simplemente indicamos que ambos serán la barra invertida **/**, de esta forma, nos será posible cortar el texto donde querramos y seleccionarlo. (hay otras formas, esta es la propuesta por el ejemplo de NCBI)
+```Bash
+# Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI 
+awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
+```
+
+Esta solución se toma **literal** de [la guía de NCBI previamente mencionada](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/). Dada la profundidad que permite este curso solo trataremos de explicarlo brevemente pero si alguien tiene dudas, puede consultar.
+
+- `FS` es el argumento que indica como se separan las columnas en el archivo que lee `awk`, `OFS` indica lo mismo pero para la salida de `awk`. Con `FS=OFS="/"` simplemente indicamos que ambos serán la barra invertida **/**, de esta forma, nos será posible cortar el texto donde querramos y seleccionarlo. (hay otras formas, pero esta es la propuesta en el ejemplo de NCBI)
 
 - En `filesuffix="cds_from_genomic.fna.gz"` se define la cadena de texto que queremos agregar al final de cada *link*.
 
 - En `ftpdir=$0` tomamos toda la dirección que hay en **ftpdirpaths** al haber seleccionado el indice 0 (el 1 es el primer valor, el 2 el segundo, etc, pero el 0 toma todos.) y lo guardamos en **ftpdir**.
 
-- En `asm=$10` guardamos el decimo campo, que contiene el nombre del genoma, dentro de la variable `asm`.
+- En `asm=$10` guardamos el decimo campo (`$10`), que contiene el nombre del genoma, dentro de la variable `asm`.
 
 - En `file=asm"_"filesuffix` definimos `file` como la concatenación de `asm` un guión bajo y `filesuffix`que habíamos creado antes. 
 
 - Finalmnente `print ftpdir,file` devuelve lo que tenía **ftpdirpaths** y todo lo que se creó ahora y luego usamos el `>` para guardar todo en un nuevo archivo, que denominamos ftpfilepaths
 	
-
+###### 3er Paso: Descarga
 
 ```Bash
 # Descargo de todas las URLs adentro de ftpfilepaths (3)
 wget -i ftpfilepaths
 ```
 
-- Acá usamos el comando wget para descargar los links generados:
+- Acá usamos el comando `wget` para descargar los links generados:
 
 	- ¿tienen idea para qué es el argumento `-i`? ¿Cómo pueden averiguarlo?
 
@@ -1958,10 +2013,9 @@ Deberían haber llegado a lo siguiente:
 <br>
 ---
 
-##### Ejercicio 2.2 Obtener la frecuencia de uso de codones
+#### 2.2 Obtener la frecuencia de uso de codones
 
 Veamos cómo puede ayudarnos EMBOSS a hacer esto.  
-
 
 Ya tenemos nuestra lista de secuencias codificantes así que ya estamos en condiciones de calcular el uso de codones usando `cusp`.
 
@@ -1974,7 +2028,7 @@ for file in ${files}; # Recorremos los archivos (2)
 ---
 
 1. Listamos todos genomas que descargamos:
-	- Con el comando `ls` listamos todos los archivos que empiezan con **"GCF"** y terminen con **".GZ"**  con lo cual solo tendremos los genomas que hayamos descargado. (¡recuerden el uso del comodín `*`!) y lo guardamos en la variable que estamos denominando **files**.
+	- Con `ls` listamos todos los archivos que empiezan con **"GCF"** y terminen con **".GZ"**  con lo cual solo tendremos los genomas que hayamos descargado. (¡recuerden el uso del comodín `*`!) y lo guardamos en la variable que estamos denominando **files**.
 2. Recorremos los archivos:
 	- Con el `for` recorremos cada uno de los archivos y lo vamos almacenando en la variable **file**.
 3. Calculamos el uso de codones de cada genoma:
@@ -2014,8 +2068,6 @@ TTT    F     0.575    22.385  30499
 - ¿Por qué un AA tiene más de un codón? 
 - ¿Notan diferencias entre las frecuencias de uso de codones de los distintos proyectos genoma de *E.Coli BL21* que analizaron?
 
-
-Ayuda-memoria con aminoácidos y sus abreviaturas:
 
 <details>
 
@@ -2144,7 +2196,9 @@ Ayuda-memoria con aminoácidos y sus abreviaturas:
 </details>
 <br>
 
-Si se pusieron a buscar diferencias a ojo entre un archivo y otro, pueden hacerlo mejor: EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
+Si se pusieron a buscar diferencias a ojo entre un archivo y otro, pueden hacerlo mejor:
+
+EMBOSS tiene una herrramienta específicamente diseñada para hacer esta comparación (y, además, validarla estadísticamente - porque a ojo igual no íbamos a poder sacar ninguna conclusión).
 
 ```Bash
 codcmp <primer.cusp> <segund.cusp> cusp-comparison.out
@@ -2154,9 +2208,9 @@ Comparen **dos** tablas de frecuencia de uso *Nota: El resultado aparecerá en e
 
 - ¿Notan diferencias significativas entre las frecuencias de uso de codones de los distintos proyectos genoma de *E.Coli BL21* que analizaron?
 
-#### Ejercicio 3. Optimizar la secuencia en función de la tabla de uso de codones
+### Ejercicio 3. Optimizar la secuencia en función de la tabla de uso de codones
 
-Recuerden que todo este embrollo devino de la necesidad de expresar en forma heteróloga una proteína de interés (a no perder el foco, que ya falta poco! :)), de modo que el siguiente paso es **adaptar nuestra secuencia quimérica al uso de codones del organismo en el que expresaremos nuestra proteína recombinante**. Es decir, codificar una secuencia amionacídica de planta en la forma más óptima para su traducción en *E.coli*. 
+Recuerden que todo este embrollo devino de la necesidad de expresar en forma heteróloga una proteína de interés (a no perder el foco, que ya falta poco! <span class="icon"><i class="far fa-smile-wink"></i></span>), de modo que el siguiente paso es **adaptar nuestra secuencia quimérica al uso de codones del organismo en el que expresaremos nuestra proteína recombinante**. Es decir, codificar una secuencia amionacídica de planta en la forma más óptima para su traducción en *E.coli*. 
 
 Para ello, podemos usar `backtranseq`: Dada una secuencia de aminoácidos correspondiente a una proteína de interés, este programa nos permite (des?)-traducirla a la secuencia de DNA que, con mayor probabilidad, le dio origen. Es decir, backtranseq utilizará una tabla de uso de codones provista para escribir una secuencia de DNA a partir de una secuencia de aminoácidos. Revisen el manual de EMBOSS en búsqueda de información sobre cómo usar la herramienta.
 
@@ -2181,11 +2235,11 @@ backtranseq -auto -sequence <myprotein.fasta> -cfile <ecoli.cusp> -outfile <mypr
 
 Los archivos `myprotein.ecoli.codons.dna.fasta` (o como hayan gustado llamarlo) tiene la secuencia en la que nos vamos a gastar nuestro Groupon.
 
-#### Ejercicio 4. Analizar los patrones de restricción de mi nueva secuencia (optimizada)
+### Ejercicio 4. Analizar los patrones de restricción de mi nueva secuencia (optimizada)
 
 FINALMENTE, lo ultimísimo que vamos a hacer es verificar que las enzimas que vamos a usar para clonar no están en nuestras secuencias quiméricas optimizadas. Podemos hacer utilizando `remap` (también de EMBOSS). Pero antes de eso, tendremos que indicarle a EMBOSS una base de datos de enzimas de restricción.
 
-##### 4.1. Instalar la base de datos de enzimas de restricción (REBASE) y configurarla para que la pueda usar EMBOSS
+#### 4.1. Instalar la base de datos de enzimas de restricción (REBASE) y configurarla para que la pueda usar EMBOSS
 
 Bajar los archivos withrefm.107 y proto.107 desde [aquí](ftp://ftp.neb.com/pub/rebase/) o desde [aquí](ftp://ftp.ebi.ac.uk/pub/databases/rebase)... aunque ya deberían estar descargados en la carpeta del TP. 
 
@@ -2202,7 +2256,7 @@ Es posible que Ubuntu no nos deje hacer esto, dado que vamos a estar modificando
 sudo rebaseextract -infile withrefm.107 -protofile proto.107
 ```
 
-##### 4.2. Verificar sitios de restricción
+#### 4.2. Verificar sitios de restricción
 
 ```Bash
 remap -auto -sequence myprotein.ecoli.codons.dna.fasta -single -width 80 -commercial -sitelen 6 -frame 1 -enzymes all -outfile remap
