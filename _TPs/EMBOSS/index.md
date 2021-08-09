@@ -1677,18 +1677,42 @@ done;
 ```
 Para entender en detalle que hace todo este *script* de **BASH** vamos a dedicarle unos minutos:
 
-`for` es un comando muy útil que más adelante exploraremos en profundidad, por ahora solo importa entender que nos permite recorrer una lista. En este caso la lista que recibe, se genera con `ls *-tag-fasta`. `ls` lista archivos y carpetas, recuerden que el comodín `*` permite tomar cualquier valor, por lo que entonces estaremos listando todos los archivos y carpetas (aunque en este caso solo habrá archivos) que terminen con "-tag.fasta" y con cada uno de los nombres de estos archivos haremos (`do`) las tres líneas que siguen:
+<details>
+
+
+<summary> <h6> Si no sabés o nunca viste un bucle **FOR** </h6> </summary>
+
+Si nunca viste lo que es un bucle `for`, podes ver este [video de 2 minutos](https://www.youtube.com/watch?v=gAvUMxTZhzo)  que explica solo el concepto. Y la estructura (como se escribe el código) en Bash es la siguiente:
+
+```Bash 
+for VARIABLE in `COMANDO BASH`;
+do
+    comando.
+    comando..
+    comando...
+    etc
+done
+```
+Donde **VARIABLE** puede ser cualquier nombre que ustedes decidan y tomará cada valor que resulte de `COMANDO BASH`. Luego en los comandos que se hagan entre el `do` y el `done` se puede invocar a esa **VARIABLE** con el nombre **$VARIABLE** y será un valor distinto a medida que el `for` recorra la lista.
+
+</details>
+<br>
+
+`for` nos permite recorrer una lista. En este caso la lista que recibe, se genera con `ls *-tag-fasta`.
+
+
+ `ls` lista archivos y carpetas, (recuerden que el comodín `*` permite tomar cualquier valor) por lo que entonces estaremos listando todos los archivos que terminen con "-tag.fasta", guardando el valor en `TAG` y haremos (`do`) las tres líneas que siguen con cada archivo:
 
 1. Leer el archivo VpVAN y quitarle el header (>), guardarlo en una variable:
  - `cat VpVAN.fasta`: lee el archivo con la secuencia de AA que queremos expresar, 
  - luego con el *pipe* (`|`) se lo pasamos al siguiente comando:
- - `grep -v ">"`: grep, es un comando que realiza búsquedas de texto y devuelve las líneas que lo contengan. En este caso le estamos pidiendo que busque el carácter  `>`, pero con el argumento `-v` le decimos que nos devuelva los resultados que NO contengan dicha búsqueda.
+ - `grep -v ">"`: grep, realiza búsquedas de texto y devuelve las líneas que lo contengan. En este caso le estamos pidiendo que busque el carácter  `>`, pero con el argumento `-v` le decimos que nos devuelva los resultados que NO contengan dicha búsqueda.
  - Finalmente todo se guardará en: **vpvanseq** puesto que fue declarada para almacenar el resultado del comando con el `=`.
 2. Leer cada archivo tag y quitarle el header (>), guardarlo en otra variable:
  - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** definimos la palabra **TAG** (for TAG in ...) como la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos invocar variables tenemos que anteponerles un `$` al nombre.
  - El resultado se guarda en la variable **tagseq**.
 3. Imprimir y guardar en un archivo separado para cada tag:
- - Acá nos interesa generar los nuevos archivos FASTA, primero empezamos por los encabezados (nombres); donde sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos invocar con `$TAG` y nos queda: ">VpVAN-$TAG". Luego agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando echo que ya usaron en el TP anterior, pueden consultarlo con `man printf`). 
+ - Acá nos interesa generar los nuevos archivos FASTA, primero empezamos por los encabezados (nombres); donde sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos invocar con `$TAG` y nos queda: ">VpVAN-$TAG". Luego agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando `echo` que ya usaron en el TP anterior, pueden consultarlo con `man printf`). 
  - Todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
  
 
@@ -1840,63 +1864,73 @@ Si ya identificaron ambas cosas, pueden pasar al siguiente punto, donde detallar
 
 ##### Filtrar *assembly_summary* y descargar los *links* de interés:
 
+
 ```Bash
-# Obtengo los links (1)
+# Obtengo los links 
 cat assembly_summary.txt |grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 == "Complete Genome" && $11 == "latest") {print $20}}'  > ftpdirpaths
-
-# Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI (2)
-
-awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
-
-# Descargo de todas las URLs adentro de ftpfilepaths (3)
-wget -i ftpfilepaths
 ```
-1. Obtengo los *links*:
 
-	- `cat assembly_summary.txt`: este comando simplemente lee el archivo con el resumen de todos los genomas que ya habíamos descargado que luego con el *pipe* (`|`) se lo pasamos a `awk`.
+- `cat assembly_summary.txt`: este comando simplemente lee el archivo con el resumen de todos los genomas que ya habíamos descargado que luego con el *pipe* (`|`) se lo pasamos a `grep`.
 
-	`awk` es un comando que nos permite realizar muchas operaciones, es muy útil en nuestro trabajo diario porque además de versátil resulta sumamente eficiente (escalable para trabajar con grandes volúmenes de datos). 
+- `grep` solo nos devolverá las líneas que contengan "BL21", luego con un nuevo pipe se hace lo mismo pero con "coli" y se le pasa el resultado a `awk` con un nuevo *pipe*.
 
-	- En este caso a `awk` primero le estamos dando el argumento `-F "\t"` que le dice que interprete al archivo separado (cada columna) por espacios tabulados (*tabs*: "	"). 
+- `awk` permite manipular tablas, en este caso a `awk` primero le estamos dando el argumento `-F "\t"` que le dice que interprete al archivo separado (cada columna) por espacios tabulados (*tabs*: "	"). 
 Dentro de las comillas del `awk` podemos realizar distintas operaciones como filtrar filas, seleccionar columnas o como en este caso, hacer ambas cosas. 
 	- Lo primero que hacemos es colocar un condicional `if()` que dentro del paréntesis se realiza una evaluación lógica, si se cumple, el registro (fila) se devuelve, caso contrario queda *filtrado*. En este ejemplo, la evaluación es: `$12 == "Complete Genome"` que se lee como: **"si el valor de la columna 12 es exactamente igual a Complete Genome"**. 
 	- A eso se le agrega un operador lógico `&&` que se lee como **"Y"**, es decir, que pedimos que se cumplan AMBAS evaluaciones para que todo sea verdadero [(Sencillo articulo que explica evaluaciones lógicas)](https://es.wikipedia.org/wiki/Puerta_l%C3%B3gica). Agregamos la evaluación `$11 == "latest"` **que se tendrá que cumplir al mismo tiempo que la anterior.** 
 	- Finalmente agregamos otra operación entre llaves ({}) en el awk `{print $20}` que simplemente selecciona la columna 20.
 
-2. Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI
+```Bash
+# Agrego el sufijo _cds_from_genomic.fna.gz necesario para descargar el archivo desde NCBI 
+awk 'BEGIN{FS=OFS="/";filesuffix="cds_from_genomic.fna.gz"}{ftpdir=$0;asm=$10;file=asm"_"filesuffix;print ftpdir,file}' ftpdirpaths > ftpfilepaths
+```
 
-	Los links que nos da NCBI tienen el siguiente formato:
->	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1
+
+Los links que nos da NCBI en la tabla *assembly_summary.txt* tienen el siguiente formato:
+
+<ul class="block-list has-radius is-small  is-info "> 
+<li>
+ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1
+</li>
+</ul>
+
+Sin embargo, el mismo NCBI necesita otro *link* para descargar el genoma:
+
+<ul class="block-list has-radius is-small  is-info "> 
+<li>
+ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz
+</li>
+</ul>
+
 	
-	Sin embargo, el mismo NCBI necesita otra dirección para descargar el genoma:
->	ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz
-	
-	Como pueden ver, hay que agregarle "_cds_from_genomic.fna.gz" al final, y repetir el nombre del genoma. Esto último es especialmente complejo de automatizar, ya que depende de cada línea de nuestro archivo. Por eso acá usamos el comando `awk` para darle el formato necesario para. Esta solución se toma **literal** de los ejemplos de NCBI previamente mencionados, por lo que puede ser un poco confuso y solo trataremos de explicarlo brevemente:
+Como pueden ver, hay que agregarle "_cds_from_genomic.fna.gz" al final, y repetir el nombre del genoma. Esto último depende de cada línea de nuestro archivo. Por eso usamos el comando `awk` para darle el formato necesario. Esta solución se toma **literal** de [la guía de NCBI previamente mencionada](https://www.ncbi.nlm.nih.gov/genome/doc/ftpfaq/). Dada la profundidad que permite este curso solo trataremos de explicarlo brevemente pero si alguien tiene dudas, puede consultar.
 
-	- `FS` es el argumento que indica como se separan las columnas en el archivo que lee `awk`, `OFS` indica lo mismo pero para la salida de `awk`. Con `FS=OFS="/"` simplemente indicamos que ambos serán la barra invertida **/**, de esta forma, nos será posible cortar el texto donde querramos y seleccionarlo. (hay otras formas, esta es la propuesta por el ejemplo de NCBI)
+- `FS` es el argumento que indica como se separan las columnas en el archivo que lee `awk`, `OFS` indica lo mismo pero para la salida de `awk`. Con `FS=OFS="/"` simplemente indicamos que ambos serán la barra invertida **/**, de esta forma, nos será posible cortar el texto donde querramos y seleccionarlo. (hay otras formas, esta es la propuesta por el ejemplo de NCBI)
 
-	- En `filesuffix="cds_from_genomic.fna.gz"` se define la cadena de texto que queremos agregar al final de cada *link*.
+- En `filesuffix="cds_from_genomic.fna.gz"` se define la cadena de texto que queremos agregar al final de cada *link*.
 
-	- En `ftpdir=$0` tomamos toda la dirección que hay en **ftpdirpaths** al haber seleccionado el indice 0 (el 1 es el primer valor, el 2 el segundo, etc, pero el 0 toma todos.) y lo guardamos en **ftpdir**.
+- En `ftpdir=$0` tomamos toda la dirección que hay en **ftpdirpaths** al haber seleccionado el indice 0 (el 1 es el primer valor, el 2 el segundo, etc, pero el 0 toma todos.) y lo guardamos en **ftpdir**.
 
-	- En `asm=$10` guardamos el decimo campo, que contiene el nombre del genoma, dentro de la variable `asm`.
+- En `asm=$10` guardamos el decimo campo, que contiene el nombre del genoma, dentro de la variable `asm`.
 
-	- En `file=asm"_"filesuffix` definimos `file` como la concatenación de `asm` un guión bajo y `filesuffix`que habíamos creado antes. 
+- En `file=asm"_"filesuffix` definimos `file` como la concatenación de `asm` un guión bajo y `filesuffix`que habíamos creado antes. 
 
-	- Finalmnente `print ftpdir,file` devuelve lo que tenía **ftpdirpaths** y todo lo que se creó ahora y luego usamos el `>` para guardar todo en un nuevo archivo, que denominamos ftpfilepaths
+- Finalmnente `print ftpdir,file` devuelve lo que tenía **ftpdirpaths** y todo lo que se creó ahora y luego usamos el `>` para guardar todo en un nuevo archivo, que denominamos ftpfilepaths
 	
 
 
-3. Descargo de todas las URLs adentro de ftpfilepaths
+```Bash
+# Descargo de todas las URLs adentro de ftpfilepaths (3)
+wget -i ftpfilepaths
+```
 
-	- Acá simplemente usamos el comando wget para descargar los links generados:
-		- ¿tienen idea para qué es el argumento `-i`? ¿Cómo pueden averiguarlo?
+- Acá usamos el comando wget para descargar los links generados:
+
+	- ¿tienen idea para qué es el argumento `-i`? ¿Cómo pueden averiguarlo?
 
 Deberían haber llegado a lo siguiente:
 <details>
 <summary> <h6> Ver *links* a los genomas </h6> </summary>
-
-
 - [GCF_000833145.1_ASM83314v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/833/145/GCF_000833145.1_ASM83314v1_cds_from_genomic.fna.gz)
 - [GCF_009832985.1_ASM983298v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/009/832/985/GCF_009832985.1_ASM983298v1_cds_from_genomic.fna.gz)
 - [GCF_000009565.1_ASM956v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/009/565/GCF_000009565.1_ASM956v1_cds_from_genomic.fna.gz)
@@ -1920,7 +1954,6 @@ Deberían haber llegado a lo siguiente:
 - [GCF_013166975.1_ASM1316697v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/013/166/975/GCF_013166975.1_ASM1316697v1_cds_from_genomic.fna.gz)
 - [GCF_014263375.1_ASM1426337v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/014/263/375/GCF_014263375.1_ASM1426337v1_cds_from_genomic.fna.gz)
 - [GCF_000023665.1_ASM2366v1](ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/023/665/GCF_000023665.1_ASM2366v1_cds_from_genomic.fna.gz)
-   
 </details>
 <br>
 ---
