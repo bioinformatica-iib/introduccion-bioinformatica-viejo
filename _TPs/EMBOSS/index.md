@@ -48,7 +48,7 @@ details summary > * {
 
 - Familiarizarse con el uso de herramientas bioinformáticas por línea de comandos.
 - Familiarizarse con los formatos característicos de datos biológicos.
-- <span style="color:red"> Aprender a NO copiar y pegar comandos ! :D </span>
+- <span style="color:red"> Aprender a NO copiar y pegar comandos ! <span class="icon"><i class="far fa-smile-wink"></i></span> </span>
 
 ## Introducción:
 
