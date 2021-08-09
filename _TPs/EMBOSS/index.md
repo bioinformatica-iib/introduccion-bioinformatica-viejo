@@ -1744,22 +1744,13 @@ Donde **VARIABLE** puede ser cualquier nombre que ustedes decidan y tomará cada
  - `grep -v ">"`: grep, realiza búsquedas de texto y devuelve las líneas que lo contengan. En este caso le estamos pidiendo que busque el carácter  `>`, pero con el argumento `-v` le decimos que nos devuelva los resultados que NO contengan dicha búsqueda.
  - Finalmente todo se guardará en la variable **vpvanseq** puesto que fue *declarada* para almacenar el resultado del comando con el `=`.
 2. Leer cada archivo tag y quitarle el header (>), guardarlo en otra variable:
- - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** definimos la palabra **TAG** (for TAG in ...) como la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos *invocar* variables tenemos que anteponerles un `$` al nombre (pero no al declararlas).
+ - Como pueden ver, la estructura es casi idéntica a la línea anterior, salvo que ahora se usa `$TAG`. Esto ocurre puesto que en el **for** utilizamos la palabra **TAG** (for TAG in ...) para *declarar* la variable que tomará los distintos valores de la lista que recorra el **for** y en UNIX cuando queremos *invocar* variables tenemos que anteponerles un `$` al nombre (pero no al declararlas).
  - El resultado se guarda en la variable **tagseq**.
-3. Imprimir y guardar en un archivo separado para cada tag:
-<ul>
-   <li markdown="span">
-   Generamos los nuevos archivos FASTA:
+3. Imprimir y guardar en un archivo separado para cada tag, para lo cual generamos los nuevos archivos FASTA:
+- **Primero:** empezamos por los encabezados (nombres). Sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del **TAG**, que lo podemos *invocar* con `$TAG` y nos queda: **">VpVAN-$TAG"**.
+- **Segundo:** agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y la del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para `printf` (similar al comando `echo` que ya usaron en el TP anterior, pueden consultarlo con `man printf`).
+- **Tercero:** todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que el archivo se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
  
-   **Primero** empezamos por los encabezados (nombres). Sabemos que tenemos que empezar con `>` y **VpVAN-** (porque todas son secuencias de VpVAN) seguido del nombre del TAG, que lo podemos *invocar* con `$TAG` y nos queda: ">VpVAN-$TAG".
-   
-   **Segundo** agregamos un salto de línea ("\n") para comenzar con la secuencia propiamente dicha, donde simplemente juntamos la secuencia de VpVAN (`$vpvanseq`), y la del TAG (`$tagseq`) con lo que nos queda: **">VpVAN-$TAG\n$vpvanseq$tagseq"** que usamos como argumento para printf (similar al comando `echo` que ya usaron en el TP anterior, pueden consultarlo con `man printf`).
-   </li>
-   <li markdown="span">
-   Todo esto lo guardamos en un archivo con el comando `>` que si no lo olvidaron, crea o sobrescribe un archivo, que en este caso le estamos diciendo que el archivo se llame: `VpVAN-$TAG`; es decir, VpVAN- seguido de cada tag para cada nuevo archivo (uno por cada iteración del **for**).
-   </li>
- </ul>
-
 ¡Ya tenemos nuestras secuencias quiméricas!
 
 ###### Entrada en calor con EMBOSS
