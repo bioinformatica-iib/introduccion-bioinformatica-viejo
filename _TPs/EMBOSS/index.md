@@ -2204,7 +2204,9 @@ EMBOSS tiene una herrramienta específicamente diseñada para hacer esta compara
 codcmp <primer.cusp> <segund.cusp> cusp-comparison.out
 ```
 
-Comparen **dos** tablas de frecuencia de uso *Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
+Comparen **dos** tablas de frecuencia de uso.
+
+*Nota: El resultado aparecerá en el archivo cusp-comparison.out.*
 
 - ¿Notan diferencias significativas entre las frecuencias de uso de codones de los distintos proyectos genoma de *E.Coli BL21* que analizaron?
 
@@ -2223,11 +2225,17 @@ backtranseq -auto -sequence <myprotein.fasta> -cfile <ecoli.cusp> -outfile <mypr
 
 1. Contesten después de haber leído el manual de backtranseq:
 	-¿Qué hacen los siguientes argumentos?:
+
 	`-auto`
+
 	`-sequence <myprotein.fasta>`
+
 	`-cfile <ecoli.cusp>`
+
 	`-outfile <myprotein.ecoli.codons.dna.fasta>`
-2. Después de haber comparado las tablas de codones (los archivos **.cusp**) ¿Cúal cree que debería usar? ¿Por qué?.
+
+2. Después de haber comparado las tablas de codones (los archivos **.cusp**) contesten:
+- ¿Cúal cree que debería usar? ¿Por qué?
 
 
 ¡Tenemos que hacerlo para todas nuestras secuencias quiméricas! 
