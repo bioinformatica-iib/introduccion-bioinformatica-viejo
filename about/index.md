@@ -4,7 +4,6 @@ title: Información General
 permalink: /about/
 menubar_toc: true
 toc_title: Contenidos
-nav_order : 2
 hide_hero: false
 hero_height: is-small
 ---

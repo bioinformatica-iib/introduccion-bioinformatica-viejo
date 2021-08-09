@@ -3,7 +3,6 @@ layout: page
 title: Docentes
 permalink: /docentes/
 menubar_toc: true
-nav_order : 2
 hero_height: is-small
 ---
 
