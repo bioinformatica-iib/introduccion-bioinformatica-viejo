@@ -1915,7 +1915,7 @@ cat assembly_summary.txt | grep "BL21" | grep "coli" | awk -F "\t" '{ if ($12 ==
 
 - `cat assembly_summary.txt`: este comando simplemente lee el archivo con el resumen de todos los genomas que ya habíamos descargado que luego con el *pipe* (`|`) se lo pasamos a `grep`.
 
-- `grep` solo nos devolverá las líneas que contengan "BL21", luego con un nuevo pipe se hace lo mismo pero con "coli" y se le pasa el resultado a `awk` con un nuevo *pipe*.
+- `grep` solo nos devolverá las líneas que contengan "BL21", luego con un nuevo *pipe* se hace lo mismo pero con "coli" y se le pasa el resultado a `awk` con un nuevo *pipe*.
 
 - `awk` permite manipular tablas, en este caso a `awk` primero le estamos dando el argumento `-F "\t"` que le dice que interprete al archivo separado (cada columna) por espacios tabulados (*tabs*: "	"). 
 Dentro de las comillas del `awk` podemos realizar distintas operaciones como filtrar filas, seleccionar columnas o como en este caso, hacer ambas cosas. 
