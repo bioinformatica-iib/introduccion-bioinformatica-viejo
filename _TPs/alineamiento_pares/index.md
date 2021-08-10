@@ -6,8 +6,22 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
+
+<style>
+details > summary:first-of-type {
+   display: list-item;
+}
+details summary { 
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
+</style>
 
 {% if page.construccion %}
 
@@ -41,8 +55,10 @@ El alineamiento de secuencias de a pares comprende la asignación uno-a-uno de c
 
 Por ejemplo si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
 
-> A F G I V H K L I V S  
-> A F G I - H K - I V S
+<blockquote style="font-family:monospace">
+A F G I V H K L I V S  
+A F G I - H K - I V S
+</blockquote>
 
 La principal función de los alineamientos es establecer una medida de **similitud** entre las secuencias que participan en el mismo. Para ello es necesario definir un **sistema de puntuación** que pese cada uno de los eventos que tienen lugar en la contrucción del alineamiento. Asimismo, este esquema de puntajes o *scoring* nos permitirá optimizar el alineamiento de forma tal que los algoritmos empleados elijan la correspondencia entre secuencias que maximice el puntaje o *score* global.
 
@@ -70,13 +86,21 @@ Si observamos los *paths* **1** y **2** dibujados en las matrices de la figura p
 
 Si computamos los puntajes de ambos alineamientos, obtenemos que **1** tiene un puntaje de 2, mientras que **2** un puntaje de 0. Esto es lógico dado que en **1** se propone colocar un único gap, lo cual permite, en consecuencia, alinear al resto de los nucleótidos en ambas secuencias con eventos de match. En contraposición, **2** sugiere una estrategia subóptima en relación a **1**, con un puntaje resultante más bajo, en la cual las secuencias estudiadas se aparean con 1 gap, 1 mismatch y 3 matches.
 
-> Si hubiésemos aplicado la metodología de *dynamic programming* para realizar un alineamiento global de estas secuencias, ¿cuál sería el *path* óptimo resultante? 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-question"></i></span>
+    Si hubiésemos aplicado la metodología de *dynamic programming* para realizar un alineamiento global de estas secuencias, ¿cuál sería el *path* óptimo resultante? 
+</li>
+</ul>
 
 A *priori* uno pensaría que es el *path* **1**, pero hagamos el ejercicio para corroborar si esto es efectivamente así. 
 
 Para comenzar, refresquemos cómo funcionaba el método de *dynamic programming*.
 
+<!---
 ![Dynamic1](./images/NW_3.png)
+--->
+<img src="./images/NW_3.png" alt="Dynamic1" style="max-width:70%">
 
 Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alineamiento a la posición marcada con una "x" roja podríamos, hipotéticamente, tomar cualquiera de los caminos dibujados en la figura de más arriba. Estos *paths* darían alinemientos diferentes de las secuencias **TC** con **TC**. 
 
@@ -165,7 +189,7 @@ eje i: T C - C A
 ```
 que podemos corroborar que es idéntico al *path* **1** del ejemplo que se planteó inicialmente. 
 
-#### Ejercicios
+### Ejercicio 1
 
 1.1 En grupo, realizá el alineamiento de las secuencias **ATTGG** con **AGATGG**, usando el esquema de puntajes: M=1, m=-1, g=-2. 
 
@@ -226,7 +250,7 @@ Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar n
 
 > Recordatorio: Para ver qué parámetros toma de entrada la función, correr en la terminal **dotmatcher -h**.
 
-#### Ejercicios 
+### Ejercicio 2
 
 2.1 Utilizá la secuencia *HS-ch11-fragment.fasta* que se encuentra en la carpeta *data* para compararla contra sí misma. Esta secuencia es un pequeño fragmento del cromosoma 1 de *Homo sapiens* y la vamos a utilizar únicamente para ver algunos de los patrones que podemos encontrar en un dotplot. 
 
@@ -271,30 +295,30 @@ Si aumentás estos parámetros podés ir eliminando fragmentos que corresponden 
 Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no son. La similitud es una característica cuantitativa de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). La homología, por otro lado, es una característica cualitativa, dos secuencias son o no son homólogas, **decir que un par de secuencias tiene N% de homología es incorrecto**. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
-#### Ejercicios
+### Ejercicio 3
 
-3.1 Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (*Equus caballus*), ballena enana (*Balaenoptera acutorostrata*) y canguro rojo (*Macropus rufus*).
+**3.1** Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (*Equus caballus*), ballena enana (*Balaenoptera acutorostrata*) y canguro rojo (*Macropus rufus*).
 
-3.1.1 Descargá las secuencias antes mencionadas de la carpeta del TP.  
-3.1.2 Utilizá la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.   
+**3.1.1** Descargá las secuencias antes mencionadas de la carpeta del TP.  
+**3.1.2** Utilizá la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.   
 
 ```Bash
 needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2* -outfile *salida*
 ```
-3.1.3 Observá e interpretá las salidas obtenidas. ¿Qué secuencias son más similares? ¿Tiene sentido el resultado obtenido?
+**3.1.3** Observá e interpretá las salidas obtenidas. ¿Qué secuencias son más similares? ¿Tiene sentido el resultado obtenido?
 
-3.1.4 Analizá árbol filogenético de la Fig. 1 del [paper](https://drive.google.com/file/d/1CHS7KCkgDQvzqQ2A_l4y4LKRaoo8Eraf/view?usp=sharing) de O'Leary *et al.*, 2013. 
+**3.1.4** Analizá árbol filogenético de la Fig. 1 del [paper](https://drive.google.com/file/d/1CHS7KCkgDQvzqQ2A_l4y4LKRaoo8Eraf/view?usp=sharing) de O'Leary *et al.*, 2013. 
 Sabiendo que los caballos y las ballenas pertenecen al clado *Euungulata* y los canguros al clado *Marsupialia*, ubicá estos clado en el árbol.
 ¿Esta información apoya los resultados que obtuviste en 3.1.3?
 
 
 ![Animales](./images/Animales.png)
 
-3.2 Realizá el mismo procedimiento pero esta vez para determinar si los mamuts (*Mammuthus primigenius*) son más cercanos a los elefantes africanos (*Loxodonta africana*) o asiáticos (*Elephas maximus*) utilizando la secuencia de la cadena alfa de la hemoglobina.  
+**3.2** Realizá el mismo procedimiento pero esta vez para determinar si los mamuts (*Mammuthus primigenius*) son más cercanos a los elefantes africanos (*Loxodonta africana*) o asiáticos (*Elephas maximus*) utilizando la secuencia de la cadena alfa de la hemoglobina.  
 
-3.2.2 ¿Qué te sugieren los resultados obtenidos?  
-3.2.3 ¿Qué otras explicaciones pueden satisfacer estos resultados?  
-3.2.4 Proponé soluciones para los problemas encontrados.  
+**3.2.2** ¿Qué te sugieren los resultados obtenidos?  
+**3.2.3** ¿Qué otras explicaciones pueden satisfacer estos resultados?  
+**3.2.4** Proponé soluciones para los problemas encontrados.  
 
 ![Elefantes](./images/Elefantes.png)
 
@@ -305,7 +329,12 @@ Un alineamiento múltiple (MSA) involucra tres o más secuencias biológicas. De
 
 >**Heurística:** es una estrategia que busca resolver un problema más simple cuya solución intersecta con la solución de un problema más complejo. Generalmente esto implica que no es seguro encontrar el mejor resultado pero sí una solución que sea aceptable. Las heurísticas se aplican con frecuencia en computación para poder resolver problemas que por su complejidad serían imposibles de abordar dados los limitados recursos con los que se cuentan.
 
-Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comparar, el MSA muestra los residuos de cada proteína en una fila junto con los gaps que le correspondan de tal manera que todos los residuos "equivalentes" se encuentren en la misma columna. El significado de equivalencia depende por lo general del contexto: para alguien que hace una filogenia puede significar que comparten una ancestro común; un biólogo estructural puede interpretar que son residuos que corresponden a posiciones análogas de un plegado determinado; para el biólogo molecular, residuos equivalentes juegan roles funcionales similares dentro de sus proteínas correspondientes. En cada caso un MSA provee un pantallazo sobre las restricciones evolutivas, estructurales o funcionales que caracterizan un set de proteínas de una manera visual e intuitiva.
+Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comparar, el MSA muestra los residuos de cada proteína en una fila junto con los gaps que le correspondan de tal manera que todos los residuos "equivalentes" se encuentren en la misma columna. La utilidad de esta equivalencia depende de quien mire el alineamiento:
+* Alguien que hace una filogenia puede enfocarse en que comparten un ancestro común;
+* Alguien que hace biología estructural puede enfocarse en que son residuos en posiciones análogas de una estructura proteica;
+* Alguien que hace biología molecular puede enfocarse en el rol funcional de esos residuos en la proteína.
+
+En cada caso un MSA provee un pantallazo sobre las restricciones evolutivas, estructurales o funcionales que caracterizan un set de proteínas de una manera visual e intuitiva.
 
 ![MA0](./images/MA0.png)
 
@@ -315,7 +344,7 @@ Un pipeline típico para realizar un MSA seria:
 3. Utilizar alguno de los programas disponibles para llevar a cabo el MSA. Por ej. EMBOSS
 4. Realizar ajustes manuales para corregir posibles errores de los algoritmos de alineamiento.
 
-#### Ejercicios
+### Ejercicio 4
 
 > ¡Atención! Antes de comenzar a resolver los ejercicios, instalá **ClustalW** en tu VM, escribiendo el siguiente comando en la terminal:
 
@@ -329,8 +358,13 @@ Estas proteínas contienen 9 puentes disulfuro conservados. También es de inter
 
 4.1 Utilizá las herramientas de EMBOSS para realizar un alineamiento múltiple con las secuencias de gp120 (recuerden que para buscar herramientas pueden usar *wossname*)  
 
-Pista: El comando a utilizar es **emma**. Para ver la ayuda, tipeá emma -help en la terminal.
+<details>
 
+<summary> <h6> Pista </h6> </summary>
+El comando a utilizar es **emma**. Para ver la ayuda, tipeá emma -help en la terminal.
+</details>
+
+<br>
 4.2 Utilizá el comando **showalign** de EMBOSS para obtener una mejor visualización del alineamiento.  
 
 4.3. Observá el alineamiento, como primer control podemos corroborar que las 18 Cisteínas (**C**) estén bien alineadas.  
