@@ -53,7 +53,7 @@ El alineamiento de secuencias de a pares comprende la asignación uno-a-uno de c
     - **Gap open:** Cuando se abre un gap.
     - **Gap extend:** Cuando se agregan gaps a continuación de otro gap.
 
-Por ejemplo si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
+Por ejemplo, si alineamos las secuencias AFGIVHKLIVS y AFGIHKIVS un posible resultado sería:
 
 <blockquote style="font-family:monospace">
 A F G I V H K L I V S  
@@ -67,7 +67,7 @@ Los **alineamientos globales** (o de Needleman-Wunsch por sus creadores), se rea
 Los **alineamientos locales** (o de Smith-Waterman), parean únicamente parte de las secuencias y son útiles para identificar, por ejemplo, dominios en común.
 Luego existen **alineamientos mixtos**, que combinan los dos anteriores.
 
-## 1. Dynamic programming
+## Dynamic programming
 
 Dado un par de secuencias y un sistema de puntuación o *scoring* se pueden aplicar diversos algoritmos para encontrar el alineamiento que dé el mejor puntaje. El algoritmo más popular utiliza un método matemático llamado *dynamic programming*. El mismo consiste en comparar ambas secuencias construyendo una matriz del alineamiento. Se comienza en el extremo superior izquierdo de la matriz, con un puntaje inicial de 0. En cada paso, se calcula el costo que tiene aparejado desplazarse de una celda a la otra, dado el sistema de puntajes preestablecido, y se elige la opción más favorable, es decir aquella que **maximice** el puntaje global del alineamiento, entre todas las posibles. Asimismo, en cada iteración se guarda el puntaje con el que se llegó a una dada celda y el movimiento que originó dicho camino o *path*, indicado típicamente con una flecha. Una vez que la matriz está completa en su totalidad se puede recorrer hacia atrás o realizar un *traceback*, desde el extremo inferior derecho al superior izquierdo, para reconstruir el alineamiento.
 
@@ -100,15 +100,28 @@ Para comenzar, refresquemos cómo funcionaba el método de *dynamic programming*
 <!---
 ![Dynamic1](./images/NW_3.png)
 --->
-<img src="./images/NW_3.png" alt="Dynamic1" style="max-width:70%">
+<img src="./images/NW_3.png" alt="Dynamic1" style="max-width:60%">
 
-Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alineamiento a la posición marcada con una "x" roja podríamos, hipotéticamente, tomar cualquiera de los caminos dibujados en la figura de más arriba. Estos *paths* darían alinemientos diferentes de las secuencias **TC** con **TC**. 
+Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alineamiento a la posición marcada con una <span style="color:red;font-weight:bold;font-family:monospace">x</span> podríamos, hipotéticamente, tomar cualquiera de los caminos dibujados en la figura de más arriba. Estos *paths* darían alinemientos diferentes de las secuencias **TC** con **TC**. 
 
-Pero... ¿cuál es el procedimiento iterativo empleado por el método de *dynamic programming* para obtener el alineamiento óptimo entre dos secuencias ?
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-question"></i></span>
+      Pero... ¿cuál es el procedimiento iterativo empleado por el método de *dynamic programming* para obtener el alineamiento óptimo entre dos secuencias ?
+</li>
+</ul>
 
+<!---
 ![Dynamic2](./images/NW_4.png)
+--->
 
-> Para llegar a cualquier celda de la matriz, uno puede acceder por, como máximo, 3 direcciones. La idea es siempre moverse en la dirección que **maximice** el *score* o puntaje. 
+<img src="./images/NW_4.png" alt="Dynamic1" style="max-width:60%">
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined" markdown="span">
+      Para llegar a cualquier celda de la matriz, uno puede acceder por, como máximo, 3 direcciones. La idea es siempre moverse en la dirección que maximice el *score* o puntaje. 
+</li>
+</ul>
 
 Veamos que :
 
@@ -181,34 +194,41 @@ Para reconstruir el mismo, se parte de la celda ubicada en extremo inferior dere
 
 ![Dynamic5](./images/NW_9.png)
 
-Las flechas en rojo resaltan el *path* del alineamiento, 
+Las flechas en <span style="color:red;font-weight:bold;"> rojo </span> resaltan el *path* del alineamiento, 
 
-```
+<blockquote style="font-family:monospace"> 
 eje j: T C G C A
+
 eje i: T C - C A 
-```
+</blockquote>
+
 que podemos corroborar que es idéntico al *path* **1** del ejemplo que se planteó inicialmente. 
 
 ### Ejercicio 1
 
-1.1 En grupo, realizá el alineamiento de las secuencias **ATTGG** con **AGATGG**, usando el esquema de puntajes: M=1, m=-1, g=-2. 
+**1.1** En grupo, realizá el alineamiento de las secuencias **ATTGG** con **AGATGG**, usando el esquema de puntajes: M=1, m=-1, g=-2. 
 
 Para esto, abrí el siguiente [Google Jamboard](https://jamboard.google.com/d/1aWUWAhRLroqffKFz0Ke7XDOG3nWRrruXC5Gku5UvbOU/edit?usp=sharing), guardá una copia local del mismo en tu Google Drive y compartí el GJamboard a tus compañeros de equipo. 
 
-> **¡Atención!** Para guardar una copia local del GJamboard en tu GDrive, cliqueá en el ícono con 3 puntitos, en el extremo superior derecho (Más acciones). Luego seleccioná la opción "Hacer una copia". Elegí la carpeta adonde deseas guardarlo dentro de tu unidad y cliqueá aceptar. 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      Para guardar una copia local del GJamboard en tu GDrive, cliqueá en el ícono con 3 puntitos, en el extremo superior derecho (Más acciones). Luego seleccioná la opción "Hacer una copia". Elegí la carpeta adonde deseas guardarlo dentro de tu unidad y cliqueá aceptar. 
+</li>
+</ul>
 
 ¡Ahora estás listo para empezar! Recordá rellenar la matriz con todos los puntajes y flechas faltantes. Cuando termines, reconstruí el *path* del alineamiento.
 
-1.2 Cuando termines el ejercicio anterior podés corrobar la solución que hallaste ingresando en [UniFreiburg-FreiburgRNATools](http://rna.informatik.uni-freiburg.de/Teaching/index.jsp?toolName=Needleman-Wunsch).
+**1.2** Cuando termines el ejercicio anterior podés corrobar la solución que hallaste ingresando en [UniFreiburg-FreiburgRNATools](http://rna.informatik.uni-freiburg.de/Teaching/index.jsp?toolName=Needleman-Wunsch).
 
 Seguí las siguientes instrucciones para usar este recurso web:
 
-a. Ingresá las dos secuencias que querés alinear en los recuadros de **Input** **Sequence a** y **Sequence b**. 
+**a.** Ingresá las dos secuencias que querés alinear en los recuadros de **Input** **Sequence a** y **Sequence b**. 
 Recordá que la secuencia que figura en tu matriz en sentido horizontal debe ser ingresada como **Sequence b** y la que figura en sentido vertical debe ser ingresada como **Sequence a**.
 
-b. Seleccioná optimización de Similarity. 
+**b.** Seleccioná optimización de Similarity. 
 
-c. Completá los valores de tu esquema de *scoring*.
+**c.** Completá los valores de tu esquema de *scoring*.
 
 En el output podrás apreciar dos salidas:
 
@@ -216,29 +236,27 @@ En el output podrás apreciar dos salidas:
 
 * A la derecha, se observa el alineamiento final, donde un match se esquematiza en con \*, un mismatch con \| y un gap con \_.
 
-1.3 Respondé a las siguientes preguntas:
+**1.3** Respondé a las siguientes preguntas:
 
-1.3.1 Reproducí el alineamiento que vimos como ejemplo al inicio (**TCGCA** con **TCCA**, esquema de puntajes: M=1, m=-1, g=-2) en la web de la [UniFreiburg-FreiburgRNATools](http://rna.informatik.uni-freiburg.de/Teaching/index.jsp?toolName=Needleman-Wunsch)
+**1.3.1** Reproducí el alineamiento que vimos como ejemplo al inicio (**TCGCA** con **TCCA**, esquema de puntajes: M=1, m=-1, g=-2) en la web de la [UniFreiburg-FreiburgRNATools](http://rna.informatik.uni-freiburg.de/Teaching/index.jsp?toolName=Needleman-Wunsch)
 
 ¿Cuántas soluciones óptimas hay para este alineamiento? ¿Sucede lo mismo para el alineamiento que realizaste en el **Ejercicio 1**? ¿Por qué?
 
-1.3.2 Observá con detenimiento el output del panel de la izquierda (la matriz) 
+**1.3.2** Observá con detenimiento el output del panel de la izquierda (la matriz) 
 
-¿Qué sucede cuando seleccionás una celda y se colorea en verde y 2 celdas aledañas a la misma se colorean en rosa? 
+¿Qué sucede cuando seleccionás una celda y se colorea en <span style="color:green;font-weight:bold">verde</span> y 2 celdas aledañas a la misma se colorean en <span style="color:pink;font-weight:bold">rosa</span>? 
 
-1.3.3 Finalmente te propongo que realices el siguiente alineamiento: 
+**1.3.3** Finalmente te propongo que realices el siguiente alineamiento: 
 
-> Sequence a: AGATGG y Sequence b: ATTGGG. 
-
-> Seleccioná optimización de Similarity. 
-
-> Esquema de puntajes: **M:1, m:-1, g:-5**. 
+* Sequence a: **AGATGG** y Sequence b: **ATTGGG**. 
+* Seleccioná optimización de Similarity. 
+* Esquema de puntajes: **M:1, m:-1, g:-5**. 
 
 Registrá con atención el resultado. Ahora cambiemos el esquema de *scoring*, dejando el mismo valor para match, pero intercambiando los puntajes de gap y mismatch. 
 ¿Cómo cambió el output? ¿Qué observás ahora en las secuencias halladas como solución óptima en comparación a lo que arrojaba el algoritmo con los parámetros anteriores?
 
 
-## 2. Dot-Plots
+## Dot-Plots
 
 Los dot-plots son representaciones gráficas que dan un pantallazo sobre la similitud entre dos secuencias. En ellos se pueden identificar patrones que aporten información sobre la relación entre ambas secuencias.
 La forma de obtener uno es muy sencilla: se establece una matriz donde cada elemento de una de las secuencias se corresponde con una fila y los de la otra con una columna. Acto seguido se procede a colorear cada celda donde los caracteres correspondientes a fila y columna sean equivalentes.
@@ -246,13 +264,17 @@ Por ejemplo:
 
 ![DotPlot](./images/DotPlot1.jpeg)
 
-Nosotros podemos utilizar la herramienta de EMBOSS **dotmatcher** para generar nuestros propios plots. 
+Nosotros podemos utilizar la herramienta de EMBOSS ```dotmatcher``` para generar nuestros propios plots. 
 
-> Recordatorio: Para ver qué parámetros toma de entrada la función, correr en la terminal **dotmatcher -h**.
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined" markdown="span">
+   Recordatorio: Para ver qué parámetros toma de entrada la función, correr en la terminal ```dotmatcher -h```.
+</li>
+</ul>
 
 ### Ejercicio 2
 
-2.1 Utilizá la secuencia *HS-ch11-fragment.fasta* que se encuentra en la carpeta *data* para compararla contra sí misma. Esta secuencia es un pequeño fragmento del cromosoma 1 de *Homo sapiens* y la vamos a utilizar únicamente para ver algunos de los patrones que podemos encontrar en un dotplot. 
+**2.1** Utilizá la secuencia *HS-ch11-fragment.fasta* que se encuentra en la carpeta *data* para compararla contra sí misma. Esta secuencia es un pequeño fragmento del cromosoma 1 de *Homo sapiens* y la vamos a utilizar únicamente para ver algunos de los patrones que podemos encontrar en un dotplot. 
 
 Generá un dotplot utilizando la secuencia HS-ch11-fragment.fasta contra sí misma.
 
@@ -268,7 +290,7 @@ Para limpiar el plot y quedarnos con los matches más significativos podemos jug
 * *windowsize*: Tamaño de ventana
 * *threshold*: Umbral de ocurrencia
 
-Esto quiere decir que **dotmatcher** sólo va a poner un punto cuando un fragmento del largo *windowsize* contenga un score mayor a *threshold*.
+Esto quiere decir que ```dotmatcher``` sólo va a poner un punto cuando un fragmento del largo *windowsize* contenga un score mayor a *threshold*.
 Por ejemplo:
 
 ```Bash
@@ -288,9 +310,9 @@ Si aumentás estos parámetros podés ir eliminando fragmentos que corresponden 
 **g)** Secuencias con alta conservación.  
 **h)** Inserción o deleción.  
 
-2.2 Cambiá los parámetros *windowsize* y *threshold* hasta obtener un plot que te parezca adecuado. **¿Qué podés interpretar del mismo?** Identificá patrones.
+**2.2** Cambiá los parámetros *windowsize* y *threshold* hasta obtener un plot que te parezca adecuado. **¿Qué podés interpretar del mismo?** Identificá patrones.
 
-## 3. Similitud y Homología
+## Similitud y Homología
 
 Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no son. La similitud es una característica cuantitativa de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). La homología, por otro lado, es una característica cualitativa, dos secuencias son o no son homólogas, **decir que un par de secuencias tiene N% de homología es incorrecto**. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
@@ -300,7 +322,7 @@ A partir de esta relación entre similitud y homología se puede aplicar para in
 **3.1** Determinar qué especies están más relacionadas utilizando la ribonucleasa pancreática de caballo (*Equus caballus*), ballena enana (*Balaenoptera acutorostrata*) y canguro rojo (*Macropus rufus*).
 
 **3.1.1** Descargá las secuencias antes mencionadas de la carpeta del TP.  
-**3.1.2** Utilizá la herramienta de alineamiento global de EMBOSS **needle** (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.   
+**3.1.2** Utilizá la herramienta de alineamiento global de EMBOSS ```needle``` (pueden leer el manual para ver que opciones admite) para comparar las tres secuencias.   
 
 ```Bash
 needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2* -outfile *salida*
@@ -309,7 +331,7 @@ needle -gapopen 10 -gapextend 1 -asequence *secuencia_1* -bsequence *secuencia_2
 
 **3.1.4** Analizá árbol filogenético de la Fig. 1 del [paper](https://drive.google.com/file/d/1CHS7KCkgDQvzqQ2A_l4y4LKRaoo8Eraf/view?usp=sharing) de O'Leary *et al.*, 2013. 
 Sabiendo que los caballos y las ballenas pertenecen al clado *Euungulata* y los canguros al clado *Marsupialia*, ubicá estos clado en el árbol.
-¿Esta información apoya los resultados que obtuviste en 3.1.3?
+¿Esta información coincide con los resultados que obtuviste en **3.1.3**?
 
 
 ![Animales](./images/Animales.png)
@@ -322,12 +344,15 @@ Sabiendo que los caballos y las ballenas pertenecen al clado *Euungulata* y los 
 
 ![Elefantes](./images/Elefantes.png)
 
-
-## 4. Alineamientos múltiples
+## Alineamientos múltiples
 
 Un alineamiento múltiple (MSA) involucra tres o más secuencias biológicas. Debido a que la tarea de alinear múltiples secuencias de largos biológicamente significativos suele ser muy demandante en términos de recursos computacionales y tiempos de ejecución estos requieren metodologías más sofisticadas para llevarse a cabo. Por ello la mayoría de los programas disponibles para realizar MSA utiliza heurísticas en vez de algoritmos de optimización global.
 
->**Heurística:** es una estrategia que busca resolver un problema más simple cuya solución intersecta con la solución de un problema más complejo. Generalmente esto implica que no es seguro encontrar el mejor resultado pero sí una solución que sea aceptable. Las heurísticas se aplican con frecuencia en computación para poder resolver problemas que por su complejidad serían imposibles de abordar dados los limitados recursos con los que se cuentan.
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined" markdown="span">
+   **Heurística:** es una estrategia que busca resolver un problema más simple cuya solución se interseca con la solución de un problema más complejo. Generalmente esto implica que no es seguro encontrar el mejor resultado pero sí una solución que sea aceptable. Las heurísticas se aplican con frecuencia en computación para poder resolver problemas que, por su complejidad, serían imposibles de abordar dados los limitados recursos con los que se cuentan.
+</li>
+</ul>
 
 Dadas las secuencias de aminoácidos de un set de proteínas que se quieren comparar, el MSA muestra los residuos de cada proteína en una fila junto con los gaps que le correspondan de tal manera que todos los residuos "equivalentes" se encuentren en la misma columna. La utilidad de esta equivalencia depende de quien mire el alineamiento:
 * Alguien que hace una filogenia puede enfocarse en que comparten un ancestro común;
@@ -338,7 +363,7 @@ En cada caso un MSA provee un pantallazo sobre las restricciones evolutivas, est
 
 ![MA0](./images/MA0.png)
 
-Un pipeline típico para realizar un MSA seria:
+Un pipeline típico para realizar un MSA sería:
 1. Formular la pregunta que se quiere contestar. Por ejemplo,  "¿Qué estructura secundaria adopta X región de mi proteína de interés?"
 2. Obtener secuencias que puedan contestar a mi pregunta. Por ejemplo, secuencias que estén relacionadas a mi proteína de interés.
 3. Utilizar alguno de los programas disponibles para llevar a cabo el MSA. Por ej. EMBOSS
@@ -346,30 +371,40 @@ Un pipeline típico para realizar un MSA seria:
 
 ### Ejercicio 4
 
-> ¡Atención! Antes de comenzar a resolver los ejercicios, instalá **ClustalW** en tu VM, escribiendo el siguiente comando en la terminal:
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      Antes de comenzar a resolver los ejercicios, instalá ClustalW en tu VM, escribiendo el siguiente comando en la terminal:
 
-```Bash
-sudo apt install clustalw
-```
+      ```
+      sudo apt install clustalw
+      ```
+</li>
+</ul>
 
 La gp120 es una proteína que recubre al virus del HIV y facilita su unión e ingreso a la célula que infecta (linfocitos CD4+)
 Entre nuestros archivos contamos con un multifasta (gp120.fasta) que contiene 27 secuencias de gp120 de HIV-1, HIV-2 y SIV.
 Estas proteínas contienen 9 puentes disulfuro conservados. También es de interés el loop V3, una porción expuesta de la proteína, conocido target de anticuerpos el cual constituye una región hipervariable dada la presión selectiva a la que se ve sometido. Pueden ver la disposicion de los diversos elementos de gp120 en [este esquema](http://www.cbs.dtu.dk/dtucourse/cookbooks/hnielsen/gp120.farve.gif).
 
-4.1 Utilizá las herramientas de EMBOSS para realizar un alineamiento múltiple con las secuencias de gp120 (recuerden que para buscar herramientas pueden usar *wossname*)  
+**4.1** Utilizá las herramientas de EMBOSS para realizar un alineamiento múltiple con las secuencias de gp120 (recuerden que para buscar herramientas pueden usar ```wossname```)  
 
 <details>
 
 <summary> <h6> Pista </h6> </summary>
-El comando a utilizar es **emma**. Para ver la ayuda, tipeá emma -help en la terminal.
+El comando a utilizar es ```emma```. Para ver la ayuda, tipeá ```emma -help``` en la terminal.
 </details>
 
 <br>
-4.2 Utilizá el comando **showalign** de EMBOSS para obtener una mejor visualización del alineamiento.  
+**4.2** Utilizá el comando ```showalign``` de EMBOSS para obtener una mejor visualización del alineamiento.  
 
-4.3. Observá el alineamiento, como primer control podemos corroborar que las 18 Cisteínas (**C**) estén bien alineadas.  
+**4.3** Observá el alineamiento, como primer control podemos corroborar que las 18 Cisteínas (**C**) estén bien alineadas.  
 
-4.4 Utilizá el esquema de gp120 para identificar diversas regiones ya sea conservadas o muy variables (Estructuras, loops, etc.)  
- **Notá que las posiciones en el alineamiento cuentan gaps por lo que no se corresponden exactamente con el esquema, utilizá las posiciones de las cisteínas conservadas para identificar diferentes regiones.**
+**4.4** Utilizá el esquema de gp120 para identificar diversas regiones ya sea conservadas o muy variables (Estructuras, loops, etc.) 
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined" markdown="span">
+   Notá que las posiciones en el alineamiento cuentan gaps por lo que no se corresponden exactamente con el esquema. Utilizá las posiciones de las cisteínas conservadas para identificar diferentes regiones.
+</li>
+</ul>
 
 {% endif %}
