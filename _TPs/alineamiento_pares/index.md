@@ -2,11 +2,11 @@
 layout: page
 title: TP N°3
 subtitle: Alineamientos de secuencias de a pares
-data : True
+data : false
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
 
 <style>
@@ -60,34 +60,56 @@ A F G I V H K L I V S
 A F G I - H K - I V S
 </blockquote>
 
-La principal función de los alineamientos es establecer una medida de **similitud** entre las secuencias que participan en el mismo. Para ello es necesario definir un **sistema de puntuación** que pese cada uno de los eventos que tienen lugar en la contrucción del alineamiento. Asimismo, este esquema de puntajes o *scoring* nos permitirá optimizar el alineamiento de forma tal que los algoritmos empleados elijan la correspondencia entre secuencias que maximice el puntaje o *score* global.
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-lightbulb"></i></span>
+    Los **gaps** no existen en la realidad. NO son un aminoácido o nucleótido más, sino una **herramienta** que utilizamos para poder alinear.
+</li>
+</ul>
+
+La principal función de los alineamientos es establecer una medida de **similitud** entre las secuencias que participan en el mismo. Para ello es necesario definir un **sistema de puntuación** que pese cada uno de los eventos que tienen lugar en la construcción del alineamiento. Asimismo, este esquema de puntajes o *scoring* nos permitirá optimizar el alineamiento de forma tal que los algoritmos empleados elijan la correspondencia entre secuencias que maximice el puntaje o *score* global.
 
 Existen varios algoritmos de alineamiento.
-Los **alineamientos globales** (o de Needleman-Wunsch por sus creadores), se realizan apareando todos los elementos de una secuencia con todos los elementos de la otra. Este tipo de alineamientos se utiliza principalmente para comparar dos secuencias que son similares en longitud.
-Los **alineamientos locales** (o de Smith-Waterman), parean únicamente parte de las secuencias y son útiles para identificar, por ejemplo, dominios en común.
-Luego existen **alineamientos mixtos**, que combinan los dos anteriores.
+* Los **alineamientos globales** (o de Needleman-Wunsch por sus creadores), se realizan apareando todos los elementos de una secuencia con todos los elementos de la otra. Este tipo de alineamientos se utiliza principalmente para comparar dos secuencias que son similares en longitud.
+* Los **alineamientos locales** (o de Smith-Waterman), parean únicamente parte de las secuencias y son útiles para identificar, por ejemplo, dominios en común.
+* Los **alineamientos mixtos**, que combinan los dos anteriores.
 
 ## Dynamic programming
 
-Dado un par de secuencias y un sistema de puntuación o *scoring* se pueden aplicar diversos algoritmos para encontrar el alineamiento que dé el mejor puntaje. El algoritmo más popular utiliza un método matemático llamado *dynamic programming*. El mismo consiste en comparar ambas secuencias construyendo una matriz del alineamiento. Se comienza en el extremo superior izquierdo de la matriz, con un puntaje inicial de 0. En cada paso, se calcula el costo que tiene aparejado desplazarse de una celda a la otra, dado el sistema de puntajes preestablecido, y se elige la opción más favorable, es decir aquella que **maximice** el puntaje global del alineamiento, entre todas las posibles. Asimismo, en cada iteración se guarda el puntaje con el que se llegó a una dada celda y el movimiento que originó dicho camino o *path*, indicado típicamente con una flecha. Una vez que la matriz está completa en su totalidad se puede recorrer hacia atrás o realizar un *traceback*, desde el extremo inferior derecho al superior izquierdo, para reconstruir el alineamiento.
+Dado un par de secuencias y un sistema de puntuación o *scoring* se pueden aplicar diversos algoritmos para encontrar el alineamiento que dé el mejor puntaje.
 
-La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, puede que existan varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica, la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad dependa de la longitud de las secuencias implicadas, lo cual lo hace poco eficiente para búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
+El algoritmo más popular utiliza un método matemático llamado ***dynamic programming*** . El mismo consiste en comparar ambas secuencias construyendo una matriz del alineamiento. Brevemente:
 
-Veamos un ejemplo, imaginen que queremos alinear las secuencias **TCGCA** y **TCCA** utilizando un esquema de *scoring* de M=1, m=-1, g=-2.
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info" markdown="span">
+   Se comienza en el extremo superior izquierdo de la matriz, con un puntaje inicial de 0. En cada paso, se calcula el costo que tiene aparejado desplazarse de una celda a la otra, dado el sistema de puntajes pre-establecido, y se elige la opción más favorable, es decir aquella que **maximice** el puntaje global del alineamiento. En cada iteración se guarda el puntaje con el que se llegó a una celda dada y el movimiento que originó dicho camino o *path*, indicado típicamente con una flecha. Una vez que la matriz está completa en su totalidad se puede recorrer hacia atrás o realizar un *traceback*, desde el extremo inferior derecho al superior izquierdo, para reconstruir el alineamiento.
+   </li>
+</ul>
+
+La principal ventaja de este método es que **siempre encuentra el alineamiento óptimo** entre las secuencias dadas. Sin embargo, una desventaja es pueden existir varios alineamientos que satisfagan esta condición. Otra desventaja es de origen técnica: la exhaustividad con la que el algoritmo realiza la búsqueda hace que su velocidad dependa de la longitud de las secuencias implicadas, haciendo poco eficiente la búsqueda de similitud de una secuencia contra una base de datos. Para esto existen diferentes adaptaciones del algoritmo que se verán más adelante.
+
+#### Ejemplo
+Imaginen que queremos alinear las secuencias **TCGCA** y **TCCA** utilizando un esquema de *scoring* de:
+- **Match:** M=1
+- **Mismatch:** m=-1
+- **Gap:** g=-2
+
 Para eso ubicamos las secuencias en una matriz, donde cada una de sus dimensiones corresponda a una de las secuencias, tal como se muestra en la siguiente figura. 
 
 ![Dynamic0](./images/NW_2.png)
 
 Si observamos los *paths* **1** y **2** dibujados en las matrices de la figura podemos ver que se emplearon distintas estrategias para alinear este par de secuencias. 
 
-* En **1** se eligió alinear los dos primeros nucleótidos **TC** por la diagonal, luego colocar un gap en la secuencia vertical **TCCA** y para finalizar se alinearon los nucleótidos **CA** restantes por la diagonal.      
+* En **1** se eligió alinear los dos primeros nucleótidos **TC** por la diagonal, luego colocar un **gap** en la secuencia vertical **TCCA** y para finalizar se alinearon los nucleótidos **CA** restantes por la diagonal.      
 
-* En **2** el primer nucleótido **T** de ambas secuencias se alineó por la diagonal, luego se colocó un gap en la secuencia vertical **TCCA** y finalmente se alinearon los 3 nucleótidos **GCA** y **CCA** restantes por la diagonal.      
+* En **2** el primer nucleótido **T** de ambas secuencias se alineó por la diagonal, luego se colocó un **gap** en la secuencia vertical **TCCA** y finalmente se alinearon los 3 nucleótidos **GCA** y **CCA** restantes por la diagonal.      
 
-Si computamos los puntajes de ambos alineamientos, obtenemos que **1** tiene un puntaje de 2, mientras que **2** un puntaje de 0. Esto es lógico dado que en **1** se propone colocar un único gap, lo cual permite, en consecuencia, alinear al resto de los nucleótidos en ambas secuencias con eventos de match. En contraposición, **2** sugiere una estrategia subóptima en relación a **1**, con un puntaje resultante más bajo, en la cual las secuencias estudiadas se aparean con 1 gap, 1 mismatch y 3 matches.
+Si computamos los puntajes de ambos alineamientos, obtenemos que:
+- La **opción 1** tiene un puntaje de 2. Se propone colocar un único **gap** permitiendo alinear al resto de los nucleótidos en ambas secuencias con eventos de **match**.
+- La **opción 2** tiene un puntaje de 0. Las secuencias estudiadas se alinean con 1 **gap**, 1 **mismatch** y 3 **matches**. La estrategia es subóptima en relación a **1**, 
 
 <ul class="block-list has-radius is-primary">
-   <li class=" is-outlined is-info has-icon" markdown="span">
+   <li class=" is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-question"></i></span>
     Si hubiésemos aplicado la metodología de *dynamic programming* para realizar un alineamiento global de estas secuencias, ¿cuál sería el *path* óptimo resultante? 
 </li>
@@ -102,13 +124,13 @@ Para comenzar, refresquemos cómo funcionaba el método de *dynamic programming*
 --->
 <img src="./images/NW_3.png" alt="Dynamic1" style="max-width:60%">
 
-Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alineamiento a la posición marcada con una <span style="color:red;font-weight:bold;font-family:monospace">x</span> podríamos, hipotéticamente, tomar cualquiera de los caminos dibujados en la figura de más arriba. Estos *paths* darían alinemientos diferentes de las secuencias **TC** con **TC**. 
+Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alineamiento a la posición marcada con una <span style="color:red;font-family:monospace"><b>x</b></span> podríamos, hipotéticamente, tomar cualquiera de los caminos dibujados en la figura de más arriba. Estos *paths* darían alinemientos diferentes de las secuencias **TC** con **TC**. 
 
 <ul class="block-list has-radius is-primary">
-   <li class=" is-outlined is-info has-icon" markdown="span">
+   <li class=" is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-question"></i></span>
-      Pero... ¿cuál es el procedimiento iterativo empleado por el método de *dynamic programming* para obtener el alineamiento óptimo entre dos secuencias ?
-</li>
+      Pero... ¿cuál es el procedimiento iterativo empleado por el método de *dynamic programming* para obtener el alineamiento óptimo entre dos secuencias?
+   </li>
 </ul>
 
 <!---
@@ -125,52 +147,58 @@ Para llegar desde el extremo superior izquierdo (= inicio) de la matriz del alin
 
 Veamos que :
 
-* un movimiento en la dirección horizontal, de la posición **(i, j-1)** a la posición **(i, j)**, supone introducir un gap en la secuencia del eje vertical i
-* un movimiento en la dirección diagonal, de la posición **(i-1, j-1)** a la posición **(i, j)**, supone un match o un mismatch entre los nucleótidos enfrentados
-* un movimiento en la dirección vertical, de la posición **(i-1, j)** a la posición **(i, j)**, supone introducir un gap en la secuencia del eje horizontal j
+* un movimiento en la dirección <span style="color:blue;"><b>horizontal</b></span>, de la posición **(i, j-1)** a la posición **(i, j)**, supone introducir un **gap** en la secuencia del eje vertical i
+* un movimiento en la dirección <span style="color:green;"><b>diagonal</b></span>, de la posición **(i-1, j-1)** a la posición **(i, j)**, supone un **match** o un **mismatch** entre los nucleótidos enfrentados
+* un movimiento en la dirección <span style="color:purple;"><b>vertical</b></span>, de la posición **(i-1, j)** a la posición **(i, j)**, supone introducir un **gap** en la secuencia del eje horizontal j
 
-Teniendo en cuenta la fórmula para obtener el *score* enunciada más arriba, podemos comenzar con nuestro ejercicio. Recordemos que la matriz se llenará iterativamente, comenzando por la celda del extremo superior izquierdo, que tiene un puntaje de 0. 
+Teniendo en cuenta la fórmula para obtener el *score* enunciada más arriba, podemos comenzar con nuestro ejercicio!
+
+Recordemos que la matriz se llenará iterativamente, comenzando por la celda del extremo superior izquierdo, que tiene un puntaje de 0. 
 
 ![Dynamic3](./images/NW_5.png)
 
-Para moverse del (0, 0) al (0, 1), hay una sóla opción, moverse en forma horizontal. Esto significa alinear T con un gap, lo cual da un score de 0 + (-2) = -2. 
+Para moverse del (0, 0) al (0, 1), hay una sóla opción, moverse en forma **horizontal**. Esto significa alinear **T** con un **gap**, lo cual da un score de 0 + (-2) = -2. 
 
 ```
 eje j: T
 eje i: -
 ```
-Lo mismo pasa al moverse del (0, 0) al (1, 0), hay una sóla opción, moverse en forma vertical. Esto significa alinear T con un gap, lo cual también da un score de 0 + (-2) = -2. 
+Lo mismo pasa al moverse del (0, 0) al (1, 0), hay una sóla opción, moverse en forma **vertical**. Esto significa alinear **T** con un **gap**, lo cual también da un score de 0 + (-2) = -2. 
 
 ```
 eje j: -
 eje i: T
 ```
 
-Para moverse del (0, 0) al (1, 1) hay 3 maneras, 
+Para moverse del (0, 0) al (1, 1) hay 3 maneras: 
 
 ![Dynamic4](./images/NW_6.png)
 
-* Hacer un movimiento vertical, lo cual nos daria un score de -2 + (-2) = -4 (-2 es el puntaje de la celda inicial (0, 1) y el movimiento vertical implica colocar un gap)
-
-```
+* Hacer un movimiento **vertical**, lo cual da un score de -2 + (-2) = -4
+   - **-2** es el puntaje de la celda inicial (0, 1)
+   - El movimiento vertical implica colocar un **gap**: -2
+   - ```
 eje j: T -
 eje i: - T
 ```
 
-* Hacer un movimiento horizontal, similar al caso anterior, resultando en un score de -4 (-2 es el puntaje de la celda inicial (1, 0) y el movimiento horizontal implica colocar un gap)
-
-```
+* Hacer un movimiento **horizontal**, lo cual da un score de -2 + (-2) = -4. Similar al caso anterior:
+   - **-2** es el puntaje de la celda inicial (1, 0)
+   - El movimiento horizontal implica colocar un **gap**: -2
+   - ```
 eje j: - T
 eje i: T -
 ```
-* Hacer un movimiento diagonal, lo cual implica alinear ambos nucleótidos. Como son dos T en ambas secuencias, el score sería +1, que es el valor del match.
 
-```
+* Hacer un movimiento **diagonal**, lo cual da un score de 0 + (+1). Implica alinear ambos nucléotidos!
+   - **0** es el puntaje de la celda inicial (0, 0)
+   - Hay **T** en las ambas secuencias. Es un **match**: +1
+   - ```
 eje j: T 
 eje i: T
 ```
 
-Para decidir qué valor ubicamos en la celda simplemente optamos por el que nos dé el mayor score, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal.
+Para decidir qué valor ubicamos en la celda simplemente optamos por el que nos dé el **mayor score**, en este caso 1, y se marca el movimiento que lo produjo: un movimiento diagonal.
 
 De esta manera podemos seguir completando la matriz, 
 
@@ -178,15 +206,15 @@ De esta manera podemos seguir completando la matriz,
 
 Obsevando la última celda computada, podemos ver que hay nuevamente 3 maneras de llegar a la misma, 
 
-* Hacer un movimiento vertical, de (1, 3) a (2, 3), lo cual resulta en introducir un gap en la secuencia horizontal j. Si (1, 3) tiene un *score* de -3, -3 + gap penalty = -3 + (-2) = -5, que es el número registrado en la flecha en dirección vertical.
+* Hacer un movimiento **vertical**, de (1, 3) a (2, 3): Es decir, introducir un **gap** en la secuencia horizontal j. Si (1, 3) tiene un *score* de -3, el nuevo *score* es: -3 + gap penalty = -3 + (-2) = -5 (flecha en dirección vertical).
 
-* Hacer un movimiento horizontal, de (2, 2) a (2, 3), lo cual resulta en introducir un gap en la secuencia vertical i. Si (2, 2) tiene un *score* de 2, 2 + gap penalty = 2 + (-2) = 0, que es el número registrado en la flecha en dirección horizontal.
+* Hacer un movimiento **horizontal**, de (2, 2) a (2, 3). Es decir, introducir un gap en la secuencia vertical i. Si (2, 2) tiene un *score* de 2, el nuevo *score* es: 2 + gap penalty = 2 + (-2) = 0 (flecha en dirección horizontal).
 
-* Hacer un movimiento diagonal, de (1, 2) a (2, 3), lo cual resulta en alinear los nucleótidos G y C. Si (1, 2) tiene un *score* de -1, -1 + mismatch = -1 + (-1) = -2, que es el número registrado en la flecha en dirección diagonal.   
+* Hacer un movimiento **diagonal**, de (1, 2) a (2, 3). Es decir, alinear los nucleótidos G y C. Si (1, 2) tiene un *score* de -1, el nuevo *score* es: -1 + mismatch = -1 + (-1) = -2 (flecha en dirección diagonal).
 
-Si se calcula el max(-5, 0, -2) = 0, que es el puntaje que se generó por el movimiento horizontal. Entonces colocamos 0 en la celda (2, 3) y una flecha horizontal que indique el movimiento de (2, 2) a (2, 3).
+El máximo de los 3 scores calculados es: max(-5, 0, -2) = 0, que corresponde al puntaje del **movimiento horizontal**. Entonces colocamos 0 en la celda (2, 3) y una flecha horizontal que indique el movimiento de (2, 2) a (2, 3).
 
-Al completar todas las celdas de la matriz, podemos saber cuál es el puntaje de la celda ubicada en extremo inferior derecho, que en este caso resultó ser +2. Este también es el puntaje final del alineamiento.  
+Al completar todas las celdas de la matriz, podemos saber cuál es el puntaje de la celda ubicada en extremo inferior derecho, que en este caso resultó ser +2. Este también es el puntaje final del alineamiento.
 
 ![Dynamic5](./images/NW_8.png)
 
@@ -314,7 +342,17 @@ Si aumentás estos parámetros podés ir eliminando fragmentos que corresponden 
 
 ## Similitud y Homología
 
-Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no son. La similitud es una característica cuantitativa de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). La homología, por otro lado, es una característica cualitativa, dos secuencias son o no son homólogas, **decir que un par de secuencias tiene N% de homología es incorrecto**. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
+Los términos similitud y homología se suelen utilizar como sinónimos por muchos investigadores, sin embargo no lo son. 
+* La **similitud** es una característica cuantitativa de un par de secuencias, donde se establece en qué grado estas se parecen (por ejemplo aplicando los algoritmos antes vistos, utilizando un sistema de puntaje). 
+* La **homología**, por otro lado, es una característica cualitativa, dos secuencias SON o NO SON homólogas. Homología implica específicamente que el par de secuencias estudiadas provienen de un mismo ancestro común. Esta afirmación es completamente hipotética, ya que, salvo en contados casos, no se puede corroborar. Uno puede inferir que este es el caso dado la similitud observada en las secuencias actuales, sin tener acceso a las secuencias ancestrales.
+
+<ul class="block-list has-radius">
+   <li class="is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+ <b>Decir que un par de secuencias tiene N% de homología es TOTALMENTE incorrecto.</b>
+   </li>
+</ul>
+
 A partir de esta relación entre similitud y homología se puede aplicar para inferir relaciones entre diferentes especies, buscar posibles funciones de una secuencia desconocida, etc.
 
 ### Ejercicio 3
