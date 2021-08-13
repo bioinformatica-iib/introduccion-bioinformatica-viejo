@@ -75,8 +75,8 @@ hide_footer: True
 |           | 14 - 18hs| Práctico| [TP N°1. Introducción a UNIX](/introduccion-bioinformatica/TPs/Unix/)	| L. Bracco |
 |12/08/2021 |  9 - 13hs| Teórica |	[T2. Bases de datos. Ontologías.](/introduccion-bioinformatica/teoricas/teorica2/)	| F. Agüero |
 |           | 14 - 18hs| Práctico| [TP N°2. EMBOSS Suite](/introduccion-bioinformatica/TPs/EMBOSS/) | L. Bracco |
-|19/08/2021 |  9 - 13hs| Teórica |	T3. Alineamientos de a pares y Búsqueda de secuencias por Similitud |	F. Agüero |
-|           | 14 - 18hs| Teórica |	T4. Alineamientos múltiples	| F. Agüero |
+|19/08/2021 |  9 - 13hs| Teórica |	[T3. Alineamientos de a pares y Búsqueda de secuencias por Similitud](/introduccion-bioinformatica/teoricas/teorica3/) |	F. Agüero |
+|           | 14 - 18hs| Teórica |	[T4. Alineamientos múltiples](/introduccion-bioinformatica/teoricas/teorica4/)	| F. Agüero |
 |26/08/2021 |  9 - 13hs| Práctico |	[TP N°3. Alineamientos de secuencias de a pares](/introduccion-bioinformatica/TPs/alineamiento_pares/) | H. García A. |
 |           | 14 - 18hs| Práctico |	[TP N°4. Búsqueda de secuencias por similitud y Alineamientos Múltiples](/introduccion-bioinformatica/TPs/busqueda_secuencias/) | H. García A. |
 |02/09/2021 |  9 - 13hs| Teórica |	T5. Información contenida en alineamientos múltiples |	M. Nielsen |
