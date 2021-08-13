@@ -10,3 +10,13 @@
       description: |- 
         [Teorica N°2. Bases de datos. Ontologías.](teorica2/)
       ratio: is-16by9
+    - link: teoricas/teorica3/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teorica N°3. Alineamientos de a pares y Búsqueda de secuencias por Similitud.](teorica3/)
+      ratio: is-16by9
+    - link: teoricas/teorica4/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teorica N°4. Alineamientos múltiples.](teorica3/)
+      ratio: is-16by9
