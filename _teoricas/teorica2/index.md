@@ -16,11 +16,12 @@ construccion: false
 ## Ontologias
 
 - Slides [[PDF]](https://drive.google.com/file/d/1mGW2HGwDgggOXW5TOUW5_Vp7iBbNofKe/view?usp=sharing)
+- Recording [[MP4]](https://drive.google.com/file/d/1HJWlYDQvAnsqeXbDUMrXDPdDSPpdmCxx/view?usp=sharing) 
+<iframe src="https://drive.google.com/file/d/1HJWlYDQvAnsqeXbDUMrXDPdDSPpdmCxx/preview" width="800" height="440"></iframe>
 
 ## Bases de Datos
 - Slides [[PDF]](https://drive.google.com/file/d/1sFY3anTMQvqaHV2tpxhhp_ry3DA2cOtV/view?usp=sharing)
-
-<!-- - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing) -->
-<!-- <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe> -->
+- Recording [[MP4]](https://drive.google.com/file/d/1mDYU3zkm14cRAXgao0qpyQZqZj57-FWh/view?usp=sharing) 
+<iframe src="https://drive.google.com/file/d/1mDYU3zkm14cRAXgao0qpyQZqZj57-FWh/preview" width="800" height="440"></iframe> 
 
 {% endif %}
