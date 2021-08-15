@@ -2,7 +2,6 @@
 layout: page
 title: TP N°5
 subtitle: Perfiles de secuencia y PSI-BLAST
-data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
