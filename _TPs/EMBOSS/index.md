@@ -28,6 +28,112 @@ details summary > * {
 
 {% else %}
 
+## Recording
+
+* Introducción TP N°2. [[MP4]](https://drive.google.com/file/d/1pt4FKRM6PPfIeQKgiZeVWdY4sxAcXlMI/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1pt4FKRM6PPfIeQKgiZeVWdY4sxAcXlMI/preview" width="800" height="440"></iframe>
+
+* Final de Clase TP N°2. [[MP4]](https://drive.google.com/file/d/1o3CaLPOd0zdYcaUA5u4qlAy3COk_uQgL/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1o3CaLPOd0zdYcaUA5u4qlAy3COk_uQgL/preview" width="800" height="440"></iframe>
+
+### Encuesta del final de clase
+
+#### Pregunta 1. Seleccione el formato FASTA correcto para la secuencia TGTTTTGCACA que se nombra HT44:
+
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-success has-icon" markdown="span"> <b>1.&nbsp;</b>
+      <span style="font-family:monospace;color:black"> >HT44<br>&nbsp;&nbsp;TGTTTTGCACA</span>
+      <br>
+      <span class="icon"> <i class="fas fa-check-double"></i> </span>
+      Correcto! El **header** está identificado con el símbolo **>** y la secuencia está ingresada en una **nueva línea**.
+    </li>
+    <li class="is-highlighted is-danger has-icon" markdown="span"> <b>2.</b>
+      <span style="font-family:monospace;color:black"> ><br>&nbsp;&nbsp;HT44<br>&nbsp;&nbsp;TGTTTTGCACA</span>
+      <br>
+      <span class="icon"> <i class="fas fa-times"></i> </span>
+      No. El identificador del header **>** está en una línea distinta al header.
+    </li>
+    <li class="is-highlighted is-danger has-icon" markdown="span"> <b>3.</b>
+      <span style="font-family:monospace;color:black"> HT44<br>&nbsp;&nbsp;TGTTTTGCACA</span>
+      <br>
+      <span class="icon"> <i class="fas fa-times" markdown="span"> </i> </span>
+      No. El **header** no posee el identificador **>**.
+    </li>
+    <li class="is-highlighted is-danger has-icon"  markdown="span"> <b> 4.</b>
+      <span style="font-family:monospace;color:black"> >HT44 TGTTTTGCACA</span>
+      <br>
+      <span class="icon"> <i class="fas fa-times"></i> </span>
+      No. El **header** y la **secuencia** están en la misma línea.
+    </li>
+</ul>
+
+#### Pregunta 2. Si queremos saber en qué carpeta estamos trabajando, usaríamos el comando:
+
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-danger has-icon" markdown=span> <b>1. `ls .` </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. `ls` es abreviatura de **list**. Este comando **lista** el contenido de un directorio. En este caso, lista lo que hay en `.`, o sea, en el directorio actual de trabajo.
+    </li>
+    <li class="is-highlighted is-danger has-icon" markdown=span> <b>2. `history | grep "working directory"` </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No.
+        <br> `history` imprime por consola el historial de comandos utilizados en la terminal.
+        <br> El **pipe** `|` toma la **salida** (o **output**) del comando `history` y se lo pasa al comando que sigue, en este caso `grep`.
+        <br> `grep` imprime aquellas líneas que posean el patrón pasado, en este caso el patrón es: `working directory`
+    </li>
+    <li class="is-highlighted is-success has-icon" markdown=span> <b>3. `pwd` </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Correcto! `pwd` significa **p**rint **w**orking **d**irectory.
+    </li>
+</ul>
+
+#### Pregunta 3. Seleccione la opción correcta que mejor completa la frase: "En el trabajo práctico de hoy ...
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-danger has-icon" markdown=span> <b>1. Usamos una secuencia codificante de plantas y optimizamos el uso de codones para la mejor adaptabilidad al vector de expresión deseado </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No. Los datos iniciales eran la secuencia proteica de la enzima VpVan! (y los tag) y **NO** la secuencia nucleotídica.
+    </li>
+    <li class="is-highlighted is-success has-icon" markdown=span> <b>2. Usamos una secuencia aminoacídica de plantas y la retro transcribimos usando la tabla de frecuencias del vector de expresión deseado. </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        Correcto! Los datos iniciales eran la secuencia proteica de la enzima VpVan! (y los tag).
+    </li>
+</ul>
+
+#### Pregunta 4. Si en la secuencia FINAL del TP de hoy, hubiéramos encontrado un sitio de restricción para las enzimas que vamos a utilizar, ¿qué soluciones funcionarían?
+
+<ul class="block-list has-radius is-outline">
+    <li class="is-highlighted is-danger has-icon" markdown=span> <b>1. Usar menor concentración de la enzima. </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No.
+    </li>
+    <li class="is-highlighted is-info has-icon" markdown=span> <b>2. Usar cualquier otra enzima. </b> <br>
+        <span class="icon"> <i class="fas fa-check"></i> </span>
+        Tricky. No cualquiera. Una que no corte.
+    </li>
+    <li class="is-highlighted is-success has-icon" markdown=span> <b>3. Volver a correr el backtranseq y chequear si esta vez no aparece el sitio. </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Correcto!
+    </li>
+   <li class="is-highlighted is-success has-icon" markdown=span> <b>4. Usar una de las enzimas que aparecen dentro de la lista que no cortan. </b> <br>
+        <span class="icon"> <i class="fas fa-check-double"></i> </span>
+        Correcto!
+    </li>
+   <li class="is-highlighted is-danger has-icon" markdown=span> <b>5. No se puede expresar esta secuencia en nuestro vector. </b> <br>
+        <span class="icon"> <i class="fas fa-times"></i> </span>
+        No.
+    </li>
+</ul>
+
+
+
+
+
+---
+
+
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/1DqEbN6w4AyrhyYSyUPai0_weAjJiR8sx/view?usp=sharing)
