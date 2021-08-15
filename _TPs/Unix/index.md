@@ -2,19 +2,11 @@
 layout: page
 title: TP N°1
 subtitle: Introducción a UNIX
-data : False
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
 ---
 
-{% if page.data %}
-
-## Materiales
-
-<a href="data/"> Descargar </a>
-
-{% endif %}
 
 <!--
 <ul class="block-list is-outlined is-primary has-radius is-highlighted">
@@ -70,33 +62,6 @@ toc_title: CONTENIDOS
         No. El `.` se utiliza para indicar de manera <b>relativa</b> el directorio actual. No serviría desde <b>cualquier</b> carpeta como lo pide el enunciado, únicamente serviría si el directorio actual es el directorio raíz.
     </li>
 </ul>
-
-<!--
-**1.** <b><span style="color:orange"> cd ~ </span></b>
->Engañoso. Si el usuario actual en la terminal es pareto es correcta. Si no, no.
-
-**2.** cd home/pareto
-> No. Sólo funciona si el directorio de trabajo en la terminal es el directorio raíz (o el *barra*).
-
-**3.** cd home / pareto
-> No. En primer lugar, `cd home` no tiene adelante el directorio raíz. En segundo lugar, al separar con espacios todo lo que sigue a `cd home` se consideran **argumentos** del comando `cd`.
-
-**4.** cd / home / pareto
-
-> No. En primer lugar, `cd /` cambiaría al directorio raíz y al separar con espacios todo lo que sigue a `cd /` se consideran **argumentos** del comando `cd`.
-
-**5.** <b><span style="color:green"> cd /home/pareto </span></b> 
-> Correcta. El comando `cd` (**c**hange **d**irectory) indica el cambio al home del usuario pareto iniciando el **path** (o *caminito*) desde el directorio raíz (el *barra*).
-
-**6.** cd /pareto/home
-> No. El comando `cd` (**c**hange **d**irectory) indica cambiar el directorio `home`, dentro del directorio `pareto` que se encuentra en el directorio raíz (o *barra*).
-
-**7.** cd ././pareto
-> No. El `.` se utiliza para indicar de manera **relativa** el directorio actual.
-
-**8.** cd ./home/pareto
-> No. El `.` se utiliza para indicar de manera **relativa** el directorio actual. No serviría desde **cualquier** carpeta como lo pide el enunciado, únicamente serviría si el directorio actual es el directorio raíz.
--->
 
 #### Pregunta 2. Seleccione los Paths relativos de la siguiente lista:
 
