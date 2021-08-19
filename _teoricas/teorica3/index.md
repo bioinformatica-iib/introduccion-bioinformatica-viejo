@@ -4,7 +4,7 @@ title: Teórica N°3
 subtitle: Alineamientos de a pares y Búsqueda de secuencias por Similitud
 menubar_toc: false
 hero_height: is-small
-construccion: true
+construccion: false
 ---
 
 {% if page.construccion %}
