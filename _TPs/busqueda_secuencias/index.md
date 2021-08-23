@@ -7,7 +7,7 @@ menubar_toc: true
 data : True
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: false
+construccion: true
 ---
 
 {% if page.construccion %}
