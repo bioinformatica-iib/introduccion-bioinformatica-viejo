@@ -26,6 +26,12 @@ construccion: false
 
 ### Objetivos
 
+* Familiarizarse con la construcción de matrices peso-específicas o PSSM.
+* Familiarizarse con la visualización de logos de secuencias, y el uso del contenido de información.
+* Utilizar las matrices peso-específicas como métodos predictivos, y entender las métricas PCC (Pearson correlation coefficient) y Aroc (Area under the Receiver Operating Characteristic curve) empleadas para evaluar la calidad de los modelos. 
+
+### Introducción
+
 En este TP utilizaremos herramientas bioinformáticas para predecir la unión de péptidos a MHC, o por sus siglas en inglés *Mayor Histocompatibility Complex*, y seleccionaremos potenciales epítopes como candidatos para desarrollar una vacuna.  
 
 Los pasos a seguir serán:  
@@ -34,8 +40,6 @@ Los pasos a seguir serán:
 2. Visualización de motivos utilizando logos de secuencias.  
 3. Entrenamiento de métodos de predicción de unión a MHC.  
 4. Utilización de los métodos desarrollados para la selección de candidatos vacunales.  
-
-### Introducción
 
 La unión de péptidos a MHC es el paso más selectivo en el camino de procesamiento y presentación antigénica. Este evento es crucial ya que solamente 1 de cada 200 péptidos forma un complejo con el MHC. Existe una gran variedad de MHC diferentes, cada uno con una alta especificidad.  
 El motivo de unión de los MHC de la vía de clase I es, en la mayoría de los casos, de 9 aminoácidos de longitud. Estos están caracterizados por una marcada preferencia por ciertos aminoácidos en determinadas posiciones del motivo. Estas posiciones son llamadas "anclas" o, en inglés, *anchor positions*. Para una gran cantidad de complejos de MHC de clase I estas anclas se encuentran en las posiciones P2 y P9. Sin embargo, este no es siempre el caso.
@@ -62,7 +66,17 @@ Allí seleccionen con el menú de la izquierda el alelo de MHC **HLA-A\*02:01** 
 
 En el resultado de la búsqueda podemos ver las posiciones *anchor* principales y auxiliares, y también otras posiciones con residuos preferidos. También tenemos una lista de otros aminoácidos que se ven con frecuencia en los ligandos del alelo que estamos estudiando. Por último, más abajo, se muestra la lista de los ligandos que existen en esta base de datos, junto a su proteina de procedencia, la referencia del trabajo donde se lo identificó y alguna nota como la asociación de un péptido dado con una enfermedad.  
 
-**1.** Identifiquen la preferencia de aminoácidos del alelo estudiado en las posiciones *anchor*.  
+**1.** Respondan a las siguientes preguntas:
+
+**a.** ¿Qué posiciones identifican como *anchors*? ¿Qué residuos son preferidos en estas posiciones? ¿Y en los *auxiliary anchors*?
+
+**b.** ¿Qué otras posiciones muestran preferencias de residuos? ¿Qué residuos son preferidos en estas posiciones? 
+
+**c.** ¿Qué característica del conjunto de péptidos creen que puede estar diferenciando a las posiciones *anchor* (y con residuos preferidos) del resto de las posiciones de los péptidos? 
+Recuérdenla para el ejercicio de logos de secuencia.
+
+**2.** Repitan el mismo análisis para el alelo **HLA-B\*27**. ¿Coinciden las posiciones *anchor* con las del alelo **HLA-A\*02:01**?, ¿y los residuos preferidos?
+
 
 ### Logos de secuencias
 
@@ -91,10 +105,21 @@ Por convención los colores que se utilizan son:
 * <span style="color:black;font-weight:bold;">Negro</span>: Aminoácidos hidrofóbicos [ACFILMPVW]  
 * <span style="color:green;font-weight:bold;">Verde</span>: Aminoácidos neutros [GNQSTY]  
 
-En la carpeta del TP pueden encontrar los archivos **HLA-A01**, **HLA-A0201** y **HLA-B27**, los cuales contienen ligandos de cada uno de estos alelos de MHC. 
+En la carpeta del TP pueden encontrar los archivos **HLA-A0201** y **HLA-B27**, los cuales contienen ligandos de cada uno de estos alelos de MHC. 
 Úsenlos para generar logos que muestren sus motivos de preferencia. **Utilicen como opción de clustering Heuristics.** Usamos para el resto de las opciones los valores *default*.
 
-**2.** Identifiquen las posiciones ancla y las preferencias de cada alelo. ¿El gráfico obtenido de HLA-A02:01 se condice con lo que encontraron en la base de datos?
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+		Recuerden guardar los logos de secuencia generados.
+</li>
+</ul>
+
+**3.** Identifiquen las posiciones ancla y las preferencias de cada alelo. 
+
+**a.** ¿El logo obtenido para **HLA-A02:01** y **HLA-B27** se condice con lo que encontró en la base de datos en el punto anterior? 
+
+**b.** ¿Qué magnitud es la que está diferenciando a las posiciones *anchor* del resto? ¿En qué unidad aparece representada en el logo? ¿Coincide con lo supuesto en el punto **1.c**?
 
 ### Construcción de matrices peso-específicas (PSSM)
 
@@ -116,13 +141,21 @@ LPYIH
 Las opciones que tenemos aquí son muy similares a las que habiamos visto en el servidor de *Seq2Logo* debido a que ambos realizan cálculos del contenido de información.  
 En este caso vamos a seleccionar **Clustering method: No clustering** y **Weight on prior: 10000**. Usamos para el resto de las opciones los valores *default*.
 
+**3.** Antes de generar la PSSM, reflexionen un poco acerca de los parámetros empleados para la construcción de la misma.
+
+**a.** ¿Por qué consideran que no estamos usando ningún método de clustering?
+
+**b.** ¿Por qué creen que es tan alto el valor sugerido para el *weight on prior*?
+
+<img src="./images/pssm_fx.png" alt="PSSM_fx" style="max-width:30%">
+
 Hagan *Submit query* y observen la salida. Allí podrán encontrar información sobre los parámetros utilizados y un logo que representa el set de datos que ingresamos.
 
 Observando el logo generado:
 
-**3.** ¿Cuántos aminoácidos pueden hallar en la posición P1?  
-**4.** ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
-**5.** ¿A qué se debe esta diferencia?  
+**4.** ¿Cuántos aminoácidos pueden hallar en la posición P1?  
+**5.** ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
+**6.** ¿A qué se debe esta diferencia?  
 
 
 ### Predicción de unión a MHC
