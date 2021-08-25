@@ -14,15 +14,9 @@ construccion: false
 
 **Pagina en construccion**
 
-{% else %}
-
-{% if page.data %}
-
 ## Materiales
 
-<a href="data/"> Descargar </a>
-
-{% endif %}
+[Descargar](https://drive.google.com/file/d/11BIqgiLwt_IPG8n8AQfbx7jwRNVxAfd0/view?usp=sharing) 
 
 ## Objetivo
 
