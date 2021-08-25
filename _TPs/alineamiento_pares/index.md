@@ -29,13 +29,9 @@ details summary > * {
 
 {% else %}
 
-{% if page.data %}
-
 ## Materiales
 
-<a href="data/"> Descargar </a>
-
-{% endif %}
+[Descargar](https://drive.google.com/file/d/1lkra_JOXdz0TrpVdJDbOx9kbI_1a_i7I/view?usp=sharing) 
 
 ## Objetivo
 
