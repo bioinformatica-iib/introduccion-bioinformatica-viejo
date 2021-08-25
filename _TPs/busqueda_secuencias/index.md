@@ -14,6 +14,8 @@ construccion: false
 
 **Pagina en construccion**
 
+{% else %}
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/11BIqgiLwt_IPG8n8AQfbx7jwRNVxAfd0/view?usp=sharing) 
