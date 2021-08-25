@@ -9,6 +9,20 @@ toc_title: CONTENIDOS
 construccion: false
 ---
 
+<style>
+details > summary:first-of-type {
+   display: list-item;
+}
+details summary { 
+  cursor: pointer;
+}
+
+details summary > * {
+  display: inline;
+}
+
+</style>
+
 {% if page.construccion %}
 
 **Pagina en construccion**
@@ -141,26 +155,40 @@ LPYIH
 Las opciones que tenemos aquí son muy similares a las que habiamos visto en el servidor de *Seq2Logo* debido a que ambos realizan cálculos del contenido de información.  
 En este caso vamos a seleccionar **Clustering method: No clustering** y **Weight on prior: 10000**. Usamos para el resto de las opciones los valores *default*.
 
-**3.** Antes de generar la PSSM, reflexionen un poco acerca de los parámetros empleados para la construcción de la misma.
+**4.** Antes de generar la PSSM, reflexionen un poco acerca de los parámetros empleados para la construcción de la misma.
 
 **a.** ¿Por qué consideran que no estamos usando ningún método de clustering?
 
-**b.** ¿Por qué creen que es tan alto el valor sugerido para el *weight on prior*?
+**b.** ¿Por qué creen que es tan alto el valor sugerido para el *weight on prior* (β) ?
+
+<details>
+<summary> <h6> Recordatorio </h6> </summary>
+
+La ecuación utilizada para estimar la *frecuencia* <span class="latex">p<sub>a</sub></span>, para una dada posición, en una matriz peso-específica es,
 
 <img src="./images/pssm_fx.png" alt="PSSM_fx" style="max-width:30%">
 
+donde α es el número de secuencias en el MSA-1, β es el *weight on prior* o *weight on pseudocounts*, <span class="latex">f<sub>a</sub></span> es la frecuencia observada para el aminoácido *a* en esa posición y <span class="latex">g<sub>a</sub></span> es la pseudo frecuencia para el aminoácido *a* en esa misma posición.
+</details> 
+<br>
 Hagan *Submit query* y observen la salida. Allí podrán encontrar información sobre los parámetros utilizados y un logo que representa el set de datos que ingresamos.
 
 Observando el logo generado:
 
-**4.** ¿Cuántos aminoácidos pueden hallar en la posición P1?  
-**5.** ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
-**6.** ¿A qué se debe esta diferencia?  
+**5.** ¿Qué aminoácidos es más probable hallar en la posición P1?
 
+<details>
+<summary> <h6> Pista </h6> </summary>
+Son los que están por encima de y=0.
+</details> 
+<br>
+**6.** ¿Cuántos aminoácidos diferentes hay en P1 de los datos de entrada?  
+**7.** ¿A qué se debe esta diferencia?  
+**8.** Realice el mismo ejercicio pero ahora elija un *weight on prior* β=0. ¿Cambian sus respuestas para los puntos **5.**, **6.** y **7.**?
 
 ### Predicción de unión a MHC
 
-Habiéndonos familiarizado con la interfaz de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) vamos a utilizarla para entrenar un modelo con más datos y ponerlo a prueba. Para eso utilizaremos dos sets de entrenamiento que poseen péptidos fueron testeados con el alelo HLA-A02:01. Cada uno tiene un valor asociado que denota si son positivos (1) o negativos (0.1). A lo largo del proceso iremos variando diferentes parámetros para observar qué efectos esto tiene sobre el poder predictivo del modelo, al ser testeado en un set de evaluación con valores de afinidad de unión a MHC reales (reescalados entre 0 y 1). 
+Habiéndonos familiarizado con la interfaz de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) vamos a utilizarla para entrenar un modelo con más datos y ponerlo a prueba. Para eso utilizaremos dos sets de entrenamiento que poseen péptidos fueron testeados con el alelo HLA-A02:01. Cada uno tiene un valor asociado que denota si son positivos (1) o negativos (0.1). A lo largo del proceso iremos variando diferentes parámetros para observar qué efectos esto tiene sobre el poder predictivo del modelo, al ser testeado en un set de evaluación con valores de afinidad (*binding affinity*) de unión a MHC reales (reescalados entre 0 y 1). 
 
 Los datos que utilizaremos están en los archivos:
 
@@ -172,6 +200,19 @@ Para evaluar el desempeño de nuestro modelo utilizaremos el archivo **Evaluacio
 * valores mayores a **0.638** (equivalente a 50nM) representan una unión fuerte, 
 * entre **0.638** y **0.426** (equivalente a 500nM) una unión débil 
 * y péptidos con valores menores a **0.426** no se consideran ligandos. 
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+      Una buena práctica antes de comezar a hacer cualquier cosa con nuestros datos es observarlos y entender el formato en el que están almacenados.
+</li>
+</ul>
+
+Por ejemplo, si hacemos un ```cat``` del archivo **Entrenamiento_chico.set**, nos encontramos con lo siguiente:
+
+<img src="./images/formato_entrenamiento_chico.png" alt="Entre_chico" style="max-width:50%">
+
+Este es un archivo con dos columnas, la primera contiene a los péptidos y la segunda a los valores de afinidad de unión o *binding affinity* de los mismos. (¿En qué escala están los valores de *binding affinity*? ¿Están normalizados entre 0 y 1?)
 
 Para analizar el desempeño de nuestros modelos vamos a tener en cuenta dos métricas:  
 * **Aroc (Area under the Receiver Operator Curve):** este valor varía entre 0 y 1, siendo 1 el puntaje perfecto y 0.5 el valor aleatorio. Por regla general, valores mayores a 0.85 son altamente deseables.  
@@ -208,37 +249,54 @@ La salida consta de varias partes:
 
 	Las métricas que utilizamos no se enfocan en reportar la precisión del método (proporción de verdaderos positivos entre todos los péptidos predichos como positivos) sino que muestran:
 	1. la habilidad del método para distinguir instancias positivas de negativas (Aroc) y 
-	2. la correlación entre los valores predichos y reales u observados (PCC)
+	2. la correlación entre los valores predichos y los valores reales u observados (PCC).
 </li>
 </ul>
 
 Revisando la salida contesten:
 
-**6.** ¿Qué valores de Aroc y PCC obtuvieron?  
-**7.** Viendo el logo resultante, ¿Entienden por qué el modelo tiene tan mal desempeño?  
-**8.** ¿Cuántos de los 110 péptidos se utilizaron en el entrenamiento?  
+**9.** ¿Qué valores de Aroc y PCC obtuvieron? ¿Qué implica esto?
+
+**10.** Viendo el logo resultante, ¿Entienden por qué el modelo tiene tan mal desempeño?  
+
+**11.** ¿Cuántos de los 110 péptidos se utilizaron para la construcción de la matriz? ¿Por qué se usó ese número de péptidos?
 
 #### Segunda prueba
 
 Volvamos a la página principal de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). Esta vez coloquemos el **umbral de positivos** en 0.5 pero especifiquemos que no haya **clustering** y pongamos un **weight on prior** de 0.0.
  
-**9.** ¿Qué valores de desempeño tienen ahora?  
-**10.** ¿Cuántos de los 110 péptidos se utilizaron en este caso?  
-**11.** Mirando el logo, ¿Se parece al motivo de unión de HLA-A\*02:01 que habían visto antes?  
+**12.** ¿Qué valores de desempeño tienen ahora? ¿Qué implican estos valores? ¿Son mejores o peores que en la primera prueba? ¿Por qué cree que cambiaron?
+
+**13.** ¿Cuántos de los 110 péptidos se utilizaron en este caso para la construcción de la matriz?  
+
+**14.** Mirando el logo, ¿Se parece al motivo de unión de HLA-A\*02:01 que habían visto antes? ¿Por qué cree que ocurre esto?
+<details>
+<summary> <h6> Pista </h6> </summary>
+Tenga en cuenta el número de secuencias que se usaron para construir la matriz y recuerde que siempre es una buena práctica revisar las instrucciones de la guía y los archivos de entrada. 
+</details> 
+<br>
 
 #### Tercera prueba
 
 Volvamos atrás y repitamos el caso anterior pero seleccionando **Clustering at 62% identity**. Mantengamos el **weight on prior** en 0.0 y el resto de los parámetros como se habían seteado en la segunda prueba. 
 
-**12.** ¿Cuál es el desempeño ahora?  
-**13.** ¿Cambió el logo con respecto al anterior?  
+**15.** ¿Cuál es el desempeño ahora?  
+
+**16.** ¿Cambió el logo con respecto al anterior? Si es así… ¿A qué cree que se debe el cambio?
+
+<details>
+<summary> <h6> Pista </h6> </summary>
+De nuevo, es una buena práctica revisar qué contienen los archivos de entrada, es decir los datos crudos. Miren con atención las secuencias de los positivos.
+</details> 
+<br>
 
 #### Cuarta prueba
 
 Volvamos una vez más, manteniendo **Clustering at 62% identity** pero utilicemos como **weight on prior** un valor de 200, y el resto de los parámetros como se habían seteado en la segunda prueba.
 
-**14.** Una vez más revisen las métricas de desempeño.  
-**15.** Mirando el logo, ¿Cuál es la gran diferencia con aquellos que venían viendo? ¿Cuál es la razón de este cambio? ¿Empieza ahora a parecerse a los motivos que habían visto antes?  
+**17.** Una vez más revisen las métricas de desempeño.
+
+**18.** Mirando el logo, ¿Cuál es la gran diferencia con aquellos que venían viendo? ¿Cuál es la razón de este cambio? ¿Empieza ahora a parecerse a los motivos que habían visto antes?  
 
 #### Última prueba
 
@@ -246,11 +304,11 @@ Hasta ahora veníamos utilizando un set de datos sumamente reducido, con solo 10
 
 A continuación recarguen la página de [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/) y carguen para entrenar el archivo **Entrenamiento_grande.set**. En el cuadro de evaluación vuelvan a cargar **Evaluacion.set**. Seleccionen una vez más **Clustering at 62% identity**, pongan el **weight on prior** en 200 y el **umbral de positivos** en 0.5. Tilden también la opción **Sort output on predicted values** para ver la tabla de péptidos ordenada por los valores de predicción.
 
-**16.** Revisen una vez más los valores de desempeño.
+**19.** Revisen una vez más los valores de desempeño.
 
-**17.** Vean el logo, ¿qué les parece?
+**20.** Vean el logo, ¿qué les parece?
 
-**18.** Mirando la tabla de predicciones, ¿Cuántos falsos positivos encuentran entre los primeros 20 péptidos? (con *Assignment* menor a 0.426)
+**21.** Mirando la tabla de predicciones, ¿Cuántos falsos positivos encuentran entre los primeros 20 péptidos? (con *Assignment* menor a 0.426)
 
 
 <ul class="block-list has-radius is-primary">
@@ -312,7 +370,7 @@ Vayan a la pagina de [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) y utilice
 
 <img src="./images/psiblast_1.png" alt="psiblast1" style="max-width:60%">
 
-**1.** ¿Cuántos *hits* con E-value < 0.005 encuentran?
+**1.** ¿Cuántos *hits* con E-value < 0.005 encuentran? Vuelvan atrás y, en **Program selection: Algorithm**, seleccionen PSI-BLAST. ¿Cambió el resultado en comparación a lo que habían obtenido anteriormente? 
 
 ### Usando PSI-BLAST
 
@@ -330,7 +388,7 @@ Teniendo en cuenta que el primer *hit* es nuestro *query* y por lo tanto vamos a
 
 **2.** Ahora, ¿Cuántos *hits* significativos encuentran (E-value < 0.005)?
 
-**3.** ¿Cuál es el coverage de estos *hits*?
+**3.** ¿Qué significa la variable **Query Cover**? Una manera visual para entender el *query coverage* es mirar el **Graphic Summary**. Dentro de la pestaña **Descriptions**, coloquen la pestaña **Show** en 100. Luego cliqueen en la pestaña **Graphic Summary**. ¿Cuál es la cobertura de los *hits* obtenidos? 
 
 ### Construyendo la PSSM
 
@@ -342,9 +400,11 @@ Allí pueden especificar cuantas secuencias queremos utilizar para refinar nuest
 
 **4.** ¿Cuántos *hits* significativos pueden encontrar ahora (E-value < 0.005)?
 
-**5.** ¿Cómo se modificó el coverage de estos *hits*?
+**5.** ¿Cómo se modificó el coverage de estos *hits*? Vuelvan a mirar el **Graphic Summary**, colocando previamente en **Descriptions** la pestaña **Show** en 250. 
 
 **6.** ¿Por qué creen que PSI-BLAST puede identificar ahora más *hits* significativos y que es lo que está afectando el *query coverage*?
+
+**7.** ¿Qué significan que los *hits* estén resaltados en amarillo, y qué significa que estén en blanco con un tick verde?
 
 <ul class="block-list has-radius is-primary">
    <li class=" is-outlined" markdown="span">
@@ -361,28 +421,15 @@ Para obtener la PSSM descarguenla arriba donde dice "*Donwload All*"
 
 Volvamos una vez más a la página para realizar la búsqueda. Sin ingresar ninguna secuencia *query* seleccionemos otra vez la base de datos de estructuras Protein Data Bank (pdb) y como algoritmo PSI-BLAST. Por último, justo debajo del botón de BLAST, abramos el menú de *Algorithm parameters* y carguemos nuestra PSSM (justo al final). Ahora sí corramos la búsqueda.
 
-**7.** ¿Pueden encontrar hits significativos de PDB ahora?
+**8.** ¿Pueden encontrar hits significativos de PDB ahora?
 
-**8.** ¿Qué función pueden identificar en los primeros hits?
+**9.** ¿Qué función pueden identificar en los primeros hits?
 
 ### Identificando residuos conservados
 
-Ahora (si tuvimos suerte) habremos podido identificar una relación estructural entre nuestra secuencia *query* y las secuencias de la base de datos de estructuras proteicas PDB. Digamos que, en este punto, nos gustaría validar esa relación y para ello vamos a llevar a cabo un ensayo en el cual mutaremos residuos esenciales en nuestra secuencia para probar si estos afectan su función (o estructura).
+Ahora (si tuvimos suerte) habremos podido identificar una relación estructural entre nuestra secuencia *query* y las secuencias de la base de datos de estructuras proteicas PDB. Digamos que, en este punto, nos gustaría validar esa relación.
 
-La nuestra secuencia *query* es larga (más de 400 aminoácidos) y un estudio completo de mutagénesis podría resultar extremadamente costoso. Por ello debemos tener especial cuidado en elegir posiciones que sean más probables de ser esenciales para la estructura y/o función de nuestra proteína.
-
-Para esto vamos a utilizar lo que ya hemos hecho con PSI-BLAST y el programa [Blast2logo](http://www.cbs.dtu.dk/biotools/Blast2logo/) y vamos a seleccionar (guiados por la conservación de los residuos) 4 de los siguientes 8 residuos para llevar a cabo nuestro ensayo de mutagénesis:
-
-* (a): H271
-* (b): R287
-* (c): E290
-* (d): Y334
-* (e): F371
-* (f): R379
-* (g): R400
-* (h): Y436
-
-Para identificar los residuos conservados vayan al servidor de [Blast2logo](http://www.cbs.dtu.dk/biotools/Blast2logo/) y suban la secuencia *query*. Seleccionen *BLAST Database* NR70 y denle *Submit* (esto puede llevar un tiempito). En caso de que algo falle puede encontrar la salida [acá](http://www.cbs.dtu.dk/biotools/Blast2logo/teaching/Query1/).
+Para identificar los residuos conservados en nuestra secuencia *query* vayan al servidor de [Blast2logo](http://www.cbs.dtu.dk/biotools/Blast2logo/) y suban dicha secuencia. Seleccionen *BLAST Database* NR70 y denle *Submit* (esto puede llevar un tiempito). En caso de que algo falle puede encontrar la salida [acá](http://www.cbs.dtu.dk/biotools/Blast2logo/teaching/Query1/).
 
 Cuando esto termine deberían tener un logo de toda la secuencia. 
 
@@ -395,10 +442,22 @@ Cuando esto termine deberían tener un logo de toda la secuencia.
 </li>
 </ul>
 
+**10.** Viendo el logo: ¿Por qué creen que las primeras \~150 posiciones se ven bastante planas (Bits<1)? ¿Cuáles son las posiciones con contenido de información más alto? ¿Pueden identificar el dominio conservado que habían visto en el ejercicio anterior?
 
-**9.** Viendo el logo: ¿Por qué creen que las primeras \~150 posiciones se ven bastante planas (Bits<1)?
+Para probar qué residuos dentro del dominio más conservado son los más relevantes para la estructura y/o función de nuestra proteína, podríamos realizar un ensayo de mutagénesis en el laboratorio. Debido a que la secuencia de nuestra proteína es larga (más de 400 aminoácidos), un estudio completo de mutagénesis podría resultar extremadamente costoso.
 
-**10.** ¿Cuáles creen que son los 4 residuos que podríamos mutar de la lista para generar un impacto en la función de nuestra proteína query?
+Por esta razón, teniendo en cuenta lo realizado con el servidor Blast2logo, vamos a seleccionar (guiados por la conservación de los residuos) 4 de los siguientes 8 residuos para llevar a cabo nuestro hipotético ensayo de mutagénesis:
+
+* (a): H271
+* (b): R287
+* (c): E290
+* (d): Y334
+* (e): F371
+* (f): R379
+* (g): R400
+* (h): Y436
+
+**11.** ¿Cuáles creen que son los 4 residuos que podríamos mutar de la lista para generar un impacto en la estructura de nuestra proteína *query*?
 
 ### Modelado por homología (OPTATIVO)
 
@@ -406,7 +465,7 @@ Para seguir acumulando pruebas de que nuestro ensayo realmente podría funcionar
 
 La salida de CPHmodels no es muy intuitiva, sin embargo, el método provee un Z-score cuando el *query* y la proteína modelo tienen poca similitud de secuencia. Como regla general, un Z-score mayor a 10 significa que el modelo es confiable.
 
-**11.** ¿CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
+**12.** ¿CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
 
 La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados. Pueden instalar Pymol utilizando el comando:
 
@@ -417,6 +476,6 @@ Este programa es muy versátil pero también puede resultar complejo de usar al 
 
 ![Model](images/CPHmodels.png)
 
-**12.** ¿Podrían estos residuos ser parte del sitio activo?
+**13.** ¿Podrían estos residuos ser parte del sitio activo?
 
 {% endif %}
