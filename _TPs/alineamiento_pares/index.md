@@ -29,6 +29,14 @@ details summary > * {
 
 {% else %}
 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-clipboard"></i></span>
+    <span style="font-weight:bold;">Este TP tiene informe.</span>
+   </li>
+</ul>
+
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/1lkra_JOXdz0TrpVdJDbOx9kbI_1a_i7I/view?usp=sharing) 
@@ -440,5 +448,36 @@ El comando a utilizar es ```emma```. Para ver la ayuda, tipeá ```emma -help``` 
    Notá que las posiciones en el alineamiento cuentan gaps por lo que no se corresponden exactamente con el esquema. Utilizá las posiciones de las cisteínas conservadas para identificar diferentes regiones.
 </li>
 </ul>
+
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha de Entrega:</span> Viernes, 3 de septiembre 2021, 23:59hs.
+   </li>
+</ul>
+
+### Enunciado
+
+Usted trabaja en un laboratorio que estudia distintos aspectos del coronavirus. Desde el comienzo de la pandemia trabaja en colaboración con la agencia de vigilancia epidemiológica nacional de agentes infecciosos (AVENAI). Como parte de la colaboración, todos los días se obtienen clones y secuencias de nuevos aislamientos. AVENAI comparte con su jefe un nuevo aislamiento, cuya secuencia ya ha puesto en el dominio público. Su jefe lo pone a cargo de analizar dicho aislamiento para extraer toda la información bioinformática posible de su colección de datos.
+
+#### Breve descripción de la Familia Coronaviridae
+Los coronavirus son virus envueltos ARN simple cadena positivos (es decir que su genoma puede ser traducido directamente a proteínas virales por los ribosomas del hospedador). En la envoltura viral se encuentra la proteína E y la proteína Spike. En el interior, se encuentra el genoma ARN asociado con la proteína N formando la nucleocápside.
+La subfamilia Coronavirinae está formada por cuatro géneros: *Alphacoronavirus*, *Betacoronavirus*, *Gammacoronavirus* y *Deltacoronavirus*. Cada género agrupa distintas especies. Cada especie agrupa distintos tipos virales y cada tipo viral posee distintas variantes. En particular, SARS-CoV2 también conocido como COVID-19, se encuentra dentro del género *Betacoronavirus*.
+
+Usted cuenta con un conjunto de secuencias que utiliza normalmente en su laboratorio que guarda en el archivo `conjunto_de_secuencias.xls`.
+
+Pero… Cuando usted recibe los datos se da cuenta que se olvidaron de nombrar correctamente un archivo! AVENAI trabaja con tantas secuencias que de vez en cuando se producen errores comunes como este.
+
+Para solucionarlo decide utilizar las herramientas que aprendió en el trabajo práctico N3 de bioinformática cuando era estudiante y decide:
+1. Comparar la secuencia del nuevo aislamiento con la que crea más conveniente de su conjunto de secuencias. Y se pregunta ¿Pertenece el nuevo aislamiento a un coronavirus?
+2. Ahora quisiera saber a qué coronavirus se parece más, para esto decide determinar el % de similitud que posee su secuencia con el conjunto de secuencias con las que usted trabaja comúnmente.
+
+**Extra! (y por ende opcional)**
+Para resolver el punto 2 usted puede hacer un script de bash usando entre otras cosas un ciclo `for`. Si lo logran (o si lo intentan), los invito a incluirlo en el trabajo práctico (aún cuando no les salió).
+
+### Materiales
+[Descargar]
 
 {% endif %}
