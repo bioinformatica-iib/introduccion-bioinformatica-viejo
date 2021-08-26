@@ -15,4 +15,8 @@
       description: |- 
         [Instalar/Ejecutar Java para usar con Artemis](java/)
       ratio: is-16by9
-
+    - link: instructivos/informes/images/informes.png
+      alt: The alt text for the image
+      description: |- 
+        [Informes](informes/)
+      ratio: is-16by9
