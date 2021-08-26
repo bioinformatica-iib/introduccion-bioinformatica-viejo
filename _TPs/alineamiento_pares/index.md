@@ -460,15 +460,15 @@ El comando a utilizar es ```emma```. Para ver la ayuda, tipeá ```emma -help``` 
 
 ### Enunciado
 
-Usted trabaja en un laboratorio que estudia distintos aspectos del coronavirus. Desde el comienzo de la pandemia trabaja en colaboración con la agencia de vigilancia epidemiológica nacional de agentes infecciosos (AVENAI). Como parte de la colaboración, todos los días se obtienen clones y secuencias de nuevos aislamientos. AVENAI comparte con su jefe un nuevo aislamiento, cuya secuencia ya ha puesto en el dominio público. Su jefe lo pone a cargo de analizar dicho aislamiento para extraer toda la información bioinformática posible de su colección de datos.
+Usted trabaja en un laboratorio que estudia distintos aspectos del coronavirus. Desde el comienzo de la pandemia trabaja en colaboración con la agencia de vigilancia epidemiológica nacional de agentes infecciosos (AVENAI). Como parte de la colaboración, todos los días se obtienen clones y secuencias de nuevos aislamientos. AVENAI comparte con su jefe un nuevo aislamiento. Su jefe lo pone a cargo de analizar dicho aislamiento para extraer toda la información bioinformática posible de su colección de datos.
 
 #### Breve descripción de la Familia Coronaviridae
 Los coronavirus son virus envueltos ARN simple cadena positivos (es decir que su genoma puede ser traducido directamente a proteínas virales por los ribosomas del hospedador). En la envoltura viral se encuentra la proteína E y la proteína Spike. En el interior, se encuentra el genoma ARN asociado con la proteína N formando la nucleocápside.
 La subfamilia Coronavirinae está formada por cuatro géneros: *Alphacoronavirus*, *Betacoronavirus*, *Gammacoronavirus* y *Deltacoronavirus*. Cada género agrupa distintas especies. Cada especie agrupa distintos tipos virales y cada tipo viral posee distintas variantes. En particular, SARS-CoV2 también conocido como COVID-19, se encuentra dentro del género *Betacoronavirus*.
 
-Usted cuenta con un conjunto de secuencias que utiliza normalmente en su laboratorio que guarda en el archivo `conjunto_de_secuencias.xls`.
+Usted cuenta con un conjunto de secuencias que utiliza normalmente en su laboratorio que guarda en el archivo `All_Sequences.fasta`, el record en `All_Sequences.gb` y datos de interés propio en `conjunto_de_secuencias.xlsx`.
 
-Pero… Cuando usted recibe los datos se da cuenta que se olvidaron de nombrar correctamente un archivo! AVENAI trabaja con tantas secuencias que de vez en cuando se producen errores comunes como este.
+Pero… Cuando usted recibe los datos (`sequence_incognito.fasta`) se da cuenta que se olvidaron de nombrar correctamente un archivo! AVENAI trabaja con tantas secuencias que de vez en cuando se producen errores comunes como este.
 
 Para solucionarlo decide utilizar las herramientas que aprendió en el trabajo práctico N3 de bioinformática cuando era estudiante y decide:
 1. Comparar la secuencia del nuevo aislamiento con la que crea más conveniente de su conjunto de secuencias. Y se pregunta ¿Pertenece el nuevo aislamiento a un coronavirus?
@@ -478,6 +478,6 @@ Para solucionarlo decide utilizar las herramientas que aprendió en el trabajo p
 Para resolver el punto 2 usted puede hacer un script de bash usando entre otras cosas un ciclo `for`. Si lo logran (o si lo intentan), los invito a incluirlo en el trabajo práctico (aún cuando no les salió).
 
 ### Materiales
-[Descargar]
+[Descargar](https://drive.google.com/file/d/1IG_P1GlGBRe0GraKyNk_gMkKyHEFnKtX/view?usp=sharing)
 
 {% endif %}
