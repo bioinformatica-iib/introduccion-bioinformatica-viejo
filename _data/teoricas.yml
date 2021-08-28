@@ -3,20 +3,59 @@
     - link: teoricas/teorica1/featured.png
       alt: The alt text for the image
       description: |- 
-        [Teorica N°1. Introducción a la Materia](teorica1/)
+        [Teórica N°1. Introducción a la Materia](teorica1/)
       ratio: is-16by9
     - link: teoricas/teorica2/featured.png
       alt: The alt text for the image
       description: |- 
-        [Teorica N°2. Bases de datos. Ontologías.](teorica2/)
+        [Teórica N°2. Bases de datos. Ontologías.](teorica2/)
       ratio: is-16by9
     - link: teoricas/teorica3/featured.png
       alt: The alt text for the image
       description: |- 
-        [Teorica N°3. Alineamientos de a pares y Búsqueda de secuencias por Similitud.](teorica3/)
+        [Teórica N°3. Alineamientos de a pares y Búsqueda de secuencias por Similitud.](teorica3/)
       ratio: is-16by9
     - link: teoricas/teorica4/featured.png
       alt: The alt text for the image
       description: |- 
-        [Teorica N°4. Alineamientos múltiples.](teorica4/)
+        [Teórica N°4. Alineamientos múltiples.](teorica4/)
+      ratio: is-16by9
+    - link: teoricas/teorica5/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°5. Información contenida en alineamientos múltiples.](teorica5/)
+      ratio: is-16by9
+    - link: teoricas/teorica6/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°6. Reconstrucción de filogenias.](teorica6/)
+    - link: teoricas/teorica7/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°7. Métodos de predicción de Machine Learning basados en datos (HMM y ANN).](teorica7/)
+      ratio: is-16by9
+    - link: teoricas/teorica8/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°8. Bioinformática Estructural: Desorden.](teorica8/)
+      ratio: is-16by9
+    - link: teoricas/teorica9/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°9. Bioinformática Estructural: Dominios.](teorica9/)
+      ratio: is-16by9
+    - link: teoricas/teorica10/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°10. Bioinformática Estructural: Dominios.](teorica10/)
+      ratio: is-16by9
+    - link: teoricas/teorica11/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°11. Data clustering.](teorica11/)
+      ratio: is-16by9
+    - link: teoricas/teorica12/featured.png
+      alt: The alt text for the image
+      description: |- 
+        [Teórica N°12. Secuenciación y ensamblado de genomas.](teorica12/)
       ratio: is-16by9
