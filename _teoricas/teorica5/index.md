@@ -13,7 +13,7 @@ construccion: false
 
 {% else %}
 
-Esta clase está dividida en tres partes y cada una incluye ejercicios para resolver (handout).
+Esta clase está dividida en tres partes y cada una incluye ejercicios para resolver (handout). También están la resolución de algunos ejercicios. Consejo: Traten de hacerlos primero y corroboren después.
 
 ## PARTE 1.
 
