@@ -457,24 +457,3 @@ Por esta razón, teniendo en cuenta lo realizado con el servidor Blast2logo, vam
 * (h): Y436
 
 **11.** ¿Cuáles creen que son los 4 residuos que podríamos mutar de la lista para generar un impacto en la estructura de nuestra proteína *query*?
-
-### Modelado por homología (OPTATIVO)
-
-Para seguir acumulando pruebas de que nuestro ensayo realmente podría funcionar vamos a ver si las posiciones que seleccionamos podrían ser parte de su sitio activo. Para esto vamos a utilizar el servidor [CPHmodels](http://www.cbs.dtu.dk/services/CPHmodels/), el cual realiza modelado por homología. Este programa toma como entrada una secuencia proteica, busca secuencias similares en PDB y utiliza una estructura para generar una aproximación a la estructura 3D de la secuencia *query*. Este proceso puede tardar entre 10 y 20 minutos asi que para ser prácticos, imaginen que corrieron el servidor y vayan a la salida [acá](http://www.cbs.dtu.dk/services/CPHmodels/teaching/query1.html).
-
-La salida de CPHmodels no es muy intuitiva, sin embargo, el método provee un Z-score cuando el *query* y la proteína modelo tienen poca similitud de secuencia. Como regla general, un Z-score mayor a 10 significa que el modelo es confiable.
-
-**12.** ¿CPHmodels concuerda con PSI-BLAST en su elección del modelo para obtener la estructura?
-
-La estructura puede descargarse (desde el link *query.pdb*) y abrirse con programas que tengamos instalados. Pueden instalar Pymol utilizando el comando:
-
-```Bash
-sudo apt install pymol
-```  
-Este programa es muy versátil pero también puede resultar complejo de usar al principio. Pueden consultar la wiki de Pymol [acá](https://pymolwiki.org/index.php/Main_Page), donde van a encontrar tutoriales, scripts, comandos y demás. Por lo pronto, como aprender su uso puede llevar bastante tiempo y la clase es corta, aquí hay una visualización ya resuelta de la estructura en verde con los 4 residuos correctos en <span style="color:red;font-weight:bold;">rojo</span>:
-
-![Model](images/CPHmodels.png)
-
-**13.** ¿Podrían estos residuos ser parte del sitio activo?
-
-{% endif %}
