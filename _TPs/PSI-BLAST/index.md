@@ -457,3 +457,6 @@ Por esta razón, teniendo en cuenta lo realizado con el servidor Blast2logo, vam
 * (h): Y436
 
 **11.** ¿Cuáles creen que son los 4 residuos que podríamos mutar de la lista para generar un impacto en la estructura de nuestra proteína *query*?
+
+
+{% endif %}
