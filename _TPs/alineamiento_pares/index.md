@@ -36,6 +36,16 @@ details summary > * {
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°3. [[MP4]](https://drive.google.com/file/d/106z6EkyY5qN8T4K1Cbw2k2zZIk2XVzBH/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/106z6EkyY5qN8T4K1Cbw2k2zZIk2XVzBH/preview" width="800" height="440"></iframe>
+
+* Final de Clase TP N°3. [[MP4]](https://drive.google.com/file/d/1bzl0zwLAmUsTmiQ0ZM4XIL2-lHpWjuvl/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1bzl0zwLAmUsTmiQ0ZM4XIL2-lHpWjuvl/preview" width="800" height="440"></iframe>
+
 
 ## Materiales
 
