@@ -16,6 +16,16 @@ construccion: false
 
 {% else %}
 
+## Recording
+
+* Introducción TP N°4. [[MP4]](https://drive.google.com/file/d/1VJaOhlmMbjwLU5vGwFMMaRwC6cF8COVv/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1VJaOhlmMbjwLU5vGwFMMaRwC6cF8COVv/preview" width="800" height="440"></iframe>
+
+* Final de Clase TP N°4. [[MP4]](https://drive.google.com/file/d/1H-STJlfehSeJ0tfQ0CSJcEpjFvLjBO6v/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1H-STJlfehSeJ0tfQ0CSJcEpjFvLjBO6v/preview" width="800" height="440"></iframe>
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/11BIqgiLwt_IPG8n8AQfbx7jwRNVxAfd0/view?usp=sharing) 
