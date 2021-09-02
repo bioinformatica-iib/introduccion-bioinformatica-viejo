@@ -5,7 +5,7 @@ subtitle: Perfiles de secuencia y PSI-BLAST
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
 
 <style>
@@ -28,13 +28,13 @@ details summary > * {
 
 {% else %}
 
-{% if page.data %}
+<ul class="block-list has-radius is-primary">
+   <li class=" is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-clipboard"></i></span>
+    <span style="font-weight:bold;">Este TP tiene informe.</span>
+   </li>
+</ul>
 
-## Materiales
-
-<a href="data/"> Descargar </a>
-
-{% endif %}
 ## Construcción de Logos y Matrices peso-específicas  
 
 ### Objetivos
@@ -458,5 +458,17 @@ Por esta razón, teniendo en cuenta lo realizado con el servidor Blast2logo, vam
 
 **11.** ¿Cuáles creen que son los 4 residuos que podríamos mutar de la lista para generar un impacto en la estructura de nuestra proteína *query*?
 
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 3 de septiembre 2021, 23:59hs.
+   </li>
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha de Entrega:</span> Viernes, 10 de septiembre 2021, 23:59hs.
+   </li>
+</ul>
 
 {% endif %}
