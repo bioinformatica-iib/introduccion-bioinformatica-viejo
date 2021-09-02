@@ -319,6 +319,14 @@ A continuación recarguen la página de [EasyPred](http://www.cbs.dtu.dk/biotool
 </li>
 </ul>
 
+## PSI-BLAST
+
+### Objetivos
+
+* Comprender el funcionamiento del algoritmo PSI-BLAST, aplicando el mismo en un caso de estudio en el que BLAST no funciona. 
+* Generar y reutilizar la PSSM que arroja PSI-BLAST, para encontrar hits en otras bases de datos relevantes tales como PDB.
+* Entender la información que nos otorga la PSSM construída por PSI-BLAST en relación a los residuos o dominios conservados de una proteína.
+
 ### Introducción
 
 PSI-BLAST (o Position Specific Iterated BLAST) es un algoritmo alternativo de BLAST que construye iterativamente una matriz de puntajes posición específica, o *PSSM (Position-Specific Scoring Matrix)*, para calcular el *score* de los alineamientos. 
