@@ -319,28 +319,6 @@ A continuación recarguen la página de [EasyPred](http://www.cbs.dtu.dk/biotool
 </li>
 </ul>
 
-### Encontrando epítopes en proteínas
-
-Para finalizar vamos a utilizar nuestra matriz peso-específica para encontrar epítopes potenciales en la proteína de la nucleocápside del virus SARS-CoV-2 que pueden encontrar en el archivo NCAP_CVHSA.fasta. 
-
-Recarguen [EasyPred](http://www.cbs.dtu.dk/biotools/EasyPred/). El <span style="color:blue;font-weight:bold;">recuadro de entrenamiento</span> debe quedar vacío. Ingresen el archivo con la secuencia de la proteína en el <span style="color:red;font-weight:bold;">recuadro de evaluación</span> y suban el archivo con la matriz que descargaron en el paso anterior abajo donde dice **Load saved prediction method**. 
-
-<img src="./images/easypred_2.png" alt="easypred2" style="max-width:40%">
-
-Utilicen los parámetros que crean más convenientes según lo que hemos visto anteriormente, seleccionen **Sort output on predicted values** y denle *Submit query*.
-
-¡LISTO! ahora en la salida ya no hay logos ni métricas porque ya no estamos entrenando ni testeando. Estamos utilizando un modelo ya entrenado para hacer predicciones en datos que nunca vió. La lista de péptidos son todas aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia proteica que le administramos al servidor, junto con el valor de predicción. 
-
-Los primeros péptidos de la lista son aquellos que más se adecúan a la preferencia del alelo con el que entrenamos el modelo. Por lo tanto, son buenos candidatos para testear en el laboratorio y averiguar su capacidad inmunogénica. La cantidad de péptidos que se puede seleccionar de esta lista dependerá de los recursos experimentales con los que se disponga. 
-
-## PSI-BLAST
-
-### Objetivos
-
-* Comprender el funcionamiento del algoritmo PSI-BLAST, aplicando el mismo en un caso de estudio en el que BLAST no funciona. 
-* Generar y reutilizar la PSSM que arroja PSI-BLAST, para encontrar hits en otras bases de datos relevantes tales como PDB.
-* Entender la información que nos otorga la PSSM construída por PSI-BLAST en relación a los residuos o dominios conservados de una proteína.  
-
 ### Introducción
 
 PSI-BLAST (o Position Specific Iterated BLAST) es un algoritmo alternativo de BLAST que construye iterativamente una matriz de puntajes posición específica, o *PSSM (Position-Specific Scoring Matrix)*, para calcular el *score* de los alineamientos. 
