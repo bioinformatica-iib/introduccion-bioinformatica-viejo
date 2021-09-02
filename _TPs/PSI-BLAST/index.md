@@ -35,6 +35,10 @@ details summary > * {
    </li>
 </ul>
 
+## Materiales
+
+[Descargar](https://drive.google.com/file/d/1FxPw14CbMyxxfiIQSVmZ6k6cmfJgohHU/view?usp=sharing) 
+
 ## Construcción de Logos y Matrices peso-específicas  
 
 ### Objetivos
