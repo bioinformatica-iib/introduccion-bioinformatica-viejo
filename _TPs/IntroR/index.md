@@ -23,34 +23,30 @@ construccion: true
 
 {% endif %}
 
+# Objetivos
+
+* Familiarizarse con los conceptos básicos de programación.
+* Introducirse en el lenguaje de programación R.
+* Utilizar herramientas de programación para resolver un problema enfocado a un laboratorio.
+
 # Introducción
 
-Es un hecho que la producción de información es cada día mayor, es más, si uno observa los volúmenes de datos que se manejan en los últimos años y las predicciones más serias, el crecimiento parece exponencial:
+Es un hecho que la producción de información es cada día mayor, con un crecimiento exponencial:
 
 
 ![](./images/data_growth.png)
 
-¿Entienden lo que esto implica?
-
 Si les parece que cada vez hay más datos; más grandes; más complejos, eso no es nada en comparación a lo que tendremos en unos años. Aunque por otro lado también aumenta el poder de procesamiento de datos de nuestras computadoras. Sin embargo, este crecimiento es lineal:
-
 
 ![](./images/cpu-power.png)
 
 Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. En parte puesto que estos programas han incrementado sus límites de volúmenes de datos, sin embargo, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. 
 
-En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora, cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". Cada día es más imprescindible tener una idea (aunque sea básica) de programación, por eso planteamos algunos conceptos básicos de programación a lo largo de la materia, y en este TP lo vamos a profundizar.
-
-La idea de esta actividad, es que sirva como una introducción muy liviana a la tarea de programar resoluciones de problemas sencillos, enfocándonos en manipular datos biológicos o que suelen surgir en un laboratorio de biotecnología. La primera parte de la guía es una introducción a conceptos básicos del lenguaje R, cómo escribir un programa, como ejecutarlo, almacenar y manipular datos en variables, etc. Siguiendo el estilo de la guía sobre Unix, no se espera que estén familiarizados con estos conceptos, en lo posible la guía los va a ir llevando.
+En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora, cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". Cada día es más imprescindible tener una idea (aunque sea básica) de programación.
 
 ## Rstudio, nuestro pequeño espacio de desarrollo
 
-Todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio-server*, en el cual operarán de forma remota solo a través del explorador de internet como si entraran a cualquier sitio web. Podrán trabajar en la misma sesión tanto durante las clases como desde cualquier computadora personal con acceso a internet (donde prefieran practicar, repasar, o profundizar lo realizado en clase.)
-Para acceder, simplemente entren al siguiente enlace:
-
-[rserver](http://pi.iib.unsam.edu.ar/rserver2/)
-
-*Rstudio* les pedirá el usuario y contraseña que sus instructores ya deberían haberles asignado. Una vez que hayan ingresado exitosamente, les aparecerá una ventana como la siguiente:
+Todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio*.
 
 Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitamos para trabajar en el TP con el siguiente comando:
 ```bash
@@ -72,7 +68,7 @@ wget https://raw.githubusercontent.com/trypanosomatics/introduccion-bioinformati
 
 ![](./images/Rserver_1.png)
 
-*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar, creemos uno nuevo. Básicamente lo que conocemos como "Script", que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
+*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar, creemos un archivo nuevo. Básicamente lo que conocemos como "Script", que no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
 
 Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". Como verán, hay muchas más cosas que se pueden hacer en Rstudio. Nosotros solo vamos a ver las más básicas, pero siéntanse libres de explorarlas en su tiempo libre si les genera interés. [Rstudio](https://www.rstudio.com/)
 
@@ -82,22 +78,24 @@ Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
 
 2. **Esquina inferior izquierda:** Acá tenemos la "consola", en una pestaña, y una "Terminal" en otra. La primera es igual a la que ya vieron en UNIX, solo que esta solo entiende R. La segunda es, en efecto, una terminal de UNIX. Cualquier cosa que escriban aquí, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden.
 
-3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar, pueden hacerles click y se abriran en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útiles pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
+3. **Esquina superior derecha:** Acá tendrán una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar, pueden hacerles click y se abrirán en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útiles pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos, es especialmente útil para los que estén programando por primera vez.
 
 4. **Esquina inferior derecha:** Este panel tiene varias pestañas útiles:
     * **Files** La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles y visualizar los archivos que encuentren (Rstudio es muy versátil y pueden probar de abrir archivos de texto (aparecerán en una nueva pestaña del primer panel), .pdf (se abrirá en una nueva pestaña del explorador), imagenes varias (.jpg, .png, etc). Les será muy útil para ver qué tienen en su sesión de *Rstudio* mientras trabajan.
     * **Plots** Como su nombre indica, acá aparecerán todos los *plots* (gráficos) que vayan generando, más adelante veremos más detalles de esta pestaña.
-    * **Help** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la consola el comando `help()` (muy similar el comando man que ya usaron en UNIX), prueben con:
+    * **Help** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la consola el comando `help()` (muy similar el comando `man` que ya usaron en UNIX), prueben con:
 
 ```r
 help(print)
 ```
 
-¿Entienden algo? :disappointed_relieved: **¿¡NO!?**
+¿Entienden algo?
 
-Tranquilos, este texto de "ayuda" les irá siendo cada vez más ameno a medida que se vayan familiarizando con el formato que tienen, siéntanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
+**¿¡NO!?**
 
-Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos, e incluso descargar/subir archivos desde *Rstudio server* a la computadora desde donde acceden. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
+Tranquilos, este texto de "ayuda" les irá siendo cada vez más ameno a medida que se vayan familiarizando con el formato que tiene, siéntanse libres de consultarle a sus instructores cualquier duda, pero sepan que en la práctica estos textos de ayuda solucionan una gran parte de los problemas del día a día.
+
+Hay otras que probablemente necesiten usar durante el desarrollo de la cursada, como las opciones para manejar el explorador de archivos (pestaña *Files*) donde pueden crear carpetas, mover archivos, copiar archivos. No es necesario que lo exploren ahora pero pueden probar algunos o ver si entienden como entrar y salir de carpetas, etc.
 
 Ya deben estar acostumbrados, pero por las dudas: A lo largo de todo este TP, encontrarán texto resaltado como este:
 
@@ -108,7 +106,7 @@ Que no es otra cosa que código ejemplo para que lo copien y peguen en sus conso
 
 ## Entrando en calor
 
-Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts", es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. O cualquier otra que se les ocurra necesaria.
+Antes de comenzar con R, propiamente dicho, vayamos a la pestaña de *Files* y creemos una nueva carpeta "scripts". Es una buena práctica trabajar cada proyecto dentro de una carpeta distinta (**FUNDAMENTAL**) e incluso mejor si dentro de estas creamos otras carpetas para archivos "temporales" *(/temp)*, "archivos finales" *(/output)*, archivos de entrada *(/input)*. O cualquier otra que se les ocurra necesaria.
 
 Vamos a la consola de R y pueden probar cosas como:
 
@@ -124,11 +122,11 @@ o
 
 Ya se imaginarán que pueden esperar de cada orden
 
-Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? En realidad R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo esta forma de almacenar instrucciones es un poco sucia, ya que se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (:laughing: lo cual es muy frecuente :laughing:)
+Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo, esta forma de almacenar instrucciones es un poco sucia. Se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (lo cual es muy frecuente)
 
-La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac... digo la necesidad, de reutilizar el código. Es algo así como el cuaderno de laboratorio bioinformático. En R, comentamos el texto anteponiendo un # a la línea deseada.
+La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac... digo la necesidad, de reutilizar el código. Es algo así como el cuaderno de laboratorio bioinformático. En R, comentamos el texto anteponiendo un # a la línea deseada, para que no solo haya "código" si no que también podamos explicar qué o por qué usamos dicho código.
 
-Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*. Este archivo de texto va a ser nuestro "cuaderno" o script, que recuerde exactamente todo el trabajo que hicimos y lo más detallado y prolijo que se pueda.
+Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*. Este archivo de texto va a ser nuestro "cuaderno" o "script", que recordará **exactamente** todo el trabajo que haremos lo más detallado y prolijo que se pueda.
 
 Prueben de escribir un sencillo comando y documentarlo:
 
@@ -139,11 +137,13 @@ cat("Hello World")
 cat("Hola mundo")
 ```
 
-¿Qué es cat()? ¿se parece a algo que ya vieron? ¿cómo podrían investigarlo? 
-¿Alguien que lea este *script* lo podría entender?
+* ¿Qué es cat()?
+* ¿Se parece a algo que ya vieron?
+* ¿Cómo podrían investigarlo?
+* ¿Alguien que lea este *script* lo podría entender?
 
 Muy bien, tenemos las instrucciones, ¿cómo las ejecutamos?
-En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta, maravilloso. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco c onfundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
+En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
 También podríamos ejecutarlo desde Bash (linea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
@@ -173,6 +173,7 @@ Hola mundo
 
 ¿Notan la diferencia? Podríamos usar también otros caracteres como “\\t" (tabulación), “\\s" (espacios):
 
+
 ## El mundo de las variables
 
 Como ya hablamos programar es crear algoritmos (secuencias lógicas de instrucciones) que solucionen problemas. Para hacerlo necesitamos poder manipular información. Desde valores numericos, texto, *booleanos* , tablas y hasta construcciones más complejas. Cada tipo de información tiene sus particularidades y es necesario entender cómo las interpreta cada lenguaje de programación, además es de suma importancia comprender la forma de almacenarlas (recordarlas) para poder usarlas en el momento deseado. Almacenar estos tipos de información en un lenguaje de programación se denomina declarar variables. Uno puede declarar que, de ahora en más, la palabra `variableLINDA` hace referencia al valor numérico 44 y para hacerlo (en R) es necesario:
@@ -201,7 +202,7 @@ print(saludo)
 [1] "hola Hermenegildo"
 ```
 
-El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. :eyes: (**Ojo con esto**) :eyes:
+El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. (**Ojo con esto ¡Es fundalmental!**)
 
 Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo; o actualizando su valor conforme éste avanza en la resolución del problema. Por ejemplo:
 
@@ -224,12 +225,19 @@ log(val)
 
 Con respecto a las comparaciones entre números y palabras podemos hacer las operaciones tradicionales:
 
-#### **Para probar un poco:**
-1. Usar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla.
-2. Usar diferentes operadores matemáticos entre ellas, incluir una variable que sea 0 y probar la división.
-3. Ingresar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
+#### Ejercicio 1: **Para probar un poco:**
 
-**Ejemplo:**
+
+
+1. Declarar 2 variables, asignar un número a cada una. Calcular la suma de ambas e imprimir por pantalla.
+2. Usar diferentes operadores matemáticos entre ellas, incluir una variable que sea 0 y probar la división.
+3. Declarar 2 palabras, imprimir la longitud (usar función `nchar()`) de ambas y concatenarlas (usar función `paste()`)
+
+
+<details>
+
+<summary> <h6> Si no pudieron resolver el punto 3 </h6> </summary>
+
 
 ```r
 dna1 <- "GATACA"
@@ -248,9 +256,11 @@ dna3 <- paste(dna1,dna2,sep="\t")
 print(dna3)
 ```
 
+</details>
+
 ### Variables lógicas
 
-Son las más sencillas de todas. Básicamente sólo almacenan un 1 o un 0, que solemos escribir como TRUE o FALSE, o T o F. (R entiende todas estas formas)
+Son las más sencillas de todas. Básicamente solo almacenan un 1 o un 0, que solemos escribir como TRUE o FALSE, o T o F. (R entiende todas estas formas)
 Son de especial interés cuando trabajamos con evaluaciones lógicas, algo que se hace muy frecuente. Por ahora solo sepan que existen como tipo de variable.
 
 ```r
@@ -276,7 +286,7 @@ print(!variable_logica)
 
 ### Vectores
 
-Es muy útil poder almacenar conjuntos ordenados de un tipo de variable, los cuales, en R se, llaman vectores. Podemos generarlos de distintas formas. Por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que queramos:
+Es muy útil poder almacenar conjuntos ordenados de un tipo de variable, los cuales, en R se llaman vectores. Podemos generarlos de distintas formas. Por ejemplo si usamos la función c(), podemos juntar todos los números, o variables con números que queramos:
 
 ```R
 vector678 <- c(6,7,8)
@@ -310,13 +320,14 @@ hist(Snorm)
 ```
 ![](./images/plot_ejemplo_2.png)
 
-¿Obtuvieron los gráficos que hubieran esperado? ¿Fue sencillo graficar?
+* ¿Obtuvieron los gráficos que hubieran esperado?
+* ¿Fue sencillo graficar?
 
 ### Factores
 
-Otro tipo de variable quizá no tan intuitivo de entender (especialmente si no tuviésemos formación en ciencias) son los factores. En sí no son más que unos vectores con vitaminas, pero en el trabajo que solemos hacer nos son muy útiles. A tal punto, que muchas de las funciones que van a trabajar directamente les van a devolver los resultados en forma de factores y, si ustedes no saben que son, puede llegar a generar bastante confusión. :confused:
+Otro tipo de variable quizá no tan intuitivo de entender (especialmente si no tuviésemos formación en ciencias) son los factores. En sí no son más que unos vectores con vitaminas, pero en el trabajo que solemos hacer nos son muy útiles. A tal punto, que muchas de las funciones que van a trabajar directamente les van a devolver los resultados en forma de factores y, si ustedes no saben qué son, puede llegar a generar bastante confusión. 
   
-Un vector contiene valores de un tipo dado, pero no me dice nada sobre la relación entre estos valores. Por ejemplo, si yo tengo un tratamiento con una droga en tres concentraciones y almaceno dentro de un vector los niveles de concentración en forma cualitativa (quizá porque desconozco los valores exactos):
+Un vector contiene valores de un tipo dado, pero no me dice nada sobre la relación entre estos valores. Por ejemplo, si yo tengo un tratamiento con una droga en tres concentraciones y almaceno dentro de un vector los niveles de concentración en forma cualitativa:
 
 ```R
 niveles_tratamiento <- c("bajo","medio","alto") 
@@ -333,16 +344,17 @@ Quisiera graficar para tener un bello resultado que mostrar a mi director.
 plot(niveles_tratamiento,resultados_tratamiento)
 ```
 
-Sin embargo, R no entiende cómo graficar esto (pueden probar en sus consolas) puesto que si le damos `niveles_tratamiento` como eje X nos tira un error. Usando algunas otras funciones o paquetes para graficar (que veremos más adelante) es posible que obtengan el gráfico simplemente con estos vectores. Sin embargo no será el gráfico correcto puesto que R no sabe como ordenar los niveles (probablemente los ordene alfabéticamente, en nuestro caso ¿tiene sentido?).
+Sin embargo, R no entiende cómo graficar esto (pueden probar en sus consolas) puesto que si le damos `niveles_tratamiento` como eje X nos tira un error. Usando algunas otras funciones o paquetes para graficar (que veremos más adelante) es posible que obtengan el gráfico simplemente con estos vectores. Sin embargo no será el gráfico correcto puesto que R no sabe como ordenar los niveles (probablemente los ordene alfabéticamente. En nuestro caso ¿tiene sentido?).
 
-Así que nos surge la necesidad de que cuando tenemos este tipo de datos (no son tan raros en ciencia como se imaginarán) poder decirle a nuestro cerebrobito informático a través de R que los niveles del tratamiento van del (1 al 3) y que se ordenan así: (bajo, medio y alto) sería muy últil.
-Un factor es un vector con niveles. Para definirlo manualmente para nuestro caso solo tendríamos que decir:
+Así que nos surge la necesidad de que cuando tenemos este tipo de datos (no son tan raros en ciencia como se imaginarán) poder decirle a nuestro cerebrobito informático a través de R que los niveles del tratamiento van del (1 al 3) y que se ordenan así: (bajo, medio y alto).
+
+Lo que necesitamos es un factor, que no es otra cosa que un vector con niveles. Para definirlo manualmente para nuestro caso solo tendríamos que decir:
 
 ```R
 niveles_tratamiento_factor <- factor(x=c(1,2,3),labels=niveles_tratamiento, levels = c(1,2,3))
 ```
 
-Donde estamos dándole a la función tres argumentos, la primera `x` es simplemente para decirle que el factor que queremos tiene esos tres niveles, la segunda `labels` es como queremos que se llamen (es lo que vamos a ver cuando hagamos gráficos) y la tercera `levels` es opcional y determina qué valores puede tomar este factor (podríamos haber creado un valor con estos 3 niveles, pero dejar abierta la posibilidad a un nivel más alto). 
+Donde estamos dándole a la función tres argumentos, la primera `x` es simplemente para decirle que el factor que queremos tiene esos tres niveles, la segunda `labels` es cómo queremos que se llamen (es lo que vamos a ver cuando hagamos gráficos) y la tercera `levels` es opcional y determina qué valores puede tomar este factor (podríamos haber creado un valor con estos 3 niveles, pero dejar abierta la posibilidad a un nivel más alto). 
 
 Ahora si usamos este nuevo factor recién salido del horno, tenemos un casi bello gráfico para mostrarle a nuestro director:
 
@@ -352,17 +364,14 @@ plot(niveles_tratamiento_factor,resultados_tratamiento)
 
 ![](./images/ejemplo_factores.png)
 
-:satisfied:
-
-Fíjense que automáticamente R decidió que realizar este plot un poco distinto al plot anterior aun cuando la instrucción fue muy similar (¿recuerdan plot(x,y)?). Pueden discutir entre ustedes por que les parece que R decidió no hacer un gráfico de puntos como antes y si les parece correcto.
-
-Como se habrán dado cuenta se pueden hacer muchísimas cosas con factores y muchas veces encontrarán que son indispensables para hacer gráficos correctos para los trabajos que realicen. Otras veces tendrán errores en la consola o no podrán hacer lo que quieren hacer justamente porque, sin saberlo, están trabajando con factores, pensando que son simples vectores (pasa todo el tiempo).
 
 
+Fíjense que automáticamente R decidió que realizar este plot un poco distinto al plot anterior aun cuando la instrucción fue muy similar (¿recuerdan plot(x,y)?). Pueden discutir entre ustedes por qué les parece que R decidió no hacer un gráfico de puntos como antes y si les parece correcto.
 
-### Dataframes, las tablas en R.
 
-Repasemos otro tipo de variables que vamos a usar mucho: **dataframes**
+### Dataframes.
+
+Repasemos otro tipo de variables que vamos a usar mucho: **dataframes** las tablas de R.
 
 Hay varias formas para crearlas, la más sencilla es con la función *data.frame()*
 
@@ -428,7 +437,7 @@ dt$expresion > 100
 dt[dt$expresion > 100 ,]
 ```
 
-Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma más sencilla pero, quizá, no tan intuitiva. Más adelante en otra clase las trabajaremos.
+Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma más sencilla pero, quizá, no tan intuitiva. 
 
 ### Listas
 
@@ -493,7 +502,7 @@ La otra diferencia con los vectores es que las listas se indexan con doble corch
 
 Esto último que estuvimos viendo les puedo asegurar que algunas veces puede generar problemas (por eso lo estamos mencionando). Muchas veces queremos operar con variables y obtenemos errores puesto que son de un tipo distinto al que esperabamos. ¿Cómo podemos entonces averiguar de que tipo son las variables? ¿Si tienen comillas texto y en caso contrario números? 
 
-La verdad es que no, hay incluso distintos tipos de números y la forma correcta de saber que tipo de variable es una es usando la formula: `typeof()`
+La verdad es que no, hay incluso distintos tipos de números y la forma correcta de saber que tipo de variable es una es usando la formula: `typeof()` y `class()`
 
 ## Iteraciones y evaluaciones usando R
 
@@ -571,7 +580,7 @@ for(i in 1:length(dt[,1])){
 
 ## Directorio de trabajo
 
-Ahora que ya estamos más o menos familiarizados con el entorno, vamos a arrancar a trabajar con datos posta. Tal como hacemos en una consola de UNIX, es importante que saber dónde estamos parados (``pwd``) y dónde queremos pararnos (``cd ruta/al/directorio/deseado``). En R, los comandos para saber esto son `getwd()` y `setwd("ruta/al/directorio/deseado")`. Por defecto, la ubicación del R es el *home*:
+Ahora que ya estamos más o menos familiarizados con el entorno, vamos a arrancar a trabajar con datos reales. Tal como hacemos en una consola de UNIX, es importante saber dónde estamos parados (``pwd``) y dónde queremos pararnos (``cd ruta/al/directorio/deseado``). En R, los comandos para saber esto son `getwd()` y `setwd("ruta/al/directorio/deseado")`. Por defecto, la ubicación del R es el *home*:
 
 ```r
 getwd()
@@ -597,12 +606,15 @@ Supongamos que tenemos un archivo con valores de expresión, donde las columnas 
 dt <- read.csv(file="dt_TP1_cal.tsv",sep="\t")
 ```
 
-¿Les funcionó? ¿Les dió algún error? ¿Hay algo que esté mal?
+* ¿Les funcionó?
+* ¿Les dió algún error?
+* ¿Hay algo que esté mal?
+
 Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista (`help(read.csv)`).
 
-Pero la vida no siempre es tan feliz, muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar tienen un formato no estándar. En esos casos nos encontramos con que es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y como se pueden trabajar.
+Muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar no tienen un formato estándar. En esos casos es necesario leer linea a linea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y cómo se pueden trabajar.
 
-`Read.csv()` es una función, ahora vamos a explorar otros tipos de funciones y como utilizar algunas de ellas.
+`Read.csv()` es una función, ahora vamos a explorar otros tipos de funciones y cómo utilizar algunas de ellas.
 
 ## Funciones y paquetes en R
 
@@ -676,11 +688,7 @@ Solo tuve que decirle que los datos estaban en la *data frame* `dt`, que el eje 
 Todo esto realizado en tres lineas de código resulta un poco complejo ahora mismo, pero sepan que es un ejemplo que facilmente podrían haber tomado de algun tutorial de internet, por ejemplo podrían haber arribado al código de arriba siguiendo lo que explican [acá](https://sejohnston.com/2012/08/09/a-quick-and-easy-function-to-plot-lm-results-in-r/)
 
 
-:skull: **¿Cansados?** :skull:
-
 ## Segunda sección del TP
-
-R es muy útil a la hora de implementar visualizaciones de datos, análisis estadísticos, data mining, etc. Por lo que tendremos una clase específica para que puedan ver y probar ejemplos donde R les puede ser de gran ayuda para mejorar o facilitar el trabajo de análisis de datos. Sin embargo también puede ser útil en otros tipos problemas.
 
 Es muy normal que en trabajos de biología sea necesario trabajar datos provenientes de servicios o equipos que no generan *outputs* de formato estándar (separados por tabs, comas, etc) y cuando queramos cargarlos en cualquier programa de análisis de datos, tengamos que darles formato manualmente... algo que no es muy complicado cuando se trata de unos pocos archivos o un ensayo, pero que puede ser complicado o imposible en grandes cantidades.
 
@@ -699,13 +707,22 @@ Ejemplos:
 
 ```R
 DNA <- 'AAAAAAAAAAAATTTTTTTTTTTTTTT'
+DNAvector <- strsplit(split="AT", DNA)
+firstString <- DNAvector[[1]][1]
+secondString <- DNAvector[[1]][2]
+```
+
+* ¿Qué tipo de variable devolvió la función *strsplit()*?
+* ¿Cúantos strings les devolvió como resultado?
+
+```R
+DNA <- 'AAAAAAAAAAAATTTTTTTTTTTTTTT'
 DNAvector <- strsplit(split="", DNA)
 base1 = DNAvector[[1]][1]
 base10 = DNAvector[[1]][10]
 ```
-¿Qué pattern estaría usando en este strsplit?  (ayuda: busquen la ayuda, suele ser de ayuda)
-¿Qué tipo de variable devolvió la función *strsplit()*?
 
+* ¿Qué pattern estaría usando en este strsplit?  (ayuda: busquen la ayuda, suele ser de ayuda)
 
 Veamos otro ejemplo:
 
@@ -749,13 +766,11 @@ print(vector_of_ids)
 
 Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón. En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
 
-Es importante recalcar que todo este trabajo de "*parsear*" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl (en estos casos suele ser un poco más sencillo y eficiente) o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
+Es importante recalcar que todo este trabajo de "*parsear*" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
 
 ### Parseando archivos de salida del FilterMax y generar curvas dosis/respuesta
 
-Como ejemplo real de algo que podría serles de ayuda en su trabajo como biotecnólogos.
-
-Tomemos el ejemplo de usar datos del equipo *Filter Max* que se dispone para uso de los que trabajan en el IIB. Este equipo es muy usado puesto que permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada ciertos intervalos temporales).
+Tomemos el ejemplo de usar datos del equipo *Filter Max F5*. Este equipo permite hacer mediciones puntuales de absorbancia, fluorescencia (y más) en placas de wells de 96, 384 y 1536. Incluso permite hacer mediciones en distintos tiempos (se le puede programar para hacer mediciones cada ciertos intervalos temporales).
 
 Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos en un solo ensayo si por ejemplo hacemos mediciones cada 5 minutos durante una hora en una placa de 384 wells.
 
@@ -767,58 +782,17 @@ La enzima que estudia tiene como producto un compuesto fluorescente y la idea es
 
 Si un compuesto funciona como inhibidor en algunas de las concentraciones evaluadas, la velocidad de la reacción debería caer en medida que aumenta su concentración.
 
-Por lo tanto, luego de realizar el ensayo hay que calcular todas las RL y ver cuál es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration* que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% más lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
+Por lo tanto, luego de realizar el ensayo hay que calcular todas las regreciones lineares y ver cuál es la dosis/respuesta de cada compuesto a lo largo de las concentraciones ensayadas. Al investigador le interesa calcular el IC50 de cada compuesto (IC50 = *half maximal inhibitory concentration*  que en nuestro caso sería la concentración a la cual el inhibidor produce una reacción un 50% más lenta que sin inhibidor). A su vez, necesita visualizar si la inhibición se comporta de forma ideal.
 
-Luego de pipetear todo un 31 de diciembre de lluvia torrencial, el investigador se encontró con que las opciones de salida del *FilterMax* eran dos. La primera en formato excel, al cual está acostumbrado a trabajar. Sin embargo, al intentar exportarlo, le dió un error: "los datos están incompletos". Sin poder entender a que se debía este error, exportó el archivo al otro formato disponible, un archivo .txt con un formato un poco particular. Pueden ver el ejemplo en el archivo "datos_filtermax.txt".
+Los resultados **reales** de este experimento pueden verlos en el archivo: `datos_filtermax.txt`.
 
-Se llevó el archivo generado en un pendrive a su casa, y esta vez sí pudo cargarlo en un excel, sin embargo, otra vez se encuentra con dificultades puesto que, como verán en el archivo, los datos de un mismo compuesto están en distintas columnas (A1, B1, C1, etc) y en excel tiene que realizar muchos "copy paste" hasta obtener todas las series de concentraciones de cada compuesto para cada tiempo.
-
-Al finalizar de formatear los datos, los tiene que ingresar en el programa Graphpad que le permite calcular las propiedades dosis/respuesta para enviar los resultados a su director, y poder disfrutar del fin de año con su familia.
-
-* ¿Puede terminar antes de las 10 de la noche?
-
-Aclaramos que empieza a analizar los datos a las 15 PM (luego de todo el pipeteo) y además de la que ustedes tienen, hay 12 placas más. Analizadas con el mismo diseño experimental y formato de salida.
 
 * ¿Podemos agilizar el análisis usando R?
 
-* ¿Cómo plantearían el análisis?
-
-Luego de consultar con un bioinformático amigo, llegaron a la resolución rápida y pudieron informar los resultados al director con los archivos que tienen en la carpeta "results".
-
-En esta carpeta tienen tres archivos:
-
-* Un .pdf donde se realizaron todas las RL para cada compuesto, como el siguiente:
-
-![](./images/plot_ejemplo_7.png)
-
-* Un .pdf con un análisis de la curva dosis/respuesta donde estimaron el IC50, como el siguiente:
-
-![](./images/plot_ejemplo_6.png)
-
-Además, pudieron exportar la siguiente tabla:
-
-| compuesto     | IC50   | min    | max     |
-|---------------|--------|--------|---------|
-| Umbrella6     | 0.06   | 0.05   | 0.06    |
-| Umbrella15    | 0.48   | 0.44   | 0.52    |
-| Umbrella22    | 0.69   | 0.47   | 1.04    |
-| Umbrella3     | 0.69   | 0.08   | 4.87    |
-| Umbrella5     | 0.69   | 0.43   | 1.03    |
-| Umbrella2     | 2.35   | 0.94   | 58.44   |
-| Umbrella4     | 2.83   | 1.04   | 9.08    |
-|       .       |   .    |  .     |   .     |
-|       .       |   .    |  .     |   .     |
-|       .       |   .    |  .     |   .     |
-| Umbrella9     | 218.64 | 136.79 | 329.02  |
-| Umbrella17    | 294.12 | 223.16 | 351.76  |
-| Umbrella18    | 828.37 | 612.85 | 1054.84 |
-
-Pueden ver los archivos .pdf si les interesa ver cómo dieron el resto de los compuestos, por ejemplo podrían discutir porque puede ser que el investigador haya descartado el IC50 de los primeros 6 compuestos de la tabla.
-
-¿Creen que es muy difícil/laborioso hacer todos estos gráficos y análisis en R?
+* ¿Cómo plantearían el análisis viendo el formato del archivo? ¿Se ve sencillo?
 
 Intentaremos resolver el problema en un nuevo script de R, para esto, abran un nuevo script, y ponganle el nombre que quieran.
-En este TP vamos a ver y explicar partes de la resolución, sin embargo algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script con el que estos gráficos y la tabla fueron generados. Con lo cual pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta (con la ayuda del paso a paso que desarrollaremos a continuación).
+En este TP vamos a ver y explicar partes de la resolución, sin embargo, algunas partes no se muestran y se los invita a intentar pensarlas ustedes mismos. De todas formas tienen en "scripts/Analisis_filerMax_resuelto.R" el script que lo resuelve. Pueden consultar cualquier paso del ejercicio que se plantea en este TP y no puedan resolverlo ustedes, aunque es preferible que intenten resolverlo por su cuenta (con la ayuda del paso a paso que desarrollaremos a continuación).
 
 #### Parsear los datos
 
@@ -834,8 +808,12 @@ dt <- read.csv("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
 
 `*more columns than column names*`
 
-Aparentemente el formato que quiere leer esta función no funciona porque las primeras filas tienen menos columnas que el resto de las filas (en el formato estandard siempre son las mismas) ¿Qué podemos hacer?
-Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuántas columnas necesitan, por ejemplo yo encontré que `read.table()` podría funcionar:
+Aparentemente el formato que quiere leer esta función no funciona porque las primeras filas tienen menos columnas que el resto de las filas (en el formato estandard siempre son las mismas)
+
+¿Qué podemos hacer?
+
+
+Si googlean, hay funciones que pueden leer todo el archivo antes de calcular cuántas columnas necesitan, por ejemplo, `read.table()` podría funcionar:
 
 ```r
 dt <- read.table("./data/datos_filtermax.txt",sep="\t",stringsAsFactors = F)
@@ -1001,10 +979,10 @@ print(nueva_dt_completa)
 
 ¿Alguien no entiende a qué se debe el "dec = ","? Pueden sacarse la duda leyendo el `help(read.csv)`
 
-La función solo nos pide que le indiquemos cuáles son las dt a unir, y que columnas las relaciona.
+La función solo nos pide que le indiquemos cuáles son las dt a unir, y qué columnas las relaciona.
 ¿Pueden hacer esto mismo pero para los compuestos?
 
-Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis en graphpad, como quería el investigador.
+Ahora ya tenemos todos los datos que podríamos necesitar para hacer el análisis.
 
 #### Análisis de dosis/respuesta para inhibición de la reacción enzimática
 
@@ -1035,7 +1013,7 @@ Si hicieron ambos *merge* correctamente, deberían haber llegado a algo así:
 
 Como pueden ver, las columnas de señal y tiempo están cargadas como "character", lo cual no es correcto, porque en realidad son variables numéricas, y en todo el análisis posterior vamos a necesitar considerarlos así.
 
-¿Cómo podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿como lo harían?
+¿Cómo podemos cambiar los tipos de variables? ¿Pueden encontrar las funciones que lo hacen? ¿cómo lo harían?
 
 ```r
 nueva_dt_completa$signal <- as.numeric(nueva_dt_completa$signal)
@@ -1075,13 +1053,13 @@ Luego de las transformaciones planteadas, deberían llegar a algo así:
 
 ##### Velocidad de las reacciones
 
-Ahora podríamos hacer un gráfico, muy similar al que vieron en esta guía con `ggplot()` para una regresión lineal de las reacciones. Comencemos con la reacción sin inhibidores (*DMSO*).
+Ahora podríamos hacer un gráfico, muy similar al que vieron en esta guía con `ggplot()` para una regresión lineal de las reacciones. Con la reacción sin inhibidores (*DMSO*).
 según la estructura de ggplot, primero tenemos que decirle:
 * Los datos que graficar: ¿Toda la tabla? ¿Una parte?
 * Las columnas con los ejes (x, y)
 * La columna que identifica como colorear los datos (esto es, cuando hay más de una serie y las queremos diferenciar)
 
-Y luego, agregar cada uno de los diferentes componentes que queremos graficar. Para seguir con el ejemplo que habíamos visto anteriormente, queremos agregar un scatterplot (`geom_point()`) y una regresión lineal (`geom_smooth()`).
+Y luego, agregar cada uno de los diferentes componentes que queremos graficar en el mismo gráfico para que se vea clara la diferencia contra el DMSO. Para seguir con el ejemplo que habíamos visto anteriormente, queremos agregar un scatterplot (`geom_point()`) y una regresión lineal (`geom_smooth()`).
 Por lo cual, deberían haber llegado a algo así:
 
 ```r
@@ -1090,6 +1068,7 @@ ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],aes(x=Time,y
     geom_smooth(method="lm")+
     theme_minimal()
 ```
+
 Luego, para cada uno de los compuestos queremos agregarles una nueva serie para cada concentración, y que tenga tanto los puntos como la regresión lineal. ¿Se imaginan como lo podemos hacer?
 
 Como ejemplo, si queremos agregar la concentración "59.25926" del compuesto "Umbrella1" deberíamos hacer algo así:
@@ -1101,7 +1080,8 @@ plot_1 <- ggplot(data=nueva_dt_completa[nueva_dt_completa$Compuesto=="DMSO",],ae
     theme_minimal()
 dt_compuesto <- nueva_dt_completa[nueva_dt_completa$Compuesto=="Umbrella1",]   
 dt_plot <- dt_compuesto[dt_compuesto$Inhibidor.uM=="59.25926",]
-plot_1 <- plot_1+ geom_point(data=dt_plot)+geom_smooth(data=dt_plot,method="lm")
+plot_1 <- plot_1 + geom_point(data=dt_plot)+
+    geom_smooth(data=dt_plot,method="lm")
 
 ```
 
@@ -1130,18 +1110,19 @@ Recuerden que es muy importante esta última orden, de lo contrario el pdf queda
 
 Para evaluar el efecto de los compuestos como inhibidores de la reacción estudiada, se plantea hacer un análisis de cómo cambia la velocidad de la reacción a lo largo de las distintas concentraciones evaluadas. Si el inhibidor funciona de libro, lo que esperaríamos obtener es una curva sigmoidea, donde podríamos hacer un ajuste sigmoidal e interpolar la concentración esperada para obtener una inhibición del 50% en esa curva. Lo que para nosotros se conoce como **IC50**. 
 
-Hay muchas formas de hacer esto, pero como puede ser un poco complejo hacer este tipo de análisis, se me ocurre que ya puede existir algún paquete disponible para su utilización que resuelva todo esto. Busqué un poco en google y llegué al paquete `nplr` que pueden ver una descripción de todo lo que hace en [este link](https://cran.r-project.org/web/packages/nplr/vignettes/nplr.pdf) .
+Hay muchas formas de hacer esto, pero como puede ser un poco complejo hacer este tipo de análisis, ya puede existir algún paquete disponible para su utilización que resuelva todo esto. Buscamos un poco en google y llegamos al paquete `nplr` que pueden ver una descripción de todo lo que hace en [este link](https://cran.r-project.org/web/packages/nplr/vignettes/nplr.pdf).
 
 
-Después de leer detenidamente la documentación, llegué a la conclusión que tengo que pasarle una tabla con la velocidad de reacción de cada concentración medida, para que la función `nplr()` haga el ajuste sigmoidal e incluso me va a permitir hacer un análisis de inferencia de que cual es el rango en el que se puede estimar el **IC50**. 
+Después de leer detenidamente la documentación, vemos que hay que pasarle una tabla con la velocidad de reacción de cada concentración medida, para que la función `nplr()` haga el ajuste sigmoidal e incluso nos va a permitir hacer un análisis de inferencia de que cúal es el rango en el que se puede estimar el **IC50**. 
 
 Para calcular la velocidad de las reacciones podemos usar la función `lm()` básica de R, que hace un ajuste lineal y nos devuelve los coeficientes del ajuste. 
 
 ¿Se pueden hacer una idea de cómo podría plantear resolver todo esto paso a paso?
 
-Yo me planteo lo siguiente:
+Podría ser:
 
-1. Crear una data frame para guardar cada una de las velocidades de la reacción para cada concentración de cada compuesto. ¿Que columnas debería tener la tabla?
+1. Crear una data frame para guardar cada una de las velocidades de la reacción para cada concentración de cada compuesto
+    * ¿Que columnas debería tener la tabla?
 
 2. Iteramos cada compuesto, filtrando la tabla de datos parseados que ya tenemos (de igual forma a como hacíamos antes para hacer cada gráfico de cada compuesto).
 
@@ -1182,7 +1163,7 @@ Deberían llegar a algo así:
 19  Umbrella5 0.69 0.44 1.03
 ```
 
-Espero que hayan podido llegar hasta acá entendiendo todos los pasos que hicimos y resolviendo algunos de los que no se mostraba resuelto, pero recuerden que todo el script está resuelto en: "scripts/Analisis_filerMax_resuelto.R"
+Recuerden que todo el script está resuelto en: "scripts/Analisis_filerMax_resuelto.R"
 
 # Bibliografía
 
