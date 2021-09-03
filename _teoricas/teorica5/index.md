@@ -42,3 +42,8 @@ Esta clase está dividida en tres partes y cada una incluye ejercicios para reso
 <iframe src="https://drive.google.com/file/d/1xyoFW28TICTBNSVpw1mK6T2K29eolwWQ/preview" width="800" height="440"></iframe>
 
 {% endif %}
+
+## CLASE DE CONSULTA.
+- Recording [[MP4]](https://drive.google.com/file/d/1tCDT6eiRhFu-P11LJ1w7ZK2FE2aGjYlN/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1tCDT6eiRhFu-P11LJ1w7ZK2FE2aGjYlN/preview" width="800" height="440"></iframe>
