@@ -495,12 +495,11 @@ Para analizar en forma conjunta los mejores ligandos que obtuvo según los punta
 
 **Extra (y por ende opcional):** Puede realizar un `for loop` junto con un `awk` para seleccionar los péptidos relevantes de cada una de las proteínas (recuerde que en un TP se realizó un `awk` para seleccionar columnas). 
 
+Para realizar el logo, utiliza Seq2Logo y genera un logo con todos estos péptidos ajustando los parámetros según su criterio
 
-**5.** Para realizar el logo, utiliza Seq2Logo y genera un logo con todos estos péptidos ajustando los parámetros según su criterio.
+**5.** En base a los conocimientos adquiridos en su curso de Bioinformática, ¿le parece razonable el motivo hallado para el alelo HLA-A*02:01? ¿Puede ver claramente las posiciones ancla? ¿Qué aminoácidos son los preferidos para estas posiciones?
 
-**6.** En base a los conocimientos adquiridos en su curso de Bioinformática, ¿le parece razonable el motivo hallado para el alelo HLA-A*02:01? ¿Puede ver claramente las posiciones ancla? ¿Qué aminoácidos son los preferidos para estas posiciones?
-
-**7.** ¿Observa algo raro en el logo obtenido? ¿Cómo haría para modificarlo?
+**6.** ¿Observa algo raro en el logo obtenido? ¿Cómo haría para modificarlo?
 
 
 {% endif %}
