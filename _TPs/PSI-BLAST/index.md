@@ -452,13 +452,55 @@ Por esta razón, teniendo en cuenta lo realizado con el servidor Blast2logo, vam
 
 <ul class="block-list has-radius is-primary">
    <li class="is-highlighted is-info has-icon" markdown="span">
-      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
-    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 3 de septiembre 2021, 23:59hs.
-   </li>
-   <li class="is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha de Entrega:</span> Viernes, 10 de septiembre 2021, 23:59hs.
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 10 de septiembre 2021, 23:59hs.
    </li>
 </ul>
+
+### Enunciado
+
+Una vez que usted hizo el análisis (informado en el TP3), se comunicó con el laboratorio AVENAI y le indican que una vez secuenciado el aislamiento, tienen como política hacer todas sus secuencias de dominio público, esto significa que su secuencia de estudio ya figura en las bases de datos (Usted suspira, de haberlo sabido antes...).
+
+Para poder identificarla, y sabiendo que es un *Betacoronavirus*, usted decide utilizar la herramienta provista por NCBI y hacer un BLASTn de su secuencia incognito contra la base de datos **genomic/Viruses/Betacoronavirus**.
+
+1. ¿Cuál es el resultado de realizar el BLASTn? ¿Obtiene algún hit con 100% de cobertura y E-value=0.0? Si obtiene más de un hit, recupere el primero.
+2. ¿A qué aislamiento corresponde su secuencia? 
+
+Para recolectar más información de su secuencia, decide acceder al GenBank yendo a la pestaña **Alignments** de la salida del BLASTn y cliqueando en el accession number correspondiente.
+
+Su jefe está muy interesado en estudiar qué proteínas de esta variante de coronavirus contienen ligandos del alelo **HLA-A*02:01**. Para eso a usted se le ocurre realizar predicciones utilizando la matriz peso-específica del alelo correspondiente que ya había generado en un curso de Bioinformática (TP5) tiempo atrás y que sabe que funciona muy bien. 
+
+Puede encontrar una descripción de coronavirus y sus proteínas en [ViralZone de Expasy](https://viralzone.expasy.org/764?outline=all_by_species).
+
+Usted decide trabajar con las proteínas **S** (spike o proteína de glicoproteína de superficie), **E** (proteína de la envoltura), **M** (proteína de membrana) y **N** (fosfoproteína de la nucleocápside) de esta variante de coronavirus (ex secuencia incógnito) ya que cree, además, que son las que podrían llegar a contener los péptidos más inmunogénicos. Para obtener las secuencias de las proteínas en estudio decide recurrir al registro del GenBank que afortunadamente guardó después de hacer el BLASTn.
+
+Decide además utilizar la herramienta **EasyPred** que ya usó tiempo atrás para generar su matriz peso-específica, pero esta vez la usará para realizar una predicción. Por lo tanto, deja el recuadro de entrenamiento vacío e ingresa el archivo con la secuencia de la proteína a evaluar en el recuadro de evaluación. Por último, sube el archivo con la matriz en la sección **Load saved prediction method**. 
+
+<img src="./images/easypred_2.png" alt="easypredInf" width="50%">
+
+Selecciona **Sort output on predicted values** y aprieta el botón Submit query.
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-circle"></i></span>
+   **Importante:** En la salida no hay logos ni métricas porque ya no se está entrenando ni testeando el modelo. En este punto se está utilizando un modelo ya entrenado (su matriz) para hacer predicciones en datos que nunca vió. La lista de péptidos son todas aquellas secuencias de 9 aminoácidos que se pueden obtener de la secuencia proteica que se le administra al servidor, junto con el valor de predicción.
+   </li>
+</ul>
+
+**3.** Describa lo que observa en el output de EasyPred. ¿Qué operación realiza el servidor para obtener las predicciones para cada péptido?
+
+**4.** ¿Qué péptidos de cada una de las proteínas analizadas elegiría para testear en el laboratorio?
+
+Para analizar en forma conjunta los mejores ligandos que obtuvo según los puntajes predichos por su PSSM decide realizar un logo con todos los péptidos de las proteínas **S**, **E**, **M** y **N** que contengan un valor de predicción mayor a 1. 
+
+**Extra (y por ende opcional):** Puede realizar un `for loop` junto con un `awk` para seleccionar los péptidos relevantes de cada una de las proteínas (recuerde que en un TP se realizó un `awk` para seleccionar columnas). 
+
+
+**5.** Para realizar el logo, utiliza Seq2Logo y genera un logo con todos estos péptidos ajustando los parámetros según su criterio.
+
+**6.** En base a los conocimientos adquiridos en su curso de Bioinformática, ¿le parece razonable el motivo hallado para el alelo HLA-A*02:01? ¿Puede ver claramente las posiciones ancla? ¿Qué aminoácidos son los preferidos para estas posiciones?
+
+**7.** ¿Observa algo raro en el logo obtenido? ¿Cómo haría para modificarlo?
+
 
 {% endif %}
