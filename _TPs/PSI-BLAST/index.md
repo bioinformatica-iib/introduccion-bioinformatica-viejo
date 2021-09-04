@@ -213,7 +213,9 @@ Para evaluar el desempeño de nuestro modelo utilizaremos el archivo **Evaluacio
 
 Por ejemplo, si hacemos un ```cat``` del archivo **Entrenamiento_chico.set**, nos encontramos con lo siguiente:
 
+<p style="text-align:center">
 <img src="./images/formato_entrenamiento_chico.png" alt="Entre_chico" style="max-width:50%">
+</p>
 
 Este es un archivo con dos columnas, la primera contiene a los péptidos y la segunda a los valores de afinidad de unión o *binding affinity* de los mismos. (¿En qué escala están los valores de *binding affinity*? ¿Están normalizados entre 0 y 1?)
 
@@ -357,7 +359,9 @@ QGRVGPNEFRILKENYTVFTIEDLRKLYDEAGLVVLE
 
 Vayan a la pagina de [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) y utilicen el algoritmo de *Protein BLAST* para buscar secuencias similares. **En el campo de base de datos seleccione pdb que es la base que contiene estructuras**.
 
+<p style="text-align:center">
 <img src="./images/psiblast_1.png" alt="psiblast1" style="max-width:60%">
+</p>
 
 **1.** ¿Cuántos *hits* con E-value < 0.005 encuentran? Vuelvan atrás y, en **Program selection: Algorithm**, seleccionen PSI-BLAST. ¿Cambió el resultado en comparación a lo que habían obtenido anteriormente? 
 
@@ -476,7 +480,9 @@ Usted decide trabajar con las proteínas **S** (spike o proteína de glicoprote�
 
 Decide además utilizar la herramienta **EasyPred** que ya usó tiempo atrás para generar su matriz peso-específica, pero esta vez la usará para realizar una predicción. Por lo tanto, deja el recuadro de entrenamiento vacío e ingresa el archivo con la secuencia de la proteína a evaluar en el recuadro de evaluación. Por último, sube el archivo con la matriz en la sección **Load saved prediction method**. 
 
+<p style="text-align:center">
 <img src="./images/easypred_2.png" alt="easypredInf" width="50%">
+</p>
 
 Selecciona **Sort output on predicted values** y aprieta el botón Submit query.
 
