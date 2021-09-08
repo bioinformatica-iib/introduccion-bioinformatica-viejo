@@ -6,7 +6,7 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
 
 <style>
@@ -29,11 +29,18 @@ details summary > * {
 
 {% else %}
 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-clipboard"></i></span>
+    <span style="font-weight:bold;">Este TP tiene informe.</span>
+   </li>
+</ul>
+
 ## Materiales
 
-[Descargar](https://drive.google.com/file/d/1AHBHB386Q7c7VMv5BeH-X28LhDgcQhth/view?usp=sharing)
+[Descargar](https://drive.google.com/file/d/1hesYx70VP8KdD_mQkgUXPEV7VpR1Gv0a/view?usp=sharing)
 
-## Materiales
+## Objetivos
 * Familiarizarse con el uso de árboles filogenéticos
 * Entender como leer árboles simples
 * Entender las distintas representaciones de árboles filogenéticos
@@ -57,15 +64,13 @@ Los árboles filogenéticos están compuestos por: **Ramas** (o ejes) y **Nodos*
 * Los **nodos internos** son las *secuencias* o *especies ancestrales* inferidas. Corresponden al último ancestro común *hipotético* de todo lo que está debajo de él, es decir de los descendientes. Los **nodos internos** son los puntos en los cuales dos o más ramas divergen.
 * Por último, las **ramas** conectan nodos ancestrales con sus descendientes.
 
-INCLUIR FIGURA DE ÁRBOL CON PARTES MARCADAS
-
 <!--
 
   Los árboles pueden derivarse a partir de varios genes (árboles genéticos), de un único gen proveniente de diferentes especies (árbol de especies) o de una combinación de ambos. En el primer caso, los nodos internos podrían interpretarse como eventos de duplicación, mientras que en el segundo, podrían obedecer a eventos de especiación.
 
 -->
 
-![Arbol1](images/Arbol1.jpg)
+![Arbol1](images/Arbol1.png)
 
 <!--
 Generalmente los árboles filogenéticos (o filogramas) tienen ramas que son proporcionales a la distancia (o "cantidad de evolución") entre las secuencias, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre las secuencias que une. Existen también otras representaciones (llamados cladogramas) en los cuales las ramas están justificadas y su largo no corresponde con información alguna más allá de los agrupamientos.
@@ -75,9 +80,7 @@ Los árboles pueden representarse de diversas maneras. Según el significado de 
 * el **cladograma**, donde cada rama representa únicamente la transición evolutiva entre un nodo ancestral y sus descendientes independientemente de la longitud. La longitud de la rama no corresponde con información alguna más allá de los agrupamientos.
 * el **filograma** , donde la longitud de cada rama es proporcional al número de cambios que existe entre un ancestro y sus descendientes, calculada a partir de la similitud entre los nodos que conectan. Por lo tanto, mientras más largas son las ramas mayor es la divergencia entre eventos que une.
 
-MODIFICAR FIGURA INDICANDO CUAL CLADOGRAMA Y CUÁL ES FILOGRAMA
-
-![Clado](images/Arbol-Clado.jpg)
+![Clado](images/Arbol-Clado.png)
 
 Por último, los árboles pueden poseer raíz (**Rooted**) o no poseer raíz (**Unrooted**). La raíz es el punto más antiguo del árbol y marca el orden de ramificación del mismo, es decir, quién comparte un ancestro más reciente con quién. La forma más frecuente de ubicar la raíz del árbol es a través de un **outgroup**: un punto externo de referencia. Un **outgroup** puede ser cualquier secuencia que no sea un miembro natural del grupo de interés. Cuando uno no cuenta con un elemento que pueda usarse como referencia, la raíz suele ubicarse en el medio del árbol, o aun mejor, no se coloca en ningún lado.
 
@@ -95,7 +98,8 @@ Generalmente la mayor cantidad de tiempo y esfuerzo se invierten en este paso ya
    </li>
 </ul>
 
-* **Recolección de secuencias:** En la práctica, la obtención de secuencias puede realizarse como ya se vió en este curso, utilizando herramientas como PSI-BLAST o HMMer para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función.
+* **Recolección de secuencias:** En la práctica, la obtención de secuencias puede realizarse como ya se vió en este curso, utilizando herramientas como PSI-BLAST para identificar secuencias homólogas distantes y evitar aquellas que comparten similitud pero no estructura/función.
+
 * **Curación:** Las secuencias recolectadas luego deben ser sometidas a una meticulosa curación, donde se eliminan secuencias redundantes, incompletas o con errores detectables. Incluso pueden realizarse pasos de modelización de estructura para validar la pertinencia de las moléculas al grupo de proteínas que se desea utilizar.
 
 <ul class="block-list has-radius is-primary">
@@ -105,9 +109,9 @@ En este trabajo práctico, por cuestiones de tiempo, se les entrega un conjunto 
    </li>
 </ul>
  
-Se utilizarán las secuencias contenidas en el archivo **Ribonucleasas.fasta**. 
+Se utilizarán las secuencias contenidas en el archivo `Ribonucleasas.fasta` cuyos datos asociados pueden encontrarlos en el `Ribonucleasas_organismos.pdf`. 
 
-Este archivo multiFASTA contiene 64 secuencias protéicas de ribonucleasas pancreáticas de diversos animales. TODAS pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro, que como despistó a más de uno en el trabajo práctico de Alineamientos se ganó su lugar.
+En el archivo multiFASTA contiene 64 secuencias protéicas de ribonucleasas pancreáticas de diversos animales. Si observan el archivo `Ribonucleasas_organismos.pdf` pueden ver que **todas** pertenecen a mamíferos placentarios, excepto por nuestro viejo amigo el canguro, que como despistó a más de uno en el trabajo práctico de Alineamientos se ganó su lugar.
 
 #### Paso 2. Alineamiento múltiple
 
@@ -128,13 +132,15 @@ Recuerden que `emma` utiliza `clustalw`. En el TP de alineamientos ya fue instal
   </li>
 </ul>
 
-Inspeccionen el archivo **Ribonucleasas.msa** y respondan:
-* ¿Que diferencia principal se ve en este archivo comparado con el archivo **Ribonucleasas.fasta**
-* Este archivo, ¿Permite visualizar rápidamente si hay regiones conservadas o con muchos gaps a simple vista? ¿Recordás el comando necesario para una mejor visualización?
+Inspeccionen el archivo `Ribonucleasas.msa` y respondan:
+
+**1.** ¿Que diferencia principal se ve en este archivo comparado con el archivo `Ribonucleasas.fasta` ?
+
+**2.** Este archivo, ¿Permite visualizar rápidamente si hay regiones conservadas o con muchos gaps a simple vista? ¿Recordás el comando necesario para una mejor visualización?
 
 <details>
 <summary> <h6> Clickeá para ver el comando </h6> </summary>
-Para una mejor visualización se puede utilizar el comando **showalign** que ya hemos utilizado anteriormente con la opción **-show A** para que **no reemplace** las bases conservadas por puntos:
+Para una mejor visualización se puede utilizar el comando `showalign` que ya hemos utilizado anteriormente con la opción **-show A** para que **no reemplace** las bases conservadas por puntos:
 
 ```Bash
 showalign -show A -sequence Ribonucleasas.msa -outfile Ribonucleasas.showalign  
@@ -153,9 +159,9 @@ Por esto es **SUMAMENTE IMPORTANTE** ¡revisar los alineamientos múltiples! es 
 
 Los algoritmos de alineamiento utilizan heurísticas y aproximaciones que pueden (y suelen) dar lugar a errores. Por ello muchas veces (o siempre) es necesario  **curar manualmente** los alineamientos, eliminando o agregando **gaps**. También se puede recurrir a la eliminación de columnas completas si contienen una gran mayoría de gaps o hay dudas sobre su veracidad. En muchos casos, es mejor eliminar estos eventos para deshacernos del ruido.
 
-Dado que el curado de un alineamiento para filogenética es un proceso crítico y muy "visual", existen herramientas más apropiadas (y vistosas) para esta tarea que **showalign**. El visualizador de alineamientos a utilizar se llama Jalview. 
+Dado que el curado de un alineamiento para filogenética es un proceso crítico y muy "visual", existen herramientas más apropiadas (y vistosas) para esta tarea que `showalign`. El visualizador de alineamientos a utilizar se llama Jalview. 
 
-Pueden ejecutar Jalview desde sus máquinas virtuales:
+Preferentemente desde una nueva terminal, pueden ejecutar Jalview:
 ```Bash
 cd ~/Tools/Jalview
 bash jalview.sh
@@ -166,9 +172,9 @@ O desde el el explorador de archivos:
 ![Jalview](images/open-jalview.png)
 -->
 
-Una vez abierto el programa, carguen el alineamiento generado por `emma` haciendo click en `Archivo` > `Alineamiento de entrada` > `Desde fichero`. Esto abrirá una ventana en la se puede buscar el archivo yendo a la carpeta de trabajo.
+Cuando abren el programa hay algunas ventanas abiertas. Cierren todo. Además ignoren la *"barra de avance"* que se encuentra en la parte inferior de la ventana.
 
-![Jalivew-2](images/jalview-all.png)
+Una vez abierto el programa, carguen el alineamiento generado por `emma` haciendo click en `Archivo` > `Alineamiento de entrada` > `Desde fichero`. Esto abrirá una ventana en la que se puede buscar el archivo yendo a la carpeta de trabajo.
 
 <ul class="block-list has-radius is-primary">
    <li class=" is-outlined is-danger has-icon" markdown="span">
@@ -177,7 +183,18 @@ Por defecto, Jalview **NO** ve el archivo. Asegúrense de seleccionar **TODOS LO
   </li>
 </ul>
 
-* Revisen su alineamiento con Jalview para ver si hay errores o posiciones dudosas y, en caso de encontrarlos, corríjanlos en **Ribonucleasas.msa**.
+![Jalivew-2](images/jalview-all.png)
+
+Para colorear el alineamiento vayan a `Color` > `ClustalX`
+
+**3.** Revisen su alineamiento con Jalview para ver si hay errores o posiciones dudosas y, en caso de encontrarlos, corríjanlos en `Ribonucleasas.msa` y guarden!
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+         <span class="icon"><i class="far fa-lightbulb"></i></span>
+En la parte superior pueden seleccionar columnas del alineamiento y luego presionan **delete** para eliminarlas. 
+  </li>
+</ul>
 
 ### Ejercicio 2. Construcción del Árbol
 
@@ -185,6 +202,7 @@ Por defecto, Jalview **NO** ve el archivo. Asegúrense de seleccionar **TODOS LO
 
 Los métodos para llevar a cabo la filogenia se pueden separar en dos categorías generales:
 * **Métodos basados en distancia**, también conocidos como de clustering o algorítmicos: UPGMA, neighbour-joining, Fitch–Margoliash.
+
 * **Métodos de búsqueda de árboles o discretos:** máxima parsimonia, maximum likelihood (máxima verosimilitud), métodos bayesianos.
 
 #### Parte I. Métodos basados en distancias
@@ -200,7 +218,7 @@ sudo apt install embassy-phylip
 
 Este comando construye un árbol a partir de una matriz de distancias, haciendo clustering de sus elementos, utilizando los valores de la matriz para calcular el largo de las ramas. El árbol resultante es un **árbol sin raíz**, lo que quiere decir es que las distancias son relativas entre los miembros y no hay información sobre qué evento se produjo primero (no hay un reloj evolutivo).
 
-Para poder calcular el árbol primero es necesario obtener la matriz de distancias, mediante el comando **fprotdist**.
+Para poder calcular el árbol primero es necesario obtener la matriz de distancias, mediante el comando `fprotdist`.
 Este comando utiliza uno de cinco algoritmos para calcular las distancias:
 
 - **PAM:** Utiliza una matriz PAM 001. La matriz PAM es una matriz de sustitución obtenida empíricamente. El número 001 indica que las secuencias con las que se construyó tienen una tasa de mutación esperada del 1% (`-method d`).
@@ -210,12 +228,17 @@ Este comando utiliza uno de cinco algoritmos para calcular las distancias:
 - **Similarity Table**: Una proyección de distancias en la que se asume que los aminoácidos varían según un caso particular de la fórmula de Kimura (`-method s`). 
 
 Los tres primeros (PAM, JTT y PBM) son los más ampliamente utilizados. 
+Construya la matriz de distancia utilizando el método JTT:
 
 ```Bash
 fprotdist -method j -sequence Ribonucleasas.msa -outfile Ribonucleasas.dist
 ```
 
-Ahora si, con las distancias calculadas se puede comenzar a agrupar. **Fijense que este método es algo muy similar al que utilizamos en el TP de *data mining*.** ACA NO OCURRIÓ EL TP DE DATA MINING AÚN !!!!
+**1.** ¿Qué son los siguientes parámetros del comando?
+* `-sequence`: 
+* `-outfile`:
+
+Ahora si, con las distancias calculadas se puede comenzar a agrupar.
 
 ```Bash
 fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefile Ribonucleasas-NJ.treefile
@@ -223,9 +246,9 @@ fneighbor -datafile Ribonucleasas.dist -outfile Ribonucleasas-NJ.tree -outtreefi
 
 * Investiguen los archivos `Ribonucleasas.tree` y `Ribonucleasas.treefile` y respondan:
 
-**1.** ¿Qué información tiene `Ribonucleasas-NJ.tree`?  
+**2.** ¿Qué información tiene `Ribonucleasas-NJ.tree`?  
 
-**2.** ¿Qué les parece que contiene `Ribonucleasas-NJ.treefile`? ¿Cómo se conoce este formato? ¿Por qué cree que es conveniente la creación de este archivo?  
+**3.** ¿Qué les parece que contiene `Ribonucleasas-NJ.treefile`? ¿Cómo se conoce este formato? ¿Por qué cree que es conveniente la creación de este archivo?  
 
 Si bien uno puede ver árboles dibujados en ascii en los archivos *.tree* hay formas más armoniosas para ver un árbol. Por lo tanto, vamos a instalar el programa: **figtree**
 
@@ -236,13 +259,13 @@ sudo apt install figtree
 Para utilizar el programa **figtree** ingrese en la terminal:
 
 ```Bash
-figtree Ribonucleasas-UPGMA.treefile
+figtree Ribonucleasas-NJ.treefile
 ```
 Para guardar la imagen y poder verla en detalle tienen que ir a *File* -> *Export PDF*. **Explore las distintas opciones de representación de árboles y grafique los árboles como le parezca más correcto.**
 
 En FigTree se puede seleccionar a nivel de nodos, clados y taxas (nombres de las hojas del árbol) y colorear de distintas maneras. Lo realizado en figtree se puede guardar en un archivo NUEVO *File* -> *Save as...* para seguir trabajando luego o modificar una representación de árbol.
 
-**3.** Observe la topología del árbol a diferentes niveles e identifiquen diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
+**4.** Observen la topología del árbol a diferentes niveles e identifiquen diferentes órdenes. ¿Tiene sentido el agrupamiento que se realizó?
 
 <ul class="block-list has-radius is-primary">
    <li class=" is-outlined is-info has-icon" markdown="span">
@@ -252,7 +275,7 @@ En FigTree se puede seleccionar a nivel de nodos, clados y taxas (nombres de las
     </li>
 </ul>
 
-**4.** Hay algunos OTUs que no parecen estar bien ubicados. ¿Cuáles son? ¿Qué puede estar pasando?
+**5.** Hay algunos OTUs que no parecen estar bien ubicados. ¿Cuáles son? ¿Qué puede estar pasando?
 
 ##### Ejercicio 2b. Método UPGMA.
 La manera de generar el árbol por el método **UPGMA** es esencialmente la misma que **Neighbor-Joining**, ir agrupando los pares de elementos con la menor distancia. La diferencia radica en cómo se calculan las distancias una vez que se empiezan a generar grupos. **Neighbor-Joining** utiliza una metodología un tanto compleja que pueden encontrar explicada [acá](http://www.deduveinstitute.be/~opperd/private/neighbor.html), mientras que **UPGMA** usa un *average linking* pesado por la cantidad de secuencias que componen cada grupo.
@@ -380,15 +403,20 @@ Esto puede tardar un rato, podría ser un buen momento para preparar un mate...
 
 El archivo `Ribonucleasas-ML-BOOT.tree` contiene todos los árboles resultantes de todos nuestros muestreos. Al ser tantos, uno puede ver las diferentes topologías creadas, sin embargo es muy difícil sacar conclusiones.
 
-Para poder utilizar toda la información de estas numerosas réplicas vamos a unirlas con el comando `fconsense`. Este toma como entrada el archivo `.treefile` que contiene todos los árboles en formato Phyllip y los va a condensar en uno solo, anotando a cada rama la cantidad de veces que esta fue hallada en nuestros sampleos.
+Para poder utilizar toda la información de estas numerosas réplicas vamos a unirlas con el comando `fconsense`. Este toma como entrada el archivo `.treefile` que contiene todos los árboles en formato Phyllip y los va a condensar en uno solo, anotando a cada rama la cantidad de veces que esta fue hallada en nuestros muestreo.
 
 ```Bash
 fconsense -intreefile Ribonucleasas-ML-BOOT.treefile -outfile Ribonucleasas-CONS.tree -outtreefile Ribonucleasas-CONS.treefile
 ```
+**1.** Un buen ejercicio antes de copiar y pegar un comando es ENTENDER que es cada argumento del comando. ¿Que hace cada argumento?
+* `-intreefile`
+* `-outfile`
+* `-outtreefile`
+
 Observando el árbol consenso. Responda:  
 
-**1.** ¿Resulta ser un buen árbol? ¿En qué se basan para afirmarlo?   
-**2.** ¿Cómo podrían lidiar con nodos de baja calidad?   
+**2.** ¿Resulta ser un buen árbol? ¿En qué se basan para afirmarlo?   
+**3.** ¿Cómo podrían lidiar con nodos de baja calidad?   
 
 ### Paso 5. Presentación de resultados.
 
@@ -398,5 +426,18 @@ Finalmente algunos conceptos en cuanto a la presentación de los datos. Por lo g
 * Los valores de Bootstrap deben ser presentados en forma de porcentajes, no de valores crudos, para que sea más sencillo de leer y comparar con otros árboles. Por convención, sólo valores de Bootstrap del 50% o mayores son reportados; valores menores significan que la calidad del nodo encontrado es muy baja. 
 * Por último, tengan en cuenta la legibilidad del árbol en general. Utilizar nombres para las ramas con códigos de acceso a bases de datos o acrónimos de pocas letras puede resultar muy confuso. Hoy en día existen numerosos softwares para la visualización de árboles (ej. Hypertree) que nos permiten, mediante agrupamientos, colores, fuentes, etc. llamar la atención del lector sobre uno u otro aspecto importante del mismo y lograr que transmita la información que nos interesa mostrar.
 
+
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 10 de septiembre 2021, 23:59hs.
+   </li>
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 17 de septiembre 2021, 23:59hs.
+   </li>
+</ul>
 
 {% endif %}
