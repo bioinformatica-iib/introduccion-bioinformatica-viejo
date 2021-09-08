@@ -25,7 +25,7 @@
       description: |- 
         [TP N°5. Perfiles de Secuencia y PSI-BLAST](PSI-BLAST/)
       ratio: is-16by9
-    - link: TPs/Filogenia/featured.jpg
+    - link: TPs/Filogenia/featured.png
       alt: The alt text for the image
       description: |- 
         [TP N°6. Filogenias, Árboles filogenéticos y filogenómica](Filogenia/)
