@@ -39,11 +39,11 @@ details summary > * {
 
 * Introducción TP N°5. [[MP4]](https://drive.google.com/file/d/1qVq5GieWiKMUS9TQ0bzk1_j9mbGRjvgi/view?usp=sharing)
 
-<iframe src="https://drive.google.com/file/d/1qVq5GieWiKMUS9TQ0bzk1_j9mbGRjvgi/view?usp=sharing" width="800" height="440"></iframe>
+<iframe src="https://drive.google.com/file/d/1qVq5GieWiKMUS9TQ0bzk1_j9mbGRjvgi/preview" width="800" height="440"></iframe>
 
 * Final de Clase TP N°5. [[MP4]](https://drive.google.com/file/d/19NASC_7HMXoCy4QjZu9wn35cN4uCCLAb/view?usp=sharing)
 
-<iframe src="https://drive.google.com/file/d/19NASC_7HMXoCy4QjZu9wn35cN4uCCLAb/view?usp=sharing" width="800" height="440"></iframe>
+<iframe src="https://drive.google.com/file/d/19NASC_7HMXoCy4QjZu9wn35cN4uCCLAb/preview" width="800" height="440"></iframe>
 
 
 ## Materiales
