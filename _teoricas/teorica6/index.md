@@ -14,8 +14,8 @@ construccion: false
 {% else %}
 
 - Slides [[PDF]](https://drive.google.com/file/d/11jloxEKYKCAYKFyTgtb3ztOVOWXOWiNO/view?usp=sharing)
-<!-- - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing) -->
+- Recording [[MP4]](https://drive.google.com/file/d/18njeGvEddr9mcPBKF69ckBQCaSVipKo5/view?usp=sharing) 
 
-<!-- <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe> -->
+<iframe src="https://drive.google.com/file/d/18njeGvEddr9mcPBKF69ckBQCaSVipKo5/preview" width="800" height="440"></iframe> 
 
 {% endif %}
