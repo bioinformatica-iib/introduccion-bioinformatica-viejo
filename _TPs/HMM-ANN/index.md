@@ -35,7 +35,8 @@ Para esto vamos a volver a utilizar [EasyPred](http://www.cbs.dtu.dk/biotools/Ea
 - **Entrenamiento.set** contiene 1200 péptidos de longitud 9, con un valor asociado de afinidad de unión a HLA-A\*02:01 transformado entre 0 y 1. Recuerde que mientras más cercano a 1 el péptido tiene mayor afinidad de unión y que a partir de 0.426 se considera que el péptido es un ligando. 
 - **Evaluacion.set** contiene 66 péptidos, también con sus valores correspondientes de afinidad de unión. 
 
-Para el entrenamiento del modelo se particionará el archivo **Entrenamiento.set**, de tal manera que una parte se usará para entrenar y la restante se empleará para ir monitoreando el proceso de entrenamiento y así evitar el sobreajuste de los pesos de nuestro red. 
+Para el entrenamiento del modelo se particionará el archivo **Entrenamiento.set**, de tal manera que una parte se usará para entrenar y la restante se empleará para ir monitoreando el proceso de entrenamiento y así evitar el sobreajuste de los pesos de nuestra red.
+Luego el archivo **Evaluacion.set** contiene datos independientes, que se utilizarán para evaluar la capacidad de generalización de nuestro modelo. 
 
 <ul class="block-list has-radius is-primary">
    <li class=" is-outlined has-icon" markdown="span">
@@ -79,13 +80,20 @@ Los parámetros que queremos utilizar en este paso son:
 
 Es decir dejamos los valores por defecto y le damos *Submit*.
 
+Una vez entrenado el modelo, recuerde que puede chequear el desempeño del mismo iteración a iteración haciendo click en **Output from the neural network program (HOW)** 
+
+<img src="./images/log_nn.png" alt="log_nn" style="max-width:70%">
+
+
 1. ¿Cuál es el máximo valor de PCC alcanzado sobre el set de prueba? (*Maximal test set pearson correlation coefficient sum*) 
 2. ¿En qué iteración ocurre? ¿Qué información le está dando esto sobre el proceso de entrenamiento del modelo?  
+
+
 3. ¿Cuáles son los valores de desempeño del modelo sobre el set de evalución? (PCC y Aroc)
 4. ¿El PCC obtenido en el punto 3. es mayor o menor al obtenido en el punto 1.? ¿Qué implica este resultado?  
 
 ### Segunda prueba
-#### *Cambiando set de entrenamiento*
+#### *Cambiando el set de entrenamiento*
 
 Mantenga los mismos parámetros que en el paso anterior pero esta vez seleccione:
 
@@ -96,7 +104,7 @@ Mantenga los mismos parámetros que en el paso anterior pero esta vez seleccione
 6. ¿A qué se debe que no coincidan con lo obtenido en la primera prueba?
 
 ### Tercera prueba
-#### *Cambiando set de entrenamiento*
+#### *Cambiando la arquitectura de la ANN*
 
 Repita los parámetros de la primera prueba excepto por el número de neuronas en la capa intermedia o *hidden layer*:
 
@@ -110,19 +118,19 @@ Repita el ensayo esta vez con:
 
 Responda a las siguientes preguntas para ambos casos estudiados:
 
-7. ¿Cómo varía el performance en el set de prueba?  
+7. ¿Cómo varía la *performance* en el set de prueba?  
 8. ¿Qué impacto tienen estos cambios en la *performance* del set de evaluación?  
-9. ¿Puede elegir un número óptimo de neuronas?  
-10. ¿Por qué cree que el número de neuronas tiene tan poco impacto en esta prueba?  
+9. ¿Puede elegir un número óptimo de neuronas para la capa oculta?  
+10. ¿Por qué cree que el número de neuronas en la capa oculta tiene tan poco impacto en esta prueba?  
 
 ### Cuarta prueba
 #### *Empleando un esquema de validación cruzada*
 
 Como deberían haber notado en las dos primeras pruebas, la partición de los datos que se utilizan en el entrenamiento/prueba influyen significativamente en el desempeño del modelo. 
 
-Como *a priori* uno no puede establecer cual es la mejor forma de partir los datos en entrenamiento y *test* se recurre a una estrategia denominada *cross-validation*. La técnica de validación cruzada consiste en hacer *N* particiones (por lo general 5) y rotarlas, utilizando N-1 para entrenar y la N-ésima (es decir la que queda afuera) como set de prueba. Esto resulta en N modelos diferentes, cada uno entrenado y probado en datos diferentes. Para realizar predicciones en nuevos sets, como el de evaluación (o nuevas proteínas), se realizan predicciones con los N métodos y se promedian sus predicciones.
+Como *a priori* uno no puede establecer cual es la mejor forma de partir los datos en entrenamiento y *test* se recurre a una estrategia denominada *cross-validation*. La técnica de validación cruzada consiste en hacer *N* particiones (por lo general 5) y rotarlas, utilizando N-1 para entrenar y la N-ésima (es decir la que queda afuera) como set de prueba. Esto resulta en N modelos diferentes, cada uno entrenado y probado en datos diferentes. Para realizar predicciones en nuevos sets, como el de evaluación, se realizan predicciones con los N métodos y se promedian sus predicciones.
 
-Para realizar esta prueba vuelvan a los parametros de la **Primera prueba** pero modifiquen lo siguiente:
+Para realizar esta prueba vuelvan a los parámetros de la **Primera prueba** pero modifiquen lo siguiente:
 
 * *Number of partitions for crossvalidated training*: 5
 
@@ -134,20 +142,16 @@ Para realizar esta prueba vuelvan a los parametros de la **Primera prueba** pero
 </ul>
 
 11. ¿Encuentran diferencias entre los desempeños de los 5 modelos?  
-12. Comparen los resultados obtenidos para el set de evaluación con respecto a las pruebas anteriores.  
+12. Comparen los resultados obtenidos para el set de evaluación con respecto a las pruebas anteriores.
+13. En este caso se usa el ensamble de los 5 modelos para realizar las predicciones sobre el set de evaluación. ¿Cómo piensa que se obtienen los valores predichos?
 
 ### Utilizando el modelo entrenado
 
-Como vimos en el TP de PSSM, una vez que uno entrena un método, puede guardar los valores ajustados (ya sea de la matriz en el caso de la PSSM o los pesos de la red en el caso de ANN) y utilizarlos para hacer predicciones en set nuevos de datos.
+Como vimos en el TP de PSSM, una vez que uno entrena un método, puede guardar los valores ajustados (ya sea de la matriz en el caso de la PSSM o los pesos de la red en el caso de ANN) y utilizarlos para hacer predicciones en un set nuevo de datos.
 
 Para ello vamos a guardar el modelo entrenado en la **Cuarta prueba** haciendo *click* en *Parameters for prediction method* del reporte de resultados (se guarda como **para.dat**). 
+Este modelo será utilizado en el ejercicio a entregar de este TP.
 
-Una vez obtenido el archivo con los parámetros, volvamos EasyPred y carguemos la proteína de la nucleocápside de SARS-CoV (*NCAP_CVHSA.fasta*) en el recuadro *Paste in evaluation examples*. 
-
-Carguen los parámetros en *Load saved prediction method* y asegúrense de que esté marcada la opción *Sort output on predicted values*.
-
-13. ¿Cuántos péptidos fueron predichos como ligandos en esta proteína?
-14. ¿Tiene sentido este resultado teniendo en cuenta la especificidad del MHC?
 
 ## HMMer
 
@@ -174,11 +178,21 @@ hmm2build globin.hmm globins50.msf
 
 ### Calibración del perfil
 
-Este paso no es imprescindible pero si aconsejable. La calibración del perfil le otorga mayor sensibilidad en la búsqueda ya que modifica la estimación del E-value de los *hits* encontrados. Si recuerdan, la búsqueda contra bases de datos nos devuelve junto con cada alineamiento un score y un E-value, este último nos da una idea sobre la cantidad de *hits* que esperamos encontrar con ese score en una base de datos construida con secuencias aleatorias y se calcula según la longitud de la secuencia *query* y *subject*, el tamaño de la base de datos y la matriz de *scoring*. En el caso de HMMer, la estimación del E-value es analítica y resulta muy conservativa, por lo que se dejan de lado posibles *hits* (como homólogos lejanos). Utilizando `hmm2calibrate` podemos calibrar el cálculo de E-values de manera empírica incrementando de manera significativa la sensibilidad de la búsqueda.
+Este paso no es imprescindible pero sí aconsejable. La calibración del perfil le otorga mayor sensibilidad en la búsqueda ya que modifica la estimación del E-value de los *hits* encontrados. Si recuerdan, la búsqueda contra bases de datos nos devuelve junto con cada alineamiento un score y un E-value, este último nos da una idea sobre la cantidad de *hits* que esperamos encontrar con ese score en una base de datos construida con secuencias aleatorias y se calcula según la longitud de la secuencia *query* y *subject*, el tamaño de la base de datos y la matriz de *scoring*.
+
+En el caso de HMMer, la estimación del E-value es analítica y resulta muy conservativa, por lo que se dejan de lado posibles *hits* (como homólogos lejanos). Utilizando `hmm2calibrate` podemos calibrar el cálculo de E-values de manera empírica incrementando de manera significativa la sensibilidad de la búsqueda.
 
 ```Bash
 hmm2calibrate globin.hmm
 ```
+`hmm2calibrate` lee un archivo con un modelo HMM como **globin.hmm** y puntúa un número grande de secuencias sintetizadas al azar (por default 5000 secuencias) con este modelo. Luego ajusta una EVD (Extreme Value Distribution) al histograma de los puntajes obtenidos y guarda nuevamente el modelo HMM con estos nuevos parámetros.
+
+Como para realizar este cálculo se sintetizan secuencias al azar, estableceremos una semilla (o *seed*) para poder reproducir nuestros resultados. Entonces el comando se modifica de la siguiente forma, 
+
+```Bash
+hmm2calibrate globin.hmm --seed 1 
+```
+
 ### Búsqueda en bases de datos
 
 El comando para utilizar nuestro flamante *profile* en una búsqueda es `hmm2search`. En este caso lo vamos a utilizar contra el archivo Artemia.fa que contiene una única secuencia de globina en búsqueda de dominios pertenecientes a nuestra familia de interés.
