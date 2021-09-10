@@ -36,6 +36,17 @@ details summary > * {
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°6. [[MP4]](https://drive.google.com/file/d/19rXEC1E4cgpHXiiz9KxpA0Er6KvKD_h6/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/19rXEC1E4cgpHXiiz9KxpA0Er6KvKD_h6/preview" width="800" height="440"></iframe>
+
+* Final de Clase TP N°6. [[MP4]](https://drive.google.com/file/d/1NTSsbMvwkbGcXr3gCRIioorYRNaRxpI5/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1NTSsbMvwkbGcXr3gCRIioorYRNaRxpI5/preview" width="800" height="440"></iframe>
+
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/1hesYx70VP8KdD_mQkgUXPEV7VpR1Gv0a/view?usp=sharing)
