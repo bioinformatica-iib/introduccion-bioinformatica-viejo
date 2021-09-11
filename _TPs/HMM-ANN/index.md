@@ -17,7 +17,16 @@ construccion: false
 
 ## Materiales
 
-[Descargar](https://drive.google.com/file/d/1g0tSLDYs9Ax0id038FRqsbT_7kdBCefL/view?usp=sharing)
+[Descargar](https://drive.google.com/file/d/1b44lbrBURu-s8SNLDd_Xr7-7rupC5BPs/view?usp=sharing)
+
+
+## Objetivos
+
+* Comprender cómo se entrena y evalúa un modelo basado en redes neuronales.
+* Familiarizarse con el esquema de validación cruzada para el entrenamiento de dichos modelos.
+* Construir un perfil basado en HMMs y utilizar el mismo para realizar búsquedas en bases de datos de secuencias.
+* Crear una base de datos de perfiles de secuencias y utilizar la misma para identificar dominios conservados en secuencias *query*.
+
 
 ## Artificial neural networks
 
@@ -190,7 +199,7 @@ hmm2calibrate globin.hmm
 Como para realizar este cálculo se sintetizan secuencias al azar, estableceremos una semilla (o *seed*) para poder reproducir nuestros resultados. Entonces el comando se modifica de la siguiente forma, 
 
 ```Bash
-hmm2calibrate globin.hmm --seed 1 
+hmm2calibrate --seed 1 globin.hmm  
 ```
 
 ### Búsqueda en bases de datos
@@ -204,39 +213,39 @@ hmm2search globin.hmm Artemia.fa
 La salida de este comando es más larga que las anteriores, consta de un encabezado con la información sobre el programa y los parámetros que utilizamos en la búsqueda:
 
 ```
-hmmsearch - search a sequence database with a profile HMM  
-HMMER 2.3.2 (Oct 2003)  
-Copyright (C) 1992-2003 HHMI/Washington University School of Medicine  
-Freely distributed under the GNU General Public License (GPL)  
+hmmsearch - search a sequence database with a profile HMM
+HMMER 2.3.2 (Oct 2003)
+Copyright (C) 1992-2003 HHMI/Washington University School of Medicine
+Freely distributed under the GNU General Public License (GPL)
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-HMM file:                   globin2.hmm [globins50]  
-Sequence database:          Artemia.fa  
-per-sequence score cutoff:  [none]  
-per-domain score cutoff:    [none]  
+HMM file:                   globin.hmm [globins50]
+Sequence database:          Artemia.fa
+per-sequence score cutoff:  [none]
+per-domain score cutoff:    [none]
 per-sequence Eval cutoff:   <= 10        
 per-domain Eval cutoff:     [none]
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-Query HMM:   globins50  
-Accession:   [none]  
-Description: [none]  
-  [HMM has been calibrated; E-values are empirical estimates]  
+Query HMM:   globins50
+Accession:   [none]
+Description: [none]
+  [HMM has been calibrated; E-values are empirical estimates]
 ```
 
 Una lista parecida a la que da BLAST con los *hits* más importantes ordenados por su E-value:
 
 ```
 Scores for complete sequences (score includes all domains):
-Sequence Description                                    Score    E-value  N
+Sequence Description                                    Score    E-value  N 
 -------- -----------                                    -----    ------- ---
-S13421   S13421 GLOBIN - BRINE SHRIMP                   474.3   1.7e-143   9
+S13421   S13421 GLOBIN - BRINE SHRIMP                   120.3    6.2e-37   4
 ```
 
 Noten que después del E-value hay un campo que no se encontraba en los otros algoritmos de búsqueda denominado "N". Este valor representa la cantidad de dominios de nuestro profile que fueron encontrados en el hit.
 
 Luego encontramos información sobre los dominios de nuestro *profile* individualmente. Los campos son:
 - el nombre del hit 
-- el dominio que se alineó (por ej. 7/9 significa que es el dominio Nro 7 de 9 que hay en total en nuestro perfil) 
+- el dominio que se alineó (por ej. 2/4 significa que es el dominio Nro 2 de 4 que hay en total en nuestro perfil) 
 - **seq-f** y **seq-t** son las posiciones del hit donde comienza y termina el alineamiento con ese dominio y el campo siguiente a estos valores (sin nombre) es una codificación de qué parte de la secuencia fue alineada. 
   - los corchetes significan extremos y los puntos posiciones en el medio, por lo que:
       - ".." significa que el alineamiento comenzó y terminó en una posición que no es terminal de la secuencia hit
@@ -250,15 +259,10 @@ Luego encontramos información sobre los dominios de nuestro *profile* individua
 Parsed for domains:
 Sequence Domain  seq-f seq-t    hmm-f hmm-t      score  E-value
 -------- ------- ----- -----    ----- -----      -----  -------
-S13421     7/9     932  1075 ..     1   143 []    76.9  7.3e-24
-S13421     2/9     153   293 ..     1   143 []    63.7  6.8e-20
-S13421     3/9     307   450 ..     1   143 []    59.8  9.8e-19
-S13421     8/9    1089  1234 ..     1   143 []    57.6  4.5e-18
-S13421     9/9    1248  1390 ..     1   143 []    52.3  1.8e-16
-S13421     1/9       1   143 [.     1   143 []    51.2    4e-16
-S13421     4/9     464   607 ..     1   143 []    46.7  8.6e-15
-S13421     6/9     775   918 ..     1   143 []    42.2    2e-13
-S13421     5/9     623   762 ..     1   143 []    23.9  6.6e-08
+S13421     3/4     771  1075 ..     1   333 []    34.0    3e-13
+S13421     1/4       1   288 [.     1   333 []    31.9  3.8e-13
+S13421     4/4    1085  1390 ..     1   333 []    29.4    5e-13
+S13421     2/4     303   607 ..     1   333 []    25.0  8.1e-13
 ```
 
  La sección siguiente contiene los alineamientos de los dominios que fueron hit en la lista anterior en un formato similar al de BLAST, teniendo como primera secuencia el consenso del *profile* (noten que hay aminoácidos en mayúsculas, estos se encuentran altamente conservados en el profile). 
@@ -267,23 +271,34 @@ S13421     5/9     623   762 ..     1   143 []    23.9  6.6e-08
 
 ```
 Alignments of top-scoring domains:
-S13421: domain 7 of 9, from 932 to 1075: score 76.9, E = 7.3e-24
-                   *->eekalvksvwgkveknveevGaeaLerllvvyPetkryFpkFkdLss
-                      +e a vk+ w+ v+ ++  vG  +++ l++ +P+ +++FpkF d+  
-      S13421   932    REVAVVKQTWNLVKPDLMGVGMRIFKSLFEAFPAYQAVFPKFSDVPL 978  
+S13421: domain 3 of 4, from 771 to 1075: score 34.0, E = 3e-13
+                   *->viqealvnssShLsaeeKalvkslWygKV..ggnaeeyGaeaLgRlF
+                                  L+a eK+ ++++W  + ++ g +++ +++++ RlF
+      S13421   771    T-----------LTALEKQSIQDIW-SNLrsTG-LQDLAVKIFTRLF 804  
 
-                   adavkgsakvkahgkkVltalgdavkkldd...lkgalakLselHaqklr
-                    d++++++ v +h   V t+l++ ++ ld++ +l+   ++L+e H+  lr
-      S13421   979 -DKLEDTPAVGKHSISVTTKLDELIQTLDEpanLALLARQLGEDHIV-LR 1026
+                   vvYPwTqryFp.hFgdLssldAvkGspkvKAHGkKVltalgdavkhLDdt
+                    ++P+ +  F + Fg++     +  ++ +KAH  +Vl+a++ ++  LDd 
+      S13421   805 SAHPEYKLLFTgRFGNVDN---INENAPFKAHLHRVLSAFDIVISTLDDS 851  
 
-                   vdpenfkllsevllvvlaeklgkeftpevqaalekllaavataLaakYk<
-                   v+   fk +++vl+  l++ lg+ f+  ++ +++k+++++++ +++  +
-      S13421  1027 VNKPMFKSFGKVLVRLLENDLGQRFSSFASRSWHKAYDVIVEYIEEGLQ  1075
+                   gnlkgalakLSelHAdKLrVDPeNFklLghclivVLAahfgkdFtPevqA
+                   + l   l++L+  H + L+ ++ +F +++ +++ V +   +   t     
+      S13421   852 EHLIRQLKDLGLFH-TRLGMTRSHFDNFATAFLSVAQDIAPNQLTVLGRE 900  
 
-                   -*
-                     
-      S13421     -    -    
+                   AwdKflagvanaLahKYrelgFQggftviqealvnssShLsaeeKalvks
+                   ++ K +++   ++ ++   l      t+           Lsa e a vk+
+      S13421   901 SLNKGFKLMHGVIEEGLLQLERINPITG-----------LSAREVAVVKQ 939  
 
+                   lWygKVggnaeeyGaeaLgRlFvvYPwTqryFphFgdLssldAvkGspkv
+                   +W   V++++ ++G  ++  lF ++P  q+ Fp+F+d+ +ld + + p v
+      S13421   940 TW-NLVKPDLMGVGMRIFKSLFEAFPAYQAVFPKFSDV-PLDKLEDTPAV 987  
+
+                   KAHGkKVltalgdavkhLDdtgnlkgalakLSelHAdKLrVDPeNFklLg
+                    +H   V t l++ +  LD   nl+    +L+e H   LrV    Fk +g
+      S13421   988 GKHSISVTTKLDELIQTLDEPANLALLARQLGEDH-IVLRVNKPMFKSFG 1036 
+
+                   hclivVLAahfgkdFtPevqAAwdKflagvanaLahKYr<-*
+                   ++l+  L   +g  F+  +  +w K++++++  + ++     
+      S13421  1037 KVLVRLLENDLGQRFSSFASRSWHKAYDVIVEYIEEGLQ    1075 
 ```
 
 Llegando al final encontramos un histograma, similar al que nos mostraba FASTA. En este caso como nuestra "base de datos" tiene una sola secuencia no es informativo en absoluto.
@@ -292,16 +307,15 @@ Llegando al final encontramos un histograma, similar al que nos mostraba FASTA. 
 Histogram of all scores:
 score    obs    exp  (one = represents 1 sequences)
 -----    ---    ---
-  474      1      0|=
-
+  120      1      0|=      
 ```
 
-Y por último algunos datos estadísticos que no tienen mucha utilidad y podemos obviar.
+Y por último algunos detalles estadísticos que corresponden al ajuste de la EVD, en los cuales no vamos a focalizar. 
 
 ```
 % Statistical details of theoretical EVD fit:
-              mu =   -38.9116
-          lambda =     0.2355
+              mu =  -226.7154
+          lambda =     0.1106
 chi-sq statistic =     0.0000
   P(chi-square)  =          0
 
@@ -315,9 +329,10 @@ tophits_s report:
 
 Domain top hits:
 tophits_s report:
-     Total hits:           9
-     Satisfying E cutoff:  9
-     Total memory:         26K
+     Total hits:           4
+     Satisfying E cutoff:  4
+     Total memory:         25K
+
 ```
 
 ### Búsqueda en bases de datos reales
@@ -352,6 +367,9 @@ Por defecto `hmm2build` lleva a cabo alineamientos que son globales con respecto
 
 Así como nos es posible realizar búsquedas de *profiles* contra bases de datos de secuencias, podemos crear una base de datos de *profiles* y utilizar como *query* a una secuencia. Este es el caso de la base de datos **PFAM** (Sonnhammer *et al.*, 1997; Sonnhammer *et al.*, 1998) que nuclea *profiles* de una gran variedad de dominios y es una herramienta sumamente utilizada para analizar secuencias de proteínas de las cuales no tenemos información previa.
 
+Como ejemplo, tomemos el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo de la mosca. La secuencia proteica de este receptor se encuentra en el archivo **7LES_DROME**. Realice una búsqueda de esta secuencia en [PFAM](http://pfam.xfam.org/search#tabview=tab0).
+¿Qué dominios fueron identificados en esta proteína? Recuerde estos resultados para contrastarlo con lo que hará más adelante. 
+
 Las bases de datos de *profiles* no son más que múltiples HMMs concatenados, por lo que el comando para construirlas es también **hmm2build**, pero vamos a utilizar la opción **-A** (append) para agregar nuevos *profiles* a nuestro archivo de HMMs original.
 
 Por ejemplo, si queremos construir una base de datos **"myhmms"** que contiene perfiles de dominios **rrm** de reconocimiento de ARN, **fn3** de fibronectina tipo III y **pkinase** del dominio catalítico de las kinasas podemos realizarlo fácilmente con:
@@ -362,7 +380,7 @@ hmm2build -A myhmms fn3.sto
 hmm2build -A myhmms pkinase.sto
 ```
 
-Para realizar búsquedas en nuestra nueva base de datos el comando que utilizamos es `hmm2pfam`. En este caso vamos a usar el producto del gen *Sevenless* de *Drosophila melanogaster* que codifica un receptor de *tyrosine kinase* esencial para el desarrollo de las células R7 del ojo guardado en el archivo **7LES_DROME**:
+Para realizar búsquedas en nuestra nueva base de datos utilizamos el comando `hmm2pfam`. En este caso empleamos nuevamente, como ejemplo, a la proteína codificada por el gen *Sevenless* de *Drosophila melanogaster* (archivo **7LES_DROME**):
 
 ```Bash
 hmm2pfam myhmms 7LES_DROME
@@ -370,7 +388,10 @@ hmm2pfam myhmms 7LES_DROME
 
 La salida es muy parecida a la de **hmm2search** pero los hits reportados no serán secuencias sino dominios contenidos en la base de datos. 
 
-En nuestro caso particular podrán notar que tenemos un hit contra un dominio RRM aun cuando nuestra proteína query no contiene ningún dominio de este tipo. Nos podemos dar cuenta que este hit es al menos sospechoso debido a su score negativo y su E-value cercano a 1. Por defecto el límite de E-value, al igual que BLAST es 10, este umbral es extremadamente permisivo y proclive a devolver ruido. Si queremos ser más quisquillosos podemos utilizar la opción **-E** seguida del umbral deseado. Por ejemplo:
+En nuestro caso particular podrán notar que tenemos un hit contra un dominio RRM aún cuando nuestra proteína query no contiene ningún dominio de este tipo. 
+Relacionado con esto mismo, ¿recuerdan si la base de datos PFAM identificó este dominio en la proteína de estudio?
+
+Nos podemos dar cuenta que este hit es al menos sospechoso debido a su score negativo y su E-value cercano a 1. Por defecto el límite de E-value, al igual que BLAST es 10, este umbral es extremadamente permisivo y proclive a devolver ruido. Si queremos ser más quisquillosos podemos utilizar la opción **-E** seguida del umbral deseado. Por ejemplo:
 
 ```Bash
 hmm2pfam -E 0.1 myhmms 7LES_DROME
@@ -389,7 +410,6 @@ hmm2align -o globins630.ali globin.hmm globins630.fa
 mediante la opción `-o` indicamos el archivo en el que deseamos guardar el alineamiento (**globins630.ali**), y como argumentos debemos indicar el profile que vamos a utilizar como "semilla" y el archivo con las secuencias a alinear (**globin.hmm** y **globins630.fa** respectivamente). 
 
 Noten que también se puede utilizar la opción `--outformat` para cambiar el formato del alineamiento producido. Por defecto se utiliza el formato *Stockholm*, pero también puede producir alineamientos en formato *MSF*, *Clustal*, *Phylip* y *SELEX*.
-
 
 
 {% endif %}
