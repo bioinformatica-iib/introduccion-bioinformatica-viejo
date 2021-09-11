@@ -443,12 +443,72 @@ Finalmente algunos conceptos en cuanto a la presentación de los datos. Por lo g
 <ul class="block-list has-radius is-primary">
    <li class="is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 10 de septiembre 2021, 23:59hs.
-   </li>
-   <li class="is-highlighted is-info has-icon" markdown="span">
-      <span class="icon"><i class="fas fa-calendar"></i></span>
     <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 17 de septiembre 2021, 23:59hs.
    </li>
 </ul>
+
+### Enunciado
+
+Feliz con sus descubrimientos hasta el momento. Su jefe decide que es hora de tratar de entender de qué variante deriva el virus, por más que ya analizó la identidad de secuencia de genoma completo cree que es mejor verlo (y usted está de acuerdo) realizando una filogenia.
+
+**1.** Decide realizar un alineamiento de genomas para construir un árbol. Después de un rato de ver en su computadora “aligned score….” recuerda que el genoma de coronavirus son como 30000 bases que es mucho más que una proteína estándar.Se imagina cuánto va a tardar todo este proceso y transpira. Entonces decide llamar a la Fundación Internacional Facilitadora de Alineamientos (Si Si, llama a la FIFA) y pedirle que lo hagan por usted (Pero que suerte que existe la FIFA!). La FIFA le comenta que el proceso entero llevó como dos horas de reloj (se consideran muy afortunados) y que se tuvo en cuenta que iba a utilizarse para construir una filogenia. Por último, agregan que no tienen muchas ganas de escribir el procedimiento pero que lo hicieron como siempre.
+
+Cómo usted debe informar este procedimiento a su jefe, debe reproducir los pasos a seguir para armar el alineamiento considerando que usted envió los archivos: `All_sequences.fasta` y `MW298643.1.fasta`. Y que le devolvieron el archivo `All_22_sequences_aln.fasta` que se encuentra en los Materiales.
+
+En este informe deben figurar los comandos utilizados con los parámetros correspondientes y una descripción de cualquier otro procedimiento que hayan realizado.
+
+**2.** Usando el alineamiento, decide construir un árbol mediante la técnica que le parece más correcta (debidamente justificada). Dado que los algoritmos de construcción de árboles cortan los nombres de la secuencia, para una mejor presentación de los resultados a su jefe decide que en el árbol es mejor agregar los nombres de las cepas y sus hospedadores. En este reporte es necesario identificar su secuencia e interpretar el árbol y sugerir de qué variante proviene el árbol.
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span style="font-weight:bold;">Recordatorio importante:</span> Recuerden el uso del Seed con el Nro de Grupo.
+   </li>
+   <li class="is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span style="font-weight:bold;">Nota aclaratoria sobre bootstrapping:</span> Si llegaran a querer hacer un bootstrap, la generación de cada árbol lleva aproximadamente 7min. En base a esto para 10 árboles, llevaría 70 min, o sea, 1h 10 min.
+   </li>
+   <li class="is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span style="font-weight:bold;">Nota aclaratoria sobre árbol consenso:</span> En el árbol consenso se pierden las longitudes de las ramas.
+   </li>
+</ul>
+
+**Extra (y por ende opcional).** En lugar de cambiar las etiquetas de los nodos externos manualmente en Figtree, se puede hacer mediante un script de bash. Como ya sabrán , hay varias formas de hacerlo, pero dado el entusiasmo observado vamos a sugerir algunas cosas para que les sea quizás un poco más fácil y vayan practicando como hacer buenas búsquedas en Google.
+
+La forma más simple es:
+
+**1.** Tener en un archivo de texto el nombre de la secuencia como figura en el árbol, separado por un tab o espacios del nombre de la secuencia como queremos que figure en el árbol.
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-outlined is-danger has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+    <span style="font-weight:bold;">CUIDADO!:</span> Hagan una copia de respaldo de el o los archivos de árbol que vayan a modificar para tener un backup y no tener que volver a hacerlos si ocurren errores.
+   </li>
+</ul>
+
+**2.** Luego usar un `for`, un `awk` y un `sed`.
+
+Errores que vimos que podían ocurrir.
+
+* Reemplacen en el archivo de texto los espacios por "_"
+* Reemplacen en el archivo de texto las "\" por "_"
+* La última línea del archivo de texto requiere que tenga un enter al final (es decir, que haya una nueva línea vacía luego de la última etiqueta elegida).
+
+
+**3.** Como es un poquito complejo (no sabíamos hacerlo todo) les damos algunas ayuditas de como fuimos armando el script:
+
+* Para saber como leer un archivo con un `for` en bash buscamos en Google: “how to read lines with for in bash” y en el primer resultado encontramos la [solución](https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/).
+
+* Para saber como guardar las etiquetas en variables con `awk` buscamos en Google: “how to save variables with awk” y en el primer resultado encontramos una [solución](https://stackoverflow.com/questions/18648345/saving-awk-output-to-variable/18648383) que no me funcionó.
+
+* Así que modificamos la búsqueda en Google: “how to save variables with awk while reading lines in bash” y en el primer resultado encontramos una [pregunta](https://stackoverflow.com/questions/47259579/read-line-by-line-with-awk-and-parse-variables) que nos ayudó junto con lo que vimos en la búsqueda anterior a armar correctamente el `awk` sobre la línea de archivo.
+
+* Para saber cómo usar el `sed` con variables buscamos en google: “how to pass variables to sed” y en el segundo resultado encontramos la [solución](https://unix.stackexchange.com/questions/84063/passing-a-variable-to-sed)
+
+* **Obviamente,** después de estar probando y googleando encontramos una solución mucho más simple al problema en una de las tantas búsquedas (que ya no recordamos cuál). Esta [solución](https://unix.stackexchange.com/questions/136727/awk-for-loop-for-each-line-in-a-file) evita usar el awk.
+
+### Materiales
+[Descargar](https://drive.google.com/file/d/1N5GqyvYntZkZ2Ic_-Gg-r4hqJ07sEgTs/view?usp=sharing)
 
 {% endif %}
