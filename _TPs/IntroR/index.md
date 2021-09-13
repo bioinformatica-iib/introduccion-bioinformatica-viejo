@@ -31,13 +31,7 @@ details summary > * {
 
 {% else %}
 
-{% if page.data %}
 
-## Materiales
-
-<a href="data/"> Descargar </a>
-
-{% endif %}
 
 # Objetivos
 
@@ -47,28 +41,43 @@ details summary > * {
 
 # Introducción
 
-Es un hecho que la producción de información es cada día mayor, con un crecimiento exponencial:
+La producción de información crece a un ritmo exponencial. Con más datos, más pesados y mucho más complejos. Aunque por otro lado también aumenta el poder de procesamiento de datos de nuestras computadoras. Sin embargo, este crecimiento es solamente lineal.
+
+Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. Si bien a que estos programas han incrementado sus límites de volúmenes de datos, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc, no se escapan de este análisis.
+
+En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora y cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". 
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-highlighted is-info has-icon" markdown="span">
+   <span class="icon"><i class="fas fa-lightbulb"></i></span>
+Cada día es más importante tener una idea (aunque sea básica) de programación.
+</li>
+</ul>
 
 
-![](./images/data_growth.png)
+Dar ordenes a la computadora es lo que se conoce como "programar". Se trata de que podamos entender el mismo "código" o "lenguaje" para que el procesador informatico pueda interpretarnos. Un lenguaje de programación son reglas y estructuras definidas que permiten todo esto.
 
-Si les parece que cada vez hay más datos; más grandes; más complejos, eso no es nada en comparación a lo que tendremos en unos años. Aunque por otro lado también aumenta el poder de procesamiento de datos de nuestras computadoras. Sin embargo, este crecimiento es lineal:
 
-![](./images/cpu-power.png)
-
-Quizá hoy puedan manejar sus necesidades de análisis de datos con excel, con graphpad, etc. Si bien a que estos programas han incrementado sus límites de volúmenes de datos, en algún momento el crecimiento exponencial los va a dejar atrás. Las ciencias biológicas, biotecnológicas, etc, no se escapan de este análisis, ya saben cómo evolucionaron las técnicas de secuenciación (y como lo están haciendo) por lo que no hay que entrar en detalle. 
-
-En este contexto uno quisiera tener la posibilidad de "sacarle el jugo" todo lo que se pueda a sus recursos informáticos disponibles. Acá es donde entra la programación, la posibilidad de darle órdenes "directas" a la computadora y cuanto más directas sean esas órdenes, más eficientes, y por ende, más "jugo". Cada día es más imprescindible tener una idea (aunque sea básica) de programación.
 
 ## RStudio, nuestro pequeño espacio de desarrollo
 
-Todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en el entorno de desarrollo *Rstudio*.
+Todo el trabajo en R que se desarrolle durante el curso de la materia se realizará en *RStudio*. 
 
-Los que tengan la VM funcionando pueden instalar Rstudio y todo lo que necesitamos para trabajar en el TP con el siguiente comando:
+*RStudio* es un entorno de desarrollo. Los entornos de desarrollo son programas que "facilitan" el trabajo de programación con atajos y visualizaciones *human friendly*.
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+         <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+No confundir el **entorno de desarrollo** (Ej. RStudio) con el lenguaje de programación (Ej. R). 
+  </li>
+</ul>
+
+Los que tengan la VM funcionando pueden instalar RStudio y todo lo que necesitamos para trabajar en el TP con los siguientes comando:
 ```bash
+cd
 wget https://raw.githubusercontent.com/bioinformatica-iib/introduccion-bioinformatica/master/_TPs/IntroR/data/install.sh
 bash install.sh 
-#Y pueden crear una carpeta donde hacer el TP (tanto en la VM como en el server):
+#Y pueden crear una carpeta donde hacer el TP
 mkdir ~/TP_introR
 #Y ahora entramos y descargamos todos los archivos que vamos a usar en el TP:
 cd TP_introR
@@ -84,22 +93,22 @@ wget https://raw.githubusercontent.com/bioinformatica-iib/introduccion-bioinform
 
 ![](./images/Rserver_1.png)
 
-*Rstudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar vamos a crear un archivo nuevo que es lo que básicamente conocemos como "Script". Un script no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
+*RStudio* se divide en 4 paneles, acá solo aparecen 3 puesto que todavía no hemos abierto ningún archivo. Para empezar vamos a crear un archivo nuevo que es lo que básicamente conocemos como "Script". Un script no es más que un archivo de texto "plano" con instrucciones para un lenguaje de programación específico (en este caso R).
 
-Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". Como verán, hay muchas más cosas que se pueden hacer en [Rstudio](https://www.rstudio.com/). Nosotros solo vamos a ver las más básicas, pero siéntanse libres de explorarlas en su tiempo libre si les genera interés. 
+Para ello, hagan click en "File", luego, de la lista que se despliega elijan "New file" y finalmente "R script". Como verán, hay muchas más cosas que se pueden hacer en [RStudio](https://www.rstudio.com/). Nosotros solo vamos a ver las más básicas, pero siéntanse libres de explorarlas en su tiempo libre si les genera interés. 
 
 Ahora que hemos creado un nuevo *script* tenemos los cuatro paneles:
 
-1. **Esquina superior izquierda:** En este panel está el script que acabamos de abrir (por ahora está vacío). También podremos ver cualquier archivo nuevo o tabla que usemos en R. A medida que los vayamos abriendo *Rstudio* simplemente nos pondrá más pestañas y podremos pasar libremente de una a la otra.
+1. **Esquina superior izquierda:** En este panel está el script que acabamos de abrir (por ahora está vacío). También podremos ver cualquier archivo nuevo o tabla que usemos en R. A medida que los vayamos abriendo *RStudio* simplemente nos pondrá más pestañas y podremos pasar libremente de una a la otra.
 
-2. **Esquina inferior izquierda:** En este panel está la "consola", en una pestaña, y una "Terminal" en otra. La consola es similar a la que ya vieron en UNIX, solo que esta solo entiende R. La segunda es, en efecto, una terminal de UNIX. Cualquier cosa que escriban aquí, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden.
+2. **Esquina inferior izquierda:** En este panel está la "consola", en una pestaña, y una "Terminal" en la otra. La consola es similar a la que ya vieron en UNIX, solo que interpreta R. La segunda es, en efecto, una terminal de UNIX. Cualquier cosa que escriban aquí, y luego presionen [ENTER] se ejecutará en el momento, y les mostrará el resultado de dicha orden.
 
 3. **Esquina superior derecha:** En este panel tendrá una lista de todas las variables cargadas en el "entorno" que están trabajando, se les mostrará un pequeño resumen de cada variable y en el caso de las "tablas" que son muy grandes para mostrar, pueden hacer click y se abrirán en una nueva pestaña del primer panel. Hay otras pestañas que pueden ser útiles pero por lo pronto no son necesarias. Este panel será de gran ayuda para que no se pierdan en un mar de datos y es especialmente útil para los que estén programando por primera vez.
 
 4. **Esquina inferior derecha:** Este panel tiene varias pestañas útiles:
-    * **Files:** La primera es simplemente un explorador de archivos (igual que en windows) donde pueden navegar entre las carpetas disponibles y visualizar los archivos que encuentren. Les será muy útil para ver qué tienen en su sesión de *Rstudio* mientras trabajan.
-    * **Plots:** Como su nombre indica, acá aparecerán todos los *plots* (gráficos) que vayan generando, más adelante veremos más detalles de esta pestaña.
-    * **Help:** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la consola el comando `help()` (muy similar el comando `man` que ya usaron en UNIX), prueben con:
+    * **Files:** La primera es simplemente un explorador de archivos (igual que en *windows*) donde pueden navegar entre las carpetas disponibles y visualizar los archivos que encuentren. Les será muy útil para ver qué tienen en su sesión de *RStudio* mientras trabajan.
+    * **Plots:** Como su nombre indica, acá aparecerán todos los *plots* (gráficos) que vayan generando, más adelante veremos detalles de esta pestaña.
+    * **Help:** Esta pestaña es **fundamental**, acá podrán acceder a toda la ayuda disponible de R y de todos los paquetes y funciones que quieran usar. Pueden buscar las funciones escribiendo en la "lupita" como en cualquier programa que conozcan o puedan ejecutar en la **consola** el comando `help()` (muy similar el comando `man` que ya usaron en UNIX), prueben con:
 
 ```r
 help(print)
@@ -140,7 +149,15 @@ Ya se imaginarán que pueden esperar de cada orden
 
 Pero ¿y si quisiéramos dejar un registro de lo que acabamos de hacer? R guarda todas las órdenes en un archivo que se llama *.Rhistory*, y ustedes lo pueden visualizar en el 2do panel en la pestaña *History*, sin embargo, esta forma de almacenar instrucciones es un poco sucia. Se guarda TODO lo que se ejecuta, incluso lo que probamos y lo que hacemos mal. (lo cual es muy frecuente)
 
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info" markdown="span">
+   <span class="icon"><i class="fas fa-book"></i></span>
 La forma correcta de trabajar es ir dejando **NOSOTROS** un registro de las órdenes correctas para llegar al *output* deseado. E incluso se suelen comentar las instrucciones más importantes para que se pueda entender por quien tenga la desgrac... digo la necesidad, de reutilizar el código. Es algo así como el cuaderno de laboratorio bioinformático. En R, comentamos el texto anteponiendo un # a la línea deseada, para que no solo haya "código" si no que también podamos explicar qué o por qué usamos dicho código.
+  </li>
+</ul>
+
+
 
 Para esto es que creamos el archivo de texto (¿Recuerdan el "New Rscript"?) que probablemente se les haya abierto con el nombre *Untitled1*. Este archivo de texto va a ser nuestro "cuaderno" o "script", que recordará **exactamente** todo el trabajo que haremos lo más detallado y prolijo que se pueda.
 
@@ -159,7 +176,7 @@ cat("Hola mundo")
 * ¿Alguien que lea este *script* lo podría entender?
 
 Muy bien, tenemos las instrucciones, ¿cómo las ejecutamos?
-En *Rstudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *Rstudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
+En *RStudio* y desde cualquier archivo de texto cargado en el primer panel, es tan sencillo como poner el cursor de escribir sobre la línea deseada y presionar [Ctrl] + [ENTER], inmediatamente dicha línea "pasa" a la consola y se ejecuta. También podemos seleccionar varias líneas, o parte de ellas y presionar las mismas teclas. *RStudio* entiende que si seleccionamos las líneas 4,5 y 6, tiene que ejecutarlas en ese orden, una después de la otra. Sus instructores también hacen la misma suposición, por lo que si durante la cursada terminan ejecutando la línea 13, la 15 y luego la 4, y tienen algún error, probablemente sus instructores estén un poco confundidos al leer el *script* y estén visualizando un orden secuencial distinto. Es una muy buena práctica ejecutar el código del *script* de forma secuencial y en caso de hacer algún cambio en el orden ejecutado, replicarlo de igual manera en el *script* donde están trabajando.
 
 También podríamos ejecutarlo desde Bash (línea de comando Unix), para lo cual deberíamos guardar el archivo como “hello.R" en la carpeta “scripts" que hemos creado. Iríamos a la consola nuevamente, y parados en la carpeta scripts, podemos ejecutarlo de la siguiente manera:
 
@@ -218,7 +235,18 @@ print(saludo)
 [1] "hola Hermenegildo"
 ```
 
-El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. (**Ojo con esto ¡Es fundalmental!**)
+El signo de "<-" representa una flecha que R entiende como asignar una valor a una variable. Si la variable todavía no existía, se crea (la podrán ver aparecer en el 3er panel), y si en un nuevo comando vuelvo a indicarle un nuevo valor a esa misma variable, la variable se "olvida" del valor anterior. 
+
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      <center>
+      <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>
+Ojo con esto ¡Es fundalmental!
+</center>
+  </li>
+</ul>
+
+
 
 Muchas veces es útil declarar las variables vacías y luego irlas “llenando" a medida que se va ejecutando el algoritmo; o actualizando su valor conforme éste avanza en la resolución del problema. Por ejemplo:
 
@@ -240,6 +268,20 @@ log(val)
 ```
 
 Con respecto a las comparaciones entre números y palabras podemos hacer las operaciones tradicionales:
+
+```R
+# Quiero saber si un número es mayor a determinado valor:
+
+val <- 42
+val > 12 # Esto compara si el valor al que hace referencia la variable "Val" es mayor a 12.
+# Al ser una evaluación verdadera, devuelve "TRUE". 
+# "TRUE" y "FALSE" son un tipo de variable que vamos a ver un poco más adelante.
+
+# Quiero saber si una variable es exactamente determinado valor:
+val <- 42
+val == 43 # Esto va a devolver "FALSE" porque dicha variable no es 43.
+```
+
 
 ### Ejercicio 1: **Para probar un poco:**
 
@@ -275,12 +317,15 @@ print(dna3)
 
 ### Variables lógicas
 
-Son las más sencillas de todas. Solo almacenan un 1 o un 0, que escribimos como TRUE o T, FALSE o F, R entiende todas estas formas.
+Son las más sencillas de todas. Solo almacenan un 1 o un 0, que escribimos como TRUE o T, FALSE o F. R entiende todas estas formas.
 Son de especial interés cuando trabajamos con evaluaciones lógicas, algo muy frecuente. 
 
 ```r
 variable_logica <- T
 print(variable_logica)
+
+otra_variable_logica <- 23 > 3
+print(otra_variable_logica)
 
 variable_logica <- TRUE
 print(variable_logica)
@@ -289,8 +334,15 @@ variable_logica <- as.logical(1)
 print(variable_logica)
 
 ```
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info" markdown="span">
+   <span class="icon"><i class="fas fa-book"></i></span>
+Las variables lógicas se pueden invertir fácilmente (es muy útil) solamente anteponiendo el signo `!` (negación). 
+  </li>
+</ul>
 
-Las variables lógicas se pueden invertir fácilmente (es muy útil) solamente anteponiendo el signo `!` (negación). Por ejemplo, fíjense qué sucede si ingresan:
+
+Por ejemplo:
 
 ```r
 variable_logica <- T
@@ -299,9 +351,12 @@ print(!variable_logica)
 
 ```
 
-### Ejercicio 2: Evaluando:
+### Ejercicio 2: **Evaluando**
 
-asdasdasd
+1. Declarar 2 variables, asignar un número distinto a cada una. Evaluar si ambos son iguales y guardar el resultado.
+2. Negar el resultado del punto anterior.
+3. Declarar 2 variables, asignar una palabra distinta a cada una. Evaluar si ambas son iguales y guardar el resultado.
+4. Evaluar si el resultado del punto 3 y del punto 2 es exactamente igual. *No debería*
 
 ### Vectores
 
@@ -313,7 +368,13 @@ vector678 <- c(6,7,8)
 
 También podemos indicarle a R el primer y el último número de una serie consecutiva y automáticamente genera todo el resto:
 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-book"></i></span>
 R interpreta los dos puntos ("`:`") entre números como una serie que tiene que complementar. Si quieren cosas más complejas, como que vaya de 10 en 10, pueden revisar la documentación de la función `seq`, con `help(seq)`.
+  </li>
+</ul>
+
 
 Se pueden hacer operaciones logico-matemáticas sobre series enteras:
 
@@ -339,8 +400,7 @@ hist(Snorm)
 ```
 ![](./images/plot_ejemplo_2.png)
 
-* ¿Obtuvieron los gráficos que hubieran esperado?
-* ¿Fue sencillo graficar?
+
 
 ### Listas
 
@@ -397,7 +457,12 @@ list <- c(list_numeros,list_strings)
 
 ¿Ven que **NO** aparecen comillas en los números que están dentro de la lista?
 
-Esto es así puesto que R transforma los números a cadenas de texto para poder almacenarlos en el vector. 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-book"></i></span>
+      Esto es así puesto que R transforma los números a cadenas de texto para poder almacenarlos en el vector. 
+   </li>
+</ul>
 
 ¿Qué pasaría si ahora quisiera sumar dos números que se transformaron en texto?
 (si les interesa pueden probarlo, indexen el vector para sumar dos valores numéricos transformados a cadena de texto y fijense que pasa)
@@ -475,7 +540,7 @@ Fíjense que ahora el eje X aparece ordenado y que R decidió realizar este tipo
 
 ### Dataframes.
 
-Repasemos otro tipo de variables que vamos a usar mucho: **dataframes** las tablas de R.
+Otro tipo de variables que vamos a usar mucho: **dataframes** un tipo de tablas que pueden usar en R.
 
 Hay varias formas para crearlas, la más sencilla es con la función *data.frame()*
 
@@ -518,7 +583,7 @@ dt$gen
 
 * Indexando por el número de columna:
 
-(En R, las tablas se indexan con corchetes, donde dentro se ingresan dos números separados por una coma, el primero es para las filas y el segundo para las columnas. Si uno de los dos no se escribe, se entiende que son todas las filas/columnas)
+En R, las tablas se indexan con corchetes, donde dentro se ingresan dos números separados por una coma, el primero es para las filas y el segundo para las columnas. Si uno de los dos no se escribe, se entiende que son todas las filas/columnas.
 
 ```r
 dt[,1]
@@ -535,28 +600,55 @@ dt[,"gen"]
 El indexado de filas por número es idéntico, pero en general se usa para hacer operaciones de filtrado lógicas o matemáticas:
 
 ```r
+# Primer fila de todas las columnas:
+dt[1 ,]
 # Todos los genes esenciales:
 dt[dt$escencial ,]
 # Todos los genes de más de 100 de exp:
 dt$expresion > 100
-# Nos devuelve un vector lógico con un "TRUE" en aquellos que cumplen dicha condición, con lo cual podemos filtrar la dt original:
+# Nos devuelve un vector lógico con un "TRUE" en aquellos que cumplen dicha condición,
+# con lo cual podemos filtrar la dt original:
 dt[dt$expresion > 100 ,]
 ```
 
-Existen muchisimas mas funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, muy similares pero con algunas funciones como filtros y selecciones incorporadas de otra forma más sencilla pero, quizá, no tan intuitiva. 
+Existen muchisimas más funciones para trabajar con *data frames*, que pueden explorar a su gusto. Además, existen *data tables*, y otras que se usan para trabajar datos en forma de tabla que no vamos a profundizar por cuestiones de tiempo. 
 
-### Ejercicio 3: Indexando dataframes:
+### Ejercicio 3: **Indexando dataframes**
 
-asdasdasd
+1. Crear un vector que contenga cuatro números y guardarlo como "vec".
+2. Crear una *Data frame* con cuatro columnas ("col1","col2","col3","col4") y guardar el vector "vec" en todas las columnas.
+3. Obtener los valores de la columna "col1".
+4. Obtener el valor de la tercer fila de la columna "col4".
+5. Obtener los valores de la columna "col1" que sean menores a 2.
 
 
-## Iteraciones y evaluaciones usando R
+<details>
+<summary> <h6>Si no pudieron resolver el punto 1 y 2:</h6> </summary>
 
-Una de las cosas más útiles, pero a su vez complejas, son las evaluaciones e iteraciones. A lo largo de la materia fuimos introduciendo algunos de estos conceptos en UNIX. La lógica detrás de esto es la misma en cualquier lenguaje de programación (aunque podremos ver ligeros cambios de sintaxis).
+
+```r
+vec <- c(3,5,63,1)
+dt <- data.frame(col1 = vec,col2 = vec,col3 = vec,col4 = vec)
+```
+
+</details>
+
+## Iteraciones y condicionales usando R
+
+Una de las cosas más útiles, pero a su vez complejas, son los condicionales e iteraciones. A lo largo de la materia fuimos introduciendo algunos de estos conceptos en UNIX. La lógica detrás de esto es la misma en cualquier lenguaje de programación (aunque podremos ver ligeros cambios de sintaxis).
 
 ### Condicionales en R
 
-Una condicional es básicamente un comando que se ejecuta solo si se cumple alguna condición, la estructura que tenemos que escribir en R para hacer evaluaciones es la siguiente:
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-book"></i></span>
+      Un condicional es básicamente un comando que se ejecuta **solo** si se cumple **alguna condición**.
+   </li>
+</ul>
+
+
+
+La estructura que tenemos que escribir en R para hacer evaluaciones es la siguiente:
 
 ```r
 valor <- 34
@@ -567,12 +659,12 @@ if(valor > 10){
 }
 
 ```
-¿Como se entiende esto? Entre paréntesis hacen una evaluación, pueden usar "<", ">", "==", ">=" o "<=". (Se usa "==" para diferenciarlo de "=" que como ya vieron se puede usar para asignar variables), aunque también pueden usar otras funciones que devuelvan variables lógicas como `identical()` o cualquier función que ustedes hayan escrito (lo veremos más adelante en este TP). También pueden usar variables que contengan un valor lógico, de una forma muy similar podríamos haber escrito el ejemplo anterior:
+¿Como se entiende esto? Entre paréntesis hacen una evaluación, pueden usar "<", ">", "==", ">=" o "<=". (Se usa "==" para diferenciarlo de "=" que como ya vieron se puede usar para asignar variables), aunque también pueden usar otras funciones que devuelvan variables lógicas como `identical()` o cualquier función que ustedes hayan escrito (lo veremos más adelante en este TP). También pueden usar variables que contengan un valor lógico. El ejemplo anterior podríamos haberlo escrito de una forma muy similar:
 
 ```r
 valor <- 34
-condicion <- (valor > 10)
-if(condicion){
+evaluacion <- (valor > 10)
+if(evaluacion){
   print("el valor es mayor a 10")
 }else{
   print("el valor es menor a 10")
@@ -594,7 +686,7 @@ for (i in vector_de_numeros) {
   print(log(vector_de_numeros[i]))
 }
 ```
-La estructura del `for` es la siguiente: entre paréntesis, tenemos que variable va a tomar los distintos valores del vector (en este caso, la variable es `i` y el vector son los números del 1 al 100). Entre llaves, tenemos qué código se debe ejecutar. En cada una de las iteraciones del `for`, `i` tendrá un valor distinto y por ende el código que se va a ejecutar es ligeramente distinto.
+La estructura del `for` es la siguiente: entre paréntesis, tenemos qué variable va a tomar los distintos valores del vector (en este caso, la variable es `i` y el vector son los números del 1 al 100). Entre llaves, tenemos qué código se debe ejecutar. En cada una de las iteraciones del `for`, `i` tendrá un valor distinto y por ende el código que se va a ejecutar es ligeramente distinto.
 
 * Iteraciones con `while` en R:
 La estructura es muy similar, sin embargo, el concepto es distinto. Este iterador ejecuta el código entre llaves, **hasta** que se cumple cierta condición. Por ejemplo lo mismo que hicimos anteriormente con el `for`, sería:
@@ -642,7 +734,7 @@ De este modo tendremos acceso directo a todos los archivos del TP.
 
 ## Cargando datos a R
 
-Algo muy interesante que siempre necesitamos es pasar datos de distintos formatos y cargarlos en nuestro *Rstudio* para trabajarlo, claramente no podemos ingresar un gen de forma manual, ni miles de registros de una base de datos...o podemos pero no nos conviene.
+Algo muy interesante que siempre necesitamos es pasar datos de distintos formatos y cargarlos en nuestro *RStudio* para trabajarlo, claramente no podemos ingresar un gen de forma manual, ni miles de registros de una base de datos...o podemos pero no nos conviene.
 
 Por un lado los datos más fáciles de cargar son los del estilo de tablas separadas por valores específicos, como "comas" (,) o "tabs" (\\t). Estos archivos son conocidos como "csv" o "tsv", respectivamente. En esos casos tenemos la función `read.csv()` que se encarga de hacerlo de forma muy sencilla, eso sí, hay que saber bien qué formato tiene el archivo que queremos cargar.
 
@@ -656,7 +748,13 @@ dt <- read.csv(file="dt_TP1_cal.tsv",sep="\t")
 * ¿Les dió algún error?
 * ¿Hay algo que esté mal?
 
-Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista (`help(read.csv)`).
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-smile"></i></span>
+      Recuerden que es fundamental en estos casos indicar correctamente el *path* al archivo (`file = "path"`) usando tanto el relativo como el absoluto (como seguramente recuerdan de la clase de UNIX). Ante cualquier problema, consulte a un especialista (`help(read.csv)`).
+   </li>
+</ul>
+
 
 Muy frecuentemente nos encontramos con que los datos con los que tenemos que trabajar no tienen un formato estándar. En esos casos es necesario leer línea a línea el archivo y darle formato, en la próxima sección del TP nos enfocaremos en ver ejemplos de esto y cómo se pueden trabajar.
 
@@ -664,7 +762,7 @@ Muy frecuentemente nos encontramos con que los datos con los que tenemos que tra
 
 ## Funciones y paquetes en R
 
-Una de las posibilidades más importantes que pueden aprovechar de R es que todo se pueda hacer en una función. Y las funciones, debido a nuestra formación, nos resultan intuitivas. Por ejemplo todos entienden que si les digo f(x) = 2 x + x^2. Saben que f(x) es una función que recibe números (x) y devuelve el resultado de una operación. Ahora en R eso se escribiría de la siguiente forma:
+Una de las posibilidades más importantes que pueden aprovechar de R es que todo se pueda hacer en una función. Y las funciones, debido a nuestra formación, nos resultan intuitivas. Por ejemplo todos entienden que f(x) = 2 x + x^2. Saben que f(x) es una función que recibe números (x) y devuelve el resultado de una operación. Ahora en R eso se escribiría de la siguiente forma:
 
 ```r
 my_function = function(x) {
@@ -707,7 +805,7 @@ Y las funciones no solo se limitan a operaciones matemáticas, pueden escribir c
 
 Como R es *open source* tenemos la posibilidad de cargar "paquetes" que otras personas hicieron y dentro tienen un conjunto de funciones, siempre referidas a algún tipo de problema en particular. Muchas de estas funciones como `print()` o `paste()` son básicas de R y ya las tenemos instaladas y cargadas en R por defecto, sin embargo, esto no ocurre así para cosas más particulares de nuestro trabajo como por ejemplo trabajar con secuencias de ADN, RNA o proteínas donde ya hay gran cantidad de funciones que resuelven nuestras necesidades y se encuentran en paquetes que podemos cargar libremente.
 
-Otro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado *ggplot*, en nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
+Otro ejemplo, es si uno tiene intención de realizar plots de buena calidad, podría usar las funciones básicas de R como `plot()`, sin embargo hay algunas cosas que se vuelven un poco engorrosas. Y por esto es que desarrollaron un paquete muy extendido y usado llamado *ggplot*. En nuestro sistema ya está instalado y simplemente les mostraremos un ejemplo para que vean los alcances de usar paquetes:
 
 Supongamos que mido dos solutos a 5 concentraciones distintas y obtengo dos curvas de calibración y quiero presentarle a mi director los resultados en un formato agradable e intuitivo de comprender:
 
@@ -808,7 +906,13 @@ vector_of_ids <- unlist(lapply(values, `[[`, 1))
 print(vector_of_ids)
 ```
 
-Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón. En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-book"></i></span>
+      Este último código funciona igual tanto para estos 3 Ids como para miles, siempre y cuando todos sigan el mismo patrón. En este ejemplo solo me quedé con el Id, pero tranquilamente podríamos haber almacenado el resto de la información, si nos fuese necesario. ¿Ven el alcance de entender este tipo de trabajos con programación? Lleva un poco de tiempo hacerlo, pero una vez terminado, toma el mismo trabajo analizar 10, 100 o 10.000 genes, ampliando muchísimo sus capacidades de análisis.
+   </li>
+</ul>
+
 
 Es importante recalcar que todo este trabajo de "*parsear*" archivos lo pueden desarrollar en otro lenguajes de programación como python (sería similar a R), perl o incluso en UNIX. (sería un poco más complejo de escribir, pero la eficiencia sería muchísimo mayor, es muy útil si se quiere trabajar millones de datos en poco tiempo)
 
@@ -820,7 +924,13 @@ Por lo tanto, se podrán imaginar que puede generar una gran cantidad de datos e
 
 En nuestro ejemplo (datos reales), el investigador realizó un ensayo donde evalúa cada 5 minutos durante 15 minutos (4 mediciones por placa) una placa de 384 wells, donde en cada columna dispuso 16 concentraciones (diluciones seriadas) de un compuesto distinto (22 compuestos, 1 por columna, de la 1 a la 22). Un detalle de esto lo pueden ver [esta planilla](https://docs.google.com/spreadsheets/d/1PyeXGspSukMF2aqRmuC3eGms7nzw_FAVHcDBpF8q0rQ/edit?usp=sharing).
 
-**NOTA** Los nombres de las drogas son ficticios
+<ul class="block-list has-radius is-primary">
+   <li class=" is-outlined is-danger has-icon" markdown="span">
+      Los nombres de las drogas son ficticios
+   </li>
+</ul>
+
+
 
 La enzima que estudia tiene como producto un compuesto fluorescente y la idea es calcular una regresión lineal de la abundancia de dicho producto a lo largo del tiempo, para estimar la velocidad de la reacción para todas las concentraciones de la reacción llevada a cabo con los distintos compuestos, que podrían actuar como inhibidores.
 
@@ -840,7 +950,7 @@ En este TP vamos a ver y explicar partes de la resolución, sin embargo, algunas
 
 #### Parsear los datos
 
-Primero empezamos mirando el archivo generado por el Filter Max (`/data/datos_filtermax.txt`), pueden hacerlo directamente en Rstudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
+Primero empezamos mirando el archivo generado por el Filter Max (`/data/datos_filtermax.txt`), pueden hacerlo directamente en RStudio si hacen click en el archivo en el explorador de archivos del cuarto panel.
 
 Mirando eso deberían haber llegado a la conclusión de que el archivo tiene los valores separados por "tabs".
 Intentamos cargar los datos con la función `read.csv()` como vimos en anteriormente.
@@ -870,7 +980,7 @@ Resulta que en caso de que las filas tengan distinta cantidad de columnas hay qu
 dt <- read.table("./data/datos_filtermax.txt",sep="\t",fill = T,stringsAsFactors = F)
 ```
 
-Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en Rstudio?
+Muy bien, ahora tengo los datos cargados, ¿pueden visualizarlos en RStudio?
 Se dan cuenta que uno de los problemas principales es que la primera y las últimas dos filas, son innecesarias para lo que nosotros necesitamos hacer? ¿Se imaginan cómo borrar esas filas? Básicamente hay que indexar la *data frame*. Se puede pedir las filas que queremos c(2:6), o restar las que no queremos -c(1,7:8).
 
 
@@ -1148,7 +1258,7 @@ Todo los plots que hagamos ahora, en vez de verlos en rstudio, se van a guardar 
 dev.off()
 ```
 
-Recuerden que es muy importante esta última orden, de lo contrario el pdf queda corrupto, no se puede abrir. Y tampoco puedo ver en Rstudio los plots que haga, suele ser un recurrente dolor de cabeza.
+Recuerden que es muy importante esta última orden, de lo contrario el pdf queda corrupto, no se puede abrir. Y tampoco puedo ver en RStudio los plots que haga, suele ser un recurrente dolor de cabeza.
 
 ##### Efecto de los inhibidores
 
