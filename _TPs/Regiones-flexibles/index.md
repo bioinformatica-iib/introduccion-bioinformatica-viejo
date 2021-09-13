@@ -241,7 +241,8 @@ Ingresa a la página web de [DisProt](https://disprot.org/) y encuentra la prote
 
 **c.** ¿Cuál es el rol de las regiones desordenadas?
 
-**i.** Expande *Interaction partner* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?  
+**i.** Expande *Interaction partner* ¿Qué tipo de interacciones están indicadas?¿Qué técnicas se usaron para identificarlas?
+
 **ii.** Expande *Disorder Function* ¿Qué tipo de funciones están indicadas? ¿Qué técnicas se usaron para identificarlas?
 
 **d.** Expande *Domains*.
@@ -281,11 +282,16 @@ La base de datos PFAM es una colección de familias de dominios de proteínas co
 Para buscar la proteína p53 puedes hacerlo ingresando en VIEW A SEQUENCE el accession number (P04637) o el uniprot ID (P53_HUMAN)
 
 **1b.** ¿Qué longitud tiene la proteína p53 humana?
+
 **1c.** Observar el esquema modular de p53: ¿Puedes identificar qué dominios PFAM tiene p53? ¿Qué nombres y qué funciones tienen?
+
 **1d.** ¿En qué regiones de la secuencia se encuentran estos dominios? Anotar de qué residuo a qué residuo abarca cada dominio, para usar más adelante. 
+
 **1e.** ¿Creen que estos dominios corresponden unívocamente a dominios globulares?
+
 **1f.** ¿A qué cree que corresponden las regiones marcadas como “Disorder” y “Low Complexity” en p53?
-**1g.** ¿Se corresponden las regiones identificadas como Disorder en PFAM con las predichas por IUPred en el **Ejercicio 1** de la guía de desorden?
+
+**1g.** ¿Se corresponden las regiones identificadas como Disorder en PFAM con las predichas por IUPred en el **Ejercicio 2** de la parte I de predicción de desorden?
 
 ### Ejercicio 2. Usando JalView para analizar un MSA de p53
 **2a.** Abre Jalview
