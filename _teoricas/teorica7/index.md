@@ -13,6 +13,10 @@ construccion: false
 
 {% else %}
 
+## Quiz HMM & ANN
+
+Cuestionario disponible aquí [[PDF]](https://drive.google.com/file/d/110S8TKD-LLg_iQPzCR1_2daodsB1dlvE/view?usp=sharing)
+
 Esta clase está dividida en dos partes y cada una incluye ejercicios para resolver (handout). También están la resolución de algunos ejercicios. Consejo: Traten de hacerlos primero y corroboren después.
 
 ## PARTE 1 - HMM.
