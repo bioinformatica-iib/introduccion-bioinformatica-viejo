@@ -2,11 +2,11 @@
 layout: page
 title: TP N°8
 subtitle: Programando en Biología
-data : False
+data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
 
 <style>
