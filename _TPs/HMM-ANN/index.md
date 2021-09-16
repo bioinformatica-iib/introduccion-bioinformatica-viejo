@@ -35,7 +35,7 @@ construccion: false
 * Crear una base de datos de perfiles de secuencias y utilizar la misma para identificar dominios conservados en secuencias *query*.
 
 
-## Artificial neural networks
+## Parte I. Artificial neural networks
 
 En esta sección vamos a utilizar redes neuronales para hacer predicciones como habíamos hecho anteriormente con las PSSM. La idea es similar a la del TP5 donde entrenamos un modelo con péptidos que se unen a MHC. Variaremos los parámetros de modelo para mejorarlo, sensando en cada corrida los indicadores de desempeño del mismo (**Aroc** y **Pearson correlation coefficient**). 
 
@@ -169,7 +169,7 @@ Para ello vamos a guardar el modelo entrenado en la **Cuarta prueba** haciendo *
 Este modelo será utilizado en el ejercicio a entregar de este TP.
 
 
-## HMMer
+## Parte II. HMMer
 
 <ul class="block-list has-radius is-primary">
    <li class=" is-outlined is-danger has-icon" markdown="span">
