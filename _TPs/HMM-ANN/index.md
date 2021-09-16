@@ -15,6 +15,13 @@ construccion: false
 
 {% else %}
 
+<ul class="block-list has-radius is-primary">
+   <li class=" is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-clipboard"></i></span>
+    <span style="font-weight:bold;">Este TP tiene informe.</span>
+   </li>
+</ul>
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/1b44lbrBURu-s8SNLDd_Xr7-7rupC5BPs/view?usp=sharing)
@@ -411,45 +418,23 @@ mediante la opción `-o` indicamos el archivo en el que deseamos guardar el alin
 
 Noten que también se puede utilizar la opción `--outformat` para cambiar el formato del alineamiento producido. Por defecto se utiliza el formato *Stockholm*, pero también puede producir alineamientos en formato *MSF*, *Clustal*, *Phylip* y *SELEX*.
 
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 17 de Septiembre 2021, 23:59hs.
+   </li>
+</ul>
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 01 de Octubre 2021, 23:59hs.
+   </li>
+</ul>
 
 {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
