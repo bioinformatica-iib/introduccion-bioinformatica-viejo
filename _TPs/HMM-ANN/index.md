@@ -22,6 +22,23 @@ construccion: false
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°7. [[MP4]](https://drive.google.com/file/d/1f7MqDqMpzIwUfYj1LuDiDZf_d-gWqYgC/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1f7MqDqMpzIwUfYj1LuDiDZf_d-gWqYgC/preview" width="800" height="440"></iframe>
+
+* Final de Clase TP N°7.
+
+** ANN [[MP4]](https://drive.google.com/file/d/1B9etJsvZm9qLfYaq9-IlmCz2F5lu470h/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1B9etJsvZm9qLfYaq9-IlmCz2F5lu470h/preview" width="800" height="440"></iframe>
+
+** HMM [[MP4]](https://drive.google.com/file/d/1C04vKioGCA7MoYpedn0dkaTd9TSEBjn3/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1C04vKioGCA7MoYpedn0dkaTd9TSEBjn3/preview" width="800" height="440"></iframe>
+
+
 ## Materiales
 
 [Descargar](https://drive.google.com/file/d/1b44lbrBURu-s8SNLDd_Xr7-7rupC5BPs/view?usp=sharing)
