@@ -133,6 +133,8 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 
 * Investigue el motivo **CLV_PCSK_FUR_1** en la predicción realizada sólo con la secuencia. ¿Por qué cree que fue filtrado?
 
+* ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
+
 * ¿Cuántas instancias de la clase MOD_CK1_1 se encontraron? ¿Cuál es la diferencia entre estas instancias?
 
 * ¿Cuántos degrons anotados hay en p53? ¿Cuál es la función de estos motivos?
@@ -148,7 +150,7 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 * ¿Cuántas instancias predichas de motivos se encuentran ahora? ¿Cuántas instancias de motivos son retenidas luego del filtro?
 * ¿Por qué cree que es útil usar la localización celular, el contexto taxonómico y el umbral de probabilidad del motivo?
 
-**5.** ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
+
 
 
 
