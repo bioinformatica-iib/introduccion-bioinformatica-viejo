@@ -6,7 +6,7 @@ data : True
 menubar_toc: true
 hero_height: is-small
 toc_title: CONTENIDOS
-construccion: true
+construccion: false
 ---
 
 {% if page.construccion %}
@@ -23,17 +23,16 @@ construccion: true
 
 {% endif %}
 
-#### Recursos a utilizar:
+## Recursos a utilizar:
 * Regex101 [https://regex101.com](https://regex101.com)
 * UniProt  [http://www.uniprot.org/](http://www.uniprot.org/)
 * ELM [http://elm.eu.org](http://elm.eu.org)
 
-
-### Ejercicio 1. Familiarizándonos con las Expresiones Regulares
-
-#### Objetivos:
+## Objetivos:
 * Familiarizarse con la simbología utilizada en expresiones regulares
 * Utilizar la simbología para poder realizar búsquedas basadas en texto
+
+## Introducción
  
 La simbología comúnmente utilizada en expresiones regulares es:
 
@@ -49,15 +48,19 @@ La simbología comúnmente utilizada en expresiones regulares es:
 
 
 Estos símbolos nos permiten definir patrones que son observados en proteínas naturales para luego identificarlos en otras proteínas y ser puestos a prueba experimentalmente.
- 
+
+## Ejercicio 1. Familiarizándonos con las Expresiones Regulares
+
 Los receptores nucleares interactúan con diversas proteínas mediantes un motivo lineal llamado NRBox (*Nuclear Receptor Box*) (Heery,1997). Existen numerosas estructuras de péptidos unidos a diferentes receptores nucleares (PDBs: 3CS8, 2GPO, 1GWQ, 1RJK, 1M2Z) que permitieron estudiar y entender algunas características de la interacción.
 
 La evidencia experimental recolectada de la literatura indica que:
 * El motivo NRBox forma una hélice alfa
 * Existen tres leucinas que **se encuentran en una misma cara de la hélice** que interactúan con un bolsillo hidrofóbico en la superficie del receptor nuclear (Figura 1).
 
+<p style="text-align:center">
 <img src="./images/NRBox.png" width=500>
- 
+ </p>
+
 **Figura 1.** Fragmento de la proteína PGC-1 alfa unido al receptor nuclear PPAR-gamma. Se muestra en naranja el backbone de la proteína representado en *Cartoon* y en azul las tres leucinas que median la interacción representadas en *Sticks* (PDB:3CS8) y que conforman el motivo NRBox.
 
 Los siguientes fragmentos de secuencia corresponden a regiones de distintas proteínas que interactúan con diversos receptores nucleares y cuya interacción se verificó de manera experimental por distintos métodos.
@@ -88,18 +91,20 @@ LVPDAASKHKQLSELLRGGSGSSINPG
 1. Copie y pegue las secuencias en el recuadro de Test String en regex101 [https://regex101.com](https://regex101.com) y pruebe encontrar una expresión regular que permita identificar el motivo que media la interacción de estas proteínas con los receptores nucleares y que cumpla con la evidencia experimental observada.
 2. Considerando que el motivo se encuentra en una hélice, ¿modificaría la expresión regular que obtuvo?
 
-### Ejercicio 2. Base de datos de motivos lineales en Eucariotas (ELMdb)
+## Ejercicio 2. Base de datos de motivos lineales en Eucariotas (ELMdb)
 La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se enfoca principalmente en la anotación y detección de motivos lineales (MLs). Para ello cuenta con un repositorio de motivos manualmente anotados, por lo cual está altamente curada y una herramienta de predicción de motivos. Esta predicción de motivos se realiza mediante una búsqueda de patrones de secuencia basada en texto utilizando expresiones regulares.
  
-1. Busque en ELM [http://elm.eu.org](http://elm.eu.org) en la pestaña Prediction una de las proteínas de la lista que usamos en el **Ejercicio 1**: la proteína PGC-1-alpha utilizando el accession number o uniprot ID (Q9UBK2 - PRGC1_HUMAN). Para cada motivo encontrado, se indica con símbolos (descriptos en la parte superior de la página) si la instancia del motivo es predicha o fue identificada experimentalmente (anotadas o "True Positives"). Responda: 
+**1.** Busque en [ELMdb](http://elm.eu.org) en la pestaña **Prediction** la proteína PGC-1-alpha, una de las proteínas de la lista que usamos en el **Ejercicio 1**, utilizando el accession number o uniprot ID (Q9UBK2 - PRGC1_HUMAN).
+
+Para cada motivo encontrado, se indica con símbolos (descriptos en la parte superior de la página) si la instancia del motivo es predicha o fue identificada experimentalmente (anotadas o "True Positives"). Responda: 
 * ¿Encuentra el motivo NRBox entre los *True positives*?
-* ¿Cuántas instancias *True Positive* existen?
+* ¿Cuántas instancias *True Positive* existen para esta proteína?
 * ¿Cómo es la estructura de la proteína donde se encuentran estos motivos?
 
-2. Pegue y copie la siguiente secuencia en ELM y utilice los parámetros que se indican a continuación.
+**2.** Pegue y copie la siguiente secuencia en ELM y utilice los parámetros que se indican a continuación.
 
     ```
-    >P04637
+    >seq
     MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDI  
     EQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQ  
     KTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDST  
@@ -116,33 +121,36 @@ La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se en
     **Motif Probability Cutoff:** 100  
     **Taxonomic context:** (leave blank)  
  
-* ¿Cuántas instancias predichas de motivos se encuentran?  
+* ¿Cuántas instancias predichas de motivos se encuentran? Para verlo investigue la tabla llamada **Filtering Summary**. ¿Cuántas son retenidas luego del filtro?
 * ¿Qué se puede decir sobre la estructura de la proteína? ¿Se observa algún dominio? ¿Se observan regiones desordenadas?  
 * ¿Los predictores estructurales y filtros (SMART, GlobPlot, IUPRED, Secondary Structure) coinciden sobre qué regiones son estructuradas/desordenadas?
 
-3. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el accession number (P04637).
-* ¿Qué proteína es?
+**3.** Por si no dió cuenta, la proteína utilizada en el ejercicio anterior es p53 de humanos. Abra en una nueva pestaña la página de elm. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid de la proteína (P53_human).
+
 * ¿Qué compartimentos celulares se le asignaron? ¿Tienen sentido?
-* Realice la predicción y conteste: ¿Cuántas instancias de motivos se encuentran ahora?
 
-4. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el accession number (P04637) y modifique el parámetro:  
+* Realice la predicción y conteste: ¿Cuántas instancias de motivos se encuentran ahora? ¿Cuántas instancias de motivos son retenidas luego del filtro? ¿A qué se debe esta diferencia con el punto anterior?
 
-    **Motif Probability Cutoff:** 0.01
-
-* ¿Cuántas instancias predichas de motivos se encuentran ahora?
-* ¿Por qué cree que es útil usar la localización celular, el contexto taxonómico y el umbral de probabilidad del motivo?
-
-5. ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
-
-6. Vuelva a modificar el parámetro: **Motif Probability Cutoff:** 100 o 0.1
+* Investigue el motivo **CLV_PCSK_FUR_1** en la predicción realizada sólo con la secuencia. ¿Por qué cree que fue filtrado?
 
 * ¿Cuántas instancias de la clase MOD_CK1_1 se encontraron? ¿Cuál es la diferencia entre estas instancias?
 
-7. ¿Cuántos degrons anotados hay en p53? ¿Cuál es la función de estos motivos?
+* ¿Cuántos degrons anotados hay en p53? ¿Cuál es la función de estos motivos?
 
-8. ¿Existe algún sitio anotado CDK en p53?
+* ¿Existe algún sitio anotado CDK en p53?
 
-9. ¿Existe algún sitio anotado DOC_CYCLIN_RXL_1? ¿Qué relación funcional existe entre este sitio y el sitio CDK?
+* ¿Existe algún sitio anotado DOC_CYCLIN_RXL_1? ¿Qué relación funcional existe entre este sitio y el sitio CDK?
+
+**4.** Abra una nueva pestaña y vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid (P53_HUMAN) y modifique el parámetro:  
+
+    **Motif Probability Cutoff:** 0.01
+
+* ¿Cuántas instancias predichas de motivos se encuentran ahora? ¿Cuántas instancias de motivos son retenidas luego del filtro?
+* ¿Por qué cree que es útil usar la localización celular, el contexto taxonómico y el umbral de probabilidad del motivo?
+
+**5.** ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
+
+
 
 10. Busque la proteína P53_MOUSE en ELM.
 * ¿Existen instancias anotadas?
