@@ -49,7 +49,8 @@ La simbología comúnmente utilizada en expresiones regulares es:
 
 Estos símbolos nos permiten definir patrones que son observados en proteínas naturales para luego identificarlos en otras proteínas y ser puestos a prueba experimentalmente.
 
-## Ejercicio 1. Familiarizándonos con las Expresiones Regulares
+## Ejercicios
+### Ejercicio 1. Familiarizándonos con las Expresiones Regulares
 
 Los receptores nucleares interactúan con diversas proteínas mediantes un motivo lineal llamado NRBox (*Nuclear Receptor Box*) (Heery,1997). Existen numerosas estructuras de péptidos unidos a diferentes receptores nucleares (PDBs: 3CS8, 2GPO, 1GWQ, 1RJK, 1M2Z) que permitieron estudiar y entender algunas características de la interacción.
 
@@ -91,7 +92,7 @@ LVPDAASKHKQLSELLRGGSGSSINPG
 1. Copie y pegue las secuencias en el recuadro de Test String en regex101 [https://regex101.com](https://regex101.com) y pruebe encontrar una expresión regular que permita identificar el motivo que media la interacción de estas proteínas con los receptores nucleares y que cumpla con la evidencia experimental observada.
 2. Considerando que el motivo se encuentra en una hélice, ¿modificaría la expresión regular que obtuvo?
 
-## Ejercicio 2. Base de datos de motivos lineales en Eucariotas (ELMdb)
+### Ejercicio 2. Base de datos de motivos lineales en Eucariotas (ELMdb)
 La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se enfoca principalmente en la anotación y detección de motivos lineales (MLs). Para ello cuenta con un repositorio de motivos manualmente anotados, por lo cual está altamente curada y una herramienta de predicción de motivos. Esta predicción de motivos se realiza mediante una búsqueda de patrones de secuencia basada en texto utilizando expresiones regulares.
  
 **1.** Busque en [ELMdb](http://elm.eu.org) en la pestaña **Prediction** la proteína PGC-1-alpha, una de las proteínas de la lista que usamos en el **Ejercicio 1**, utilizando el accession number o uniprot ID (Q9UBK2 - PRGC1_HUMAN).
@@ -237,9 +238,6 @@ ProViz es una herramienta que colecta y muestra información desde distintas fue
 * ¿Por qué hay tantas proteínas virales que interactúan con retinoblastoma? (Pista: La respuesta está en el abstract de la clase del motivo LIG_Rb_LxCxE_1)
 
 ### Ejercicio Adicional 3. Motivos lineales en proteínas virales
-#### Objetivos:
-* Familiarizarse con la herramienta de predicción de motivos de ELM.
-* Aplicar la herramienta de predicción de motivos de ELM a una proteína viral.
  
 La familia viral Adenoviridae (adenovirus) son virus ADNdc desnudos. Los adenovirus que infectan a humanos son responsables de muchas enfermedades respiratorias y de numerosos casos de gastroenteritis en niños. El único género de adenovirus que posee la proteína E1A es el género *Mastadenovirus* que infecta a **mamíferos**. Hasta la fecha, no existe ningún homólogo reportado en los restantes géneros de esta familia viral. La proteína E1A posee un rol importante en la replicación del genoma viral ya que desregula el ciclo celular induciendo la división celular. Esta estimulación de la progresión de la fase G1 a la fase S, permite que el virus use la maquinaria celular de replicación del ADN para replicar su propio genoma. Una vez expresada la proteína E1A su localización en la célula infectada es **nuclear** y minoritariamente **citosólica**.
  
