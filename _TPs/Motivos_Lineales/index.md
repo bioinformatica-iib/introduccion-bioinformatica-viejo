@@ -125,7 +125,7 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 * ¿Qué se puede decir sobre la estructura de la proteína? ¿Se observa algún dominio? ¿Se observan regiones desordenadas?  
 * ¿Los predictores estructurales y filtros (SMART, GlobPlot, IUPRED, Secondary Structure) coinciden sobre qué regiones son estructuradas/desordenadas?
 
-**3.** Por si no dió cuenta, la proteína utilizada en el ejercicio anterior es p53 de humanos. Abra en una nueva pestaña la página de elm. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid de la proteína (P53_human).
+**3.** Por si no se dió cuenta, la proteína utilizada en el ejercicio anterior es p53 de humanos. Abra en una nueva pestaña la página de elm. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid de la proteína (P53_human).
 
 * ¿Qué compartimentos celulares se le asignaron? ¿Tienen sentido?
 
@@ -133,7 +133,7 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 
 * Investigue el motivo **CLV_PCSK_FUR_1** en la predicción realizada sólo con la secuencia. ¿Por qué cree que fue filtrado?
 
-* ¿Cuántas instancias anotadas posee? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
+* ¿Cuántas instancias anotadas como true positive posee esta proteína? Compare la ubicación de las instancias anotadas con la información estructural proveniente de IUPred.
 
 * ¿Cuántas instancias de la clase MOD_CK1_1 se encontraron? ¿Cuál es la diferencia entre estas instancias?
 
@@ -146,22 +146,20 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 **4.** Abra una nueva pestaña y vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid (P53_HUMAN) y modifique el parámetro:  
 
     **Motif Probability Cutoff:** 0.01
+    (Recuerde que en el punto anterior este parámetro era de 100)
 
 * ¿Cuántas instancias predichas de motivos se encuentran ahora? ¿Cuántas instancias de motivos son retenidas luego del filtro?
 * ¿Por qué cree que es útil usar la localización celular, el contexto taxonómico y el umbral de probabilidad del motivo?
 
-
-
-
-
-10. Busque la proteína P53_MOUSE en ELM.
+**5.** Busque la proteína P53_MOUSE en ELM.
+* ¿Qué compartimentos celulares y que contexto taxonómico se asignaron?
 * ¿Existen instancias anotadas?
 * ¿Existen instancias asignadas por homología? ¿A qué organismo pertenecen?
 
 ### Ejercicio 3. Identificación de motivos cortos de interacción en p53 en un alineamiento propio.
 La región amino terminal de p53 posee un motivo de unión a la E3 ligasa MDM2, el cual está caracterizado por una secuencia conservada que puede representarse por una expresión regular.
 
-1. Entre en la base de datos ELM y busque la expresión regular del motivo con el ID: DEG_MDM2_SWIB_1. Para esto ingrese el ID en la parte superior derecha donde dice: Search ELM database. La expresión regular se encuentra marcada como *"Pattern"*. A continuación, busque las ocurrencias de esta expresión regular en las secuencias de p53. Para ello, abra en **Jalview** el alineamiento de p53 con el cuál estuvo trabajando en la clase de *Regiones Flexibles*. **Jalview** permite la búsqueda de motivos por expresiones regulares. Para hacerlo, utilice la función:
+1. Entre en la base de datos ELM y busque la expresión regular del motivo con el ID: DEG_MDM2_SWIB_1. Para esto ingrese el ID en la parte superior derecha donde dice: Search ELM database. La expresión regular se encuentra marcada como *"Pattern"*. A continuación, busque las ocurrencias de esta expresión regular en las secuencias de p53. Para ello, abra en **Jalview** el alineamiento de p53 con el cuál estuvo trabajando en la clase de *TP N°9 - Predicción de desorden*. **Jalview** permite la búsqueda de motivos por expresiones regulares. Para hacerlo, utilice la función:
 
     *Select* → *Find*
 
