@@ -444,12 +444,31 @@ Noten que también se puede utilizar la opción `--outformat` para cambiar el fo
    </li>
 </ul>
 
-<ul class="block-list has-radius is-primary">
-   <li class="is-highlighted is-info has-icon" markdown="span">
-      <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 01 de Octubre 2021, 23:59hs.
-   </li>
-</ul>
+### Enunciado
+
+Su jefe analizó los resultados de la identificación de ligandos de HLA-A02*01 utilizando una PSSM. Lamentablemente no está muy conforme con los resultados porque considera que hay métodos mejores para realizar esta predicción.
+
+Por lo tanto, usted decide volver a realizar las predicciones, utilizando la red que entrenó en la cuarta prueba del TP7, para las mismas proteínas de la variante de coronavirus que está estudiando actualmente. Recordemos que eran las siguientes: proteína **S** (spike o proteína de glicoproteína de superficie), **E** (proteína de la envoltura), **M** (proteína de membrana) y **N** (fosfoproteína de la nucleocápside).
+
+Para lograr su objetivo utilizará la herramienta **EasyPred**. Como va a realizar una predicción, siga los mismos pasos que realizó para hacer la predicción con la PSSM con la diferencia de que en **Load saved prediction method** debe subir el archivo con los pesos de la red. Seleccione **Sort output on predicted values** y apriete el botón **Submit query**.
+
+1. Interprete la salida que obtiene al correr **Easypred**. ¿Cuántas redes se utilizan para realizar las predicciones?
+2. ¿Cuántos péptidos se podrían considerar ligandos en cada caso? Recuerde los umbrales para la clasificación de ligandos que enunciamos en los TP5 y TP7.
+3. ¿Cuáles son los péptidos que elegiría para testear en el laboratorio de cada una de las proteínas analizadas? Tenga en cuenta que puede elegir como máximo 5 péptidos en total.
+4. Teniendo en cuenta su respuesta al punto 2., ¿tiene sentido este resultado considerando la alta especificidad del MHC analizado?
+5. Ingrese a Seq2Logo y genere un logo con todos los péptidos que etiquetó como ligandos. Ajuste los parámetros según su criterio. 
+6. En base a los conocimientos adquiridos, ¿le parece razonable el motivo hallado para el alelo HLA-A*02:01? ¿Puede ver claramente las posiciones ancla? ¿Qué aminoácidos son los preferidos para estas posiciones?
+7. Compare el logo obtenido con el que construyó para el ejercicio final del TP5 (péptidos con un puntaje predicho mayor a 1). ¿Qué diferencias y similitudes observa? ¿Qué diferencia observa en el information content (eje y), y a qué se lo atribuye? ¿Por qué cree que el motivo generado por redes neuronales es más parecido a lo ya conocido en la literatura que el motivo construído a partir de la PSSM?
+8. Ahora compare **todas** las predicciones realizadas con la PSSM con las obtenidas utilizando la red neuronal. Calcule el coeficiente de correlación de Pearson y Spearman entre ambos conjuntos de predicciones. Investigue cuál de estas dos métricas sería la más adecuada para realizar esta comparación (Pista: ¿Notó que las predicciones están en diferentes escalas?). Para completar esta tarea puede usar Excel (ver Extras) o cualquier otro programa de su preferencia. A su jefe le gustan las figuras, así que decide realizar un plot o gráfico de dispersión de los datos, además de calcular las métricas enunciadas anteriormente. 
+
+**Extras (y por ende opcionales):** 
+1. Puede realizar un `for` loop junto con un `awk` para seleccionar los péptidos relevantes de cada una de las proteínas (recuerde que en un TP se realizó un `awk` para seleccionar columnas).
+2. Para completar el punto 8., puede usar R para calcular las métricas y ggplot2 para realizar el gráfico de dispersión. 
+
+Algunos links que les pueden resultar útiles para resolver el punto 8. y los extras:
+
+* [Cálculo de coeficientes de correlación en R](https://cran.r-project.org/web/packages/correlation/vignettes/types.html)
+* [Scatterplot en ggplot2](http://www.cookbook-r.com/Graphs/Scatterplots_(ggplot2)/)
 
 {% endif %}
 
