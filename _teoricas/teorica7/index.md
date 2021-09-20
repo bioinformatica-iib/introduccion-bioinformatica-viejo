@@ -39,11 +39,10 @@ Esta clase está dividida en dos partes y cada una incluye ejercicios para resol
 
 <iframe src="https://drive.google.com/file/d/1MTplvYeHPCLs2guMqa6Zhou6Zq9d7rEf/preview" width="800" height="440"></iframe>
 
-<!--
 ## CLASE DE CONSULTA.
-- Recording [[MP4]]()
+- Recording [[MP4]](https://drive.google.com/file/d/1clHFkc87QgDVur3-Gnqc6PVUaDKh8y-U/view?usp=sharing)
 
-<iframe src="" width="800" height="440"></iframe>
--->
+<iframe src="https://drive.google.com/file/d/1clHFkc87QgDVur3-Gnqc6PVUaDKh8y-U/preview" width="800" height="440"></iframe>
+
 
 {% endif %}
