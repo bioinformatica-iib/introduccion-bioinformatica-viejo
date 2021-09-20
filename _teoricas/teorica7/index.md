@@ -44,5 +44,4 @@ Esta clase está dividida en dos partes y cada una incluye ejercicios para resol
 
 <iframe src="https://drive.google.com/file/d/1clHFkc87QgDVur3-Gnqc6PVUaDKh8y-U/preview" width="800" height="440"></iframe>
 
-
 {% endif %}
