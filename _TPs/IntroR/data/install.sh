@@ -4,7 +4,7 @@ NC='\033[0m'
 
 echo -e "${RED} INSTALANDO R...${NC}\n\n "
 
-
+sudo apt-get update
 sudo apt -y install r-base
 
 echo -e "${RED} INSTALANDO Rstudio...${NC}\n\n "
