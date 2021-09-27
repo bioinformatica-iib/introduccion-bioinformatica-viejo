@@ -31,6 +31,20 @@ details summary > * {
 
 {% else %}
 
+## Recording
+
+* Introducción TP N°8. [[MP4]](https://drive.google.com/file/d/1YRT-G4CsGqOmu864AvIMvTd1nIf04x_H/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1YRT-G4CsGqOmu864AvIMvTd1nIf04x_H/preview" width="800" height="440"></iframe>
+
+* Puesta en Común Mitad de Clase TP N°8. [[MP4]](https://drive.google.com/file/d/1yEaHsKlFL-6oXSdfMGe4KoZrj0VuEVbI/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1yEaHsKlFL-6oXSdfMGe4KoZrj0VuEVbI/preview" width="800" height="440"></iframe>
+
+* Cierre y FilterMax TP N°8. [[MP4]](https://drive.google.com/file/d/1wSYtzs5dJK5JGN9xM98pA-NvZIWq5cgf/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1wSYtzs5dJK5JGN9xM98pA-NvZIWq5cgf/preview" width="800" height="440"></iframe>
+
 # Materiales
 
 [Descargar](https://drive.google.com/file/d/1GWo_5KXpwmXt3rUD150kBeAppj80GAm6/view?usp=sharing)
