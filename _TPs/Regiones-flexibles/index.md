@@ -22,13 +22,10 @@ construccion: false
    </li>
 </ul>
 
-{% if page.data %}
 
 ## Materiales
 
-<a href="data/"> Descargar </a>
-
-{% endif %}
+[Descargar](https://drive.google.com/file/d/1oZa7pr2pcOC0gH4drNg1ctT1rRdvQ2fa/view?usp=sharing)
 
 
 ## PARTE I: Predicción de Desorden
