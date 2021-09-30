@@ -147,9 +147,10 @@ Asegurate que los datos se cargaron correctamente, esperamos un dataframe con 4 
 Primero crearemos una columna en el dataframe:
 
 ``` R
+umbral <- 0.5
 p53$Prediccion <- NA
-p53$Prediccion[p53$Iupred>=0.5] <- "Desorden"
-p53$Prediccion[p53$Iupred<0.5] <- "Orden"
+p53$Prediccion[p53$Iupred>=umbral] <- "Desorden"
+p53$Prediccion[p53$Iupred<umbral] <- "Orden"
 ```
 
 Para obtener un gráfico similar al que brinda el servidor de IUPred, utilizaremos la librería `ggplot2`:
@@ -159,7 +160,7 @@ library(ggplot2)
 
 plot_p53 <- ggplot(p53,aes(x=Posición,y=Iupred)) +
   scale_x_continuous(n.breaks = 20,expand = c(0.01,0.01)) +
-  scale_y_continuous(n.breaks = 10) +
+  scale_y_continuous(n.breaks = 10,limits = c(0,1),expand = c(0,0.01)) +
   geom_line(color="navyblue") +
   geom_point(aes(color=Prediccion)) +
   geom_hline(yintercept = 0.5,lty="dotted",size=1) +
@@ -201,7 +202,10 @@ Ahora vamos a convertir la tabla en un dataframe para graficar con `ggplot2`:
 aminoacidos_df<-as.data.frame(aminoacidos_porcentaje)
 colnames(aminoacidos_df) <- c("Aminoacidos","Prediccion","Porcentaje")
 
-plot_aa <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)) + geom_col(position = "dodge") + theme_bw()
+plot_aa <- ggplot(aminoacidos_df,aes(x=Aminoacidos,y=Porcentaje,fill=Prediccion)) +
+      geom_col(position = "dodge") +
+      scale_y_continuous(n.breaks = 10,limits = c(0,10),expand = c(0,0.01)) +
+      theme_bw()
 ```
 Deberías obtener un gráfico como el siguiente:
 
@@ -380,18 +384,26 @@ d. En base a este alineamiento analice las regiones desordenadas y ordenadas ya 
 <ul class="block-list has-radius is-primary">
    <li class="is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, xx de septiembre 2021, 23:59hs.
-   </li>
-   <li class="is-highlighted is-info has-icon" markdown="span">
-      <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, xx de septiembre 2021, 23:59hs.
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 08 de Octubre 2021, 23:59hs.
    </li>
 </ul>
 
-<!--
-La idea del ejercicio es que identifiquen regiones flexibles en las 4 proteínas.
-Ver cómo dan antes,
--->
+
+### Enunciado
+El aislamiento que le proporcionaron está avanzando rápidamente en latinoamérica!.
+Dada la importancia de la proteína N de la nucleocápside en la replicación viral, su jefe considera que es un blanco posible de drogas.
+La proteína N forma la nucleocápside viral de SARS-CoV2 y empaqueta el genoma viral de ARN formando una
+ribonucleocápside. La estructura de la proteína es altamente desordenada y posee dos dominios globulares
+pequeños en el N-terminal (Dominio N) y C terminal (Dominio C). 
+
+1. Usando IUPred, identifique las regiones desordenadas y globulares. ¿Puede identificar fácilmente los dominios globulares con el umbral de 0.5? ¿y con el umbral de 0.4? Justifique los resultados en base al funcionamiento del algoritmo.
+
+2. Si desearía cristalizar el dominio N ¿Qué regiones no incluiría?
+
+3. Analice la proporción de residuos predichos como ordenados y como desordenados utilizando cada uno de los umbrales. ¿Se correlaciona esto con lo estudiado en la literatura?
+
+**Extra! (y por ende opcional)**
+1. Como se vió en la clase teórica, IUPred puede correrse utilizando como argumento `short` o `long`. Realice el gráfico del perfil de IUPred nuevamente utilizando `short`. ¿Qué diferencias observa en los gráficos usando Iupred `short` o `long`? En base a sus conocimientos de IUPred, explique **brevemente** y de manera **abarcativa** las diferencias observadas.
 
 
 ## Ejercicios Adicionales de Desorden
