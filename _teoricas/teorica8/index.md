@@ -4,7 +4,7 @@ title: Teórica N°8
 subtitle: "Bioinformática Estructural: Desorden"
 menubar_toc: false
 hero_height: is-small
-construccion: true
+construccion: false
 ---
 
 {% if page.construccion %}
