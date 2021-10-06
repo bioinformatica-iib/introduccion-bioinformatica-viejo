@@ -203,7 +203,8 @@ Su jefe también está interesado en que Ud. entienda más sobre los mecanismos 
 **2.** Algunos de los motivos conocidos involucrados en la vía de endocitosis mediada por receptor son: `TRG_ENDOCYTIC_2`, `LIG_LIR_Gen_1`, `LIG_PTB_APO2`.
 * ¿En qué compartimentos celulares deberían encontrarse proteínas como ACE2?
 * Estos motivos ¿se encuentran en la secuencia humana del receptor?
-* ¿Cuántas instancias de cada uno encuentra, en qué posiciones y cuáles creen que son buenos candidatos? ¿Existen algunos candidatos que son mejores que otros? Si es así, responda ¿Por qué son mejores?
+* ¿Cuántas instancias de cada uno de los motivos encuentra, en qué posiciones y cuáles creen que son buenos candidatos?
+* De los tres motivos ¿Existen algunos candidatos que son mejores que otros? Si es así, responda ¿Por qué son mejores?
 
 <ul class="block-list has-radius is-primary">
    <li class="is-highlighted is-info has-icon" markdown="span">
@@ -212,12 +213,14 @@ Su jefe también está interesado en que Ud. entienda más sobre los mecanismos 
    </li>
 </ul>
 
-**3.** Un criterio para clasificar un buen motivo candidato es que esté conservado en >50% de un conjunto de secuencias divergentes. Utilizando las expresiones regulares y el conjunto de secuencias de ACE2 (que se encuentran en el archivo `ACE2_secuencias.fasta`), indique cuáles de los motivos seleccionados en (2) son buenos candidatos según su conservación.
+**3.** Un criterio para clasificar un buen motivo candidato es que esté conservado en >50% de un conjunto de secuencias divergentes. Utilizando las expresiones regulares y el conjunto de secuencias de ACE2 (que se encuentran en el archivo `ACE2_secuencias.fasta`), indique cuáles de las instancias de los motivos seleccionados en (2) son buenos candidatos según su conservación.
 * ¿Encuentra variaciones en la secuencia de los motivos en las diferentes secuencias ¿Cuáles?
 
 **Extra! (y por ende opcional)**
 1. La presentación de resultados con figuras que faciliten la compresión es una de las partes más importantes de un informe. Una forma muy linda de visualizar las posiciones de los motivos reportados es marcarlas en un gráfico de desorden cambiando el color de los puntos. ¿Se animan?
-2. El punto 3 se puede hacer utlizando R. Para esto primero va a necesitar instalar la librería `bioseq` (tarda) para poder leer el alineamiento con la función `read_fasta`. Luego, se puede utilizar la función `gregexpr` para buscar la expresión regular del motivo que sea el mejor candidato y cuantificar su presencia en el alineamiento, prestando atención a la posición que se lo espera encontrar, claro!.
+2. El punto 3 se puede hacer utlizando R. Para esto primero va a necesitar instalar la librería `bioseq` (tarda) para poder leer el alineamiento con la función `read_fasta`. Luego, se puede utilizar la función `gregexpr` para buscar la expresión regular del motivo de interés y cuantificar su presencia en el alineamiento, prestando atención a la posición que se lo espera encontrar, claro!.
+
+>Nota: `gregexpr` devuelve una lista. Las posiciones de la lista se acceden como `lista[[i]]` donde `i` es un número.
 
 ### Materiales
 [Descarga](https://drive.google.com/file/d/1uAo-m-gFXRnq-Ms8-yeAVy3bhC4pJLvL/view?usp=sharing)
