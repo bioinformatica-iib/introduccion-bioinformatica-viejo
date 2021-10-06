@@ -15,13 +15,16 @@ construccion: false
 
 {% else %}
 
-{% if page.data %}
+<ul class="block-list has-radius is-primary">
+   <li class=" is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-clipboard"></i></span>
+    <span style="font-weight:bold;">Este TP tiene informe.</span>
+   </li>
+</ul>
 
 ## Materiales
+* Este material es para los ejercicios adicionales. [Descargar](https://drive.google.com/file/d/1CftYKxzQh1MX24u0RoTp0X751BW4rKQx/view?usp=sharing)
 
-<a href="data/"> Descargar </a>
-
-{% endif %}
 
 ## Recursos a utilizar:
 * Regex101 [https://regex101.com](https://regex101.com)
@@ -89,8 +92,16 @@ HGTSLKEKHKILHRLLQDSSSPVDLAK
 LVPDAASKHKQLSELLRGGSGSSINPG
 ```
 
-1. Copie y pegue las secuencias en el recuadro de Test String en regex101 [https://regex101.com](https://regex101.com) y pruebe encontrar una expresión regular que permita identificar el motivo que media la interacción de estas proteínas con los receptores nucleares y que cumpla con la evidencia experimental observada.
-2. Considerando que el motivo se encuentra en una hélice, ¿modificaría la expresión regular que obtuvo?
+**1.** Copie y pegue las secuencias en el recuadro de Test String en regex101 [https://regex101.com](https://regex101.com) y pruebe encontrar una expresión regular que permita identificar el motivo que media la interacción de estas proteínas con los receptores nucleares y que cumpla con la evidencia experimental observada.
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-outlined is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation"></i></span>
+    <span style="font-weight:bold;">Regex101</span> no es una herramienta que se use comúnmente. Simplemente es un recurso educativo para entender Expresiones Regulares.
+   </li>
+</ul>
+
+**2.** Considerando que el motivo se encuentra en una hélice, ¿modificaría la expresión regular que obtuvo?
 
 ### Ejercicio 2. Base de datos de motivos lineales en Eucariotas (ELMdb)
 La base de datos ELM (*Eukaryotic Linear Motifs*) es una base de datos que se enfoca principalmente en la anotación y detección de motivos lineales (MLs). Para ello cuenta con un repositorio de motivos manualmente anotados, por lo cual está altamente curada y una herramienta de predicción de motivos. Esta predicción de motivos se realiza mediante una búsqueda de patrones de secuencia basada en texto utilizando expresiones regulares.
@@ -126,7 +137,7 @@ Para cada motivo encontrado, se indica con símbolos (descriptos en la parte sup
 * ¿Qué se puede decir sobre la estructura de la proteína? ¿Se observa algún dominio? ¿Se observan regiones desordenadas?  
 * ¿Los predictores estructurales y filtros (SMART, GlobPlot, IUPRED, Secondary Structure) coinciden sobre qué regiones son estructuradas/desordenadas?
 
-**3.** Por si no se dió cuenta, la proteína utilizada en el ejercicio anterior es p53 de humanos. Abra en una nueva pestaña la página de elm. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el UNIPROTid de la proteína (P53_human).
+**3.** Por si no se dió cuenta, la proteína utilizada en el ejercicio anterior es p53 de humanos. Abra en una nueva pestaña la página de elm. Vaya de nuevo a la pestaña de predicción. Limpie el formulario con el botón *Reset Form*. Ingrese el Uniprot ID de la proteína (P53_human).
 
 * ¿Qué compartimentos celulares se le asignaron? ¿Tienen sentido?
 
@@ -169,6 +180,44 @@ La región amino terminal de p53 posee un motivo de unión a la E3 ligasa MDM2, 
 * ¿Todas las secuencias de p53 tienen el motivo de interacción con MDM2?
 * ¿Todos los motivos MDM2 tienen la misma longitud de secuencia?
 * ¿Qué nivel de identidad de secuencia observa en esta región? ¿A qué puede deberse?
+
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha de Publicación:</span> Viernes, 08 de Octubre 2021, 23:59hs.
+   </li>
+      <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 15 de Octubre 2021, 23:59hs.
+   </li>
+</ul>
+
+## Enunciado
+
+Su jefe también está interesado en que Ud. entienda más sobre los mecanismos de entrada del virus a la célula, la cual está mediada por la enzima convertidora de angiotensina 2 (ACE2) (Uniprot ID: ACE2_HUMAN2, Q9BYF1). Luego de unirse la proteína Spike a ACE2, se desencadena la entrada del virus SARS-CoV-2 a las células pulmonares por un mecanismo llamado endocitosis mediada por receptor, en el cual participan muchos motivos lineales.
+
+**1.** Según los métodos utilizados en el trabajo práctico de desorden identifique las regiones desordenadas del receptor, e investigue ¿En qué compartimento celular se encuentran esta/s región/es?
+
+**2.** Algunos de los motivos conocidos involucrados en la vía de endocitosis mediada por receptor son: `TRG_ENDOCYTIC_2`, `LIG_LIR_Gen_1`, `LIG_PTB_APO2`.
+* ¿En qué compartimentos celulares deberían encontrarse proteínas como ACE2?
+* Estos motivos ¿se encuentran en la secuencia humana del receptor?
+* ¿Cuántas instancias de cada uno encuentra, en qué posiciones y cuáles creen que son buenos candidatos? ¿Existen algunos candidatos que son mejores que otros? Si es así, responda ¿Por qué son mejores?
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-exclamation"></i></span>
+    Siempre que reporte una región o instancia de un motivo indique las posiciones de inicio y final de la misma. Para cada respuesta, indicar los algoritmos, base de datos y métodos utilizados, y el criterio usado en cada caso para clasificar/identificar.
+   </li>
+</ul>
+
+**3.** Un criterio para clasificar un buen motivo candidato es que esté conservado en >50% de un conjunto de secuencias divergentes. Utilizando las expresiones regulares y el conjunto de secuencias de ACE2 (que se encuentran en el archivo `ACE2_secuencias.fasta`), indique cuáles de los motivos seleccionados en (2) son buenos candidatos según su conservación.
+* ¿Encuentra variaciones en la secuencia de los motivos en las diferentes secuencias ¿Cuáles?
+
+**Extra! (y por ende opcional)**
+1. La presentación de resultados con figuras que faciliten la compresión es una de las partes más importantes de un informe. Una forma muy linda de visualizar las posiciones de los motivos reportados es marcarlas en un gráfico de desorden cambiando el color de los puntos. ¿Se animan?
+2. El punto 3 se puede hacer utlizando R. Para esto primero va a necesitar instalar la librería `bioseq` (tarda) para poder leer el alineamiento con la función `read_fasta`. Luego, se puede utilizar la función `gregexpr` para buscar la expresión regular del motivo que sea el mejor candidato y cuantificar su presencia en el alineamiento, prestando atención a la posición que se lo espera encontrar, claro!.
 
 ## Ejercicios Adicionales
 
