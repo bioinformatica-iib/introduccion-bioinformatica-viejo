@@ -194,7 +194,7 @@ La región amino terminal de p53 posee un motivo de unión a la E3 ligasa MDM2, 
    </li>
 </ul>
 
-## Enunciado
+### Enunciado
 
 Su jefe también está interesado en que Ud. entienda más sobre los mecanismos de entrada del virus a la célula, la cual está mediada por la enzima convertidora de angiotensina 2 (ACE2) (Uniprot ID: ACE2_HUMAN2, Q9BYF1). Luego de unirse la proteína Spike a ACE2, se desencadena la entrada del virus SARS-CoV-2 a las células pulmonares por un mecanismo llamado endocitosis mediada por receptor, en el cual participan muchos motivos lineales.
 
@@ -218,6 +218,9 @@ Su jefe también está interesado en que Ud. entienda más sobre los mecanismos 
 **Extra! (y por ende opcional)**
 1. La presentación de resultados con figuras que faciliten la compresión es una de las partes más importantes de un informe. Una forma muy linda de visualizar las posiciones de los motivos reportados es marcarlas en un gráfico de desorden cambiando el color de los puntos. ¿Se animan?
 2. El punto 3 se puede hacer utlizando R. Para esto primero va a necesitar instalar la librería `bioseq` (tarda) para poder leer el alineamiento con la función `read_fasta`. Luego, se puede utilizar la función `gregexpr` para buscar la expresión regular del motivo que sea el mejor candidato y cuantificar su presencia en el alineamiento, prestando atención a la posición que se lo espera encontrar, claro!.
+
+### Materiales
+[Descarga](https://drive.google.com/file/d/1uAo-m-gFXRnq-Ms8-yeAVy3bhC4pJLvL/view?usp=sharing)
 
 ## Ejercicios Adicionales
 
