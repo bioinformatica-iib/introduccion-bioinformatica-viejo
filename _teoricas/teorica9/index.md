@@ -14,6 +14,7 @@ construccion: false
 {% else %}
 
 - Slides [[PDF]](https://drive.google.com/file/d/1L25MQgrTzazug1IdseXmRXGojjvs1DYV/view?usp=sharing)
+
 <!---
 - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing)
 
