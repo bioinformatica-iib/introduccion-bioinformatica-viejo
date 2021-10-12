@@ -15,9 +15,9 @@ construccion: false
 
 - Slides [[PDF]](https://drive.google.com/file/d/1L25MQgrTzazug1IdseXmRXGojjvs1DYV/view?usp=sharing)
 
-<!---
-- Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing)
+- Recordings [[MP4_Video_1]](https://drive.google.com/file/d/1NgQREIEcfs7BD9QzxOm9Dj5bv2oV1Vev/view?usp=sharing)
+- Recordings [[MP4_Video_2]](https://drive.google.com/file/d/1rPMJKiMINmjbIwmKqCLjolb6QaKv5KcD/view?usp=sharing)
+- Recordings [[MP4_Video_3]](https://drive.google.com/file/d/1Y5zLyF7LsDC6VlEXc5r69v_h-oQXw9fB/view?usp=sharing)
 
-<iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe>
--->
+<iframe src="https://drive.google.com/file/d/1NgQREIEcfs7BD9QzxOm9Dj5bv2oV1Vev/preview" width="800" height="440"></iframe>
 {% endif %}
