@@ -98,7 +98,7 @@ hide_footer: True
 |28/10/2021 |  9 - 13hs| Teórica | [T12. Secuenciación y ensamblado de genomas](/introduccion-bioinformatica/teoricas/teorica12/) |	F. Agüero |
 |           | 14 - 18hs| Práctico |	[TP N°12. Data mining](/introduccion-bioinformatica/TPs/DataMining/)    | L. Bracco |
 |04/11/2021 |  9 - 13hs|          | LIBRE                            |           |
-|           | 14 - 18hs| Práctico |	[TP N°13. Visualización de genomas usando Artemis](/introduccion-bioinformatica/TPs/artemis/) |	I. Carri |
+|           | 14 - 18hs| Práctico |	[TP N°13. Mapeo de secuencias](/introduccion-bioinformatica/TPs/Short-Read-Mapping/) |	I. Carri |
 |11/11/2021 |  9 - 13hs|          |	REPASO	                         |F. Agüero, L. Chemes , M. Nielsen |
 |           | 14 - 18hs| Práctico |	[TP N°14. Genómica comparativa](/introduccion-bioinformatica/TPs/Genomica-Comparativa/) |	I. Carri |
 |18/11/2021 |  9 - 13hs|          | LIBRE ||	

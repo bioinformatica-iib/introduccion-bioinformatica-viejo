@@ -63,7 +63,7 @@
     - link: TPs/artemis/featured.jpg
       alt: The alt text for the image
       description: |- 
-        [TP N°13. Visualización de genomas usando Artemis](artemis/)
+        [TP N°13. Mapeo de secuencias](Short-Read-Mapping/)
       ratio: is-16by9
     - link: TPs/Genomica-Comparativa/featured.jpg
       alt: The alt text for the image
