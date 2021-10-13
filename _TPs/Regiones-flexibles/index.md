@@ -22,6 +22,15 @@ construccion: false
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°9. [[MP4]](https://drive.google.com/file/d/1kIjMg_JNCIvlgIB7CKOozOWC2ko9Dy8z/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1kIjMg_JNCIvlgIB7CKOozOWC2ko9Dy8z/preview" width="800" height="440"></iframe>
+
+* Cierre TP N°9. [[MP4]](https://drive.google.com/file/d/10rV12eIerHJZcTm3_9XMPgRUIUwdUSHL/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/10rV12eIerHJZcTm3_9XMPgRUIUwdUSHL/preview" width="800" height="440"></iframe>
 
 ## Materiales
 
