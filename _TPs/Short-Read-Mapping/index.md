@@ -31,7 +31,7 @@ construccion: false
 
 ## Materiales
 
-[Descargar](https://drive.google.com/file/d/...) 
+[Descargar](https://drive.google.com/file/d/1FP6qSeLb4f-aYcu4YBi0QnM7Su4-6uHX/view?usp=sharing) 
 
 ## Objetivos
 
