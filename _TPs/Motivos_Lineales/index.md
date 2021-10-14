@@ -22,6 +22,17 @@ construccion: false
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°10. [[MP4]](https://drive.google.com/file/d/16Z8j4GMfU4KDeH2u8vkW_FyH4xqfMNJV/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/16Z8j4GMfU4KDeH2u8vkW_FyH4xqfMNJV/preview" width="800" height="440"></iframe>
+
+* Cierre TP N°10. [[MP4]](https://drive.google.com/file/d/1V-tJ7QP96vXVq-87bgYQOfajx8bQN19w/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1V-tJ7QP96vXVq-87bgYQOfajx8bQN19w/preview" width="800" height="440"></iframe>
+
+
 ## Materiales
 * Este material es para los ejercicios adicionales. [Descargar](https://drive.google.com/file/d/1CftYKxzQh1MX24u0RoTp0X751BW4rKQx/view?usp=sharing)
 
