@@ -203,7 +203,7 @@ estructuras alineadas?
 <ul class="block-list has-radius is-primary">
    <li class="is-highlighted is-info has-icon" markdown="span">
       <span class="icon"><i class="fas fa-calendar"></i></span>
-    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 15 de Octubre 2021, 23:59hs.
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 22 de Octubre 2021, 23:59hs.
    </li>
 </ul>
 
