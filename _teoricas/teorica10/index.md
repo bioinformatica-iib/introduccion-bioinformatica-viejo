@@ -4,7 +4,7 @@ title: Teórica N°10
 subtitle: "Bioinformática Estructural: Dominios"
 menubar_toc: false
 hero_height: is-small
-construccion: true
+construccion: false
 ---
 
 {% if page.construccion %}
@@ -13,9 +13,12 @@ construccion: true
 
 {% else %}
 
-- Slides [[PDF]](https://drive.google.com/file/d/1G8qlYmIyX-gYTdqBYOU2eSHSy2djYCPJ/view?usp=sharing)
+- Slides [[PDF]](https://drive.google.com/file/d/1mCAsFrEe5sEtuRRr2ypnX_3VVpg7S7zA/view?usp=sharing)
+
+<!--
 - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing)
 
 <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe>
+-->
 
 {% endif %}
