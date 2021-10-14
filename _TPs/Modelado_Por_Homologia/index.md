@@ -198,14 +198,38 @@ estructuras alineadas?
 
 * Ud. Se sacó un nuevo subsidio donde tiene plata para seguir haciendo estudios estructurales de esta proteína: le daría alguna indicación a su nuevo becario, para que tenga más suerte al intentar cristalizarla?
 
-## Ejercicios Adicionales
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 15 de Octubre 2021, 23:59hs.
+   </li>
+</ul>
+
+### Enunciado
+Su jefe sigue interesado en la proteína N que forma la nucleocápside viral de SARS-CoV2 y empaqueta el genoma viral de ARN formando una
+ribonucleocápside. Usted ya comprobó que la estructura de la proteína N es altamente desordenada y posee dos dominios globulares
+pequeños en el N-terminal (Dominio N) y C terminal (Dominio C). Dada la importancia de la proteína en la
+replicación viral, consideran que es un blanco posible de drogas. Por lo tanto, decide realizar un modelado por homología del dominio N-terminal de la proteína N del **aislamiento** original utilizando las herramientas que conoce.
+
+**1.** Diseñe por homología el dominio N-terminal. Evalúe si su modelo es bueno y recuerde incluir el molde que seleccionó para crearlo justificando la elección e indicando a qué virus pertenece.
+
+**2.** Elija una estructura contra la cual comparará su modelo y justifique brevemente la elección. Recuerde reportar el RMSD global y las regiones alinean mejor.
+
+**3.** Según este análisis, si desearía cristalizar el dominio N ¿Qué regiones no incluiría?
+
+## Ejercicios Adicionales (No hay que informarlos)
 ### Ejercicio Adicional 1.
 Después del exitoso resultado que obtuvo, ahora más relajado luego de haber salvado a la población porcina, decide rechequear los resultados obtenidos con la proteína misteriosa patogénica 1 utilizando otro programa que requiere más tiempo para modelar su proteína.
 
 1. Ingrese la secuencia de la proteína en la web de [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index) Espere… Espere… Espere… (Puede llevar horas).
+
 2. Observe los resultados obtenidos. ¿Cuál es el valor de *Confidence* del modelo?
 ¿Cuál es el coverage de la secuencia? ¿A qué se debe este valor?
+
 3. Descargue el modelo (haciendo click sobre la representación) y trate de alinearlo en Chimera con los otros modelos, ¿es muy diferente? Investigue las regiones con mayor valor de RMSD ¿A qué estructuras corresponde? ¿Qué concluye sobre las regiones más difíciles de modelar?
+
 4. En la web de Phyre, vaya a la sección Detailed template information. Haga click en *Run Investigator*.  
 Explore en Quality las distintas opciones:  
 
