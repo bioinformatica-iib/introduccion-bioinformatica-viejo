@@ -15,10 +15,16 @@ construccion: false
 
 - Slides [[PDF]](https://drive.google.com/file/d/1mCAsFrEe5sEtuRRr2ypnX_3VVpg7S7zA/view?usp=sharing)
 
-<!--
+## Parte I.
+
 - Recording [[MP4]](https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/view?usp=sharing)
 
 <iframe src="https://drive.google.com/file/d/1aNTIjNegyQ6EHHV50AVoxe0Ea7Xz4ZZR/preview" width="800" height="440"></iframe>
--->
+
+## Parte II.
+
+- Recording [[MP4]](https://drive.google.com/file/d/1i-8mXFkXp3Iw_Ri3LUulqkIO2SZFh_FW/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1i-8mXFkXp3Iw_Ri3LUulqkIO2SZFh_FW/preview" width="800" height="440"></iframe>
 
 {% endif %}
