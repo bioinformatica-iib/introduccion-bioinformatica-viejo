@@ -23,6 +23,17 @@ construccion: false
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°11. [[MP4]](https://drive.google.com/file/d/15nlyGd7D4_pjcgP7ttx2X_mZMQWlkTiU/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/15nlyGd7D4_pjcgP7ttx2X_mZMQWlkTiU/preview" width="800" height="440"></iframe>
+
+* Cierre TP N°11. [[MP4]](https://drive.google.com/file/d/1qXzBKbZGIEFcy2KT74anC0L2D2icTMu4/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1qXzBKbZGIEFcy2KT74anC0L2D2icTMu4/preview" width="800" height="440"></iframe>
+
+
 ## Materiales
 [Descargar](https://drive.google.com/file/d/1fgYENsbk0R3jsujwxkoHT7s141aiBt0H/view?usp=sharing)
 
