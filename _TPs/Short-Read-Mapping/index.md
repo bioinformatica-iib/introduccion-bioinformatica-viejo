@@ -137,7 +137,7 @@ A continuación, visualice los resultados de cada archivo de secuenciación por 
 firefox NV_1_fastqc.html NV_2_fastqc.html
 ```
 
-4. ¿Qué opina de la calidad de los datos? ¿Continuaría trabajando con ellos? Compare con este ejemplo y justifique su decisión:
+**4.** ¿Qué opina de la calidad de los datos? ¿Continuaría trabajando con ellos? Compare con este ejemplo y justifique su decisión:
 - [Example of Conventional Base Calls](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html)
 
 ### Ejercicio 3: Mapeo de secuencias al genoma de referencia de *C. trachomatis*
@@ -213,7 +213,7 @@ Una vez terminada la instalación, convierta el alineamiento de formato SAM a fo
 samtools view -b -S mapping.sam > mapping.bam 
 ```
 
-5. Compare el tamaño de los archivos SAM y BAM y determine el factor de compresión. 
+**5.** Compare el tamaño de los archivos SAM y BAM y determine el factor de compresión. 
 
 <details>
 <summary> <h6>¿Se le ocurre qué comando puede utilizar para ver el tamaño de los archivos?</h6> </summary>
@@ -230,7 +230,7 @@ Seguidamente ordene las lecturas mapeadas por cromosoma y/o coordenada con el si
 samtools sort -o NV.bam mapping.bam 
 ```
 
-6. ¿Por qué las secuencias no están ordenadas y debemos hacerlo en un paso más?
+**6.** ¿Por qué las secuencias no están ordenadas y debemos hacerlo en un paso más?
 
 Finalmente indexaremos el archivo en formato BAM:
 
@@ -287,7 +287,7 @@ Si quieren saber más sobre una lectura, haga click derecho sobre ella y selecci
 </ul>
 
 
-7. Basándose en sus conocimientos de biología y de bioinformática ¿qué aspectos considera que podrían influir en la calidad de mapeo?
+**7.** Basándose en sus conocimientos de biología y de bioinformática ¿qué aspectos considera que podrían influir en la calidad de mapeo?
 
 A continuación, vamos a filtrar las lecturas para visualizar solo aquellas que tienen una buena calidad de mapeo. Para realizar esto haga click derecho sobre el gráfico de lecturas apiladas , seleccionen ``'Filter'``. Aparecerá una ventana con muchas opciones para filtrar: ``'By Mapping Quality (mapq) cut-off'`` (Lecturas con calidad de mapeo menor a). Prueben con 59.
 
@@ -304,7 +304,7 @@ Artemis tiene varias modalidades de visualización de archivos BAM. Para explora
 * La vista 'Inferred size' grafica las lecturas apareadas a lo largo del eje Y de acuerdo al tamaño de inserto inferido del fragmento de DNA utilizado para hacer la libreria. Noten que las librerias de Illumina son usualmente hechas de DNA fraccionado con un tamaño promedio de 250bp. Este no es el tamaño real de los fragmentos de la libreria, sin embargo uno esperaría que correlacionen y sean relativamente constantes si la referencia esta altamente conservada con la secuencia mapeada. Esta vista es de gran utilidad para ver inserciones y deleciones.
 * La vista 'Paired stack' une lecturas apareadas. Esto puede ser útil para visualizar rearreglos y para confirmar que regiones cercanas en el genoma de referencia también lo estan en el genoma del cual emanan las lecturas alineadas. 
 
-8. ¿Por qué podrían generarse lecturas duplicadas? ¿Todas las lecturas duplicadas nos serán útiles?
+**8.** ¿Por qué podrían generarse lecturas duplicadas? ¿Todas las lecturas duplicadas nos serán útiles?
 
 Sacaremos provecho de la vistas en nuestro ejemplo biológico. Para ello haga click derecho en el panel BAM y seleccionen la vista 'Stack'. Luego haga click derecho en el panel BAM y seleccionen en Graph la opción 'coverage' (agregando a la vista el gráfico de cobertura). 
 Desde el panel de "features" haga doble click en el ``'fasta_record AM886278.1'`` (el "DNA feature" en marrón) y compare la cobertura del plásmido con la región genómica de **NV**
@@ -313,7 +313,7 @@ Su pantalla de Artemis debería verse así:
 
 ![inferredsize](images/coverage.png)
 
-9. ¿Qué aspectos considera que pueden influir en la cobertura en general y en este caso en particular?
+**9.** ¿Qué aspectos considera que pueden influir en la cobertura en general y en este caso en particular?
 
 A simple vista, ¿notan alguna región diferente? A continuación diríjanse a  ``'Goto'`` > ``'Navigator'`` > ``'Goto Base'`` e inserten la posición 1044000. 
 Haga click derecho en el panel BAM y seleccionen la vista 'Inferred size'.
@@ -335,7 +335,7 @@ Lo primero que hace Artemis es unir todas las lecturas nuevas a las anteriores e
 
 Veamos la región del plásmido situada al final del genoma y observen la región no mapeada que analizamos previamente (alrededor de la base 1044800). Miren la vista de 'Inferred size' también para comparar (puede que se enlentezcan los desplazamientos, tenga paciencia).
 
-10. ¿Por qué piensa que la cepa **NV** no es detectada en el ensayo diagnóstico estándar, pero si la cepa **L2b**?
+**10.** ¿Por qué piensa que la cepa **NV** no es detectada en el ensayo diagnóstico estándar, pero si la cepa **L2b**?
 
 
 ![cover](images/L2b.png)
@@ -411,7 +411,7 @@ Aquí abajo se lista el esquema de colores y formas utilizado para las variantes
 | SNP no sinónimo | Azul |
 -->
 	
-11. ¿Qué tipos de variantes pueden identificar en el gen CTL0578?
+**11.** ¿Qué tipos de variantes pueden identificar en el gen CTL0578?
 
 #### Puntuación de calidad
 
@@ -441,6 +441,6 @@ tabix L2b.vcf.gz
 
 Una vez generado el VCF, agreguelo a la vista haciendo click derecho sobre la ventana BCF y seleccionen ``'Add VCF'``. Una vez que hayan abierto el archivo y para facilitar la identificación de cada archivo BCF activo, hagan clic derecho en la ventana BCF y chequeen la caja ``'Show labels'`` . Verán las etiquetas a la izquierda de la ventana. Pueden alejar el zoom y moverse a distintas regiones para comparar.
 
-12. ¿Qué cepa tiene mayor cantidad de variantes? ¿Por qué?
+**12.** ¿Qué cepa tiene mayor cantidad de variantes? ¿Por qué?
 
 {% endif %}
