@@ -73,7 +73,7 @@ zcat NV_1.fastq.gz | head -4
 
 **Formato FASTQ**
 
-- 1ra línea. `IL7_1788:5:1:34:600/1` es el nombre de la lectura secuenciada y contiene la siguiente información
+- 1ra línea. `IL7_1788:5:1:34:600/1` es el nombre de la lectura secuenciada y contiene la siguiente información descriptiva de la posición en la flowcell de secuenciación
 
 	| Elemento | Descripción |
 	| :---: | :---: |
@@ -88,14 +88,14 @@ zcat NV_1.fastq.gz | head -4
 
 - 2da línea. La secuencia.
 - 3ra línea. `+` Separador entre la secuencia y la calidad.
-- 4ta línea. Calidad de la secuencia. Hay un caracter para cada nucleótido. El caracter está asociado a un puntaje de calidad de cada nucleótido, lo cual está codificado de la siguiente forma: cada caracter representa un número (N°) según el código decimal [​ASCII](https://elcodigoascii.com.ar/), y la calidad se define como este número menos 33. ¿Y cómo se asocia esto a la probabilidad de error (p) de la base asignada? así: `(N° - 33) = cálidad`
+- 4ta línea. Calidad de la secuencia. Hay un caracter para cada nucleótido. El caracter está asociado a un puntaje de calidad de cada nucleótido, lo cual está codificado de la siguiente forma: cada caracter representa un número (N°) según el código decimal [​ASCII](https://elcodigoascii.com.ar/), y la calidad se define como este número menos 33. ¿Y cómo se asocia esto a la probabilidad de error (p) de la base asignada? así: `(N° - 33) = calidad`
 
 
 1. Identificar los componentes de la primer lectura: nombre, secuencia, calidad y ubicación física de la lectura en la celda de flujo (es decir, lane, tile, x, y).
 
 2. Usando el código [​ASCII](https://elcodigoascii.com.ar/), determinar la calidad de las primeras 3 bases secuenciadas.
 
-3. Leer la primera lectura del archivo `NV_2.fastq.gz`. ¿Qué similitudes y diferencias encuentra en cada una de las líneas de texto? ¿A qué se deben? 
+3. Leer la primera lectura del archivo `NV_2.fastq.gz` donde se guardan las lecturas del otro extremo (porque es secuenciación paired ends). ¿Qué similitudes y diferencias encuentra en cada una de las líneas de texto? ¿A qué se deben? 
 
 ### Ejercicio 2: Análisis de calidad de secuencias
 
@@ -137,7 +137,7 @@ A continuación, visualice los resultados de cada archivo de secuenciación por 
 firefox NV_1_fastqc.html NV_2_fastqc.html
 ```
 
-**4.** ¿Qué opina de la calidad de los datos? ¿Continuaría trabajando con ellos? Compare con este ejemplo y justifique su decisión:
+**4.** Compare la calidad de los datos con este ejemplo:
 - [Example of Conventional Base Calls](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/bad_sequence_fastqc.html)
 
 ### Ejercicio 3: Mapeo de secuencias al genoma de referencia de *C. trachomatis*
@@ -147,6 +147,7 @@ firefox NV_1_fastqc.html NV_2_fastqc.html
       <span class="icon"><i class="fas fa-exclamation-triangle"></i></span>El software para realizar el mapeo funciona en computadoras con una arquitectura de 64bits (actualmente la mas común). Dado que nuestra máquina virtual tiene una arquitectura de 32bits, usted NO debe ejecutar los comandos de esta etapa. Podrá ver los resultados en su directorio de trabajo. Le brindamos los comandos en caso de querer reproducir el análisis en secuencias de su interés.</li>
 </ul>
 
+Si tuvieramos la posibilidad de correrlo, los comandos a ejecutar serían los siguientes.
 El software para mapear las lecturas es BWA. Para instalarlo ejecutar:
 
 ```Bash
@@ -248,6 +249,7 @@ Para abrir Artemis ejecutar en la terminal:
 cd ~/Tools/artemis/
 ./art
 ```
+- Abrir la secuencia de referencia "L2_cat.fasta". Para esto hacer click en ``'File'`` > ``'Open'`` y abra el archivo correspondiente. Seleccionen la opción "Concatenate Sequences"
 
 #### Vista básica de Artemis
 
@@ -257,8 +259,6 @@ cd ~/Tools/artemis/
 * Este panel tiene una disposición similar al panel principal pero es un acercamiento. Haga doble click sobre un gen en el panel principal y en este observará un acercamiento del comienzo del gen.
 * Este panel lista las anotaciones o "features" presentes en las secuencias en el orden en que ocurren en el DNA, con el gen seleccionado resaltado.
 Nota: para minimizar o expandir los paneles, clickear en los **...** que figuran en el margen superior izquierdo de cada panel. 
-
-- Abrir la secuencia de referencia "L2_cat.fasta". Para esto hacer click en ``'File'`` > ``'Open'`` y abra el archivo correspondiente. 
 
 - Abrir el archivo de anotación denominado "L2_cat.embl". Para esto hacer click en ``'File'`` > ``'Read an Entry'`` y abra el archivo correspondiente. 
 
@@ -298,16 +298,16 @@ A continuación, vamos a filtrar las lecturas para visualizar solo aquellas que 
 
 Artemis tiene varias modalidades de visualización de archivos BAM. Para explorarlas haga click derecho en el panel BAM y seleccionen el menú de opciones 'Views': 
 
-* La visualización por defecto (la que están viendo) se denomina apilada o "stack view". Cada linea representa una lectura de secuencia. Las lecturas azules son lecturas únicas, mientras que las verdes (o negras) representan lecturas duplicadas que tienen el mismo comienzo y fin. Para ahorrar espacio si hay secuencias duplicadas, solo se muestra una. 
-* La vista 'coverage' muestra un gráfico que representa la profundidad de secuenciación por posición. En secuenciación de segunda generación la **cobertura** o cantidad de reads secuenciadas por fragmento es muy importante. Dado que esta tecnología puede tener errores, a mayor cobertura, mayor confianza en la detección de variantes. 
-* La vista 'Strand stack', muestra las lecturas directas y reversas separadas por encima y por debajo de la escala respectivamente. Es útil para aplicaciones hebra específicas. 
-* La vista 'Inferred size' grafica las lecturas apareadas a lo largo del eje Y de acuerdo al tamaño de inserto inferido del fragmento de DNA utilizado para hacer la libreria. Noten que las librerias de Illumina son usualmente hechas de DNA fraccionado con un tamaño promedio de 250bp. Este no es el tamaño real de los fragmentos de la libreria, sin embargo uno esperaría que correlacionen y sean relativamente constantes si la referencia esta altamente conservada con la secuencia mapeada. Esta vista es de gran utilidad para ver inserciones y deleciones.
-* La vista 'Paired stack' une lecturas apareadas. Esto puede ser útil para visualizar rearreglos y para confirmar que regiones cercanas en el genoma de referencia también lo estan en el genoma del cual emanan las lecturas alineadas. 
+* Por defecto (la que están viendo) se denomina apilada o **"stack view"**. Cada linea representa una lectura de secuencia. Las lecturas azules son lecturas únicas, mientras que las verdes (o negras) representan lecturas duplicadas que tienen el mismo comienzo y fin. Para ahorrar espacio si hay secuencias duplicadas, solo se muestra una. 
+* **'Coverage'** muestra un gráfico que representa la profundidad de secuenciación por posición. En secuenciación de segunda generación la **cobertura** o cantidad de reads secuenciadas por fragmento es muy importante. Dado que esta tecnología puede tener errores, a mayor cobertura, mayor confianza en la detección de variantes. 
+* **'Strand stack'**, muestra las lecturas directas y reversas separadas por encima y por debajo de la escala respectivamente. Es útil para aplicaciones hebra específicas. 
+* **'Inferred size'** grafica las lecturas apareadas a lo largo del eje Y de acuerdo al tamaño de inserto inferido del fragmento de DNA utilizado para hacer la libreria. Noten que las librerias de Illumina son usualmente hechas de DNA fraccionado con un tamaño promedio de 250bp. Este no es el tamaño real de los fragmentos de la libreria, sin embargo uno esperaría que correlacionen y sean relativamente constantes si la referencia esta altamente conservada con la secuencia mapeada. Esta vista es de gran utilidad para ver inserciones y deleciones.
+* **'Paired stack'** une lecturas apareadas. Esto puede ser útil para visualizar rearreglos y para confirmar que regiones cercanas en el genoma de referencia también lo estan en el genoma del cual emanan las lecturas alineadas. 
 
 **8.** ¿Por qué podrían generarse lecturas duplicadas? ¿Todas las lecturas duplicadas nos serán útiles?
 
 Sacaremos provecho de la vistas en nuestro ejemplo biológico. Para ello haga click derecho en el panel BAM y seleccionen la vista 'Stack'. Luego haga click derecho en el panel BAM y seleccionen en Graph la opción 'coverage' (agregando a la vista el gráfico de cobertura). 
-Desde el panel de "features" haga doble click en el ``'fasta_record AM886278.1'`` (el "DNA feature" en marrón) y compare la cobertura del plásmido con la región genómica de **NV**
+Desde el panel de "features" (el de abajo de todo) haga doble click en el ``'fasta_record AM886278.1'`` (el "DNA feature" en marrón) y compare la cobertura del plásmido con la región genómica de **NV**
 
 Su pantalla de Artemis debería verse así:
 
@@ -396,13 +396,14 @@ Aquí abajo se lista el esquema de colores y formas utilizado para las variantes
 
 #### Esquema de colores por defecto
 
-| Variante | Identificador |
-| :---: | :---: |
-| A | Verde |
-| G | Azul |
-| T | Negro |
-| C | Rojo |
-| Alelos múltiples | Naranja, con un círculo en la punta |
+	| Variante | Identificador |
+	| :---: | :---: |
+	| A | Verde |
+	| G | Azul |
+	| T | Negro |
+	| C | Rojo |
+	| Alelos múltiples | Naranja, con un círculo en la punta |
+
 <!--
 | Inserciones | Magenta |
 | Deleciones | Gris |
