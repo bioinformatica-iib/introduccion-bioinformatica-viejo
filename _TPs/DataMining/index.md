@@ -35,7 +35,7 @@ details summary > * {
 
 ## Materiales
 
-<a href="data/"> Descargar </a>
+[Descargar](https://drive.google.com/file/d/1QpXzP4yRCIE7Jr8sMF7HCZWP1vBSsJQq/view?usp=sharing)
 
 {% endif %}
 

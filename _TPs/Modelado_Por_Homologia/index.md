@@ -23,8 +23,19 @@ construccion: false
    </li>
 </ul>
 
+## Recording
+
+* Introducción TP N°11. [[MP4]](https://drive.google.com/file/d/15nlyGd7D4_pjcgP7ttx2X_mZMQWlkTiU/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/15nlyGd7D4_pjcgP7ttx2X_mZMQWlkTiU/preview" width="800" height="440"></iframe>
+
+* Cierre TP N°11. [[MP4]](https://drive.google.com/file/d/1qXzBKbZGIEFcy2KT74anC0L2D2icTMu4/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1qXzBKbZGIEFcy2KT74anC0L2D2icTMu4/preview" width="800" height="440"></iframe>
+
+
 ## Materiales
-[Descargar](https://drive.google.com/file/d/1IBfCrsHgGykNdcAYPnqJgFv9KWQpsmMh/view?usp=sharing)
+[Descargar](https://drive.google.com/file/d/1fgYENsbk0R3jsujwxkoHT7s141aiBt0H/view?usp=sharing)
 
 
 ## Ejercicio 1. Modelado mistery protein.
@@ -198,14 +209,38 @@ estructuras alineadas?
 
 * Ud. Se sacó un nuevo subsidio donde tiene plata para seguir haciendo estudios estructurales de esta proteína: le daría alguna indicación a su nuevo becario, para que tenga más suerte al intentar cristalizarla?
 
-## Ejercicios Adicionales
+## Ejercicio a informar
+
+<ul class="block-list has-radius is-primary">
+   <li class="is-highlighted is-info has-icon" markdown="span">
+      <span class="icon"><i class="fas fa-calendar"></i></span>
+    <span style="font-weight:bold;">Fecha Límite de Entrega:</span> Viernes, 22 de Octubre 2021, 23:59hs.
+   </li>
+</ul>
+
+### Enunciado
+Su jefe sigue interesado en la proteína N que forma la nucleocápside viral de SARS-CoV2 y empaqueta el genoma viral de ARN formando una
+ribonucleocápside. Usted ya comprobó que la estructura de la proteína N es altamente desordenada y posee dos dominios globulares
+pequeños en el N-terminal (Dominio N) y C terminal (Dominio C). Dada la importancia de la proteína en la
+replicación viral, consideran que es un blanco posible de drogas. Por lo tanto, decide realizar un modelado por homología del dominio N-terminal de la proteína N del **aislamiento** original utilizando las herramientas que conoce.
+
+**1.** Diseñe por homología el dominio N-terminal. Evalúe si su modelo es bueno y recuerde incluir el molde que seleccionó para crearlo justificando la elección e indicando a qué virus pertenece.
+
+**2.** Elija una estructura contra la cual comparará su modelo y justifique brevemente la elección. Recuerde reportar el RMSD global y las regiones alinean mejor.
+
+**3.** Según este análisis, si desearía cristalizar el dominio N ¿Qué regiones no incluiría?
+
+## Ejercicios Adicionales (No hay que informarlos)
 ### Ejercicio Adicional 1.
 Después del exitoso resultado que obtuvo, ahora más relajado luego de haber salvado a la población porcina, decide rechequear los resultados obtenidos con la proteína misteriosa patogénica 1 utilizando otro programa que requiere más tiempo para modelar su proteína.
 
 1. Ingrese la secuencia de la proteína en la web de [Phyre2](http://www.sbg.bio.ic.ac.uk/phyre2/html/page.cgi?id=index) Espere… Espere… Espere… (Puede llevar horas).
+
 2. Observe los resultados obtenidos. ¿Cuál es el valor de *Confidence* del modelo?
 ¿Cuál es el coverage de la secuencia? ¿A qué se debe este valor?
+
 3. Descargue el modelo (haciendo click sobre la representación) y trate de alinearlo en Chimera con los otros modelos, ¿es muy diferente? Investigue las regiones con mayor valor de RMSD ¿A qué estructuras corresponde? ¿Qué concluye sobre las regiones más difíciles de modelar?
+
 4. En la web de Phyre, vaya a la sección Detailed template information. Haga click en *Run Investigator*.  
 Explore en Quality las distintas opciones:  
 
@@ -265,7 +300,7 @@ Recientemente, se desarrolló un nuevo formato de archivo, MMCIF, que puede codi
 * ¿Puedes identificar qué otra información se encuentra? ¿Cómo
 está señalizada u organizada dicha información?
 
-### Guía de Ejercicios - Chimera
+## Guía de Ejercicios - Chimera
  Chimera es un programa con muchas potencialidades y herramientas de análisis. En la
 siguiente guía, introduciremos el uso de las funciones más comunes de este programa, en
 relación al análisis estructura-función de proteínas
@@ -340,14 +375,15 @@ Permite realizar determinadas acciones en la molécula, relacionadas con:
 **Ejercicio para discutir. ¿Se te ocurre para qué puede ser útil cada forma de
 visualización?**
 
-**Ejercicio 3. Analizando estructuras**  
+### Ejercicio 3. Analizando estructuras
 En este ejercicio trabajaremos con el complejo formado entre las proteínas E2F y DP1
 (factores de transcripción) y la región C-terminal del regulador del ciclo celular
 Retinoblastoma. El objetivo es familiarizarse con el uso de diferentes modos de
 visualización y análisis de interacciones dentro de cada cadena y entre dominios
 
 **Con el PDB 2AZE:**
-1. Selecciona cada una de las cadenas y asignale a cada cadena un color diferente
+
+**1.** Selecciona cada una de las cadenas y asignale a cada cadena un color diferente
 para poder individualizårlas mejor.
 
 **MENU TOOLS**  
@@ -358,7 +394,8 @@ Abarca un conjunto variado de opciones.
 * *Structure analysis*. Contiene distintos tipos de análisis comúnmente realizados
 sobre la estructura.
   * *FindHBond*. Permite encontrar los puentes de hidrógenos.
-2. Selecciona la cadena A del PDB. Luego, ve a *Structure analysis*, *FindHBond*, y
+
+**2.** Selecciona la cadena A del PDB. Luego, ve a *Structure analysis*, *FindHBond*, y
 selecciona *Only Find H-Bonds* with both ends selected.  
 Asegúrate que la opción *Include Intra-molecule H-bonds* está seleccionada.  
 ¿Qué se observa? ¿Entre qué grupos se forman los puentes de hidrógeno? ¿De
@@ -369,13 +406,13 @@ parte inferior de la pantalla. Si no puedes visualizarla, ve a *Favorites → Co
 
   En *Command*. Tipea: *~hbond*
 
-3. Selecciona la cadena A del PDB. Luego, ve a *Structure analysis*, *FindHBond*, y
+**3.** Selecciona la cadena A del PDB. Luego, ve a *Structure analysis*, *FindHBond*, y
 selecciona *Only Find H-Bonds with both ends selected*.  
 Asegúrate que la opción *Include Intra-molecule H-bonds* **NO** está seleccionada.
 ¿Qué se observa? ¿Entre qué grupos se forman los puentes de hidrógeno? ¿De
 qué tipo de estructura forman parte?
 
-**Ejercicio 4. Estudiando interacciones intermoleculares**    
+### Ejercicio 4. Estudiando interacciones intermoleculares
 En este ejercicio vamos a trabajar con el complejo entre el dominio TAD de p53 y el
 dominio globular de la E3 ligasa MDM2, e interpretaremos el tipo de interacciones que
 estabilizan este complejo utilizando métodos para visualizar este tipo de interacción
@@ -448,7 +485,7 @@ de heteroátomos: ¿qué significa la escala de color que se ve, y qué propieda
 fisicoquímica tiene el área (parche de unión) donde se unen los residuos F19 y
 W23? ¿De qué tipo de interacciones se trata?**
 
-**Ejercicio 5. Alineando estructuras de dos proteínas**   
+### Ejercicio 5. Alineando estructuras de dos proteínas
 En este ejercicio, compararemos dos estructuras de proteínas transportadoras de
 oxígeno: Mioglobina humana y Leghemoglobina de plantas. Carga los PDBs
 correspondientes: 3RGK y 2GDM utilizando la función “fetch”.
@@ -499,14 +536,16 @@ En la carpeta MSA del TP de la materia, pueden encontrar las secuencias FASTA de
 
 **Entonces: ¿Qué se puede concluir de la divergencia estructural en comparación a la divergencia de secuencia en proteínas transportadoras de oxígeno? ¿Qué implica esto a nivel evolutivo?**
 
-**Ejercicio 6. Visualizando ácidos nucleicos**  
-Aquí analizaremos el dominio de unión a DNA de p53 estudiado previamente. Carga el pdb **1YCR**.
-
-¿Cuántas cadenas observas? ¿A qué corresponde cada cadena?
+### Ejercicio 6. Visualizando ácidos nucleicos
+Aquí analizaremos el dominio de unión a DNA de p53 estudiado previamente. Carga el pdb **1YCR**. Observa y responde:
+* ¿Cuántas cadenas observas?
+* ¿A qué corresponde cada cadena?
 Colorea cada dominio proteico con un color diferente.
 
+Ahora analizaremos los ácidos nucleicos:
 Ve a *Actions → Atoms/Bonds → Nucleotide objects → off*  
 Selecciona los ácidos nucleicos: *Select → Residue → Standard nucleic acids*  
+
 Encuentra los puentes de hidrógeno.  
 *Tools→ Structural Analysis → Find H Bonds*
 
@@ -517,7 +556,7 @@ Y asegurate que NO estén seleccionados:
 *Include intra-molecule H-bonds*  
 *Include intra-residue H-bonds*
 
-**Según los conocimientos que tienes de las uniones en el ADN ¿Se observa lo que
-esperabas?**
+* Según los conocimientos que tienes de las uniones en el ADN ¿Se observa lo que
+esperabas?
 
 {% endif %}
