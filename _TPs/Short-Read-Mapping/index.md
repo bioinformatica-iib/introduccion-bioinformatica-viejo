@@ -47,7 +47,7 @@ Siempre que exista un genoma de referencia, lo ideal es mapear en lugar de ensam
 
 #### Repaso: flujo de trabajo de secuenciación y mapeo
 
-**Laboratorio húmedo**: El ADN de la cepa **NV** de *C. trachomatis* es clivado en fragmentos con enzimas o sonicación. Mediante Illumina se secuencian entre 75 y 100 bases de ambos extremos de cada fragmento, generando lecturas pareadas (en inglés "paired-end reads").
+**Laboratorio húmedo**: El ADN es clivado en fragmentos con enzimas o sonicación. Mediante Illumina se secuencian entre 75 y 100 bases de ambos extremos de cada fragmento, generando lecturas pareadas (en inglés "paired-end reads").
 
 **_In silico_**: Se obtienen archivos en formato fastq que contienen las secuencias de cada fragmento (llamadas lecturas o _reads_) y valores de calidad de secuenciación por base. El formato FASTQ es similar al formato FASTA pero contiene una línea con la calidad (Q) codificada en [​ASCII](https://elcodigoascii.com.ar/). Luego cada lectura es alineada y mapeada al genoma de referencia. En este paso se obtiene un archivo en formato SAM, el cual contiene la secuencia, la calidad y además las coordenadas donde se ubica este fragmento respecto al genoma de referencia.
 
