@@ -43,11 +43,10 @@ details summary > * {
 
 <iframe src="https://drive.google.com/file/d/1KbGuqCIElvvzPqG4zxxMaRJTDxFM43U_/preview" width="800" height="440"></iframe>
 
-<!--
-* Cierre TP N°12 - Parte 1. [[MP4]]()
+* Cierre TP N°12 - Parte 1. [[MP4]](https://drive.google.com/file/d/1jsshqLCCoqcYS0xCHZQ4UM210R0VMlC6/view?usp=sharing)
 
-<iframe src="" width="800" height="440"></iframe>
--->
+<iframe src="https://drive.google.com/file/d/1jsshqLCCoqcYS0xCHZQ4UM210R0VMlC6/preview" width="800" height="440"></iframe>
+
 
 ## Materiales
 
