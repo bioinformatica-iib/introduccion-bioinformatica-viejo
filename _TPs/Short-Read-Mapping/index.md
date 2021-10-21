@@ -402,16 +402,13 @@ Aquí abajo se lista el esquema de colores y formas utilizado para las variantes
 	| G | Azul |
 	| T | Negro |
 	| C | Rojo |
+	| Stop | Círculo en el medio |
 	| Alelos múltiples | Naranja, con un círculo en la punta |
+	| Inserciones | Magenta |
+	| Deleciones | Gris |
+	| SNP sinónimo | Rojo |
+	| SNP no sinónimo | Azul |
 
-<!--
-| Inserciones | Magenta |
-| Deleciones | Gris |
-| Sin variación | Gris claro |
-| SNP sinónimo | Rojo |
-| SNP no sinónimo | Azul |
--->
-	
 **11.** ¿Qué tipos de variantes pueden identificar en el gen CTL0578?
 
 #### Puntuación de calidad
