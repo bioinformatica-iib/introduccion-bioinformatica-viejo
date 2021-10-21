@@ -33,6 +33,22 @@ details summary > * {
 
 {% if page.data %}
 
+## Recording
+
+* Introducción TP N°12 - Parte 1. [[MP4]](https://drive.google.com/file/d/1s53RfFk3xT6al1TOMb9fVeGLjw2H_cTL/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1s53RfFk3xT6al1TOMb9fVeGLjw2H_cTL/preview" width="800" height="440"></iframe>
+
+* Resolución ejercicio 1. [[MP4]](https://drive.google.com/file/d/1KbGuqCIElvvzPqG4zxxMaRJTDxFM43U_/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/1KbGuqCIElvvzPqG4zxxMaRJTDxFM43U_/preview" width="800" height="440"></iframe>
+
+<!--
+* Cierre TP N°12 - Parte 1. [[MP4]]()
+
+<iframe src="" width="800" height="440"></iframe>
+-->
+
 ## Materiales
 
 <a href="https://drive.google.com/file/d/1QpXzP4yRCIE7Jr8sMF7HCZWP1vBSsJQq/view?usp=sharing"> Descargar </a>
