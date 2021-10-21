@@ -13,13 +13,9 @@ construccion: false
 
 {% else %}
 
-- Slides [[PDF]](https://drive.google.com/file/d/14VWMG_-wHo6vYUD-jjhJZ1a-u8vaR-rI/view?usp=sharing)
-
-<!-- 
-
+- Slides [[PDF]](https://drive.google.com/file/d/11jloxEKYKCAYKFyTgtb3ztOVOWXOWiNO/view?usp=sharing)
 - Recording [[MP4]](https://drive.google.com/file/d/18njeGvEddr9mcPBKF69ckBQCaSVipKo5/view?usp=sharing) 
 
 <iframe src="https://drive.google.com/file/d/18njeGvEddr9mcPBKF69ckBQCaSVipKo5/preview" width="800" height="440"></iframe> 
 
--->
 {% endif %}
