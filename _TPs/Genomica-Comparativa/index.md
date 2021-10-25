@@ -82,9 +82,9 @@ bl2seq -m T -i EcK12.dna -j S_typhi.dna -p blastn -D 1 > EcK12vsStiphy.blastn
 
 Ahora vamos a abrir en ACT los 3 archivos de nuestro interés. Para ello iremos a `File` > `Open` > `Choose` y seleccionamos de la carpeta del tp 14 los siguientes archivos:
 
--  `EcoliK12.dna `
--  `EcK12vsStiphy.blastn `
--  `S_tiphy.dna `
+-  `EcoliK12.dna ` (Secuencia de la bacteria E. Coli)
+-  `EcK12vsStiphy.blastn ` (Archivo de comparación)
+-  `S_tiphy.dna ` (Secuencia de la bacteria Salmonella)
 
 Luego incluir las anotaciones almacenadas en los archivos `.tab` correspondientes a cada secuencia desde `File` > `EcoliK12.dna / S_tiphy.dna` > `Read an entry`. 
 
@@ -186,10 +186,10 @@ Un deslizador que aún no usamos pero que puede resultar muy útil para refinar 
    </li>
 </ul>
 
-> Sugerencia: apaguen los codones de stop para ver mejor las regiones codificantes.
+> Sugerencia: apaguen los codones de stop para ver mejor las regiones codificantes y refinen el cutoff para visualizar los alineamientos con el mejor score.
 
 **4.** ¿Qué hay de diferente con los arreglos genéticos que vimos en bacterias?
-¿Qué sucede con el orden de los genes? 
+¿Está conservado el orden de los genes? 
 
 Hagan zoom a alguno de los genes anotados en *P. falciparum*. 
 
@@ -212,7 +212,8 @@ Evaluaremos la capacidad predictiva de modelos génicos utilizada para crear las
 
 Diríjanse, en el genoma de *P. falciparum*, al gen anotado como **PFM1010w** (o MAL13P1.103). 
 Comparen el modelo génico de uno y otro parásito e identifiquen los exones conservados. 
-Pueden usar el deslizador vertical del panel de comparación para incluir *hits* más cortos .
+Pueden usar el deslizador vertical del panel de comparación para incluir *hits* más cortos.
+
 **7.** ¿Pueden encontrar todos los exones en el contig de *P. knowlesi*?
 
 Abran, para cada secuencia, los gráficos de %GC. 
@@ -233,6 +234,7 @@ Pueden abrir una sesión de Artemis directamente desde ACT:
 
 **9.** Revisen las regiones inter-exon ¿Pueden hallar algún patrón?
 
+**10.** Según lo observado ¿Cómo evalúa la calidad de la predicción de este gen?
 
 ## Tercera Parte
 **Comparación de genomas eucariotas de *Trypanosoma brucei* y *Leishmania major*.**
@@ -252,8 +254,10 @@ Los archivos que usaremos son:
 
 Carguen las secuencias, apaguen codones de stop y agreguen las anotaciones.
 
-**10.** ¿Qué pasa con la conservación de la arquitectura genómica entre estos dos cromosomas? ¿Dirían que hay o que no hay sintenia?
+**11.** ¿Qué pasa con la conservación de la arquitectura genómica entre estos dos cromosomas? ¿Dirían que hay o que no hay sintenia?
 
-**11.** ¿Hay regiones conservadas entre los organismos? ¿Cuáles son los productos predichos para los genes en esas regiones?
+Restringir al máximo el cutoff de BLAST para las regiones compartidas entre genomas.
+
+**12.** ¿Hay regiones conservadas entre los organismos? ¿Cuáles son los productos predichos para los genes en esas regiones?
 
 {% endif %}
