@@ -36,7 +36,7 @@ construccion: false
 
 # Genómica comparativa: ACT
 
-## Introducción:
+## Introducción
 
 La herramienta ACT (Artemis Comparision Tool) fue diseñada para extraer información de la comparación entre dos secuencias (Carver et al. 2005). El propósito de comparar genomas es visualizar rearreglos (inversiones, deleciones/inserciones, transposiciones).
 
@@ -44,10 +44,12 @@ Para trabajar con ACT son necesarios tres archivos: dos de secuencias (las que v
 
 ## Objetivos
 
-* Familiarizarce con las funciones básicas de ACT a través de varios casos de uso. 
+*  Familiarizarce con la visualización comparativa de genomas
+*  Explorar las funciones básicas de ACT a través de varios casos de uso
 
+## Primera parte
 
-## Primera parte: comparación de los genomas bacterianos de *E. coli* y *S. tiphy*
+**Comparación de los genomas bacterianos de *E. coli* y *S. tiphy*.**
 
 Para abrir el programa ACT ejecutar en la terminal: 
 
@@ -76,7 +78,7 @@ bl2seq -m T -i EcK12.dna -j S_typhi.dna -p blastn -D 1 > EcK12vsStiphy.blastn
 
 **1.** ¿Qué indica el Bit Score de Blast?
 
-### Navengando en ACT
+### Navegando en ACT
 
 Ahora vamos a abrir en ACT los 3 archivos de nuestro interés. Para ello iremos a `File` > `Open` > `Choose` y seleccionamos de la carpeta del tp 14 los siguientes archivos:
 
@@ -153,7 +155,8 @@ Agreguen ahora, a *S. tiphy* las anotaciones con el nombre ``SPIs.tab``. Este ar
 
 Cuando ya se hayan aburrido. Cierren **todo** para arrancar una nueva sesión con el próximo ejercicio.
 
-## Segunda Parte: comparación de genomas eucariotas de *P. falciparum* y *P. knowlesi*
+## Segunda Parte
+**Comparación de genomas eucariotas de *P. falciparum* y *P. knowlesi*.**
 
 Los patógenos eucariotas, *P. falciparum* y *P. knowlesi* son agentes etiológicos de la malaria o paludismo y están taxonómicamente emparentados. El primero ya ha sido secuenciado en múltiples oportunidades, dado que es causante de la enfermedad en humanos con mayor prevalencia. El segundo está asociado a paludismo en primates no-humanos por lo que está menos estudiado.
 Usaremos la abundancia de información del primero y la cercanía evolutiva de ambos para extraer información del segundo a partir de la genómica comparativa. 
@@ -213,6 +216,7 @@ Pueden usar el deslizador vertical del panel de comparación para incluir *hits*
 **7.** ¿Pueden encontrar todos los exones en el contig de *P. knowlesi*?
 
 Abran, para cada secuencia, los gráficos de %GC. 
+
 **8.** ¿Qué características tiene la gráfica en *P. falciparum*? ¿Esa característica está conservada en *P. knowlesi* para el gen *Phat4*?
 
 ![Phat4-gen](images/phat4.png)
@@ -227,10 +231,11 @@ Pueden abrir una sesión de Artemis directamente desde ACT:
 
 ![artemis-edit](images/artemis-edit.png)
 
-Revisen las regiones inter-exon ¿Pueden hallar algún patrón?
+**9.** Revisen las regiones inter-exon ¿Pueden hallar algún patrón?
 
 
-## Tercera Parte: comparación de genomas eucariotas de *Trypanosoma brucei* y *Leishmania major*
+## Tercera Parte
+**Comparación de genomas eucariotas de *Trypanosoma brucei* y *Leishmania major*.**
 
 ### Sintenias camufladas
 
@@ -247,7 +252,8 @@ Los archivos que usaremos son:
 
 Carguen las secuencias, apaguen codones de stop y agreguen las anotaciones.
 
-**9.** ¿Qué pasa con la conservación de la arquitectura genómica entre estos dos cromosomas? ¿Dirían que hay o que no hay sintenia?
-**10.** ¿Hay regiones conservadas entre los organismos? ¿Cuáles son los productos predichos para los genes en esas regiones?
+**10.** ¿Qué pasa con la conservación de la arquitectura genómica entre estos dos cromosomas? ¿Dirían que hay o que no hay sintenia?
+
+**11.** ¿Hay regiones conservadas entre los organismos? ¿Cuáles son los productos predichos para los genes en esas regiones?
 
 {% endif %}
