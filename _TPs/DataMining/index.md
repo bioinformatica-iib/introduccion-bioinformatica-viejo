@@ -47,6 +47,16 @@ details summary > * {
 
 <iframe src="https://drive.google.com/file/d/1jsshqLCCoqcYS0xCHZQ4UM210R0VMlC6/preview" width="800" height="440"></iframe>
 
+* Introducción TP N°12 - Parte 2. [[MP4]](https://drive.google.com/file/d/17vEIy3ynNfJlJE9o5CAZpgrmd0zOUfXl/view?usp=sharing)
+
+<iframe src="https://drive.google.com/file/d/17vEIy3ynNfJlJE9o5CAZpgrmd0zOUfXl/preview" width="800" height="440"></iframe>
+
+<!--
+* Cierre TP N°12 - Parte 2. [[MP4]]()
+
+<iframe src="/preview" width="800" height="440"></iframe>
+-->
+
 
 ## Materiales
 
