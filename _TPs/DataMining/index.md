@@ -488,7 +488,7 @@ Ahora vamos a exportar los genes que con mayor cambio en la expresión:
 
 ```r
 write.table(rownames(exp_table)[abs(exp_table[,1]) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug1")
-write.table(rownames(exp_table)[abs(exp_table[,1]) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug2")
+write.table(rownames(exp_table)[abs(exp_table[,2]) > 1.5],row.names = F,col.names = F,quote = F,file = "DEgenes_drug2")
 ```
 
 El gen que más aumenta la expresión, ¿tuvo una gran cantidad de observaciones?, ¿creen que esto sea un problema?.
