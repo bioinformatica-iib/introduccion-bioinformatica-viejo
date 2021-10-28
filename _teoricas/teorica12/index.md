@@ -14,7 +14,7 @@ construccion: false
 {% else %}
 
 - Slides [[PDF]](https://drive.google.com/file/d/1-KQlgiR9PYowDEx4VgPB0EsjVccvNG9q/view?usp=sharing)
-- Sequence assembly demystified![PDF](https://drive.google.com/file/d/1TPjPsyQzu54awA7675qg6oKHI-edTfN-/view?usp=sharing)
+- Sequence assembly demystified [[PDF]](https://drive.google.com/file/d/1TPjPsyQzu54awA7675qg6oKHI-edTfN-/view?usp=sharing)
 
 
 <!--
