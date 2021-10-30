@@ -51,11 +51,9 @@ details summary > * {
 
 <iframe src="https://drive.google.com/file/d/17vEIy3ynNfJlJE9o5CAZpgrmd0zOUfXl/preview" width="800" height="440"></iframe>
 
-<!--
-* Cierre TP N°12 - Parte 2. [[MP4]]()
+* Cierre TP N°12 - Parte 2. [[MP4]](https://drive.google.com/file/d/1W9i63r7chrWFux95Hw7IhULvkm7akxjz/view?usp=sharing)
 
-<iframe src="/preview" width="800" height="440"></iframe>
--->
+<iframe src="https://drive.google.com/file/d/1W9i63r7chrWFux95Hw7IhULvkm7akxjz/preview" width="800" height="440"></iframe>
 
 
 ## Materiales
