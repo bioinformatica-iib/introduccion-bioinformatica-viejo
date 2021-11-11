@@ -15,19 +15,13 @@ construccion: false
 
 {% else %}
 
-<!--
-
 ## Recording
 
-* Introducción TP N° 13. [[MP4]](https://drive.google.com/file/  .... )
+* TP N° 14. [[MP4]](https://drive.google.com/file/d/1uJk_AmVQ5cEUS5yqJrVt8Cg_QGLNaO_h/view?usp=sharing)
 
-<iframe src="https://drive.google.com/file/d/.../preview" width="800" height="440"></iframe>
+<iframe src="https://drive.google.com/file/d/1uJk_AmVQ5cEUS5yqJrVt8Cg_QGLNaO_h/preview" width="800" height="440"></iframe>
 
-* Final de Clase TP N° 13. [[MP4]](https://drive.google.com/file/  .... )
 
-<iframe src="https://drive.google.com/file/d/.../preview" width="800" height="440"></iframe>
-
--->
 
 ## Materiales
 
