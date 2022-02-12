@@ -1,4 +1,4 @@
-# Intro a la Bioinformática
+# Introducción a la Bioinformática
 
 ## Para acceder al sitio:
 
