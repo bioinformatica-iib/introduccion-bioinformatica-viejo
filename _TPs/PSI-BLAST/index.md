@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°5
 subtitle: Perfiles de secuencia y PSI-BLAST
 menubar_toc: true

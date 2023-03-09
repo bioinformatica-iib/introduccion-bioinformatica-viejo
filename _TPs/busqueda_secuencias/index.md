@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N° 4
 subtitle: Búsqueda de secuencias por similitud
 permalink: TPs/busqueda_secuencias/

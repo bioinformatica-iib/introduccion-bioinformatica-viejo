@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Cronograma
 permalink: /about/schedule/
 hide_hero: False

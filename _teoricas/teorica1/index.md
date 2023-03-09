@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°1
 subtitle: Introducción a la Materia - Conceptos computacionales
 menubar_toc: false

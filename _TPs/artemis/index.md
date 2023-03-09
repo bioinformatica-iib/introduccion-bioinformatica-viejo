@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°13
 subtitle: Visualización de genomas usando Artemis
 data : True

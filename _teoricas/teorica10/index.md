@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°10
 subtitle: "Bioinformática Estructural: Dominios"
 menubar_toc: false

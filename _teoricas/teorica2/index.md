@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°2
 subtitle: Bases de datos. Ontologías.
 menubar_toc: false

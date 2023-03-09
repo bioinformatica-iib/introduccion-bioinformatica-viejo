@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°6
 subtitle: Filogenias, árboles filogenéticos y filogenómica
 data : True

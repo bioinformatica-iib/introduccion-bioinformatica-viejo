@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°5
 subtitle: Información contenida en alineamientos múltiples
 menubar_toc: false

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°2
 subtitle: EMBOSS Suite
 menubar_toc: true

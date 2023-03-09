@@ -29,16 +29,17 @@ url: "https://bioinformatica-iib.github.io/" # the base hostname & protocol for 
 # theme: minima
 # theme : just-the-docs
 # remote_theme: pmarsceill/just-the-docs
-remote_theme: pages-themes/cayman@v0.2.0
+#remote_theme: pages-themes/cayman@v0.2.0
+#remote_theme: Bilal2453/cayman-docs
 # FgA - Mar.2023 these don't build @github-pages
-#theme: bulma-clean-theme
-#remote_theme: chrisrhymes/bulma-clean-theme
+theme: bulma-clean-theme
+remote_theme: chrisrhymes/bulma-clean-theme
 
 plugins:
   - jekyll-feed
   - jekyll-remote-theme
   - jekyll-seo-tag
-  
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
@@ -74,6 +75,7 @@ sass:
   # nested 138,7kB, compact 129,1kB, expanded 135,9 kB, compressed 122,4 kB
   style: compressed
 
+color_scheme: light
 
 
 collections:

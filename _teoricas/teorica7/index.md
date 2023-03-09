@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°7
 subtitle: Métodos de predicción basados en datos, M. Learning
 menubar_toc: false

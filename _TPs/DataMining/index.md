@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°12
 subtitle: Data Mining
 data : True

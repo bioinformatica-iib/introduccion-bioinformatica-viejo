@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°1
 subtitle: Introducción a UNIX
 menubar_toc: true

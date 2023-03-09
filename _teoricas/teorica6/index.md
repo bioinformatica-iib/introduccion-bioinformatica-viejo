@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°6
 subtitle: Reconstrucción de filogenias
 menubar_toc: false

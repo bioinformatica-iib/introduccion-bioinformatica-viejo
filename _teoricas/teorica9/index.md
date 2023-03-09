@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°9
 subtitle: "Bioinformática Estructural: Motivos lineales"
 menubar_toc: false

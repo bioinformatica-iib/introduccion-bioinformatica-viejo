@@ -1,6 +1,6 @@
 ---
 title: "Instructivo: Instalar/Ejecutar Java para usar con Artemis"
-layout: page
+layout: default
 hide_hero: True
 hide_footer: True
 menubar_toc: true

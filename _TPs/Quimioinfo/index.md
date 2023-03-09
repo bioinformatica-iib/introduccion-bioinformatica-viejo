@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Quimioinformática
 data : True
 menubar_toc: true

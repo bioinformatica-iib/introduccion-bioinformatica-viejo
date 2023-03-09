@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°14
 subtitle: Genómica Comparativa
 data : True

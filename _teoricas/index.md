@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teoricas
 gallery: teoricas
 hero_height: is-small

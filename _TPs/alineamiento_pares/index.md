@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°3
 subtitle: Alineamientos de secuencias de a pares
 data : false

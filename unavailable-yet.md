@@ -4,7 +4,7 @@
 
 title: This resource is not available 
 subtitle: (yet)
-layout: page
+layout: default
 permalink: unavailable-yet/
 show_sidebar: false
 hide_hero: True

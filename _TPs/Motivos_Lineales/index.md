@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°10
 subtitle: Motivos Lineales en Proteínas
 data : True

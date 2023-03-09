@@ -1,7 +1,7 @@
 ---
 title: "Instructivo"
 subtitle: "Puesta en funcionamiento de máquina virtual"
-layout: page
+layout: default
 hide_hero: false
 hide_footer: true
 menubar_toc: true

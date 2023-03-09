@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°9
 subtitle: Predicción de Desorden
 data : True

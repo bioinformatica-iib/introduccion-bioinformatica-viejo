@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°3
 subtitle: Alineamientos de a pares y Búsqueda de secuencias por Similitud
 menubar_toc: false

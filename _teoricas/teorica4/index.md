@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°4
 subtitle: Alineamientos múltiples
 menubar_toc: false

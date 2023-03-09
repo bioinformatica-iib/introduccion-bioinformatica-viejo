@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°11
 subtitle: Data clustering
 menubar_toc: false

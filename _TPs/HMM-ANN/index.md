@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°7
 subtitle: Redes Neuronales y HMMs
 data : True

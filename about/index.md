@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Información General
 permalink: /about/
 menubar_toc: true

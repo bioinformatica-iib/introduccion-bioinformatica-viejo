@@ -1,6 +1,6 @@
 ---
 title: "Descargar secuencias usando el navegador"
-layout: page
+layout: default
 hide_hero: True
 hide_footer: True
 menubar_toc: true

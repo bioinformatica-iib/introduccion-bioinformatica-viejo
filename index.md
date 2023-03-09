@@ -5,7 +5,7 @@
 
 title: Curso de Introducción a la Bioinformática
 subtitle: IIBio-UNSAM
-layout: page
+layout: default
 show_sidebar: false
 menubar: contents
 hero_height: is_small

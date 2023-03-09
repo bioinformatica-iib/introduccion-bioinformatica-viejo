@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°8
 subtitle: "Bioinformática Estructural: Desorden"
 menubar_toc: false

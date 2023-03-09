@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: TP N°8
 subtitle: Programando en Biología
 data : True

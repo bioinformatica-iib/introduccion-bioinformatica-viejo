@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: Teórica N°12
 subtitle: Secuenciación y ensamblado de genomas
 menubar_toc: false
