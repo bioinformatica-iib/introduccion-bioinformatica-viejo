@@ -18,10 +18,10 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Introducción a la Bioinformática (IIBio-UNSAM)
+title: Introducción a la Bioinformática (IIB-UNSAM)
 #email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Página web del curso de Introducción a la Bioinformática (IIBIO-UNSAM)
+  Página web del curso de Introducción a la Bioinformática (IIB-UNSAM)
 baseurl: "/introduccion-bioinformatica" # the subpath of your site, e.g. /blog
 url: "https://bioinformatica-iib.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -34,6 +34,7 @@ remote_theme: chrisrhymes/bulma-clean-theme
 
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
 
 # Exclude from processing.
 # The following items will not be processed, by default.
