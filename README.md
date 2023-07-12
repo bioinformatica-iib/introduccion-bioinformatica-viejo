@@ -1,4 +1,6 @@
-# Introducción a la Bioinformática
+# Introducción a la Bioinformática - Sitio Viejo (hasta 2021)
+
+Este repositorio está archivado. Corresponde a material de las cursadas hasta 2021.
 
 ## Para acceder al sitio:
 
